@@ -1,0 +1,13 @@
+base_url: https://blog.abj.org.br
+name: "blog"
+title: "Direito na medida"
+description: |
+  Direito na medida
+output_dir: "docs"
+navbar:
+  right:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output: distill::distill_article

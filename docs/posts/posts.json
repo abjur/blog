@@ -1,0 +1,17 @@
+[
+  {
+    "path": "posts/welcome/",
+    "title": "Nosso blog",
+    "description": "Welcome to our new blog, Direito na medida. We hope you enjoy \nreading what we have to say!",
+    "author": [
+      {
+        "name": "Marcelo Guedes Nunes",
+        "url": "https://example.com/norajones"
+      }
+    ],
+    "date": "2020-01-12",
+    "categories": [],
+    "preview": {},
+    "last_modified": "2020-01-12T20:02:42-03:00"
+  }
+]
