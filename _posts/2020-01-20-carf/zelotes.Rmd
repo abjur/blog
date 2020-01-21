@@ -1,0 +1,199 @@
+---
+title: "Operação Zelotes"
+author: "Renata Hirota"
+date: "1/14/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(wesanderson)
+library(patchwork)
+library(sf)
+```
+
+
+```{r}
+d_vis <- readRDS("../Downloads/d_vis.rds")
+d_vis <- d_vis %>% mutate(zelotes = ifelse(data_pub < "2015-03-26", "Antes", "Depois"),
+                          ano = as.factor(year(data_pub)),
+                          ano_mes = paste0(ano,"_",str_pad(month(data_pub), width = 2, pad = "0")))
+```
+
+# Cinco anos de Operação Zelotes: as mudanças no Carf após investigações de corrupção
+
+A ponto de cumprir cinco anos desde a deflagração de sua primeira fase em março de 2015, a Operação Zelotes investigou, desde então, ao menos 70 empresas pelo esquema de corrupção no Carf (Conselho de Administração de Recursos Federais). O órgão do Ministério da Fazenda, criado em 2008, é responsável por julgar recursos administrativos de autuações contra empresas e pessoas físicas. Segundo a Polícia Federal, conselheiros do Carf manipulavam processos a favor de determinadas empresas em troca de pagamentos.
+
+Considerando o período anterior e posterior ao início da operação, algumas diferenças nos processos do órgão emergem. Analisando os processos de 2010 a 2019, a primeira grande diferença é no volume de decisões publicadas, que durante os primeiros anos da operação sofreu uma queda expressiva. Os resultados das decisões também possuem padrões diferentes dependendo de fatores como o tipo de voto e o tipo de recurso.
+
+
+## Volume de decisões
+Em 2015 e 2016, logo após o início da Operação Zelotes, a quantidade de decisões publicadas pelo Carf foi inferior ao dos outros anos analisados. Vale lembrar também que, além das perturbações causadas pelas investigações, em junho de 2015 o Carf teve seu novo regimento interno aprovado -- cujo texto sofreu alterações ao longo de 2016, 2017 e 2018.
+
+```{r}
+# Volume de decisões
+d_vis %>% 
+  group_by(ano, ano_mes, zelotes) %>% summarise(n = n()) %>%
+  arrange(ano_mes) %>%
+  ggplot() +
+  # geom_col(aes(x = ano_mes, y = n, fill = ano)) +
+  geom_col(aes(x = ano_mes, y = n, fill = zelotes)) +
+  labs(y = element_blank(), x = element_blank(), title = "Quantidade de decisões publicadas por mês") +
+  scale_fill_manual(values = wes_palette(n = 2, name = "IsleofDogs1")) +
+  theme_minimal() +
+  theme(axis.text.x = element_blank())
+```
+
+
+Quanto ao resultado das decisões, em 2015 e 2016 o volume de decisões favoráveis ou parcialmente favoráveis superou o total de decisões desfavoráveis, voltando a um patamar similar ao anterior à operação a partir de 2017. Outras mudanças encontradas nas distribuições dos resultados para certas categorias de tipos de voto e tipos de recurso reforçam tal comportamento.
+
+
+```{r}
+d_vis %>%
+  mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
+  group_by(ano, zelotes) %>% 
+  count(resultado) %>% mutate(pct = n/sum(n)) %>%
+  ggplot() + geom_col(aes(x = ano, y = n, fill = resultado), position = "dodge") +
+  labs(y = element_blank(), x = "ano", title = "Resultados de decisões do Carf") +
+  scale_fill_manual(values = wes_palette(n = 3, name = "IsleofDogs1")) +
+  theme_minimal()
+```
+
+
+## Tipo de voto
+
+Apesar de não representar um volume muito grande (cerca de 8% de todas as decisões), o padrão dos resultados de decisões por voto de qualidade teve uma mudança expressiva a partir do início da Operação Zelotes. 
+
+```{r}
+d_vis_votacao <- d_vis %>% mutate(votacao = str_split(votacao, ",")) %>%
+  unnest(cols = c(votacao)) %>%
+  mutate(votacao = str_trim(votacao))
+
+# d_vis %>% mutate(voto_qualidade = str_detect(votacao, "qualidade")) %>% 
+#  count(voto_qualidade)
+
+d_vis_votacao %>%
+  group_by(zelotes) %>% count(votacao) %>%
+  mutate(pct  =  n/sum(n)) %>%
+  ggplot() + 
+  geom_col(aes(x = votacao, y = n, fill = zelotes), position = "dodge") +
+  scale_fill_manual(values = wes_palette(n = 2, name = "IsleofDogs1")) +
+  labs(title = "Distribuição dos tipos de votos antes e depois da Operação Zeltoes") +
+  theme_minimal()
+  
+d_vis_votacao %>%
+  group_by(zelotes, votacao) %>% count(resultado) %>%
+  mutate(pct = n/sum(n)) %>%
+  ggplot() + 
+  geom_col(aes(x = resultado,y = pct, fill = zelotes), position = 'dodge') +
+  scale_fill_manual(values = wes_palette(n = 3, name = "IsleofDogs1")) +
+  facet_wrap(~votacao) +
+  coord_flip() +
+  labs(title = "Resultados das sentenças segundo tipo de voto")
+```
+
+A quantidade de resultados favoráveis ao contribuinte superou o total de resultados desfavoráveis a partir de 2016, chegando a ser o dobro em alguns anos. É interessante notar que esse novo padrão se manteve ao longo do tempo, não se contendo a apenas o período inicial da operação.
+
+```{r}
+d_vis_votacao %>% filter(votacao == "Voto de qualidade") %>% 
+  group_by(ano) %>% count(resultado) %>% 
+  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>% 
+  ggplot(aes(x = ano, y = n, fill = resultado)) + 
+  geom_col(position = "dodge") +
+  scale_fill_manual(values = wes_palette(n = 3, name = "IsleofDogs1")) +
+  theme_minimal() +
+  labs(title = "Resultados de votos de qualidade por ano")
+```
+
+
+## Tipo de recurso
+
+Diferentemente do comportamento geral, as mudanças nos resultados por tipo de recurso ocorreram somente a partir de 2017, depois das fases iniciais da Operação Zelotes já deflagradas. Após mais de dois anos desde o início da operação, recursos especiais do contribuinte passaram a terem decisões mais favoráveis ao contribuinte. 
+
+```{r}
+d_vis %>%
+  filter(tipo_recurso == "RECURSO ESPECIAL DO CONTRIBUINTE") %>% 
+  mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
+  group_by(ano, tipo_recurso) %>% count(resultado) %>%
+  mutate(pct = n/sum(n)) %>%
+  ggplot() + geom_col(aes(x = ano, y = n, fill = resultado), position = 'dodge') +
+  scale_fill_manual(values = wes_palette(n = 3, name = "IsleofDogs1")) +
+  labs(title = "Decisões de recursos especiais do contribuinte", x = element_blank(), y = element_blank())
+```
+
+
+## Segmento
+
+Considerando os segmentos mais comuns das partes envolvidas nos processos do Coaf, nota-se que pessoas físicas têm um padrão diferente do restante -- em geral, recebem resultados mais favoráveis que desfavoráveis. Para o restante dos segmentos, no ano anterior à Operação Zelotes, o total de decisões desfavoráveis aumenta consideravelmente em relação às decisões favoráveis.
+
+```{r}
+top10_segmento <- d_vis %>% count(segmento, sort = T) %>% pull(segmento) %>% head(9)
+d_vis <- d_vis %>% 
+  mutate(segmento_top = if_else(segmento %in% top10_segmento, segmento, "OUTROS"))
+d_vis %>% 
+  filter(segmento_top != "OUTROS") %>% 
+  mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
+  group_by(ano, segmento_top) %>% 
+  count(resultado) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = resultado, values_from = n) %>%
+  mutate(favoravel_menos_desfavoravel = Favoravel - Desfavoravel) %>% 
+  ggplot(aes(x = ano, y = favoravel_menos_desfavoravel, color = segmento_top, group = segmento_top)) +
+  geom_line() +
+  scale_color_manual(values = c(wes_palette(n = 6, name = "IsleofDogs1"), wes_palette(n = 3, name = "IsleofDogs2"))) +
+  labs(title = "Segmentos de atividades mais recorrentes", y = "Decisões favoráveis menos decisões desfavoráveis") +
+  theme_minimal() +
+  theme(legend.position = "bottom", legend.text = element_text(size=5), legend.title = element_blank())
+
+```
+
+## UF
+
+Por fim, analisando os estados em que as decisões em primeira instância foram tomadas, observamos que a proporção de decisões favoráveis ao contribuinte tende a ser maior em processos provenientes de estados da região norte, principalmente antes da Operação Zelotes. Após o início da operação, há uma mudança nesse padrão, e, de forma geral a proporção de decisões favoráveis aumenta, como já observado no panorama geral.
+
+```{r}
+resultado_uf <- d_vis %>% 
+  mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
+  filter(resultado != "Nao Identificado") %>% 
+  group_by(zelotes, uf) %>% count(resultado) %>% 
+  mutate(pct = n/sum(n))
+
+resultado_uf_antes <- resultado_uf %>% 
+  filter(zelotes == "Antes", resultado == "Favoravel")
+resultado_uf_depois <- resultado_uf %>% 
+  filter(zelotes == "Depois", resultado == "Favoravel")
+
+uf <- geobr::read_state(code_state="all")
+
+
+antes <- uf %>% 
+  left_join(resultado_uf_antes, by = c("abbrev_state" = "uf")) %>%
+  st_simplify(dTolerance = 0.1) %>% 
+  st_as_sf() %>% 
+  ggplot() + 
+  geom_sf(aes(fill = pct)) +
+  labs(title = "Decisões favoráveis antes da operação") +
+  theme_minimal() 
+  
+depois <- uf %>% 
+  left_join(resultado_uf_depois, by = c("abbrev_state" = "uf")) %>% 
+  st_simplify(dTolerance = 0.1) %>% 
+  st_as_sf() %>% 
+  ggplot() + 
+  geom_sf(aes(fill = pct)) +
+  labs(title = "Decisões favoráveis após a operação") +
+  theme_minimal()
+
+antes + depois
+
+
+```
+
+
+
+
+
+
+
