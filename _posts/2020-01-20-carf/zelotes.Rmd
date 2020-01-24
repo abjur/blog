@@ -21,6 +21,8 @@ library(sf)
 d_vis <- readRDS("/Users/rhirota/Downloads/d_vis.rds")
 d_vis <- d_vis %>% mutate(zelotes = ifelse(data_pub < "2015-03-26", "Antes", "Depois"),
                           ano = as.factor(year(data_pub)),
+                          qtr = quarter(data_pub),
+                          ano_qtr = paste0(ano,"_",qtr),
                           ano_mes = paste0(ano,"_",str_pad(month(data_pub), width = 2, pad = "0")))
 ```
 
@@ -38,14 +40,15 @@ Em 2015 e 2016, logo após o início da Operação Zelotes, o Carf publicou meno
 ```{r}
 # Volume de decisões
 d_vis %>% 
-  group_by(ano, ano_mes, zelotes) %>% summarise(n = n()) %>%
-  arrange(ano_mes) %>%
+  group_by(ano, ano_qtr, zelotes) %>% summarise(n = n()) %>%
+  arrange(ano_qtr) %>%
   ggplot() +
   # geom_col(aes(x = ano_mes, y = n, fill = ano)) +
-  geom_col(aes(x = ano_mes, y = n, fill = zelotes)) +
-  labs(y = element_blank(), x = element_blank(), title = "Quantidade de decisões publicadas por mês") +
+  geom_col(aes(x = ano_qtr, y = n, fill = zelotes)) +
+  labs(y = element_blank(), x = element_blank(), title = "Quantidade de decisões publicadas por trimestre") +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
   theme_minimal() +
+  # theme(axis.text.x = element_text(angle = 90)) 
   theme(axis.text.x = element_blank())
 ```
 
