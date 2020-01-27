@@ -8,7 +8,8 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = "hide")
+
 library(tidyverse)
 library(lubridate)
 library(wesanderson)
@@ -39,17 +40,21 @@ Em 2015 e 2016, logo após o início da Operação Zelotes, o Carf publicou meno
 
 ```{r}
 # Volume de decisões
+tri <- lapply(seq(2010,2019), append, x = rep("",3), after = 0) %>% unlist()
+
+  
+
 d_vis %>% 
   group_by(ano, ano_qtr, zelotes) %>% summarise(n = n()) %>%
-  arrange(ano_qtr) %>%
+  arrange(ano_qtr) %>% 
   ggplot() +
   # geom_col(aes(x = ano_mes, y = n, fill = ano)) +
   geom_col(aes(x = ano_qtr, y = n, fill = zelotes)) +
   labs(y = element_blank(), x = element_blank(), title = "Quantidade de decisões publicadas por trimestre") +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
   theme_minimal() +
-  # theme(axis.text.x = element_text(angle = 90)) 
-  theme(axis.text.x = element_blank())
+  # theme(axis.text.x = element_text(angle = 90))
+  scale_x_discrete(labels = tri)
 ```
 
 
@@ -81,6 +86,7 @@ d_vis_votacao <- d_vis %>% mutate(votacao = str_split(votacao, ",")) %>%
 #  count(voto_qualidade)
 
 d_vis_votacao %>%
+  filter(votacao != "NA") %>% 
   group_by(zelotes) %>% count(votacao) %>%
   mutate(pct  =  n/sum(n)) %>%
   ggplot() + 
@@ -90,6 +96,8 @@ d_vis_votacao %>%
   theme_minimal()
   
 d_vis_votacao %>%
+  filter(votacao != "NA") %>% 
+  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>% 
   group_by(zelotes, votacao) %>% count(resultado) %>%
   mutate(pct = n/sum(n)) %>%
   ggplot() + 
@@ -97,21 +105,39 @@ d_vis_votacao %>%
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
   facet_wrap(~votacao) +
   coord_flip() +
-  labs(title = "Resultados das sentenças segundo tipo de voto") +
-  theme_minimal()
+  labs(title = "Resultados das sentenças segundo tipo de voto", y = "") +
+  theme_minimal() +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
 A quantidade de resultados favoráveis ao contribuinte superou o total de resultados desfavoráveis a partir de 2016, chegando a ser o dobro em alguns anos. É interessante notar que esse novo padrão se manteve ao longo do tempo, não se contendo apenas ao período inicial da operação.
 
 ```{r}
+
 d_vis_votacao %>% filter(votacao == "Voto de qualidade") %>% 
-  group_by(ano) %>% count(resultado) %>% 
   mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>% 
+  group_by(ano) %>% count(resultado) %>% 
   ggplot(aes(x = ano, y = n, fill = resultado)) + 
   geom_col(position = "dodge") +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
   theme_minimal() +
   labs(title = "Resultados de votos de qualidade por ano")
+
+
+d_vis_votacao %>% filter(votacao == "Voto de qualidade") %>% 
+  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>% 
+  group_by(ano) %>% count(resultado) %>% 
+  mutate(pct = n/sum(n)) %>% 
+  ggplot(aes(x = ano, y = pct, fill = resultado)) + 
+  geom_col() +
+  geom_hline(yintercept = 0.5, linetype = "dashed", colour = "grey") +
+  scale_fill_viridis_d(begin = 0.3, end = 0.8) +
+  theme_minimal() +
+  # labs(title = "Resultados de votos de qualidade por ano") +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  labs(title = "")
+
 ```
 
 
@@ -129,6 +155,20 @@ d_vis %>%
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
   labs(title = "Decisões de recursos especiais do contribuinte", x = element_blank(), y = element_blank()) +
   theme_minimal()
+
+
+d_vis %>%
+  filter(tipo_recurso == "RECURSO ESPECIAL DO CONTRIBUINTE") %>% 
+  mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
+  group_by(ano, tipo_recurso) %>% count(resultado) %>%
+  mutate(pct = n/sum(n)) %>%
+  ggplot() + 
+  geom_col(aes(x = ano, y = pct, fill = resultado)) +
+  geom_hline(yintercept = 0.5, linetype = "dashed", colour = "grey") +
+  scale_fill_viridis_d(begin = 0.3, end = 0.8) +
+  labs(y = element_blank()) +
+  theme_minimal() + 
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
 ```
 
 
@@ -151,17 +191,37 @@ d_vis %>%
   ggplot(aes(x = ano, y = favoravel_menos_desfavoravel, color = segmento_top, group = segmento_top)) +
   geom_line() +
   scale_colour_viridis_d(begin = 0.3, end = 0.8, 
-                         labels = c("ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA",
+                         labels = str_wrap(c("ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA",
                                     "ATIVIDADES DE SERVIÇOS FINANCEIROS",
                                     "COMÉRCIO E REPARAÇÃO DE VEÍCULOS",
                                     "COMÉRCIO POR ATACADO, EXCETO VEÍCULOS",
                                     "COMÉRCIO VAREJISTA",
                                     "FABRICAÇÃO DE PRODUTOS ALIMENTÍCIOS",
                                     "FABRICAÇÃO DE PRODUTOS QUÍMICOS",
-                                    "PESSOA FÍSICA", "TRANSPORTE TERRESTRE")) +
+                                    "PESSOA FÍSICA", "TRANSPORTE TERRESTRE"), 15)) +
   labs(title = "Segmentos de atividades mais recorrentes", y = "Decisões favoráveis menos decisões desfavoráveis") +
   theme_minimal() +
-  theme(legend.text = element_text(size=5), legend.title = element_blank())
+  theme(legend.text = element_text(size=5), legend.title = element_blank(), 
+        legend.key.size = unit(1, "cm"))
+
+d_vis %>% 
+  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado),
+         segmento_pf_pj = if_else(segmento == "PESSOA FISICA", segmento, "PESSOA JURIDICA")) %>%
+  group_by(ano, segmento_pf_pj) %>% 
+  count(resultado) %>% 
+  pivot_wider(names_from = resultado, values_from = n) %>%
+  mutate(pct_favoravel = Favoravel / ( Favoravel + Desfavoravel)) %>% 
+  ggplot(aes(x = ano, y = pct_favoravel, color = segmento_pf_pj, group = segmento_pf_pj)) +
+  geom_line() +
+  geom_hline(yintercept = 0.5, colour = "grey", linetype = "dashed") + 
+  scale_colour_viridis_d(begin = 0.3, end = 0.8) +
+  labs(title = "Percentual médio de decisões favoráveis", 
+       subtitle = "Pessoas físicas e pessoas jurídicas", y = "") +
+  theme_minimal() +
+  theme(legend.title = element_blank()) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1))
+
+
 
 ```
 
@@ -216,7 +276,7 @@ Apesar de ser uma análise meramente descritiva, é interessante notar que exist
 
 
 ## Sobre a base de dados
-A base de dados do Carf foi obtida diretamente do [site do Carf](https://carf.fazenda.gov.br/sincon/public/pages/ConsultarJurisprudencia/consultarJurisprudenciaCarf.jsf), através da implementação de rotinas automatizadas de download e limpeza dos gráficos. Os processos obtidos também foram consultados na [plataforma Comprot](https://comprot.fazenda.gov.br/comprotegov/site/index.html), que contém informações da primeira instância dos processos administrativos tributários federais. A base também utilizou informações dos dados abertos de CNPJ, obtidos através do portal [Brasil.IO](https://brasil.io).
+A base de dados do Carf foi obtida diretamente do [site do Carf](https://carf.fazenda.gov.br/sincon/public/pages/ConsultarJurisprudencia/consultarJurisprudenciaCarf.jsf), através da implementação de rotinas automatizadas de download e limpeza dos gráficos. Os processos obtidos também foram consultados na [plataforma Comprot](https://comprot.fazenda.gov.br/comprotegov/site/index.html), que contém informações da primeira instân cia dos processos administrativos tributários federais. A base também utilizou informações dos dados abertos de CNPJ, obtidos através do portal [Brasil.IO](https://brasil.io).
 A base precisou passar por uma série de algoritmos de arrumação de dados, a partir da aplicação de técnicas de mineração de texto das ementas, decisões e nomes de relatores. A base final contém 141.900 acórdãos publicados entre 01/01/2010 e 30/09/2019.
 
 
