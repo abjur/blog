@@ -1,0 +1,81 @@
+---
+title: "As partes em processos administrativos sancionadores"
+author: "Renata Hirota"
+date: "8/28/2020"
+output: 
+  html_document:
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = "hide")
+library(tidyverse)
+library(patchwork)
+```
+
+
+# As partes em processos administrativos sancionadores
+
+A análise de processos administrativos sancionadores passa pela caracterização das partes envolvidas nos casos. O tipo de parte e a forma de participação da parte, ou seja, a relação dela com a suposta infração, são algumas das características que podem definir como será o andamento do processo, uma vez que estratégias diferentes podem ser utilizadas para lidar com os casos a depender dos perfis. Neste artigo, apresentamos a metodologia de obtenção do tipo de parte para realizar as análises do projeto Observatório CVM.
+
+## O que é o PAS?
+
+Os processos administrativos sancionadores (PAS) são instaurados pela Comissão de Valores Mobiliários (CVM) e julgados pelo Colegiado da CVM. A CVM é uma autarquia vinculada ao Ministério da Economia que fiscaliza a atuação de agentes no mercado de valores mobiliário. Dentre algumas de suas responsabilidades, estão o registro de companhias abertas, a organização das bolsas de valores e o credenciamento de auditores independentes.
+
+## Dados analisados
+
+Os dados foram obtidos por meio de quatro fontes: a consulta de processos (PAS), a consulta de processos julgados (PSJ), a consulta de termos de compromisso celebrados (TCC) e a base de atas do colegiado (ATAS). Após uma etapa de leitura manual dos autos, chegou-se a uma base final de 1235 processos distintos.
+
+## Características das partes
+
+Para a análise das partes, foram excluídas da 88 observações de pessoas físicas que falecerem no curso do processo ou que tiveram como desfecho a extinção de punibilidade ou ilegitimidade passiva. De todas as 6.681 partes analisadas, **79%** eram pessoa física e 21% eram pessoa jurídica. Além disso, **48%** dos casos analisados envolvem tanto pessoas físicas quanto jurídicas.
+
+```{r}
+d_partes <- read_rds("d_partes.rds")
+# PF/PJ
+p_tipo <- d_partes %>% 
+  filter(!is.na(pfpj)) %>%
+  count(pfpj) %>% 
+  mutate(pct = n / sum(n)) %>% 
+  ggplot(aes(x = 0, y = pct, fill = pfpj)) +
+  geom_col() +
+  coord_flip() +
+  scale_fill_viridis_d(begin = 0.2, end = 0.8) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(title = "Tipos de partes", x = "", y = "", fill = "") +
+  theme_minimal(14) +
+  theme(axis.text.y = element_blank())
+
+  
+# Ambos PF e PJ
+p_pfpj <- d_partes %>%
+  dplyr::filter(!is.na(pfpj)) %>%
+  dplyr::group_by(n_interno_abj) %>%
+  dplyr::summarise(n_tipo = dplyr::n_distinct(pfpj)) %>%
+  dplyr::count(n_tipo) %>%
+  dplyr::mutate(pct = n/sum(n), n_tipo = as.factor(n_tipo)) %>% 
+  ggplot(aes(x = n_tipo, y = pct, fill = n_tipo)) +
+  geom_col() +
+  scale_fill_viridis_d(begin = 0.2, end = 0.8) +
+  coord_flip() +
+  labs(title = "Tipos de partes no mesmo processo", x = "", y = "") +
+  scale_x_discrete(labels = c("Apenas um tipo", "PF e PJ")) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  theme_minimal(14) +
+  theme(legend.position = "none")
+
+p_tipo / p_pfpj
+  
+```
+
+
+
+
+
+
+
+
+
+
+
+
