@@ -22,13 +22,13 @@ A análise de processos administrativos sancionadores passa pela caracterizaçã
 
 Os processos administrativos sancionadores (PAS) são instaurados pela Comissão de Valores Mobiliários (CVM) e julgados pelo Colegiado da CVM. A CVM é uma autarquia vinculada ao Ministério da Economia que fiscaliza a atuação de agentes no mercado de valores mobiliário. Dentre algumas de suas responsabilidades, estão o registro de companhias abertas, a organização das bolsas de valores e o credenciamento de auditores independentes.
 
-## Dados analisados
+## Sobre os dados
 
 Os dados foram obtidos por meio de quatro fontes: a consulta de processos (PAS), a consulta de processos julgados (PSJ), a consulta de termos de compromisso celebrados (TCC) e a base de atas do colegiado (ATAS). Após uma etapa de leitura manual dos autos, chegou-se a uma base final de 1235 processos distintos.
 
 ## Características das partes
 
-Para a análise das partes, foram excluídas da 88 observações de pessoas físicas que falecerem no curso do processo ou que tiveram como desfecho a extinção de punibilidade ou ilegitimidade passiva. De todas as 6.681 partes analisadas, **79%** eram pessoa física e 21% eram pessoa jurídica. Além disso, **48%** dos casos analisados envolvem tanto pessoas físicas quanto jurídicas.
+Para a análise das partes, foram excluídas 88 observações de pessoas físicas que falecerem no curso do processo ou que tiveram como desfecho a extinção de punibilidade ou ilegitimidade passiva. De todas as 6.681 partes analisadas, **79%** eram pessoa física e 21% eram pessoa jurídica. Além disso, **48%** dos casos analisados envolvem tanto pessoas físicas quanto jurídicas.
 
 ```{r}
 d_partes <- read_rds("d_partes.rds")
@@ -68,14 +68,102 @@ p_tipo / p_pfpj
   
 ```
 
+### Desfechos e características das partes
 
+Embora não haja diferenças significativas entre pessoas físicas e pessoas jurídicas nos desfechos, notamos que algumas características como o setor de atuação, no caso de empresas, ou o tipo de participação, no caso de pessoas, estão associadas a determinados desfechos específicos.
 
+```{r desfecho-cnae, out.width="90%"}
+d_partes_rfb <- read_rds("d_partes_rfb.rds")
+# Desfecho CNAE
+fill_order <- d_partes_rfb %>%
+  dplyr::mutate(desfecho = stringr::str_split(desfecho,",")) %>%
+  tidyr::unnest(desfecho) %>%
+  dplyr::filter(pfpj == "PJ", !is.na(desfecho)) %>%
+  dplyr::count(desfecho) %>%
+  dplyr::arrange(n) %>% with(desfecho)
+secao_order <- d_partes_rfb %>%
+  dplyr::mutate(desfecho = stringr::str_split(desfecho,",")) %>%
+  tidyr::unnest(desfecho) %>%
+  dplyr::filter(pfpj == "PJ", !is.na(desfecho), !is.na(secao)) %>%
+  dplyr::group_by(secao, desfecho) %>%
+  dplyr::summarise(n = dplyr::n()) %>%
+  dplyr::mutate(total = sum(n),
+                pct = n/total) %>%
+  dplyr::filter(total >= 10) %>%
+  dplyr::filter(desfecho == "Absolvição") %>%
+  dplyr::arrange(pct) %>% with(secao) %>% stringr::str_wrap(30)
+d_partes_rfb %>%
+  dplyr::mutate(desfecho = stringr::str_split(desfecho,",")) %>%
+  tidyr::unnest(desfecho) %>%
+  dplyr::filter(pfpj == "PJ", !is.na(desfecho), !is.na(secao)) %>%
+  dplyr::group_by(secao, desfecho) %>%
+  dplyr::summarise(n = dplyr::n()) %>%
+  dplyr::mutate(total = sum(n),pct = n/total) %>%
+  dplyr::filter(total > 10) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(secao = factor(stringr::str_wrap(secao, 30), levels = secao_order),
+                desfecho = factor(desfecho, levels = fill_order)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = secao, y = pct, fill = desfecho)) +
+  ggplot2::geom_bar(stat = "identity", position = "fill") +
+  ggplot2::geom_text(ggplot2::aes(label = paste0(total, " casos"), y = 1.1), size = 2.5) +
+  ggplot2::labs(title = "Desfechos por ramo de atividade das empresas", 
+                y = ggplot2::element_blank(), x = ggplot2::element_blank()) +
+  ggplot2::scale_fill_viridis_d(begin = 0.2, direction = -1) +
+  ggplot2::scale_y_continuous(labels = scales::percent) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::coord_flip() +
+  ggplot2::theme(legend.position = "bottom") +
+  ggplot2::guides(fill = ggplot2::guide_legend(reverse=TRUE))
+```
 
+Nos casos em que as partes são pessoas jurídicas, a seção *Atividades financeiras, de seguros e serviços* associados está relacoinada a maiores taxas de absolvição, enquanto a seção *Atividades imobiliárias* está associada a maiores taxas de proibição.
 
+Analisando a proporção de desfechos por forma de paticipação, por outro lado, é possível notar que Gerentes e Operadores estão associados a maiores taxas de absolvição, enquanto que o contrário ocorre com Auditores independentes e DRI, ou seja, estão associados a menores taxas de absolvição.
 
+```{r desfecho-participacao, out.width="90%"}
+# Desfecho participação
+fill_order <- d_partes_rfb %>%
+  dplyr::mutate(desfecho = stringr::str_split(desfecho,",")) %>%
+  tidyr::unnest(desfecho) %>%
+  dplyr::filter(!is.na(desfecho), pfpj == "PF") %>%
+  dplyr::count(desfecho) %>%
+  dplyr::arrange(n) %>% with(desfecho)
 
+participacao_order <- d_partes_rfb %>%
+  dplyr::mutate(desfecho = stringr::str_split(desfecho,",")) %>%
+  tidyr::unnest(desfecho) %>%
+  dplyr::filter(!is.na(desfecho), !is.na(na_qualidade_de), pfpj == "PF") %>%
+  dplyr::group_by(na_qualidade_de, desfecho) %>%
+  dplyr::summarise(n = dplyr::n()) %>%
+  dplyr::mutate(total = sum(n),
+                pct = n/total) %>%
+  dplyr::filter(total >= 10) %>%
+  dplyr::filter(desfecho == "Absolvição") %>%
+  dplyr::arrange(pct) %>% with(na_qualidade_de) %>% stringr::str_wrap(30)
 
-
+d_partes_rfb %>%
+  dplyr::mutate(desfecho = stringr::str_split(desfecho,",")) %>%
+  tidyr::unnest(desfecho) %>%
+  dplyr::filter(!is.na(desfecho), !is.na(na_qualidade_de), pfpj == "PF") %>%
+  dplyr::group_by(na_qualidade_de, desfecho) %>%
+  dplyr::summarise(n = dplyr::n()) %>%
+  dplyr::mutate(total = sum(n), pct = n/total) %>%
+  dplyr::filter(total > 10) %>%
+  dplyr::ungroup() %>%
+  dplyr::mutate(na_qualidade_de = factor(stringr::str_wrap(na_qualidade_de, 30), levels = participacao_order),
+                desfecho = factor(desfecho, levels = fill_order)) %>%
+  ggplot2::ggplot(ggplot2::aes(x = na_qualidade_de, y = pct, fill = desfecho)) +
+  ggplot2::geom_bar(stat = "identity", position = "fill") +
+  ggplot2::geom_text(ggplot2::aes(label = paste0(total, " casos"), y = 1.1), size = 2.5) +
+  ggplot2::labs(title = "Desfechos por forma de participação",
+                y = ggplot2::element_blank(), x = ggplot2::element_blank()) +
+  ggplot2::scale_fill_viridis_d(begin = 0.2, direction = -1) +
+  ggplot2::scale_y_continuous(labels = scales::percent) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::coord_flip() +
+  ggplot2::theme(legend.position = "bottom") +
+  ggplot2::guides(fill = ggplot2::guide_legend(reverse=TRUE))
+```
 
 
 
