@@ -1,0 +1,48 @@
+---
+title: "As partes em processos administrativos sancionadores"
+author: "Renata Hirota"
+date: "8/28/2020"
+output: 
+  html_document:
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = "hide")
+library(tidyverse)
+library(patchwork)
+```
+
+# O que é o PAS? 
+
+- Introdução, falando de forma bem resumida o que é a CVM e quais suas competências.
+- Falar o que é um litigio na visão da CVM e, também de forma resumida, explicar as principais fases das discussões:
+    + Fase pré-sancionadora, onde o caso vai ser analisado e discutido se deve seguir para um PAS ou se não tem fundamentos suficientes/precisa de investigação aprofundada
+    + Fase sancionadora, onde o pas é instaurado e o processo pode ser julgado ou resolvido através de um termo de compromisso
+- Trecho falando do trabalho da ABJ sobre o observatório CVM e a importância da análise de partes, dando ênfase a variável "tipo de parte".
+- Finalizar o tópico falando sobre os objetivos do post
+
+## Coleta e extruturação dos dados
+
+- Falar sobre como coletamos os dados, de onde vieram etc
+- Dificuldades técnicas no cruzamento de todas as bases, até chegar em duas bases consistentes, uma onde a observação é o resultado do PAS como um todo e outra, onde a observação é cada parte, de cada PAS.
+- Apresentar um gráfico, talvez, mostrando a relação do número de partes em relação ao número de PAS, inferindo que, em média existem x partes para cada PAS (só pra encher linguiça, pra despertar a curiosidade do leitor)
+- Falar sobre as características importantes para o observatório que coletamos
+- Falar como fechamos a base de dados final (todos os filtros que fizemos nas partes [falecidos, ilegitimidade passiva etc]).
+
+## Ainda falta uma variável
+
+- Mostrar imagens descritivas (poucas) sobre a distribuição das partes (tipo PF/PJ), na_qualidade_de etc (o que for bem legal de mostrar)
+- Ainda falta uma informação, o "tipo de parte", afinal, se ela não for construída, provavelmente abrirá um portal na Terra que trará criaturas do submundo pra devorar nossos cérebors (explicar pq o "tipo de parte" é importante).
+- Falar sobre as dificuldades técnicas iniciais na construção da variável
+- Explicar o passo a passo, detalhadamento, de como criamos a variável. (em cada passo, se possível, mostrar alguma visualização, poe ser grafico, imagem, tabela...)
+
+
+## Tipo de parte
+
+- Falar que foi um sucesso, conseguimos e é nois
+- Mostrar a tabela final do tipo de partes
+- Um ou dois gráficos mostrando a distribuição do tipo de partes.
+
+
+
