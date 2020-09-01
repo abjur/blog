@@ -17,9 +17,9 @@ library(patchwork)
 
 Antes de discutirmos a definição do Processo Administrativo Sancionador (PAS), precisamos entender o que é a Comissão de Valores Mobiliários (CVM) e quais suas competências.
 
-A CVM é uma autarquia vinculada ao Ministério da Economia que fiscaliza a atuação de agentes no mercado de valores mobiliário. Dentre algumas de suas responsabilidades, estão o registro de companhias abertas, a organização das bolsas de valores e o credenciamento de auditores independentes.
+A CVM é uma autarquia vinculada ao Ministério da Economia que fiscaliza a atuação de agentes no mercado de valores mobiliário. Dentre algumas de suas responsabilidades, estão o registro de companhias abertas, a organização das bolsas de valores, o credenciamento de auditores independentes e investigações em busca de irregularidades no mercado de capitais.
 
-Dentre as fases do inquérito, destacam-se i) a fase pré-sancionadora, onde a CVM investiga se o objeto a ser discutido é, de fato, uma irregularidade a ser investigada e ii) a fase sancionadora, iniciada após a acusação do possível litigante através da instauração de um PAS.
+Dentre as fases da fiscalização, após a coleta de evidências de uma eventual irregularidade, destacam-se i) a fase pré-sancionadora, onde a CVM investiga se o objeto a ser discutido é, de fato, uma irregularidade a ser investigada e ii) a fase sancionadora, iniciada após a acusação do possível litigante através da instauração de um PAS.
 
 O PAS, por sua vez, é um processo administrativo instaurado pela própria CVM que tem como objetivo investigar litígios dentro do mercado de capitais. Mais especificamente, de acordo com a própria CVM: 
 "O Processo Administrativo Sancionador (PAS) é derivado de uma investigação realizada por meio de processo administrativo de caráter investigatório. É elaborado em uma das áreas técnicas da CVM, para o qual tenham sido encontrados indícios de autoria e materialidade, relativa a alguma irregularidade ocorrida no âmbito do mercado de capitais resultando em acusação."
