@@ -1,6 +1,6 @@
 base_url: https://blog.abj.org.br
 name: "blog"
-title: "Direito na Medida"
+title: "Associação Brasileira de Jurimetria"
 description: |
   Blog da Associação Brasileira de Jurimetria
 output_dir: "docs"

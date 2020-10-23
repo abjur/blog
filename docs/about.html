@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://blog.abj.org.br/index.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -20,27 +19,30 @@
  <!--/radix_placeholder_import_source-->
 
   <!--radix_placeholder_meta_tags-->
-  <title>Associação Brasileira de Jurimetria: Direito na Medida</title>
+  <title>Associação Brasileira de Jurimetria: Sobre este blog</title>
 
+  <meta property="description" itemprop="description" content="Direito na Medida"/>
 
   <link rel="icon" type="image/png" href="images/abj.png"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Associação Brasileira de Jurimetria: Direito na Medida"/>
+  <meta property="og:title" content="Associação Brasileira de Jurimetria: Sobre este blog"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Direito na Medida"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Associação Brasileira de Jurimetria"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Associação Brasileira de Jurimetria: Direito na Medida"/>
+  <meta property="twitter:title" content="Associação Brasileira de Jurimetria: Sobre este blog"/>
+  <meta property="twitter:description" content="Direito na Medida"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Direito na Medida"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description"]}},"value":[{"type":"character","attributes":{},"value":["Sobre este blog"]},{"type":"character","attributes":{},"value":["Direito na Medida"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1284,12 +1286,12 @@
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Direito na Medida","authors":[]}
+{"title":"Sobre este blog","description":"Direito na Medida","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1312,417 +1314,18 @@
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-<style type="text/css">
-
-/* Styles for listing layout (hide title) */
-.layout-listing d-title, .layout-listing .d-title {
-  display: none;
-}
-
-/* Styles for posts lists (not auto-injected) */
-
-
-.posts-with-sidebar {
-  padding-left: 45px;
-  padding-right: 45px;
-}
-
-.posts-list .description h2,
-.posts-list .description p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-.posts-list .description h2 {
-  font-weight: 700;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.posts-list h2.post-tag {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 12px;
-}
-.posts-list {
-  margin-top: 60px;
-  margin-bottom: 24px;
-}
-
-.posts-list .post-preview {
-  text-decoration: none;
-  overflow: hidden;
-  display: block;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 24px 0;
-}
-
-.post-preview-last {
-  border-bottom: none !important;
-}
-
-.posts-list .posts-list-caption {
-  grid-column: screen;
-  font-weight: 400;
-}
-
-.posts-list .post-preview h2 {
-  margin: 0 0 6px 0;
-  line-height: 1.2em;
-  font-style: normal;
-  font-size: 24px;
-}
-
-.posts-list .post-preview p {
-  margin: 0 0 12px 0;
-  line-height: 1.4em;
-  font-size: 16px;
-}
-
-.posts-list .post-preview .thumbnail {
-  box-sizing: border-box;
-  margin-bottom: 24px;
-  position: relative;
-  max-width: 500px;
-}
-.posts-list .post-preview img {
-  width: 100%;
-  display: block;
-}
-
-.posts-list .metadata {
-  font-size: 12px;
-  line-height: 1.4em;
-  margin-bottom: 18px;
-}
-
-.posts-list .metadata > * {
-  display: inline-block;
-}
-
-.posts-list .metadata .publishedDate {
-  margin-right: 1em;
-}
-
-.posts-list .metadata .tags {
-  margin-top: 1em;
-}
-
-.posts-list .tags .tag {
-  color: rgba(0,0,0,0.67);
-  padding: 0.3em 0.5em;
-  margin: 0;
-  font-size: 80%;
-  border: 1px solid rgba(0,0,0,0.4);
-  border-radius: 3px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.posts-list img {
-  opacity: 1;
-}
-
-.posts-list img[data-src] {
-  opacity: 0;
-}
-
-.posts-more {
-  clear: both;
-}
-
-
-.posts-sidebar {
-  font-size: 16px;
-}
-
-.posts-sidebar h3 {
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.sidebar-section {
-  margin-bottom: 30px;
-}
-
-.categories ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.categories li {
-  color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 0;
-}
-
-.categories li>a {
-  border-bottom: none;
-}
-
-.categories li>a:hover {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-}
-
-.categories .active {
-  font-weight: 600;
-}
-
-.categories .category-count {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-
-@media(min-width: 768px) {
-  .posts-list .post-preview h2 {
-    font-size: 26px;
-  }
-  .posts-list .post-preview .thumbnail {
-    float: right;
-    width: 35%;
-    margin-bottom: 0;
-  }
-  .posts-list .post-preview .description {
-    float: left;
-    width: 45%;
-  }
-  .posts-list .post-preview .metadata {
-    float: left;
-    width: 15%;
-    margin-top: 8px;
-  }
-  .posts-list .post-preview p {
-    margin: 0 0 12px 0;
-    line-height: 1.5em;
-    font-size: 16px;
-  }
-  .posts-with-sidebar .posts-list {
-    float: left;
-    width: 72%;
-  }
-  .posts-with-sidebar .posts-sidebar {
-    float: right;
-    width: 20%;
-    margin-top: 60px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-}
-
-.downlevel .posts-list .post-preview {
-  color: inherit;
-}
-
-</style>
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace("#", "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if (category == page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption">Direito na Medida</h1>
-<a href="posts/2020-10-23-temas/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Observatório","CVM"]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 10, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
-</div>
-<div class="description">
-<h2>Temas e condutas</h2>
-<p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
-</div>
-</a>
-<a href="posts/2020-10-23-paps/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Observatório","CVM"]}</script>
-<div class="metadata">
-<div class="publishedDate">July 20, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-10-23-paps/img/estrutura.png"/>
-</div>
-<div class="description">
-<h2>Processos pré-sancionadores</h2>
-<p>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</p>
-</div>
-</a>
-<a href="posts/2020-01-20-carf/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Análises"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 20, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
-</div>
-<div class="description">
-<h2>Cinco anos de Operação Zelotes</h2>
-<p>As mudanças no CARF após investigações de corrupção.</p>
-</div>
-</a>
-<a href="posts/2020-01-12-welcome/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 12, 2020</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-01-12-welcome/abj.png"/>
-</div>
-<div class="description">
-<h2>Nosso blog</h2>
-<p>Esse é o blog da Associação Brasileira de Jurimetria, Direito na medida. 
-Esperamos que goste!</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#Análises">Análises</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#CVM">CVM</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#Geral">Geral</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#Observatório">Observatório</a>
-<span class="category-count">(2)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Direito na Medida</h1>
-
+<h1>Sobre este blog</h1>
+<p><p>Direito na Medida</p></p>
 </div>
 
 
 <div class="d-article">
-
+<p>O blog Direito na Medida é a forma da Associação Brasileira de Jurimetria comunicar seus estudos com o mundo.</p>
+<p>As pesquisas da ABJ, disponíveis na <a href="https://abj.org.br/cases">página de cases</a>, costumam ser grandes e densas. Neste blog, colocamos algumas discussões mais pontuais, sejam elas complexas ou não. Uma parte dos textos está relacionada aos nossos Observatórios, outra relacionada a metodologia de pesquisa e outra a reflexões gerais.</p>
+<p>O blog é baseado no tema <a href="https://distill.pub">Distill</a>, transformando cada texto de blog em um artigo, que pode ser citado. O blog também é open source: você pode acessar o código-fonte <a href="https://github.com/abjur/blog">aqui</a>.</p>
+<p>Também estamos aceitando textos de nossos associados. Ficaremos muito felizes com a contribuição de vocês. Se quiser escrever um texto sobre jurimetria para nosso blog, entre em contato conosco!</p>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
   <channel>
-    <title>Direito na Medida</title>
+    <title>Associação Brasileira de Jurimetria</title>
     <link>https://blog.abj.org.br</link>
     <atom:link href="https://blog.abj.org.br/index.xml" rel="self" type="application/rss+xml"/>
     <description>Blog da Associação Brasileira de Jurimetria
 </description>
     <image>
-      <title>Direito na Medida</title>
+      <title>Associação Brasileira de Jurimetria</title>
       <url>https://blog.abj.org.br/images/abj.png</url>
       <link>https://blog.abj.org.br</link>
     </image>
