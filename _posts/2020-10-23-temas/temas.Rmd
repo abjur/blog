@@ -1,0 +1,139 @@
+---
+title: "Temas e condutas"
+description: |
+  Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+date: 2020-09-10
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup-temas, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(magrittr)
+```
+
+Um Processo Administrativo Sancionador (PAS) pode ser classificado de três formas distintas: tema, conduta e ato. A classificação do tema diz respeito ao assunto do processo, e está relacionado com áreas do universo empresarial, como problemas societários, auditoria, ilícitos de mercado e oferta pública de ações. Já a classificação através da conduta está relacionada ao que a parte foi acusada no processo, como a infração de um artigo específico de uma instrução da CVM. Finalmente, o ato é o que de fato foi feito no caso concreto que gerou a falha na conduta, como a venda irregular de ações em um período de tempo específico.
+
+Para fins de simplificação, pode-se definir que a classificação do tema do processo é uma abstração da conduta, que por sua vez é uma abstração do ato. Dessa forma, para analisar todas essas classificações bastaria tabular o ato de cada processo, relacionar cada ato a uma conduta e cada conduta a um tema.
+
+# Taxonomia e estrutura de dados
+
+Tabular todos os atos dos processos é uma tarefa inexequível. Isso porque os fatos concretos raramente se repetem, pois envolvem um contexto muito específico no qual o ato foi realizado. 
+
+Por isso, a classificação dos processos no presente projeto foi realizada a partir da conduta. Em seguida, mostramos os passos realizados para obtenção da taxonomia de conduta.
+
+A conduta foi classificada em dois passos. O primeiro passo envolveu a classificação a partir de uma lista de 24 **motivos de acusação**, listados abaixo. A lista foi inicialmente baseada no relatório da FGV: Além dos Números e posteriormente complementada com base na leitura dos casos concretos.
+
+- Não prestação de informações atualizadas
+- Ato societário irregular
+- Operação fraudulenta
+- Problemas na divulgação de fato relevante
+- Descumprimento do dever de diligência
+- Falhas em escrituração contábil, livros sociais e DFs
+- Violação do dever pelos administradores
+- Descumprimento de normas/responsabilidades profissionais de auditoria
+- Abuso do poder de controle e atuação em conflito de interesses por acionistas
+- Oferta pública sem registro
+- Violação do dever de lealdade de administradores de fundo de investimento
+- Uso de informação privilegiada (insider trading)
+- Embaraço à fiscalização
+- Manipulação de preços
+- Criação de condições artificiais de negócio
+- Inadimplemento de regras do CFC
+- Violação de deveres de agentes autônomos
+- Desenquadramento de carteira de fundo de investimento
+- Irregularidade no registro de ordens pela corretora
+- Irregularidade em pagamento
+- Distribuição de dividendos fraudulenta
+- Concessão de financiamentos, empréstimos ou adiantamentos a seus clientes por Corretora
+- Lavagem de dinheiro
+- Não indicação de representante legal
+
+O segundo passo envolveu a classificação do instrumento normativo relacionado a esse motivo de acusação. Por exemplo, a não prestação de informações atualizadas pode ser uma conduta muito genérica. No entanto, conjuntamente com uma instrução da CVM específica e seus artigos/incisos, a conduta passa a ser específica o suficiente. 
+
+A identificação do instrumento normativo buscou extrair o dispositivo com o máximo de granularidade que os dados permitiam. Em alguns casos, no entanto, não foi possível obter o detalhamento desejado, pois a informação estava incompleta na própria descrição do processo no site da CVM. É o caso do art. 176 da Lei 6.404/1976, por exemplo, que trata de falhas em escrituração contábil, livros sociais e demonstrações financeiras. Quando o caso envolvia esse dispositivo, o resumo do processo não especificou o inciso ou parágrafo do artigo que seria base da acusação.
+
+A análise de todos os instrumentos normativos e a conduta associada, no entanto, também é inexequível. Por esse motivo, classificamos somente as instruções mais frequentes, para assim obter uma taxonomia empírica. Os intrumentos normativos também precisaram ser trabalhados para lidar com revogações, especialmente das Instruções da CVM. Agradecemos imensamente aos Drs. Pedro Brigagão, José Estevam Almeida Prado e Michel Btechs pelo valioso auxílio nessa análise.
+
+No final, ficamos com 53 combinações de motivos e instrumentos normativos. O critério utilizado para escolher as combinações foi considerar o menor valor de corte de forma a contemplar pelo menos 50% dos casos estudados. As combinações foram analisadas individualmente para a construção das variáveis **conduta** e **tema**.
+
+Com base na classificação dos temas relacionados às condutas mais frequentes, notamos que a classificação dos 24 motivos supracitados seria suficiente para determinação dos temas. Com alguns ajustes e adaptações, foi possível obter o tema discutido para todos os casos, e não apenas os 50% que possuem classificação da conduta. 
+
+Em nossa análise, consideramos que um PAS pode ter até dez condutas distintas. Por isso, nas análises que seguem, a unidade amostral é processo-conduta, e não processo, implicando que os porcentuais somam mais de 100%.
+
+# Resultados
+
+No final, após considerar todas as motivações de acusação e instrumentos normativos, chegamos a uma taxonomia com 36 condutas, inseridas na Tabela \@ref(tab:condutas), na ordem de frequência dos processos. Pode-se observar que a conduta mais frequente é o descumprimento do dever de diligência, relacionado ao art. 153 da Lei 6.404/1976. Destaca-se também a divulgação de informações periódicas, envolvendo o art. 16 da ICVM 202/1993, posteriormente revogada pela ICVM 408/2009.
+
+```{r condutas}
+obsCVM::da_tema_conduta %>%
+  dplyr::filter(!is.na(conduta)) %>%
+  dplyr::group_by(tema, conduta) %>%
+  dplyr::summarise(
+    motivo = dplyr::first(motivo),
+    dispositivo = paste(unique(dispositivo_art), collapse = " / "),
+    n = dplyr::n_distinct(n_interno_abj),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(prop = n / dplyr::n_distinct(obsCVM::da_tema_conduta$n_interno_abj)) %>%
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>% 
+  dplyr::arrange(desc(prop)) %>% 
+  dplyr::relocate(conduta) %>% 
+  purrr::set_names(c("Conduta", "Tema", "Motivo", "Dispositivo", "N", "%")) %>% 
+  knitr::kable(caption = "Lista de condutas identificadas na análise. Como um processo pode envolver várias condutas, as proporções somam mais do que 100%.")
+```
+
+Ao analisar os temas, encontramos o resultado da Tabela \@ref(tab:temas). O tema mais frequente nos processos analisados são problemas informacionais, enquanto o tema menos frequente são os relacionados a intermediação.
+
+```{r temas}
+obsCVM::da_tema_conduta %>%
+  dplyr::group_by(tema) %>% 
+  dplyr::summarise(n = dplyr::n_distinct(n_interno_abj), .groups = "drop") %>% 
+  dplyr::arrange(dplyr::desc(n)) %>% 
+  dplyr::mutate(prop = n / dplyr::n_distinct(obsCVM::da_tema_conduta$n_interno_abj)) %>% 
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>% 
+  purrr::set_names(c("Tema", "N", "%")) %>%
+  knitr::kable(caption = "Quantidade de processos que envolve cada tema. Como um processo pode envolver vários temas, as proporções somam mais do que 100%.")
+```
+
+A Figura \@ref(fig:temas-agg) contém as combinações mais frequentes de temas dentro de um mesmo processo. A tabela mostra que um processo com vários temas é incomum, já que as 15 combinações mais frequentes concentram 91,2% dos casos. Assumindo essa pequena perda de informação, é possível analisar as combinações de tema como variável no nível de processo.
+
+```{r temas-agg, fig.cap="Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%."}
+obsCVM::da_tema_conduta %>%
+  dplyr::group_by(n_interno_abj) %>% 
+  dplyr::summarise(tema = paste(unique(tema), collapse = ", "), .groups = "drop") %>% 
+  dplyr::mutate(tema = forcats::fct_lump_n(tema, 15, other_level = "Outros")) %>% 
+  dplyr::count(tema, sort = TRUE) %>% 
+  dplyr::mutate(prop = n / sum(n)) %>% 
+  dplyr::mutate(
+    tema = forcats::fct_reorder(tema, prop, .desc = TRUE),
+    tema = forcats::fct_other(
+      tema, 
+      drop = "Outros", 
+      other_level = "Outras combinações"
+    ),
+    tema = forcats::fct_rev(tema)
+  ) %>% 
+  ggplot2::ggplot() +
+  ggplot2::aes(prop, tema) +
+  ggplot2::geom_col(fill = viridis::viridis(2, 1, .2, .8)[1]) +
+  ggplot2::geom_label(
+    ggplot2::aes(x = prop/2, label = scales::percent(prop, 1)),
+    size = 2.5,
+    alpha = .8
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::percent) +
+  ggplot2::theme_minimal() +
+  ggplot2::labs(x = "Proporção de casos", y = "Combinação de temas")
+```
+
+
+# Discussão
+
+Pelas análises, foi possível observar que a conduta é uma variável com alta dispersão. Identificamos que 36 categorias concentram apenas 50% dos casos. Ao analisar individualmente cada dispositivo, é possível interpretar que alguns agrupamentos de condutas são possíveis, mas não a ponto de permitir cruzamentos com outras variáveis. 
+
+Por esse motivo, a variável tema foi priorizada ao realizar cruzamentos com outras variáveis, como desfechos típicos, tempos e termos de compromisso. O relatório final de pesquisa considera, portanto, o presente levantamento de condutas como análise independente e cruzamentos com outras variáveis utilizando a variável tema.

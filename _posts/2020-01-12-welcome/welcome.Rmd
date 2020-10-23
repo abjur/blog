@@ -1,14 +1,15 @@
 ---
 title: "Nosso blog"
 description: |
-  Welcome to our new blog, Direito na medida. We hope you enjoy 
-  reading what we have to say!
+  Esse é o blog da Associação Brasileira de Jurimetria, Direito na medida. 
+  Esperamos que goste!
 author:
   - name: Marcelo Guedes Nunes
-    url: https://example.com/norajones
+    url: https://www.linkedin.com/in/marcelo-guedes-nunes-849a4536
     affiliation: ABJ
     affiliation_url: https://abj.org.br
 date: "2020-01-12"
+preview: abj.png
 output:
   distill::distill_article:
     self_contained: false
@@ -22,13 +23,9 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```
 
-## Por que um portal?
-
 A disseminação de uma cultura de pesquisa empírica em direito no Brasil é um trabalho coletivo e de longo prazo. O sucesso dessa empreitada depende primordialmente do engajamento das universidades, governo e iniciativa privada no financiamento de projetos e no treinamento de pessoas aptas a produzir e consumir pesquisas. As frentes são muitas e passam pela administração dos tribunais, legística, estudo de impacto regulatório, reologia do processo, prova estatística e outras tantas disciplinas que estão nascendo como subproduto da Jurimetria. 
 
 Mas tão fundamental quanto esse engajamento das grandes instituições é a criação de espaços nos quais os interessados na matéria possam interagir, acompanhar as novidades e promover um salutar escambo de pensamentos. A pesquisa empírica em geral e em especial a Jurimetria são produtos da conjunção de áreas do conhecimento que não estão acostumadas a conversar. Direito, estatística e computação necessitam de um ambiente no qual essa interação possa ser promovida da forma livre e desburocratizada, uma vez que estamos diante de uma ciência ainda em construção, sobre a qual depositamos grandes esperanças, mas da qual ainda não conhecemos o suficiente.
-
-<!--more-->
 
 A ABJ é uma das instituições que vem se dedicando com afinco e (queremos acreditar) com sucesso a essa tarefa no Brasil. Por tal razão, muitos colegas nos procuram e perguntam sobre as pesquisas da ABJ. Onde elas estariam e como se pode ter acesso? A ABJ é uma instituição nova que vive de patrocínio, trabalho voluntário e venda de pesquisas sob encomenda, sendo que parte substancial de nosso trabalho não tem na divulgação acadêmica seu destino principal. Todos os que nos procuraram até hoje foram atendidos e municiados com o planejamento, hipóteses de trabalho e objetivos das pesquisas, bem como dos resultados e inclusive das bases de dados, desde que obviamente não haja empecilhos contratuais ou legais.
 
@@ -36,12 +33,4 @@ Esse contato pessoal, no entanto, sempre nos provocou a pensar sobre a criação
 
 Além de tudo, o portal tem a cara e o espírito da ABJ. Ele é tecnológico, avesso à prolixidade, sempre em fase de construção, dinâmico, informal, interativo e despretensioso na melhor acepção desse termo. No portal os interessados podem divulgar resultados preliminares de trabalhos ainda não concluídos, formular dúvidas, receber comentários sobre papers e capítulos de livros em desenvolvimento e testar argumentos. Trata-se de um espaço aberto para um intercâmbio dinâmico e atual de idéias, no qual estatísticos, juristas, estudantes, economistas, administradores, sociólogos, cientistas políticos e curiosos poderão acompanhar a evolução desse cenário e depositar suas contribuições na forma de posts, críticas e sugestões.
 
-Para auxiliar na organização do material e na produção de conteúdo nosso portal conta com um brilhante Conselho Editorial, integrado por pesquisadores da estatística e do direito que periodicamente irão postar material, responderão dúvidas e acompanharão eventuais debates. O espaço é aberto para comentários não ofensivos e aqueles que queiram contribuir com posts de autoria própria podem encaminhar o material para o Conselho Editorial, que verificará a melhor forma e momento de divulgar o conteúdo.
-
 Esperamos sinceramente que a abertura desse novo canal de comunicação permita que todos se divirtam e aprendam tanto quanto nós.
-
-Associação Brasileira de Jurimetria
-
-Laboratório de Jurimetria
-
-

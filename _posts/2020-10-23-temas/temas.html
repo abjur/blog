@@ -1,0 +1,1442 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Temas e condutas</title>
+
+  <meta property="description" itemprop="description" content="Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-09-10"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-09-10"/>
+  <meta name="article:author" content="Julio Trecenti"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Temas e condutas"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Temas e condutas"/>
+  <meta property="twitter:description" content="Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Temas e condutas"]},{"type":"character","attributes":{},"value":["Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jtrecenti/"]}]}]},{"type":"character","attributes":{},"value":["2020-09-10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["temas_files/bowser-1.9.3/bowser.min.js","temas_files/distill-2.2.21/template.v2.js","temas_files/figure-html5/temas-agg-1.png","temas_files/header-attrs-2.5/header-attrs.js","temas_files/jquery-1.11.3/jquery.min.js","temas_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for table of contents */
+
+  .d-toc {
+    color: rgba(0,0,0,0.8);
+    font-size: 0.8em;
+    line-height: 1em;
+  }
+
+  .d-toc-header {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 1.3em;
+  }
+
+  .d-toc a {
+    border-bottom: none;
+  }
+
+  .d-toc ul {
+    padding-left: 0;
+  }
+
+  .d-toc li>ul {
+    padding-top: 0.8em;
+    padding-left: 16px;
+    margin-bottom: 0.6em;
+  }
+
+  .d-toc ul,
+  .d-toc li {
+    list-style-type: none;
+  }
+
+  .d-toc li {
+    margin-bottom: 0.9em;
+  }
+
+  .d-toc-separator {
+    margin-top: 20px;
+    margin-bottom: 2em;
+  }
+
+  .d-article-with-toc {
+    border-top: none;
+    padding-top: 0;
+  }
+
+
+
+  /* Tweak code blocks (note that this CSS is repeated above in an injection
+     into the d-code shadow dom) */
+
+  d-code {
+    overflow-x: auto !important;
+  }
+
+  pre.d-code code.d-code {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  pre.text-output {
+
+    font-size: 12px;
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  @media(min-width: 768px) {
+
+  d-code {
+    overflow-x: visible !important;
+  }
+
+  pre.d-code code.d-code  {
+      padding-left: 18px;
+      font-size: 14px;
+  }
+  pre.text-output {
+    font-size: 14px;
+  }
+  }
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // create d-bibliography
+    var bibliography = $('<d-bibliography></d-bibliography>');
+    $('#distill-bibliography').wrap(bibliography);
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace citations with <d-cite>
+    $('.citation').each(function(i, val) {
+      appendix = true;
+      var cites = $(this).attr('data-cites').split(" ");
+      var dt_cite = $('<d-cite></d-cite>');
+      dt_cite.attr('key', cites.join());
+      $(this).replaceWith(dt_cite);
+    });
+    // remove refs
+    $('#refs').remove();
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-toc a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // replace code blocks with d-code
+    $('pre>code').each(function(i, val) {
+      var code = $(this);
+      var pre = code.parent();
+      var clz = "";
+      var language = pre.attr('class');
+      if (language) {
+        // map unknown languages to "clike" (without this they just dissapear)
+        if ($.inArray(language, ["bash", "clike", "css", "go", "html",
+                                 "javascript", "js", "julia", "lua", "markdown",
+                                 "markup", "mathml", "python", "svg", "xml"]) == -1)
+          language = "clike";
+        language = ' language="' + language + '"';
+        var dt_code = $('<d-code block' + language + clz + '></d-code>');
+        dt_code.text(code.text());
+        pre.replaceWith(dt_code);
+      } else {
+        code.addClass('text-output').unwrap().changeElementType('pre');
+      }
+    });
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('d-code, pre.text-output, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // table of contents
+      if (have_authors) // adjust border if we are in authors
+        $('.d-toc').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // inject pre code styles (can't do this with a global stylesheet b/c a shadow root is used)
+      $('d-code').each(function(i, val) {
+        var style = document.createElement('style');
+        style.innerHTML = 'pre code { padding-left: 10px; font-size: 12px; border-left: 2px solid rgba(0,0,0,0.1); } ' +
+                          '@media(min-width: 768px) { pre code { padding-left: 18px; font-size: 14px; } }';
+        if (this.shadowRoot)
+          this.shadowRoot.appendChild(style);
+      });
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-toc-header').remove();
+    $('.d-toc').remove();
+    $('.d-toc-separator').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="temas_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="temas_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="temas_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="temas_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="temas_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Temas e condutas","description":"Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.","authors":[{"author":"Julio Trecenti","authorURL":"https://www.linkedin.com/in/jtrecenti/","affiliation":"&nbsp;","affiliationURL":"#"}],"publishedDate":"2020-09-10T00:00:00.000-03:00","citationText":"Trecenti, 2020"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Temas e condutas</h1>
+<p><p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p></p>
+</div>
+
+<div class="d-byline">
+  Julio Trecenti <a href="https://www.linkedin.com/in/jtrecenti/" class="uri">https://www.linkedin.com/in/jtrecenti/</a> 
+  
+<br/>2020-09-10
+</div>
+
+<div class="d-article">
+<p>Um Processo Administrativo Sancionador (PAS) pode ser classificado de três formas distintas: tema, conduta e ato. A classificação do tema diz respeito ao assunto do processo, e está relacionado com áreas do universo empresarial, como problemas societários, auditoria, ilícitos de mercado e oferta pública de ações. Já a classificação através da conduta está relacionada ao que a parte foi acusada no processo, como a infração de um artigo específico de uma instrução da CVM. Finalmente, o ato é o que de fato foi feito no caso concreto que gerou a falha na conduta, como a venda irregular de ações em um período de tempo específico.</p>
+<p>Para fins de simplificação, pode-se definir que a classificação do tema do processo é uma abstração da conduta, que por sua vez é uma abstração do ato. Dessa forma, para analisar todas essas classificações bastaria tabular o ato de cada processo, relacionar cada ato a uma conduta e cada conduta a um tema.</p>
+<h1 id="taxonomia-e-estrutura-de-dados">Taxonomia e estrutura de dados</h1>
+<p>Tabular todos os atos dos processos é uma tarefa inexequível. Isso porque os fatos concretos raramente se repetem, pois envolvem um contexto muito específico no qual o ato foi realizado.</p>
+<p>Por isso, a classificação dos processos no presente projeto foi realizada a partir da conduta. Em seguida, mostramos os passos realizados para obtenção da taxonomia de conduta.</p>
+<p>A conduta foi classificada em dois passos. O primeiro passo envolveu a classificação a partir de uma lista de 24 <strong>motivos de acusação</strong>, listados abaixo. A lista foi inicialmente baseada no relatório da FGV: Além dos Números e posteriormente complementada com base na leitura dos casos concretos.</p>
+<ul>
+<li>Não prestação de informações atualizadas</li>
+<li>Ato societário irregular</li>
+<li>Operação fraudulenta</li>
+<li>Problemas na divulgação de fato relevante</li>
+<li>Descumprimento do dever de diligência</li>
+<li>Falhas em escrituração contábil, livros sociais e DFs</li>
+<li>Violação do dever pelos administradores</li>
+<li>Descumprimento de normas/responsabilidades profissionais de auditoria</li>
+<li>Abuso do poder de controle e atuação em conflito de interesses por acionistas</li>
+<li>Oferta pública sem registro</li>
+<li>Violação do dever de lealdade de administradores de fundo de investimento</li>
+<li>Uso de informação privilegiada (insider trading)</li>
+<li>Embaraço à fiscalização</li>
+<li>Manipulação de preços</li>
+<li>Criação de condições artificiais de negócio</li>
+<li>Inadimplemento de regras do CFC</li>
+<li>Violação de deveres de agentes autônomos</li>
+<li>Desenquadramento de carteira de fundo de investimento</li>
+<li>Irregularidade no registro de ordens pela corretora</li>
+<li>Irregularidade em pagamento</li>
+<li>Distribuição de dividendos fraudulenta</li>
+<li>Concessão de financiamentos, empréstimos ou adiantamentos a seus clientes por Corretora</li>
+<li>Lavagem de dinheiro</li>
+<li>Não indicação de representante legal</li>
+</ul>
+<p>O segundo passo envolveu a classificação do instrumento normativo relacionado a esse motivo de acusação. Por exemplo, a não prestação de informações atualizadas pode ser uma conduta muito genérica. No entanto, conjuntamente com uma instrução da CVM específica e seus artigos/incisos, a conduta passa a ser específica o suficiente.</p>
+<p>A identificação do instrumento normativo buscou extrair o dispositivo com o máximo de granularidade que os dados permitiam. Em alguns casos, no entanto, não foi possível obter o detalhamento desejado, pois a informação estava incompleta na própria descrição do processo no site da CVM. É o caso do art. 176 da Lei 6.404/1976, por exemplo, que trata de falhas em escrituração contábil, livros sociais e demonstrações financeiras. Quando o caso envolvia esse dispositivo, o resumo do processo não especificou o inciso ou parágrafo do artigo que seria base da acusação.</p>
+<p>A análise de todos os instrumentos normativos e a conduta associada, no entanto, também é inexequível. Por esse motivo, classificamos somente as instruções mais frequentes, para assim obter uma taxonomia empírica. Os intrumentos normativos também precisaram ser trabalhados para lidar com revogações, especialmente das Instruções da CVM. Agradecemos imensamente aos Drs. Pedro Brigagão, José Estevam Almeida Prado e Michel Btechs pelo valioso auxílio nessa análise.</p>
+<p>No final, ficamos com 53 combinações de motivos e instrumentos normativos. O critério utilizado para escolher as combinações foi considerar o menor valor de corte de forma a contemplar pelo menos 50% dos casos estudados. As combinações foram analisadas individualmente para a construção das variáveis <strong>conduta</strong> e <strong>tema</strong>.</p>
+<p>Com base na classificação dos temas relacionados às condutas mais frequentes, notamos que a classificação dos 24 motivos supracitados seria suficiente para determinação dos temas. Com alguns ajustes e adaptações, foi possível obter o tema discutido para todos os casos, e não apenas os 50% que possuem classificação da conduta.</p>
+<p>Em nossa análise, consideramos que um PAS pode ter até dez condutas distintas. Por isso, nas análises que seguem, a unidade amostral é processo-conduta, e não processo, implicando que os porcentuais somam mais de 100%.</p>
+<h1 id="resultados">Resultados</h1>
+<p>No final, após considerar todas as motivações de acusação e instrumentos normativos, chegamos a uma taxonomia com 36 condutas, inseridas na Tabela <a href="#tab:condutas">1</a>, na ordem de frequência dos processos. Pode-se observar que a conduta mais frequente é o descumprimento do dever de diligência, relacionado ao art. 153 da Lei 6.404/1976. Destaca-se também a divulgação de informações periódicas, envolvendo o art. 16 da ICVM 202/1993, posteriormente revogada pela ICVM 408/2009.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:condutas">Table 1: </span>Lista de condutas identificadas na análise. Como um processo pode envolver várias condutas, as proporções somam mais do que 100%.</caption>
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 8%" />
+<col style="width: 32%" />
+<col style="width: 24%" />
+<col style="width: 1%" />
+<col style="width: 2%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Conduta</th>
+<th style="text-align: left;">Tema</th>
+<th style="text-align: left;">Motivo</th>
+<th style="text-align: left;">Dispositivo</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 153</td>
+<td style="text-align: right;">135</td>
+<td style="text-align: right;">11.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16 / ICVM 480/2009, 21</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">10.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Falhas nas demonstrações financeiras</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
+<td style="text-align: left;">Lei 6404, 176</td>
+<td style="text-align: right;">115</td>
+<td style="text-align: right;">9.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Assembleia geral ordinária</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 132</td>
+<td style="text-align: right;">88</td>
+<td style="text-align: right;">7.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Atualização do registro de companhia</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 13</td>
+<td style="text-align: right;">79</td>
+<td style="text-align: right;">6.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dever de informar do administrador</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Lei 6404, 157</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">5.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Obrigação de divulgação de fato relevante</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">ICVM 358/2002, 3</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">5.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dever de lealdade</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Violação do dever de lealdade de administradores de fundo de investimento</td>
+<td style="text-align: left;">Lei 6404, 155</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">5.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Convovação de assembleia-geral</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 142, IV</td>
+<td style="text-align: right;">61</td>
+<td style="text-align: right;">5.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Exceção à imediata divulgação de fato relevante</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">ICVM 358/2002, 6</td>
+<td style="text-align: right;">59</td>
+<td style="text-align: right;">4.8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">58</td>
+<td style="text-align: right;">4.7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Prestação de informações eventuais</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 17</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">4.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Falhas em escrituração contábil</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
+<td style="text-align: left;">Lei 6404, 177</td>
+<td style="text-align: right;">53</td>
+<td style="text-align: right;">4.3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: left;">Inadimplemento de regras do CFC</td>
+<td style="text-align: left;">ICVM 308/1999, 20</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">4.1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Abuso de poder</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Abuso do poder de controle e atuação em conflito de interesses por acionistas</td>
+<td style="text-align: left;">Lei 6404, 117</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">4.1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Insider trading (primário)</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Uso de informação privilegiada (insider trading)</td>
+<td style="text-align: left;">ICVM 358/2002, 13</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">3.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">ICVM 8/1979, c</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">3.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Operação sem autorização da CVM</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">Lei 6385, 16</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">3.4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Responsabilidade do DRI</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 6</td>
+<td style="text-align: right;">36</td>
+<td style="text-align: right;">2.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Condições artificiais de negócio</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">ICVM 8/1979, a</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">2.4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 133</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2.3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Registro na CVM para administação de carteiras</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">ICVM 306/1999, 3</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">2.1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Autorização da CVM para administação de carteiras</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">Lei 6385, 23</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Falhas nas demonstrações financeiras</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 176</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Identificação e cadastro atualizado de clientes</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 301/1999, 3</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">1.8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Informações periódicas e eventuais</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 480/2009, 13</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">1.7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Prática não equitativa</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">ICVM 8/1979, d</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Oferta pública</td>
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Lei 6385, 19</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">1.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Descumprimento de normas/responsabilidades profissionais de auditoria</td>
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: left;">Descumprimento de normas/responsabilidades profissionais de auditoria</td>
+<td style="text-align: left;">ICVM 308/1999, 25</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dever de lealdade</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Lei 6404, 155</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1.5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Normas de conduta de administradores de carteiras</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">ICVM 306/1999, 14</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">1.5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Abuso do direito de voto e conflito de interesses</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Abuso do poder de controle e atuação em conflito de interesses por acionistas</td>
+<td style="text-align: left;">Lei 6404, 115</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Deveres do acionista controlador</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Abuso do poder de controle e atuação em conflito de interesses por acionistas</td>
+<td style="text-align: left;">Lei 6404, 116</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Preenchimento do cadastro de cliente de corretoras</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 220/1994, 5</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Operação sem autorização da CVM</td>
+<td style="text-align: left;">Oferta pública</td>
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Lei 6385, 16</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Formulário de informações trimestrais – ITR</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 480/2009, 29</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Obrigações do administrador do fundo de investimento</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">ICVM 409/2004, 65</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1.3%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dever de informar do administrador</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 157</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fiscalização da gestão dos diretores</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 142, III</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1.2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Manipulação de preços</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Manipulação de preços</td>
+<td style="text-align: left;">ICVM 8/1979, b</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0.6%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Ao analisar os temas, encontramos o resultado da Tabela <a href="#tab:temas">2</a>. O tema mais frequente nos processos analisados são problemas informacionais, enquanto o tema menos frequente são os relacionados a intermediação.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:temas">Table 2: </span>Quantidade de processos que envolve cada tema. Como um processo pode envolver vários temas, as proporções somam mais do que 100%.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Tema</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: right;">570</td>
+<td style="text-align: right;">46.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Societário</td>
+<td style="text-align: right;">546</td>
+<td style="text-align: right;">44.6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: right;">516</td>
+<td style="text-align: right;">42.2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: right;">119</td>
+<td style="text-align: right;">9.7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Oferta pública</td>
+<td style="text-align: right;">66</td>
+<td style="text-align: right;">5.4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fundos</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">2.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Intermediação</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">1.9%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A Figura <a href="#fig:temas-agg">1</a> contém as combinações mais frequentes de temas dentro de um mesmo processo. A tabela mostra que um processo com vários temas é incomum, já que as 15 combinações mais frequentes concentram 91,2% dos casos. Assumindo essa pequena perda de informação, é possível analisar as combinações de tema como variável no nível de processo.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure"><span id="fig:temas-agg"></span>
+<img src="temas_files/figure-html5/temas-agg-1.png" alt="Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%." width="624" />
+<p class="caption">
+Figure 1: Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%.
+</p>
+</div>
+</div>
+<h1 id="discussão">Discussão</h1>
+<p>Pelas análises, foi possível observar que a conduta é uma variável com alta dispersão. Identificamos que 36 categorias concentram apenas 50% dos casos. Ao analisar individualmente cada dispositivo, é possível interpretar que alguns agrupamentos de condutas são possíveis, mas não a ponto de permitir cruzamentos com outras variáveis.</p>
+<p>Por esse motivo, a variável tema foi priorizada ao realizar cruzamentos com outras variáveis, como desfechos típicos, tempos e termos de compromisso. O relatório final de pesquisa considera, portanto, o presente levantamento de condutas como análise independente e cruzamentos com outras variáveis utilizando a variável tema.</p>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

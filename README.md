@@ -5,7 +5,6 @@ Repositório para produção de textos da ABJ
 # Instruções básicas
 
 - Um texto deve ficar dentro da pasta `_posts`
-- Eventualmente evoluiremos o repo para um blog do tipo `distill`
 - Um texto é um Rmd simples
 - Textos que demoram para renderizar são desencorajados.
 - Não precisamos rodar grandes bases de dados on the fly:

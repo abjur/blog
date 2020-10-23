@@ -1,13 +1,22 @@
 base_url: https://blog.abj.org.br
 name: "blog"
-title: "Direito na medida"
+title: "Direito na Medida"
 description: |
-  Direito na medida
+  Blog da Associação Brasileira de Jurimetria
 output_dir: "docs"
 navbar:
+  logo: images/abj.png
+  href: https://abj.org.br
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
+    - text: "Sobre"
       href: about.html
 output: distill::distill_article
+google_analytics: ""
+favicon: images/abj.png
+collections:
+  posts:
+    creative_commons: CC BY
+    disqus: abjur
+    share: [twitter, linkedin, facebook]

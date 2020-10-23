@@ -1,9 +1,18 @@
 ---
-title: "About this blog"
+title: "Sobre este blog"
 description: |
-  Some additional details about the blog
+  Direito na Medida
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
+
+O blog Direito na Medida é a forma da Associação Brasileira de Jurimetria comunicar seus estudos com o mundo.
+
+As pesquisas da ABJ, disponíveis na [página de cases](https://abj.org.br/cases), costumam ser grandes e densas. Neste blog, colocamos algumas discussões mais pontuais, sejam elas complexas ou não. Uma parte dos textos está relacionada aos nossos Observatórios, outra relacionada a metodologia de pesquisa e outra a reflexões gerais.
+
+O blog é baseado no tema [Distill](https://distill.pub), transformando cada texto de blog em um artigo, que pode ser citado. O blog também é open source: você pode acessar o código-fonte [aqui](https://github.com/abjur/blog).
+
+Também estamos aceitando textos de nossos associados. Ficaremos muito felizes com a contribuição de vocês. Se quiser escrever um texto sobre jurimetria para nosso blog, entre em contato conosco!

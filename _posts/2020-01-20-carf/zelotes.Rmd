@@ -1,14 +1,25 @@
 ---
-title: "Operação Zelotes"
-author: "Renata Hirota"
-date: "1/14/2020"
-output: 
-  html_document:
-    self_contained: true
+title: "Cinco anos de Operação Zelotes"
+description: |
+  As mudanças no CARF após investigações de corrupção.
+author:
+  - name: Renata Hirota
+    url: https://www.linkedin.com/in/renata-hirota-65a142ab/
+    affiliation: ABJ
+    affiliation_url: https://abj.org.br
+date: "2020-01-20"
+output:
+  distill::distill_article:
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE, results = "hide")
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = FALSE, 
+  warning = FALSE, 
+  results = "hide"
+)
 
 library(tidyverse)
 library(lubridate)
@@ -19,30 +30,41 @@ library(sf)
 
 
 ```{r}
-d_vis <- readRDS("/Users/rhirota/Downloads/d_vis.rds")
-d_vis <- d_vis %>% mutate(zelotes = ifelse(data_pub < "2015-03-26", "Antes", "Depois"),
-                          ano = as.factor(year(data_pub)),
-                          qtr = quarter(data_pub),
-                          ano_qtr = paste0(ano,"_",qtr),
-                          ano_mes = paste0(ano,"_",str_pad(month(data_pub), width = 2, pad = "0")))
+## Reduzindo base de dados original
+# d_vis <- readr::read_rds("d_vis.rds")
+# d_vis_min <- d_vis %>% 
+#   dplyr::select(where(~object.size(.x) < 2e6))
+# 
+# readr::write_rds(d_vis_min, "d_vis_min.rds", compress = "xz")
+
+d_vis <- readRDS("d_vis_min.rds")
+d_vis <- d_vis %>% 
+  mutate(
+    zelotes = ifelse(data_pub < "2015-03-26", "Antes", "Depois"),
+    ano = as.factor(year(data_pub)),
+    qtr = lubridate::quarter(data_pub),
+    ano_qtr = paste0(ano, "_",qtr),
+    ano_mes = paste0(
+      ano, "_", 
+      stringr::str_pad(lubridate::month(data_pub), width = 2, pad = "0")
+    )
+  )
 ```
 
-# Cinco anos de Operação Zelotes: as mudanças no Carf após investigações de corrupção
 
-A ponto de cumprir cinco anos desde a deflagração de sua primeira fase em março de 2015, a Operação Zelotes investigou, desde então, ao menos 70 empresas pelo esquema de corrupção no Carf (Conselho de Administração de Recursos Federais). O órgão do Ministério da Fazenda, criado em 2008, é responsável por julgar recursos administrativos de autuações contra empresas e pessoas físicas. Segundo a Polícia Federal, conselheiros do Carf manipulavam processos a favor de determinadas empresas em troca de pagamentos.
+A ponto de cumprir cinco anos desde a deflagração de sua primeira fase em março de 2015, a Operação Zelotes investigou, desde então, ao menos 70 empresas pelo esquema de corrupção no CARF (Conselho Administrativo de Recursos Federais). O órgão do Ministério da Fazenda, criado em 2008, é responsável por julgar recursos administrativos de autuações contra empresas e pessoas físicas. Segundo a Polícia Federal, conselheiros do CARF manipulavam processos a favor de determinadas empresas em troca de pagamentos.
 
 Considerando o período anterior e posterior ao início da operação, algumas diferenças nos processos do órgão emergem. Analisando os processos de 2010 a 2019, a primeira grande diferença é no volume de decisões publicadas, que durante os primeiros anos da operação sofreu uma queda expressiva. Os resultados das decisões também possuem padrões diferentes dependendo de fatores como o tipo de voto e o tipo de recurso.
 
 
-
 ## Volume de decisões
-Em 2015 e 2016, logo após o início da Operação Zelotes, o Carf publicou menos decisõesem comparação aos outros anos analisados. Vale lembrar também que, além das perturbações causadas pelas investigações, em junho de 2015 o Carf teve seu novo regimento interno aprovado -- cujo texto sofreu alterações ao longo de 2016, 2017 e 2018.
+
+Em 2015 e 2016, logo após o início da Operação Zelotes, o CARF publicou menos decisõesem comparação aos outros anos analisados. Vale lembrar também que, além das perturbações causadas pelas investigações, em junho de 2015 o CARF teve seu novo regimento interno aprovado -- cujo texto sofreu alterações ao longo de 2016, 2017 e 2018.
 
 ```{r}
 # Volume de decisões
-tri <- lapply(seq(2010,2019), append, x = rep("",3), after = 0) %>% unlist()
-
-  
+tri <- lapply(seq(2010,2019), append, x = rep("",3), after = 0) %>% 
+  unlist()
 
 d_vis %>% 
   group_by(ano, ano_qtr, zelotes) %>% summarise(n = n()) %>%
@@ -67,7 +89,7 @@ d_vis %>%
   group_by(ano, zelotes) %>% 
   count(resultado) %>% mutate(pct = n/sum(n)) %>%
   ggplot() + geom_col(aes(x = ano, y = n, fill = resultado), position = "dodge") +
-  labs(y = element_blank(), x = "ano", title = "Resultados de decisões do Carf") +
+  labs(y = element_blank(), x = "ano", title = "Resultados de decisões do CARF") +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
   theme_minimal()
 ```
@@ -78,7 +100,8 @@ d_vis %>%
 Apesar de não representar um volume muito grande (cerca de 8% de todas as decisões), o padrão dos resultados de decisões por voto de qualidade teve uma mudança expressiva a partir do início da Operação Zelotes. 
 
 ```{r}
-d_vis_votacao <- d_vis %>% mutate(votacao = str_split(votacao, ",")) %>%
+d_vis_votacao <- d_vis %>% 
+  mutate(votacao = str_split(votacao, ",")) %>%
   unnest_legacy(votacao) %>%
   mutate(votacao = str_trim(votacao))
 
@@ -92,7 +115,7 @@ d_vis_votacao %>%
   ggplot() + 
   geom_col(aes(x = votacao, y = n, fill = zelotes), position = "dodge") +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
-  labs(title = "Distribuição dos tipos de votos antes e depois da Operação Zeltoes") +
+  labs(title = "Distribuição dos tipos de votos antes e depois da Operação Zelotes") +
   theme_minimal()
   
 d_vis_votacao %>%
@@ -115,9 +138,15 @@ A quantidade de resultados favoráveis ao contribuinte superou o total de result
 
 ```{r}
 
-d_vis_votacao %>% filter(votacao == "Voto de qualidade") %>% 
-  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>% 
-  group_by(ano) %>% count(resultado) %>% 
+d_vis_votacao %>% 
+  filter(votacao == "Voto de qualidade") %>% 
+  mutate(resultado = if_else(
+    resultado == "Parcialmente Favoravel", 
+    "Favoravel", 
+    resultado
+  )) %>% 
+  group_by(ano) %>% 
+  count(resultado) %>% 
   ggplot(aes(x = ano, y = n, fill = resultado)) + 
   geom_col(position = "dodge") +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
@@ -125,8 +154,13 @@ d_vis_votacao %>% filter(votacao == "Voto de qualidade") %>%
   labs(title = "Resultados de votos de qualidade por ano")
 
 
-d_vis_votacao %>% filter(votacao == "Voto de qualidade") %>% 
-  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>% 
+d_vis_votacao %>% 
+  filter(votacao == "Voto de qualidade") %>% 
+  mutate(resultado = if_else(
+    resultado == "Parcialmente Favoravel", 
+    "Favoravel", 
+    resultado
+  )) %>% 
   group_by(ano) %>% count(resultado) %>% 
   mutate(pct = n/sum(n)) %>% 
   ggplot(aes(x = ano, y = pct, fill = resultado)) + 
@@ -149,18 +183,24 @@ Diferentemente do comportamento geral, as mudanças nos resultados por tipo de r
 d_vis %>%
   filter(tipo_recurso == "RECURSO ESPECIAL DO CONTRIBUINTE") %>% 
   mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
-  group_by(ano, tipo_recurso) %>% count(resultado) %>%
+  group_by(ano, tipo_recurso) %>% 
+  count(resultado) %>%
   mutate(pct = n/sum(n)) %>%
-  ggplot() + geom_col(aes(x = ano, y = n, fill = resultado), position = 'dodge') +
+  ggplot() + 
+  geom_col(aes(x = ano, y = n, fill = resultado), position = 'dodge') +
   scale_fill_viridis_d(begin = 0.3, end = 0.8) +
-  labs(title = "Decisões de recursos especiais do contribuinte", x = element_blank(), y = element_blank()) +
+  labs(
+    title = "Decisões de recursos especiais do contribuinte", 
+    x = element_blank(), 
+    y = element_blank()
+  ) +
   theme_minimal()
-
 
 d_vis %>%
   filter(tipo_recurso == "RECURSO ESPECIAL DO CONTRIBUINTE") %>% 
   mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
-  group_by(ano, tipo_recurso) %>% count(resultado) %>%
+  group_by(ano, tipo_recurso) %>% 
+  count(resultado) %>%
   mutate(pct = n/sum(n)) %>%
   ggplot() + 
   geom_col(aes(x = ano, y = pct, fill = resultado)) +
@@ -172,14 +212,18 @@ d_vis %>%
 ```
 
 
-## Segmento
+<!-- ## Segmento -->
 
-Considerando os segmentos mais comuns das partes envolvidas nos processos do Coaf, nota-se que pessoas físicas têm um padrão diferente do restante -- em geral, recebem resultados mais favoráveis que desfavoráveis. Para o restante dos segmentos, no ano anterior à Operação Zelotes, o total de decisões desfavoráveis aumenta consideravelmente em relação às decisões favoráveis.
+<!-- Considerando os segmentos mais comuns das partes envolvidas nos processos do CARF, nota-se que pessoas físicas têm um padrão diferente do restante -- em geral, recebem resultados mais favoráveis que desfavoráveis. Para o restante dos segmentos, no ano anterior à Operação Zelotes, o total de decisões desfavoráveis aumenta consideravelmente em relação às decisões favoráveis. -->
 
-```{r}
-top10_segmento <- d_vis %>% count(segmento, sort = T) %>% pull(segmento) %>% head(9)
+```{r eval=FALSE}
+top10_segmento <- d_vis %>% 
+  count(segmento, sort = T) %>% 
+  pull(segmento) %>% head(9)
+
 d_vis <- d_vis %>% 
   mutate(segmento_top = if_else(segmento %in% top10_segmento, segmento, "OUTROS"))
+
 d_vis %>% 
   filter(segmento_top != "OUTROS") %>% 
   mutate(resultado = ifelse(resultado == "Parcialmente Favoravel", "Favoravel", resultado)) %>%
@@ -190,23 +234,29 @@ d_vis %>%
   mutate(favoravel_menos_desfavoravel = Favoravel - Desfavoravel) %>% 
   ggplot(aes(x = ano, y = favoravel_menos_desfavoravel, color = segmento_top, group = segmento_top)) +
   geom_line() +
-  scale_colour_viridis_d(begin = 0.3, end = 0.8, 
-                         labels = str_wrap(c("ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA",
-                                    "ATIVIDADES DE SERVIÇOS FINANCEIROS",
-                                    "COMÉRCIO E REPARAÇÃO DE VEÍCULOS",
-                                    "COMÉRCIO POR ATACADO, EXCETO VEÍCULOS",
-                                    "COMÉRCIO VAREJISTA",
-                                    "FABRICAÇÃO DE PRODUTOS ALIMENTÍCIOS",
-                                    "FABRICAÇÃO DE PRODUTOS QUÍMICOS",
-                                    "PESSOA FÍSICA", "TRANSPORTE TERRESTRE"), 15)) +
-  labs(title = "Segmentos de atividades mais recorrentes", y = "Decisões favoráveis menos decisões desfavoráveis") +
+  scale_colour_viridis_d(
+    begin = 0.3, end = 0.8, 
+    labels = str_wrap(c(
+      "ATIVIDADES DE ATENÇÃO À SAÚDE HUMANA",
+      "ATIVIDADES DE SERVIÇOS FINANCEIROS",
+      "COMÉRCIO E REPARAÇÃO DE VEÍCULOS",
+      "COMÉRCIO POR ATACADO, EXCETO VEÍCULOS",
+      "COMÉRCIO VAREJISTA",
+      "FABRICAÇÃO DE PRODUTOS ALIMENTÍCIOS",
+      "FABRICAÇÃO DE PRODUTOS QUÍMICOS",
+      "PESSOA FÍSICA", "TRANSPORTE TERRESTRE"), 15)
+  ) +
+  labs(
+    title = "Segmentos de atividades mais recorrentes", y = "Decisões favoráveis menos decisões desfavoráveis"
+  ) +
   theme_minimal() +
   theme(legend.text = element_text(size=5), legend.title = element_blank(), 
         legend.key.size = unit(1, "cm"))
 
 d_vis %>% 
-  mutate(resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado),
-         segmento_pf_pj = if_else(segmento == "PESSOA FISICA", segmento, "PESSOA JURIDICA")) %>%
+  mutate(
+    resultado = if_else(resultado == "Parcialmente Favoravel", "Favoravel", resultado),
+    segmento_pf_pj = if_else(segmento == "PESSOA FISICA", segmento, "PESSOA JURIDICA")) %>%
   group_by(ano, segmento_pf_pj) %>% 
   count(resultado) %>% 
   pivot_wider(names_from = resultado, values_from = n) %>%
@@ -272,11 +322,11 @@ antes + depois
 
 ## Conclusões
 
-Apesar de ser uma análise meramente descritiva, é interessante notar que existe uma mudança de padrão nas decisões do Carf antes e depois da Operação Zelotes. A inflexão no caso de deciões a partir de votos de qualidade, por exemplo, ocorre justamente a partir da época do início da operação da Polícia Federal. Outra frente não abordada neste post, mas que poderia render conclusões pertinentes, seria analisar as mudanças de padrões em decisões de acordo com os tributos e seções, câmaras e turmas, já que, além de serem intimamente relacionados, mudanças estruturais no Carf também podem ter afetado as decisões.
-
+Apesar de ser uma análise meramente descritiva, é interessante notar que existe uma mudança de padrão nas decisões do CARF antes e depois da Operação Zelotes. A inflexão no caso de deciões a partir de votos de qualidade, por exemplo, ocorre justamente a partir da época do início da operação da Polícia Federal. Outra frente não abordada neste post, mas que poderia render conclusões pertinentes, seria analisar as mudanças de padrões em decisões de acordo com os tributos e seções, câmaras e turmas, já que, além de serem intimamente relacionados, mudanças estruturais no CARF também podem ter afetado as decisões.
 
 ## Sobre a base de dados
-A base de dados do Carf foi obtida diretamente do [site do Carf](https://carf.fazenda.gov.br/sincon/public/pages/ConsultarJurisprudencia/consultarJurisprudenciaCarf.jsf), através da implementação de rotinas automatizadas de download e limpeza dos gráficos. Os processos obtidos também foram consultados na [plataforma Comprot](https://comprot.fazenda.gov.br/comprotegov/site/index.html), que contém informações da primeira instân cia dos processos administrativos tributários federais. A base também utilizou informações dos dados abertos de CNPJ, obtidos através do portal [Brasil.IO](https://brasil.io).
+
+A base de dados do CARF foi obtida diretamente do [site do CARF](https://carf.fazenda.gov.br/sincon/public/pages/ConsultarJurisprudencia/consultarJurisprudenciaCARF.jsf), através da implementação de rotinas automatizadas de download e limpeza dos gráficos. Os processos obtidos também foram consultados na [plataforma Comprot](https://comprot.fazenda.gov.br/comprotegov/site/index.html), que contém informações da primeira instân cia dos processos administrativos tributários federais. A base também utilizou informações dos dados abertos de CNPJ, obtidos através do portal [Brasil.IO](https://brasil.io).
 A base precisou passar por uma série de algoritmos de arrumação de dados, a partir da aplicação de técnicas de mineração de texto das ementas, decisões e nomes de relatores. A base final contém 141.900 acórdãos publicados entre 01/01/2010 e 30/09/2019.
 
 
