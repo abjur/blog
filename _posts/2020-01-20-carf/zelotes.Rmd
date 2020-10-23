@@ -7,6 +7,8 @@ author:
     url: https://www.linkedin.com/in/renata-hirota-65a142ab/
     affiliation: ABJ
     affiliation_url: https://abj.org.br
+categories:
+  - Análises
 date: "2020-01-20"
 output:
   distill::distill_article:

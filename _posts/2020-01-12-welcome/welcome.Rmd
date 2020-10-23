@@ -10,6 +10,8 @@ author:
     affiliation_url: https://abj.org.br
 date: "2020-01-12"
 preview: abj.png
+categories:
+  - Geral
 output:
   distill::distill_article:
     self_contained: false

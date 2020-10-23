@@ -5,7 +5,12 @@ description: |
 author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
+    affiliation: ABJ
+    affiliation_url: https://abj.org.br
 date: 10-23-2020
+categories:
+  - Observatório
+  - CVM
 draft: true
 output:
   distill::distill_article:

@@ -18,15 +18,19 @@
       <dc:creator>Julio Trecenti</dc:creator>
       <link>https://blog.abj.org.br/posts/2020-10-23-temas</link>
       <description>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</description>
+      <category>Observatório</category>
+      <category>CVM</category>
       <guid>https://blog.abj.org.br/posts/2020-10-23-temas</guid>
       <pubDate>qui, 10 set 2020 00:00:00 +0000</pubDate>
       <media:content url="https://blog.abj.org.br/posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
-      <title>Análise pré-sancionadores</title>
+      <title>Processos pré-sancionadores</title>
       <dc:creator>Julio Trecenti</dc:creator>
       <link>https://blog.abj.org.br/posts/2020-10-23-paps</link>
-      <description>Processos pré sancionadores na Comissão de Valores Mobiliários.</description>
+      <description>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</description>
+      <category>Observatório</category>
+      <category>CVM</category>
       <guid>https://blog.abj.org.br/posts/2020-10-23-paps</guid>
       <pubDate>seg, 20 jul 2020 00:00:00 +0000</pubDate>
       <media:content url="https://blog.abj.org.br/posts/2020-10-23-paps/img/estrutura.png" medium="image" type="image/png" width="1200" height="825"/>
@@ -36,6 +40,7 @@
       <dc:creator>Renata Hirota</dc:creator>
       <link>https://blog.abj.org.br/posts/2020-01-20-carf</link>
       <description>As mudanças no CARF após investigações de corrupção.</description>
+      <category>Análises</category>
       <guid>https://blog.abj.org.br/posts/2020-01-20-carf</guid>
       <pubDate>seg, 20 jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://blog.abj.org.br/posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
@@ -46,6 +51,7 @@
       <link>https://blog.abj.org.br/posts/2020-01-12-welcome</link>
       <description>Esse é o blog da Associação Brasileira de Jurimetria, Direito na medida. 
 Esperamos que goste!</description>
+      <category>Geral</category>
       <guid>https://blog.abj.org.br/posts/2020-01-12-welcome</guid>
       <pubDate>dom, 12 jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://blog.abj.org.br/posts/2020-01-12-welcome/abj.png" medium="image" type="image/png" width="374" height="152"/>
