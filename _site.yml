@@ -12,6 +12,8 @@ navbar:
       href: index.html
     - text: "Sobre"
       href: about.html
+    - icon: fa fa-github
+      href: https://github.com/abjur/blog
 output: distill::distill_article
 google_analytics: "UA-115746799-1"
 favicon: images/abj.png
