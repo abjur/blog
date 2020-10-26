@@ -50,7 +50,7 @@ Os dados cadastrais das companhias foram extraídos a partir do [portal de dados
 
 Uma desvantagem da classificação das empresas pelo papel desempenhado é que nem todas as empresas envolvidas em um PAS precisam estar cadastradas na CVM. Por exemplo, o processo pode estar relacionado a problemas envolvendo os sócios de uma empresa, podendo ela estar ou não cadastrada na CVM. Outro problema é que alguns PAS tratam justamente de problemas de registro, envolvendo empresas que atuaram irregularmente no mercado por não terem registro.
 
-Para lidar com esse problema, utilizamos a classificação dos processos por tipo. A classificação foi contruída a partir dos temas e condutas, que foram discutidos em outro artigo.
+Para lidar com esse problema, utilizamos a classificação dos processos por tipo. A classificação foi construída a partir dos temas e condutas, que foram discutidos em outro artigo.
 
 ## Base de dados
 
@@ -248,11 +248,11 @@ da_tipo_empresa <- dplyr::bind_rows(
   ))
 ```
 
-A lista de empresas envolvidas nos PAS foi obtida através da busca dos CNPJs nos autos ou da busca das empresas envolvidas em sites que agregam dados do site da Receita Federal do Brasil (RFB), como o [cnpj.info](https://cnpj.info). No total, foram encontrados `r n_cnpj` distintos. 
+A lista de empresas envolvidas nos PAS foi obtida através da busca dos CNPJs nos autos ou da busca das empresas envolvidas em sites que agregam dados do site da Receita Federal do Brasil (RFB), como o [cnpj.info](https://cnpj.info). No total, foram encontrados `r n_cnpj` CNPJs distintos. 
 
 A partir dos CNPJs, foi possível obter a informação da atividade empresarial, através do CNAE, disponível na base de dados da RFB. O CNAE é dividido em 5 níveis, de mais geral a mais específico: seção, divisão, grupo, classe e subclasse.
 
-Também a partir dos CNJPs, foi possível cruzar os dados com a base de dados da CVM. A base da CVM possui um total de `r n_cnpj_cvm` distintos. Dos `r n_cnpj` presentes na base dos PAS, `r n_cnpj_tem` foram encontrados na base da CVM. Os `r n_cnpj_nao_tem` restantes foram estudados para verificar os motivos de não estarem presentes na base.
+Também a partir dos CNPJs, foi possível cruzar os dados com a base de dados da CVM. A base da CVM possui um total de `r n_cnpj_cvm` distintos. Dos `r n_cnpj` presentes na base dos PAS, `r n_cnpj_tem` foram encontrados na base da CVM. Os `r n_cnpj_nao_tem` restantes foram estudados para verificar os motivos de não estarem presentes na base.
 
 Com base na análise, foi constatado que:
 
@@ -262,14 +262,14 @@ Com base na análise, foi constatado que:
 
 ## Resultados
 
-A base final dos `r nrow(da_tipo_empresa)` CNPJs ficou com a seguinte classificação da Figura \@ref(fig:tipo-empresa-final). É possível notar que uma parte considerável dos casos foi classificada como não relacionada ao caso, mas que isso foi feito de forma aproximada em somente de 10% dos casos. Quase um quarto dos CNPJs estão fora da base por problemas de registro. Dentre os CNPJs encontrados, o mais comum é o de administradores de carteira, que aparecem em aproximadamente um quinto dos casos.
+A base final dos `r nrow(da_tipo_empresa)` CNPJs ficou com a classificação da Figura \@ref(fig:tipo-empresa-final). É possível notar que uma parte considerável dos casos foi classificada como não relacionada ao caso, mas que isso foi feito de forma aproximada em somente de 10% dos casos. Quase um quarto dos CNPJs estão fora da base por estarem envolvidos em temas de problemas de registro. Dentre os CNPJs encontrados, o mais comum é o de administradores de carteira, que aparecem em mais de um quinto dos casos.
 
 ```{r tipo-empresa-final, layout="l-body-outset", fig.cap="Classificação final do tipo de empresa."}
 
 # fill = viridis::viridis(2, 1, .2, .8)[1]
 da_tipo_empresa %>% 
   dplyr::mutate(classif = dplyr::case_when(
-    tipo == "Não relacionada*" ~ "Não encontrado",
+    tipo == "Não relacionada*" ~ "Aproximado",
     TRUE ~ "Normal"
   )) %>% 
   dplyr::mutate(tipo = dplyr::case_when(
@@ -279,7 +279,7 @@ da_tipo_empresa %>%
   dplyr::count(tipo, classif, sort = TRUE) %>% 
   dplyr::mutate(prop = n/sum(n)) %>%
   dplyr::mutate(prop2 = dplyr::case_when(
-    classif == "Não encontrado" ~ .42,
+    classif == "Aproximado" ~ .42,
     TRUE ~ prop
   )) %>% 
   dplyr::mutate(tipo = forcats::fct_reorder(tipo, n, sum)) %>% 
@@ -304,6 +304,7 @@ da_tipo_empresa %>%
   ggplot2::theme(legend.position = "bottom")
 
 ```
+
 As empresas não relacionadas aos casos ou com problemas de registro foram classificadas segundo o CNAE. Os resultados são mostrados na Tabela \@ref(fig:tipo-empresa-cnae). É possível notar que quase metade dos casos estão relacionados a atividades financeiras.
 
 ```{r tipo-empresa-cnae, fig.cap="Classificação da atividade das empresas que não foram encontradas na base de registros da CVM.", layout="l-page"}
