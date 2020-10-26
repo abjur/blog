@@ -1,5 +1,33 @@
 [
   {
+    "path": "posts/2020-10-26-processos-ambientais/",
+    "title": "Processos ambientais",
+    "description": "Análise de processos administrativos ambientais no estado de Minas Gerais.",
+    "author": [
+      {
+        "name": "Junio Magela",
+        "url": "http://juniomagela.com.br"
+      },
+      {
+        "name": "Julio Trecenti",
+        "url": "https://www.linkedin.com/in/jtrecenti/"
+      },
+      {
+        "name": "Renata Hirota",
+        "url": "https://www.linkedin.com/in/rhirota/"
+      }
+    ],
+    "date": "2020-10-26",
+    "categories": [
+      "Análises"
+    ],
+    "preview": "posts/2020-10-26-processos-ambientais/processos-ambientais_files/figure-html5/efeitos-1.png",
+    "last_modified": "2020-10-26T12:37:10-03:00",
+    "input_file": {},
+    "preview_width": 1536,
+    "preview_height": 1344
+  },
+  {
     "path": "posts/2020-10-23-empresas/",
     "title": "Empresas CVM",
     "description": "Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.",

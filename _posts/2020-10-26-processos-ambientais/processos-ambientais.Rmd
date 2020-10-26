@@ -1,0 +1,206 @@
+---
+title: "Processos ambientais"
+description: |
+  Análise de processos administrativos ambientais no estado de Minas Gerais.
+author:
+  - name: Junio Magela
+    url: http://juniomagela.com.br
+    affiliation: Associado ABJ
+    affiliation_url: https://abj.org.br
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+    affiliation: ABJ
+    affiliation_url: https://abj.org.br
+  - name: Renata Hirota
+    url: https://www.linkedin.com/in/rhirota/
+    affiliation: ABJ
+    affiliation_url: https://abj.org.br
+categories:
+  - Análises
+draft: false
+output:
+  distill::distill_article:
+    self_contained: false
+date: 2020-10-26
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+da_ambiental <- readr::read_rds("da_ambiental.rds") %>% 
+  dplyr::mutate(ano_decisao = as.character(lubridate::year(data_decisao))) %>% 
+  dplyr::filter(ano_decisao <= 2020, ano_decisao >= 2016)
+da_intervencao <- readr::read_rds("da_intervencao.rds")
+```
+
+Neste artigo, discutimos sobre processos administrativos ambientais no estado de Minas Gerais. 
+
+Foram analisados dois tipos distintos de processos.
+
+- Ambientais, tratando de casos de licenciamento ambiental
+- Intervenções, tratando de casos relacionados a intervenções ambientais.
+
+### Intervenções ambientais
+
+```{r pct-inter}
+p_def <- da_intervencao %>% 
+  filter(!is.na(decisao)) %>% 
+  with(mean(decisao == "deferido")) %>% 
+  scales::percent(1)
+```
+
+
+A base de intervenções ambientais possui `r nrow(da_intervencao)` casos. A Figura \@ref(fig:intervencoes-decisao) mostra a proporção de cada desfecho dos processos. É possível observar que aproximadamente `r p_def` dos casos são deferidos.
+
+```{r intervencoes-decisao, fig.cap = "Proporção de desfecho dos processos relacionados a intervenções ambientais. Os casos sem informação foram desconsiderados.", fig.height=4, fig.width = 10}
+da_intervencao %>% 
+  filter(!is.na(decisao)) %>% 
+  count(decisao) %>% 
+  mutate(p = n/sum(n)) %>% 
+  replace_na(list(decisao = "vazio")) %>% 
+  mutate(decisao = fct_reorder(decisao, n)) %>% 
+  ggplot() +
+  aes(n, decisao) +
+  geom_col(fill = viridis::viridis(2, begin = .2, end = .8)[1]) +
+  geom_label(aes(label = scales::percent(p, .1), x = n/2)) +
+  scale_y_discrete(labels = stringr::str_to_title) + 
+  theme_minimal(12) +
+  labs(x = "Quantidade de decisões", y = "Decisão")
+```
+A base relacionada a intervenções será analisada em detalhe em um estudo futuro.
+
+### Licenciamento ambiental
+
+```{r pct-amb}
+p_def_amb <- da_ambiental %>% 
+  filter(!is.na(decisao)) %>% 
+  with(mean(decisao == "Deferida")) %>% 
+  scales::percent(1)
+```
+
+
+A base de processos de licenciamento ambiental possui `r nrow(da_ambiental)` casos. A Figura \@ref(fig:ambiental-decisao) mostra a proporção de cada desfecho dos processos. A proporção de deferimento é de `r p_def_amb`, maior do que o observado nos casos de intervenção.
+
+```{r ambiental-decisao, fig.cap="Proporção de desfecho dos processos relacionados a licenciamento ambiental. Os casos sem informação foram desconsiderados.", fig.height=4, fig.width = 10}
+da_ambiental %>% 
+  filter(!is.na(decisao)) %>% 
+  count(decisao) %>% 
+  mutate(p = n/sum(n)) %>% 
+  replace_na(list(decisao = "vazio")) %>% 
+  mutate(decisao = fct_reorder(decisao, n)) %>% 
+  ggplot() +
+  aes(n, decisao) +
+  geom_col(fill = viridis::viridis(2, begin = .2, end = .8)[1]) +
+  geom_label(aes(label = scales::percent(p, .1), x = n/2)) +
+  scale_y_discrete(labels = stringr::str_to_title) + 
+  theme_minimal() +
+  labs(x = "Quantidade", y = "Decisão")
+```
+
+A Figura \@ref(fig:explicativas-descritivo) mostra a proporção de decisões favoráveis de acordo com diversas variáveis disponíveis na base. É possível observar que a proporção de decisões desfavoráveis varia significativamente conforme classe, regional e modalidade.
+
+```{r explicativas-descritivo, fig.width = 12, fig.height=6, layout="l-page", fig.cap="Proporção de decisões favoráveis de acordo com cada variável analisada."}
+
+monta_plot_variavel <- function(da, group_var, lab, n_labs = 10) {
+  if (missing(lab)) lab <- group_var
+  da %>% 
+    filter(!is.na(decisao)) %>% 
+    mutate(v = fct_lump_n(
+      as.character(.data[[group_var]]), 
+      n_labs, 
+      other_level = "Outro"
+    )) %>% 
+    group_by(v) %>% 
+    summarise(
+      n = sum(decisao == "Deferida"),
+      p = mean(decisao == "Deferida"), 
+      .groups = "drop"
+    ) %>% 
+    mutate(v = fct_reorder(v, p)) %>% 
+    ggplot(aes(p, v)) +
+    geom_col(fill = viridis::viridis(2, begin = .2, end = .8)[1]) +
+    geom_label(aes(label = n, x = p/2), size = 2, alpha = .5) +
+    scale_y_discrete(labels = stringr::str_to_title) + 
+    scale_x_continuous(labels = scales::percent) +
+    theme_minimal(12) +
+    labs(
+      y = lab, 
+      x = "Proporção de decisões favoráveis"
+    )
+}
+
+lista <- list(
+  "Tipo de pessoa" = "tipo_pessoa", 
+  "Classe" = "classe",
+  "Regional" = "regional", 
+  "Modalidade" = "modalidade"
+)
+
+lista %>% 
+  imap(~monta_plot_variavel(da_ambiental, .x, .y)) %>% 
+  patchwork::wrap_plots(ncol = 2)
+
+```
+
+### Modelagem
+
+Para ajustar um modelo, consideramos os dados de licenciamento ambiental. A ideia foi estudar o efeito de cada variável na probabilidade de deferimento. Foi ajustado um Modelo Aditivo Generalizado, que nada mais é que um modelo linear generalizado - no caso específico, uma regressão logística -, mas com a possibilidade de incluir termos de suavização. No caso, consideramos a suavização da data de decisão, para estudar o efeito da data de forma mais detalhada. Consideramos como variável resposta o deferimento, excluindo os casos sem informação e agrupando todos os desfechos negativos em apenas uma categoria.
+
+```{r modelagem}
+da_modelo_ambiental <- da_ambiental %>% 
+  filter(
+    !is.na(decisao),
+    !is.na(data_decisao)
+  ) %>% 
+  transmute(
+    y = as.numeric(decisao == "Deferida"),
+    tipo_pessoa,
+    classe = as.character(classe),
+    regional,
+    modalidade,
+    data_decisao = as.numeric(data_decisao - as.Date("2018-01-01")) / 365
+  )
+
+modelo <- mgcv::gam(
+  y ~ tipo_pessoa + classe + regional + modalidade + s(data_decisao),
+  family = "binomial",
+  data = da_modelo_ambiental
+)
+```
+
+A Figura \@ref(fig:marginal) mostra o efeito marginal da data de decisão na proporção de deferimentos. É possível notar que existe uma tendência de aumentar os deferimentos desde meados do ano de 2018.
+
+```{r marginal, fig.width=9, fig.height=4, layout="l-body-outset", fig.cap="Efeito marginal da data de decisão na probabilidade de deferimento dos processos de licenciamento ambiental."}
+m_viz <- mgcViz::getViz(modelo)
+p <- plot(m_viz) +
+  theme_minimal() +
+  scale_x_continuous(labels = function(x) x + 2018) +
+  labs(x = "Data da decisão", y = "Efeito no deferimento")
+p
+```
+
+Os efeitos das variáveis categóricas foram adicionados na Figura \@ref(fig:efeitos). Foi identificado que as categorias que possuem maior associação com o deferimento são as modalidades LAS Cadastro, LAS RAS, LP+LI+LO e classes 3 a 6, além das regionais Noroeste e Triângulo Mineiro. Já as modalidades LIC, LP+LI, LP e LI, além das regionais do Alto São Francisco e da Zona da Mata possuem associação significante com o não deferimento das ações.
+
+```{r efeitos, fig.height=7, fig.width=8, preview = TRUE, layout="l-page", fig.cap="Efeitos das variáveis explicativas na probabilidade de deferimento dos processos de licenciamento ambiental."}
+broom:::tidy.gam(modelo, TRUE) %>% 
+  mutate(term = fct_reorder(term, estimate)) %>% 
+  filter(std.error < .5) %>% 
+  mutate(sig = if_else(p.value < .05, "Significante", "Não significante")) %>% 
+  ggplot(aes(x = estimate, y = term, colour = sig)) +
+  geom_point() +
+  geom_errorbar(aes(xmin = estimate - 2*std.error, xmax = estimate + 2*std.error),
+                width = .5) +
+  geom_vline(xintercept = 0, linetype = 2) +
+  scale_colour_viridis_d(begin = .2, end = .8) +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  labs(
+    x = "Efeito na probabilidade de deferimento", 
+    y = "Categoria da variável explicativa",
+    colour = ""
+  )
+```
+
+### Conclusões
+
+Nesse artigo, analisamos o deferimento em processos administrativos de licenciamento ambiental em Minas Gerais. Foi possível identificar que a proporção de decisões favoráveis está aumentando nos últimos anos. Além disso, as a modalidade e a classe são possuem efeito significativo no desfecho da ação, especialmente a modalidade LAS Cadastro, que está associada com uma maior probabilidade de deferimento.
