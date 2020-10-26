@@ -1,5 +1,5 @@
 ---
-title: "Empresas"
+title: "Empresas CVM"
 description: |
   Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.
 author:
@@ -11,14 +11,393 @@ date: 10-23-2020
 categories:
   - Observatório
   - CVM
-draft: true
+draft: false
 output:
   distill::distill_article:
     self_contained: false
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  echo = FALSE, 
+  comment = "#>"
+)
+
+library(magrittr)
 ```
 
-Texto em construção
+Um processo administrativo sancionador (PAS) da CVM pode envolver uma ou mais partes, podendo essas partes serem pessoas físicas ou jurídicas. Um dos desafios do projeto Observatório da CVM é classificar adequadamente as partes, com o objetivo de realizar boas comparações.
+
+## Taxonomia
+
+A base de CNPJs pode ser classificada de duas formas principais. A primeira é a partir da **atividade** da empresa, determinada a partir de sua classificação nacional de atividades econômicas (CNAE). A segunda é a partir do **papel desempenhado** segundo a CVM, a partir dos dados cadastrais das companhias.
+
+Os dados cadastrais das companhias foram extraídos a partir do [portal de dados abertos da CVM](http://dados.cvm.gov.br/dataset?tags=dados+cadastrais). No total, são 12 tipos de empresas, listados abaixo.
+
+- Auditores
+- Participantes intermediários
+- Agentes autônomos
+- Companhias incentivadas
+- Companhias estrangeiras
+- Companhias abertas
+- Representantes de investidores não residentes
+- Fundos de investimento
+- Fundos estruturados
+- Consultores de valores mobiliários
+- Administradores de fundos de investimento imobiliário
+- Administradores de carteira
+
+Uma desvantagem da classificação das empresas pelo papel desempenhado é que nem todas as empresas envolvidas em um PAS precisam estar cadastradas na CVM. Por exemplo, o processo pode estar relacionado a problemas envolvendo os sócios de uma empresa, podendo ela estar ou não cadastrada na CVM. Outro problema é que alguns PAS tratam justamente de problemas de registro, envolvendo empresas que atuaram irregularmente no mercado por não terem registro.
+
+Para lidar com esse problema, utilizamos a classificação dos processos por tipo. A classificação foi contruída a partir dos temas e condutas, que foram discutidos em outro artigo.
+
+## Base de dados
+
+```{r base-empresas}
+da_empresas_raw <- obsCVM::da_cvm %>% 
+  dplyr::select(id_processo, planilha_partes) %>% 
+  dplyr::mutate(planilha_partes = purrr::map(
+    planilha_partes, dplyr::mutate_all, as.character
+  )) %>% 
+  tidyr::unnest(planilha_partes) %>% 
+  dplyr::select(
+    id_processo, nome = acusado_s, 
+    situacao, pfpj, cnpj, 
+    na_qualidade_de, relacao_empresa_fato
+  )
+```
+
+```{r arrumar-cnpj}
+# Limpa CNPJ
+# CNPJ que constam como PF, CNPJ que deveriam ser NA
+
+da_empresas <- da_empresas_raw %>%
+  dplyr::mutate(
+    cnpj_raw = cnpj,
+    cnpj = abjutils::clean_cnj(cnpj),
+    cnpj = stringr::str_squish(cnpj),
+    cnpj = stringr::str_pad(cnpj, 14, "left", "0"),
+    cnpj = dplyr::na_if(cnpj, "00000000000000"),
+    cnpj = stringr::str_sub(cnpj, 1, 14),
+    pfpj = dplyr::case_when(
+      !is.na(cnpj) ~ "PJ",
+      TRUE ~ pfpj
+    )
+  ) %>% 
+  dplyr::filter(pfpj == "PJ") %>%
+  dplyr::filter(!is.na(cnpj)) %>% 
+  dplyr::distinct(id_processo, cnpj, .keep_all = TRUE) %>% 
+  dplyr::mutate(cnpj = dplyr::case_when(
+    cnpj == '00407421200017' ~ '04074212000174',
+    cnpj == '00523684800013' ~ '02201501000161',
+    cnpj == '00607011900001' ~ '60701190000104',
+    cnpj == '00727862100018' ~ '31552185000170',
+    cnpj == '01570630000104' ~ '05437257000129',
+    cnpj == '01769790000169' ~ '61769790000169',
+    cnpj == '03000167001850' ~ '33000167000101',
+    cnpj == '03060029000686' ~ '43060029000686',
+    cnpj == '06477906000170' ~ '96477906000170',
+    cnpj == '13536240001551' ~ '33794033000100',
+    cnpj == '15223680001821' ~ '01522368000182',
+    cnpj == '23380290001031' ~ '00734918000245',
+    cnpj == '23583700001212' ~ '02358370000120',
+    cnpj == '56353950001121' ~ '00292427000100',
+    cnpj == '03056714000100' ~ '04295166000133',
+    TRUE ~ cnpj
+  ))
+
+# aux_cnpj_verificar <- da_empresas %>%
+#   dplyr::select(id_processo, cnpj)
+# 
+# validar_cnpj <- function(cnpj) {
+#   u <- "https://www.4devs.com.br/ferramentas_online.php"
+#   body <- list(acao = "validar_cnpj", txt_cnpj = cnpj)
+#   r <- httr::POST(u, body = body, encode = "form")
+#   r %>%
+#     xml2::read_html() %>%
+#     xml2::xml_text()
+# }
+# safe_validar_cnpj <- purrr::possibly(validar_cnpj, "")
+# aux_validado <- aux_cnpj_verificar %>%
+#   distinct(cnpj) %>%
+#   mutate(valido = map_chr(cnpj, safe_validar_cnpj))
+# 
+# write_rds(aux_validado, "vignettes/assets/aux_validado.rds", compress = "xz")
+# aux_validado <- readr::read_rds("vignettes/assets/aux_validado.rds")
+# aux_validar_arrumar <- aux_validado %>%
+#   dplyr::filter(stringr::str_detect(valido, "Fals")) %>%
+#   dplyr::select(cnpj)
+
+n_cnpj <- dplyr::n_distinct(da_empresas$cnpj)
+```
+
+```{r empresas-cvm}
+
+loc <- readr::locale(encoding = "latin1")
+
+re_tirar <- "pf|socios|diretor|resp|admin|auditor\\.csv|gestor|custodiante"
+da_empresas_cvm <- "~/Downloads/empresas_cvm" %>% 
+  fs::dir_ls(recurse = TRUE, type = "file") %>%
+  stringr::str_subset(re_tirar, negate = TRUE) %>% 
+  purrr::set_names() %>% 
+  purrr::map(
+    readr::read_delim, delim = ";",
+    locale = loc, 
+    col_types = readr::cols(.default = readr::col_character())
+  ) %>% 
+  purrr::map_dfr(~{
+    .x %>%
+      janitor::clean_names() %>%
+      dplyr::select(
+        dplyr::contains("cnpj"),
+        dplyr::matches("denom"),
+        dplyr::matches("^categ|^classe")
+      )
+  }, .id = "file") %>% 
+  dplyr::transmute(
+    tipo = basename(tools::file_path_sans_ext(file)),
+    cnpj = dplyr::coalesce(
+      cnpj, cnpj_fundo, cnpj_cia, cnpj_auditor,
+    ),
+    cnpj = abjutils::clean_cnj(cnpj),
+    subdivisao = dplyr::coalesce(
+      categ_reg, classe
+    )
+  ) %>% 
+  dplyr::distinct(cnpj, .keep_all = TRUE)
+
+n_cnpj_cvm <- nrow(da_empresas_cvm)
+
+```
+
+```{r join}
+n_cnpj_tem <- da_empresas %>% 
+  dplyr::distinct(cnpj) %>% 
+  dplyr::semi_join(da_empresas_cvm, "cnpj") %>% 
+  nrow()
+
+n_cnpj_nao_tem <- da_empresas %>% 
+  dplyr::distinct(cnpj) %>% 
+  dplyr::anti_join(da_empresas_cvm, "cnpj") %>% 
+  nrow()
+```
+
+```{r classif-empresas}
+
+aux_tipo_empresa_fora <- da_empresas %>%
+  dplyr::distinct(id_processo, cnpj) %>% 
+  dplyr::mutate(id_processo = as.character(id_processo)) %>% 
+  dplyr::anti_join(da_empresas_cvm, "cnpj") %>% 
+  dplyr::distinct(id_processo) %>% 
+  dplyr::inner_join(
+    obsCVM::da_tema_conduta, 
+    c("id_processo" = "n_interno_abj")
+  ) %>% 
+  dplyr::mutate(disp = stringr::str_extract(dispositivo_art, "[0-9/]+")) %>%
+  dplyr::mutate(tipo = dplyr::case_when(
+    disp %in% c("6404", "8/1979", "358/2002", "301/1999") ~ "Não relacionada",
+    disp %in% c("306/1999", "6385") ~ "Problema de registro",
+    TRUE ~ "Não relacionada*"
+  )) %>% 
+  dplyr::mutate(
+    tipo = as.factor(tipo),
+    tipo = forcats::lvls_reorder(tipo, c(3, 1, 2))
+  ) %>% 
+  dplyr::arrange(tipo) %>% 
+  dplyr::distinct(id_processo, .keep_all = TRUE) %>% 
+  dplyr::transmute(
+    id_processo = as.numeric(id_processo), 
+    tipo = as.character(tipo)
+  ) %>% 
+  dplyr::inner_join(da_empresas, "id_processo") %>% 
+  dplyr::transmute(cnpj, tipo, tipo2 = tipo) %>% 
+  dplyr::distinct(cnpj, .keep_all = TRUE)
+
+aux_tipo_empresa_dentro <- da_empresas %>% 
+  dplyr::distinct(cnpj) %>% 
+  dplyr::inner_join(da_empresas_cvm, "cnpj") %>% 
+  dplyr::mutate(tipo = dplyr::case_when(
+    tipo == 'cad_adm_cart_pj' ~ 'Adm. carteira',
+    tipo == 'cad_adm_fii' ~ 'Adm. fundo imobiliário',
+    tipo == 'cad_agente_auton_pj' ~ 'Agente autônomo',
+    tipo == 'cad_auditor_pj' ~ 'Auditor',
+    tipo == 'cad_cia_aberta' ~ 'Cia aberta',
+    tipo == 'cad_cia_estrang' ~ 'Cia estrangeira',
+    tipo == 'cad_cia_incent' ~ 'Cia incentivada',
+    tipo == 'cad_consultor_vlmob_pj' ~ 'Consultor',
+    tipo == 'cad_fi' ~ 'Fundo investimento',
+    tipo == 'cad_fie' ~ 'Fundo estruturado',
+    tipo == 'cad_intermed' ~ 'Intermediário',
+    tipo == 'cad_invnr_repres_pj' ~ 'Representante',
+    TRUE ~ "<vazio>"
+  )) %>% 
+  dplyr::transmute(cnpj, tipo, tipo2 = dplyr::coalesce(
+    subdivisao, tipo
+  ))
+
+da_tipo_empresa <- dplyr::bind_rows(
+  aux_tipo_empresa_dentro,
+  aux_tipo_empresa_fora
+) %>% 
+  dplyr::distinct(cnpj, .keep_all = TRUE) %>% 
+  dplyr::right_join(dplyr::distinct(da_empresas, cnpj), "cnpj") %>% 
+  tidyr::replace_na(list(
+    tipo = "Não relacionada*",
+    tipo2 = "Não relacionada*"
+  ))
+```
+
+A lista de empresas envolvidas nos PAS foi obtida através da busca dos CNPJs nos autos ou da busca das empresas envolvidas em sites que agregam dados do site da Receita Federal do Brasil (RFB), como o [cnpj.info](https://cnpj.info). No total, foram encontrados `r n_cnpj` distintos. 
+
+A partir dos CNPJs, foi possível obter a informação da atividade empresarial, através do CNAE, disponível na base de dados da RFB. O CNAE é dividido em 5 níveis, de mais geral a mais específico: seção, divisão, grupo, classe e subclasse.
+
+Também a partir dos CNJPs, foi possível cruzar os dados com a base de dados da CVM. A base da CVM possui um total de `r n_cnpj_cvm` distintos. Dos `r n_cnpj` presentes na base dos PAS, `r n_cnpj_tem` foram encontrados na base da CVM. Os `r n_cnpj_nao_tem` restantes foram estudados para verificar os motivos de não estarem presentes na base.
+
+Com base na análise, foi constatado que:
+
+1. Empresas envolvidas em casos marcados pela Lei 6.404, ou pelas ICVM 08/1979, 220/1994, 358/2002 e 301/1999 podem de fato não fazer parte do cadastro da CVM.
+1. Empresas envolvidas em casos marcados pela Lei 6.385 ou pela ICVM 306/1999 não estão no cadastro por conta de problemas de registro.
+1. As demais empresas devem ser marcadas como (1), mas sendo necessário realizar revisão manual. 
+
+## Resultados
+
+A base final dos `r nrow(da_tipo_empresa)` CNPJs ficou com a seguinte classificação da Figura \@ref(fig:tipo-empresa-final). É possível notar que uma parte considerável dos casos foi classificada como não relacionada ao caso, mas que isso foi feito de forma aproximada em somente de 10% dos casos. Quase um quarto dos CNPJs estão fora da base por problemas de registro. Dentre os CNPJs encontrados, o mais comum é o de administradores de carteira, que aparecem em aproximadamente um quinto dos casos.
+
+```{r tipo-empresa-final, layout="l-body-outset", fig.cap="Classificação final do tipo de empresa."}
+
+# fill = viridis::viridis(2, 1, .2, .8)[1]
+da_tipo_empresa %>% 
+  dplyr::mutate(classif = dplyr::case_when(
+    tipo == "Não relacionada*" ~ "Não encontrado",
+    TRUE ~ "Normal"
+  )) %>% 
+  dplyr::mutate(tipo = dplyr::case_when(
+    tipo == "Não relacionada*" ~ "Não relacionada",
+    TRUE ~ tipo
+  )) %>% 
+  dplyr::count(tipo, classif, sort = TRUE) %>% 
+  dplyr::mutate(prop = n/sum(n)) %>%
+  dplyr::mutate(prop2 = dplyr::case_when(
+    classif == "Não encontrado" ~ .42,
+    TRUE ~ prop
+  )) %>% 
+  dplyr::mutate(tipo = forcats::fct_reorder(tipo, n, sum)) %>% 
+  ggplot2::ggplot() +
+  ggplot2::aes(prop, tipo, fill = classif) +
+  ggplot2::geom_col() +
+  ggplot2::geom_label(
+    ggplot2::aes(x = prop2/2, label = scales::percent(prop, 1)),
+    size = 2.5,
+    alpha = .8, 
+    fill = "white",
+    position = "stack"
+  ) +
+  ggplot2::scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+  ggplot2::scale_fill_viridis_d(begin = .2, end = .8, direction = -1) +
+  ggplot2::theme_minimal() +
+  ggplot2::labs(
+    x = "Proporção das empresas", 
+    y = "Tipo de empresa", 
+    fill = ""
+  ) +
+  ggplot2::theme(legend.position = "bottom")
+
+```
+As empresas não relacionadas aos casos ou com problemas de registro foram classificadas segundo o CNAE. Os resultados são mostrados na Tabela \@ref(fig:tipo-empresa-cnae). É possível notar que quase metade dos casos estão relacionados a atividades financeiras.
+
+```{r tipo-empresa-cnae, fig.cap="Classificação da atividade das empresas que não foram encontradas na base de registros da CVM.", layout="l-page"}
+
+# aux_rfb <- p9_rfb_partes_tidy_rfb %>% 
+#   dplyr::filter(!is.na(cnpj)) %>% 
+#   dplyr::distinct(cnpj, .keep_all = TRUE) %>% 
+#   dplyr::select(cnpj, secao, divisao, grupo, classe, subclasse)
+# 
+# readr::write_rds(
+#   aux_rfb, 
+#   "vignettes/assets/aux_rfb.rds", 
+#   compress = "xz"
+# )
+
+aux_rfb <- readr::read_rds("aux_rfb.rds")
+da_tipo_empresa %>% 
+  dplyr::filter(stringr::str_detect(tipo, "relaciona|registro")) %>% 
+  dplyr::left_join(aux_rfb, "cnpj") %>% 
+  dplyr::mutate(
+    dplyr::across(secao:subclasse, tidyr::replace_na, "Sem informação"),
+    dplyr::across(secao:subclasse, stringr::str_to_sentence)
+  ) %>% 
+  dplyr::count(
+    secao, 
+    divisao,
+    grupo,
+    classe,
+    subclasse,
+    sort = TRUE
+  ) %>% 
+  dplyr::mutate(prop = n/sum(n)) %>%
+  reactable::reactable(
+    columns = list(
+      secao = reactable::colDef("Seção", minWidth = 200),
+            n = reactable::colDef("N", aggregate = "sum"),
+      prop = reactable::colDef(
+        "%", aggregate = "sum", 
+        format = reactable::colFormat(percent = TRUE, digits = 1)
+      ),
+      divisao = reactable::colDef("Divisão", minWidth = 200),
+      grupo = reactable::colDef("Grupo"),
+      classe = reactable::colDef("Classe"),
+      subclasse = reactable::colDef("Subclasse")
+    ), 
+    groupBy = c("secao", "divisao", "grupo", "classe"), 
+    compact = TRUE, 
+    striped = TRUE, 
+    style = list(fontSize = "12px"), 
+    highlight = TRUE
+  )
+
+```
+
+Os casos com problemas de classificação podem ser baixados [neste link](/posts/2020-10-23-empresas/cvm_empresas_problemas.xlsx).
+
+```{r falta-classificar}
+
+fmt_cnpj <- function(x) {
+  stringr::str_c(
+    stringr::str_sub(x, 1L, 2L), ".",
+    stringr::str_sub(x, 3L, 5L), ".",
+    stringr::str_sub(x, 6L, 8L), "/",
+    stringr::str_sub(x, 9L, 12L), "-",
+    stringr::str_sub(x, 13L, 14L)
+  )
+}
+
+tab_problemas <- da_tipo_empresa %>% 
+  dplyr::filter(stringr::str_detect(tipo, "relacionada\\*")) %>% 
+  dplyr::select(cnpj) %>% 
+  dplyr::inner_join(da_empresas, "cnpj") %>% 
+  dplyr::select(id_processo, cnpj, nome) %>%
+  dplyr::mutate(id_processo = as.numeric(id_processo)) %>% 
+  dplyr::inner_join(obsCVM::da_lista, c("id_processo" = "caso")) %>% 
+  tidyr::unnest(pas) %>% 
+  dplyr::select(
+    id_processo, 
+    cnpj,
+    nome,
+    link = pas_doc_link
+  ) %>% 
+  dplyr::distinct(cnpj, .keep_all = TRUE) %>% 
+  dplyr::mutate(cnpj = fmt_cnpj(cnpj))
+
+writexl::write_xlsx(tab_problemas, "cvm_empresas_problemas.xlsx")
+```
+
+## Conclusão
+
+Com base na análise das empresas, concluímos que:
+
+- É possível criar uma variável de tipo empresarial a partir dos registros da CVM. 
+- Existem três formas de um CNPJ se relacionar com os registros: i) a empresa consta no registro, ii) a empresa não consta no registro pois a acusação não necessita de registro para existir, iii) a empresa não consta no registro pois a acusação envolve especificamente a falta de registro. 
+- Foi possível classificar os casos nessa taxonomia com 90% de acurácia, sendo os casos com dúvidas classificados como não constando no registro. 
+- As empresas fora do registro podem ser analisadas pela atividade empresarial, obtida através do CNAE.
+
