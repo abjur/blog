@@ -49,8 +49,7 @@ p_def <- da_intervencao %>%
   scales::percent(1)
 ```
 
-
-A base de intervenções ambientais possui `r nrow(da_intervencao)` casos. A Figura \@ref(fig:intervencoes-decisao) mostra a proporção de cada desfecho dos processos. É possível observar que aproximadamente `r p_def` dos casos são deferidos.
+A base de intervenções ambientais possui `r nrow(da_intervencao)` casos. A Figura \@ref(fig:intervencoes-decisao) mostra a proporção de cada desfecho nos processos. É possível observar que aproximadamente `r p_def` dos casos são deferidos.
 
 ```{r intervencoes-decisao, fig.cap = "Proporção de desfecho dos processos relacionados a intervenções ambientais. Os casos sem informação foram desconsiderados.", fig.height=4, fig.width = 10}
 da_intervencao %>% 
@@ -160,6 +159,8 @@ da_modelo_ambiental <- da_ambiental %>%
     modalidade,
     data_decisao = as.numeric(data_decisao - as.Date("2018-01-01")) / 365
   )
+
+set.seed(1)
 
 modelo <- mgcv::gam(
   y ~ tipo_pessoa + classe + regional + modalidade + s(data_decisao),
