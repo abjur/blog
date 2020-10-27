@@ -9,7 +9,7 @@ author:
     affiliation_url: https://abj.org.br
 date: 2020-09-10
 categories:
-  - Observatório
+  - Observatorio
   - CVM
 output:
   distill::distill_article:

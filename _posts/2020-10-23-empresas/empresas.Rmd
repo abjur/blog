@@ -9,7 +9,7 @@ author:
     affiliation_url: https://abj.org.br
 date: 10-23-2020
 categories:
-  - Observatório
+  - Observatorio
   - CVM
 draft: false
 output:
@@ -137,7 +137,7 @@ n_cnpj <- dplyr::n_distinct(da_empresas$cnpj)
 loc <- readr::locale(encoding = "latin1")
 
 re_tirar <- "pf|socios|diretor|resp|admin|auditor\\.csv|gestor|custodiante"
-da_empresas_cvm <- "~/Downloads/empresas_cvm" %>% 
+da_empresas_cvm <- "/run/media/jt/129CE2040F463C57/backup_20201025/empresas_cvm" %>% 
   fs::dir_ls(recurse = TRUE, type = "file") %>%
   stringr::str_subset(re_tirar, negate = TRUE) %>% 
   purrr::set_names() %>% 
