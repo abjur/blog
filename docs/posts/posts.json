@@ -1,5 +1,27 @@
 [
   {
+    "path": "posts/2020-11-10-candidatos2020/",
+    "title": "Eleições 2020: Candidados envolvidos em processos criminais",
+    "description": "Levantamento da ABJ publicado pelo G1",
+    "author": [
+      {
+        "name": "Julio Trecenti",
+        "url": "https://www.linkedin.com/in/jtrecenti/"
+      },
+      {
+        "name": "Renata Hirota",
+        "url": "https://twitter.com/renata_mh"
+      }
+    ],
+    "date": "2020-11-10",
+    "categories": [
+      "Levantamentos"
+    ],
+    "preview": {},
+    "last_modified": "2020-11-10T16:39:28-03:00",
+    "input_file": "candidatos2020.utf8.md"
+  },
+  {
     "path": "posts/2020-10-23-empresas/",
     "title": "Empresas CVM",
     "description": "Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.",

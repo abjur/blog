@@ -1963,28 +1963,19 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 }
 
 .posts-list .metadata .publishedDate {
-  margin-right: 2em;
+  margin-right: 1em;
 }
 
-.posts-list .metadata .dt-authors {
-  display: block;
-  margin-top: 0.3em;
-  margin-right: 2em;
+.posts-list .metadata .tags {
+  margin-top: 1em;
 }
 
-.posts-list .dt-tags {
-  display: block;
-  line-height: 1em;
-}
-
-.posts-list .dt-tags .dt-tag {
-  display: inline-block;
-  color: rgba(0,0,0,0.6);
-  padding: 0.3em 0.4em;
-  margin-right: 0.2em;
-  margin-bottom: 0.4em;
-  font-size: 60%;
-  border: 1px solid rgba(0,0,0,0.2);
+.posts-list .tags .tag {
+  color: rgba(0,0,0,0.67);
+  padding: 0.3em 0.5em;
+  margin: 0;
+  font-size: 80%;
+  border: 1px solid rgba(0,0,0,0.4);
   border-radius: 3px;
   text-transform: uppercase;
   font-weight: 500;
@@ -2053,7 +2044,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   }
   .posts-list .post-preview .thumbnail {
     float: right;
-    width: 30%;
+    width: 35%;
     margin-bottom: 0;
   }
   .posts-list .post-preview .description {
@@ -2062,7 +2053,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   }
   .posts-list .post-preview .metadata {
     float: left;
-    width: 20%;
+    width: 15%;
     margin-top: 8px;
   }
   .posts-list .post-preview p {
@@ -2072,7 +2063,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   }
   .posts-with-sidebar .posts-list {
     float: left;
-    width: 75%;
+    width: 72%;
   }
   .posts-with-sidebar .posts-sidebar {
     float: right;
@@ -2139,16 +2130,16 @@ function init_posts_list() {
     set_posts_visible($('.posts-list').children('a'), false);
 
     // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
+    if (window.location.hash) {
 
       // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
+      var page_category = window.location.hash.replace("#", "");
       var posts = $('.post-metadata').map(function(idx, script) {
         var metadata = $.parseJSON($(script).html());
         var post = null;
         $.each(metadata.categories, function(idx, category) {
           category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
+          if (category == page_category) {
             post = $(script).parent().get();
             return false;
           }
@@ -2160,22 +2151,10 @@ function init_posts_list() {
       // mark the hash active
       $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
 
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
     } else {
 
       // no hash filter, make all posts visible (subject to max display)
       set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
 
     }
   }
@@ -2190,12 +2169,6 @@ function init_posts_list() {
       $('.posts-more a').addClass('hidden');
     }
   }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
 
   // hash filter handling
   apply_hash_filter();
@@ -2220,24 +2193,28 @@ function init_posts_list() {
 
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Direito na Medida">Direito na Medida</h1>
+<h1 class="posts-list-caption">Direito na Medida</h1>
+<a href="posts/2020-11-10-candidatos2020/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Levantamentos"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 10, 2020</div>
+</div>
+<div class="thumbnail"></div>
+<div class="description">
+<h2>Eleições 2020: Candidados envolvidos em processos criminais</h2>
+<p>Levantamento da ABJ publicado pelo G1</p>
+</div>
+</a>
 <a href="posts/2020-10-23-empresas/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
 <div class="metadata">
 <div class="publishedDate">Oct. 23, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-</div>
 </div>
 <div class="thumbnail">
-<img src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png"/>
+<img data-src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png"/>
 </div>
 <div class="description">
 <h2>Empresas CVM</h2>
-<div class="dt-tags">
-<div class="dt-tag">Observatorio</div>
-<div class="dt-tag">CVM</div>
-</div>
 <p>Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
 </div>
 </a>
@@ -2245,19 +2222,12 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
 <div class="metadata">
 <div class="publishedDate">Sept. 10, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-</div>
 </div>
 <div class="thumbnail">
-<img src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
+<img data-src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
 </div>
 <div class="description">
 <h2>Temas e condutas</h2>
-<div class="dt-tags">
-<div class="dt-tag">Observatorio</div>
-<div class="dt-tag">CVM</div>
-</div>
 <p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
 </div>
 </a>
@@ -2265,19 +2235,12 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
 <div class="metadata">
 <div class="publishedDate">July 20, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-</div>
 </div>
 <div class="thumbnail">
-<img src="posts/2020-10-23-paps/img/estrutura.png"/>
+<img data-src="posts/2020-10-23-paps/img/estrutura.png"/>
 </div>
 <div class="description">
 <h2>Processos pré-sancionadores</h2>
-<div class="dt-tags">
-<div class="dt-tag">Observatorio</div>
-<div class="dt-tag">CVM</div>
-</div>
 <p>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</p>
 </div>
 </a>
@@ -2285,18 +2248,12 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
 <div class="metadata">
 <div class="publishedDate">Jan. 20, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Renata Hirota</div>
-</div>
 </div>
 <div class="thumbnail">
-<img src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
+<img data-src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
 </div>
 <div class="description">
 <h2>Cinco anos de Operação Zelotes</h2>
-<div class="dt-tags">
-<div class="dt-tag">Analises</div>
-</div>
 <p>As mudanças no CARF após investigações de corrupção.</p>
 </div>
 </a>
@@ -2304,18 +2261,12 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
 <div class="metadata">
 <div class="publishedDate">Jan. 12, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Marcelo Guedes Nunes</div>
-</div>
 </div>
 <div class="thumbnail">
-<img src="posts/2020-01-12-welcome/abj.png"/>
+<img data-src="posts/2020-01-12-welcome/abj.png"/>
 </div>
 <div class="description">
 <h2>Nosso blog</h2>
-<div class="dt-tags">
-<div class="dt-tag">Geral</div>
-</div>
 <p>Esse é o blog da Associação Brasileira de Jurimetria, Direito na medida. 
 Esperamos que goste!</p>
 </div>
@@ -2326,23 +2277,23 @@ Esperamos que goste!</p>
 <h3>Categories</h3>
 <ul>
 <li>
-<a href="#category:Articles">Articles</a>
-<span class="category-count">(5)</span>
-</li>
-<li>
-<a href="#category:Analises">Analises</a>
+<a href="#Analises">Analises</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
-<a href="#category:CVM">CVM</a>
+<a href="#CVM">CVM</a>
 <span class="category-count">(3)</span>
 </li>
 <li>
-<a href="#category:Geral">Geral</a>
+<a href="#Geral">Geral</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
-<a href="#category:Observatorio">Observatorio</a>
+<a href="#Levantamentos">Levantamentos</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#Observatorio">Observatorio</a>
 <span class="category-count">(3)</span>
 </li>
 </ul>

@@ -22,6 +22,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Análises realizadas pelo G1 a partir de levantamento realizado pela Associação Brasileira de Jurimetria (ABJ) indicam que candidatos às eleições municipais no estado de São Paulo são réus em mais de 500 processos criminais. A [notícia, publicada no dia 9 de novembro](https://g1.globo.com/politica/eleicoes/2020/eleicao-em-numeros/noticia/2020/11/09/candidatos-em-sp-sao-reus-em-mais-de-500-processos-criminais-lista-de-crimes-inclui-tortura-homicidio-e-violencia-domestica.ghtml), gerou interesse nos dados obtidos pela ABJ, o que nos levou a disponibilizar o levantamento de forma pública. 
 
 Os dados utilizados na matéria do G1 estão disponíveis [neste link](https://abj.ddns.net:444/index.php/s/nyQH2EtB5PTKogw/download), em dois formatos:
+
 - xlsx (Excel): dividido em três tabela -- dados principais, movimentações e partes;
 - rds: arquivo para leitura com R.
 Também disponibilizamos o csv
