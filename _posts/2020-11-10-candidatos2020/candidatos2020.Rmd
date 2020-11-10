@@ -1,0 +1,45 @@
+---
+title: "Eleições 2020: Candidados envolvidos em processos criminais"
+description: |
+  Levantamento da ABJ publicado pelo G1
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+  - name: Renata Hirota
+    url: https://twitter.com/renata_mh
+date: 11-10-2020
+categories:
+  - Levantamentos
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Análises realizadas pelo G1 a partir de levantamento realizado pela Associação Brasileira de Jurimetria (ABJ) indicam que candidatos às eleições municipais no estado de São Paulo são réus em mais de 500 processos criminais. A [notícia, publicada no dia 9 de novembro](https://g1.globo.com/politica/eleicoes/2020/eleicao-em-numeros/noticia/2020/11/09/candidatos-em-sp-sao-reus-em-mais-de-500-processos-criminais-lista-de-crimes-inclui-tortura-homicidio-e-violencia-domestica.ghtml), gerou interesse nos dados obtidos pela ABJ, o que nos levou a disponibilizar o levantamento de forma pública. 
+
+Os dados utilizados na matéria do G1 estão disponíveis [neste link](https://abj.ddns.net:444/index.php/s/nyQH2EtB5PTKogw/download), em dois formatos:
+- xlsx (Excel): dividido em três tabela -- dados principais, movimentações e partes;
+- rds: arquivo para leitura com R.
+Também disponibilizamos o csv
+
+## Levantamento dos dados
+
+A obtenção da base de processos criminais foi feita em três etapas:
+
+1. Listagem dos CPFs de candidatos aos cargos de prefeito, vice-prefeito e vereador no estado de São Paulo;
+2. Download de todos os processos de primeiro grau do TJSP usando como critério de busca os documentos das partes na [consulta processual do e-SAJ](https://esaj.tjsp.jus.br/cpopg/open.do);
+3. Filtros por área (Criminal) e casos em que os candidatos eram listados nas tabelas de partes como réus/rés/corréus/corrés.
+
+Do total de 93.373 candidatos inscritos nas eleições municipais de 2020, 1.364 deles estavam de alguma forma envolvidos com processos criminais.
+
+Filtrando para os casos em que os candidatos eram descritos nas tabelas de partes como réus/rés/corréus/corrés, chegamos a um total de 598 candidatos e 723 processos, incluindo casos ativos, extintos, suspensos e em grau de recurso.
+
+## Possíveis divergências
+
+Outros filtros utilizados na análise do G1, como o tipo de classe processual, podem levar a diferenças nos números considerados pela matéria e os dados originais disponibilizados.
+
+
