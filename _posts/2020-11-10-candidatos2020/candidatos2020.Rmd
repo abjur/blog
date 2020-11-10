@@ -8,6 +8,7 @@ author:
   - name: Renata Hirota
     url: https://twitter.com/renata_mh
 date: 11-10-2020
+preview: candidatos2020.png
 categories:
   - Levantamentos
 output:
