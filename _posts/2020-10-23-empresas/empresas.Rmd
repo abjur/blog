@@ -292,6 +292,13 @@ da_tipo_empresa <- dplyr::bind_rows(
     tipo = "Não relacionada*",
     tipo2 = "Não relacionada*"
   ))
+
+# save(
+#   da_tipo_empresa,
+#   file = "../../../obsCVM/data/da_tipo_empresa.rda",
+#   compress = "xz"
+# )
+
 ```
 
 A lista de empresas envolvidas nos PAS foi obtida através da busca dos CNPJs nos autos ou da busca das empresas envolvidas em sites que agregam dados do site da Receita Federal do Brasil (RFB), como o [cnpj.info](https://cnpj.info). No total, foram encontrados `r n_cnpj` CNPJs distintos. 
@@ -308,7 +315,7 @@ Com base na análise, foi constatado que:
 
 ## Resultados
 
-A base final dos `r nrow(da_tipo_empresa)` CNPJs ficou com a classificação da Figura \@ref(fig:tipo-empresa-final). É possível notar que uma parte considerável dos casos foi classificada como não relacionada ao caso, mas que isso foi feito de forma aproximada em somente de 3% dos casos. Quase um quarto dos CNPJs estão fora da base por estarem envolvidos em temas de problemas de registro. Dentre os CNPJs encontrados, o mais comum é o de administradores de carteira, que aparecem em mais de um quinto dos casos.
+A base final dos `r nrow(da_tipo_empresa)` CNPJs ficou com a classificação da Figura \@ref(fig:tipo-empresa-final). É possível notar que uma parte considerável dos casos foi classificada como não relacionada ao caso, mas que isso foi feito de forma aproximada em somente de 4% dos casos. Quase um quarto dos CNPJs estão fora da base por estarem envolvidos em temas de problemas de registro. Dentre os CNPJs encontrados, o mais comum é o de administradores de carteira, que aparecem em mais de um quinto dos casos.
 
 ```{r tipo-empresa-final, layout="l-body-outset", fig.cap="Classificação final do tipo de empresa."}
 
