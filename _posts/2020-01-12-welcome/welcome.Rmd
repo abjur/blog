@@ -1,7 +1,7 @@
 ---
-title: "Nosso blog"
+title: "Nosso portal"
 description: |
-  Esse é o blog da Associação Brasileira de Jurimetria, Direito na medida. 
+  Esse é o laboratório da Associação Brasileira de Jurimetria. 
   Esperamos que goste!
 author:
   - name: Marcelo Guedes Nunes
@@ -19,10 +19,6 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-# Learn more about creating blogs with Distill at:
-# https://rstudio.github.io/distill/blog.html
-
 ```
 
 A disseminação de uma cultura de pesquisa empírica em direito no Brasil é um trabalho coletivo e de longo prazo. O sucesso dessa empreitada depende primordialmente do engajamento das universidades, governo e iniciativa privada no financiamento de projetos e no treinamento de pessoas aptas a produzir e consumir pesquisas. As frentes são muitas e passam pela administração dos tribunais, legística, estudo de impacto regulatório, reologia do processo, prova estatística e outras tantas disciplinas que estão nascendo como subproduto da Jurimetria. 

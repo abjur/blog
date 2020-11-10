@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
-    <loc>https://blog.abj.org.br/about.html</loc>
-    <lastmod>2020-11-10T16:36:07-03:00</lastmod>
+    <loc>https://lab.abj.org.br/about.html</loc>
+    <lastmod>2020-11-10T15:26:58-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/</loc>
-    <lastmod>2020-11-10T14:10:15-03:00</lastmod>
+    <loc>https://lab.abj.org.br/</loc>
+    <lastmod>2020-10-27T02:37:02-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/posts/2020-11-10-candidatos2020/</loc>
+    <loc>https://lab.abj.org.br/posts/2020-11-10-candidatos2020/</loc>
     <lastmod>2020-11-10T16:39:28-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/posts/2020-10-23-empresas/</loc>
+    <loc>https://lab.abj.org.br/posts/2020-10-23-empresas/</loc>
     <lastmod>2020-11-10T13:24:18-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/posts/2020-10-23-temas/</loc>
+    <loc>https://lab.abj.org.br/posts/2020-10-23-temas/</loc>
     <lastmod>2020-10-27T02:45:31-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/posts/2020-10-23-paps/</loc>
+    <loc>https://lab.abj.org.br/posts/2020-10-23-paps/</loc>
     <lastmod>2020-10-27T02:45:21-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/posts/2020-01-20-carf/</loc>
+    <loc>https://lab.abj.org.br/posts/2020-01-20-carf/</loc>
     <lastmod>2020-10-27T02:45:07-03:00</lastmod>
   </url>
   <url>
-    <loc>https://blog.abj.org.br/posts/2020-01-12-welcome/</loc>
-    <lastmod>2020-10-27T02:44:50-03:00</lastmod>
+    <loc>https://lab.abj.org.br/posts/2020-01-12-welcome/</loc>
+    <lastmod>2020-11-10T16:27:54-03:00</lastmod>
   </url>
 </urlset>
