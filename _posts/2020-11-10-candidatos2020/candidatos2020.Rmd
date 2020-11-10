@@ -24,9 +24,10 @@ Análises realizadas pelo G1 a partir de levantamento realizado pela Associaçã
 
 Os dados utilizados na matéria do G1 estão disponíveis [neste link](https://abj.ddns.net:444/index.php/s/nyQH2EtB5PTKogw/download), em dois formatos:
 
-- xlsx (Excel): dividido em três tabela -- dados principais, movimentações e partes;
+- xlsx (Excel): dividido em três tabelas -- dados principais, movimentações e partes;
 - rds: arquivo para leitura com R.
-Também disponibilizamos o csv
+
+Também disponibilizamos a tabela em csv com todos os candidatos no estado de São Paulo, de onde obtivemos os CPFs dos candidatos para consulta no TJSP.
 
 ## Levantamento dos dados
 
