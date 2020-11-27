@@ -1877,209 +1877,6 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <!--/radix_placeholder_site_before_body-->
 <!--radix_placeholder_article_listing-->
 
-<style type="text/css">
-
-/* Styles for listing layout (hide title) */
-.layout-listing d-title, .layout-listing .d-title {
-  display: none;
-}
-
-/* Styles for posts lists (not auto-injected) */
-
-
-.posts-with-sidebar {
-  padding-left: 45px;
-  padding-right: 45px;
-}
-
-.posts-list .description h2,
-.posts-list .description p {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-}
-
-.posts-list .description h2 {
-  font-weight: 700;
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.posts-list h2.post-tag {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 12px;
-}
-.posts-list {
-  margin-top: 60px;
-  margin-bottom: 24px;
-}
-
-.posts-list .post-preview {
-  text-decoration: none;
-  overflow: hidden;
-  display: block;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding: 24px 0;
-}
-
-.post-preview-last {
-  border-bottom: none !important;
-}
-
-.posts-list .posts-list-caption {
-  grid-column: screen;
-  font-weight: 400;
-}
-
-.posts-list .post-preview h2 {
-  margin: 0 0 6px 0;
-  line-height: 1.2em;
-  font-style: normal;
-  font-size: 24px;
-}
-
-.posts-list .post-preview p {
-  margin: 0 0 12px 0;
-  line-height: 1.4em;
-  font-size: 16px;
-}
-
-.posts-list .post-preview .thumbnail {
-  box-sizing: border-box;
-  margin-bottom: 24px;
-  position: relative;
-  max-width: 500px;
-}
-.posts-list .post-preview img {
-  width: 100%;
-  display: block;
-}
-
-.posts-list .metadata {
-  font-size: 12px;
-  line-height: 1.4em;
-  margin-bottom: 18px;
-}
-
-.posts-list .metadata > * {
-  display: inline-block;
-}
-
-.posts-list .metadata .publishedDate {
-  margin-right: 1em;
-}
-
-.posts-list .metadata .tags {
-  margin-top: 1em;
-}
-
-.posts-list .tags .tag {
-  color: rgba(0,0,0,0.67);
-  padding: 0.3em 0.5em;
-  margin: 0;
-  font-size: 80%;
-  border: 1px solid rgba(0,0,0,0.4);
-  border-radius: 3px;
-  text-transform: uppercase;
-  font-weight: 500;
-}
-
-.posts-list img {
-  opacity: 1;
-}
-
-.posts-list img[data-src] {
-  opacity: 0;
-}
-
-.posts-more {
-  clear: both;
-}
-
-
-.posts-sidebar {
-  font-size: 16px;
-}
-
-.posts-sidebar h3 {
-  font-size: 16px;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  font-weight: 400;
-  text-transform: uppercase;
-}
-
-.sidebar-section {
-  margin-bottom: 30px;
-}
-
-.categories ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.categories li {
-  color: rgba(0, 0, 0, 0.8);
-  margin-bottom: 0;
-}
-
-.categories li>a {
-  border-bottom: none;
-}
-
-.categories li>a:hover {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-}
-
-.categories .active {
-  font-weight: 600;
-}
-
-.categories .category-count {
-  color: rgba(0, 0, 0, 0.4);
-}
-
-
-@media(min-width: 768px) {
-  .posts-list .post-preview h2 {
-    font-size: 26px;
-  }
-  .posts-list .post-preview .thumbnail {
-    float: right;
-    width: 35%;
-    margin-bottom: 0;
-  }
-  .posts-list .post-preview .description {
-    float: left;
-    width: 45%;
-  }
-  .posts-list .post-preview .metadata {
-    float: left;
-    width: 15%;
-    margin-top: 8px;
-  }
-  .posts-list .post-preview p {
-    margin: 0 0 12px 0;
-    line-height: 1.5em;
-    font-size: 16px;
-  }
-  .posts-with-sidebar .posts-list {
-    float: left;
-    width: 72%;
-  }
-  .posts-with-sidebar .posts-sidebar {
-    float: right;
-    width: 20%;
-    margin-top: 60px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-}
-
-.downlevel .posts-list .post-preview {
-  color: inherit;
-}
-
-</style>
 
 <script type="application/javascript">
 
@@ -2131,16 +1928,16 @@ function init_posts_list() {
     set_posts_visible($('.posts-list').children('a'), false);
 
     // if we have a hash filter
-    if (window.location.hash) {
+    if (window.location.hash && window.location.hash.startsWith("#category:")) {
 
       // mark posts that match the category visible
-      var page_category = window.location.hash.replace("#", "");
+      var page_category = window.location.hash.replace(/^#category:/, "");
       var posts = $('.post-metadata').map(function(idx, script) {
         var metadata = $.parseJSON($(script).html());
         var post = null;
         $.each(metadata.categories, function(idx, category) {
           category = category.replace(/ /g,"_");
-          if (category == page_category) {
+          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
             post = $(script).parent().get();
             return false;
           }
@@ -2152,10 +1949,22 @@ function init_posts_list() {
       // mark the hash active
       $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
 
+      // update the list_caption
+      var list_caption = $('.posts-list-caption');
+      var caption = (page_category || '').toLowerCase() === "articles"
+        ? list_caption.attr('data-caption')
+        : ('Category: ' + page_category.replace(/_/g," "));
+      list_caption.text(caption);
+
     } else {
 
       // no hash filter, make all posts visible (subject to max display)
       set_posts_visible($('.posts-list').children(), true);
+
+      // reset list caption
+      var list_caption = $('.posts-list-caption');
+      list_caption.text(list_caption.attr('data-caption'));
+
 
     }
   }
@@ -2170,6 +1979,12 @@ function init_posts_list() {
       $('.posts-more a').addClass('hidden');
     }
   }
+
+  // click handling for tags
+  $('.dt-tag').click(function(ev) {
+    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
+    return false;
+  })
 
   // hash filter handling
   apply_hash_filter();
@@ -2194,17 +2009,24 @@ function init_posts_list() {
 
 <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
 <div class="posts-list">
-<h1 class="posts-list-caption">Direito na Medida</h1>
+<h1 class="posts-list-caption" data-caption="Direito na Medida">Direito na Medida</h1>
 <a href="posts/2020-11-10-candidatos2020/" class="post-preview">
 <script class="post-metadata" type="text/json">{"categories":["Levantamentos"]}</script>
 <div class="metadata">
 <div class="publishedDate">Nov. 10, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+<div class="dt-author">Renata Hirota</div>
+</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-11-10-candidatos2020/candidatos2020.png"/>
+<img src="posts/2020-11-10-candidatos2020/candidatos2020.png"/>
 </div>
 <div class="description">
-<h2>Eleições 2020: Candidados envolvidos em processos criminais</h2>
+<h2>Eleições 2020: Candidatos envolvidos em processos criminais</h2>
+<div class="dt-tags">
+<div class="dt-tag">Levantamentos</div>
+</div>
 <p>Levantamento da ABJ publicado pelo G1</p>
 </div>
 </a>
@@ -2212,12 +2034,19 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
 <div class="metadata">
 <div class="publishedDate">Oct. 23, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png"/>
+<img src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png"/>
 </div>
 <div class="description">
 <h2>Empresas CVM</h2>
+<div class="dt-tags">
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
+</div>
 <p>Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
 </div>
 </a>
@@ -2225,12 +2054,19 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
 <div class="metadata">
 <div class="publishedDate">Sept. 10, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
+<img src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
 </div>
 <div class="description">
 <h2>Temas e condutas</h2>
+<div class="dt-tags">
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
+</div>
 <p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
 </div>
 </a>
@@ -2238,12 +2074,19 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
 <div class="metadata">
 <div class="publishedDate">July 20, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-10-23-paps/img/estrutura.png"/>
+<img src="posts/2020-10-23-paps/img/estrutura.png"/>
 </div>
 <div class="description">
 <h2>Processos pré-sancionadores</h2>
+<div class="dt-tags">
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
+</div>
 <p>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</p>
 </div>
 </a>
@@ -2251,12 +2094,18 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
 <div class="metadata">
 <div class="publishedDate">Jan. 20, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Renata Hirota</div>
+</div>
 </div>
 <div class="thumbnail">
-<img data-src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
+<img src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
 </div>
 <div class="description">
 <h2>Cinco anos de Operação Zelotes</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
 <p>As mudanças no CARF após investigações de corrupção.</p>
 </div>
 </a>
@@ -2264,12 +2113,18 @@ function init_posts_list() {
 <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
 <div class="metadata">
 <div class="publishedDate">Jan. 12, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Marcelo Guedes Nunes</div>
+</div>
 </div>
 <div class="thumbnail">
 <img data-src="posts/2020-01-12-welcome/abj.png"/>
 </div>
 <div class="description">
 <h2>Nosso portal</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
 <p>Esse é o laboratório da Associação Brasileira de Jurimetria. 
 Esperamos que goste!</p>
 </div>
@@ -2280,23 +2135,27 @@ Esperamos que goste!</p>
 <h3>Categories</h3>
 <ul>
 <li>
-<a href="#Analises">Analises</a>
+<a href="#category:Articles">Articles</a>
+<span class="category-count">(6)</span>
+</li>
+<li>
+<a href="#category:Analises">Analises</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
-<a href="#CVM">CVM</a>
+<a href="#category:CVM">CVM</a>
 <span class="category-count">(3)</span>
 </li>
 <li>
-<a href="#Geral">Geral</a>
+<a href="#category:Geral">Geral</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
-<a href="#Levantamentos">Levantamentos</a>
+<a href="#category:Levantamentos">Levantamentos</a>
 <span class="category-count">(1)</span>
 </li>
 <li>
-<a href="#Observatorio">Observatorio</a>
+<a href="#category:Observatorio">Observatorio</a>
 <span class="category-count">(3)</span>
 </li>
 </ul>

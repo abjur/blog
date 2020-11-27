@@ -1,7 +1,7 @@
 [
   {
     "path": "posts/2020-11-10-candidatos2020/",
-    "title": "Eleições 2020: Candidados envolvidos em processos criminais",
+    "title": "Eleições 2020: Candidatos envolvidos em processos criminais",
     "description": "Levantamento da ABJ publicado pelo G1",
     "author": [
       {
@@ -17,8 +17,9 @@
     "categories": [
       "Levantamentos"
     ],
+    "contents": "\nAnálises realizadas pelo G1 a partir de levantamento realizado pela Associação Brasileira de Jurimetria (ABJ) indicam que candidatos às eleições municipais no estado de São Paulo são réus em mais de 500 processos criminais. A notícia, publicada no dia 9 de novembro, gerou interesse nos dados obtidos pela ABJ, o que nos levou a disponibilizar o levantamento de forma pública.\nOs dados utilizados na matéria do G1 estão disponíveis neste link, em dois formatos:\nxlsx (Excel): dividido em três tabelas – dados principais, movimentações e partes;\nrds: arquivo para leitura com R.\nTambém disponibilizamos a tabela em csv com todos os candidatos no estado de São Paulo, de onde obtivemos os CPFs dos candidatos para consulta no TJSP.\nLevantamento dos dados\nA obtenção da base de processos criminais foi feita em três etapas:\nListagem dos CPFs de candidatos aos cargos de prefeito, vice-prefeito e vereador no estado de São Paulo;\nDownload de todos os processos de primeiro grau do TJSP usando como critério de busca os documentos das partes na consulta processual do e-SAJ;\nFiltros por área (Criminal) e casos em que os candidatos eram listados nas tabelas de partes como réus/rés/corréus/corrés.\nDo total de 93.373 candidatos inscritos nas eleições municipais de 2020, 1.364 deles estavam de alguma forma envolvidos com processos criminais.\nFiltrando para os casos em que os candidatos eram descritos nas tabelas de partes como réus/rés/corréus/corrés, chegamos a um total de 598 candidatos e 723 processos, incluindo casos ativos, extintos, suspensos e em grau de recurso.\nPossíveis divergências\nOutros filtros utilizados na análise do G1, como o tipo de classe processual, podem levar a diferenças nos números considerados pela matéria e os dados originais disponibilizados.\n\n\n\n",
     "preview": "posts/2020-11-10-candidatos2020/candidatos2020.png",
-    "last_modified": "2020-11-10T17:53:55-03:00",
+    "last_modified": "2020-11-27T14:17:48-03:00",
     "input_file": "candidatos2020.utf8.md",
     "preview_width": 629,
     "preview_height": 339

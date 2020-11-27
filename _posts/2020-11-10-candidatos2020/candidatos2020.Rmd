@@ -1,5 +1,5 @@
 ---
-title: "Eleições 2020: Candidados envolvidos em processos criminais"
+title: "Eleições 2020: Candidatos envolvidos em processos criminais"
 description: |
   Levantamento da ABJ publicado pelo G1
 author:
