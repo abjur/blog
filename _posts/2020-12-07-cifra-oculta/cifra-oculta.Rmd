@@ -13,7 +13,7 @@ output:
     self_contained: false
 ---
 
-### Introdução
+## Introdução
 Este texto se propõe a discutir o problema da _cifra oculta_ nos assuntos processuais e os impactos que isso pode ter para a pesquisa em jurimetria.
 
 A cifra oculta é a quantidade não observada de determinado dado. Esse problema surge, quando falamos dos Assuntos processuais, por causa da forma como esses dados são gerados. Para entendermos isso, precisamos nos voltar para a Resolução 46/2007 do CNJ. Essa norma criou as chamadas Tabelas Processuais Unificadas (TPUs), as quais tentam unificar dados relativos a todos os processos, em todas as esferas, em todos os tribunais brasileiros, classificando-os por classe e assunto. A classe está ligada ao rito processual (rito ordinário, extraordinário, etc). Já o assunto se liga às causas de pedir, isto é, qual é o conflito gerador do processo judicial.
@@ -28,10 +28,11 @@ Ambos os problemas (tanto de classificação equivocada, como de classificação
 
 A análise que se segue, então, irá olhar para este problema específico da classificação imprecisa, a fim de quantificá-la. 
 
-### Descrição da base de dados
+## Descrição da base de dados
+
 Para realizar essa análise, usamos os dados do Painel do CNJ em Números. O CNJ em Número nos fornece a quantidade de casos de cada assunto por jurisdição.
 
-#### Sobre os assuntos
+### Sobre os assuntos
 
 Há 7 colunas de assuntos, uma para cada nível.
 
@@ -60,16 +61,38 @@ knitr::include_graphics("img/traco_sem_irmaos.PNG")
 
 <!-- ![Exemplo de "-" sem irmãos](~/ABJ/blog-cifra-oculta/_posts/2020-12-07-cifra-oculta/traco_sem_irmaos.png) -->
 
-#### Sobre o território e o ano 
+### Sobre o território e o ano
+
 Esses dados (de assunto e jurisdição) do CNJ estão disponíveis por Estado e Ano. Assim, para cada um dos tribunais, em cada uma das instâncias, há um base diferente para baixar. 
 
 Escolhemos pegar os dados do TJSP, TJRJ, TJAM e TJPE, nos anos de 2014 a 2019. São Paulo e Rio de Janeiro foram escolhidos por serem grandes tribunais, com um alto número de processos. O TJAM foi escolhido por ser um representante do Norte. E o TJPE, por ser um representante do Nordeste. 
 
 Como são 4 Tribunais, ao longo de 6 anos, baixamos 24 bases de dados. Essas bases foram empilhadas, a fim de formar um arquivo único. E, então, arrumamos a base única.
 
-### Resultados
+## Resultados
 
-### Comentários finais 
+### Taxa de cifra oculta 
+
+```{r, fig.align='center'}
+library(ggplot2)
+library(magrittr)
+library(tidyverse)
+
+assuntos %>%
+  group_by(assunto_nome1) %>%
+  summarise(taxa = sum(x1_grau[generico == "Sim"]) / sum(x1_grau), .groups = "drop") %>%
+  filter(assunto_nome1 != "Total") %>%
+  ggplot() +
+  geom_col(mapping = aes(x = taxa, y = fct_reorder(assunto_nome1, taxa, .desc = FALSE)), fill = viridis::viridis(1, 1, .2, .8)) +
+  scale_x_continuous(labels = scales::percent) + 
+  theme_minimal(14)+
+  labs(
+    title = "Taxa de cifra oculta por assuntos genéricos", 
+       x = "Assuntos", 
+       y = "Taxa de cifra genérica")
+
+```
+## Comentários finais 
 
 
 
