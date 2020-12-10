@@ -1,5 +1,5 @@
 ---
-title: "Sentenças relacionadas a Covid-19 no TJSP"
+title: "Sentenças que mencionam Covid-19 no TJSP"
 description: |
   Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.
 author:
@@ -25,11 +25,11 @@ base <- covidTJSP::da_cjpg_covid
 
 # Introdução
 
-Foi realizado o levantamento de dados do site do Tribunal de Justiça de São Paulo (TJSP), onde foram recolhidos dados referentes a sentenças, publicadas em época de pandemia, e seus repectivos processos. Foram recolhidos as seguintes informações: o número do processo, seu respectivo código, o assunto o qual o processo de refere, sua classe, sua comarca na qual tramita, a data de disponibilização da sentença, o foro o qual é legislado o processo, o juiz responsavel pela sentença, um resumo da sentança e a data da sentença. 
+Foi realizado o levantamento de dados do site do Tribunal de Justiça de São Paulo (TJSP), onde foram recolhidos dados referentes a sentenças, publicadas em época de pandemia, e seus repectivos processos. Foram recolhidas as seguintes informações: o número do processo, seu respectivo código, o assunto o qual o processo de refere, sua classe, sua comarca na qual tramita, a data de disponibilização da sentença, o foro o qual é legislado o processo, o juiz responsavel pela sentença, um resumo da sentança e a data da sentença. 
 
 Com essas informações, analisamos uma série de fatos que mostram como as sentenças do TJSP vêm se comportando. Foram analisados no total `r scales::number_format(big.mark = ".", decimal.mark = ",")(nrow(base))` processos que tiveram a disponibilização de sua sentença entre `r format(min(base$date), "%d/%m/%Y")` e `r format(max(base$date), "%d/%m/%Y")`.
   
-Dentro dessa análise, serão analisado os seguintes pontos:
+Dentro dessa análise, foram analisado os seguintes pontos:
 
 - As classes mais frequentes  
 - Os assuntos mais frequentes
