@@ -12,6 +12,25 @@ output:
   distill::distill_article:
     self_contained: false
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = FALSE, 
+  warning = FALSE
+)
+# carrega pacotes necessários
+library(ggplot2)
+library(magrittr)
+library(tidyverse)
+library(patchwork)
+
+```
+
+```{r}
+# carrega base `assuntos` disponivel
+load("assuntos.rda")
+
+```
 
 ## Introdução
 Este texto se propõe a discutir o problema da _cifra oculta_ nos assuntos processuais e os impactos que isso pode ter para a pesquisa em jurimetria.
@@ -59,6 +78,19 @@ knitr::include_graphics("img/traco_sem_irmaos.PNG")
 
 ```
 
+### Tabela todos os Assuntos
+
+
+```{r}
+assuntos %>%
+  select(assunto_nome1, x1_grau) %>%
+  group_by(assunto_nome1) %>%
+  mutate(assunto_nome1 = toupper(assunto_nome1)) %>% 
+  filter(assunto_nome1 != "TOTAL") %>% 
+  count() %>%
+  arrange(desc(n)) %>%
+  knitr::kable()
+```
 <!-- ![Exemplo de "-" sem irmãos](~/ABJ/blog-cifra-oculta/_posts/2020-12-07-cifra-oculta/traco_sem_irmaos.png) -->
 
 ### Sobre o território e o ano
@@ -71,26 +103,90 @@ Como são 4 Tribunais, ao longo de 6 anos, baixamos 24 bases de dados. Essas bas
 
 ## Resultados
 
-### Taxa de cifra oculta 
+### Gráfico geral (contagem de casos por assunto top 15)
 
-```{r, fig.align='center'}
-library(ggplot2)
-library(magrittr)
-library(tidyverse)
+```{r}
+assuntos %>%
+  select(assunto_nome1, x1_grau) %>%
+  group_by(assunto_nome1) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  head(15) %>%
+  ggplot() +
+  geom_col(mapping = aes(x = n,  y = fct_reorder(assunto_nome1, n, .desc = FALSE)),
+           fill = viridisLite::viridis(1, 1, .2, .8)) +
+  plot_annotation("Contagem de Assuntos de forma geral",
+                  theme = theme(plot.title = element_text(size = rel(1.5)))) +
+  labs(x = "Quantidade",
+       y = "Assuntos Recorrentes") +
+  theme_minimal(8)
+```
+### Gráficos de nº de casos por tribunal
 
+```{r n-tribunal}
+assuntos %>%
+  select(tribunal, x1_grau) %>%
+  group_by(tribunal) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  ggplot() +
+  geom_col(aes(x = n,  y = fct_reorder(tribunal, n, .desc = FALSE)) , fill = viridisLite::viridis(1, 1, .2, .8)) +
+  labs(title = "Contagem de Casos por Tribunal",
+       x = "Quantidade",
+       y = "Tribunais") +
+  theme_minimal(12)
+```
+### Gráfico nº de casos por ano
+
+```{r}
+assuntos %>%
+  group_by(ano) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  ggplot() +
+  geom_col(aes(x = ano, y = n), fill = viridisLite::viridis(1, 1, .2, .8)) +
+  labs(title = "Contagem de Casos por Ano",
+       x = "Anos",
+       y = "Tribunais") +
+  theme_minimal(12) +
+  scale_y_continuous(name = "Numero de casos", breaks = seq(0, 7000, 2000))
+```
+
+### Taxa de cifra oculta por assunto 
+
+```{r assuntos}
 assuntos %>%
   group_by(assunto_nome1) %>%
   summarise(taxa = sum(x1_grau[generico == "Sim"]) / sum(x1_grau), .groups = "drop") %>%
   filter(assunto_nome1 != "Total") %>%
+  mutate(assunto_nome1 = toupper(assunto_nome1)) %>% 
   ggplot() +
-  geom_col(mapping = aes(x = taxa, y = fct_reorder(assunto_nome1, taxa, .desc = FALSE)), fill = viridis::viridis(1, 1, .2, .8)) +
-  scale_x_continuous(labels = scales::percent) + 
-  theme_minimal(14)+
-  labs(
-    title = "Taxa de cifra oculta por assuntos genéricos", 
-       x = "Assuntos", 
-       y = "Taxa de cifra genérica")
+  geom_col(mapping = aes(x = taxa, y = fct_reorder(assunto_nome1, taxa, .desc = FALSE)),
+           fill = viridis::viridis(1, 1, .2, .8)) +
+  scale_x_continuous(labels = scales::percent) +
+  theme_minimal(9.5) +
+  plot_annotation("Taxa de cifra oculta por assuntos genéricos",
+                  theme = theme(plot.title = element_text(size = rel(1.5)))) +
+  labs(x = "Taxa de cifra genérica",
+       y = "Assuntos")
+```
 
+
+### Taxa de cifra oculta por tribunal
+
+
+```{r tribunal}
+assuntos %>%
+  group_by(tribunal) %>%
+  summarise(taxa = sum(x1_grau[generico == "Sim"]) / sum(x1_grau), .groups = "drop") %>%
+  ggplot() +
+  geom_col(mapping = aes(x = taxa, y = fct_reorder(tribunal, taxa, .desc = FALSE)),
+           fill = viridis::viridis(1, 1, .2, .8)) +
+  scale_x_continuous(labels = scales::percent) +
+  theme_minimal(12) +
+  labs(title = "Taxa de cifra oculta por tribunal",
+       x = "Tribunal",
+       y = "Taxa de cifra genérica")
 ```
 ## Comentários finais 
 
