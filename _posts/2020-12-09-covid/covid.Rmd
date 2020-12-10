@@ -1,0 +1,124 @@
+---
+title: "Sentenças relacionadas a Covid-19 no TJSP"
+description: |
+  Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+  - name: João Marcelo Torquato
+    url: https://www.linkedin.com/in/joão-marcelo-torquato-157b0a16a
+date: 12-09-2020
+categories:
+  - Levantamentos
+  - Analises
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+base <- covidTJSP::da_cjpg_covid
+```
+
+# Sentenças em periodos de Pandemia
+
+Foi realizado o levantamento de dados do site do Tribunal de Justiça de São Paulo (TJSP), onde foram recolhidos dados referentes a sentenças, publicadas em época de pandemia, e seus repectivos processos. Foram recolhidos as seguintes informações: o número do processo, seu respectivo código, o assunto o qual o processo de refere, sua classe, sua comarca na qual tramita, a data de disponibilização da sentença, o foro o qual é legislado o processo, o juiz responsavel pela sentença, um resumo da sentança e a data da sentença. 
+
+Com essas informações, analisamos uma série de fatos que mostram como as sentenças do TJSP vêm se comportando. Foram analisados no total `r scales::number_format(big.mark = ".", decimal.mark = ",")(nrow(base))` processos que tiveram a disponibilização de sua sentença entre `r format(min(base$date), "%d/%m/%Y")` e `r format(max(base$date), "%d/%m/%Y")`.
+  
+Dentro dessa análise, serão analisado os seguintes pontos:
+
+- As classes mais frequentes  
+- Os assuntos mais frequentes
+- Gráfico do volume de sentenças ao longo do tempo 
+  
+Em primeiro lugar foi feita uma análise para listar as classes e assuntos com maior frequência dentro do nosso escopo, como segue nas Tabelas \@ref(tab:tab-classe) e \@ref(tab:tab-assunto), ondem foram raquedos os 15 casos mais frenquentes de classes e assuntos que apareceram.
+
+  
+```{r tab-classe}
+base %>%
+  mutate(
+    classe = fct_explicit_na(classe, na_level = "(Vazio)"),
+    classe = fct_infreq(classe),
+    classe = fct_lump_n(classe, 15, other_level = "Outros")
+  ) %>% 
+  count(classe) %>%
+  mutate(prop = n/sum(n)) %>% 
+  janitor::adorn_totals() %>% 
+  mutate(
+    n = scales::number_format(big.mark = ".", decimal.mark = ",", accuracy = 1)(n),
+    prop = scales::percent(prop, accuracy = .1, decimal.mark = ",")
+  ) %>% 
+  select(Classe = classe, "Quantidade" = n, "%" = prop) %>% 
+  knitr::kable(
+    caption = "Quantidade de processos por classe."
+  )
+```
+  
+```{r tab-assunto}
+base %>%
+  mutate(
+    assunto = fct_explicit_na(assunto, na_level = "(Vazio)"),
+    assunto = fct_infreq(assunto),
+    assunto = fct_lump_n(assunto, 15, other_level = "Outros")
+  ) %>% 
+  count(assunto) %>%
+  mutate(prop = n/sum(n)) %>% 
+  janitor::adorn_totals() %>% 
+  mutate(
+    n = scales::number_format(big.mark = ".", decimal.mark = ",", accuracy = 1)(n),
+    prop = scales::percent(prop, accuracy = .1, decimal.mark = ",")
+  ) %>% 
+  select(Assunto = assunto, "Quantidade" = n, "%" = prop) %>% 
+  knitr::kable(
+    caption = "Quantidade de processos por assunto."
+  )
+
+``` 
+    
+Em seguida foi elaborado um gráfico com a quantidade de sentenças disponibilizadas em cada semana. Nele conseguimos perceber que existe uma tendência de subida das decisões relacionadas a COVID-19. O aumento tem se intensificado a partir do mês de setembro.
+
+  
+```{r fig-semana, fig.cap="Número de decisões publicadas por semana.", message=FALSE, layout="l-body-outset"}
+col_abj <- viridis::viridis(2, 1, .2, .8)
+blue_abj <- col_abj[1]
+green_abj <- col_abj[2]
+base %>%
+  mutate(date = lubridate::floor_date(date, "week")) %>%
+  filter(date < lubridate::floor_date(Sys.Date(), "week")) %>% 
+  count(date, sort = TRUE) %>%
+  ggplot(aes(x = date, y = n))+
+  geom_col(fill = blue_abj) +
+  geom_smooth(se = FALSE, colour = green_abj) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
+  theme_minimal(12) +
+  labs(
+    x = "Mês de disponibilização",
+    y = "Número de decisões",
+    title = "Volume de sentenças",
+    subtitle = "Quantidade por semana",
+    caption = "Fonte: Consulta de Julgados de Primeiro Grau (TJSP)"
+  )               
+``` 
+
+Para facilitar a visualização das informações da Figura \@ref(fig:fig-semana), elaboramos outro gráfico nos mesmo padrões, agrupado por mês. A tendência de subida mais acentuada a partir de setembro continua aparente. 
+
+```{r fig-mes, fig.cap="Número de decisões publicadas por mês.", message=FALSE, layout="l-body-outset"}
+base %>%
+  mutate(date = lubridate::floor_date(date, "month")) %>%
+  count(date) %>% 
+  ggplot() +
+  geom_col(aes(x = date, y = n), fill = blue_abj) +
+  scale_x_date(date_breaks = "1 month", date_labels = "%b") +
+  theme_minimal(12) +
+  labs(
+    x = "Mes de disponibilização",
+    y = "Número de decisões",
+    title = "Volume de sentenças",
+    subtitle = "Quantidade por mês",
+    caption = "Fonte: Consulta de Julgados de Primeiro Grau (TJSP)"
+  )  
+``` 
