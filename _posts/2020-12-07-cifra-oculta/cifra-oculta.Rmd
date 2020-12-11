@@ -131,7 +131,7 @@ assuntos %>%
   arrange(desc(n)) %>%
   ggplot() +
   geom_col(aes(x = ano, y = n), fill = viridisLite::viridis(1, 1, .2, .8)) +
-  labs(title = "Contagem de casos por Ano",
+  labs(title = "Gráfico 2: Contagem de casos por Ano",
        x = "Anos",
        y = "Tribunais") +
   theme_minimal(12) +
@@ -150,7 +150,7 @@ assuntos %>%
   arrange(desc(n)) %>%
   ggplot() +
   geom_col(aes(x = n,  y = fct_reorder(tribunal, n, .desc = FALSE)) , fill = viridisLite::viridis(1, 1, .2, .8)) +
-  labs(title = "Gráfico 2: Contagem de casos por Tribunal",
+  labs(title = "Gráfico 3: Contagem de casos por Tribunal",
        x = "Quantidade",
        y = "Tribunais") +
   theme_minimal(12)
@@ -177,7 +177,7 @@ assuntos %>%
            fill = viridis::viridis(1, 1, .2, .8)) +
   scale_x_continuous(labels = scales::percent) +
   theme_minimal(9.5) +
-  plot_annotation("Gráfico 3: Taxa de cifra oculta por Assunto",
+  plot_annotation("Gráfico 4: Taxa de cifra oculta por Assunto",
                   theme = theme(plot.title = element_text(size = rel(1.5)))) +
   labs(x = "Taxa de cifra genérica",
        y = "Assuntos")
@@ -204,7 +204,7 @@ assuntos %>%
            fill = viridis::viridis(1, 1, .2, .8)) +
   scale_x_continuous(labels = scales::percent) +
   theme_minimal(12) +
-  labs(title = "Taxa de cifra oculta por tribunal",
+  labs(title = "Gráfico 5: Taxa de cifra oculta por tribunal",
        x = "Tribunal",
        y = "Taxa de cifra genérica")
 ```
