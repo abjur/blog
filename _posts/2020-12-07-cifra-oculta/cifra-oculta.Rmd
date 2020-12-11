@@ -17,8 +17,6 @@ categories:
 output:
   distill::distill_article:
     self_contained: false
-header-includes: 
-   - \usepackage[labelformat=empty]{caption}
 ---
 
 ```{r setup, include=FALSE}
@@ -92,7 +90,7 @@ Como são 4 Tribunais, ao longo de 6 anos, baixamos 24 bases de dados. Essas bas
 
 Com os dados de assuntos para o TJSP, TJRJ, TJAM e TJPE, entre os anos de 2014 e 2019, formamos uma base com 37.006 processos, que se distribuem entre 18 assuntos genéricos, ao todo, conforme a Tabela 1
 
-```{r, tab.cap="Tabela 1: Quantidade de observações por assunto genérico"}
+```{r}
 assuntos %>%
   select(assunto_nome1, x1_grau) %>%
   group_by(assunto_nome1) %>%
@@ -100,7 +98,7 @@ assuntos %>%
   filter(assunto_nome1 != "TOTAL") %>% 
   count() %>%
   arrange(desc(n)) %>% 
-  knitr::kable()
+  knitr::kable(caption = "Quantidade de observações por assunto genérico")
 ```
 
 Podemos ver que a distribuição de casos não é homogênea por assunto. Há uma concentração muito maior em Direito Administrativo, Direito Penal e Direito Civil, em comparação com Direito Eleitoral, Direito da Saúde, Direito Processual Penal Militar, Direito Internacional e Direito do Trabalho. É possível visualizar com mais facilidade essa distribuição assimétrica por meio de um gráfico. 
