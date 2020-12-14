@@ -119,7 +119,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["assuntos.rda","cifra-oculta_files/anchor-4.2.2/anchor.min.js","cifra-oculta_files/bowser-1.9.3/bowser.min.js","cifra-oculta_files/distill-2.2.21/template.v2.js","cifra-oculta_files/figure-html5/assuntos-1.png","cifra-oculta_files/figure-html5/n-tribunal-1.png","cifra-oculta_files/figure-html5/tribunal-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-5-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-6-1.png","cifra-oculta_files/jquery-1.11.3/jquery.min.js","cifra-oculta_files/kePrint-0.0.1/kePrint.js","cifra-oculta_files/lightable-0.0.1/lightable.css","cifra-oculta_files/webcomponents-2.0.0/webcomponents.js","img/exemplo.png","img/traco_com_irmaos.PNG","img/traco_sem_irmaos.PNG"]}
+  {"type":"character","attributes":{},"value":["assuntos.rda","cifra-oculta_files/anchor-4.2.2/anchor.min.js","cifra-oculta_files/bowser-1.9.3/bowser.min.js","cifra-oculta_files/distill-2.2.21/template.v2.js","cifra-oculta_files/figure-html5/assuntos-1.png","cifra-oculta_files/figure-html5/gg-oz-gapminder-1.png","cifra-oculta_files/figure-html5/n-tribunal-1.png","cifra-oculta_files/figure-html5/tribunal-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-5-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-6-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-7-1.png","cifra-oculta_files/jquery-1.11.3/jquery.min.js","cifra-oculta_files/kePrint-0.0.1/kePrint.js","cifra-oculta_files/lightable-0.0.1/lightable.css","cifra-oculta_files/webcomponents-2.0.0/webcomponents.js","img/exemplo.png","img/traco_com_irmaos.PNG","img/traco_sem_irmaos.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1472,16 +1472,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Para realizar essa análise, usamos os dados do Painel do CNJ em Números. O CNJ em Número nos fornece a quantidade de casos de cada assunto por jurisdição.</p>
 <h3 id="sobre-os-assuntos">Sobre os assuntos</h3>
 <p>Há 7 colunas de assuntos, uma para cada nível, conforme podemos observar na Figura 1.</p>
+<center>
 <figure>
 <img src="img/exemplo.png" id="id" class="class" style="width:100.0%;height:100.0%" alt="" /><figcaption>Figura 1: Visão geral dos 7 níveis de assuntos</figcaption>
 </figure>
+</center>
 <p>A coluna “Assunto - Nome1” indica o assunto em nível mais genérico. Já o “Assunto - Nome7” indica o assunto em nível mais específico. As colunas intermediárias indicam as subclassificações de cada processo. Raramente os processos chegam no nível 7. O nível mais específico costuma estar no 4 ou no 5.</p>
 <p>Quando o processo não chega a determinado nível, a coluna fica marcada com “-”. Ao que devemos ficar atento é se a casa marcada com “-” possui “irmãos” que possuam alguma outra resposta.</p>
 <p>Por exemplo: o assunto “Direito Administrativo” (nível 1) se ramifica em “Agentes Políticos” e “Atos Administrativos” (nível 2). Seguindo a árvore dos “Agentes Políticos”, ela se ramifica em “Governador”, “Magistratura”, “Ministério Público”, entre outros (nível 3). A título de exemplo, seguindo o ramo da Magistratura, ela se ramifica em “Afastamento”, “Aposentadoria”, “Processo Disciplinar”, “Promoção”, “Quinto Constitucional”, “Remoção”, “Remuneração” e “-” (nível 4). Neste caso “-” possui irmãos, que são as outras casas de mesmo nível (nível 4) dentro de Magistratura, isto é, “Afastamento”, “Aposentadoria”, “Processo Disciplinar”, “Promoção”, “Quinto Constitucional”, “Remoção” e “Remuneração”. Nenhuma dessas casas possui subdivisões posteriores, então para cada linha, os níveis 5, 6 e 7 estão preenchidos com “-”.</p>
 <p>O que devemos perceber é que os traços dos níveis 5 a 7 <em>não</em> indicam cifra oculta, mas simplesmente a ausência de classificação naquele nível. Entretanto, o traço no nível 4, porque possui irmãos preenchidos, indica cifra oculta. Vemos esses dois tipos de traços (traços com irmãos e traços sem irmãos) na Figura 2. O traço da coluna “Assunto - Nome4” indica cifra oculta, enquando os demais traços não.</p>
+<center>
 <figure>
 <img src="img/traco_sem_irmaos.PNG" id="id" class="class" style="width:65.0%;height:65.0%" alt="" /><figcaption>Figura 2: Os dois tipos de “-”. Na coluna “Assuntos - nome4”, vemos um caso em que o “-” indica cifra oculta, mas nas colunas seguintes o “-” indica simplesmente que aquele nível de classificação não existe</figcaption>
 </figure>
+</center>
 <h3 id="sobre-o-território-e-o-ano">Sobre o território e o ano</h3>
 <p>Esses dados sobre o Assunto dos processos do CNJ estão disponíveis para todos os Estado, ao longo de vários anos. Assim, para cada um dos tribunais, em cada uma das instâncias, há um base diferente para baixar.</p>
 <p>Escolhemos pegar os dados do TJSP, TJRJ, TJAM e TJPE, nos anos de 2014 a 2019. São Paulo e Rio de Janeiro foram escolhidos por serem grandes tribunais, com um alto número de processos. O TJAM foi escolhido por ser um representante do Norte. E o TJPE, por ser um representante do Nordeste.</p>
@@ -1494,8 +1498,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <caption><span id="tab:unnamed-chunk-2">Table 1: </span>Quantidade de observações por assunto genérico</caption>
 <thead>
 <tr class="header">
-<th style="text-align: left;">assunto_nome1</th>
-<th style="text-align: right;">n</th>
+<th style="text-align: left;">Assunto</th>
+<th style="text-align: right;">Quantidade</th>
 </tr>
 </thead>
 <tbody>
@@ -1576,17 +1580,32 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 <p>Podemos ver que a distribuição de casos não é homogênea por assunto. Há uma concentração muito maior em Direito Administrativo, Direito Penal e Direito Civil, em comparação com Direito Eleitoral, Direito da Saúde, Direito Processual Penal Militar, Direito Internacional e Direito do Trabalho. É possível visualizar com mais facilidade essa distribuição assimétrica por meio de um gráfico.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png" width="624" style="display: block; margin: auto;" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-3"></span>
+<img src="cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png" alt="Contagem de Assuntos de forma geral" width="624" />
+<p class="caption">
+Figure 1: Contagem de Assuntos de forma geral
+</p>
+</div>
 </div>
 <h4 id="processos-por-ano">Processos por ano</h4>
 <p>Se olhamos para a distribuição ao longo dos anos, ela fica bem mais homogênea. Por mais que haja um pouco mais de casos em 2014 e 2015, essa diferença não é muito relevante.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png" width="624" style="display: block; margin: auto;" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-4"></span>
+<img src="cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png" alt="Contagem de casos por Ano" width="624" />
+<p class="caption">
+Figure 2: Contagem de casos por Ano
+</p>
+</div>
 </div>
 <h4 id="processos-por-tribunal">Processos por tribunal</h4>
 <p>Ainda podemos ver a distribuição dos casos por tribunal. Dos 4 tribunais que selecionamos (TJSP, TJAM, TJRJ e TJPE), TJSP foi o Estado com mais processos ao longo destes 6 anos, o que é esperado, uma vez que ele é o maior tribunal brasileiro. A seguir, TJAM e TJRJ possuem quantidades muito similares de processos. E por fim, está o TJPE como menor número de casos.</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="cifra-oculta_files/figure-html5/n-tribunal-1.png" width="624" style="display: block; margin: auto;" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-5"></span>
+<img src="cifra-oculta_files/figure-html5/unnamed-chunk-5-1.png" alt="Contagem de casos por Tribunal" width="624" />
+<p class="caption">
+Figure 3: Contagem de casos por Tribunal
+</p>
+</div>
 </div>
 <h3 id="a-taxa-de-cifra-oculta">A taxa de cifra oculta</h3>
 <p>Uma vez que sabemos como identificar as cifras ocultas e temos os dados em mãos, podemos calcular uma taxa para esta cifra. Essa taxa é, simplesmente, uma razão entre a quantidade de “-” com irmãos (conforme vimos em <a href="#sobre-os-assuntos">“Sobre os assuntos”</a>), sobre a quantidade total de casos. Em outras palavras, o que essa taxa indica é, de todos os processos, quantos porcento deles poderiam ter recebido alguma classificação mais específica, mas não o receberam.</p>
@@ -1594,7 +1613,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h2 id="resultados">Resultados</h2>
 <h3 id="taxa-de-cifra-oculta-por-assunto">Taxa de cifra oculta por assunto</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="cifra-oculta_files/figure-html5/assuntos-1.png" width="624" style="display: block; margin: auto;" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-6"></span>
+<img src="cifra-oculta_files/figure-html5/unnamed-chunk-6-1.png" alt="Taxa de cifra oculta por Assunto" width="624" />
+<p class="caption">
+Figure 4: Taxa de cifra oculta por Assunto
+</p>
+</div>
 </div>
 <p>Quando comparamos a taxa de cifra oculta por assunto, vemos, de cara, que alguns assuntos possuem taxas muito altas de cifra oculta, a saber, Direito do Trabalho, Direito Eleitoral, Direito Processual Penal e Direito Penal Militar. Respectivamente, cada uma dessas</p>
 <p>Temos de tomar cuidado com estes dados, porque, se olharmos novamente para a Tabela 1, veremos que os três assuntos com maior taxa de cifra oculta são justamente alguns dos assuntos com menos observações. Então, por exemplo, Direito do Trabalho possui uma taxa de 85% de cifra oculta, ou seja, a cada 100 processos, 85 são classificados com um assunto mais genérico do que poderia ser. Mas, ao mesmo tempo, Direito do Trabalho possui apenas 106 observações ao todo. O segundo assunto com mais cifra oculta é o Direito Eleitoral, que possui uma taxa de 75% de cifra oculta, mas apenas 8 observações.</p>
@@ -1603,7 +1627,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Dentre esses três assuntos, Direito Administrativo possui a maior taxa de cifra oculta, de 43%. Em seguida, está o Direito Civil, com 26% dos casos. E por fim, com a menor taxa de cifra oculta de todos os assuntos (sem contar com Direito Internacional, que, como vimos, possui poucas observações), est´´a o Direito Penal, com uma taxa de apenas 9%. Isso pode se explicar pelo fato de que o “advogado” que peticiona os casos de Direito Penal são, na verdade, promotores públicos, agentes do próprio Estado.</p>
 <h3 id="taxa-de-cifra-oculta-por-tribunal">Taxa de cifra oculta por tribunal</h3>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="cifra-oculta_files/figure-html5/tribunal-1.png" width="624" style="display: block; margin: auto;" /></p>
+<div class="figure"><span id="fig:unnamed-chunk-7"></span>
+<img src="cifra-oculta_files/figure-html5/unnamed-chunk-7-1.png" alt="Taxa de cifra oculta por Tribunal" width="624" />
+<p class="caption">
+Figure 5: Taxa de cifra oculta por Tribunal
+</p>
+</div>
 </div>
 <p>Já quando analisamos a taxa de cifra oculta por tribunal, observamos que há uma concentração ligeiramente maior no TJPE, em comparação aos demais tribunais, mas, em geral, a diferença entre eles é baixa. Com isso, podemos concluir que os tribunais possuem, em geral, uma taxa de cifra oculta que fica em torno de de 10% a 20% dos casos. Este número é baixo.</p>
 <h2 id="comentários-finais">Comentários finais</h2>

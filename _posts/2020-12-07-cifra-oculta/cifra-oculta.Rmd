@@ -24,8 +24,7 @@ output:
 knitr::opts_chunk$set(
   echo = FALSE, 
   message = FALSE, 
-  warning = FALSE,
-  fig.align = "center"
+  warning = FALSE
 )
 # carrega pacotes necessários
 library(ggplot2)
@@ -68,7 +67,11 @@ Para realizar essa análise, usamos os dados do Painel do CNJ em Números. O CNJ
 
 Há 7 colunas de assuntos, uma para cada nível, conforme podemos observar na Figura 1.
 
+<center>
+
 ![Figura 1: Visão geral dos 7 níveis de assuntos](img/exemplo.png){#id .class width=100% height=100%}
+
+</center>
 
 A coluna "Assunto - Nome1" indica o assunto em nível mais genérico. Já o "Assunto - Nome7" indica o assunto em nível mais específico. As colunas intermediárias indicam as subclassificações de cada processo. Raramente os processos chegam no nível 7. O nível mais específico costuma estar no 4 ou no 5. 
 
@@ -78,7 +81,11 @@ Por exemplo: o assunto "Direito Administrativo" (nível 1) se ramifica em "Agent
 
 O que devemos perceber é que os traços dos níveis 5 a 7 *não* indicam cifra oculta, mas simplesmente a ausência de classificação naquele nível. Entretanto, o traço no nível 4, porque possui irmãos preenchidos, indica cifra oculta. Vemos esses dois tipos de traços (traços com irmãos e traços sem irmãos) na Figura 2. O traço da coluna "Assunto - Nome4" indica cifra oculta, enquando os demais traços não. 
 
+<center>
+
 ![Figura 2: Os dois tipos de "-". Na coluna "Assuntos - nome4", vemos um caso em que o "-" indica cifra oculta, mas nas colunas seguintes o "-" indica simplesmente que aquele nível de classificação não existe](img/traco_sem_irmaos.PNG){#id .class width=65% height=65%}
+
+</center>
 
 ### Sobre o território e o ano
 
@@ -102,23 +109,22 @@ assuntos %>%
   filter(assunto_nome1 != "TOTAL") %>% 
   count() %>%
   arrange(desc(n)) %>% 
+  plyr::rename(c("assunto_nome1" = "Assunto", "n" = "Quantidade")) %>% 
   knitr::kable(caption = "Quantidade de observações por assunto genérico")
 ```
 
 Podemos ver que a distribuição de casos não é homogênea por assunto. Há uma concentração muito maior em Direito Administrativo, Direito Penal e Direito Civil, em comparação com Direito Eleitoral, Direito da Saúde, Direito Processual Penal Militar, Direito Internacional e Direito do Trabalho. É possível visualizar com mais facilidade essa distribuição assimétrica por meio de um gráfico. 
 
-```{r}
+```{r fig.cap = "Contagem de Assuntos de forma geral"}
 assuntos %>%
   select(assunto_nome1, x1_grau) %>%
   group_by(assunto_nome1) %>%
   count() %>%
   arrange(desc(n)) %>%
-  head(15) %>%
+  head(15) %>% 
   ggplot() +
   geom_col(mapping = aes(x = n,  y = fct_reorder(assunto_nome1, n, .desc = FALSE)),
            fill = viridisLite::viridis(1, 1, .2, .8)) +
-  plot_annotation("Gráfico 1: Contagem de Assuntos de forma geral",
-                  theme = theme(plot.title = element_text(size = rel(1.5)))) +
   labs(x = "Quantidade",
        y = "Assuntos Recorrentes") +
   theme_minimal(8)
@@ -128,15 +134,14 @@ assuntos %>%
 
 Se olhamos para a distribuição ao longo dos anos, ela fica bem mais homogênea. Por mais que haja um pouco mais de casos em 2014 e 2015, essa diferença não é muito relevante.
 
-```{r}
+```{r fig.cap = "Contagem de casos por Ano"}
 assuntos %>%
   group_by(ano) %>%
   count() %>%
   arrange(desc(n)) %>%
   ggplot() +
   geom_col(aes(x = ano, y = n), fill = viridisLite::viridis(1, 1, .2, .8)) +
-  labs(title = "Gráfico 2: Contagem de casos por Ano",
-       x = "Anos",
+  labs(x = "Anos",
        y = "Tribunais") +
   theme_minimal(12) +
   scale_y_continuous(name = "Numero de casos", breaks = seq(0, 7000, 2000))
@@ -146,7 +151,7 @@ assuntos %>%
 
 Ainda podemos ver a distribuição dos casos por tribunal. Dos 4 tribunais que selecionamos (TJSP, TJAM, TJRJ e TJPE), TJSP foi o Estado com mais processos ao longo destes 6 anos, o que é esperado, uma vez que ele é o maior tribunal brasileiro. A seguir, TJAM e TJRJ possuem quantidades muito similares de processos. E por fim, está o TJPE como menor número de casos.  
 
-```{r n-tribunal}
+```{r fig.cap = "Contagem de casos por Tribunal"}
 assuntos %>%
   select(tribunal, x1_grau) %>%
   group_by(tribunal) %>%
@@ -154,8 +159,7 @@ assuntos %>%
   arrange(desc(n)) %>%
   ggplot() +
   geom_col(aes(x = n,  y = fct_reorder(tribunal, n, .desc = FALSE)) , fill = viridisLite::viridis(1, 1, .2, .8)) +
-  labs(title = "Gráfico 3: Contagem de casos por Tribunal",
-       x = "Quantidade",
+  labs(x = "Quantidade",
        y = "Tribunais") +
   theme_minimal(12)
 ```
@@ -170,7 +174,7 @@ Calculamos, então, essa taxa para cada um dos 18 assuntos genéricos, bem como 
 
 ### Taxa de cifra oculta por assunto 
 
-```{r assuntos}
+```{r fig.cap = "Taxa de cifra oculta por Assunto"}
 assuntos %>%
   group_by(assunto_nome1) %>%
   summarise(taxa = sum(x1_grau[generico == "Sim"]) / sum(x1_grau), .groups = "drop") %>%
@@ -181,8 +185,6 @@ assuntos %>%
            fill = viridis::viridis(1, 1, .2, .8)) +
   scale_x_continuous(labels = scales::percent) +
   theme_minimal(9.5) +
-  plot_annotation("Gráfico 4: Taxa de cifra oculta por Assunto",
-                  theme = theme(plot.title = element_text(size = rel(1.5)))) +
   labs(x = "Taxa de cifra genérica",
        y = "Assuntos")
 ```
@@ -199,7 +201,7 @@ Dentre esses três assuntos, Direito Administrativo possui a maior taxa de cifra
 
 ### Taxa de cifra oculta por tribunal
 
-```{r tribunal}
+```{r fig.cap = "Taxa de cifra oculta por Tribunal"}
 assuntos %>%
   group_by(tribunal) %>%
   summarise(taxa = sum(x1_grau[generico == "Sim"]) / sum(x1_grau), .groups = "drop") %>%
@@ -208,8 +210,7 @@ assuntos %>%
            fill = viridis::viridis(1, 1, .2, .8)) +
   scale_x_continuous(labels = scales::percent) +
   theme_minimal(12) +
-  labs(title = "Gráfico 5: Taxa de cifra oculta por tribunal",
-       x = "Tribunal",
+  labs(x = "Tribunal",
        y = "Taxa de cifra genérica")
 ```
 
