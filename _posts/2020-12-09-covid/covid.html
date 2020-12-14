@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
   <meta name="generator" content="distill" />
-  <link rel="alternate" type="application/rss+xml" href="https://lab.abj.org.br/index.xml" />
 
   <style type="text/css">
   /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
@@ -86,622 +85,40 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Associação Brasileira de Jurimetria: Direito na Medida</title>
+  <title>Sentenças que mencionam Covid-19 no TJSP</title>
+
+  <meta property="description" itemprop="description" content="Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP."/>
 
 
-  <link rel="icon" type="image/png" href="images/abj.png"/>
-
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2020-12-09"/>
+  <meta property="article:created" itemprop="dateCreated" content="2020-12-09"/>
+  <meta name="article:author" content="Julio Trecenti"/>
+  <meta name="article:author" content="João Marcelo Torquato"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Associação Brasileira de Jurimetria: Direito na Medida"/>
+  <meta property="og:title" content="Sentenças que mencionam Covid-19 no TJSP"/>
   <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP."/>
   <meta property="og:locale" content="en_US"/>
-  <meta property="og:site_name" content="Associação Brasileira de Jurimetria"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Associação Brasileira de Jurimetria: Direito na Medida"/>
+  <meta property="twitter:title" content="Sentenças que mencionam Covid-19 no TJSP"/>
+  <meta property="twitter:description" content="Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","site","listing"]}},"value":[{"type":"character","attributes":{},"value":["Direito na Medida"]},{"type":"character","attributes":{},"value":["distill::distill_website"]},{"type":"character","attributes":{},"value":["posts"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["Sentenças que mencionam Covid-19 no TJSP"]},{"type":"character","attributes":{},"value":["Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jtrecenti/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["João Marcelo Torquato"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/joão-marcelo-torquato-157b0a16a"]}]}]},{"type":"character","attributes":{},"value":["12-09-2020"]},{"type":"character","attributes":{},"value":["Levantamentos","Analises"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["covid_files/anchor-4.2.2/anchor.min.js","covid_files/bowser-1.9.3/bowser.min.js","covid_files/distill-2.2.21/template.v2.js","covid_files/figure-html5/fig-mes-1.png","covid_files/figure-html5/fig-semana-1.png","covid_files/figure-html5/unnamed-chunk-1-1.png","covid_files/header-attrs-2.5/header-attrs.js","covid_files/jquery-1.11.3/jquery.min.js","covid_files/webcomponents-2.0.0/webcomponents.js"]}
+  </script>
   <!--radix_placeholder_navigation_in_header-->
-  <meta name="distill:offset" content=""/>
-
-  <script type="application/javascript">
-
-    window.headroom_prevent_pin = false;
-
-    window.document.addEventListener("DOMContentLoaded", function (event) {
-
-      // initialize headroom for banner
-      var header = $('header').get(0);
-      var headerHeight = header.offsetHeight;
-      var headroom = new Headroom(header, {
-        tolerance: 5,
-        onPin : function() {
-          if (window.headroom_prevent_pin) {
-            window.headroom_prevent_pin = false;
-            headroom.unpin();
-          }
-        }
-      });
-      headroom.init();
-      if(window.location.hash)
-        headroom.unpin();
-      $(header).addClass('headroom--transition');
-
-      // offset scroll location for banner on hash change
-      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
-      window.addEventListener("hashchange", function(event) {
-        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
-      });
-
-      // responsive menu
-      $('.distill-site-header').each(function(i, val) {
-        var topnav = $(this);
-        var toggle = topnav.find('.nav-toggle');
-        toggle.on('click', function() {
-          topnav.toggleClass('responsive');
-        });
-      });
-
-      // nav dropdowns
-      $('.nav-dropbtn').click(function(e) {
-        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
-        $(this).parent().siblings('.nav-dropdown')
-           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $("body").click(function(e){
-        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
-      });
-      $(".nav-dropdown").click(function(e){
-        e.stopPropagation();
-      });
-    });
-  </script>
-
-  <style type="text/css">
-
-  /* Theme (user-documented overrideables for nav appearance) */
-
-  .distill-site-nav {
-    color: rgba(255, 255, 255, 0.8);
-    background-color: #0F2E3D;
-    font-size: 15px;
-    font-weight: 300;
-  }
-
-  .distill-site-nav a {
-    color: inherit;
-    text-decoration: none;
-  }
-
-  .distill-site-nav a:hover {
-    color: white;
-  }
-
-  @media print {
-    .distill-site-nav {
-      display: none;
-    }
-  }
-
-  .distill-site-header {
-
-  }
-
-  .distill-site-footer {
-
-  }
-
-
-  /* Site Header */
-
-  .distill-site-header {
-    width: 100%;
-    box-sizing: border-box;
-    z-index: 3;
-  }
-
-  .distill-site-header .nav-left {
-    display: inline-block;
-    margin-left: 8px;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header .nav-left {
-      margin-left: 0;
-    }
-  }
-
-
-  .distill-site-header .nav-right {
-    float: right;
-    margin-right: 8px;
-  }
-
-  .distill-site-header a,
-  .distill-site-header .title {
-    display: inline-block;
-    text-align: center;
-    padding: 14px 10px 14px 10px;
-  }
-
-  .distill-site-header .title {
-    font-size: 18px;
-    min-width: 150px;
-  }
-
-  .distill-site-header .logo {
-    padding: 0;
-  }
-
-  .distill-site-header .logo img {
-    display: none;
-    max-height: 20px;
-    width: auto;
-    margin-bottom: -4px;
-  }
-
-  .distill-site-header .nav-image img {
-    max-height: 18px;
-    width: auto;
-    display: inline-block;
-    margin-bottom: -3px;
-  }
-
-
-
-  @media screen and (min-width: 1000px) {
-    .distill-site-header .logo img {
-      display: inline-block;
-    }
-    .distill-site-header .nav-left {
-      margin-left: 20px;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 20px;
-    }
-    .distill-site-header .title {
-      padding-left: 12px;
-    }
-  }
-
-
-  .distill-site-header .nav-toggle {
-    display: none;
-  }
-
-  .nav-dropdown {
-    display: inline-block;
-    position: relative;
-  }
-
-  .nav-dropdown .nav-dropbtn {
-    border: none;
-    outline: none;
-    color: rgba(255, 255, 255, 0.8);
-    padding: 16px 10px;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    margin: 0;
-    margin-top: 1px;
-    z-index: 2;
-  }
-
-  .nav-dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
-    z-index: 1;
-    margin-top: 2px;
-    white-space: nowrap;
-    padding-top: 4px;
-    padding-bottom: 4px;
-  }
-
-  .nav-dropdown-content hr {
-    margin-top: 4px;
-    margin-bottom: 4px;
-    border: none;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-dropdown-active {
-    display: block;
-  }
-
-  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
-    color: black;
-    padding: 6px 24px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-  }
-
-  .nav-dropdown-content .nav-dropdown-header {
-    display: block;
-    padding: 5px 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-    font-size: 14px;
-    color: #999999;
-    white-space: nowrap;
-  }
-
-  .nav-dropdown:hover .nav-dropbtn {
-    color: white;
-  }
-
-  .nav-dropdown-content a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .nav-right .nav-dropdown-content {
-    margin-left: -45%;
-    right: 0;
-  }
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
-    .distill-site-header a.nav-toggle {
-      float: right;
-      display: block;
-    }
-    .distill-site-header .title {
-      margin-left: 0;
-    }
-    .distill-site-header .nav-right {
-      margin-right: 0;
-    }
-    .distill-site-header {
-      overflow: hidden;
-    }
-    .nav-right .nav-dropdown-content {
-      margin-left: 0;
-    }
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-header.responsive {position: relative; min-height: 500px; }
-    .distill-site-header.responsive a.nav-toggle {
-      position: absolute;
-      right: 0;
-      top: 0;
-    }
-    .distill-site-header.responsive a,
-    .distill-site-header.responsive .nav-dropdown {
-      display: block;
-      text-align: left;
-    }
-    .distill-site-header.responsive .nav-left,
-    .distill-site-header.responsive .nav-right {
-      width: 100%;
-    }
-    .distill-site-header.responsive .nav-dropdown {float: none;}
-    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
-    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
-      display: block;
-      width: 100%;
-      text-align: left;
-    }
-  }
-
-  /* Site Footer */
-
-  .distill-site-footer {
-    width: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    z-index: 3;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: center;
-  }
-
-  /* Headroom */
-
-  d-title {
-    padding-top: 6rem;
-  }
-
-  @media print {
-    d-title {
-      padding-top: 4rem;
-    }
-  }
-
-  .headroom {
-    z-index: 1000;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-
-  .headroom--transition {
-    transition: all .4s ease-in-out;
-  }
-
-  .headroom--unpinned {
-    top: -100px;
-  }
-
-  .headroom--pinned {
-    top: 0;
-  }
-
-  </style>
-
-  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
-  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
-  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
-  <script src="site_libs/autocomplete-0.37.1/autocomplete.min.js"></script>
-  <script src="site_libs/fuse-6.4.1/fuse.min.js"></script>
-
-  <script type="application/javascript">
-
-  function getMeta(metaName) {
-    var metas = document.getElementsByTagName('meta');
-    for (let i = 0; i < metas.length; i++) {
-      if (metas[i].getAttribute('name') === metaName) {
-        return metas[i].getAttribute('content');
-      }
-    }
-    return '';
-  }
-
-  function offsetURL(url) {
-    var offset = getMeta('distill:offset');
-    return offset ? offset + '/' + url : url;
-  }
-
-  function createFuseIndex() {
-
-    // create fuse index
-    var options = {
-      keys: [
-        { name: 'title', weight: 20 },
-        { name: 'categories', weight: 15 },
-        { name: 'description', weight: 10 },
-        { name: 'contents', weight: 5 },
-      ],
-      ignoreLocation: true,
-      threshold: 0
-    };
-    var fuse = new window.Fuse([], options);
-
-    // fetch the main search.json
-    return fetch(offsetURL('search.json'))
-      .then(function(response) {
-        if (response.status == 200) {
-          return response.json().then(function(json) {
-            // index main articles
-            json.articles.forEach(function(article) {
-              fuse.add(article);
-            });
-            // download collections and index their articles
-            return Promise.all(json.collections.map(function(collection) {
-              return fetch(offsetURL(collection)).then(function(response) {
-                if (response.status === 200) {
-                  return response.json().then(function(articles) {
-                    articles.forEach(function(article) {
-                      fuse.add(article);
-                    });
-                  })
-                } else {
-                  return Promise.reject(
-                    new Error('Unexpected status from search index request: ' +
-                              response.status)
-                  );
-                }
-              });
-            })).then(function() {
-              return fuse;
-            });
-          });
-
-        } else {
-          return Promise.reject(
-            new Error('Unexpected status from search index request: ' +
-                        response.status)
-          );
-        }
-      });
-  }
-
-  window.document.addEventListener("DOMContentLoaded", function (event) {
-
-    // get search element (bail if we don't have one)
-    var searchEl = window.document.getElementById('distill-search');
-    if (!searchEl)
-      return;
-
-    createFuseIndex()
-      .then(function(fuse) {
-
-        // make search box visible
-        searchEl.classList.remove('hidden');
-
-        // initialize autocomplete
-        var options = {
-          autoselect: true,
-          hint: false,
-          minLength: 2,
-        };
-        window.autocomplete(searchEl, options, [{
-          source: function(query, callback) {
-            const searchOptions = {
-              isCaseSensitive: false,
-              shouldSort: true,
-              minMatchCharLength: 2,
-              limit: 10,
-            };
-            var results = fuse.search(query, searchOptions);
-            callback(results
-              .map(function(result) { return result.item; })
-              .filter(function(item) { return !!item.description; })
-            );
-          },
-          templates: {
-            suggestion: function(suggestion) {
-              var html = `
-                <div class="search-item">
-                  <h3>${suggestion.title}</h3>
-                  <div class="search-item-description">
-                    ${suggestion.description}
-                  </div>
-                  <div class="search-item-preview">
-                    <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
-                  </div>
-                </div>
-              `;
-              return html;
-            }
-          }
-        }]).on('autocomplete:selected', function(event, suggestion) {
-          window.location.href = offsetURL(suggestion.path);
-        });
-        // remove inline display style on autocompleter (we want to
-        // manage responsive display via css)
-        $('.algolia-autocomplete').css("display", "");
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
-
-  });
-
-  </script>
-
-  <style type="text/css">
-
-  /* Algolioa Autocomplete */
-
-  .algolia-autocomplete {
-    display: inline-block;
-    margin-left: 10px;
-    vertical-align: sub;
-    background-color: white;
-    color: black;
-    padding: 6px;
-    padding-top: 8px;
-    padding-bottom: 0;
-    border-radius: 6px;
-    border: 1px #0F2E3D solid;
-    width: 180px;
-  }
-
-
-  @media screen and (max-width: 768px) {
-    .distill-site-nav .algolia-autocomplete {
-      display: none;
-      visibility: hidden;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete {
-      display: inline-block;
-      visibility: visible;
-    }
-    .distill-site-nav.responsive .algolia-autocomplete .aa-dropdown-menu {
-      margin-left: 0;
-      width: 400px;
-      max-height: 400px;
-    }
-  }
-
-  .algolia-autocomplete .aa-input, .algolia-autocomplete .aa-hint {
-    width: 90%;
-    outline: none;
-    border: none;
-  }
-
-  .algolia-autocomplete .aa-hint {
-    color: #999;
-  }
-  .algolia-autocomplete .aa-dropdown-menu {
-    width: 550px;
-    max-height: 70vh;
-    overflow-x: visible;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-top: 3px;
-    margin-left: -150px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 1px solid #999;
-    border-top: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion {
-    cursor: pointer;
-    padding: 5px 4px;
-    border-bottom: 1px solid #eee;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion:last-of-type {
-    border-bottom: none;
-    margin-bottom: 2px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item {
-    overflow: hidden;
-    font-size: 0.8em;
-    line-height: 1.4em;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
-    margin-block-start: 0;
-    margin-block-end: 5px;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-description {
-    display: inline-block;
-    overflow: hidden;
-    height: 2.8em;
-    width: 80%;
-    margin-right: 4%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview {
-    display: inline-block;
-    width: 15%;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img {
-    height: 3em;
-    width: auto;
-    display: none;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item-preview img[src] {
-    display: initial;
-  }
-
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion.aa-cursor {
-    background-color: #eee;
-  }
-  .algolia-autocomplete .aa-dropdown-menu .aa-suggestion em {
-    font-weight: bold;
-    font-style: normal;
-  }
-
-  </style>
-
-
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -1987,418 +1404,282 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.5/header-attrs.js"></script>
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
-  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
-  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
+  <script src="covid_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="covid_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="covid_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="covid_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="covid_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="covid_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-182605574-1"></script>
-  <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'UA-182605574-1');
-  </script>
-  <style type="text/css">
-  .radix-site-nav {
-      color: rgba(255, 255, 255, 0.8);
-      background-color: #990000;
-      font-size: 15px;
-      font-weight: 300;
-  }
-
-  @media only screen and (max-width: 600px) {
-    d-title{
-      background-repeat: no-repeat;
-      background-position: 95% 70%;
-      background-size: initial;
-    }
-  }
-
-  @media only screen and (min-width: 600px) {
-    d-title{
-      background-repeat: no-repeat;
-      background-position: 63% 70%;
-      background-size: initial;
-    }
-  }
-
-  .sidebar-section {
-    display: none;
-  }
-
-
-  .thumbnail img {
-    max-width: 50%;
-  }
-
-  .posts-container {
-    align: center;
-    margin: auto;
-  }
-  </style>
   <!--/radix_placeholder_site_in_header-->
 
-  <link rel="stylesheet" href="styles.css" type="text/css"/>
 
 </head>
 
-<body class="layout-listing">
+<body>
 
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Direito na Medida","authors":[]}
+{"title":"Sentenças que mencionam Covid-19 no TJSP","description":"Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.","authors":[{"author":"Julio Trecenti","authorURL":"https://www.linkedin.com/in/jtrecenti/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"João Marcelo Torquato","authorURL":"https://www.linkedin.com/in/joão-marcelo-torquato-157b0a16a","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-12-09T00:00:00.000-03:00","citationText":"Trecenti & Torquato, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
-<header class="header header--fixed" role="banner">
-<nav class="distill-site-nav distill-site-header">
-<div class="nav-left">
-<span class="logo">
-<img src="images/abj.png"/>
-</span>
-<a href="index.html" class="title">Associação Brasileira de Jurimetria</a>
-<input id="distill-search" class="nav-search hidden" type="text" placeholder="Search..."/>
-</div>
-<div class="nav-right">
-<a href="index.html">Home</a>
-<a href="about.html">Sobre</a>
-<a href="https://github.com/abjur/blog">
-<i class="fa fa-github" aria-hidden="true"></i>
-</a>
-<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
-</div>
-</nav>
-</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
-<!--radix_placeholder_article_listing-->
-
-
-<script type="application/javascript">
-
-function init_posts_list() {
-
-  function load_image(img) {
-    var src = $(img).attr('data-src');
-    if (src) {
-      $(img).attr('src', src);
-      $(img).load(function() {
-        img.removeAttribute('data-src');
-      });
-    }
-  }
-
-  function set_posts_visible(posts, visible) {
-    if (visible) {
-
-      // show bottom border by default
-      $(posts).removeClass('post-preview-last');
-
-      // apply limits if need be
-      var max_posts = 25;
-      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-      if (apply_limits && posts.length > max_posts) {
-        posts = $(posts).slice(0, max_posts);
-      } else {
-        $('.posts-more a').addClass('hidden');
-      }
-
-      // apply last style
-      $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-      $(posts).removeClass('hidden');
-      $(posts).find('img[data-src]').each(function(i, img) {
-        load_image(img);
-      });
-    } else {
-      $(posts).addClass('hidden');
-    }
-  }
-
-  function apply_hash_filter() {
-
-    // clear active state
-    $('.categories .active').removeClass('active');
-
-    // mark all posts invisible to start
-    set_posts_visible($('.posts-list').children('a'), false);
-
-    // if we have a hash filter
-    if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-      // mark posts that match the category visible
-      var page_category = window.location.hash.replace(/^#category:/, "");
-      var posts = $('.post-metadata').map(function(idx, script) {
-        var metadata = $.parseJSON($(script).html());
-        var post = null;
-        $.each(metadata.categories, function(idx, category) {
-          category = category.replace(/ /g,"_");
-          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-            post = $(script).parent().get();
-            return false;
-          }
-        });
-        return post;
-      });
-      set_posts_visible(posts, true);
-
-      // mark the hash active
-      $('.categories li>a[href="' + window.location.hash + '"]').addClass('active');
-
-      // update the list_caption
-      var list_caption = $('.posts-list-caption');
-      var caption = (page_category || '').toLowerCase() === "articles"
-        ? list_caption.attr('data-caption')
-        : ('Category: ' + page_category.replace(/_/g," "));
-      list_caption.text(caption);
-
-    } else {
-
-      // no hash filter, make all posts visible (subject to max display)
-      set_posts_visible($('.posts-list').children(), true);
-
-      // reset list caption
-      var list_caption = $('.posts-list-caption');
-      list_caption.text(list_caption.attr('data-caption'));
-
-
-    }
-  }
-
-  // more articles
-  function apply_post_limits(apply) {
-    if (apply) {
-      $('.posts-container').addClass('posts-apply-limit');
-      $('.posts-more a').removeClass('hidden');
-    } else {
-      $('.posts-container').removeClass('posts-apply-limit');
-      $('.posts-more a').addClass('hidden');
-    }
-  }
-
-  // click handling for tags
-  $('.dt-tag').click(function(ev) {
-    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-    return false;
-  })
-
-  // hash filter handling
-  apply_hash_filter();
-  $(window).on('hashchange',function() {
-    apply_post_limits(true);
-    apply_hash_filter();
-  });
-
-  // more articles link
-  $('.posts-more a').click(function(e) {
-    e.preventDefault();
-    apply_post_limits(false);
-    apply_hash_filter();
-    return false;
-  });
-
-}
-
-</script>
-
-
-
-<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-<div class="posts-list">
-<h1 class="posts-list-caption" data-caption="Direito na Medida">Direito na Medida</h1>
-<a href="posts/2020-12-09-covid/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Levantamentos","Analises"]}</script>
-<div class="metadata">
-<div class="publishedDate">Dec. 9, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-<div class="dt-author">João Marcelo Torquato</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-12-09-covid/covid_files/figure-html5/fig-semana-1.png"/>
-</div>
-<div class="description">
-<h2>Sentenças que mencionam Covid-19 no TJSP</h2>
-<div class="dt-tags">
-<div class="dt-tag">Levantamentos</div>
-<div class="dt-tag">Analises</div>
-</div>
-<p>Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.</p>
-</div>
-</a>
-<a href="posts/2020-11-10-candidatos2020/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Levantamentos"]}</script>
-<div class="metadata">
-<div class="publishedDate">Nov. 10, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-<div class="dt-author">Renata Hirota</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-11-10-candidatos2020/candidatos2020.png"/>
-</div>
-<div class="description">
-<h2>Eleições 2020: Candidatos envolvidos em processos criminais</h2>
-<div class="dt-tags">
-<div class="dt-tag">Levantamentos</div>
-</div>
-<p>Levantamento da ABJ publicado pelo G1</p>
-</div>
-</a>
-<a href="posts/2020-10-23-empresas/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
-<div class="metadata">
-<div class="publishedDate">Oct. 23, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png"/>
-</div>
-<div class="description">
-<h2>Empresas CVM</h2>
-<div class="dt-tags">
-<div class="dt-tag">Observatorio</div>
-<div class="dt-tag">CVM</div>
-</div>
-<p>Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
-</div>
-</a>
-<a href="posts/2020-10-23-temas/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
-<div class="metadata">
-<div class="publishedDate">Sept. 10, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
-</div>
-<div class="description">
-<h2>Temas e condutas</h2>
-<div class="dt-tags">
-<div class="dt-tag">Observatorio</div>
-<div class="dt-tag">CVM</div>
-</div>
-<p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
-</div>
-</a>
-<a href="posts/2020-10-23-paps/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
-<div class="metadata">
-<div class="publishedDate">July 20, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Julio Trecenti</div>
-</div>
-</div>
-<div class="thumbnail">
-<img src="posts/2020-10-23-paps/img/estrutura.png"/>
-</div>
-<div class="description">
-<h2>Processos pré-sancionadores</h2>
-<div class="dt-tags">
-<div class="dt-tag">Observatorio</div>
-<div class="dt-tag">CVM</div>
-</div>
-<p>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</p>
-</div>
-</a>
-<a href="posts/2020-01-20-carf/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 20, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Renata Hirota</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
-</div>
-<div class="description">
-<h2>Cinco anos de Operação Zelotes</h2>
-<div class="dt-tags">
-<div class="dt-tag">Analises</div>
-</div>
-<p>As mudanças no CARF após investigações de corrupção.</p>
-</div>
-</a>
-<a href="posts/2020-01-12-welcome/" class="post-preview">
-<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-<div class="metadata">
-<div class="publishedDate">Jan. 12, 2020</div>
-<div class="dt-authors">
-<div class="dt-author">Marcelo Guedes Nunes</div>
-</div>
-</div>
-<div class="thumbnail">
-<img data-src="posts/2020-01-12-welcome/abj.png"/>
-</div>
-<div class="description">
-<h2>Nosso portal</h2>
-<div class="dt-tags">
-<div class="dt-tag">Geral</div>
-</div>
-<p>Esse é o laboratório da Associação Brasileira de Jurimetria. 
-Esperamos que goste!</p>
-</div>
-</a>
-</div>
-<div class="posts-sidebar">
-<div class="sidebar-section categories">
-<h3>Categories</h3>
-<ul>
-<li>
-<a href="#category:Articles">Articles</a>
-<span class="category-count">(7)</span>
-</li>
-<li>
-<a href="#category:Analises">Analises</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:CVM">CVM</a>
-<span class="category-count">(3)</span>
-</li>
-<li>
-<a href="#category:Geral">Geral</a>
-<span class="category-count">(1)</span>
-</li>
-<li>
-<a href="#category:Levantamentos">Levantamentos</a>
-<span class="category-count">(2)</span>
-</li>
-<li>
-<a href="#category:Observatorio">Observatorio</a>
-<span class="category-count">(3)</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="posts-more">
-<a href="#">More articles &raquo;</a>
-</div>
-</div>
-<!--/radix_placeholder_article_listing-->
 
 <div class="d-title">
-<h1>Direito na Medida</h1>
+<h1>Sentenças que mencionam Covid-19 no TJSP</h1>
 <!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">Levantamentos</div>
+<div class="dt=tag">Analises</div>
+</div>
 <!--/radix_placeholder_categories-->
-
+<p><p>Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.</p></p>
 </div>
 
+<div class="d-byline">
+  Julio Trecenti <a href="https://www.linkedin.com/in/jtrecenti/" class="uri">https://www.linkedin.com/in/jtrecenti/</a> 
+  
+,   João Marcelo Torquato <a href="https://www.linkedin.com/in/joão-marcelo-torquato-157b0a16a" class="uri">https://www.linkedin.com/in/joão-marcelo-torquato-157b0a16a</a> 
+  
+<br/>12-09-2020
+</div>
 
 <div class="d-article">
+<h1 id="introdução">Introdução</h1>
+<p>Foi realizado o levantamento de dados do site do Tribunal de Justiça de São Paulo (TJSP), onde foram recolhidos dados referentes a sentenças, publicadas em época de pandemia, e seus respectivos processos. Foram recolhidas as seguintes informações: o número do processo, seu respectivo código, o assunto o qual o processo de refere, sua classe, sua comarca na qual tramita, a data de disponibilização da sentença, o foro o qual é legislado o processo, o juiz responsável pela sentença, um resumo da sentença e a data da sentença.</p>
+<p>Com essas informações, analisamos uma série de fatos que mostram como as sentenças do TJSP vêm se comportando. Foram analisados no total 30.766 processos que tiveram a disponibilização de sua sentença entre 16/03/2020 e 09/12/2020.</p>
+<p>Dentro dessa análise, foram analisado os seguintes pontos:</p>
+<ul>
+<li>As classes mais frequentes<br />
+</li>
+<li>Os assuntos mais frequentes</li>
+<li>Gráfico do volume de sentenças ao longo do tempo</li>
+</ul>
+<h1 id="dados">Dados</h1>
+<p>Os dados utilizados para realização dessa análise estão disponíveis no pacote em R <a href="https://github.com/abjur/covidTJSP"><code>{covidTJSP}</code></a>, da <a href="https://abj.org.br">Associação Brasileira de Jurimetria</a>. O repositório atualiza diariamente a base de sentenças e de processos que mencionam termos relacionados à Covid-19. É possível acessar as base em excel para realizar outras análises.</p>
+<h1 id="resultados">Resultados</h1>
+<p>Em primeiro lugar foi feita uma análise para listar as classes e assuntos com maior frequência dentro do nosso escopo, como segue nas Tabelas <a href="#tab:tab-classe">1</a> e <a href="#tab:tab-assunto">2</a>, ondem foram mostrados os 15 casos mais frequentes de classes e assuntos que apareceram.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:tab-classe">Table 1: </span>Quantidade de processos por classe.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Classe</th>
+<th style="text-align: left;">Quantidade</th>
+<th style="text-align: left;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Procedimento do Juizado Especial Cível</td>
+<td style="text-align: left;">9.430</td>
+<td style="text-align: left;">30,7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Procedimento Comum Cível</td>
+<td style="text-align: left;">4.844</td>
+<td style="text-align: left;">15,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ação Penal - Procedimento Ordinário</td>
+<td style="text-align: left;">4.063</td>
+<td style="text-align: left;">13,2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Procedimento Especial da Lei Antitóxicos</td>
+<td style="text-align: left;">2.481</td>
+<td style="text-align: left;">8,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Termo Circunstanciado</td>
+<td style="text-align: left;">2.321</td>
+<td style="text-align: left;">7,5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Mandado de Segurança Cível</td>
+<td style="text-align: left;">1.254</td>
+<td style="text-align: left;">4,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inquérito Policial</td>
+<td style="text-align: left;">534</td>
+<td style="text-align: left;">1,7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cumprimento de sentença</td>
+<td style="text-align: left;">511</td>
+<td style="text-align: left;">1,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ação Penal - Procedimento Sumário</td>
+<td style="text-align: left;">482</td>
+<td style="text-align: left;">1,6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Despejo por Falta de Pagamento Cumulado Com Cobrança</td>
+<td style="text-align: left;">474</td>
+<td style="text-align: left;">1,5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Petição Criminal</td>
+<td style="text-align: left;">380</td>
+<td style="text-align: left;">1,2%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cumprimento de Sentença contra a Fazenda Pública</td>
+<td style="text-align: left;">332</td>
+<td style="text-align: left;">1,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ação Penal - Procedimento Sumaríssimo</td>
+<td style="text-align: left;">228</td>
+<td style="text-align: left;">0,7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Execução da Pena</td>
+<td style="text-align: left;">228</td>
+<td style="text-align: left;">0,7%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tutela Antecipada Antecedente</td>
+<td style="text-align: left;">191</td>
+<td style="text-align: left;">0,6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Outros</td>
+<td style="text-align: left;">3.013</td>
+<td style="text-align: left;">9,8%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;">30.766</td>
+<td style="text-align: left;">100,0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:tab-assunto">Table 2: </span>Quantidade de processos por assunto.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Assunto</th>
+<th style="text-align: left;">Quantidade</th>
+<th style="text-align: left;">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Tráfico de Drogas e Condutas Afins</td>
+<td style="text-align: left;">3.058</td>
+<td style="text-align: left;">9,9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Indenização por Dano Moral</td>
+<td style="text-align: left;">1.595</td>
+<td style="text-align: left;">5,2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Roubo</td>
+<td style="text-align: left;">1.399</td>
+<td style="text-align: left;">4,5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obrigação de Fazer / Não Fazer</td>
+<td style="text-align: left;">1.247</td>
+<td style="text-align: left;">4,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Indenização por Dano Material</td>
+<td style="text-align: left;">1.073</td>
+<td style="text-align: left;">3,5%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Rescisão do contrato e devolução do dinheiro</td>
+<td style="text-align: left;">957</td>
+<td style="text-align: left;">3,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Perdas e Danos</td>
+<td style="text-align: left;">832</td>
+<td style="text-align: left;">2,7%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Furto Qualificado</td>
+<td style="text-align: left;">792</td>
+<td style="text-align: left;">2,6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Transporte Aéreo</td>
+<td style="text-align: left;">738</td>
+<td style="text-align: left;">2,4%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Locação de Imóvel</td>
+<td style="text-align: left;">711</td>
+<td style="text-align: left;">2,3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cancelamento de vôo</td>
+<td style="text-align: left;">642</td>
+<td style="text-align: left;">2,1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Posse de Drogas para Consumo Pessoal</td>
+<td style="text-align: left;">640</td>
+<td style="text-align: left;">2,1%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Crimes de Trânsito</td>
+<td style="text-align: left;">555</td>
+<td style="text-align: left;">1,8%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Acidente de Trânsito</td>
+<td style="text-align: left;">500</td>
+<td style="text-align: left;">1,6%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Suspensão da Exigibilidade</td>
+<td style="text-align: left;">493</td>
+<td style="text-align: left;">1,6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Outros</td>
+<td style="text-align: left;">15.534</td>
+<td style="text-align: left;">50,5%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;">30.766</td>
+<td style="text-align: left;">100,0%</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Em seguida foi elaborado um gráfico com a quantidade de sentenças disponibilizadas em cada semana. Nele conseguimos perceber que existe uma tendência de subida das decisões relacionadas a COVID-19. O aumento tem se intensificado a partir do mês de setembro.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure"><span id="fig:fig-semana"></span>
+<img src="covid_files/figure-html5/fig-semana-1.png" alt="Número de decisões publicadas por semana." width="624" />
+<p class="caption">
+Figure 1: Número de decisões publicadas por semana.
+</p>
+</div>
+</div>
+<p>Para facilitar a visualização das informações da Figura <a href="#fig:fig-semana">1</a>, elaboramos outro gráfico nos mesmo padrões, agrupado por mês. A tendência de subida mais acentuada a partir de setembro continua aparente.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure"><span id="fig:fig-mes"></span>
+<img src="covid_files/figure-html5/fig-mes-1.png" alt="Número de decisões publicadas por mês." width="624" />
+<p class="caption">
+Figure 2: Número de decisões publicadas por mês.
+</p>
+</div>
+</div>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -2414,20 +1695,7 @@ Esperamos que goste!</p>
 <div class="appendix-bottom"></div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
-<div class="distill-site-nav distill-site-footer">
-<script>
-  var element = document.getElementsByClassName("posts-container")[0];
-  element.classList.remove("posts-with-sidebar");
-  
-  $(".logo").wrap("<a href='https://abj.org.br' target='_blank'></a>");
-
-</script>
-<div>
-© Copyright ABJ. Todos os direitos reservados. CNPJ: 13.612.840/0001-57
-</div>
-</div>
 <!--/radix_placeholder_navigation_after_body-->
-
 
 </body>
 
