@@ -46,7 +46,7 @@ Este texto se propõe a discutir o problema da _cifra oculta_ nos assuntos proce
 
 A cifra oculta é a quantidade não observada de determinado dado. Esse problema surge, quando falamos dos Assuntos processuais, por causa da forma como esses dados são gerados. Para entendermos isso, precisamos nos voltar para a Resolução 46/2007 do CNJ. Essa norma criou as chamadas Tabelas Processuais Unificadas (TPUs), as quais tentam unificar dados relativos a todos os processos, em todas as esferas, em todos os tribunais brasileiros, classificando-os por classe e assunto. A classe está ligada ao rito processual (rito ordinário, extraordinário, etc). Já o assunto se liga às causas de pedir, isto é, qual é o conflito gerador do processo judicial.
 
-Para reportar o Assunto dos processos, o CNJ criou uma árvore de classificação que começa do gênero do Assunto (e.g., Direito do Consumidor) e se ramifica até chegar na sua espécie (e.g., Produto Impróprio, Venda Casa, Indenização por Dano Material). Via de regra, existem várias classificações intermediárias entre o assunto mais genérico possível e o assunto mais específico possível. Cada uma dessas classificações está em um “nível” diferente. Os níveis do CNJ vão do 1 (o mais genérico, como Direito do Consumidor), até o 7 (o mais específico), mas não necessariamente um processo deve chegar até o nível 7 para ser o nível mais específico possível. Tem vezes em que o nível 2 já é a espécie daquele Assunto, mas tem outras vezes em que o nível 2 se ramifica em um ou mais níveis posteriores. E o mais importante desta classificação é que quem preenche tal informação é o próprio advogado que peticionou.
+Para reportar o Assunto dos processos, o CNJ criou uma árvore de classificação que começa do gênero do Assunto (e.g., Direito do Consumidor) e se ramifica até chegar na sua espécie (e.g., Produto Impróprio, Venda Casa, Indenização por Dano Material). Via de regra, existem várias classificações intermediárias entre o assunto mais genérico possível e o assunto mais específico possível. Cada uma dessas classificações está em um "nível" diferente. Os níveis do CNJ vão do 1 (o mais genérico, como Direito do Consumidor), até o 7 (o mais específico), mas não necessariamente um processo deve chegar até o nível 7 para ser o nível mais específico possível. Tem vezes em que o nível 2 já é a espécie daquele Assunto, mas tem outras vezes em que o nível 2 se ramifica em um ou mais níveis posteriores. E o mais importante desta classificação é que quem preenche tal informação é o próprio advogado que peticionou.
 
 Quando o próprio advogado preenche o assunto, o dado fica sujeito a erros humanos. Temos dois tipos de erros possíveis aqui. Em primeiro lugar, o advogado pode realizar classificações equivocadas, por exemplo, ao classificar determinado processo de Venda Casada, como Indenização por Danos Materiais. 
 
@@ -61,7 +61,7 @@ A análise que se segue, então, irá olhar para este problema específico da cl
 
 ## Descrição da base de dados
 
-Para realizar essa análise, usamos os dados do Painel do CNJ em Números. O CNJ em Número nos fornece a quantidade de casos de cada assunto por jurisdição.
+Para realizar essa análise, usamos os dados do Painel do Justiça em Números, disponibilizado pelo CNJ. O painel nos fornece a quantidade de casos de cada assunto por jurisdição.
 
 ### Sobre os assuntos {#sobre-os-assuntos}
 
@@ -91,7 +91,7 @@ O que devemos perceber é que os traços dos níveis 5 a 7 *não* indicam cifra 
 
 Esses dados sobre o Assunto dos processos do CNJ estão disponíveis para todos os Estado, ao longo de vários anos. Assim, para cada um dos tribunais, em cada uma das instâncias, há um base diferente para baixar. 
 
-Escolhemos pegar os dados do TJSP, TJRJ, TJAM e TJPE, nos anos de 2014 a 2019. São Paulo e Rio de Janeiro foram escolhidos por serem grandes tribunais, com um alto número de processos. O TJAM foi escolhido por ser um representante do Norte. E o TJPE, por ser um representante do Nordeste. 
+Escolhemos os dados do TJSP, TJRJ, TJAM e TJPE, nos anos de 2014 a 2019. São Paulo e Rio de Janeiro foram escolhidos por serem grandes tribunais, com um alto número de processos. O TJAM foi escolhido por ser um representante do Norte. E o TJPE, por ser um representante do Nordeste. 
 
 Como são 4 Tribunais, ao longo de 6 anos, baixamos 24 bases de dados. Essas bases foram empilhadas e formaram um arquivo único. 
 
@@ -99,9 +99,9 @@ Como são 4 Tribunais, ao longo de 6 anos, baixamos 24 bases de dados. Essas bas
 
 #### Processos por assunto
 
-Com os dados de assuntos para o TJSP, TJRJ, TJAM e TJPE, entre os anos de 2014 e 2019, formamos uma base com 37.006 processos, que se distribuem entre 18 assuntos genéricos, ao todo, conforme a Tabela 1
+Com os dados de assuntos para o TJSP, TJRJ, TJAM e TJPE, entre os anos de 2014 e 2019, formamos uma base com 37.006 linhas, que se distribuem entre 18 assuntos genéricos, ao todo, conforme a Tabela \@ref(tab:dist-assuntos).
 
-```{r}
+```{r dist-assuntos}
 assuntos %>%
   select(assunto_nome1, x1_grau) %>%
   group_by(assunto_nome1) %>%
