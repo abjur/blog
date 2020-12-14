@@ -3,13 +3,14 @@ title: "O problema da cifra oculta nos tribunais brasileiros"
 description: |
  Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco.
 author:
+  - name: Ricardo Feliz
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
   - name: João Torquato
     url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/  
   - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
   - name: Katerine Witkoski
     url: https://www.linkedin.com/in/katerine-witkoski-53b19518b/
-  - name: Ricardo Feliz
-    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
 date: "`r Sys.Date()`"
 categories:
   - Tribunais
@@ -23,7 +24,8 @@ output:
 knitr::opts_chunk$set(
   echo = FALSE, 
   message = FALSE, 
-  warning = FALSE
+  warning = FALSE,
+  fig.align = "center"
 )
 # carrega pacotes necessários
 library(ggplot2)
@@ -55,7 +57,9 @@ Idealmente, os processos deveriam ser classificados até este último nível de 
 
 Ambos os problemas (tanto de classificação equivocada, como de classificação genérica) geram a chamada cifra oculta, isto é, uma parcela da realidade que não pode ser observada pelo nosso dado. A cifra oculta que decorre de equívocos é difícil de ser medida, porque ela pressupõe que nós saibamos qual é a classificação correta daquele caso e, para ser medida, exigiria que nós olhássemos cada caso e checássemos se a classificação está correta ou não. Nossa análise, então irá pressupor que o advogado classificou corretamente casos e olhar, então, somente para o problema da classificação imprecisa. Este segundo problema pode ser mensurado com mais facilidade, porque, sempre que ele ocorrer, teremos um descompasso entre a quantidade de casos de determinado gênero e a soma total de suas espécies. 
 
-A análise que se segue, então, irá olhar para este problema específico da classificação imprecisa, a fim de quantificá-la. 
+A análise que se segue, então, irá olhar para este problema específico da classificação imprecisa, a fim de quantificá-la.
+
+
 ## Descrição da base de dados
 
 Para realizar essa análise, usamos os dados do Painel do CNJ em Números. O CNJ em Número nos fornece a quantidade de casos de cada assunto por jurisdição.
@@ -94,7 +98,7 @@ Com os dados de assuntos para o TJSP, TJRJ, TJAM e TJPE, entre os anos de 2014 e
 assuntos %>%
   select(assunto_nome1, x1_grau) %>%
   group_by(assunto_nome1) %>%
-  mutate(assunto_nome1 = toupper(assunto_nome1)) %>% 
+  mutate(assunto_nome1 = toupper(assunto_nome1)) %>%
   filter(assunto_nome1 != "TOTAL") %>% 
   count() %>%
   arrange(desc(n)) %>% 

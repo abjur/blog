@@ -12,19 +12,19 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>sex, 11 dez 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Dec 2020 00:00:00 +0000</lastBuildDate>
     <item>
       <title>O problema da cifra oculta nos tribunais brasileiros</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
       <dc:creator>João Torquato</dc:creator>
       <dc:creator>Julio Trecenti</dc:creator>
       <dc:creator>Katerine Witkoski</dc:creator>
-      <dc:creator>Ricardo Feliz</dc:creator>
       <link>https://lab.abj.org.br/posts/2020-12-07-cifra-oculta</link>
       <description>Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco.</description>
       <category>Tribunais</category>
       <category>CNJ</category>
       <guid>https://lab.abj.org.br/posts/2020-12-07-cifra-oculta</guid>
-      <pubDate>sex, 11 dez 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -35,7 +35,7 @@
       <description>Levantamento da ABJ publicado pelo G1</description>
       <category>Levantamentos</category>
       <guid>https://lab.abj.org.br/posts/2020-11-10-candidatos2020</guid>
-      <pubDate>ter, 10 nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-11-10-candidatos2020/candidatos2020.png" medium="image" type="image/png" width="629" height="339"/>
     </item>
     <item>
@@ -46,7 +46,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-empresas</guid>
-      <pubDate>sex, 23 out 2020 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -57,7 +57,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-temas</guid>
-      <pubDate>qui, 10 set 2020 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -68,7 +68,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-paps</guid>
-      <pubDate>seg, 20 jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-paps/img/estrutura.png" medium="image" type="image/png" width="1200" height="825"/>
     </item>
     <item>
@@ -78,7 +78,7 @@
       <description>As mudanças no CARF após investigações de corrupção.</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2020-01-20-carf</guid>
-      <pubDate>seg, 20 jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -89,7 +89,7 @@
 Esperamos que goste!</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2020-01-12-welcome</guid>
-      <pubDate>dom, 12 jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-12-welcome/abj.png" medium="image" type="image/png" width="374" height="152"/>
     </item>
   </channel>
