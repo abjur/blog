@@ -20,19 +20,18 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -52,7 +51,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
@@ -107,9 +106,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco."/>
 <meta property="og:url" content="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/"/>
-<meta property="og:image" content="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png"/>
-<meta property="og:image:width" content="1248"/>
-<meta property="og:image:height" content="768"/>
+<meta property="og:image" content="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/img/exemplo.png"/>
+<meta property="og:image:width" content="862"/>
+<meta property="og:image:height" content="504"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:site_name" content="Associação Brasileira de Jurimetria"/>
 
@@ -118,9 +117,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="twitter:title" content="Associação Brasileira de Jurimetria: O problema da cifra oculta nos tribunais brasileiros"/>
 <meta property="twitter:description" content="Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco."/>
 <meta property="twitter:url" content="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/"/>
-<meta property="twitter:image" content="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png"/>
-<meta property="twitter:image:width" content="1248"/>
-<meta property="twitter:image:height" content="768"/>
+<meta property="twitter:image" content="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/img/exemplo.png"/>
+<meta property="twitter:image:width" content="862"/>
+<meta property="twitter:image:height" content="504"/>
 
 <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->
 <meta name="citation_title" content="Associação Brasileira de Jurimetria: O problema da cifra oculta nos tribunais brasileiros"/>
@@ -136,12 +135,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["O problema da cifra oculta nos tribunais brasileiros"]},{"type":"character","attributes":{},"value":["Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["João Torquato"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jtrecenti/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Katerine Witkoski"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/katerine-witkoski-53b19518b/"]}]}]},{"type":"character","attributes":{},"value":["2020-12-14"]},{"type":"character","attributes":{},"value":["Tribunais","CNJ"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/"]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["O problema da cifra oculta nos tribunais brasileiros"]},{"type":"character","attributes":{},"value":["Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["João Torquato"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jtrecenti/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Katerine Witkoski"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/katerine-witkoski-53b19518b/"]}]}]},{"type":"character","attributes":{},"value":["2020-12-14"]},{"type":"character","attributes":{},"value":["Analises","CNJ"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/"]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["assuntos.rda","cifra-oculta_files/anchor-4.2.2/anchor.min.js","cifra-oculta_files/bowser-1.9.3/bowser.min.js","cifra-oculta_files/distill-2.2.21/template.v2.js","cifra-oculta_files/figure-html5/assuntos-1.png","cifra-oculta_files/figure-html5/gg-oz-gapminder-1.png","cifra-oculta_files/figure-html5/n-tribunal-1.png","cifra-oculta_files/figure-html5/tribunal-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-5-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-6-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-7-1.png","cifra-oculta_files/jquery-1.11.3/jquery.min.js","cifra-oculta_files/kePrint-0.0.1/kePrint.js","cifra-oculta_files/lightable-0.0.1/lightable.css","cifra-oculta_files/webcomponents-2.0.0/webcomponents.js","img/exemplo.png","img/traco_com_irmaos.PNG","img/traco_sem_irmaos.PNG"]}
+  {"type":"character","attributes":{},"value":["assuntos.rda","cifra-oculta_files/anchor-4.2.2/anchor.min.js","cifra-oculta_files/bowser-1.9.3/bowser.min.js","cifra-oculta_files/distill-2.2.21/template.v2.js","cifra-oculta_files/figure-html5/assunto-cifra-1.png","cifra-oculta_files/figure-html5/assuntos-1.png","cifra-oculta_files/figure-html5/assuntos-contagem-1.png","cifra-oculta_files/figure-html5/assuntos-tempo-1.png","cifra-oculta_files/figure-html5/assuntos-tribunal-1.png","cifra-oculta_files/figure-html5/gg-oz-gapminder-1.png","cifra-oculta_files/figure-html5/n-tribunal-1.png","cifra-oculta_files/figure-html5/tribunal-1.png","cifra-oculta_files/figure-html5/tribunal-cifra-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-5-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-6-1.png","cifra-oculta_files/figure-html5/unnamed-chunk-7-1.png","cifra-oculta_files/header-attrs-2.5/header-attrs.js","cifra-oculta_files/jquery-1.11.3/jquery.min.js","cifra-oculta_files/kePrint-0.0.1/kePrint.js","cifra-oculta_files/lightable-0.0.1/lightable.css","cifra-oculta_files/webcomponents-2.0.0/webcomponents.js","img/exemplo.png","img/traco_com_irmaos.PNG","img/traco_sem_irmaos.PNG"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2021,6 +2020,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.5/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
@@ -2114,7 +2114,7 @@ gtag('config', 'UA-182605574-1');
 <h1>O problema da cifra oculta nos tribunais brasileiros</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-  <a href="../../index.html#category:Tribunais" class="dt-tag">Tribunais</a>
+  <a href="../../index.html#category:Analises" class="dt-tag">Analises</a>
   <a href="../../index.html#category:CNJ" class="dt-tag">CNJ</a>
 </div>
 <!--/radix_placeholder_categories-->
@@ -2147,33 +2147,39 @@ gtag('config', 'UA-182605574-1');
 <p>Ambos os problemas (tanto de classificação equivocada, como de classificação genérica) geram a chamada cifra oculta, isto é, uma parcela da realidade que não pode ser observada pelo nosso dado. A cifra oculta que decorre de equívocos é difícil de ser medida, porque ela pressupõe que nós saibamos qual é a classificação correta daquele caso e, para ser medida, exigiria que nós olhássemos cada caso e checássemos se a classificação está correta ou não. Nossa análise, então irá pressupor que o advogado classificou corretamente casos e olhar, então, somente para o problema da classificação imprecisa. Este segundo problema pode ser mensurado com mais facilidade, porque, sempre que ele ocorrer, teremos um descompasso entre a quantidade de casos de determinado gênero e a soma total de suas espécies.</p>
 <p>A análise que se segue, então, irá olhar para este problema específico da classificação imprecisa, a fim de quantificá-la.</p>
 <h2 id="descrição-da-base-de-dados">Descrição da base de dados</h2>
-<p>Para realizar essa análise, usamos os dados do Painel do CNJ em Números. O CNJ em Número nos fornece a quantidade de casos de cada assunto por jurisdição.</p>
+<p>Para realizar essa análise, usamos os dados do Painel do Justiça em Números, disponibilizado pelo CNJ. O painel nos fornece a quantidade de casos de cada assunto por jurisdição.</p>
 <h3 id="sobre-os-assuntos">Sobre os assuntos</h3>
-<p>Há 7 colunas de assuntos, uma para cada nível, conforme podemos observar na Figura 1.</p>
-<center>
-<figure>
-<img src="img/exemplo.png" id="id" class="class" style="width:100.0%;height:100.0%" alt="" /><figcaption>Figura 1: Visão geral dos 7 níveis de assuntos</figcaption>
-</figure>
-</center>
+<p>Há 7 colunas de assuntos, uma para cada nível, conforme podemos observar na Figura <a href="#fig:exemplo">1</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:exemplo"></span>
+<img src="img/exemplo.png" alt="Visão geral dos 7 níveis de assuntos" width="100%" />
+<p class="caption">
+Figure 1: Visão geral dos 7 níveis de assuntos
+</p>
+</div>
+</div>
 <p>A coluna “Assunto - Nome1” indica o assunto em nível mais genérico. Já o “Assunto - Nome7” indica o assunto em nível mais específico. As colunas intermediárias indicam as subclassificações de cada processo. Raramente os processos chegam no nível 7. O nível mais específico costuma estar no 4 ou no 5.</p>
 <p>Quando o processo não chega a determinado nível, a coluna fica marcada com “-”. Ao que devemos ficar atento é se a casa marcada com “-” possui “irmãos” que possuam alguma outra resposta.</p>
 <p>Por exemplo: o assunto “Direito Administrativo” (nível 1) se ramifica em “Agentes Políticos” e “Atos Administrativos” (nível 2). Seguindo a árvore dos “Agentes Políticos”, ela se ramifica em “Governador”, “Magistratura”, “Ministério Público”, entre outros (nível 3). A título de exemplo, seguindo o ramo da Magistratura, ela se ramifica em “Afastamento”, “Aposentadoria”, “Processo Disciplinar”, “Promoção”, “Quinto Constitucional”, “Remoção”, “Remuneração” e “-” (nível 4). Neste caso “-” possui irmãos, que são as outras casas de mesmo nível (nível 4) dentro de Magistratura, isto é, “Afastamento”, “Aposentadoria”, “Processo Disciplinar”, “Promoção”, “Quinto Constitucional”, “Remoção” e “Remuneração”. Nenhuma dessas casas possui subdivisões posteriores, então para cada linha, os níveis 5, 6 e 7 estão preenchidos com “-”.</p>
-<p>O que devemos perceber é que os traços dos níveis 5 a 7 <em>não</em> indicam cifra oculta, mas simplesmente a ausência de classificação naquele nível. Entretanto, o traço no nível 4, porque possui irmãos preenchidos, indica cifra oculta. Vemos esses dois tipos de traços (traços com irmãos e traços sem irmãos) na Figura 2. O traço da coluna “Assunto - Nome4” indica cifra oculta, enquando os demais traços não.</p>
-<center>
-<figure>
-<img src="img/traco_sem_irmaos.PNG" id="id" class="class" style="width:65.0%;height:65.0%" alt="" /><figcaption>Figura 2: Os dois tipos de “-”. Na coluna “Assuntos - nome4”, vemos um caso em que o “-” indica cifra oculta, mas nas colunas seguintes o “-” indica simplesmente que aquele nível de classificação não existe</figcaption>
-</figure>
-</center>
+<p>O que devemos perceber é que os traços dos níveis 5 a 7 <em>não</em> indicam cifra oculta, mas simplesmente a ausência de classificação naquele nível. Entretanto, o traço no nível 4, porque possui irmãos preenchidos, indica cifra oculta. Vemos esses dois tipos de traços (traços com irmãos e traços sem irmãos) na Figura <a href="#fig:tracos">2</a>. O traço da coluna “Assunto - Nome4” indica cifra oculta, enquando os demais traços não.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="figure" style="text-align: center"><span id="fig:tracos"></span>
+<img src="img/traco_sem_irmaos.PNG" alt="Os dois tipos de &quot;-&quot;. Na coluna &quot;Assuntos - nome4&quot;, vemos um caso em que o &quot;-&quot; indica cifra oculta, mas nas colunas seguintes o &quot;-&quot; indica simplesmente que aquele nível de classificação não existe." width="500" />
+<p class="caption">
+Figure 2: Os dois tipos de “-”. Na coluna “Assuntos - nome4”, vemos um caso em que o “-” indica cifra oculta, mas nas colunas seguintes o “-” indica simplesmente que aquele nível de classificação não existe.
+</p>
+</div>
+</div>
 <h3 id="sobre-o-território-e-o-ano">Sobre o território e o ano</h3>
 <p>Esses dados sobre o Assunto dos processos do CNJ estão disponíveis para todos os Estado, ao longo de vários anos. Assim, para cada um dos tribunais, em cada uma das instâncias, há um base diferente para baixar.</p>
-<p>Escolhemos pegar os dados do TJSP, TJRJ, TJAM e TJPE, nos anos de 2014 a 2019. São Paulo e Rio de Janeiro foram escolhidos por serem grandes tribunais, com um alto número de processos. O TJAM foi escolhido por ser um representante do Norte. E o TJPE, por ser um representante do Nordeste.</p>
+<p>Escolhemos os dados do TJSP, TJRJ, TJAM e TJPE, nos anos de 2014 a 2019. São Paulo e Rio de Janeiro foram escolhidos por serem grandes tribunais, com um alto número de processos. O TJAM foi escolhido por ser um representante do Norte. E o TJPE, por ser um representante do Nordeste.</p>
 <p>Como são 4 Tribunais, ao longo de 6 anos, baixamos 24 bases de dados. Essas bases foram empilhadas e formaram um arquivo único.</p>
 <h3 id="visualização-da-base-de-dados">Visualização da base de dados</h3>
 <h4 id="processos-por-assunto">Processos por assunto</h4>
-<p>Com os dados de assuntos para o TJSP, TJRJ, TJAM e TJPE, entre os anos de 2014 e 2019, formamos uma base com 37.006 processos, que se distribuem entre 18 assuntos genéricos, ao todo, conforme a Tabela 1</p>
+<p>Com os dados de assuntos para o TJSP, TJRJ, TJAM e TJPE, entre os anos de 2014 e 2019, formamos uma base com 37.006 linhas, que se distribuem entre 18 assuntos genéricos, ao todo, conforme a Tabela <a href="#tab:dist-assuntos">1</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
-<caption><span id="tab:unnamed-chunk-2">Table 1: </span>Quantidade de observações por assunto genérico</caption>
+<caption><span id="tab:dist-assuntos">Table 1: </span>Quantidade de observações, separando pelo nível 1 do assunto.</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Assunto</th>
@@ -2256,66 +2262,66 @@ gtag('config', 'UA-182605574-1');
 </tbody>
 </table>
 </div>
-<p>Podemos ver que a distribuição de casos não é homogênea por assunto. Há uma concentração muito maior em Direito Administrativo, Direito Penal e Direito Civil, em comparação com Direito Eleitoral, Direito da Saúde, Direito Processual Penal Militar, Direito Internacional e Direito do Trabalho. É possível visualizar com mais facilidade essa distribuição assimétrica por meio de um gráfico.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-3"></span>
-<img src="cifra-oculta_files/figure-html5/unnamed-chunk-3-1.png" alt="Contagem de Assuntos de forma geral" width="624" />
+<p>Podemos ver que a distribuição de casos não é homogênea por assunto na Figura <a href="#fig:assuntos-contagem">3</a>. Há uma concentração muito maior em Direito Administrativo, Direito Penal e Direito Civil, em comparação com Direito Eleitoral, Direito da Saúde, Direito Processual Penal Militar, Direito Internacional e Direito do Trabalho. É possível visualizar com mais facilidade essa distribuição assimétrica por meio de um gráfico.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure" style="text-align: center"><span id="fig:assuntos-contagem"></span>
+<img src="cifra-oculta_files/figure-html5/assuntos-contagem-1.png" alt="Contagem de Assuntos de forma geral." width="624" />
 <p class="caption">
-Figure 1: Contagem de Assuntos de forma geral
+Figure 3: Contagem de Assuntos de forma geral.
 </p>
 </div>
 </div>
 <h4 id="processos-por-ano">Processos por ano</h4>
-<p>Se olhamos para a distribuição ao longo dos anos, ela fica bem mais homogênea. Por mais que haja um pouco mais de casos em 2014 e 2015, essa diferença não é muito relevante.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-4"></span>
-<img src="cifra-oculta_files/figure-html5/unnamed-chunk-4-1.png" alt="Contagem de casos por Ano" width="624" />
+<p>Se olhamos para a distribuição ao longo dos anos na Figura <a href="#fig:assuntos-tempo">4</a>, ela fica bem mais homogênea. Por mais que haja um pouco mais de casos em 2014 e 2015, essa diferença não é significativa.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure" style="text-align: center"><span id="fig:assuntos-tempo"></span>
+<img src="cifra-oculta_files/figure-html5/assuntos-tempo-1.png" alt="Contagem de casos por ano." width="624" />
 <p class="caption">
-Figure 2: Contagem de casos por Ano
+Figure 4: Contagem de casos por ano.
 </p>
 </div>
 </div>
 <h4 id="processos-por-tribunal">Processos por tribunal</h4>
-<p>Ainda podemos ver a distribuição dos casos por tribunal. Dos 4 tribunais que selecionamos (TJSP, TJAM, TJRJ e TJPE), TJSP foi o Estado com mais processos ao longo destes 6 anos, o que é esperado, uma vez que ele é o maior tribunal brasileiro. A seguir, TJAM e TJRJ possuem quantidades muito similares de processos. E por fim, está o TJPE como menor número de casos.</p>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-5"></span>
-<img src="cifra-oculta_files/figure-html5/unnamed-chunk-5-1.png" alt="Contagem de casos por Tribunal" width="624" />
+<p>Na Figura <a href="#fig:assuntos-tribunal">5</a> podemos ver a distribuição dos casos por tribunal. Dos 4 tribunais que selecionamos (TJSP, TJAM, TJRJ e TJPE), TJSP foi o estado com mais processos ao longo destes 6 anos, o que é esperado, uma vez que ele é o maior tribunal brasileiro. A seguir, TJAM e TJRJ possuem quantidades muito similares de processos. E por fim, está o TJPE como menor número de casos.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure" style="text-align: center"><span id="fig:assuntos-tribunal"></span>
+<img src="cifra-oculta_files/figure-html5/assuntos-tribunal-1.png" alt="Contagem de casos por Tribunal." width="624" />
 <p class="caption">
-Figure 3: Contagem de casos por Tribunal
+Figure 5: Contagem de casos por Tribunal.
 </p>
 </div>
 </div>
-<h3 id="a-taxa-de-cifra-oculta">A taxa de cifra oculta</h3>
+<h3 id="quantificando-a-cifra-oculta">Quantificando a cifra oculta</h3>
 <p>Uma vez que sabemos como identificar as cifras ocultas e temos os dados em mãos, podemos calcular uma taxa para esta cifra. Essa taxa é, simplesmente, uma razão entre a quantidade de “-” com irmãos (conforme vimos em <a href="#sobre-os-assuntos">“Sobre os assuntos”</a>), sobre a quantidade total de casos. Em outras palavras, o que essa taxa indica é, de todos os processos, quantos porcento deles poderiam ter recebido alguma classificação mais específica, mas não o receberam.</p>
 <p>Calculamos, então, essa taxa para cada um dos 18 assuntos genéricos, bem como para cada um dos 4 tribunais.</p>
 <h2 id="resultados">Resultados</h2>
-<h3 id="taxa-de-cifra-oculta-por-assunto">Taxa de cifra oculta por assunto</h3>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-6"></span>
-<img src="cifra-oculta_files/figure-html5/unnamed-chunk-6-1.png" alt="Taxa de cifra oculta por Assunto" width="624" />
+<h3 id="por-assunto">Por assunto</h3>
+<p>A Figura <a href="#fig:assunto-cifra">6</a> mostra a cifra oculta por assunto. Quando comparamos a taxa de cifra oculta por assunto, vemos, de cara, que alguns assuntos possuem taxas muito altas de cifra oculta, a saber, Direito do Trabalho, Direito Eleitoral, Direito Processual Penal e Direito Penal Militar. Respectivamente, cada uma dessas</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure" style="text-align: center"><span id="fig:assunto-cifra"></span>
+<img src="cifra-oculta_files/figure-html5/assunto-cifra-1.png" alt="Taxa de cifra oculta por assunto (nível 1). Os números no centro das barras indicam o volume de processos no assunto (em milhões)." width="624" />
 <p class="caption">
-Figure 4: Taxa de cifra oculta por Assunto
+Figure 6: Taxa de cifra oculta por assunto (nível 1). Os números no centro das barras indicam o volume de processos no assunto (em milhões).
 </p>
 </div>
 </div>
-<p>Quando comparamos a taxa de cifra oculta por assunto, vemos, de cara, que alguns assuntos possuem taxas muito altas de cifra oculta, a saber, Direito do Trabalho, Direito Eleitoral, Direito Processual Penal e Direito Penal Militar. Respectivamente, cada uma dessas</p>
-<p>Temos de tomar cuidado com estes dados, porque, se olharmos novamente para a Tabela 1, veremos que os três assuntos com maior taxa de cifra oculta são justamente alguns dos assuntos com menos observações. Então, por exemplo, Direito do Trabalho possui uma taxa de 85% de cifra oculta, ou seja, a cada 100 processos, 85 são classificados com um assunto mais genérico do que poderia ser. Mas, ao mesmo tempo, Direito do Trabalho possui apenas 106 observações ao todo. O segundo assunto com mais cifra oculta é o Direito Eleitoral, que possui uma taxa de 75% de cifra oculta, mas apenas 8 observações.</p>
-<p>No eixo inferior, temos de tomar igual cuidado, porque, por exemplo, Direito Internacional, com uma taxa de 0.78% de cifra oculta, possui apenas 70 observações.</p>
+<p>Temos de tomar cuidado com estes dados, porque, se olharmos novamente para a Tabela <a href="#tab:dist-assuntos">1</a>, veremos que os três assuntos com maior taxa de cifra oculta são justamente alguns dos assuntos com menos observações. Então, por exemplo, Direito do Trabalho possui uma taxa de 85% de cifra oculta, ou seja, a cada 100 processos, 85 são classificados com um assunto mais genérico do que poderia ser. Mas, ao mesmo tempo, Direito do Trabalho possui apenas 106 observações ao todo. O segundo assunto com mais cifra oculta é o Direito Eleitoral, que possui uma taxa de 75% de cifra oculta, mas apenas 8 observações.</p>
+<p>No eixo inferior, temos de tomar igual cuidado, porque, por exemplo, Direito Internacional, com uma taxa de 0,78% de cifra oculta, possui apenas 70 observações.</p>
 <p>Olhando, agora, para os Assuntos em que podemos tirar conclusões mais seguras (porque são assuntos com o maior número de observações), temos Direito Penal, Direito Administrativo e Direito Civil.</p>
-<p>Dentre esses três assuntos, Direito Administrativo possui a maior taxa de cifra oculta, de 43%. Em seguida, está o Direito Civil, com 26% dos casos. E por fim, com a menor taxa de cifra oculta de todos os assuntos (sem contar com Direito Internacional, que, como vimos, possui poucas observações), est´´a o Direito Penal, com uma taxa de apenas 9%. Isso pode se explicar pelo fato de que o “advogado” que peticiona os casos de Direito Penal são, na verdade, promotores públicos, agentes do próprio Estado.</p>
-<h3 id="taxa-de-cifra-oculta-por-tribunal">Taxa de cifra oculta por tribunal</h3>
+<p>Dentre esses três assuntos, Direito Administrativo possui a maior taxa de cifra oculta, de 43%. Em seguida, está o Direito Civil, com 26% dos casos. Por fim, com a menor taxa de cifra oculta de todos os assuntos (sem contar com Direito Internacional, que, como vimos, possui poucas observações), está o Direito Penal, com uma taxa de apenas 9%. Isso pode se explicar pelo fato de que o “advogado” que peticiona os casos de Direito Penal são, na verdade, promotores públicos, agentes do próprio Estado.</p>
+<h3 id="por-tribunal">Por tribunal</h3>
+<p>A Figura <a href="#fig:tribunal-cifra">7</a> mostra a taxa de cifra oculta por tribunal. Observamos que há uma concentração ligeiramente maior no TJPE, em comparação aos demais tribunais, mas, em geral, a diferença entre eles é baixa. Com isso, podemos concluir que os tribunais possuem, em geral, uma taxa de cifra oculta que fica em torno de de 10% a 20% dos casos.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-7"></span>
-<img src="cifra-oculta_files/figure-html5/unnamed-chunk-7-1.png" alt="Taxa de cifra oculta por Tribunal" width="624" />
+<div class="figure" style="text-align: center"><span id="fig:tribunal-cifra"></span>
+<img src="cifra-oculta_files/figure-html5/tribunal-cifra-1.png" alt="Taxa de cifra oculta por Tribunal" width="624" />
 <p class="caption">
-Figure 5: Taxa de cifra oculta por Tribunal
+Figure 7: Taxa de cifra oculta por Tribunal
 </p>
 </div>
 </div>
-<p>Já quando analisamos a taxa de cifra oculta por tribunal, observamos que há uma concentração ligeiramente maior no TJPE, em comparação aos demais tribunais, mas, em geral, a diferença entre eles é baixa. Com isso, podemos concluir que os tribunais possuem, em geral, uma taxa de cifra oculta que fica em torno de de 10% a 20% dos casos. Este número é baixo.</p>
 <h2 id="comentários-finais">Comentários finais</h2>
 <p>A cifra oculta é um problema que decorre do processo através do qual os dados foram gerados. Esse processo é sempre importante de ser reportado, a fim que as incertezas inerentes aos dados sejam explicitadas. No caso dos tribunais brasileiros, o dado de “Assunto” do processo contém, em si, uma incerteza: será que o peticionante classificou corretamente o caso ou não? Para lidar melhor com este problema, quantificamos a cifra oculta de 4 tribunais brasileiros, TJSP, TJRJ, TJAM e TJPE.</p>
-<p>Como resultado, percebemos, de um lado, que não há grande diferença na cifra oculta entre os tribunais, uma vez que as taxas de cifra oculta de cada tribunal eram muito parecidas (giravam em torno de 10% a 20% dos casos totais). Por outro lado, observamos que havia uma diferença considerável na taxa de cifra oculta por assunto. Tomados os devidos cuidados (de não concluir de forma muito taxativa sobre a taxa de cifra oculta dos assuntos com poucas observações), observamos que direito penal possui uma taxa baixíssima de cifra oculta, o que pode ser explicado pelo fato de que são agentes do Estado (promotores e procuradores públicos) que peticionam cada processo e, consequentemente, classificam o Assunto de cada caso. Já no Direito Civil e no Direito Administrativo, as taxas de cifra oculta são bem maiores (respectivamente, de 26% e 43%).</p>
+<p>Como resultado, percebemos, de um lado, que não há grande diferença na cifra oculta entre os tribunais, uma vez que as taxas de cifra oculta de cada tribunal eram muito parecidas, em torno de 10% a 20% dos processos distribuídos. Por outro lado, observamos que havia uma diferença considerável na taxa de cifra oculta por assunto. Tomados os devidos cuidados (de não concluir de forma muito taxativa sobre a taxa de cifra oculta dos assuntos com poucas observações), observamos que direito penal possui uma taxa mais baixa de cifra oculta, o que pode ser explicado pelo fato de que são agentes do Estado (promotores e procuradores públicos) que peticionam cada processo e, consequentemente, classificam o Assunto de cada caso. Já no Direito Civil e no Direito Administrativo, as taxas de cifra oculta são bem maiores (respectivamente, de 26% e 43%).</p>
 <p>Estes resultados tentam explicitar, de alguma forma, as incertezas inerentes aos dados dos tribunais, deixando claro que existem erros consideráveis nos dados disponibilizados pelos tribunais. Isso é importante na medida em que essa incerteza deve ser reportada e considerada ao se realizar pesquisas com estes dados.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
@@ -2389,7 +2395,7 @@ var disqus_config = function () {
 
 </script>
   <div>
-Â© Copyright ABJ. Todos os direitos reservados. CNPJ: 13.612.840/0001-57
+© Copyright ABJ. Todos os direitos reservados. CNPJ: 13.612.840/0001-57
 </div>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
