@@ -12,7 +12,21 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 09 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 14 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>O problema da cifra oculta nos tribunais brasileiros</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <dc:creator>João Torquato</dc:creator>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <dc:creator>Katerine Witkoski</dc:creator>
+      <link>https://lab.abj.org.br/posts/2020-12-07-cifra-oculta</link>
+      <description>Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco.</description>
+      <category>Analises</category>
+      <category>CNJ</category>
+      <guid>https://lab.abj.org.br/posts/2020-12-07-cifra-oculta</guid>
+      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/img/exemplo.png" medium="image" type="image/png" width="862" height="504"/>
+    </item>
     <item>
       <title>Sentenças que mencionam Covid-19 no TJSP</title>
       <dc:creator>Julio Trecenti</dc:creator>
