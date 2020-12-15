@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/2020-12-01-constituicao/",
+    "title": "Facilitando análises sobre a Constituição",
+    "description": "Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo",
+    "author": [
+      {
+        "name": "Caio Lente",
+        "url": "https://www.lente.dev"
+      },
+      {
+        "name": "Renata Hirota",
+        "url": "https://twitter.com/renata_mh"
+      }
+    ],
+    "date": "2020-12-01",
+    "categories": [],
+    "contents": "\nA Constituição brasileira de 1988 é um documento extenso que, ao longo de sua existência, passou por inúmeras alterações na forma de emendas constitucionais.\nEm 2018, em comemoração aos 30 anos do documento, o Nexo publicou uma matéria em que mostra o quanto do texto original da Constituição foi preservado, e o histórico das principais mudanças ao longo do tempo.\nCompilação feita pelo NexoCompilar o texto e fazer essa análise é um trabalho homérico se feito de forma manual. Felizmente, o Explorador da Constituição facilita tal tarefa, possibilitando análises sobre as mudanças ocorridas ao longo dos anos na nossa Constituição.\nO repositório, organizado pela ABJ, facilita a visualização das alterações feitas no documento, indicando as mudanças, os dispositivos e as datas em que foram realizadas. A imagem a seguir ilustra um trecho da Constituição alterada pela Emenda Constitucional 45, de 2004, em comparação com o texto original:\nLinha alterada pela EMC 45Além de poder explorar cada mudança ocorrida ao longo do tempo na nossa Constituição, a ferramenta também permite que análises quantitativas sejam feitas de forma mais simples, ao organizar cada título, capítulo, seção, subseççao, artigo, parágrafo, inciso e alínea de forma compreensível e estruturada em formato CSV e JSON.\nA partir dessa compilação, podemos tentar reproduzir algumas análises da matéria publicada pelo Nexo, como, por exemplo, o número de itens alterados por emenda constitucional.\n\npreserve764d4492b2655e4c\n\nÉ importante ressaltar que há diferenças em relação ao gráfico do Nexo pois, como é possível verificar no gráfico, algumas emendas foram agrupadas. Isso acontece porque algumas emendas foram aprovadas no mesmo dia, e o Explorador da Constituição considera os textos disponibilizados no site do Senado Federal, que publica somente os textos compilados após a aplicação de todas as EMCs do dia.\nComo o repositório foi criado\n\n\n\n",
+    "preview": {},
+    "last_modified": "2020-12-15T20:24:13-03:00",
+    "input_file": "constituicao.utf8.md"
+  },
+  {
     "path": "posts/2020-11-10-candidatos2020/",
     "title": "Eleições 2020: Candidatos envolvidos em processos criminais",
     "description": "Levantamento da ABJ publicado pelo G1",

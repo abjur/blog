@@ -1,0 +1,111 @@
+---
+title: "Facilitando análises sobre a Constituição"
+description: |
+  Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo
+author:
+  - name: Caio Lente
+    url: https://www.lente.dev
+  - name: Renata Hirota
+    url: https://twitter.com/renata_mh
+date: 12-01-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+A Constituição brasileira de 1988 é um documento extenso que, ao longo de sua existência, passou por inúmeras alterações na forma de emendas constitucionais.
+
+Em 2018, em comemoração aos 30 anos do documento, [o Nexo publicou uma matéria](https://www.nexojornal.com.br/grafico/2018/10/05/30-anos-o-quanto-a-Constitui%C3%A7%C3%A3o-preserva-de-seu-texto-original) em que mostra o quanto do texto original da Constituição foi preservado, e o histórico das principais mudanças ao longo do tempo.
+
+
+![Compilação feita pelo Nexo](https://s3-sa-east-1.amazonaws.com/nexojornal/www/graficos/constituicao-88/alteracoes.gif)
+
+Compilar o texto e fazer essa análise é um trabalho homérico se feito de forma manual. Felizmente, o [Explorador da Constituição](https://github.com/abjur/constituicao) facilita tal tarefa, possibilitando análises sobre as mudanças ocorridas ao longo dos anos na nossa Constituição.
+
+O repositório, organizado pela ABJ, facilita a visualização das alterações feitas no documento, indicando as mudanças, os dispositivos e as datas em que foram realizadas. A imagem a seguir ilustra um trecho da Constituição alterada pela Emenda Constitucional 45, de 2004, em comparação com o texto original:
+
+![Linha alterada pela EMC 45](https://raw.githubusercontent.com/abjur/constituicao/main/readme_files/linha.png)
+
+Além de poder explorar cada mudança ocorrida ao longo do tempo na nossa Constituição, a ferramenta também permite que análises quantitativas sejam feitas de forma mais simples, ao organizar cada título, capítulo, seção, subseççao, artigo, parágrafo, inciso e alínea de forma compreensível e estruturada em formato CSV e JSON.
+
+A partir dessa compilação, podemos tentar reproduzir algumas análises da matéria publicada pelo Nexo, como, por exemplo, o número de itens alterados por emenda constitucional.
+
+```{r fig.height=20, fig.width=10}
+library(magrittr)
+
+arq <- fs::dir_ls("CSV")
+n_alteracoes <- function(x, paths) {
+  arq1 <- readr::read_csv(paths[x], col_types = readr::cols(.default = "c"))
+  arq2 <- readr::read_csv(paths[x+1], col_types = readr::cols(.default = "c"))
+  alteracoes_exclusoes <- dplyr::anti_join(
+    arq1, arq2,
+    by = c("classe", "texto", "titulo", "capitulo", "secao",
+           "subsecao", "artigo", "paragrafo", "inciso", "alinea")
+  )
+  inclusoes <- dplyr::anti_join(
+    arq2, arq1,
+    by = c("classe", "titulo", "capitulo", "secao",
+           "subsecao", "artigo", "paragrafo", "inciso", "alinea")
+  )
+  dplyr::bind_rows(alteracoes_exclusoes, inclusoes) %>% 
+    dplyr::transmute(
+      titulo = titulo,
+      emenda = paths[x+1] %>% basename() %>% stringr::str_extract(stringr::regex("(?<=_).*(?=\\.)")),
+      ano = paths[x+1] %>% basename() %>% stringr::str_extract(stringr::regex("^\\d{4}"))
+    )
+}
+da_alteracoes <- 1:(length(arq)-1) %>% 
+  purrr::map_df(n_alteracoes, paths = arq)
+
+levs <- da_alteracoes %>% 
+  dplyr::mutate(
+    ordem = dplyr::row_number(),
+    emenda = paste0(emenda, " (", ano, ")"),
+    emenda = forcats::fct_reorder(emenda, ordem, .desc = FALSE)
+  ) %>% 
+  dplyr::pull(emenda) %>% 
+  levels()
+
+da_grafico <- da_alteracoes %>% 
+  dplyr::mutate(
+    emenda = paste0(emenda, " (", ano, ")"),
+    titulo = stringr::str_pad(titulo, 2, "left", 0)
+  ) %>%
+  dplyr::count(emenda, titulo) %>% 
+  dplyr::mutate(emenda = factor(emenda, levs)) %>% 
+  dplyr::arrange(emenda)
+
+  
+highcharter::hchart(
+  da_grafico,
+  "bar",
+  highcharter::hcaes(emenda, n, color = titulo),
+  stacking = "normal"
+) %>%
+  highcharter::hc_colors(viridis::viridis(n = 9)) %>%
+  highcharter::hc_tooltip(headerFormat = "",
+                          pointFormat = "<b>Quantidade</b>: {point.n}<br><b>Emenda</b>: {point.emenda}<br><b>Título</b>: {point.titulo}") %>%
+  highcharter::hc_legend(
+    align = "center",
+    verticalAlign = "top",
+    alignColumns = FALSE,
+    layout = "horizontal",
+    x = 0,
+    y = 0
+  ) %>%
+  highcharter::hc_size(height = 1500)
+
+```
+
+É importante ressaltar que há diferenças em relação ao gráfico do Nexo pois, como é possível verificar no gráfico, algumas emendas foram agrupadas. Isso acontece porque algumas emendas foram aprovadas no mesmo dia, e o [Explorador da Constituição](https://github.com/abjur/constituicao) considera os textos disponibilizados no site do [Senado Federal](https://www.senado.leg.br/atividade/const/constituicao-federal.asp), que publica somente os textos compilados após a aplicação de todas as EMCs do dia.
+
+
+## Como o repositório foi criado
+
+
