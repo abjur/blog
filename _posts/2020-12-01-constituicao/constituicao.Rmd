@@ -28,11 +28,11 @@ Em 2018, em comemoração aos 30 anos do documento, [o Nexo publicou uma matéri
 
 Compilar o texto e fazer essa análise é um trabalho homérico se feito de forma manual. Felizmente, o [Explorador da Constituição](https://github.com/abjur/constituicao) facilita tal tarefa, possibilitando análises sobre as mudanças ocorridas ao longo dos anos na nossa Constituição.
 
-O repositório, organizado pela ABJ, facilita a visualização das alterações feitas no documento, indicando as mudanças, os dispositivos e as datas em que foram realizadas. A imagem a seguir ilustra um trecho da Constituição alterada pela Emenda Constitucional 45, de 2004, em comparação com o texto original:
+O repositório, organizado pela ABJ, facilita a visualização das alterações feitas no documento, indicando as mudanças, os dispositivos e as datas em que foram realizadas. A imagem a seguir ilustra um trecho da Constituição alterado pela Emenda Constitucional 45, de 2004, em comparação com o texto original:
 
 ![Linha alterada pela EMC 45](https://raw.githubusercontent.com/abjur/constituicao/main/readme_files/linha.png)
 
-Além de poder explorar cada mudança ocorrida ao longo do tempo na nossa Constituição, a ferramenta também permite que análises quantitativas sejam feitas de forma mais simples, ao organizar cada título, capítulo, seção, subseççao, artigo, parágrafo, inciso e alínea de forma compreensível e estruturada em formato CSV e JSON.
+Além de poder explorar cada mudança ocorrida ao longo do tempo na nossa Constituição, a ferramenta também permite que análises quantitativas sejam feitas de forma mais simples, ao organizar cada título, capítulo, seção, subseççao, artigo, parágrafo, inciso e alínea de forma compreensível e estruturada em formatos CSV e JSON.
 
 A partir dessa compilação, podemos tentar reproduzir algumas análises da matéria publicada pelo Nexo, como, por exemplo, o número de itens alterados por emenda constitucional.
 
@@ -106,6 +106,17 @@ highcharter::hchart(
 É importante ressaltar que há diferenças em relação ao gráfico do Nexo pois, como é possível verificar no gráfico, algumas emendas foram agrupadas. Isso acontece porque algumas emendas foram aprovadas no mesmo dia, e o [Explorador da Constituição](https://github.com/abjur/constituicao) considera os textos disponibilizados no site do [Senado Federal](https://www.senado.leg.br/atividade/const/constituicao-federal.asp), que publica somente os textos compilados após a aplicação de todas as EMCs do dia.
 
 
-## Como o repositório foi criado
+## Sobre o repositório
 
+O [Explorador da Constituição](https://github.com/abjur/constituicao) foi
+desenvolvido com técnicas de raspagem de dados aplicadas ao site do
+[Senado Federal](https://www.senado.leg.br/atividade/const/constituicao-federal.asp).
+O código-fonte utilizado para gerar o Explorador
+[está disponível](https://github.com/abjur/constituicao/blob/main/fonte.R) para
+que qualquer um possa estudá-lo, sugerir alterações ou mesmo tentar reproduzir
+os dados estruturados a partir da raspagem.
 
+Todas as instruções sobre como usar o repositório estão na página principal. É
+possível, mesmo sem conhecimento algum de programação, analisar as alterações
+relacionadas a cada Emenda Constituicional, mas, para os mais acostumados com
+análise de dados, também é possível utilizar os arquivos CSV e JSON como insumo.
