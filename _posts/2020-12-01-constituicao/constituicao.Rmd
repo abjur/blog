@@ -4,7 +4,7 @@ description: |
   Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo
 author:
   - name: Caio Lente
-    url: https://www.lente.dev
+    url: https://twitter.com/clente_
   - name: Renata Hirota
     url: https://twitter.com/renata_mh
 date: 12-01-2020
