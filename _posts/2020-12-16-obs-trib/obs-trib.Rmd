@@ -1,0 +1,112 @@
+---
+title: "As recuperações judiciais recuperam as empresas?"
+description: |
+  A recuperação judicial é um dos principais instrumentos jurídicos para 
+  permitir que empresas consigam se recuperar de situações de crise. 
+  Nesse estudo, avaliamos a efetividade da recuperação judicial como 
+  
+author:
+  - name: Marcelo Barbosa Sacramone
+    url: https://www.sacramone.com.br/sobre/
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+  - name: Igor Pretel
+    url: https://www.linkedin.com/in/pretel/
+date: 12-16-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE
+)
+library(magrittr)
+library(lubridate)
+library(obsFase2)
+```
+
+O Observatório da Insolvência é um trabalho contínuo da ABJ em parceria com a PUC-SP com o objetivo de acompanhar os processos judiciais relacionados à insolvência. O observatório fornece dados para realização de estudos importantes para conhecimento empírico sobre o tema e a elaboração de políticas públicas baseadas em evidências.
+
+No presente estudo, buscamos analisar o efeito prático da recuperação judicial. A pergunta que norteou o estudo foi: a dinâmica de pagamento de tributos de uma empresa antes do início da recuperação judicial sofre alterações durante a negociação e depois do período de cumprimento do plano? 
+
+A hipótese de pesquisa é que o pagamento segue uma curva em formato de "U". Antes da recuperação os pagamentos estão em um patamar, e vão decrescendo até o início do processo. Durante a recuperação os pagamentos são reduzidos. Após a finalização do cumprimento, os pagamentos retornam ao patamar anterior.
+
+Os dados de processos judiciais foram cruzados com informações de pagamento de tributos estaduais, com o fim de comparar a atividade da empresa antes e depois do encerramento da recuperação. A base de dados de tributos foi generosamente disponibilizada pela Procuradoria Geral do Estado de São Paulo (PGE-SP).
+
+## Metodologia
+
+```{r r-02-01}
+n_obs <- nrow(obsFase2::da_relatorio)
+n_obs_trib <- scales::number(
+  nrow(obsTrib::da_icms), 
+  big.mark = ".", 
+  decimal.mark = ","
+)
+escopo <- format(range(obsFase2::da_relatorio$data_dist), "%d de %B de %Y")
+escopo <- paste(escopo, sep = " e ")
+```
+
+A pesquisa contou com duas bases bases de dados principais. A primeira é a base do [observatório das recuperações judiciais](https://abjur.github.com/obsFase2), que contém informações de `r n_obs` processos distribuídos entre `r escopo`. A segunda base de dados é a de tributos, fornecida pela Procuradoria Geral do Estado de São Paulo (PGE-SP). A base contém `r n_obs_trib` dados de pagamentos de tributos de todas as empresas envolvidas nas recuperações judiciais analisadas no observatório.
+
+O pagamento de tributos foi utilizado como uma *proxy* da atividade da empresa. A proxy possui vantagens e desvantagens. A principal a vantagem é que o pagamento de tributos estaduais como o ICMS é uma consequência direta da venda de produtos, o que contempla uma parte significativa das empresas consideradas no estudo.
+
+Com relação às desvantagens, destacamos duas principais. Primeiro, o tributo de maior interesse, o ICMS, pode não fazer parte das atividades de algumas empresas, como prestadoras de serviço. Além disso, diferentes empresas podem ter estratégias diferentes de pagamento de tributos, de forma que a falta de pagamento em determinado período não significa, necessariamente, que a empresa não teve atividades no mesmo período. No estudo assumimos como suposição de que o efeito de eventuais estratégias empresariais para pagamento de tributos é desprezível.
+
+A análise considerou somente os casos que tiveram o processamento da recuperação judicial deferido e plano de recuperação aprovado. Foram consideradas três etapas principais: antes do deferimento, entre o deferimento e a aprovação do plano, e após a aprovação do plano. Como uma parte dos processos ainda estavam na etapa de cumprimento do plano no momento da realização da pesquisa, parte das análises consideraram somente casos que tiveram o plano aprovado até meados de 2017, de modo a garantir que todos os processos passaram pelos 2 anos obrigatórios da etapa de cumprimento do plano. 
+
+Outro aspecto importante a ser controlado é o porte da empresa. Empresas de maior porte pagam mais tributos, o que poderia distorcer as análises. Por isso, foi considerada a informação do faturamento da empresa, colhida dos balanços submetidos para processamento de recuperação judicial. Infelizmente, o faturamento não está disponível em todos os casos e, por isso, também foi considerado o capital social da empresa, obtido a partir do cruzamento dos CNPJs com a base pública da Receita Federal do Brasil (RFB).
+
+## Resultados
+
+```{r}
+da_plano <- obsFase2::da_relatorio %>% 
+  dplyr::filter(stringr::str_detect(resultado_final, "Aprov")) %>% 
+  dplyr::select(
+    n_processo, faturamento_total,
+    data_dist,
+    data_decisao_deferimento,
+    data_aprovacao,
+    data_concessao,
+    resultado_final,
+    data_falencia,
+    data_referencia,
+    data_fim,
+    desfecho_final
+  )
+```
+
+
+```{r}
+empresas_processos <- obsFase2::out_ramo_atuacao %>% 
+  dplyr::select(n_processo, cnpj) %>% 
+  dplyr::distinct(cnpj, .keep_all = TRUE)
+  
+aux_valor <- obsTrib::da_icms %>% 
+  dplyr::left_join(empresas_processos, "cnpj") %>% 
+  dplyr::group_by(n_processo, data_movimento) %>% 
+  dplyr::summarise(
+    valor = sum(valor_total), 
+    capital = sum(capital[!duplicated(cnpj)]),
+    .groups = "drop"
+  ) %>% 
+  dplyr::inner_join(da_plano, "n_processo")
+
+
+
+# aux_valor %>% 
+#   dplyr::mutate(x = as.numeric(data_movimento - data_dist)/365.25) %>% 
+#   dplyr::mutate(tempo = cut(x, seq(-7, 10))) %>% 
+#   dplyr::filter(capital > 0) %>% 
+#   dplyr::group_by(tempo) %>% 
+#   dplyr::summarise(
+#     
+#     soma = sum(valor / capital),
+#     .groups = "drop"
+#   ) %>% 
+
+```
+
