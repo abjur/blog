@@ -64,17 +64,21 @@ Com relação às desvantagens, destacamos duas principais. Primeiro, o tributo 
 
 A análise considerou somente os casos que tiveram o processamento da recuperação judicial deferido e plano de recuperação aprovado. Foram consideradas três etapas principais: antes do deferimento, entre o deferimento e a aprovação do plano, e após a aprovação do plano. Como uma parte dos processos ainda estavam na etapa de cumprimento do plano no momento da realização da pesquisa, parte das análises separaram casos que tiveram o plano aprovado até meados de 2017, de modo a identificar todos os processos que passaram pelos 2 anos obrigatórios da etapa de cumprimento do plano. 
 
-Outro aspecto importante a ser controlado é o porte da empresa. Empresas de maior porte pagam mais tributos, o que poderia distorcer as análises. Por isso, foi considerada a informação do faturamento da empresa, colhida dos balanços submetidos para processamento de recuperação judicial. Infelizmente, o faturamento não está disponível em todos os casos e, por isso, também foi considerado o capital social da empresa, obtido a partir do cruzamento dos CNPJs com a base pública da Receita Federal do Brasil (RFB). Por fim, também foi considerado o valor anual pago pela empresa no período considerado como possibilidade de normalização.
+Outro aspecto importante a ser controlado é o porte da empresa. Empresas de maior porte pagam mais tributos, o que poderia distorcer as análises. Por isso, foi considerada a informação do faturamento da empresa, colhida dos balanços submetidos para processamento de recuperação judicial. Como alternativa, também foi considerada a informação da dívida, obtida a partir da lista de credores ou quadro geral de credores homologado.
+
+Infelizmente, o faturamento não está disponível em todos os casos e, por isso, também foi considerado o capital social da empresa, obtido a partir do cruzamento dos CNPJs com a base pública da Receita Federal do Brasil (RFB). Por fim, também foi considerado o valor anual pago pela empresa no período considerado como possibilidade de normalização. No total, foram consideradas quatro alternativas para controlar pelo porte da empresa.
 
 ## Resultados
 
-Os gráficos foram elaborados a partir dos passos definidos a seguir. Primeiro, foi escolhida a distribuição do processo como data de referência. Com base nisso foi criada uma variável que mede o tempo entre o pagamento de um tributo e a distribuição do processo. Se o pagamento ocorreu antes da distribuição, o tempo é negativo. Os tempos foram então agrupados por ano, somando-se os valores totais pagos em cada intervalo. Os valores pagos foram então divididos pela variável de normalização, podendo ser o faturamento da empresa, capital ou o valor pago. Finalmente, para cada intervalo, foi calculado o valor médio das taxas normalizadas, colocadas no intervalo `[0,1]`.
+Os gráficos foram elaborados a partir dos passos definidos a seguir. Primeiro, foi escolhida a distribuição do processo como data de referência. Com base nisso foi criada uma variável que mede o tempo entre o pagamento de um tributo e a distribuição do processo. Se o pagamento ocorreu antes da distribuição, o tempo é negativo. Os tempos foram então agrupados por ano, somando-se os valores totais pagos em cada intervalo. Os valores pagos foram então divididos pela variável de normalização, podendo ser o faturamento da empresa, capital, dívida ou o valor anual pago. Finalmente, para cada intervalo, foi calculado o valor médio das taxas normalizadas, colocadas no intervalo `[0,1]`.
 
 ```{r base-obs}
 da_plano <- obsFase2::da_relatorio %>% 
   dplyr::filter(stringr::str_detect(resultado_final, "Aprov")) %>% 
   dplyr::select(
-    n_processo, faturamento_total,
+    n_processo, 
+    faturamento_total,
+    divida,
     data_dist,
     data_decisao_deferimento,
     data_aprovacao,
@@ -131,12 +135,14 @@ aux_plot <- aux_valor %>%
     valor_total = sum(valor_total),
     capital = dplyr::first(capital),
     faturamento = dplyr::first(faturamento_total),
+    divida = dplyr::first(divida),
     valor_processo = dplyr::first(valor_processo),
     .groups = "drop"
   ) %>% 
   dplyr::mutate(
     valor_capital = valor_total / capital,
     valor_faturamento = valor_total / faturamento,
+    valor_divida = valor_total / divida,
     valor_processo = valor_total / valor_processo,
   ) %>% 
   dplyr::group_by(tempo) %>% 
@@ -150,30 +156,34 @@ aux_plot <- aux_valor %>%
     # mediana_processo = median(valor_processo, na.rm = TRUE),
     faturamento = mean(valor_faturamento, na.rm = TRUE),
     # mediana_faturamento = median(valor_faturamento, na.rm = TRUE),
+    divida = mean(valor_divida, na.rm = TRUE),
     .groups = "drop"
   ) %>% 
   # dplyr::filter(n > 25) %>% 
   dplyr::mutate(dplyr::across(-c(tempo, n), ~./max(., na.rm = TRUE)))
 
 aux_plot %>% 
-  purrr::set_names(c("Intervalo", "N", "Taxa (capital)",
-                     "Taxa (valor pago)", "Taxa (faturamento)")) %>% 
+  purrr::set_names(c("Intervalo", "N", 
+                     "Taxa (capital)",
+                     "Taxa (valor pago)", 
+                     "Taxa (faturamento)",
+                     "Taxa (dívida)")) %>% 
   knitr::kable(
     caption = "Valores representando a dinâmica de pagamento de tributos, considerando as três estratégias para controlar pelo porte da empresa.", 
     digits = 2
   )
 ```
 
-A Figura \@ref(fig:taxas) mostra as informações da tabela de forma visual. Usando como base o capital ou a quantidade, é possível notar uma dinâmica de pagamentos em formato de "U", como definido na hipótese de pesquisa. Já pela métrica que usa o faturamento, o pagamento decresce conforme os anos vão se passando. No entanto, isso pode ser um efeito dos dados vazios, já que os processos em que não é possível identificar o faturamento são justamente os casos mais antigos que, por não serem eletrônicos, não disponibilizam os autos. Por esse motivo, a análise pelo faturamento foi descartada nas análises que seguem.
+A Figura \@ref(fig:taxas) mostra as informações da tabela de forma visual. Usando como base o capital ou a quantidade, é possível notar uma dinâmica de pagamentos em formato de "U", como definido na hipótese de pesquisa. Já pela métrica que usa o faturamento, o pagamento decresce conforme os anos vão se passando. No entanto, isso pode ser um efeito dos dados vazios, já que os processos em que não é possível identificar o faturamento são justamente os casos mais antigos que, por não serem eletrônicos, não disponibilizam os autos. Por esse motivo, a análise pelo faturamento foi descartada nas análises que seguem. Finalmente, considerando a dívida como fator de controle, é os pagamentos ficam aproximadamente estáveis após a distribuição. Isso poderia indicar uma eventual mudança de atividade das empresas após o processamento da recuperação judicial. 
 
-```{r taxas, message=FALSE, fig.height=8, fig.width=9, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da distribuição dos processos, considerando três metodologias para controlar pelo porte da empresa."}
+```{r taxas, message=FALSE, fig.height=6, fig.width=9, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da distribuição dos processos, considerando quatro metodologias para controlar pelo porte da empresa."}
 
 col_abj <- viridis::viridis(2, 1, .2, .8)
 blue_abj <- col_abj[1]
 green_abj <- col_abj[2]
 aux_plot %>%
   dplyr::filter(n > 30) %>% 
-  tidyr::pivot_longer(c(capital, total, faturamento)) %>% 
+  tidyr::pivot_longer(c(capital, total, faturamento, divida)) %>% 
   dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
   dplyr::mutate(name = stringr::str_to_title(name)) %>% 
   ggplot(aes(tempo, value)) +
@@ -181,7 +191,7 @@ aux_plot %>%
   geom_smooth(se = FALSE, colour = green_abj) +
   scale_x_continuous(breaks = seq(-10, 10)) +
   geom_vline(xintercept = 0, colour = "red", linetype = 2) +
-  facet_wrap(~name, ncol = 1) +
+  facet_wrap(~name, ncol = 2) +
   theme_bw(12) +
   labs(x = "Intervalo de tempo", y = "Taxa")
 
@@ -203,23 +213,28 @@ aux_plot_desfecho <- aux_valor %>%
     valor_total = sum(valor_total),
     capital = dplyr::first(capital),
     valor_processo = dplyr::first(valor_processo),
+    divida = dplyr::first(divida),
     .groups = "drop"
   ) %>% 
   dplyr::mutate(
     valor_capital = valor_total / capital,
     valor_processo = valor_total / valor_processo,
+    valor_divida = valor_total / divida,
   ) %>% 
   dplyr::group_by(tempo, desfecho_final) %>% 
   dplyr::summarise(
     n = dplyr::n(),
     capital = mean(valor_capital, na.rm = TRUE),
     total = mean(valor_processo, na.rm = TRUE),
+    divida = mean(valor_divida, na.rm = TRUE),
     .groups = "drop"
   ) %>% 
+  dplyr::group_by(desfecho_final) %>% 
   dplyr::mutate(dplyr::across(
     where(is.double), 
     ~./max(., na.rm = TRUE)
   )) %>% 
+  dplyr::ungroup() %>% 
   dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
   dplyr::filter(dplyr::between(tempo, -3, 7))
 
@@ -236,6 +251,22 @@ aux_plot_desfecho %>%
 
 
 ```
+
+A Figura \@ref(fig:taxa-desfecho-divida) mostra as taxas de pagamento por status do processo, considerando a dívida como variável de normalização. É possível observar que os casos encerramento sem falência ou fase de acompanhamento curta ficaram tiveram decrescimento nos pagamentos após a distribuição, enquanto que nos casos que estão em fase de acompanhamento há muito tempo os pagamentos já voltaram e até ultrapassaram o patamares anteriores.
+
+```{r taxa-desfecho-divida, message=FALSE, layout="l-body-outset", fig.cap="Taxa de pagamento de ICMS antes e depois da distribuição dos processos, separando pelo status dos processos, utilizando a dívida."}
+aux_plot_desfecho %>%
+  ggplot(aes(tempo, divida)) +
+  geom_col(fill = blue_abj) +
+  geom_smooth(se = FALSE, colour = green_abj) +
+  scale_x_continuous(breaks = seq(-10, 10)) +
+  geom_vline(xintercept = 0, colour = "red", linetype = 2) +
+  facet_wrap(~desfecho_final, ncol = 2) +
+  theme_bw(12) +
+  labs(x = "Intervalo de tempo", y = "Taxa")
+
+```
+
 Finalmente, podemos modificar a análise para considerar como data de referência a data de homologação do plano, no lugar da data de distribuição do processo. Dessa forma, é possível identificar a dinâmica de pagamentos anterior e posteriormente à negociação.
 
 A Figura \@ref(fig:taxa-desfecho-concessao) mostra as taxas de pagamento por status do processo, considerando a data de homologação do plano como data de referência. Nessa visualização, fica ainda mais evidente o retorno da atividade empresarial após o início efetivo do plano de recuperação. 
@@ -253,23 +284,28 @@ aux_plot_desfecho_concessao <- aux_valor %>%
     valor_total = sum(valor_total),
     capital = dplyr::first(capital),
     valor_processo = dplyr::first(valor_processo),
+    divida = dplyr::first(divida),
     .groups = "drop"
   ) %>% 
   dplyr::mutate(
     valor_capital = valor_total / capital,
     valor_processo = valor_total / valor_processo,
+    valor_divida = valor_total / divida
   ) %>% 
   dplyr::group_by(tempo, desfecho_final) %>% 
   dplyr::summarise(
     n = dplyr::n(),
     capital = mean(valor_capital, na.rm = TRUE),
     total = mean(valor_processo, na.rm = TRUE),
+    divida = mean(valor_divida, na.rm = TRUE),
     .groups = "drop"
   ) %>% 
+  dplyr::group_by(desfecho_final) %>% 
   dplyr::mutate(dplyr::across(
     where(is.double), 
     ~./max(., na.rm = TRUE)
   )) %>% 
+  dplyr::ungroup() %>% 
   dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
   dplyr::filter(dplyr::between(tempo, -5, 5))
 
@@ -286,8 +322,24 @@ aux_plot_desfecho_concessao %>%
 
 ```
 
+A Figura \@ref(fig:taxa-desfecho-concessao-divida) mostra a mesma informação, mas utilizando a dívida como valor de referência. Por essa métrica, foi possível identificar um decrescimento nos pagamentos após algum tempo passado da homologação do plano. A curva em formato de "U" fica evidente nos casos que estão na fase de acompanhamento por mais de dois anos.
+
+```{r taxa-desfecho-concessao-divida, message=FALSE, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da homologação do plano de recuperação, separando pelo status dos processos, utilizando a dívida como valor de referência."}
+aux_plot_desfecho_concessao %>%
+  ggplot(aes(tempo, divida)) +
+  geom_col(fill = blue_abj) +
+  geom_smooth(se = FALSE, colour = green_abj) +
+  scale_x_continuous(breaks = seq(-10, 10)) +
+  geom_vline(xintercept = 0, colour = "red", linetype = 2) +
+  facet_wrap(~desfecho_final, ncol = 2) +
+  theme_bw(12) +
+  labs(x = "Intervalo de tempo", y = "Taxa")
+```
+
 ## Considerações finais
 
 No presente texto, buscamos identificar evidências empíricas da recuperação da atividade empresarial, a partir de dados do Observatório da Insolvência e de pagamento de ICMS pelas empresas. A hipótese de pesquisa era que as empresas apresentariam uma dinâmica de pagamento no formato de "U", deixando de pagar os tributos durante o processamento da recuperação e o retorno dos pagamentos após a aprovação do plano.
 
 Pela metodologia utilizada e dados observados, é possível afirmar que existem evidências de que as empresas de fato apresentam o referido comportamento. Tanto considerando a data de distribuição ou a data de homologação do plano como referência, foi possível identificar que as empresas que se recuperam ou estão em fase de cumprimento retornam o pagamento dos tributos em patamares similares aos observados nos anos anteriores, e que as empresas que acabam falindo deixam de pagar os tributos ao longo dos anos.
+
+Ao considerar a dívida como fator para controlar pelo porte da empresa, os resultados são um pouco diferentes. Pelo observado, existe uma redução da atividade empresarial após a data de referência. Além disso, os resultados são diferentes de acordo com o status do processo. Ou seja, a dinâmica de pagamentos de tributos pode depender da forma em que plano de recuperação é acompanhado após sua homologação.
