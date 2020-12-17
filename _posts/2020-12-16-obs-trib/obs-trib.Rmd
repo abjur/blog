@@ -35,7 +35,7 @@ library(obsFase2)
 
 O Observatório da Insolvência é um trabalho contínuo da ABJ em parceria com a PUC-SP com o objetivo de acompanhar os processos judiciais relacionados à insolvência. O observatório fornece dados para realização de estudos importantes para conhecimento empírico sobre o tema e a elaboração de políticas públicas baseadas em evidências.
 
-No presente estudo, buscamos analisar o efeito prático da recuperação judicial. A pergunta que norteou o estudo foi: a atividade comercial da empresa se altera antes do início da recuperação judicial sofre alterações durante a negociação e depois do período de cumprimento do plano? 
+No presente estudo, buscamos analisar o efeito prático da recuperação judicial. A pergunta que norteou o estudo foi: a atividade comercial da empresa antes do início da recuperação judicial sofre alterações durante a negociação e depois do período de cumprimento do plano? 
 
 A hipótese de pesquisa é que o pagamento segue uma curva em formato de "U". Antes da recuperação os pagamentos estão em um patamar, e vão decrescendo até o início do processo. Durante a recuperação os pagamentos são reduzidos. Após a finalização do cumprimento, os pagamentos retornam ao patamar anterior.
 
