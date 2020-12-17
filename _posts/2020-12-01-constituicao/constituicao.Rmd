@@ -50,7 +50,7 @@ A partir dessa compilação, podemos tentar reproduzir algumas análises da mat�
 publicada pelo Nexo, como, por exemplo, o número de itens alterados por emenda 
 constitucional.
 
-```{r fig.height=20, fig.width=10, echo=FALSE}
+```{r fig.height=20, fig.width=10, eval=FALSE}
 library(magrittr)
 
 arq <- fs::dir_ls("~/Documents/constituicao/CSV")
