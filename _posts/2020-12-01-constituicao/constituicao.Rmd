@@ -50,10 +50,10 @@ A partir dessa compilação, podemos tentar reproduzir algumas análises da mat�
 publicada pelo Nexo, como, por exemplo, o número de itens alterados por emenda 
 constitucional.
 
-```{r fig.height=20, fig.width=10}
+```{r fig.height=20, fig.width=10, echo=FALSE}
 library(magrittr)
 
-arq <- fs::dir_ls("CSV")
+arq <- fs::dir_ls("~/Documents/constituicao/CSV")
 n_alteracoes <- function(x, paths) {
   arq1 <- readr::read_csv(paths[x], col_types = readr::cols(.default = "c"))
   arq2 <- readr::read_csv(paths[x+1], col_types = readr::cols(.default = "c"))
@@ -98,7 +98,7 @@ da_grafico <- da_alteracoes %>%
   dplyr::arrange(emenda)
 
   
-highcharter::hchart(
+p <- highcharter::hchart(
   da_grafico,
   "bar",
   highcharter::hcaes(emenda, n, color = titulo),
@@ -119,6 +119,12 @@ highcharter::hchart(
   ) %>%
   highcharter::hc_size(height = 1500)
 
+htmlwidgets::saveWidget(p, "plot.html")
+
+```
+
+```{r, echo=FALSE, results='asis'}
+xfun::file_string('plot.html')
 ```
 
 É importante ressaltar que há diferenças em relação ao gráfico do Nexo pois, 
