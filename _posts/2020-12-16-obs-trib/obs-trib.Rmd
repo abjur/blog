@@ -12,6 +12,8 @@ author:
     url: https://www.linkedin.com/in/jtrecenti/
   - name: Igor Pretel
     url: https://www.linkedin.com/in/pretel/
+  - name: Marcelo Guedes Nunes
+    url: https://www.linkedin.com/in/marcelo-guedes-nunes-849a4536/
 categories:
   - Obervatorio
   - Recuperacoes
