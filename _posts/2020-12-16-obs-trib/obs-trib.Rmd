@@ -14,6 +14,8 @@ author:
     url: https://www.linkedin.com/in/pretel/
   - name: Marcelo Guedes Nunes
     url: https://www.linkedin.com/in/marcelo-guedes-nunes-849a4536/
+  - name: Ivo Waisberg
+    url: https://www.linkedin.com/in/ivo-waisberg/
 categories:
   - Obervatorio
   - Recuperacoes
@@ -150,6 +152,7 @@ aux_plot <- aux_valor %>%
     n = dplyr::n(),
     # media = mean(valor_total),
     # mediana = median(valor_total),
+    valor = mean(valor_total, na.rm = TRUE),
     capital = mean(valor_capital, na.rm = TRUE),
     # mediana_capital = median(valor_capital, na.rm = TRUE),
     total = mean(valor_processo, na.rm = TRUE),
@@ -159,11 +162,12 @@ aux_plot <- aux_valor %>%
     divida = mean(valor_divida, na.rm = TRUE),
     .groups = "drop"
   ) %>% 
-  # dplyr::filter(n > 25) %>% 
-  dplyr::mutate(dplyr::across(-c(tempo, n), ~./max(., na.rm = TRUE)))
+  dplyr::mutate(dplyr::across(-c(tempo, n, valor), ~./max(., na.rm = TRUE)))
 
 aux_plot %>% 
-  purrr::set_names(c("Intervalo", "N", 
+  purrr::set_names(c("Intervalo", 
+                     "N", 
+                     "Valor",
                      "Taxa (capital)",
                      "Taxa (valor pago)", 
                      "Taxa (faturamento)",
@@ -174,16 +178,39 @@ aux_plot %>%
   )
 ```
 
-A Figura \@ref(fig:taxas) mostra as informações da tabela de forma visual. Usando como base o capital ou a quantidade, é possível notar uma dinâmica de pagamentos em formato de "U", como definido na hipótese de pesquisa. Já pela métrica que usa o faturamento, o pagamento decresce conforme os anos vão se passando. No entanto, isso pode ser um efeito dos dados vazios, já que os processos em que não é possível identificar o faturamento são justamente os casos mais antigos que, por não serem eletrônicos, não disponibilizam os autos. Por esse motivo, a análise pelo faturamento foi descartada nas análises que seguem. Finalmente, considerando a dívida como fator de controle, é os pagamentos ficam aproximadamente estáveis após a distribuição. Isso poderia indicar uma eventual mudança de atividade das empresas após o processamento da recuperação judicial. 
+A Figura \@ref(fig:valores) Mostra o valor médio de recolhimento antes e depois da distribuição dos processos. É possível observar que os pagamentos sofrem uma queda próximos à distribuição, que retornam a partir dos seis anos após a distribuição.
 
-```{r taxas, message=FALSE, fig.height=6, fig.width=9, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da distribuição dos processos, considerando quatro metodologias para controlar pelo porte da empresa."}
-
+```{r valores, message=FALSE, fig.height=5, fig.width=8, layout="l-body-outset", fig.cap="Valor médio de pagamento de ICMS antes e depois da distribuição dos processos."}
 col_abj <- viridis::viridis(2, 1, .2, .8)
 blue_abj <- col_abj[1]
 green_abj <- col_abj[2]
 aux_plot %>%
   dplyr::filter(n > 30) %>% 
-  tidyr::pivot_longer(c(capital, total, faturamento, divida)) %>% 
+  tidyr::pivot_longer(c(valor)) %>% 
+  dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
+  dplyr::mutate(name = stringr::str_to_title(name)) %>% 
+  ggplot(aes(tempo, value)) +
+  geom_col(fill = blue_abj) +
+  geom_smooth(se = FALSE, colour = green_abj) +
+  scale_x_continuous(breaks = seq(-10, 10)) +
+  scale_y_continuous(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  geom_vline(xintercept = 0, colour = "red", linetype = 2) +
+  theme_minimal(12) +
+  labs(x = "Intervalo de tempo", y = "Recolhimento médio")
+
+```
+
+
+A Figura \@ref(fig:taxas) mostra as informações da tabela de forma visual. Usando como base o capital ou a quantidade, é possível notar uma dinâmica de pagamentos em formato de "U", como definido na hipótese de pesquisa. Já pela métrica que usa o faturamento, o pagamento decresce conforme os anos vão se passando. No entanto, isso pode ser um efeito dos dados vazios, já que os processos em que não é possível identificar o faturamento são justamente os casos mais antigos que, por não serem eletrônicos, não disponibilizam os autos. Por esse motivo, a análise pelo faturamento foi descartada nas análises que seguem. Finalmente, considerando a dívida como fator de controle, é os pagamentos ficam aproximadamente estáveis após a distribuição. Isso poderia indicar uma eventual mudança de atividade das empresas após o processamento da recuperação judicial. 
+
+```{r taxas, message=FALSE, fig.height=6, fig.width=9, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da distribuição dos processos, considerando quatro metodologias para controlar pelo porte da empresa."}
+
+aux_plot %>%
+  dplyr::filter(n > 30) %>% 
+  tidyr::pivot_longer(c(valor, capital, total, faturamento, divida)) %>% 
+  dplyr::filter(name != "valor") %>% 
   dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
   dplyr::mutate(name = stringr::str_to_title(name)) %>% 
   ggplot(aes(tempo, value)) +
@@ -199,9 +226,9 @@ aux_plot %>%
 
 Uma segunda investigação de interesse é verificar os pagamentos de acordo com o status do processo. Os processos foram divididos em falência durante o cumprimento, encerramento da recuperação, fase de cumprimento (até 2 anos) e fase de cumprimento (passados 2 anos).
 
-A Figura \@ref(fig:taxa-desfecho) mostra as taxas de pagamento por status do processo. Foi considerada somente a taxa pelo total pago, já que a dinâmica é similar à do capital social. Como esperado, os casos que acabam em falência têm os pagamentos reduzidos à zero com o tempo. Todas as demais apresentam o formato em "U", embora cada situação numa dinâmica diferente. É interessante notar que as recuperações que se encontram na fase de acompanhamento e já ultrapassaram a marca de 2 anos apresentam um retorno no pagamento dos tributos. Isso pode ser um indicativo de que o período de acompanhamento deveria ser estendido.
+A Figura \@ref(fig:valor-desfecho) mostra os valores médios de pagamento por status do processo, sem normalização. Nos casos de encerramento sem falências, os pagamentos aumentam ao longo do tempo. Nos casos que acabaram em falência, os pagamentos decrescem ao longo do tempo. Nos casos que se encontram ativos, é possível identificar um decrescimento, seguido de um crescimento nos pagamentos, mas em momentos distintos.
 
-```{r taxa-desfecho, message=FALSE, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da distribuição dos processos, separando pelo status dos processos."}
+```{r valor-desfecho, message=FALSE, layout="l-body-outset", fig.cap="Taxa de pagamento de ICMS antes e depois da distribuição dos processos, separando pelo status dos processos, utilizando a dívida."}
 
 aux_plot_desfecho <- aux_valor %>% 
   dplyr::mutate(
@@ -224,6 +251,7 @@ aux_plot_desfecho <- aux_valor %>%
   dplyr::group_by(tempo, desfecho_final) %>% 
   dplyr::summarise(
     n = dplyr::n(),
+    valor = mean(valor_total, na.rm = TRUE),
     capital = mean(valor_capital, na.rm = TRUE),
     total = mean(valor_processo, na.rm = TRUE),
     divida = mean(valor_divida, na.rm = TRUE),
@@ -231,12 +259,34 @@ aux_plot_desfecho <- aux_valor %>%
   ) %>% 
   dplyr::group_by(desfecho_final) %>% 
   dplyr::mutate(dplyr::across(
-    where(is.double), 
+    c(capital, total, divida), 
     ~./max(., na.rm = TRUE)
   )) %>% 
   dplyr::ungroup() %>% 
   dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
   dplyr::filter(dplyr::between(tempo, -3, 7))
+
+
+aux_plot_desfecho %>%
+  ggplot(aes(tempo, valor)) +
+  geom_col(fill = blue_abj) +
+  geom_smooth(se = FALSE, colour = green_abj) +
+  scale_x_continuous(breaks = seq(-10, 10)) +
+  geom_vline(xintercept = 0, colour = "red", linetype = 2) +
+  scale_y_continuous(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  facet_wrap(~desfecho_final, ncol = 2) +
+  theme_bw(12) +
+  labs(x = "Intervalo de tempo", y = "Recolhimento médio")
+
+```
+
+
+A Figura \@ref(fig:taxa-desfecho) mostra as taxas de pagamento por status do processo. Foi considerada somente a taxa pelo total pago, já que a dinâmica é similar à do capital social. Como esperado, os casos que acabam em falência têm os pagamentos reduzidos à zero com o tempo. Todas as demais apresentam o formato em "U", embora cada situação numa dinâmica diferente. É interessante notar que as recuperações que se encontram na fase de acompanhamento e já ultrapassaram a marca de 2 anos apresentam um retorno no pagamento dos tributos. Isso pode ser um indicativo de que o período de acompanhamento deveria ser estendido.
+
+```{r taxa-desfecho, message=FALSE, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da distribuição dos processos, separando pelo status dos processos."}
+
 
 aux_plot_desfecho %>%
   ggplot(aes(tempo, total)) +
@@ -269,9 +319,9 @@ aux_plot_desfecho %>%
 
 Finalmente, podemos modificar a análise para considerar como data de referência a data de homologação do plano, no lugar da data de distribuição do processo. Dessa forma, é possível identificar a dinâmica de pagamentos anterior e posteriormente à negociação.
 
-A Figura \@ref(fig:taxa-desfecho-concessao) mostra as taxas de pagamento por status do processo, considerando a data de homologação do plano como data de referência. Nessa visualização, fica ainda mais evidente o retorno da atividade empresarial após o início efetivo do plano de recuperação. 
+A Figura \@ref(fig:valor-desfecho-concessao) mostra os valores médios pagos usando como data de referência a data de homologação do plano. Os resultados são interessantes, pois mostram um aparente crescimento nos pagamentos após a concessão, seguidos de uma queda. Isso pode ser um indicativo de modificações na atividade empresarial após o início do plano de recuperação.
 
-```{r taxa-desfecho-concessao, message=FALSE, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da homologação do plano de recuperação, separando pelo status dos processos."}
+```{r valor-desfecho-concessao, message=FALSE, layout="l-body-outset", fig.cap="Valores de pagamento de ICMS antes e depois da homologação do plano de recuperação, separando pelo status dos processos."}
 aux_plot_desfecho_concessao <- aux_valor %>% 
   dplyr::mutate(dt_ref = dplyr::coalesce(data_concessao, data_aprovacao)) %>% 
   dplyr::filter(!is.na(dt_ref)) %>% 
@@ -295,6 +345,7 @@ aux_plot_desfecho_concessao <- aux_valor %>%
   dplyr::group_by(tempo, desfecho_final) %>% 
   dplyr::summarise(
     n = dplyr::n(),
+    valor = median(valor_total, na.rm = TRUE),
     capital = mean(valor_capital, na.rm = TRUE),
     total = mean(valor_processo, na.rm = TRUE),
     divida = mean(valor_divida, na.rm = TRUE),
@@ -302,12 +353,32 @@ aux_plot_desfecho_concessao <- aux_valor %>%
   ) %>% 
   dplyr::group_by(desfecho_final) %>% 
   dplyr::mutate(dplyr::across(
-    where(is.double), 
+    c(capital, total, divida), 
     ~./max(., na.rm = TRUE)
   )) %>% 
   dplyr::ungroup() %>% 
   dplyr::mutate(tempo = as.numeric(as.character(tempo))) %>% 
   dplyr::filter(dplyr::between(tempo, -5, 5))
+
+
+aux_plot_desfecho_concessao %>%
+  ggplot(aes(tempo, valor)) +
+  geom_col(fill = blue_abj) +
+  geom_smooth(se = FALSE, colour = green_abj) +
+  scale_x_continuous(breaks = seq(-10, 10)) +
+  geom_vline(xintercept = 0, colour = "red", linetype = 2) +
+  facet_wrap(~desfecho_final, ncol = 2) +
+    scale_y_continuous(labels = scales::dollar_format(
+    prefix = "R$", big.mark = ".", decimal.mark = ","
+  )) +
+  theme_bw(12) +
+  labs(x = "Intervalo de tempo", y = "Recolhimento mediano")
+
+```
+
+A Figura \@ref(fig:taxa-desfecho-concessao) mostra as taxas de pagamento por status do processo, considerando a data de homologação do plano como data de referência. Nessa visualização, fica ainda mais evidente o retorno da atividade empresarial após o início efetivo do plano de recuperação. 
+
+```{r taxa-desfecho-concessao, message=FALSE, layout="l-body-outset", fig.cap="Taxas de pagamento de ICMS antes e depois da homologação do plano de recuperação, separando pelo status dos processos."}
 
 
 aux_plot_desfecho_concessao %>%
@@ -343,3 +414,5 @@ No presente texto, buscamos identificar evidências empíricas da recuperação 
 Pela metodologia utilizada e dados observados, é possível afirmar que existem evidências de que as empresas de fato apresentam o referido comportamento. Tanto considerando a data de distribuição ou a data de homologação do plano como referência, foi possível identificar que as empresas que se recuperam ou estão em fase de cumprimento retornam o pagamento dos tributos em patamares similares aos observados nos anos anteriores, e que as empresas que acabam falindo deixam de pagar os tributos ao longo dos anos.
 
 Ao considerar a dívida como fator para controlar pelo porte da empresa, os resultados são um pouco diferentes. Pelo observado, existe uma redução da atividade empresarial após a data de referência. Além disso, os resultados são diferentes de acordo com o status do processo. Ou seja, a dinâmica de pagamentos de tributos pode depender da forma em que plano de recuperação é acompanhado após sua homologação.
+
+Finalmente, considerando como referência a data de homologação do plano e a média de pagamentos sem normalização, é possível identificar uma aumento no pagamento de tributos, seguido de um decrescimento.
