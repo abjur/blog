@@ -345,7 +345,7 @@ aux_plot_desfecho_concessao <- aux_valor %>%
   dplyr::group_by(tempo, desfecho_final) %>% 
   dplyr::summarise(
     n = dplyr::n(),
-    valor = median(valor_total, na.rm = TRUE),
+    valor = mean(valor_total, na.rm = TRUE),
     capital = mean(valor_capital, na.rm = TRUE),
     total = mean(valor_processo, na.rm = TRUE),
     divida = mean(valor_divida, na.rm = TRUE),
@@ -372,7 +372,7 @@ aux_plot_desfecho_concessao %>%
     prefix = "R$", big.mark = ".", decimal.mark = ","
   )) +
   theme_bw(12) +
-  labs(x = "Intervalo de tempo", y = "Recolhimento mediano")
+  labs(x = "Intervalo de tempo", y = "Recolhimento médio")
 
 ```
 
