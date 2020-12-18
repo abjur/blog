@@ -5,14 +5,14 @@
       "title": "Sobre o laboratório",
       "author": [],
       "contents": "\nO portal do laboratório é a forma da Associação Brasileira de Jurimetria comunicar seus estudos com o mundo.\nAs pesquisas da ABJ, disponíveis na página de cases, costumam ser grandes e densas. Neste portal, colocamos algumas discussões mais pontuais, sejam elas complexas ou não. Uma parte dos textos está relacionada aos nossos Observatórios, outra relacionada a metodologia de pesquisa e outra a reflexões gerais.\nO portal é baseado no tema Distill, transformando cada texto em um artigo, que pode ser citado. O portal também é open source: você pode acessar o código-fonte aqui.\nTambém estamos aceitando textos de nossos associados. Ficaremos muito felizes com a contribuição de vocês. Se quiser escrever um texto sobre jurimetria para nosso portal, entre em contato conosco!\n\n\n\n",
-      "last_modified": "2020-12-14T11:02:57-03:00"
+      "last_modified": "2020-12-17T21:12:45-03:00"
     },
     {
       "path": "index.html",
       "title": "Direito na Medida",
       "author": [],
       "contents": "\n\n\n\n",
-      "last_modified": "2020-12-14T11:03:10-03:00"
+      "last_modified": "2020-12-17T21:16:45-03:00"
     }
   ],
   "collections": ["posts/posts.json"]
