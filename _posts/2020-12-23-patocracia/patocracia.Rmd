@@ -1,0 +1,48 @@
+---
+title: "Patocracia"
+description: |
+  Preliminar.
+author:
+  - name: Julio Trecenti
+    url: https://twitter.com/clente_
+  - name: Marcelo Guedes Nunes
+    url: https://twitter.com/renata_mh
+date: 12-23-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+A presente análise busca identificar se políticos são mais propensos a figurarem em processos criminais em São Paulo. Além disso, investigamos se os candidatos com mais processos têm maior probabilidade de vencer as eleições, além da relação entre os crimes mais comuns e as condenações que geram inelegebilidade.
+
+## Resultados preliminares
+
+Para verificar se candidatos têm mais processos criminais que a população geral, precisamos calcular a proporção de pessoas que possuem processos na base de candidatos e na população geral.
+
+A base de candidatos foi obtida do TSE. Os CPFs dos candidatos foram pesquisados na consulta processual do TJSP. Variáveis indicadoras foram criadas para identificar se o candidato tem processo e se foi eleito. Para permitir a comparabilidade com os dados da população geral, consideramos nesse levantamento apenas processos distribuídos entre 2014 e 2019 e as classes processuais abaixo.
+
+- Ação Penal - Procedimento Ordinário
+- Ação Penal - Procedimento Sumário
+- Ação Penal - Procedimento Sumaríssimo
+- Ação Penal de Competência do Júri
+
+Abaixo segue um exemplo de tabela.
+
+| nr_turno|ds_cargo |ds_genero |nr_cpf_candidato |eleito |tem_processo |
+|--------:|:--------|:---------|:----------------|:------|:------------|
+|        1|VEREADOR |MASCULINO |003******40      |Não    |Não          |
+|        1|VEREADOR |MASCULINO |401******38      |Sim    |Não          |
+|        1|VEREADOR |MASCULINO |301******96      |Não    |Não          |
+|        1|PREFEITO |MASCULINO |032******26      |Não    |Sim          |
+|        1|VEREADOR |FEMININO  |247******40      |Sim    |Não          |
+
+A proporção de processos foi calculada pela média simples da variável `tem_processo`. Considerando todos os candidatos, essa proporção é de 0,339% (aproximadamente 34 em 10 mil). Já considerando apenas candidatos eleitos, essa proporção é de 0,658% (aproximadamente 66 em 10 mil).
+
+Para calcular a proporção de processos na população geral, consideramos a base de distribuições por classe disponível no Painel Justiça em Números e dados populacionais da Fundação Seade. Da mesma forma que a base anterior, consideramos apenas casos novos de primeiro grau ou juizados especiais entre 2014 e 2019, com as classes criminais supracitadas. Para a população, consideramos a estimativa populacional da Fundação Seade para pessoas com 18 anos ou mais. A proporção de processos encontrada foi de 0,872% (aproximadamente 87 em 10 mil).
+
+Pela análise realizada, temos que a proporção de pessoas em geral com processos criminais é maior do que a proporção de candidatos com processos criminais, seja esse candidato eleito ou não. Isso de certa forma refutaria a hipótese da patocracia, pelo menos nessa análise preliminar.
