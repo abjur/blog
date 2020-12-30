@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2020-12-30-acp/",
+    "title": "Levantamento sobre Ações Civis Públicas no TJSP",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Julio Trecenti",
+        "url": "https://twitch.tv/jtrecenti"
+      }
+    ],
+    "date": "2020-12-30",
+    "categories": [],
+    "contents": "\nPara realizar um estudo preliminar das ACPs, iniciamos pela consulta de julgados de primeiro grau. A pesquisa pela classe “Ação Civil Pública Cível” resultou em aproximadamente 24 mil casos. Ao invés de baixar todos os casos, coletamos apenas os processos com decisão publicada entre 2013 e 2020. Após o download e leitura desses casos, sobraram 21.367 decisões em 20.507 processos distintos.\nAssuntos\nA Tabela 1 mostra a distribuição dos 15 assuntos mais frequentes. É possível notar que é um assunto bastante pulverizado, já que um terço dos casos estão na combinação de vários assuntos pouco frequentes. Dentro dos assuntos mais comuns, estão improbidade administrativa, meio ambiente e fornecimento de medicamentos. Também é possível notar que existem potenciais agrupamentos de temas dentro dos assuntos mais comuns.\n\nTable 1: Frequência de decisões por assunto.\nassunto\nn\nprop\nOutros\n6869\n32.1%\nImprobidade Administrativa\n3341\n15.6%\nMeio Ambiente\n2439\n11.4%\nFornecimento de Medicamentos\n1433\n6.7%\nTratamento Médico-Hospitalar e/ou Fornecimento de Medicamentos\n1212\n5.7%\nFlora\n1053\n4.9%\nViolação aos Princípios Administrativos\n776\n3.6%\nDano ao Erário\n766\n3.6%\nSaúde\n726\n3.4%\nAtos Administrativos\n592\n2.8%\nObrigação de Fazer / Não Fazer\n453\n2.1%\nTratamento Médico-Hospitalar\n446\n2.1%\nAssunto não informado.\n429\n2.0%\nObrigações\n288\n1.3%\nIndenização por Dano Moral\n278\n1.3%\nPrestação de Serviços\n266\n1.2%\nTotal\n21367\n100.0%\n\nTempo\nO levantamento realizado é retrospectivo. Por isso, a análise dos tempos representa apenas o comportamento dos processos finalizados (ou seja, mais antigos) e não a atual realidade dos processos.\nO tempo mediano entre distribuição e publicação da sentença de primeira instância é de 1 ano e 8 meses. A Figura ?? mostra as distribuições dos tempos por assunto. Processos relacionados a fornecimento de medicamentos são bem mais rápidos, o que faz bastante sentido dada a urgência do tema. Processos relacionados a improbidade administrativa e meio ambiente têm durações similares, entre 3 e 4 anos.\n\n\n\nValores envolvidos\nO valor mediano dos processos é de dez mil reais. Separando pelos assuntos mais frequentes, temos a Tabela ?? É possível observar que improbidade administrativa tem um valor da causa mediano maior que os outros assuntos mais frequentes. Provavelmente o valor dos processos relacionados a meio ambiente não são significativos por conta da dinâmica do processo.\n\nTable 2: Valor mediano por assunto.\nassunto\nn\nq1\nmediana\nq3\nImprobidade Administrativa\n3071\n9000.00\n45702.12\n205030.3\nMeio Ambiente\n2254\n1000.00\n5000.00\n10000.0\nFornecimento de Medicamentos\n1411\n1000.00\n1000.00\n1000.0\nTratamento Médico-Hospitalar e/ou Fornecimento de Medicamentos\n1101\n1000.00\n1000.00\n1000.0\nFlora\n1010\n1000.00\n10000.00\n20000.0\nViolação aos Princípios Administrativos\n733\n1000.00\n10000.00\n100000.0\nDano ao Erário\n729\n14481.55\n88034.77\n364773.4\nSaúde\n654\n1000.00\n1000.00\n1000.0\nAtos Administrativos\n537\n1000.00\n10000.00\n100000.0\nTratamento Médico-Hospitalar\n428\n1000.00\n1000.00\n5000.0\n\nConclusões preliminares\nNossos critérios para escolha do tema de um observatório das ACPs é identificar algo que ao mesmo tempo i) envolve altos valores e ii) envolve processos relativamente rápidos e iii) possui apelo de potenciais investidores. Por esse racional, parece que Improbidade Administrativa atende aos critérios (i) e (ii). Resta fazer um levantamento de mercado para identificar (iii).\nNo caso de improbidade administrativa, talvez esse tipo de estudo possa um bom insumo para associações que combatem a corrupção (como o Instituto Não Aceito Corrupção), o Ministério Público ou as próprias prefeituras.\n\n\n\n\n\n\n",
+    "preview": "posts/2020-12-30-acp/acp_files/figure-html5/unnamed-chunk-1-1.png",
+    "last_modified": "2020-12-30T19:38:08-03:00",
+    "input_file": "acp.utf8.md",
+    "preview_width": 1728,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2020-12-17-constituicao/",
     "title": "Facilitando análises sobre a Constituição",
     "description": "Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo",

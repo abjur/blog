@@ -1,0 +1,120 @@
+---
+title: "Levantamento sobre Ações Civis Públicas no TJSP"
+description: |
+  A short description of the post.
+author:
+  - name: Julio Trecenti
+    url: https://twitch.tv/jtrecenti
+date: 12-30-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(magrittr)
+da_cjpg <- readr::read_rds("da_cjpg_min.rds")
+da_cpopg <- readr::read_rds("da_cpopg_min.rds")
+```
+
+
+Para realizar um estudo preliminar das ACPs, iniciamos pela consulta de julgados de primeiro grau. A pesquisa pela classe "Ação Civil Pública Cível" resultou em aproximadamente 24 mil casos. Ao invés de baixar todos os casos, coletamos apenas os processos com decisão publicada entre 2013 e 2020. Após o download e leitura desses casos, sobraram 21.367 decisões em 20.507 processos distintos.
+
+### Assuntos
+
+A Tabela \@ref(tab:assuntos) mostra a distribuição dos 15 assuntos mais frequentes. É possível notar que é um assunto bastante pulverizado, já que um terço dos casos estão na combinação de vários assuntos pouco frequentes. Dentro dos assuntos mais comuns, estão improbidade administrativa, meio ambiente e fornecimento de medicamentos. Também é possível notar que existem potenciais agrupamentos de temas dentro dos assuntos mais comuns.
+
+```{r assuntos}
+da_cjpg %>% 
+  dplyr::mutate(
+    assunto = forcats::fct_lump_n(assunto, 15, other_level = "Outros")
+  ) %>% 
+  dplyr::count(assunto, sort = TRUE) %>% 
+  dplyr::mutate(prop = n/sum(n)) %>% 
+  janitor::adorn_totals() %>% 
+  dplyr::mutate(prop = scales::percent(prop, .1)) %>% 
+  knitr::kable(caption = "Frequência de decisões por assunto.")
+```
+### Tempo
+
+O levantamento realizado é retrospectivo. Por isso, a análise dos tempos representa apenas o comportamento dos processos finalizados (ou seja, mais antigos) e não a atual realidade dos processos. 
+
+O tempo mediano entre distribuição e publicação da sentença de primeira instância é de 1 ano e 8 meses. A Figura \@ref(fig:tempo-assuntos) mostra as distribuições dos tempos por assunto. Processos relacionados a fornecimento de medicamentos são bem mais rápidos, o que faz bastante sentido dada a urgência do tema. Processos relacionados a improbidade administrativa e meio ambiente têm durações similares, entre 3 e 4 anos.
+
+```{r, fig.height=4, fig.width=9, layout = "l-body-outset"}
+da_cjpg_processo <- da_cjpg %>%
+  dplyr::transmute(
+    id_processo = n_processo,
+    dt_decisao = lubridate::dmy(data_de_disponibilizacao)
+  ) %>% 
+  dplyr::arrange(dplyr::desc(dt_decisao)) %>% 
+  dplyr::distinct(id_processo, .keep_all = TRUE) %>% 
+  dplyr::filter(!is.na(dt_decisao))
+
+da_tempos <- da_cpopg %>% 
+  dplyr::transmute(
+    id_processo, 
+    assunto, 
+    dt_dist = lubridate::dmy(stringr::str_sub(distribuicao, 1, 10))
+  ) %>% 
+  dplyr::filter(!is.na(id_processo)) %>% 
+  dplyr::filter(stringr::str_length(id_processo) == 25) %>% 
+  dplyr::mutate(id_processo = abjutils::clean_cnj(id_processo)) %>% 
+  dplyr::inner_join(da_cjpg_processo, "id_processo") %>% 
+  dplyr::mutate(tempo = as.numeric(dt_decisao - dt_dist) / 365.25) %>% 
+  dplyr::mutate(assunto = forcats::fct_lump_n(assunto, 10)) %>% 
+  dplyr::filter(tempo > 0)
+
+da_tempos %>% 
+  dplyr::filter(!is.na(assunto)) %>% 
+  dplyr::mutate(assunto = forcats::fct_reorder(assunto, tempo)) %>% 
+  ggplot2::ggplot(ggplot2::aes(tempo, assunto)) +
+  ggplot2::geom_boxplot(fill = viridis::viridis(1, .6, .2, .8)) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::labs(x = "Tempo (anos)", y = "Assunto") +
+  ggplot2::scale_x_continuous(breaks = c(0:30)*2)
+```
+
+### Valores envolvidos
+
+O valor mediano dos processos é de dez mil reais. Separando pelos assuntos mais frequentes, temos a Tabela \@ref(tab:valor-assunto) É possível observar que improbidade administrativa tem um valor da causa mediano maior que os outros assuntos mais frequentes. Provavelmente o valor dos processos relacionados a meio ambiente não são significativos por conta da dinâmica do processo.
+
+```{r valor-assuntos}
+loc <- readr::locale(decimal_mark = ",", grouping_mark = ".")
+da_cpopg %>% 
+  dplyr::transmute(
+    assunto, 
+    valor = readr::parse_number(valor_da_acao, locale = loc)
+  ) %>% 
+  dplyr::filter(!is.na(valor)) %>% 
+  dplyr::mutate(assunto = forcats::fct_lump_n(assunto, 10)) %>% 
+  dplyr::filter(assunto != "Other") %>% 
+  dplyr::group_by(assunto) %>% 
+  dplyr::summarise(
+    n = dplyr::n(),
+    q1 = quantile(valor, .25),
+    mediana = median(valor), 
+    q3 = quantile(valor, .75),
+    .groups = "drop"
+  ) %>% 
+  dplyr::arrange(dplyr::desc(n)) %>% 
+  knitr::kable(caption = "Valor mediano por assunto.")
+```
+
+### Conclusões preliminares
+
+Nossos critérios para escolha do tema de um observatório das ACPs é identificar algo que ao mesmo tempo i) envolve altos valores e ii) envolve processos relativamente rápidos e iii) possui apelo de potenciais investidores. Por esse racional, parece que Improbidade Administrativa atende aos critérios (i) e (ii). Resta fazer um levantamento de mercado para identificar (iii).
+
+No caso de improbidade administrativa, talvez esse tipo de estudo possa um bom insumo para associações que combatem a corrupção (como o Instituto Não Aceito Corrupção), o Ministério Público ou as próprias prefeituras.
+
+```{r}
+set.seed(1)
+amostra <- da_cpopg %>% 
+  dplyr::filter(assunto == "Improbidade Administrativa") %>% 
+  dplyr::filter(digital) %>% 
+  dplyr::sample_n(10) %>% 
+  dplyr::select(id_processo)
+```
+
