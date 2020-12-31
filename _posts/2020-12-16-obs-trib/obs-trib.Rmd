@@ -1,10 +1,7 @@
 ---
-title: "As recuperações judiciais recuperam as empresas?"
+title: "Recuperação judicial, preservação formal e substancial da empresa"
 description: |
-  A recuperação judicial é um dos principais instrumentos jurídicos para 
-  permitir que empresas consigam se recuperar de situações de crise. 
-  Nesse estudo, avaliamos a efetividade da recuperação judicial, através
-  do acompanhamento de pagamentos de ICMS das empresas ao longo dos anos.
+  Evidências empíricas sobre a efetividade da recuperação judicial na manutenção da atividade econômica das empresas.
 author:
   - name: Marcelo Barbosa Sacramone
     url: https://www.sacramone.com.br/sobre/
@@ -90,7 +87,7 @@ da_plano <- obsFase2::da_relatorio %>%
 
 ```
 
-A pesquisa contou com duas bases bases de dados principais. A primeira é a base do [observatório das recuperações judiciais](https://abjur.github.com/obsFase2)[^obs], que contém informações de `r n_obs` processos distribuídos entre `r escopo`. 
+A pesquisa contou com duas bases de dados principais. A primeira é a base do [observatório das recuperações judiciais](https://abjur.github.com/obsFase2)[^obs], que contém informações de `r n_obs` processos distribuídos entre `r escopo`. 
 
 
 O estudo foi realizado a partir de três bases de dados. A primeira é a base do observatório das recuperações judiciais, que contém informações de `r n_obs` processos distribuídos entre `r escopo`. Para os fins do estudo, consideramos somente os casos em que o plano de recuperação foi aprovado, envolvendo `r nrow(da_plano)` casos. A segunda base de dados é a de tributos, fornecida pela Procuradoria Geral do Estado de São Paulo (PGE-SP). A base contém `r n_obs_trib` dados de pagamentos de tributos de todas as empresas envolvidas nas recuperações judiciais analisadas no observatório. A terceira base de dados contém o volume mensal de pedidos de recuperação judicial e falências decretadas desde 1995 até 2020 em todo o Brasil.
@@ -236,7 +233,7 @@ aux_plot <- aux_valor %>%
 
 ```
 
-A Figura \@ref(fig:valores) mostra o valor anual médio de recolhimento antes e depois da distribuição dos processos, sem normaização. É possível observar que os pagamentos sofrem uma queda próximos à distribuição, que retornam a partir dos seis anos após a distribuição.
+A Figura \@ref(fig:valores) mostra o valor anual médio de recolhimento antes e depois da distribuição dos processos, sem normalização. É possível observar que os pagamentos sofrem uma queda próximos à distribuição, que retornam a partir dos seis anos após a distribuição.
 
 ```{r valores, message=FALSE, fig.height=5, fig.width=8, layout="l-body-outset", fig.cap="Valor médio de pagamento de ICMS antes e depois da distribuição dos processos."}
 aux_plot %>%
