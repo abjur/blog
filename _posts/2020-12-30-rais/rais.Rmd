@@ -1,0 +1,45 @@
+---
+title: "Análise RAIS"
+description: |
+  A short description of the post.
+author:
+  - name: Julio Trecenti
+    url: https://twitch.tv/jtrecenti
+date: 12-30-2020
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r}
+loc <- readr::locale(encoding = "latin1", decimal_mark = ",", grouping_mark = ".")
+da_rais <- readr::read_csv2(
+  "~/Downloads/RAIS 2012 a 2018-2.txt",
+  locale = loc, 
+  col_types = readr::cols(.default = readr::col_character())
+) %>% 
+  janitor::clean_names() %>% 
+  dplyr::glimpse()
+  dplyr::transmute(
+    cnpj = cnpj_cei, 
+    qtd_vinculos = as.numeric(qtd_vinculos_estatutarios),
+    tamanho_estabelecimento,
+    tipo_estab,
+    ano
+  ) %>%
+  dplyr::group_by(cnpj, ano) %>% 
+  dplyr::summarise(
+    qtd_vinculos = sum(qtd_vinculos),
+    tamanho = max(tamanho_estabelecimento),
+    tipo = max(tipo_estab),
+    .groups = "drop"
+  ) %>% 
+  dplyr::filter(qtd_vinculos > 0)
+```
+
