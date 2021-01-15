@@ -1,0 +1,30 @@
+---
+title: "Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento"
+description: |
+  Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruazamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade. 
+author:
+  - name: João Torquato
+    url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/  
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+  - name: Katerine Witkoski
+    url: https://www.linkedin.com/in/katerine-witkoski-53b19518b/
+  - name: Ricardo Feliz
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: "`r Sys.Date()`"
+categories:
+  - Analises
+  - Justiça
+  - Desenvolvimento
+  - Litigiosidade
+output:
+  distill::distill_article:
+    self_contained: false
+---
+# Introdução
+
+# Metodologia
+
+# Resultados
+
+# Conclusão
