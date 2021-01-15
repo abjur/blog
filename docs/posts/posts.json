@@ -1,5 +1,39 @@
 [
   {
+    "path": "posts/2021-01-15-litigiosidade/",
+    "title": "Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento",
+    "description": "Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruazamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade.",
+    "author": [
+      {
+        "name": "João Torquato",
+        "url": "https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/"
+      },
+      {
+        "name": "Julio Trecenti",
+        "url": "https://www.linkedin.com/in/jtrecenti/"
+      },
+      {
+        "name": "Katerine Witkoski",
+        "url": "https://www.linkedin.com/in/katerine-witkoski-53b19518b/"
+      },
+      {
+        "name": "Ricardo Feliz",
+        "url": "https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"
+      }
+    ],
+    "date": "2021-01-15",
+    "categories": [
+      "Analises",
+      "Justiça",
+      "Desenvolvimento",
+      "Litigiosidade"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\nIntrodução\r\nMetodologia\r\nResultados\r\nConclusão\r\n\r\n\r\n\r\n",
+    "preview": {},
+    "last_modified": "2021-01-15T13:23:34-03:00",
+    "input_file": "litigiosidade.utf8.md"
+  },
+  {
     "path": "posts/2020-12-17-constituicao/",
     "title": "Facilitando análises sobre a Constituição",
     "description": "Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo",
