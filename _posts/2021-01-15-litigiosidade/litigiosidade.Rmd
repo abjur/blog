@@ -21,10 +21,42 @@ output:
   distill::distill_article:
     self_contained: false
 ---
-# Introdução
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE, 
+  message = FALSE, 
+  warning = FALSE,
+  fig.align = "center"
+)
+# carrega pacotes necessários
+library(magrittr)
+library(tidyverse)
+library(patchwork)
+```
 
-# Metodologia
+```{r}
+# 1) Importação
+# a) carrega base `da_contagens` disponivel na pasta do post
+load("da_contagens.rda")
 
-# Resultados
+# b) carrega base 'pnud_min" disponível na pasta abjData
+```
 
-# Conclusão
+```{r}
+# 2) Arrumação 
+# a) 'da_contagens'
+processos <- da_contagens %>% 
+  filter(!is.na(codigo_ibge)) %>% 
+  group_by(codigo_ibge) %>% 
+  summarize(qtd_processos = sum(n))
+
+# b) 'pnud_min'
+```
+
+## Introdução
+
+## Metodologia
+
+## Resultados
+
+## Conclusão
