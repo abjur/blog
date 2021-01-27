@@ -1,7 +1,7 @@
 ---
 title: "Retrospectiva 2020"
 description: |
-  A short description of the post.
+  Um resumo sobre andamento de projetos e atividades da ABJ em 2020
 author:
   - name: Bárbara Tassoni
     url: 
@@ -9,7 +9,7 @@ date: 01-27-2021
 output:
   distill::distill_article:
     self_contained: false
-preview: imagem.png
+preview: abj-2020
 ---
 
 
@@ -33,9 +33,9 @@ Os observatórios da Insolvência (fase 3), Societário e CVM tiveram seus crono
 No Observatório da Insolvência - 3ª fase, que tem como objetivo analisar os processos de falências que tramitam no TJSP, trabalhamos na atualização dos dados da segunda fase, relacionada a recuperações judiciais. Com a nova base, pudemos atualizar o relatório e o índice de recuperabilidade das empresas que havíamos identificado. 
 Além disso, realizamos uma análise preliminar dos processos de falências da capital, e estamos finalizando a produção do relatório de pesquisa que deverá ser publicado no site da ABJ no primeiro semestre de 2021. 
 
-Outro projeto é o Observatório Societário, pesquisa desenvolvida em parceria com a PUC-SP que envolve o mapeamento das disputas societárias no TJSP para avaliar o impacto do novo CPC no fluxo dos processos. Analisamos mais de mil processos de discussões societárias e elaboramos um dashboard interativo com estatísticas gerais desses casos ([link](https://abjur.github.io/obsoc)). No momento, estamos aprimorando o formulário de classificação com entidades parceiras e elaborando um plano de atualização dos dados.
+Outro projeto é o Observatório Societário, pesquisa desenvolvida em parceria com a PUC-SP que envolve o mapeamento das disputas societárias no TJSP para avaliar o impacto do novo CPC no fluxo dos processos. Analisamos mais de mil processos de discussões societárias e elaboramos um dashboard interativo com ([estatísticas gerais](https://abjur.github.io/obsoc)) desses casos. No momento, estamos aprimorando o formulário de classificação com entidades parceiras e elaborando um plano de atualização dos dados.
 
-Também trabalhamos nos levantamentos e análises para o Observatório da CVM, que tem como objetivo analisar os Processos Administrativos Sancionadores (PAS). O projeto foi um sucesso e foi divulgado no site da ABJ. Você pode encontrá-lo neste link: https://abj.org.br/cases/cvm/
+Também trabalhamos nos levantamentos e análises para o Observatório da CVM, que tem como objetivo analisar os Processos Administrativos Sancionadores (PAS). O projeto foi um sucesso e foi divulgado no site da ABJ. Você pode encontrá-lo ([neste link](https://abj.org.br/cases/cvm/)).
 
 No Observatório da Insolvência - Rio de Janeiro, que analisa as Recuperações Judiciais que tramitam no TJRJ, fizemos a classificação de uma amostra de casos de recuperação judicial extraída dos diários oficiais, mas ainda complementaremos o levantamento com dados que serão fornecidos pelo próprio TJRJ.
 
@@ -49,9 +49,9 @@ Finalizamos o Estudo jurimétrico sobre Execução de Contratos, feito com finan
 
 Além dos projetos realizados e em andamento, algumas novidades tornaram o ano de 2020 especialmente importante para os objetivos institucionais da ABJ, mesmo com o advento da pandemia. Como sabem, nossas principais bandeiras são a realização de políticas públicas baseadas em evidências e a abertura dos dados do Judiciário. Felizmente, tivemos duas mudanças regulatórias que representam grandes vitórias nas duas frentes. 
 
-O Decreto 10.411/2020 regulamenta a Análise de Impacto Regulatório (AIR) para todas as entidades ligadas ao Poder Executivo Federal. Isso significa que alterações regulatórias importantes dessas entidades devem ser precedidas de um estudo prévio, avaliando suas consequências positivas e negativas. Além disso, o decreto regulamenta a Avaliação de Resultado Regulatório (ARR), que é importante para verificar se as mudanças realmente funcionam. Esperamos que esse decreto gere uma cultura de utilização de ciência na formulação de políticas públicas.
+O ([Decreto 10.411/2020](https://www.in.gov.br/en/web/dou/-/decreto-n-10.411-de-30-de-junho-de-2020-264424798)) regulamenta a Análise de Impacto Regulatório (AIR) para todas as entidades ligadas ao Poder Executivo Federal. Isso significa que alterações regulatórias importantes dessas entidades devem ser precedidas de um estudo prévio, avaliando suas consequências positivas e negativas. Além disso, o decreto regulamenta a Avaliação de Resultado Regulatório (ARR), que é importante para verificar se as mudanças realmente funcionam. Esperamos que esse decreto gere uma cultura de utilização de ciência na formulação de políticas públicas.
 
-Já a Resolução 331/2020 do CNJ trata do DataJud, uma base de dados nacional de processos judiciais, controlada pelo CNJ. A base será alimentada periodicamente e disponibilizada através de uma Application Programming Interface (API). Uma API é uma forma eficiente de transmitir dados programaticamente entre o CNJ e o usuário final, seja uma empresa, um pesquisador, ou um cidadão. Com isso, várias pesquisas em âmbito nacional serão possibilitadas e aceleradas. Esperamos que o DataJud seja uma iniciativa prioritária dos Tribunais, e que tenhamos bases de dados cada vez melhores para fazer jurimetria.
+Já a ([Resolução 331/2020 do CNJ](https://atos.cnj.jus.br/atos/detalhar/3428)) trata do DataJud, uma base de dados nacional de processos judiciais, controlada pelo CNJ. A base será alimentada periodicamente e disponibilizada através de uma Application Programming Interface (API). Uma API é uma forma eficiente de transmitir dados programaticamente entre o CNJ e o usuário final, seja uma empresa, um pesquisador, ou um cidadão. Com isso, várias pesquisas em âmbito nacional serão possibilitadas e aceleradas. Esperamos que o DataJud seja uma iniciativa prioritária dos Tribunais, e que tenhamos bases de dados cada vez melhores para fazer jurimetria.
 
 Sem dúvidas, 2020 foi um ano de muito trabalho aqui na ABJ. Em 2021, isso não será diferente. E claro, estamos esperançosos de que em algum momento do ano possamos voltar a realizar nossos trabalhos com toda a equipe reunida! 
 
