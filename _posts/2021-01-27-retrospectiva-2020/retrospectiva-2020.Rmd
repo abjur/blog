@@ -9,7 +9,7 @@ date: 01-27-2021
 output:
   distill::distill_article:
     self_contained: false
-preview: abj-2020
+preview: "abj-2020.png"
 ---
 
 
