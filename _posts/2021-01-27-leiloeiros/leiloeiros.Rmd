@@ -1,0 +1,23 @@
+---
+title: "Um perfil dos leiloeiros dos processos de falência em São Paulo"
+description: |
+Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo
+author:
+  - name: Ricardo Feliz
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: "`r Sys.Date()`"
+categories:
+  - Falência
+  - Leilão
+  - Leiloeiro
+  - Jurimetria
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+
+```
