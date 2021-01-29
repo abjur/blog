@@ -28,6 +28,9 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.align = "center"
 )
+
+options(scipen = 999)
+
 # carrega pacotes necessários
 library(ggplot2)
 library(magrittr)
@@ -46,19 +49,20 @@ base_pnud <- abjData::pnud_min
 
 ```{r}
 # 2) Arrumação 
-base_pnud$uf_sigla <- NULL
-da_contagens$dje_data <- NULL
-
-base1 <- da_contagens %>%
-  filter(ano == "2010")
+base1 <- da_contagens %>% 
+  filter(!is.na(codigo_ibge)) %>% 
+  filter(ano == "2010") %>% 
+  group_by(codigo_ibge) %>% 
+  summarize(qtd_processos = sum(n))
 
 base2 <- base_pnud %>%
   rename(codigo_ibge = muni_id) %>%
   filter(ano == "2010")
 
 # Base principal 
-base_litigiosidade <- inner_join(base1, base2, by = "codigo_ibge") %>% 
-  mutate(taxa = round(((n/pop)*10000), 2)) # Criando taxa de litigiosidade
+base_litigiosidade <- inner_join(base1, base2, by = "codigo_ibge") %>%
+  # Criando taxa de litigiosidade
+  mutate(taxa = round(((qtd_processos/pop)*10000), 3)) 
 
 ```
 
