@@ -21,3 +21,17 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 
 ```
+
+```{r}
+remotes::install_github("abjur/obsFase3")
+
+leiloes <- obsFase3::da_leilao_tidy
+
+todos_leiloeiros <- leiloes %>% 
+  group_by(id_leiloeiro) %>% 
+  select(leiloeiro, cpf_cnpj, id_leiloeiro, modalidade) %>% 
+  unique() %>% 
+  arrange(leiloeiro)
+```
+
+
