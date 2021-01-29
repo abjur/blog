@@ -21,16 +21,16 @@
         "url": "https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"
       }
     ],
-    "date": "2021-01-15",
+    "date": "2021-01-29",
     "categories": [
       "Analises",
       "Justiça",
       "Desenvolvimento",
       "Litigiosidade"
     ],
-    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\nIntrodução\r\nMetodologia\r\nResultados\r\nConclusão\r\n\r\n\r\n\r\n",
+    "contents": "\n\n\n\n\n\n\nIntrodução\nDefinição do problema\nQuanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são celebrados. Isso deve gerar maior litigância. Portanto, existe uma relação entre desenvolvimento e litigiosidade\nMetodologia\nOrigem das bases de dados\nDescrição das bases\nAlterações nas bases\nResultados\n10 municípios (comarcas) com maiores taxas de litigiosidade\n5 municípios (comarcas) com maiores taxas de litigiosidade\nTaxa de litigiosidade por IDHM.\nTaxa de litigiosidade por GINI.\nConclusão\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-01-15T13:23:34-03:00",
+    "last_modified": "2021-01-29T15:47:28-03:00",
     "input_file": "litigiosidade.utf8.md"
   },
   {

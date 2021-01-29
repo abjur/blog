@@ -29,6 +29,7 @@ knitr::opts_chunk$set(
   fig.align = "center"
 )
 # carrega pacotes necessários
+library(ggplot2)
 library(magrittr)
 library(tidyverse)
 library(patchwork)
@@ -36,27 +37,53 @@ library(patchwork)
 
 ```{r}
 # 1) Importação
-# a) carrega base `da_contagens` disponivel na pasta do post
-load("da_contagens.rda")
+# a) carrega base `da_contagens` disponivel no pacote djprocPublic
+da_contagens <- djprocPublic::da_contagens
 
-# b) carrega base 'pnud_min" disponível na pasta abjData
+# b) carrega base 'pnud_min" disponível no pacote abjData
+base_pnud <- abjData::pnud_min
 ```
 
 ```{r}
 # 2) Arrumação 
-# a) 'da_contagens'
-processos <- da_contagens %>% 
-  filter(!is.na(codigo_ibge)) %>% 
-  group_by(codigo_ibge) %>% 
-  summarize(qtd_processos = sum(n))
+base_pnud$uf_sigla <- NULL
+da_contagens$dje_data <- NULL
 
-# b) 'pnud_min'
+base1 <- da_contagens %>%
+  filter(ano == "2010")
+
+base2 <- base_pnud %>%
+  rename(codigo_ibge = muni_id) %>%
+  filter(ano == "2010")
+
+# Base principal 
+base_litigiosidade <- inner_join(base1, base2, by = "codigo_ibge") %>% 
+  mutate(taxa = round(((n/pop)*10000), 2)) # Criando taxa de litigiosidade
+
 ```
 
 ## Introdução
 
+### Definição do problema
+Quanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são celebrados. Isso deve gerar maior litigância. Portanto, existe uma relação entre desenvolvimento e litigiosidade 
+
 ## Metodologia
 
+### Origem das bases de dados
+
+### Descrição das bases
+
+### Alterações nas bases
+
 ## Resultados
+
+### 10 municípios (comarcas) com maiores taxas de litigiosidade
+
+### 5 municípios (comarcas) com maiores taxas de litigiosidade
+
+### Taxa de litigiosidade  por IDHM.
+
+### Taxa de litigiosidade  por GINI. 
+
 
 ## Conclusão
