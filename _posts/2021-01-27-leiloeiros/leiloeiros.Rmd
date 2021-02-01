@@ -25,13 +25,25 @@ library(tidyverse)
 ```{r}
 remotes::install_github("abjur/obsFase3")
 
+# Import da base de todos os leilões
 leiloes <- obsFase3::da_leilao_tidy
 
+# selecionar todas as grafias possíveis de leiloeiros
 todos_leiloeiros <- leiloes %>% 
   group_by(id_leiloeiro) %>% 
-  select(leiloeiro, cpf_cnpj, id_leiloeiro, modalidade) %>% 
+  select(leiloeiro, cpf_cnpj, id_leiloeiro) %>% 
   unique() %>% 
   arrange(leiloeiro)
+
+# Eu vou primeiro arrumar a base todos_leiloeiros, como forma teste. Quando eu conseguir arrumar essa base, eu vou pegar o código e repetir ele pra "leilões"
+todos_leiloeiros <- todos_leiloeiros %>% 
+  dplyr::mutate(
+    leiloeiro_arrumado = dplyr::case_when(
+      # Ronaldo Sérgio Montenegro Rodrigues Faro
+      str_detect(leiloeiro, regex("ron.*faro", ignore_case=TRUE)) ~ "Ronaldo Sérgio Montenegro Rodrigues Faro"
+    )
+  )
+
 ```
 
 
