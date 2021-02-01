@@ -21,17 +21,19 @@
         "url": "https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"
       }
     ],
-    "date": "2021-01-29",
+    "date": "2021-02-01",
     "categories": [
       "Analises",
       "Justiça",
       "Desenvolvimento",
       "Litigiosidade"
     ],
-    "contents": "\n\n\n\n\n\n\nIntrodução\nDefinição do problema\nQuanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são celebrados. Isso deve gerar maior litigância. Portanto, existe uma relação entre desenvolvimento e litigiosidade\nMetodologia\nOrigem das bases de dados\nDescrição das bases\nAlterações nas bases\nResultados\n10 municípios (comarcas) com maiores taxas de litigiosidade\n5 municípios (comarcas) com maiores taxas de litigiosidade\nTaxa de litigiosidade por IDHM.\nTaxa de litigiosidade por GINI.\nConclusão\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-01-29T15:47:28-03:00",
-    "input_file": "litigiosidade.utf8.md"
+    "contents": "\n\n\n\n\n\n\nIntrodução\nDefinição do problema\nQuanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são celebrados. Isso deve gerar maior litigância. Portanto, existe uma relação entre desenvolvimento e litigiosidade\nMetodologia\nOrigem das bases de dados\nDescrição das bases\nAlterações nas bases\nResultados\n10 municípios (comarcas) com maiores taxas de litigiosidade\n\nMunicípio\nTaxa de litigiosidade\nJOAÇABA\n106.689\nFAXINAL DO SOTURNO\n112.816\nCONCÓRDIA\n113.831\nCAMPINA DAS MISSÕES\n114.924\nROLIM DE MOURA\n115.602\nARARANGUÁ\n196.469\nBARRACÃO\n197.086\nCAMPO NOVO\n206.300\nALTO PARANÁ\n221.449\nARUANÃ\n225.503\n\n5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)\nTaxa de litigiosidade por IDHM.\n\n\n\nFigure 1: Contagem de casos por Tribunal.\n\n\n\nTaxa de litigiosidade por GINI.\nConclusão\n\n\n\n",
+    "preview": "posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/assuntos-tribunal-1.png",
+    "last_modified": "2021-02-01T15:48:22-03:00",
+    "input_file": "litigiosidade.utf8.md",
+    "preview_width": 1248,
+    "preview_height": 768
   },
   {
     "path": "posts/2020-12-17-constituicao/",

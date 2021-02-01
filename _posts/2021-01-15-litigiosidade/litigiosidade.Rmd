@@ -82,10 +82,28 @@ Quanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são c
 ## Resultados
 
 ### 10 municípios (comarcas) com maiores taxas de litigiosidade
-
-### 5 municípios (comarcas) com maiores taxas de litigiosidade
+```{r,  eval = TRUE, echo = FALSE}
+base_litigiosidade %>% 
+  select(muni_nm, taxa) %>% 
+  top_n(10, taxa) %>% 
+  arrange(taxa) %>%
+  dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm) %>% 
+  knitr::kable()
+```
+### 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)
 
 ### Taxa de litigiosidade  por IDHM.
+
+```{r assuntos-tribunal, fig.cap = "Contagem de casos por Tribunal.", layout="l-body-outset"}
+base_litigiosidade %>%
+  select(idhm, taxa) %>%
+  ggplot() +
+  geom_point(aes(x = idhm,  y = taxa)) +
+  labs(x = "IDHM",
+       y = "Taxa de litigiosidade") +
+  theme_minimal(12)
+
+```
 
 ### Taxa de litigiosidade  por GINI. 
 
