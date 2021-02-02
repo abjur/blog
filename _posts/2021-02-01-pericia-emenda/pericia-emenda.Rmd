@@ -4,15 +4,15 @@ description: |
   O presente texto tem por objetivo abordar a aplicação da perícia prévia e a emenda à petição inicial no processo de recuperação judicial (a "RJ") e seus impactos nas decisões de deferimento do processamento da RJ.
 author:
   - name: Alice Braile
-    url: {}
+    url: http://linkedin.com/in/alice-bravo-braile-7a0317162
   - name: Beatriz Nunes Cloud
-    url: {}
+    url: https://br.linkedin.com/in/beatriz-nunes-cloud-8940a3182
   - name: Alfredo Cabrini
-    url: {}
+    url: https://br.linkedin.com/in/alfredo-cabrini-souza-e-silva-1536a9172
   - name: Rafael Vasconcellos de Arruda
-    url: {}
+    url: https://www.linkedin.com/in/rafael-arruda-b2a998a6/
   - name: Gabriel José de Orleans e Bragança
-    url: {}
+    url: https://www.linkedin.com/in/gabrielo1/
 date: 02-01-2021
 bibliography: bibfile.bib
 output:
