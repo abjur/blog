@@ -22,8 +22,14 @@ library(tidyverse)
 
 ```
 
+<<<<<<< HEAD
 ```{r importacao}
 # remotes::install_github("abjur/obsFase3")
+=======
+```{r}
+# remotes::install_github("abjur/obsFase3")
+
+>>>>>>> e3577679f223aafe64bb191c0d533491b0a80873
 # Import da base de todos os leilões
 leiloes <- obsFase3::da_leilao_tidy
 
@@ -56,6 +62,7 @@ todos_leiloeiros <- todos_leiloeiros %>%
       str_detect(leiloeiro, regex("Moy", ignore_case=TRUE)) ~ "Renato Schlobach Moysés",
       str_detect(leiloeiro, regex("Uilian", ignore_case=TRUE)) ~ "Uilian Aparecido da Silva",
       str_detect(leiloeiro, regex("Villa Nova", ignore_case=TRUE)) ~ "Sérgio Villa Nova de Freitas",
+<<<<<<< HEAD
       str_detect(leiloeiro, regex("Boya", ignore_case=TRUE)) ~ "Eduardo Jordão Boyadjian",
       str_detect(leiloeiro, regex("Franklin", ignore_case=TRUE)) ~ "Renata Franklin Simões",
       str_detect(leiloeiro, regex("Cardoso", ignore_case=TRUE)) ~ "Danilo Cardoso da Silva",
@@ -63,6 +70,9 @@ todos_leiloeiros <- todos_leiloeiros %>%
       str_detect(leiloeiro, regex("Affonso", ignore_case=TRUE)) ~ "Alfio Carlos Affonso Zalli Neto",
       str_detect(leiloeiro, regex("Mega", ignore_case=TRUE)) ~ "Mega Leilões",
       str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
+=======
+      str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
+>>>>>>> e3577679f223aafe64bb191c0d533491b0a80873
     ),
     cpf_cnpj = dplyr::case_when(
       leiloeiro_arrumado == "Ronaldo Sérgio Montenegro Rodrigues Faro" ~ "08046824887",
@@ -81,12 +91,15 @@ todos_leiloeiros <- todos_leiloeiros %>%
       leiloeiro_arrumado == "Renato Schlobach Moysés" ~ "09141676858",
       leiloeiro_arrumado == "Uilian Aparecido da Silva" ~ "11645230821",
       leiloeiro_arrumado == "Sérgio Villa Nova de Freitas" ~ "33201862800",
+<<<<<<< HEAD
       leiloeiro_arrumado == "Eduardo Jordão Boyadjian" ~ "12634759819",
       leiloeiro_arrumado == "Renata Franklin Simões" ~ "20538037890",
       leiloeiro_arrumado == "Danilo Cardoso da Silva" ~ "31191072800",
       leiloeiro_arrumado == "Alfio Carlos Affonso Zalli Neto" ~ " 39681014804",
       leiloeiro_arrumado == "Douglas José Fidalgo" ~ "16499659827",
       leiloeiro_arrumado == "Mega Leilões" ~ "03122040000102",
+=======
+>>>>>>> e3577679f223aafe64bb191c0d533491b0a80873
       TRUE ~ cpf_cnpj
     ),
     id_leiloeiro = dplyr::case_when(
@@ -106,12 +119,15 @@ todos_leiloeiros <- todos_leiloeiros %>%
       leiloeiro_arrumado == "Renato Schlobach Moysés" ~ "466",
       leiloeiro_arrumado == "Uilian Aparecido da Silva" ~ "26542",
       leiloeiro_arrumado == "Sérgio Villa Nova de Freitas" ~ "5604",
+<<<<<<< HEAD
       leiloeiro_arrumado == "Eduardo Jordão Boyadjian" ~ "924",
       leiloeiro_arrumado == "Renata Franklin Simões" ~ "669",
       leiloeiro_arrumado == "Danilo Cardoso da Silva" ~ "7794",
       leiloeiro_arrumado == "Alfio Carlos Affonso Zalli Neto" ~ "21977",
       leiloeiro_arrumado == "Douglas José Fidalgo" ~ "5535",
       leiloeiro_arrumado == "Mega Leilões" ~ "5426",
+=======
+>>>>>>> e3577679f223aafe64bb191c0d533491b0a80873
       TRUE ~ id_leiloeiro
     )
   ) 
