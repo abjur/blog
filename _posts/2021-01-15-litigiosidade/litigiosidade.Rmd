@@ -81,31 +81,56 @@ Quanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são c
 
 ## Resultados
 
-### 10 municípios (comarcas) com maiores taxas de litigiosidade
+A tabela mostra os 10 municípios (comarcas) com maiores taxas de ligiosidade. 
+
 ```{r,  eval = TRUE, echo = FALSE}
 base_litigiosidade %>% 
-  select(muni_nm, taxa) %>% 
-  top_n(10, taxa) %>% 
-  arrange(taxa) %>%
+  dplyr::select(muni_nm, taxa) %>% 
+  dplyr::top_n(10, taxa) %>% 
+  dplyr::arrange(taxa) %>%
   dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm) %>% 
-  knitr::kable()
+  knitr::kable(caption ="10 municípios (comarcas) com maiores taxas de litigiosidade")
 ```
 ### 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)
 
+```{r,  eval = TRUE, echo = FALSE}
+base_litigiosidade %>% 
+  group_by(taxa) %>% 
+  dplyr::count(regiao_nm, taxa)  
+
+
+
+  
+  
+```
 ### Taxa de litigiosidade  por IDHM.
 
-```{r assuntos-tribunal, fig.cap = "Contagem de casos por Tribunal.", layout="l-body-outset"}
-base_litigiosidade %>%
-  select(idhm, taxa) %>%
-  ggplot() +
-  geom_point(aes(x = idhm,  y = taxa)) +
-  labs(x = "IDHM",
-       y = "Taxa de litigiosidade") +
-  theme_minimal(12)
+A figura  mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil. 
 
+```{r litigiosidade-idhm_e, fig.cap = ".", layout="l-body-outset", eval = TRUE, echo = FALSE}
+base_litigiosidade %>%
+  dplyr::select(idhm_e, taxa, regiao_nm) %>%
+  dplyr::mutate(media_taxa = mean(base_litigiosidade$taxa - base_litigiosidade$idhm_e)) %>%
+  ggplot2::ggplot() +
+  #ggplot2::geom_hline(yintercept = media_taxa, size = .5, colour = "red", linetype = 2) +
+  ggplot2::geom_point(aes(x = idhm_e,  y = taxa), color = "#102C68")  +
+  labs(x = "IDHM Educação",
+       y = "Taxa de litigiosidade") +
+  ggplot2::facet_wrap(~ regiao_nm)
+  ggplot2::theme_bw(12)
 ```
 
-### Taxa de litigiosidade  por GINI. 
+A figura  mostra a taxa de litigiosidade por gini. 
 
+
+```{r litigiosidade-gini, fig.cap = ".", layout="l-body-outset", eval = TRUE, echo = FALSE}
+base_litigiosidade %>%
+  dplyr::select(taxa, gini, regiao_nm) %>%
+  ggplot2::ggplot() +
+  ggplot2::geom_col(aes(x = gini, y = taxa), fill = viridisLite::viridis(1, 1, .2, .8))  +
+  labs(x = "Taxa de litigiosidade",
+       y = "gini")
+ggplot2::theme_minimal(12)
+```
 
 ## Conclusão
