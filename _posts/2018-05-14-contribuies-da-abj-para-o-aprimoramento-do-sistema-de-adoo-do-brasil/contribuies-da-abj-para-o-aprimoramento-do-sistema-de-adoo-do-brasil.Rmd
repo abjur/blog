@@ -1,0 +1,77 @@
+---
+title: "Contribuições da ABJ para o aprimoramento do sistema de adoção do Brasil"
+description: "Pesquisa da ABJ inspirou o Projeto de Lei 5850/2016, sancionado em 22/11/2017 (Lei 13.509/2017), que agiliza procedimentos relacionados à destituição de poder familiar e à adoção de crianças e adolescentes"
+author:
+  - name: Jhenifer Caetano Veloso
+    url: {}
+date: 05-14-2018
+output:
+  distill::distill_article:
+    self_contained: false
+preview: img/imagem.png
+categories:
+  - Analises
+---
+
+Em 2015, a ABJ realizou um estudo, encomendado pelo Conselho Nacional de
+Justiça, intitulado ["Tempos dos processos Relacionados à Adoção no Brasil: Uma análise sobre os impactos da atuação do poder judiciário"](https://www.cnj.jus.br/wp-content/uploads/2011/02/8aab4515becd037933960ba8e91e1efc.pdf), o qual tinha
+por objetivo ter um instrumento para conhecer com maior profundidade os
+processos relacionados à adoção para identificar entraves legais,
+administrativos e judiciais, que culminassem em orientações de políticas
+públicas de qualidade e medidas concretas do Judiciário.
+
+Os resultados da pesquisa revelaram que existem diversas formas de
+aprimorar o sistema de adoção do Brasil. Para tanto, foi construído um
+capítulo de propostas, organizando-as em mais de 10 seções, que poderiam
+ajudar na celeridade processual, acompanhamento de crianças em risco e
+na melhora da estrutura das varas. Vale ressaltar que as propostas são
+todas embasadas em evidências empíricas e opiniões de especialistas, e
+abrangem mudanças administrativas ou tecnológicas, campanhas a serem
+realizadas e propostas legislativas. Em resumo, as sugestões são:
+
+-   Supremacia dos direitos da criança ou adolescente;
+-   Critérios objetivos para ingresso da ação de destituição do poder
+    familiar;
+-   Esgotamento de meios de citação pessoal;
+-   Estruturação das varas especializadas;
+-   Sistemas eletrônicos de localização;
+-   Integração do Cadastro Nacional de Adoção (CNA) com outras bases de
+    dados;
+-   Sistema unificados das varas;
+-   Mecanismo de matching;
+-   Criação de um encontro multissetorial;
+-   Cursos preparatórios para magistrados;
+-   Cursos para conselho tutelar;
+-   Cursos para defensoria pública;
+-   Campanhas com gestante sobre entrega voluntária;
+-   Campanhas com pretendentes à adoção;
+
+Diante disso, a pesquisa inspirou o Projeto de Lei 5850/2016, sancionado
+em 22/11/2017 (Lei 13.509/2017), que agiliza procedimentos relacionados
+à destituição de poder familiar e à adoção de crianças e adolescentes,
+alterando o Estatuto da Criança e do Adolescente (ECA) e a Consolidação
+das Leis Trabalhistas (CLT).
+
+Dentre as alterações do ECA está a preferência na fila de adoção para
+interessados em adotar irmãos ou grupos de crianças, adolescentes com
+deficiência, doença crônica ou necessidades específicas, regras no que
+diz respeito à destituição do poder familiar, entrega voluntária e
+apadrinhamento efetivo.
+
+Com relação à CLT, a lei dá a garantia de estabilidade provisória no
+emprego para o empregado que tenha obtido a guarda provisória, estender
+a licença-maternidade para mulheres que adotarem crianças e concedê-la
+para mulheres que adotarem adolescente, ou seja, a pessoa que adotar uma
+criança terá as mesmas garantias trabalhistas dos pais sanguíneos.
+
+Antes da nova lei era muito difícil e burocrático adotar uma criança,
+mesmo que doente, não por ela não ter preferência, mas pela
+burocratização do processo de adoção. Sem contar que a maioria dos
+interessados em adotar tem preferência em recém-nascidos e saudáveis.
+
+Portanto, espera-se que com essa nova lei as crianças não precisem
+contar com a sorte, ou no caso dos adolescentes, não precisam perder a
+esperança de algum dia ter uma família.
+
+
+

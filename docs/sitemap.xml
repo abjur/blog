@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" version="1.0">
   <url>
     <loc>https://lab.abj.org.br/about.html</loc>
-    <lastmod>2021-01-28T17:58:44-03:00</lastmod>
+    <lastmod>2020-11-10T16:59:37-03:00</lastmod>
   </url>
   <url>
     <loc>https://lab.abj.org.br/</loc>
-    <lastmod>2021-01-28T17:58:44-03:00</lastmod>
+    <lastmod>2020-11-10T14:10:15-03:00</lastmod>
   </url>
   <url>
     <loc>https://lab.abj.org.br/posts/2021-01-27-retrospectiva-2020/</loc>
@@ -47,5 +47,25 @@
   <url>
     <loc>https://lab.abj.org.br/posts/2020-01-12-welcome/</loc>
     <lastmod>2020-11-13T17:38:57-03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://lab.abj.org.br/posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/</loc>
+    <lastmod>2021-02-05T18:23:15-03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://lab.abj.org.br/posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/</loc>
+    <lastmod>2021-02-05T18:21:11-03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial/</loc>
+    <lastmod>2021-02-05T16:49:33-03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://lab.abj.org.br/posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/</loc>
+    <lastmod>2021-02-05T18:28:13-03:00</lastmod>
+  </url>
+  <url>
+    <loc>https://lab.abj.org.br/posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/</loc>
+    <lastmod>2021-02-05T18:10:37-03:00</lastmod>
   </url>
 </urlset>

@@ -125,5 +125,55 @@ Esperamos que goste!</description>
       <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-12-welcome/abj.png" medium="image" type="image/png" width="374" height="152"/>
     </item>
+    <item>
+      <title>Como o big data pode auxiliar a prática da lei</title>
+      <dc:creator>Bárbara Tassoni</dc:creator>
+      <link>https://lab.abj.org.br/posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei</link>
+      <description>Benefícios e implicações das novas tecnologias para a prática jurídica</description>
+      <category>Geral</category>
+      <guid>https://lab.abj.org.br/posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei</guid>
+      <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
+    </item>
+    <item>
+      <title>Favoritismo Judicial de políticos: Evidências nos Juizados Especiais Cíveis</title>
+      <dc:creator>Bárbara Tassoni</dc:creator>
+      <link>https://lab.abj.org.br/posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis</link>
+      <description>Mais de 6.000 simulações de decisões judiciais imparciais mostram que réus comuns têm decisão favorável nos JECs em 25% dos casos, enquanto que políticos têm decisão favorável em 31% dos processos.</description>
+      <category>Analises</category>
+      <guid>https://lab.abj.org.br/posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis</guid>
+      <pubDate>Fri, 27 Sep 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
+    </item>
+    <item>
+      <title>Características e evolução das decisões nas Câmaras Reservadas de Direito Empresarial</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <link>https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial</link>
+      <description>Análise das principais características e evolução das decisões das câmaras por assunto e comarca de origem</description>
+      <category>Analises</category>
+      <guid>https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial</guid>
+      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
+    </item>
+    <item>
+      <title>Jurimetria e dados: A importância de bases estruturadas</title>
+      <dc:creator>Bárbara Tassoni</dc:creator>
+      <link>https://lab.abj.org.br/posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas</link>
+      <description>Dados sozinhos, fora de contexto, não transmitem mensagens. Mas quando adequadamente tratados, conseguimos interpretá-los e transformá-los em informações que podem ser usadas para melhorar uma tomada de decisão</description>
+      <category>Geral</category>
+      <guid>https://lab.abj.org.br/posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas</guid>
+      <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
+    </item>
+    <item>
+      <title>Contribuições da ABJ para o aprimoramento do sistema de adoção do Brasil</title>
+      <dc:creator>Jhenifer Caetano Veloso</dc:creator>
+      <link>https://lab.abj.org.br/posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil</link>
+      <description>Pesquisa da ABJ inspirou o Projeto de Lei 5850/2016, sancionado em 22/11/2017 (Lei 13.509/2017), que agiliza procedimentos relacionados à destituição de poder familiar e à adoção de crianças e adolescentes</description>
+      <category>Analises</category>
+      <guid>https://lab.abj.org.br/posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil</guid>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/img/imagem.png" medium="image" type="image/png" width="600" height="250"/>
+    </item>
   </channel>
 </rss>
