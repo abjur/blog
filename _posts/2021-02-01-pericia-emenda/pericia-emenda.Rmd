@@ -7,7 +7,7 @@ author:
     url: http://linkedin.com/in/alice-bravo-braile-7a0317162
   - name: Beatriz Nunes Cloud
     url: https://br.linkedin.com/in/beatriz-nunes-cloud-8940a3182
-  - name: Alfredo Cabrini
+  - name: Alfredo Cabrini Souza e Silva
     url: https://br.linkedin.com/in/alfredo-cabrini-souza-e-silva-1536a9172
   - name: Rafael Vasconcellos de Arruda
     url: https://www.linkedin.com/in/rafael-arruda-b2a998a6/
