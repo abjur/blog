@@ -70,7 +70,7 @@ base_litigiosidade <-
 ## Introdução
 
 ### Definição do problema
-Quanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são celebrados. Isso deve gerar maior litigância. Portanto, existe uma relação entre desenvolvimento e litigiosidade 
+Quanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são celebrados. Isso deve gerar maior litigância. Portanto, existe uma relação entre desenvolvimento e litigiosidade. No texto fazemos uma análise sobre o volume de processos em razão as regiões do Brasil. 
 
 ## Metodologia
 
@@ -109,13 +109,15 @@ A figura  mostra a taxa de litigiosidade por IDHM educação entre as regiões d
 
 ```{r fig.cap = "Litigiosidade por IDHM educação", layout="l-body-outset", eval = TRUE, echo = FALSE}
 
+# cria a média da taxa
 media_taxa <- mean(base_litigiosidade$taxa)
 
 base_litigiosidade %>%
   dplyr::select(idhm_e, taxa, regiao_nm) %>%
+  dplyr::mutate(taxa_log = log(taxa)) %>% # Taxa em log
   ggplot2::ggplot() +
   ggplot2::geom_hline(yintercept = media_taxa, size = .5, colour = "red", linetype = 2) +
-  ggplot2::geom_point(aes(x = idhm_e,  y = taxa), color = "#102C68", size = .5)  +
+  ggplot2::geom_point(aes(x = idhm_e,  y = taxa_log), color = "#102C68", size = .5)  +
   labs(x = "IDHM Educação",
        y = "Taxa de litigiosidade") +
   ggplot2::facet_wrap(~ regiao_nm) +
@@ -129,10 +131,12 @@ A figura  mostra a taxa de litigiosidade por gini.
 base_litigiosidade %>%
   dplyr::select(taxa, gini, regiao_nm) %>%
   ggplot2::ggplot() +
-  ggplot2::geom_col(aes(x = gini, y = taxa), fill = viridisLite::viridis(1, 1, .2, .8))  +
+  ggplot2::geom_col(aes(x = gini, y = taxa, fill = regiao_nm))+
+  scale_fill_discrete(name="Região")+
+  # viridis::scale_fill_viridis() +
+  #scale_color_discrete(values = c("orange", "black", "red", "blue", "green"))+
   labs(x = "Taxa de litigiosidade",
        y = "GINI")+
-#ggplot2::scale_x_continuous() +
 ggplot2::theme_minimal(12)
 ```
 
