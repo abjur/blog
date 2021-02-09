@@ -49,20 +49,21 @@ base_pnud <- abjData::pnud_min
 
 ```{r}
 # 2) Arrumação 
-base1 <- da_contagens %>% 
-  filter(!is.na(codigo_ibge)) %>% 
-  filter(ano == "2010") %>% 
-  group_by(codigo_ibge) %>% 
+base1 <- da_contagens %>%
+  filter(!is.na(codigo_ibge)) %>%
+  filter(ano == "2010") %>%
+  group_by(codigo_ibge) %>%
   summarize(qtd_processos = sum(n))
 
 base2 <- base_pnud %>%
   rename(codigo_ibge = muni_id) %>%
   filter(ano == "2010")
 
-# Base principal 
-base_litigiosidade <- inner_join(base1, base2, by = "codigo_ibge") %>%
+# Base principal
+base_litigiosidade <-
+  inner_join(base1, base2, by = "codigo_ibge") %>%
   # Criando taxa de litigiosidade
-  mutate(taxa = round(((qtd_processos/pop)*10000), 3)) 
+  mutate(taxa = round(((qtd_processos / pop) * 100), 3))
 
 ```
 
@@ -91,45 +92,47 @@ base_litigiosidade %>%
   dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm) %>% 
   knitr::kable(caption ="10 municípios (comarcas) com maiores taxas de litigiosidade")
 ```
-### 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)
+
+A tabela mostra as comarcas 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)
 
 ```{r,  eval = TRUE, echo = FALSE}
 base_litigiosidade %>% 
-  group_by(taxa) %>% 
-  dplyr::count(regiao_nm, taxa)  
-
-
-
-  
-  
+  dplyr::arrange(dplyr::desc(taxa)) %>% 
+  dplyr::distinct(regiao_nm, .keep_all = TRUE) %>%
+  dplyr::select(regiao_nm, muni_nm, taxa) %>% 
+  dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm, "Região" = regiao_nm) %>% 
+  knitr::kable(caption ="5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)")
 ```
 ### Taxa de litigiosidade  por IDHM.
 
 A figura  mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil. 
 
-```{r litigiosidade-idhm_e, fig.cap = ".", layout="l-body-outset", eval = TRUE, echo = FALSE}
+```{r fig.cap = "Litigiosidade por IDHM educação", layout="l-body-outset", eval = TRUE, echo = FALSE}
+
+media_taxa <- mean(base_litigiosidade$taxa)
+
 base_litigiosidade %>%
   dplyr::select(idhm_e, taxa, regiao_nm) %>%
-  dplyr::mutate(media_taxa = mean(base_litigiosidade$taxa - base_litigiosidade$idhm_e)) %>%
   ggplot2::ggplot() +
-  #ggplot2::geom_hline(yintercept = media_taxa, size = .5, colour = "red", linetype = 2) +
-  ggplot2::geom_point(aes(x = idhm_e,  y = taxa), color = "#102C68")  +
+  ggplot2::geom_hline(yintercept = media_taxa, size = .5, colour = "red", linetype = 2) +
+  ggplot2::geom_point(aes(x = idhm_e,  y = taxa), color = "#102C68", size = .5)  +
   labs(x = "IDHM Educação",
        y = "Taxa de litigiosidade") +
-  ggplot2::facet_wrap(~ regiao_nm)
+  ggplot2::facet_wrap(~ regiao_nm) +
   ggplot2::theme_bw(12)
 ```
 
 A figura  mostra a taxa de litigiosidade por gini. 
 
 
-```{r litigiosidade-gini, fig.cap = ".", layout="l-body-outset", eval = TRUE, echo = FALSE}
+```{r litigiosidade-gini, fig.cap = "Litigiosidade por gini", layout="l-body-outset", eval = TRUE, echo = FALSE}
 base_litigiosidade %>%
   dplyr::select(taxa, gini, regiao_nm) %>%
   ggplot2::ggplot() +
   ggplot2::geom_col(aes(x = gini, y = taxa), fill = viridisLite::viridis(1, 1, .2, .8))  +
   labs(x = "Taxa de litigiosidade",
-       y = "gini")
+       y = "GINI")+
+#ggplot2::scale_x_continuous() +
 ggplot2::theme_minimal(12)
 ```
 
