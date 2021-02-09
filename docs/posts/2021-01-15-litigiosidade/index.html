@@ -20,19 +20,19 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -52,7 +52,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
@@ -141,7 +141,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["litigiosidade_files/anchor-4.2.2/anchor.min.js","litigiosidade_files/bowser-1.9.3/bowser.min.js","litigiosidade_files/distill-2.2.21/template.v2.js","litigiosidade_files/figure-html5/assuntos-tribunal-1.png","litigiosidade_files/figure-html5/litigiosidade-gini-1.png","litigiosidade_files/figure-html5/litigiosidade-idhm_e-1.png","litigiosidade_files/figure-html5/unnamed-chunk-5-1.png","litigiosidade_files/header-attrs-2.6/header-attrs.js","litigiosidade_files/jquery-1.11.3/jquery.min.js","litigiosidade_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["litigiosidade_files/anchor-4.2.2/anchor.min.js","litigiosidade_files/bowser-1.9.3/bowser.min.js","litigiosidade_files/distill-2.2.21/template.v2.js","litigiosidade_files/figure-html5/assuntos-tribunal-1.png","litigiosidade_files/figure-html5/litigiosidade-gini-1.png","litigiosidade_files/figure-html5/litigiosidade-idhm_e-1.png","litigiosidade_files/figure-html5/unnamed-chunk-5-1.png","litigiosidade_files/figure-html5/unnamed-chunk-6-1.png","litigiosidade_files/header-attrs-2.6/header-attrs.js","litigiosidade_files/jquery-1.11.3/jquery.min.js","litigiosidade_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2021,7 +2021,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
@@ -2246,12 +2245,21 @@ gtag('config', 'UA-182605574-1');
 </table>
 </div>
 <h3 id="taxa-de-litigiosidade-por-idhm.">Taxa de litigiosidade por IDHM.</h3>
-<p>A figura mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil.</p>
+<p>Gráfico de litigiosidade x idhm geral</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="litigiosidade_files/figure-html5/unnamed-chunk-5-1.png" alt="Litigiosidade por IDHM educação" width="624" />
+<img src="litigiosidade_files/figure-html5/unnamed-chunk-5-1.png" alt="Litigiosidade por IDHM" width="624" />
 <p class="caption">
-Figure 1: Litigiosidade por IDHM educação
+Figure 1: Litigiosidade por IDHM
+</p>
+</div>
+</div>
+<p>A figura mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-6"></span>
+<img src="litigiosidade_files/figure-html5/unnamed-chunk-6-1.png" alt="Litigiosidade por IDHM educação" width="624" />
+<p class="caption">
+Figure 2: Litigiosidade por IDHM educação
 </p>
 </div>
 </div>
@@ -2260,10 +2268,11 @@ Figure 1: Litigiosidade por IDHM educação
 <div class="figure" style="text-align: center"><span id="fig:litigiosidade-gini"></span>
 <img src="litigiosidade_files/figure-html5/litigiosidade-gini-1.png" alt="Litigiosidade por gini" width="624" />
 <p class="caption">
-Figure 2: Litigiosidade por gini
+Figure 3: Litigiosidade por gini
 </p>
 </div>
 </div>
+<h3 id="um-grafico-de-dispersao-agregando-por-estado">um grafico de dispersao agregando por estado</h3>
 <h2 id="conclusão">Conclusão</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

@@ -47,7 +47,7 @@ base_pnud <- abjData::pnud_min
 ```
 
 ```{r}
-# 2) Arrumação 
+# 2) Arrumação
 base1 <- da_contagens %>%
   filter(!is.na(codigo_ibge)) %>%
   filter(ano == "2010") %>%
@@ -85,31 +85,49 @@ Quanto mais desenvolvimento, mais complexa é a sociedade, mais contratos são c
 A tabela mostra os 10 municípios (comarcas) com maiores taxas de ligiosidade. 
 
 ```{r,  eval = TRUE, echo = FALSE}
-base_litigiosidade %>% 
-  dplyr::select(muni_nm, taxa) %>% 
-  dplyr::top_n(10, taxa) %>% 
+base_litigiosidade %>%
+  dplyr::select(muni_nm, taxa) %>%
+  dplyr::top_n(10, taxa) %>%
   dplyr::arrange(taxa) %>%
-  dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm) %>% 
-  knitr::kable(caption ="10 municípios (comarcas) com maiores taxas de litigiosidade")
+  dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm) %>%
+  knitr::kable(caption = "10 municípios (comarcas) com maiores taxas de litigiosidade")
 ```
 
 A tabela mostra as comarcas 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)
 
 ```{r,  eval = TRUE, echo = FALSE}
-base_litigiosidade %>% 
-  dplyr::arrange(dplyr::desc(taxa)) %>% 
+base_litigiosidade %>%
+  dplyr::arrange(dplyr::desc(taxa)) %>%
   dplyr::distinct(regiao_nm, .keep_all = TRUE) %>%
-  dplyr::select(regiao_nm, muni_nm, taxa) %>% 
-  dplyr::rename("Taxa de litigiosidade" = taxa, "Município" = muni_nm, "Região" = regiao_nm) %>% 
-  knitr::kable(caption ="5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)")
+  dplyr::select(regiao_nm, muni_nm, taxa) %>%
+  dplyr::rename(
+    "Taxa de litigiosidade" = taxa,
+    "Município" = muni_nm,
+    "Região" = regiao_nm
+  ) %>%
+  knitr::kable(caption = "5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)")
 ```
 
 ### Taxa de litigiosidade por IDHM.
 
+Gráfico de litigiosidade x idhm geral (terminar)
+
+```{r fig.cap = "Litigiosidade por IDHM", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
+
+base_litigiosidade %>%
+  dplyr::select(idhm, taxa) %>%
+  ggplot2::ggplot(
+    aes(x = idhm,  y = taxa))+
+  ggplot2::scale_y_log10() +
+  ggplot2::geom_point(color = "#102C68", size = 1)  +
+  labs(x = "IDHM",
+       y = "Taxa de litigiosidade")
+
+```
 A figura  mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil. 
 
 ```{r fig.cap = "Litigiosidade por IDHM educação", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
-
+# Padrão de cor para o gráfico
 green_abj <- viridis::viridis(2, 1, .2, .8)[2]
 # cria a média da taxa
 media_taxa <- mean(base_litigiosidade$taxa)
@@ -118,15 +136,22 @@ base_litigiosidade %>%
   dplyr::select(idhm_e, taxa, regiao_nm) %>%
   dplyr::mutate(taxa_log = log(taxa)) %>% # Taxa em log
   ggplot2::ggplot(aes(x = idhm_e,  y = taxa_log)) +
-  ggplot2::geom_hline(yintercept = media_taxa, size = .5, colour = "red", linetype = 2) +
+  ggplot2::geom_hline(
+    yintercept = media_taxa,
+    size = .5,
+    colour = "red",
+    linetype = 2
+  ) +
   ggplot2::geom_point(color = "#102C68", size = .5)  +
   labs(x = "IDHM Educação",
        y = "Taxa de litigiosidade") +
   ggplot2::geom_smooth(
-    colour = green_abj, se = FALSE,
-    method = 'loess', formula = y ~ x
-  ) + 
-  ggplot2::facet_wrap(~ regiao_nm) +
+    colour = green_abj,
+    se = FALSE,
+    method = 'loess',
+    formula = y ~ x
+  ) +
+  ggplot2::facet_wrap( ~ regiao_nm) +
   ggplot2::theme_bw(12)
 ```
 
@@ -136,18 +161,19 @@ A figura  mostra a taxa de litigiosidade por gini.
 ```{r litigiosidade-gini, fig.cap = "Litigiosidade por gini", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
 base_litigiosidade %>%
   dplyr::select(taxa, gini, regiao_nm) %>%
-  dplyr::filter(taxa > 0) %>% 
+  dplyr::filter(taxa > 0) %>%
   ggplot2::ggplot(aes(x = gini, y = taxa, colour = regiao_nm)) +
-  ggplot2::geom_point()+
-  scale_fill_discrete(name="Região")+
-  # viridis::scale_fill_viridis() +
-  #scale_color_discrete(values = c("orange", "black", "red", "blue", "green"))+
+  ggplot2::geom_point() +
   ggplot2::scale_y_log10() +
   ggplot2::geom_smooth(aes(colour = NULL), se = FALSE, colour = green_abj) +
-  ggplot2::scale_colour_viridis_d(begin = .2, end = .8, option = "A") +
+  ggplot2::scale_colour_viridis_d(begin = .2,
+                                  end = .8,
+                                  option = "A") +
   labs(x = "Taxa de litigiosidade",
-       y = "GINI")+
-ggplot2::theme_minimal(12)
+       y = "GINI") +
+  ggplot2::theme_minimal(12)
 ```
+
+um grafico de dispersao agregando por estado (fazer)
 
 ## Conclusão
