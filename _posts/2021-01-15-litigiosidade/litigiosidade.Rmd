@@ -24,8 +24,8 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE, 
-  message = FALSE, 
+  echo = FALSE,
+  message = FALSE,
   warning = FALSE,
   fig.align = "center"
 )
@@ -35,6 +35,7 @@ options(scipen = 999)
 # carrega pacotes necessários
 library(tidyverse)
 library(patchwork)
+library(ggrepel)
 ```
 
 ```{r}
@@ -93,7 +94,7 @@ base_litigiosidade %>%
   knitr::kable(caption = "10 municípios (comarcas) com maiores taxas de litigiosidade")
 ```
 
-A tabela mostra as comarcas 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)
+A tabela mostra as comarcas 5 municípios (comarcas) com maiores taxas de litigiosidade (Por região).
 
 ```{r,  eval = TRUE, echo = FALSE}
 base_litigiosidade %>%
@@ -110,25 +111,59 @@ base_litigiosidade %>%
 
 ### Taxa de litigiosidade por IDHM.
 
-Gráfico de litigiosidade x idhm geral (terminar)
+O Gráfico abaixo mostgra a litigiosidade por idhm geral.
 
 ```{r fig.cap = "Litigiosidade por IDHM", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
+# Padrão de cor para o gráfico
+green_abj <- viridis::viridis(2, 1, .2, .8)[2]
 
 base_litigiosidade %>%
   dplyr::select(idhm, taxa) %>%
-  ggplot2::ggplot(
-    aes(x = idhm,  y = taxa))+
+  dplyr::filter(taxa > 0) %>%
+  ggplot2::ggplot(aes(x = idhm,  y = taxa)) +
   ggplot2::scale_y_log10() +
   ggplot2::geom_point(color = "#102C68", size = 1)  +
+  geom_smooth(
+    method = "loess",
+    formula = y ~ x,
+    span = 0.3,
+    colour = green_abj
+  ) +
   labs(x = "IDHM",
        y = "Taxa de litigiosidade")
 
 ```
-A figura  mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil. 
+O Gráfico a seguir mostra os pontos das maiores taxas de litigiosidade por estado do Brasil.
+
+```{r fig.cap = "Litigiosidade por IDHM por estado", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
+filtrada <- base_litigiosidade %>%
+  dplyr::arrange(dplyr::desc(taxa)) %>%
+  dplyr::distinct(regiao_nm, .keep_all = TRUE)
+
+base_litigiosidade %>%
+  dplyr::select(idhm, taxa, regiao_nm) %>%
+  dplyr::filter(taxa > 0) %>%
+  ggplot2::ggplot(aes(x = idhm,  y = taxa, colour = regiao_nm)) +
+  ggplot2::scale_y_log10() +
+  ggplot2::geom_point(size = 1)  +
+  ggplot2::scale_colour_viridis_d(begin = .2,
+                                  end = .8,
+                                  option = "A",
+                                  name = "Região") +
+  geom_label_repel(data = filtrada, aes(label = regiao_nm)) +
+  ggplot2::geom_smooth(
+    colour = green_abj,
+    se = FALSE,
+    method = 'lm',
+    formula = y ~ x
+  )
+labs(x = "IDHM",
+     y = "Taxa de litigiosidade")
+
+```
+A figura mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil. 
 
 ```{r fig.cap = "Litigiosidade por IDHM educação", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
-# Padrão de cor para o gráfico
-green_abj <- viridis::viridis(2, 1, .2, .8)[2]
 # cria a média da taxa
 media_taxa <- mean(base_litigiosidade$taxa)
 
@@ -151,12 +186,11 @@ base_litigiosidade %>%
     method = 'loess',
     formula = y ~ x
   ) +
-  ggplot2::facet_wrap( ~ regiao_nm) +
+  ggplot2::facet_wrap(~ regiao_nm) +
   ggplot2::theme_bw(12)
 ```
 
 A figura  mostra a taxa de litigiosidade por gini. 
-
 
 ```{r litigiosidade-gini, fig.cap = "Litigiosidade por gini", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
 base_litigiosidade %>%
@@ -168,12 +202,13 @@ base_litigiosidade %>%
   ggplot2::geom_smooth(aes(colour = NULL), se = FALSE, colour = green_abj) +
   ggplot2::scale_colour_viridis_d(begin = .2,
                                   end = .8,
-                                  option = "A") +
+                                  option = "A",
+                                  name = "Região") +
   labs(x = "Taxa de litigiosidade",
        y = "GINI") +
   ggplot2::theme_minimal(12)
 ```
 
-um grafico de dispersao agregando por estado (fazer)
+
 
 ## Conclusão
