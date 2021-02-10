@@ -10,7 +10,7 @@ output:
     self_contained: false
 categories:
   - Analises
-preview: img/image.png
+preview: img/imagem.png
 ---
 
 Juristas não fazem pesquisa empírica e ostentam um desprezo olímpico por
