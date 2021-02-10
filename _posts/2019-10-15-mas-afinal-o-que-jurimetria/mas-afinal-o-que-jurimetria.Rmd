@@ -1,0 +1,75 @@
+---
+title: "Mas, afinal, o que é jurimetria?"
+description: 'Responder à pergunta "o que é?" frequentemente nos afasta do "como se faz?. Não há uma cartilha a ser seguida, apenas um conjunto de princípios que deixam próximas todas as formas de Jurimetria'
+author:
+  - name: Fernando Corrêa
+    url: {}
+date: 10-15-2019
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Conceitos
+  - Geral
+preview: img/imagem.png
+---
+
+Quando o assunto é ciência, é muito importante ter cuidado para não se
+afundar no lodo pantanoso das definições. Não que definições sejam
+inúteis ou meros exercícios de argumentação, mas responder à pergunta "o
+que é?" frequentemente nos afasta do "como se faz?".
+
+Esse cuidado está presente desde a criação da palavra Jurimetria. Na
+década de 50, Lee Loevinger usou o termo para aludir ao uso de
+mensurações objetivas no dia-a-dia do Direito. Para ele, os avanços da
+computação possibilitaram uma forma de encarar as normas e sua aplicação
+que baseia-se em dados e, consequentemente, estatísticas. Entretanto, ao
+invés de descrever abstratamente a ideia com definições universais de
+Jurimetria, de Ciência e de Direito, Jurimetria, para ele, é uma
+enxurrada de exemplos.
+
+Seguindo Loeviger, para entender Jurimetria é mais interessante pensar
+nos aspectos práticos da sua aplicação. Por exemplo, quando se faz
+jurimetria, busca-se dar concretude às normas e instituições, situando
+no tempo e no espaço os processos, os juízes, as decisões, as sentenças,
+os tribunais, as partes etc. Quando se faz jurimetria, enxerga-se o
+Judiciário como um grande gerador de dados que descrevem o funcionamento
+completo do sistema. Quando se faz jurimetria, estuda-se o Direito
+através das marcas que ele deixa na sociedade. Por causa dessa relação
+direta com o funcionamento do judiciário, os agentes do Direito sempre
+podem se beneficiar de um diálogo com os jurimetristas. Se o jurista
+pergunta "Devemos começar o cumprimento de pena em segunda instância?",
+o jurimetrista perguntará "Em quantos casos isso seria injusto?". Se o
+tribunal questiona "Qual é o tipo de processo é mais complicado?", o
+jurimetrista perguntará "Qual é o tipo de processo que demora mais?". Se
+o advogado pergunta "Em quanto indenizar-se-á o dano moral?", o
+jurimetrista perguntará "Quanto se pagou em casos similares?".
+
+Todos esses questionamentos são quantitativos em natureza. Por isso, uma
+definição possível de Jurimetria, mas que sofre com os problemas de
+todas as definições, é "a estatística aplicada ao Direito". Os nossos
+estudos na Associação Brasileira de Jurimetria, por exemplo, adotam essa
+premissa e baseiam-se quase que exclusivamente em metodologias
+estatísticas, mas isso não impede que existam diversas abordagens
+jurimétricas que não se baseiam explicitamente em teoria estatística
+formal. Não há uma cartilha a ser seguida, apenas um conjunto de
+princípios que deixam próximas todas as formas de Jurimetria: a
+concretude e a transparência na manipulação dos dados judiciários.
+
+Ainda sobre manipulação de dados, todo o cuidado é necessário. Embora os
+dados não mintam, eles podem ajudar a colocar os fatos de maneira
+conveniente. A boa Jurimetria deixará os dados contarem a história que
+for relevante para o tema em estudo, enquanto a má Jurimetria não tomará
+o devido cuidado com a forma com que analisam os dados e estará sujeita
+a conclusões inconsistentes. Assim como nas outras "metrias" mais
+antigas, como a Econometria e a Biometria, é muito importante que o
+método de análise dos dados seja transparente e cuidadoso para evitar
+conclusões equivocadas.
+
+Por fim, ressaltamos que a Jurimetria é a ponte necessária entre o
+complexo poder judiciário, sobretudo no Brasil, e a sociedade. Com ela,
+os registros oficiais tornam-se informação útil e qualificada, e isso
+beneficia tanto às empresas quanto ao governo e à sociedade civil. Nas
+palavras de Marcelo Guedes Nunes, nosso atual Presidente, "você não
+transforma aquilo que você ignora".
+

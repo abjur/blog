@@ -1,0 +1,62 @@
+---
+title: "Favoritismo Judicial de políticos: Evidências nos Juizados Especiais Cíveis"
+description: "Mais de 6.000 simulações de decisões judiciais imparciais mostram que réus comuns têm decisão favorável nos JECs em 25% dos casos, enquanto que políticos têm decisão favorável em 31% dos processos."
+author:
+  - name: Bárbara Tassoni
+    url: {}
+date: 09-27-2019
+output:
+  distill::distill_article:
+    self_contained: false
+preview: img/imagem.png
+categories:
+  - Analises
+---
+
+No dia 21 de setembro, nosso pesquisador associado André Assumpção
+apresentou trabalho em co-autoria com Julio Trecenti no congresso anual
+da Associação Canadense de Direito e Economia (CLEA), realizado na
+Faculdade de Direito da Universidade de Toronto. Este artigo foi
+produzido ao longo de 2019 e faz parte da tese de doutorado do André na
+Universidade da Carolina do Norte em Chapel Hill.
+
+O estudo analisa a existência de favorecimento a candidatos a prefeito e
+vereador em processos judiciais nos Juizados Especiais Cíveis (JECs) do
+Tribunal de Justiça de São Paulo desde 2008. Ao todo, os autores
+coletaram e analisaram 5.224 casos envolvendo políticos como autores,
+réus ou advogados das partes. Eles conduzem uma série de testes para
+verificar se a distribuição dos processos entre os magistrados é
+aleatória, se as decisões em casos envolvendo políticos seguem a mesma
+tendência de decisões em casos que não envolvem políticos e verificaram
+quais elementos de um processo judicial com políticos são mais
+importantes para o ganho de causa.
+
+Os resultados são claros: existe favorecimento aos políticos, em
+especial quando eles são réus em processos nos JECs. Para chegarem a
+essa conclusão, os autores fazem mais de 6.000 simulações de decisões
+judiciais imparciais e verificam que um réu comum tem decisão favorável
+nos JECs em 25% dos casos, enquanto que os políticos têm decisão
+favorável em 31% dos processos.
+
+Comparando prefeitos que ganharam e perderam eleições por poucos votos,
+os autores não encontram nenhuma vantagem adicional para os prefeitos
+eleitos. A hipótese dos autores é de que a visibilidade de candidatos
+que chegam bem perto de serem eleitos já é o suficiente para mudar a
+mentalidade dos juízes. Ao final, os autores tentam identificar quais
+fatores são mais relevantes para as decisões judiciais usando técnicas
+de aprendizado de máquina. Nesta análise, os fatores principais são:
+
+1. Antiguidade do juiz;
+2. Valor da causa;
+3. Salário do juiz;
+4. Se o político é réu do processo;
+5. Proporção de votos do político.
+
+Este trabalho ainda está em desenvolvimento e os autores o apresentarão
+também na Conferência de Análise Empírica do Direito (Conference of
+Empirical Legal Studies, CELS) na Califórnia, em Novembro de 2019. A
+CELS é o maior congresso acadêmico do mundo para especialistas em
+análise quantitativa do direito, e os autores esperam receber bons
+comentários para melhorar o estudo.
+
+Confira o artigo completo [neste link](https://arxiv.org/abs/2001.00889).

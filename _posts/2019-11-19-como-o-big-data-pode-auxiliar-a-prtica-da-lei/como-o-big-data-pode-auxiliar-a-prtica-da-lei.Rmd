@@ -1,0 +1,85 @@
+---
+title: "Como o big data pode auxiliar a prática da lei"
+description: "Benefícios e implicações das novas tecnologias para a prática jurídica"
+author: Bárbara Tassoni
+date: 11-19-2019
+output:
+  distill::distill_article:
+    self_contained: false
+preview: img/imagem.png
+categories:
+  - Geral
+---
+
+Muitas empresas estão finalmente percebendo os benefícios possibilitados
+pelo Big Data. Hoje, as marcas mais famosas do mundo já fazem uso da
+tecnologia há um bom tempo: Coca Cola, P&G e até mesmo o próprio
+Facebook usa os insights obtidos para conhecer melhor seus usuários, bem
+como seus hábitos e então antecipar tendências de consumo e ações.
+
+Em um ritmo menor de adoção, as empresas mais conservadoras estão
+acordando e percebendo o valor que isso pode agregar. Os escritórios de
+advocacia finalmente estão deixando a resistência de lado e dando uma
+chance às novas tecnologias. Mas o motivo dessa lentidão pode ser
+atribuído à uma série de questões não esclarecida. Abordaremos algumas a
+seguir:
+
+1. Quais os benefícios que o Big Data traz para os tribunais e
+escritórios de advocacia?
+2. Pode ajudar a superar questões processuais comuns como sobrecarga,
+atrasos e custos?
+3. Quais são as implicações para a prática jurídica?
+
+Em primeiro lugar, existem várias aplicações em que o big data pode
+contribuir para a âmbito legal. A princípio, pode reduzir o tempo de
+resolução dos processos, uma vez que mune advogados e outros
+interessados de informações relevantes presentes na sociedade e
+possivelmente não consideradas na formulação inicial de cada processo. A
+médio prazo, pode diminuir os custos de operação dos escritórios e
+render tempo para tratar de novos casos ou de demais problemas
+decorrentes dos casos em questão.
+
+Em segundo lugar, tornar transparente relações e correlações entre
+grandes volumes de dados que inicialmente parecem sem nexo, beneficiando
+a sociedade através de um sistema legal coerente. Ou seja, quando tudo é
+digitalizado, surge a possibilidade de uma análise mais rápida dos dados
+disponíveis abertamente na internet, correlações podem ser encontradas
+entre fatos e contribuir em termos de Jurisprudência. Para isto, é
+importante que organizações jurídicas coletem, armazenem, cataloguem e
+organizem todos os dados disponíveis abertamente para proveito atual e
+monitorem ações similares passadas e presentes a fim de levantar
+informações.
+
+Há algum tempo atrás, o poder de computação tornou-se forte e barato o
+suficiente para armazenar todos os dados que quisermos, seja em nossos
+computadores pessoais ou em serviços de hospedagem na nuvem. Isto pode
+fazer com que, no futuro, esses dados se tornem insights para uso em
+casos jurídicos e possibilitem aos advogados responderem perguntas que
+atualmente encontram-se sem resposta.
+
+Podem usar algoritmos que oferecem previsões estatísticas, e com base na
+mesma jurisdição dos casos propostos, para fornecer uma previsão de como
+esses casos poderiam decorrer. Afinal, muitas nuances podem ser obtidas
+com a análise de dados de casos antigos e possíveis repetições de ações
+podem ser previstas facilmente. Afinal "O ser humano é tudo, menos
+original. Tudo que fazemos alguém já fez antes ou vai fazer depois",
+brinca Marcelo Guedes Nunes em uma entrevista ao portal Migalhas.
+
+Por fim, é possível fornecer novas provas em tribunal. Hoje, tribunais
+brasileiros aceitam post's, printscreen's e até curtidas como provas
+judiciais. Tais fatos indicam que volumes dados coletados e analisados
+​​a partir de conjuntos de dados públicos podem ser admitidos como
+evidência. Além disso, o âmbito legal sempre foi uma frente baseada em
+dados, mas até recentemente todos os dados permaneceram off-line, no
+papel. Agora que as empresas de advocacia estão migrando para o mundo
+digital, abrem-se novas e vastas oportunidades para potencializar o seu
+trabalho.
+
+O Big Data está começando a tomar seu espaço nas aplicações da lei e
+ainda há um longo caminho a ser percorrido. Entre outras coisas, devido
+às informações confidenciais que os escritórios de advocacia estão
+lidando, os mesmos se encontram relutantes em digitalizar todos os dados
+por conta de privacidade ou questões de segurança que isso possa
+envolver. Para muitas empresas, o armazenamento desses dados levanta
+muitos riscos e desafios, mas no final, o único caminho a seguir é a
+maneira digital.
