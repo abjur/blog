@@ -136,6 +136,7 @@ base_litigiosidade %>%
 O Gráfico a seguir mostra os pontos das maiores taxas de litigiosidade por estado do Brasil.
 
 ```{r fig.cap = "Litigiosidade por IDHM por estado", layout="l-body-outset", eval = TRUE, echo = FALSE, warning = FALSE}
+# cria nova base com somente as maiores taxas 
 filtrada <- base_litigiosidade %>%
   dplyr::arrange(dplyr::desc(taxa)) %>%
   dplyr::distinct(regiao_nm, .keep_all = TRUE)
@@ -146,19 +147,21 @@ base_litigiosidade %>%
   ggplot2::ggplot(aes(x = idhm,  y = taxa, colour = regiao_nm)) +
   ggplot2::scale_y_log10() +
   ggplot2::geom_point(size = 1)  +
-  ggplot2::scale_colour_viridis_d(begin = .2,
-                                  end = .8,
-                                  option = "A",
-                                  name = "Região") +
+  ggplot2::scale_colour_viridis_d(
+    begin = .2,
+    end = .8,
+    option = "A",
+    name = "Região"
+  ) +
   geom_label_repel(data = filtrada, aes(label = regiao_nm)) +
   ggplot2::geom_smooth(
     colour = green_abj,
     se = FALSE,
     method = 'lm',
     formula = y ~ x
-  )
-labs(x = "IDHM",
-     y = "Taxa de litigiosidade")
+  ) +
+  labs(x = "IDHM",
+       y = "Taxa de litigiosidade")
 
 ```
 A figura mostra a taxa de litigiosidade por IDHM educação entre as regiões do Brasil. 
