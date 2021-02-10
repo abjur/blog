@@ -1,0 +1,188 @@
+---
+title: "Por que usar R para jurimetria?"
+description: "A dificuldade de acessar e mastigar os dados leva à necessidade de utilizar ferramentas computacionais adequadas"
+author:
+  - name: Julio Trecenti
+    url: {}
+date: 03-01-2018
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Programacao
+preview: img/imagem.png
+
+---
+
+A jurimetria parte do princípio de que o direito é construído a partir
+das decisões tomadas nos tribunais. Para entender fenômenos jurídicos,
+precisamos colher, organizar e analisar dados sobre o que as pessoas
+discutem e decidem.
+
+Na prática, jurimetria é uma área de pesquisa áspera. Os agentes não
+informam nem conhecem muito bem a estrutura dos Tribunais, o acesso à
+informação é limitado e, quando conseguimos acesso, os dados apresentam
+buracos.
+
+A dificuldade de acessar e mastigar os dados leva à necessidade de
+utilizar ferramentas computacionais adequadas. E acredito fortemente que
+o R contém o *toolkit* mais poderoso possível nesse sentido.
+
+## R e o ciclo da ciência de dados
+
+Sempre que dou aulas de programação, faço a discussão sobre o
+grande *hype* que existe sobre o termo *ciência de dados*. Minha posição
+atual sobre o tema é que a definição de ciência de dados varia conforme
+a experiência pessoal de cada um. Cientistas da computação atribuirão
+ciência de dados a temas como aprendizado de máquina ou com
+paralelização. Profissionais da TI ligarão ciência de dados com bases de
+dados relacionais ou ferramentas de Business Intelligence. Estatísticos
+afirmarão que ciência de dados é um outro nome para estatística. Outros
+profissionais mais interessados no marketing utilizarão diversos termos
+diferentes que colocados lado a lado não significam nada. Como o tema é
+popular, cada área vai tentar ao máximo se apropriar do termo, tornando
+a definição ciência de dados abstrata, incoerente e inócua.
+
+Mas nem tudo está perdido. Mais importante do que definir **o que
+é** ciência de dados, é discutir **como fazer** ciência de dados. E
+o **como fazer** da ciência de dados está bem definido.
+
+O fluxo da ciência de dados, retirado do livro [R para ciência de
+dados](https://r4ds.had.co.nz), define apropriadamente o que é fazer
+ciência de dados. Ao meu ver, este ciclo contém tudo o que precisamos
+discutir seriamente sobre o tema. O restante dos termos associados à
+ciência de dados, como paralelização, NoSQL, computação cognitiva,
+tecnologia exponencial, inteligência artificial, deep learning etc, são
+definições que variam entre termos técnicos e conceitos completamente
+vazios de conteúdo, e podem ou não ser discutidos dentro do ciclo
+conforme necessário.
+
+![Figura 1: Ciclo da ciência de dados, com ênfase na disputa com os dados](img/imagem1.png)
+
+O ciclo é organizado em cinco tarefas:
+
+-   **Importar**: Trazer dados do universo para um ambiente comum. Por
+    exemplo, conectar com uma base de dados, ou acessar uma API
+    (*Application Programming Interface*).
+-   **Arrumar**: Limpar os dados brutos, tornando-os passíveis de
+    análise estatística. Por exemplo, ler os arquivos PDF de decisões e
+    guardar em colunas da base de dados com informações dessas decisões,
+    chamada de *base de dados analítica*.
+-   **Transformar**: Selecionar colunas, filtrar linhas, ordenar,
+    modificar colunas e fazer sumarizações.
+-   **Visualizar**: Gerar gráficos e tabelas que sumarisam a base de
+    dados. Visualizações surpreendem, mas não têm escala, já que
+    dependem de interação humana para gerar valor.
+-   **Modelar**: Criar histórias sobre os dados. Especificamente,
+    estimar um conjunto de expressões matemáticas que representam
+    parcialmente o fenômeno de interesse. Por exemplo, um modelo de
+    regressão linear para estimar o valor de indenização a partir do
+    valor pedido. Modelos têm escala, mas não surpreendem, já que sua
+    estrutura é previamente definida pelo usuário.
+-   **Comunicar**: A partir das visualizações e dos modelos gerados,
+    elaborar soluções para comunicar os resultados de acordo com
+    os *stakeholders*. Por exemplo, elaborar um *dashboard* para
+    gestores, ou um relatório técnico para um estatístico, ou ainda uma
+    API para ser consumida por um robô.
+    
+Ao compor importação, arrumação e transformação de dados, temos o
+conceito de *disputa com os dados*. Em outros contextos e de forma menos
+precisa, esse processo é chamado de ETL
+(*Extract*, *Transform*, *Load*). Na jurimetria, essa fase corresponde a
+mais de 90% do tempo do estudo!
+
+A explicação para esse fenômeno remete a Tolstoy e, mais recentemente,
+Wickham:
+
+
+> "Happy families are all alike; every unhappy family is unhappy in its
+> own way." -- Leo Tolstoy
+
+> "Tidy datasets are all alike, but every messy dataset is messy in its
+> own way." -- Hadley Wickham
+
+Como bases bagunçadas são bagunçadas de sua própria maneira, a arrumação
+de dados nunca passa por um fluxo padrão de análise. Isso exige que a
+cientista de dados sempre tenha de provisionar um tempo para essa
+dolorosa tarefa.
+
+Como gastamos uma boa parte de nosso tempo nessa fase, faz sentido
+estudar, desenvolver e aprimorar ferramentas para tratamento de dados. E
+é aí que o R começa a ganhar força frente às demais linguagens ou
+ferramentas de análise de dados.
+
+## O `tidyverse`
+
+Graças ao advento do [`tidyverse`](https://tidyverse.org), hoje o R tem
+um *toolkit* preparado para tratar as bases de dados mais horrendas
+imagináveis. Pessoalmente, eu experimentei um aumento de produtividade
+de pelo menos 50% ao utilizar o `tidyverse`, em todos os projetos.
+
+O `tidyverse` é baseado na conjunção de teorias consistentes e
+intuitivas para importar, arrumar e transformar dados. Como
+consequência, cientistas de dados usam o intelecto para a resolução do
+problema, não em como escrever um código. Um exemplo emblemático nesse
+sentido é a utilização do `%>%`, um operador que dá legibilidade ao
+código, fazendo com que
+
+``` {.r}
+# algoritmo para sair de casa e pegar um ônibus
+pegar_onibus(trancar_porta(sair()))
+```
+
+seja equivalente a
+
+``` {.r}
+# algoritmo para sair de casa e pegar um ônibus
+sair() %>% trancar_porta() %>% pegar_onibus()
+```
+
+O `tidyverse` também traz eficiência. Na maioria dos casos, o gargalo na
+disputa com os dados não está no tempo de execução de um algoritmo, mas
+sim no tempo de construção do algoritmo. O uso do `tidyverse` aumenta
+significativamente a [eficiência de
+programação](https://csgillespie.github.io/efficientR/introduction.html) no
+lugar da eficiência de código.
+
+Finalmente, a utilização do `tidyverse` é compatível com boas práticas
+para a produção científica. Análises realizadas em código aberto são
+reprodutíveis e podem economizar o tempo de pesquisadores que usarem os
+códigos produzidos por outros pesquisadores. Por exemplo, atualmente
+várias pessoas utilizam o
+pacote [`esaj`](https://github.com/courtsbr/esaj), desenvolvido no
+Laboratório de Jurimetria, para baixar dados automaticamente dos
+tribunais. O `esaj` já faz parte do trabalho sujo de conectar com os
+tribunais e transformar dados desestruturados em dados próximos de serem
+utilizados em análises estatísticas.
+
+## Contribuindo para a jurimetria com o R
+
+Uma vantagem adicional da pessoa que utilizar R para jurimetria é a
+possibilidade de usufruir de todas as soluções que a ABJ desenvolve em
+código aberto e sair na vantagem ao trabalhar com problemas de
+jurimetria. Algumas soluções que estamos desenvolvendo:
+
+-   Pacotes [`dje`](https://github.com/courtsbr/dje) e [`esaj`](https://github.com/courtsbr/esaj).
+-   Pacote `abjutils` para trabalhar com dados de processos. Por
+    exemplo, com números de processo no formato da [Res. 65 do
+    CNJ](https://www.cnj.jus.br/images/stories/docs_cnj/resolucao/rescnj_65.pdf).
+-   Pacote `decryptr`, construído pela ABJ e
+    pela [Curso-R](https://curso-r.com) para quebrar CAPTCHAs de
+    serviços públicos.
+-   Outros pacotes ainda em fase de desenvolvimento,
+    como `abjData`, `abjMaps`, `prodTJSP`, cada um com sua
+    funcionalidade específica.
+    
+## Wrap-up
+
+-   Jurimetria exige proficiência em importação, arrumação e
+    transformação de dados
+-   O `tidyverse`, que é um conjunto de pacotes do `R`, é a forma mais
+    consistente, eficiente e elegante para tratamento de dados já
+    criada.
+-   Como consequência, o R é a melhor ferramenta disponível.
+
+Respondam nos comentários:
+
+> O que você acha mais importante: *definir* jurimetria
+> ou *fazer* jurimetria? Por quê?

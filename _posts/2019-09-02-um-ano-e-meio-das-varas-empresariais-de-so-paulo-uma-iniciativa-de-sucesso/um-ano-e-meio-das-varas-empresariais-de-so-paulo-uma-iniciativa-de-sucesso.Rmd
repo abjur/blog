@@ -1,0 +1,88 @@
+---
+title: "Um ano e meio das varas empresariais de São Paulo: uma iniciativa de sucesso"
+description: "Especialização o Poder Judiciário paulista passou a ser vista pela comunidade empresarialista como uma alternativa viável e competitiva para resoluções"
+author:
+  - name: Marcelo Guedes Nunes
+    url: {}
+date: 09-02-2019
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Analises
+preview: img/imagem.png
+
+---
+No dia 05 de dezembro de 2017, o Tribunal de Justiça de São Paulo
+inaugurou na comarca de São Paulo a 1ª e 2ª Varas Empresariais e de
+Conflitos Relacionados à Arbitragem. A instalação dessas varas no maior
+centro econômico financeiro do país resultou de um esforço conjunto do
+Poder Judiciário e de entidades de classe ligadas ao comércio, à
+industria e à advocacia, que há tempos demandavam a criação de um braço
+especializado da justiça para as disputas dessa natureza.
+
+O estudo realizado pela Associação Brasileira de Jurimetria e pelo
+Instituto dos Advogados de São Paulo, que fundamentou o parecer da
+Corregedoria Geral de Justiça propondo a criação das varas, observou
+entre 2014 a 2016, excluídas falências e recuperações, a distribuição de
+aproximadamente 1600 processos por ano de competência empresarial nos
+foros central e regionais da comarca da capital.
+
+Ajustados por conta da sua viscosidade (jargão jurimétrico para a
+vagarosidade de tramitação de certas demandas) e do trabalho envolvido,
+esses processos especializados equivaleriam a até 4.600 processos cíveis
+comuns, carga que, com razoável folga, justificou a implantação das duas
+varas empresariais.
+
+Passado um ano e cinco meses da instalação das varas, é possível
+realizar uma primeira avaliação dos resultados dessa importante
+iniciativa, em especial no que se refere à qualidade das decisões e ao
+volume de processos julgados, duas grandezas que estão correlacionadas.
+
+Ao longo dos meses de janeiro e fevereiro de 2018, as duas varas
+empresariais receberam uma média de 80 distribuições por mês. Já entre
+março e julho, observou-se um salto para 160 processos por mês. E a
+partir de agosto até dezembro essa média subiu para 200 processos, com
+dois meses atingindo picos de mais de 250 distribuições.
+
+Como resultado, o ano de 2018 fechou com um total de 2.079 processos, um
+aumento surpreendente de 84% na quantidade de disputas distribuídas
+quando comparado aos três anos anteriores. E o acompanhamento das
+distribuições dos três primeiros meses de 2019 indicam que esse
+crescimento continuará e que provavelmente o número de disputas
+empresariais deste ano será perto do dobro do que observamos em 2018.
+
+O surpreendente crescimento no volume de distribuições é um claro
+indicativo do sucesso e resulta de um reconhecimento da qualidade das
+varas empresariais, tanto pelos advogados especializados como pelo
+mercado.
+
+A capacidade de um órgão judiciário de atrair disputas é chamado em
+Jurimetria de gravitação jurisdicional. Quanto mais rápida, segura e
+barata for a jurisdição, maior a quantidade de disputas que ela tende a
+atrair. Ao redor do mundo, a criação das varas empresariais como
+política de incentivo à atividade comercial aumentou substancialmente a
+qualidade dos julgamentos proferidos, o que motivou aumentos na
+quantidade de processos atraídos por essa jurisdição e impactou até
+mesmo onde as empresas estabelecem suas sedes.
+
+Se antes muitos empresários desistiam de recorrer ao Poder Judiciário
+por conta da excessiva demora e da insegurança sobre o resultado dos
+processos, hoje com a especialização o Poder Judiciário paulista passou
+a ser vista pela comunidade empresarialista como uma alternativa viável
+e competitiva para a resolução dessas disputas.
+
+Questões relacionadas a exclusão de sócios, concorrência desleal por
+violação de marcas e patentes e discussões sobre contrato de franquia
+estão entre as mais frequentes ao longo de 2018. Se antes parte dessas
+disputas permaneciam latentes no mercado, permitindo aos maus
+empresários violar deveres e desfrutar de uma sensação de impunidade,
+agora elas podem encontrar uma solução rápida, segura e a um custo
+razoável no Poder Judiciário.
+
+O sucesso da iniciativa é inegável e é reconhecido por todos. O desafio
+agora é monitorar funcionamento das varas e garantir que a sua
+experiência seja expandida para o restante do estado, através das recém
+criadas varas regionais, e que essa rede judiciária empresarial esteja
+dotada da estrutura material e humana necessária para enfrentar o
+desafio de trazer segurança para a atividade empresarial paulista.
