@@ -1,0 +1,131 @@
+---
+title: "Quando a doutrina jurídica pode ser útil de verdade?"
+description: "O direito não pode ser reduzido a um ramo literário de  interpretação de textos das normas, desatento às consequências sociais das suas decisões"
+author:
+  - name: Marcelo Guedes Nunes
+    url: {}
+date: 03-13-2018
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Analises
+preview: img/imagem.png
+---
+
+Juristas não fazem pesquisa empírica e ostentam um desprezo olímpico por
+dados sobre a realidade. A pesquisa jurídica é eminentemente
+bibliográfica e a fundamentação das suas propostas é exclusivamente
+baseada na intuição de seus autores (opiniões próprias) e em argumentos
+de autoridade (opiniões de terceiros). Os juristas acreditam que as
+respostas para todas as suas perguntas já foram encontradas por alguém.
+Basta encontrar o livro e fazer a citação.
+
+Recentemente, em um evento em uma universidade ibérica, ouvi do diretor
+de uma renomada faculdade que nós, brasileiros, devíamos parar com
+invencionices e anglicismos, uma vez que todas as respostas relevantes
+para os problemas do direito civil estavam no digesto do justiniano.
+Mais importante do que estudar direito em conjunto com a economia, a
+estatística, a psicologia e a administração judiciária, esse diretor
+defendia a imperiosa necessidade de voltarmos às raízes e estudar
+direito romano, que deveria novamente incluir os currículos de graduação
+como matéria obrigatória.
+
+No momento em que ouvi essa afirmação fiquei especulando a respeito do
+que justiniano teria a dizer sobre o Uber, o poliamor, a adoção por
+casais homoafetivos, os contratos eletrônicos ou sobre o efeito dos
+danos morais na proliferação de 30 milhões causas repetitivas. E mais do
+que isso, diante da afirmação de que naquela faculdade ninguém se
+atrevia a tentar produzir nenhum conhecimento novo desde a baixa idade
+média, fiquei imaginando como esses professores encaram a sua própria
+função na sociedade e que tipo de argumento eles usam para pedir
+recursos para financiar a suas pesquisas. Convenhamos que a frase
+"Preciso de um orçamento extra para reler Justiniano pela enésima vez"
+tende a não ser muito eficaz na captação de recursos.
+
+Esse ponto me parece relevante para entender o papel da doutrina diante
+de uma nova lei. Novos problemas sociais exigem novas soluções jurídicas
+que, nos regimes democráticos, são implementadas através da edição de
+leis votadas por congressos. A edição de uma lei nova causa frenesi na
+comunidade jurídica, seja por parte daqueles que avidamente se
+acotovelaram para participar do processo legislativo, e que depois
+tentam extrair da sua edição algum tipo de capital reputacional, ou por
+parte dos outros que, não tendo participado do processo, se esforçam
+para encontrar falhas e omissões na nova legislação e com isso ferir a
+reputacao dos que participaram.
+
+Nenhum fenômeno expõe de forma mais crua o esgotamento dos debates
+jurídicos como as disputas por território reputacional dos juristas, em
+especial as discussões dogmáticas em torno do impacto de novas
+regulações. A dogmática tradicional tem muito pouco a acrescentar nas
+discussões sobre impacto regulatório por uma razão simples. A análise de
+impacto regulatório consiste no estudo das consequências da aplicação de
+uma nova regulação sobre a realidade do funcionamento da ordem jurídica,
+incluindo os tipos de conflito que se manifestam, o comportamento dos
+juízes, suas decisões e a reação das partes. Esse tipo de análise
+pressupõe uma compreensão sobre como a ordem funcionava antes, conjugado
+com o domínio de um ferramental preditivo que permita antecipar
+aproximadamente como ela irá se comportar após a edição da nova lei.
+
+A dogmática, no entanto, não lida com nenhum dos dois conhecimentos.
+Apesar de ser cada vez mais frequente ouvir dos doutrinadores
+declarações de que intencionam ser úteis aos leitores e de lecionarem
+com vistas à prática do direito, o que vemos nos textos não são
+informações levantadas com rigor e independência sobre a realidade do
+que se passa nos tribunais, mas sim a já desgastada arte do
+halterofilismo bibliográfico seguida por tentativas de encaixar os
+dispositivos das leis abstratas nas suas ainda mais abstratas
+classificações taxonomicas. Ao restringir seu estudo às interpretações
+possíveis sobre as normas gerais e à análise das posições de outros
+juristas a este respeito, a doutrina tradicional fica limitada a um
+plano literário, essencialmente abstrato e subjetivo, e passa ao largo
+dos fatos sociais e jurídicos que povoam a realidade do direito.
+
+Mas como a doutrina pode de fato ser útil na aplicação de uma nova lei?
+Acredito que através de três posturas: interpretação construtiva,
+abertura conceitual e realismo. Primeiro, a boa vontade. A edição de uma
+nova lei passa pelo excruciante debate democrático das casas
+legislativas, com a realização de audiências públicas e a intervenção de
+lobistas profissionais e, claro, dos próprios deputados e senadores.
+Esse não é um debate técnico, mas sim um processo político que forja a
+legislação através de  pressões simultâneas de grupos com interesses
+antagônicos. A acomodação desses interesses não raramente impõe a adoção
+de soluções mistas e incompletas. Seja pelas limitações intrínsecas a
+qualquer linguagem (que sempre carrega alguma dubiedade) ou pelas
+deficiências do seu processo de elaboração, a lei inevitavelmente
+carrega imperfeições que desafiam os aplicadores do direito. Por essa
+razão a função do jurista, pelo menos do bom jurista, é reparar essas
+inconsistências.
+
+Quando assisto às palestras de alguns especialistas esperneando a
+respeito da atecnicidade, incompletude ou contradição de uma lei fico
+imaginando o estranhamento de uma plateia diante de um cirurgião médico
+que se pusesse a reclamar do excesso de sangue, dos gritos e da correria
+de um hospital. Mas isso não é da própria essência da medicina? Sim, é.
+Assim como ajustar o discurso político dos legisladores ao discurso
+técnico dos tribunais é (ou ao menos deveria ser) parte essencial da
+atividade doutrinária em direito. Isso é o que eu chamo aqui de
+interpretação construtiva. Diante de uma nova lei o papel da doutrina é
+compreender a intenção do legislador e auxiliar a construção de um
+sentido jurídico para a nova lei que permita a sua aplicação pelos
+tribunais. Apenas isso.
+
+A segunda postura esperada de um doutrinador é abertura
+conceitual. Assim como o diretor de faculdade mencionado a pouco erra ao
+procurar julgar a qualidade da legislação atual pela sua aptidão em se
+encaixar nas soluções de justiniano, a doutrina não pode avaliar a
+qualidade das novas leis pela sua capacidade de se adequar às
+classificações da dogmática tradicional. Ela precisa ter em mente que o
+propósito de uma nova lei é, com o perdão da redundância, ser nova, o
+que pode incluir a subversão de certas classificações tradicionais.
+
+Por fim, a doutrina precisa ser realista. Isso significa admitir que o
+direito é uma ciência humana, que tem o objetivo de compreender o
+comportamento das pessoas e conduzi-las a um comportamento socialmente
+desejado. O direito não pode ser reduzido a um ramo literário de
+interpretação de textos das normas, desatento às consequências sociais
+das suas decisões. E para ser realista não adianta declarar no prefácio
+que a intenção do autor é ser útil ao leitor. Ser realista significa
+estudar sistematicamente a realidade do direito, explorar as grandes
+populações de casos, testar correlações e causalidades entre as normas e
+os resultados sociais, coletar dados, criar indicadores.

@@ -1,0 +1,107 @@
+---
+title: "Princípios conflitantes e a Jurimetria"
+description: "A jurimetria apresenta-se como uma ferramenta valiosa para complementar argumentos jurídicos tradicionais na interpretação da Constituição"
+author:
+  - name: Rafael Bassi Stern
+    url: {}
+date: 04-16-2018
+output:
+  distill::distill_article:
+    self_contained: false
+categories:
+  - Geral
+preview: img/imagem.png
+---
+É inevitável que exista controvérsia a respeito de uma decisão de tanto
+impacto e de voto tão apertado quanto o recente julgamento, no STF, do
+[habeas corpus do ex-presidente
+Lula](http://www.stf.jus.br/portal/cms/verNoticiaDetalhe.asp?idConteudo=374437).
+O argumento mais raso nesta discussão é o de que evidentemente existe
+uma única possível interpretação válida da lei e, assim, aquele que
+decide de forma contrária necessariamente está sendo truculento. Este
+texto mostra que argumentos pessoais como este não podem resolver
+satisfatoriamente uma questão de fundo complexa como aquela que foi
+discutida.
+
+O primeiro passo é observar que o imaginário popular de que existe uma
+única possível interpretação da lei é falho. De fato, a Constituição
+Federal de 1988 tem 250 artigos. Se todos estes artigos forem
+interpretados da forma mais intuitiva e abrangente possível, obtemos
+imediatamente contradições. Por exemplo, observamos nas passagens a
+seguir que a [Constituição Federal de
+1988](http://www.planalto.gov.br/ccivil_03/constituicao/constituicaocompilado.htm)
+protege tanto o direito à intimidade quanto a segurança pública:
+
+-   *Art. 5o, X: são invioláveis a intimidade, a vida privada, a honra e
+    a imagem das pessoas (..)*
+-   *Art. 144: A segurança pública, dever do Estado, direito e
+    responsabilidade de todos, é exercida para a preservação da ordem
+    pública e da incolumidade das pessoas e do patrimônio (...)*
+
+Ora, se interpretarmos de forma irrestrita a inviolabilidade da imagem,
+chegaríamos à conclusão que todo tipo de câmera de segurança é proibido.
+Da mesma forma, interpretando o artigo 144 de forma ingênua e
+irrestrita, poderíamos encontrar justificativa para um Estado que vigia
+todo e qualquer ato de seus cidadãos. Ao contrário destas visões
+ingênuas, não temos dificuldade de concluir que existe um **balanço**
+entre esses artigos. Existe um meio-termo que é mais benéfico que
+qualquer uma destas interpretações ingênuas. Contudo, a definição de
+qual é este meio-termo é uma questão complexa, subjetiva e que pode ser
+justificada de muitas formas.
+
+No recente julgamento do habeas corpus do Lula observa-se que uma
+questão similar motivou a divergência entre os ministros. Cada ministro
+defende um balanço diferente entre dois artigos da Constituição. Um
+destes artigos é o seguinte:
+
+-   *Art. 5o, LVII: ninguém será considerado culpado até o trânsito em
+    julgado de sentença penal condenatória;*
+
+O direito protegido neste artigo é geralmente chamado de **presunção de
+inocência** e indica que uma pessoa não pode ser punida até que o
+término de um processo judicial que a condene. No processo brasileiro,
+uma ação penal é decidida em várias etapas e, em cada qual, vários
+recursos são julgados. Interpretando a presunção de inocência de forma
+ampla, obtemos que a punição só pode ser aplicada a uma pessoa depois
+que o último recurso disponível a ela tenha sido julgado.\
+Por outro lado, a Constituição Federal também defende a segurança
+pública (art. 144, acima) a vida, a segurança e a integridade física e
+moral das pessoas, bem como a duração razoável do processo:
+
+-   *Art. 5o: (...) garantindo-se aos brasileiros e aos estrangeiros
+    residentes no País a inviolabilidade do direito à vida, à liberdade,
+    à igualdade, à segurança e à propriedade (...)*
+-   *Art. 5o, LXXVIII: a todos (...) são assegurados a razoável duração
+    do processo (...)*
+
+Observamos empiricamente que no Brasil existe um grande número de
+recursos disponíveis no processo e, também, que as Cortes estão
+atarefadas com uma longa fila de espera de processos aguardando
+julgamento. Assim, é possível argumentar que, caso se aguarde o
+esgotamento de todos os recursos disponíveis ao réu, a aplicação da pena
+demorará tanto tempo que será quase equivalente à não aplicação desta.
+Se este é o caso, então neste cenário a segurança pública estaria sendo
+prejudicada, dado que esta depende parcialmente da aplicação eficaz da
+pena aos culpados.
+
+O voto de cada um dos ministros busca uma harmonização diferente entre
+estes princípios constitucionais. Cada uma destas posições é
+justificável, uma vez que esta harmonização necessariamente passa por um
+juízo subjetivo da importância relativa de cada princípio em cada
+situação prática. Um outro ponto interessante é que, com poucas
+ressalvas, os ministros tendem a votar consistentemente em relação à
+forma como harmonizam estes princípios. Em cada julgamento, votam da
+mesma forma.
+
+Contudo, pode ser difícil entender exatamente como cada ministro realiza
+o balanço entre princípios constitucionais. Isto ocorre pois, para
+balancear, é necessário medir de forma precisa. O quão demorado deve ser
+um processo para que a sua punição deixe de ser eficaz? O quanto demora
+cada recurso para ser julgado? A partir de qual recurso o processo
+demora tanto tempo a ponto de comprometer a segurança pública? Continua
+não existindo uma única possível resposta a essas perguntas, contudo, ao
+responder a elas o julgador torna ainda mais transparente a
+justificativa para a sua decisão. Neste sentido, ao aplicar a
+Estatística ao Direito, a Jurimetria apresenta-se como uma ferramenta
+valiosa para complementar argumentos jurídicos tradicionais na
+interpretação da Constituição.

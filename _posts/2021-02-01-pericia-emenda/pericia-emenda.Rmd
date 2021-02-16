@@ -1,0 +1,113 @@
+---
+title: "Perícia prévia e emenda à petição inicial"
+description: |
+  O presente artigo tem por objetivo abordar a aplicação da perícia prévia e a emenda à petição inicial nos processos de recuperação judicial e seus impactos nas decisões de deferimento do processamento.
+author:
+  - name: Alice Braile
+    url: http://linkedin.com/in/alice-bravo-braile-7a0317162
+  - name: Beatriz Nunes Cloud
+    url: https://br.linkedin.com/in/beatriz-nunes-cloud-8940a3182
+  - name: Alfredo Cabrini Souza e Silva
+    url: https://br.linkedin.com/in/alfredo-cabrini-souza-e-silva-1536a9172
+  - name: Rafael Vasconcellos de Arruda
+    url: https://www.linkedin.com/in/rafael-arruda-b2a998a6/
+  - name: Gabriel José de Orleans e Bragança
+    url: https://www.linkedin.com/in/gabrielo1/
+date: 02-01-2021
+bibliography: bibfile.bib
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(magrittr)
+```
+
+O presente artigo tem por objetivo abordar a aplicação da perícia prévia e a emenda à petição inicial nos processos de recuperação judicial e seus impactos nas decisões de deferimento do processamento.
+
+Os dados a serem apresentados neste texto são resultado de pesquisa realizada pelo NEPI/PUC-SP (Núcleo de Estudo e Pesquisa de Insolvência da PUC/SP) e pela ABJ (Associação Brasileira de Jurimetria), os quais foram extraídos do livro "Direito Comercial, Falências e Recuperação de Empresas – Temas" [@sacramoneal2019], coordenado por Ivo Waisberg, José Horácio H. R. Ribeiro e Marcelo Barbosa Sacramone. 
+
+Os dados foram obtidos através de análise empírica de 194 recuperações judiciais distribuídas perante a 1ª e 2ª Varas de falência e recuperação judicial do Foro Central da Comarca de São Paulo[^varas] entre 1.9.2013 e 30.6.2016, cobrindo um período de quase três anos.
+
+[^varas]: Atualmente no Foro Central da Comarca de São Paulo existem 03 varas de falência e recuperação judicial, sendo que a 3ª Vara de falências e recuperação judicial ainda não havia sido instituída no momento de realização da pesquisa, sendo que sua instituição ocorreu no dia 05.12.2017.
+
+
+Cabe destacar que no momento em que a pesquisa foi realizada, a perícia prévia ainda não possuía previsão na Lei nº 11.101/05 ("LRE")[^lre], sendo utilizada pelos juízes, de forma excepcional, como um mecanismo de investigação e apuração prévia do preenchimento  de requisitos legais, de natureza econômica e jurídica, que o devedor deve atender antes da impetração de sua recuperação judicial, para a apuração efetiva de sua condição financeira, como forma de se garantir a efetividade da recuperação judicial, sua adequada aplicação em benefício da sociedade e da economia nacional, combatendo-se o uso desviado e fraudulento da Justiça[^justica].
+
+[^lre]: O instituto da perícia prévia foi incluído na LRE, em seu artigo 51-A, pela Lei nº 14.112/2020, publicada em 24.12.2020 e com vigência a partir de 23.1.2021.
+
+[^justica]: Extraído de: <https://migalhas.uol.com.br/coluna/insolvencia-em-foco/277594/a-pericia-previa-em-recuperacao-judicial-de-empresas---fundamentos-e-aplicacao-pratica%3E%20acessado%20em%203.2.2021> acessado em 3.2.2021, às 16:53.
+
+Oportuno ressaltar que os dados empíricos obtidos através da pesquisa pela qual este artigo se fundamenta não correspondem à realidade de todas as Comarcas espalhadas pelo Brasil, baseando-se exclusivamente na investigação de 194 processos eletrônicos das duas Varas de Falência e Recuperação Judiciais do Foro Central da Comarca de São Paulo. 
+
+Com base nestes dados[^dados], verificou-se que, dos 194 processos analisados, a perícia prévia ocorreu em 30 deles, ou seja, em 15% dos processos analisados. Sendo que, dos 30 processos, em 25 houve emenda à petição inicial e em 5 houve apenas perícia prévia, sem emenda.
+
+[^dados]: Os resultados foram obtidos verificando a mediana dos dados. Mediana é o valor que medeia os valores presentes num conjunto ordenado numericamente. Mediana apresenta o valor central de uma amostra de dados (desprezando os menores e os maiores valores. Disponível em <https://economia.uol.com.br/noticias/redacao/2013/02/04/entenda-como-os-analistas-fazem-projecoes-para-a-economia.htm> acessado em 3.2.2021, às 17:17.
+
+Quanto ao deferimento do processamento da recuperação judicial, dos 30 processos em que houve perícia prévia, em 25 deles o processamento foi deferido, representando uma frequência de deferimento de cerca de 80%. Enquanto que, nos processos em que não houve perícia prévia ou emenda à petição inicial foi observada uma frequência de deferimento de 31,6%.
+
+Analisando o tempo de duração da perícia prévia nesses 30 processos, verificou-se que a mediana é de 7 dias, tendência central. Logicamente, há processos em que a realização da perícia prévia levou muito mais tempo, tratando-se, todavia, de casos singulares que, ante a complexidade envolvida, demandaram uma análise também mais profunda e criteriosa sobre os documentos e informações fornecidas pelo devedor. Há processos, por exemplo, que destoam da mediana, levando a perícia prévia o tempo de mais de 10,15, 36 ou 72 dias.
+
+A despeito deste artigo contemplar dados e informações obtidas durante os anos de 2013 e 2016 e, portanto, durante a vigência da Lei nº 11.101/05, aqui vale a ressalva de que como referido diploma não previa um prazo determinado para a realização da perícia prévia, os magistrados detinham a prerrogativa de decidir e conceder o prazo que entendessem necessário para a sua entrega. Todavia, a recém sancionada Lei nº 14.112/2020, passou a regular a perícia prévia na recuperação judicial, permitindo que o juiz conceda o prazo máximo de 5 dias para que o perito apresente laudo de constatação das reais condições de funcionamento do devedor e da regularidade documental[^documental]. 
+
+[^documental]:  "Art. 51-A. Após a distribuição do pedido de recuperação judicial, poderá o juiz, quando reputar necessário, nomear profissional de sua confiança, com capacidade técnica e idoneidade, para promover a constatação exclusivamente das reais condições de funcionamento da requerente e da regularidade e da completude da documentação apresentada com a petição inicial.
+§ 2º O juiz deverá conceder o prazo máximo de 5 (cinco) dias para que o profissional nomeado apresente laudo de constatação das reais condições de funcionamento do devedor e da regularidade documental".
+
+Voltando aos dados da pesquisa, no que tange à probabilidade de decisões favoráveis ao processamento da recuperação judicial verifica-se que nos processos em que houve a realização da perícia prévia, a proporção de deferimento do processamento da recuperação judicial foi de aproximadamente 50% maior do que nos processos que não houve perícia prévia ou emenda à inicial.
+
+De outro lado, nos casos em que houve somente a emenda à petição inicial, a proporção de deferimento foi de aproximadamente 30% maior, conforme se verifica na Figura \@ref(fig:figura):
+
+```{r figura, fig.cap="Quantidade de RJs deferidas e indeferidas para cada combinação de perícia prévia e emenda à inicial.", message=FALSE, layout="l-body-outset"}
+knitr::include_graphics("grafico.png")
+```
+
+
+Pelo gráfico, percebe-se que nos processos sem perícia prévia ou emenda (38 processos em um total de 194), a frequência de indeferimento do processamento da recuperação judicial é de 68,4%, maior índice proporcionalmente à quantidade de processo, se comparado com as outras categorias analisadas.
+
+Outro ponto importante a ser ressaltado é o que dos 194 processos analisados, 151, representando 78% deles, tiveram a petição inicial emendada pelo devedor, trazendo à tona a discussão central deste artigo, que é justamente a necessidade ou não da realização de perícia prévia anteriormente ao processamento da recuperação judicial. 
+
+Quanto ao tempo entre a distribuição do pedido de recuperação judicial e a decisão que defere o seu processamento, analisando os 194 processos, obteve-se uma mediana de 4,57 semanas ou seja, aproximadamente 32 dias.
+
+Considerando os processos que não tiveram perícia prévia nem emenda da inicial, percebe-se uma maior celeridade entre a distribuição do pedido de recuperação judicial e o seu processamento – mediana de 8 dias. Já o tempo até a aprovação do plano de recuperação judicial, a mediana é de 347 dias, aproximadamente 11,5 semanas.
+
+Quanto aos processos com emenda à inicial, verificou-se um aumento expressivo do tempo despendido entre a distribuição da recuperação judicial até o processamento que passou a ser de 33 dias, havendo, contudo, redução no tempo entre a distribuição e a aprovação do plano de recuperação judicial. É o que se observa da Tabela \@ref(tab:tab-emenda):
+
+```{r tab-emenda}
+tibble::tribble(
+  ~pericia, ~emenda, ~tempo, ~tempo_aprov, ~n,
+  "Não", "Não", "8 dias", "347,5 dias", "38",
+  "Não", "Sim", "33 dias", "324 dias", "25"
+) %>%
+  purrr::set_names(c("Perícia", "Emenda", "Tempo até deferimento", "Tempo até aprovação", "Frequência")) %>% 
+  knitr::kable(caption = "Tempos e quantidades de processos em casos que não tiveram perícia, comparando pela existência de emenda.")
+```
+
+Analisando, agora, tão somente os processos com perícia prévia, sem emenda, no total de 5 processos, obteve-se uma mediana de tempo entre a distribuição do pedido de recuperação judicial e o deferimento do processamento de 26 dias, aproximadamente 4 semanas, resultado inesperado. O tempo entre a distribuição até a aprovação do plano de recuperação judicial é de 291 dias, algo em torno de uma mediana aproximada de 10 meses.
+
+Por outro lado, nos processos com perícia prévia, com emenda da exordial, no total de 25 processos, verificou-se o aumento, em mais do dobro, no tempo entre a distribuição da recuperação judicial e o deferimento – mediana de 58 dias -, aproximadamente 8 semanas. O tempo entre a distribuição até a aprovação do plano não sofreu grandes alterações. Confira-se na Tabela \@ref(tab:tab-pericia):
+
+
+```{r tab-pericia}
+tibble::tribble(
+  ~pericia, ~emenda, ~tempo, ~tempo_aprov, ~n,
+  "Sim", "Não", "26 dias", "291,5 dias", "5",
+  "Sim", "Sim", "58 dias", "295,5 dias", "25"
+) %>%
+  purrr::set_names(c("Perícia", "Emenda", "Tempo até deferimento", "Tempo até aprovação", "Frequência")) %>% 
+  knitr::kable(caption = "Tempos e quantidades de processos em casos que tiveram perícia, comparando pela existência de emenda.")
+```
+
+Feitas essas considerações, a perícia prévia, se comparada com a mediana de tempo de todos os processos, não retarda demasiadamente o processamento do pedido de recuperação judicial. Enquanto a emeda à inicial "atrasa", em mediana, 25 dias o deferimento da recuperação judicial, a perícia prévia "atrasa", também em mediana, 18 dias.
+
+Nos processos com perícia prévia e emenda à inicial, o deferimento do processamento do pedido de recuperação judicial dura, pela mediana, 50 dias. Apesar de ter o deferimento mais rápido, os processos sem emenda e sem perícia são os que mais demoram para a obtenção da aprovação do plano de recuperação judicial (mediana de 347 dias). Em segundo lugar, vem os processos somente com a emenda à inicial (mediana de 324 dias).
+
+Por sua vez, nos processos com perícia prévia (com ou sem emenda) a aprovação do plano de recuperação judicial se mostrou mais célere.
+
+Pelos dados coletados, portanto, verifica-se que, ao menos nas duas Varas Especializadas objeto da análise, a perícia prévia e a emenda da petição inicial não representam, ao menos em regra. Mas o prazo de 18 dias a mais na mediana para o deferimento da recuperação judicial, embora para muitos possa parecer pouco, talvez seja para determinada empresa recuperanda, que urge pela concessão do stay period, uma forma de inviabilizar a sua reorganização. Diz isso porque, ao pedir a recuperação judicial, sem qualquer pedido liminar, essa notícia soa como um tiro para a largada de uma corrida de credores, muito dos quais irão imediatamente executar as suas garantias e amortizar qualquer crédito que venha a ter com a recuperanda.
+
+Por fim, oportuno destacar que, a despeito de a perícia prévia ter sido instituída na nova LRE, em caráter facultativo, há quem defenda que esse mecanismo, além de trazer risco de parcialidade do profissional nomeado para a realização da perícia prévia, visto que somente receberá honorários caso o pedido de recuperação seja deferido, pode caracterizar mais um entrave ao custoso processo de recuperação judicial, prejudicando a celeridade e efetividade almejada no processo.
+
+Além disso, os que são contra a perícia prévia também destacam a impossibilidade de o magistrado, na decisão de processamento da recuperação judicial, realizar um juízo de cognição exauriente sobre o estado de crise da empresa e a viabilidade econômica da empresa, até porque são os credores os principais interessados na análise econômico-financeira a respeito da atividade da devedora.  

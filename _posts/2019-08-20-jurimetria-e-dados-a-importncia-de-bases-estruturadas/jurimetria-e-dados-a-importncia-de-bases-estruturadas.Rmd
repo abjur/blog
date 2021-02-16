@@ -1,0 +1,85 @@
+---
+title: "Jurimetria e dados: A importância de bases estruturadas"
+description: "Dados sozinhos, fora de contexto, não transmitem mensagens. Mas quando adequadamente tratados, conseguimos interpretá-los e transformá-los em informações que podem ser usadas para melhorar uma tomada de decisão"
+author:
+  - name: Bárbara Tassoni
+    url: {}
+date: 08-20-2019
+output:
+  distill::distill_article:
+    self_contained: false
+preview: img/imagem.png
+categories:
+  - Geral
+---
+
+Muitas pessoas têm dúvidas sobre como funciona a parte prática da
+Jurimetria. Afinal, como converter um apanhado de informações em
+análises que possibilitam tomar decisões e fazer previsões? O processo é
+complexo, demanda conhecimento especializado e tempo hábil para
+execução.
+
+Para explicar melhor como esse processo funciona, primeiramente é
+importante dizer que devemos entender 'dados' como uma matéria-prima da
+informação. Os dados sozinhos, fora de um contexto, não transmitem
+mensagens. Mas quando adequadamente tratados conseguimos interpretá-los
+e transformá-los em informações que podem ser usadas para melhorar uma
+tomada de decisão, nos dando embasamento para criarmos as estratégias
+mais adequadas para maximizar resultados positivos e prever cenários
+futuros.
+
+Simplificadamente, esses resultados são obtidos a partir de uma base de
+dados organizada que foi submetida à aplicação de métodos estatísticos.
+Ou seja, resultados concretos e efetivos se dão a partir da utilização
+correta dos conceitos estatísticos em dados limpos estruturados.
+
+No entanto, hoje, a maior dificuldade que enfrentamos nesse processo são
+as bases de dados disponibilizadas, que quase nunca estão estruturadas e
+prontas para serem analisadas.
+
+Na maioria das vezes elas não foram criadas para fins analíticos, e
+assim precisamos primeiramente trabalhar na limpeza e na arrumação
+desses dados, para só depois os submeter as análises estatísticas.
+
+A necessidade de fazer a limpeza na base de dados vem quando detectamos
+inconsistências nela, ou seja, quando existem dados não confiáveis ou
+não preenchidos, duplicidades, valores nulos, entre outras coisas que
+comprometem o processo de análise. Segundo nosso secretário geral, Julio
+Trecenti, essa "é a etapa mais trabalhosa do ciclo da ciência de dados".
+
+Já o processo de estruturação/arrumação, se dá ao facilitar a
+compreensão dos dados pelo computador, garantindo que haja uma
+organização lógica da base e possibilitando a leitura e tratamento dos
+dados pelos softwares estatísticos. Por isso, caso tenha uma base de
+dados e tenha interesse em fazer uma análise dela, ressaltamos a
+importância de mantê-la limpa e organizada em formatos específicos 
+([*tidy data*](https://r4ds.had.co.nz/tidy-data.html)).
+
+Na ABJ trabalhamos com dados públicos, e especialmente com as bases dos
+Tribunais de Justiça. Infelizmente, nenhuma dessas bases são
+disponibilizadas em formatos abertos, permitindo somente a coleta de
+informações individuais dos processos. Nesse sentido, além de despender
+esforços na arrumação dessas bases, nem sempre é tão simples ter acesso
+a elas. A multiplicidade de sistemas que são utilizados pelos tribunais
+dificulta a tarefa de download dos dados. Seja pelo uso de captchas ou
+por barreiras de acesso inseridas nas plataformas, a extração dos dados
+dos tribunais pode facilmente se tornar financeiramente inviável ou até
+impossível. E infelizmente, na prática, a unificação dos sistemas entre
+as instituições ainda não é uma realidade, o que impacta diretamente a
+capacidade de pesquisadores de determinadas regiões aprofundarem seus
+estudos espontaneamente. É importante notar que uma alternativa ao
+download automatizado de dados dos tribunais é realizar pedidos de
+acesso à informação. No entanto, esses pedidos usualmente geram custos
+internos para os tribunais e podem ser demasiadamente demorados para
+serem respondidos.
+
+Nossa equipe técnica executa todas as etapas desses processos por meio
+de programação, e utilizam a linguagem de programação R. O download das
+bases, a limpeza, estruturação e aplicação de métodos estatísticos, tudo
+feito através dessa mesma linguagem de programação. Por esse motivo,
+criamos o "R para Jurimetria", um curso sobre os aspectos práticos da
+Jurimetria voltado para profissionais da estatística, explicando como se
+pode utilizar o R para tratar e analisar bancos de dados judiciais.
+
+O curso está disponível do Github da ABJ. Você pode acessar o conteúdo
+através do link: <https://abjur.github.io/r4jurimetrics/index.html>.
