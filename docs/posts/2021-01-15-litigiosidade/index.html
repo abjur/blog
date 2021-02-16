@@ -20,19 +20,19 @@
 
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css" data-origin="pandoc">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -52,7 +52,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
@@ -88,15 +88,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
 <title>Associação Brasileira de Jurimetria: Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento</title>
 
-<meta property="description" itemprop="description" content="Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade."/>
+<meta property="description" itemprop="description" content="Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com processos que apareceram nos Diários de Justiça em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento)."/>
 
 <link rel="canonical" href="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"/>
 <link rel="license" href="https://creativecommons.org/licenses/by/4.0/"/>
 <link rel="icon" type="image/png" href="../../images/abj.png"/>
 
 <!--  https://schema.org/Article -->
-<meta property="article:published" itemprop="datePublished" content="2021-02-15"/>
-<meta property="article:created" itemprop="dateCreated" content="2021-02-15"/>
+<meta property="article:published" itemprop="datePublished" content="2021-02-16"/>
+<meta property="article:created" itemprop="dateCreated" content="2021-02-16"/>
 <meta name="article:author" content="João Torquato"/>
 <meta name="article:author" content="Julio Trecenti"/>
 <meta name="article:author" content="Katerine Witkoski"/>
@@ -105,9 +105,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
 <meta property="og:title" content="Associação Brasileira de Jurimetria: Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento"/>
 <meta property="og:type" content="article"/>
-<meta property="og:description" content="Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade."/>
+<meta property="og:description" content="Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com processos que apareceram nos Diários de Justiça em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento)."/>
 <meta property="og:url" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"/>
-<meta property="og:image" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/unnamed-chunk-3-1.png"/>
+<meta property="og:image" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png"/>
 <meta property="og:image:width" content="1248"/>
 <meta property="og:image:height" content="768"/>
 <meta property="og:locale" content="en_US"/>
@@ -116,9 +116,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary_large_image"/>
 <meta property="twitter:title" content="Associação Brasileira de Jurimetria: Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento"/>
-<meta property="twitter:description" content="Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade."/>
+<meta property="twitter:description" content="Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com processos que apareceram nos Diários de Justiça em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento)."/>
 <meta property="twitter:url" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"/>
-<meta property="twitter:image" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/unnamed-chunk-3-1.png"/>
+<meta property="twitter:image" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png"/>
 <meta property="twitter:image:width" content="1248"/>
 <meta property="twitter:image:height" content="768"/>
 
@@ -126,8 +126,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta name="citation_title" content="Associação Brasileira de Jurimetria: Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento"/>
 <meta name="citation_fulltext_html_url" content="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"/>
 <meta name="citation_fulltext_world_readable" content=""/>
-<meta name="citation_online_date" content="2021/02/15"/>
-<meta name="citation_publication_date" content="2021/02/15"/>
+<meta name="citation_online_date" content="2021/02/16"/>
+<meta name="citation_publication_date" content="2021/02/16"/>
 <meta name="citation_author" content="João Torquato"/>
 <meta name="citation_author" content="Julio Trecenti"/>
 <meta name="citation_author" content="Katerine Witkoski"/>
@@ -136,12 +136,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento"]},{"type":"character","attributes":{},"value":["Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["João Torquato"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jtrecenti/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Katerine Witkoski"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/katerine-witkoski-53b19518b/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]}]},{"type":"character","attributes":{},"value":["2021-02-15"]},{"type":"character","attributes":{},"value":["Analises","Justiça","Desenvolvimento","Litigiosidade"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","author","date","categories","output","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY"]},{"type":"character","attributes":{},"value":["Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento"]},{"type":"character","attributes":{},"value":["Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com processos que apareceram nos Diários de Justiça em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento)."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["João Torquato"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/jtrecenti/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Katerine Witkoski"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/katerine-witkoski-53b19518b/"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]}]},{"type":"character","attributes":{},"value":["2021-02-16"]},{"type":"character","attributes":{},"value":["Analises","Justiça","Desenvolvimento","Litigiosidade"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"]},{"type":"character","attributes":{},"value":["https://lab.abj.org.br/posts/2021-01-15-litigiosidade/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["litigiosidade_files/anchor-4.2.2/anchor.min.js","litigiosidade_files/bowser-1.9.3/bowser.min.js","litigiosidade_files/distill-2.2.21/template.v2.js","litigiosidade_files/figure-html5/assuntos-tribunal-1.png","litigiosidade_files/figure-html5/litigiosidade-gini-1.png","litigiosidade_files/figure-html5/litigiosidade-idhm_e-1.png","litigiosidade_files/figure-html5/unnamed-chunk-3-1.png","litigiosidade_files/figure-html5/unnamed-chunk-4-1.png","litigiosidade_files/figure-html5/unnamed-chunk-5-1.png","litigiosidade_files/figure-html5/unnamed-chunk-6-1.png","litigiosidade_files/figure-html5/unnamed-chunk-7-1.png","litigiosidade_files/header-attrs-2.6/header-attrs.js","litigiosidade_files/jquery-1.11.3/jquery.min.js","litigiosidade_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["litigiosidade_files/anchor-4.2.2/anchor.min.js","litigiosidade_files/bowser-1.9.3/bowser.min.js","litigiosidade_files/distill-2.2.21/template.v2.js","litigiosidade_files/figure-html5/assuntos-tribunal-1.png","litigiosidade_files/figure-html5/idhm-educ-1.png","litigiosidade_files/figure-html5/lit-idhm-1.png","litigiosidade_files/figure-html5/lit-idhm-estado-1.png","litigiosidade_files/figure-html5/litigiosidade-gini-1.png","litigiosidade_files/figure-html5/litigiosidade-idhm_e-1.png","litigiosidade_files/figure-html5/unnamed-chunk-3-1.png","litigiosidade_files/figure-html5/unnamed-chunk-4-1.png","litigiosidade_files/figure-html5/unnamed-chunk-5-1.png","litigiosidade_files/figure-html5/unnamed-chunk-6-1.png","litigiosidade_files/figure-html5/unnamed-chunk-7-1.png","litigiosidade_files/header-attrs-2.6/header-attrs.js","litigiosidade_files/jquery-1.11.3/jquery.min.js","litigiosidade_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -2021,6 +2021,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
+  <script src="../../site_libs/header-attrs-2.6/header-attrs.js"></script>
   <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
@@ -2082,7 +2083,7 @@ gtag('config', 'UA-182605574-1');
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento","description":"Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade.","authors":[{"author":"João Torquato","authorURL":"https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Julio Trecenti","authorURL":"https://www.linkedin.com/in/jtrecenti/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Katerine Witkoski","authorURL":"https://www.linkedin.com/in/katerine-witkoski-53b19518b/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Ricardo Feliz","authorURL":"https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-15T00:00:00.000-03:00","citationText":"Torquato, et al., 2021"}
+{"title":"Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento","description":"Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com processos que apareceram nos Diários de Justiça em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento).","authors":[{"author":"João Torquato","authorURL":"https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Julio Trecenti","authorURL":"https://www.linkedin.com/in/jtrecenti/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Katerine Witkoski","authorURL":"https://www.linkedin.com/in/katerine-witkoski-53b19518b/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Ricardo Feliz","authorURL":"https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-16T00:00:00.000-03:00","citationText":"Torquato, et al., 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2120,7 +2121,7 @@ gtag('config', 'UA-182605574-1');
   <a href="../../index.html#category:Litigiosidade" class="dt-tag">Litigiosidade</a>
 </div>
 <!--/radix_placeholder_categories-->
-<p><p>Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com todos os processos que apareceram no Diário Oficial da União em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento). A hipótese inicial era a de que quanto maior o desenvolvimento de um município, maior é a complexidade da sociedade, o que gera mais conflitos. Esses conflitos se traduzem em processos judicias, o que é expresso pela litigiosidade. Daí a relação entre desenvolvimento e litigiosidade.</p></p>
+<p><p>Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento. Para tanto, utilizamos uma base de dados com processos que apareceram nos Diários de Justiça em cada município brasileiro e cruzamos tais informações com a base de dados do PNUD (Programa das Nações Unidas para o Desenvolvimento).</p></p>
 </div>
 
 <div class="d-byline">
@@ -2132,7 +2133,7 @@ gtag('config', 'UA-182605574-1');
   
 ,   Ricardo Feliz <a href="https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/" class="uri">https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/</a> 
   
-<br/>2021-02-15
+<br/>2021-02-16
 </div>
 
 <div class="d-article">
@@ -2144,27 +2145,27 @@ gtag('config', 'UA-182605574-1');
 </div>
 <h2 id="introdução">Introdução</h2>
 <h3 id="definição-do-problema">Definição do problema</h3>
-<p>O que acontece com o sistema jurídico conforme uma região se desenvolve? Faz sentido pensarmos que, quanto mais desenvolvida é uma região, mais conflitos ela terá? Maior desenvolvimento pode ser sinônimo de maior atividade econômica. E as atividades econômicas se realizam através de contratos. Desta forma, com mais contratos sendo firmados, maiores serão os conflitos decorrentes da inadimplência e do descumprimento. Incapazes de se ajustarem entre si, as partes irão irremediavelmente recorrer ao judiciário.</p>
+<p>O que acontece com o sistema jurídico quando uma região se desenvolve? Faz sentido pensarmos que, quanto mais desenvolvida é uma região, mais conflitos ela terá? Podemos estabelecer duas possíveis narrativas.</p>
+<p>Maior desenvolvimento pode ser sinônimo de maior atividade econômica. E a atividade econômica se realiza através de contratos. Desta forma, com mais contratos sendo firmados, maiores serão os conflitos decorrentes da inadimplência e do descumprimento. Incapazes de se ajustarem entre si, as partes irão irremediavelmente recorrer ao judiciário.</p>
 <p>Além disso, lugares mais desenvolvidos tendem a ter populações maiores. Com grandes populações mecanismos afetivos de resolução de controvérsias começam a se tornar improváveis de acontecer. Por exemplo, em pequenos municípios onde todos conhecem a todos, um conflito entre duas pessoas poderá ser resolvido pelo afeto, por mecanismos pessoais e consensuais. Conforme o município cresce, esse tipo de resolução de conflito se enfraquece, pois ele depende inteiramente no fato de as duas partes se conhecerem e se sentirem constrangidas de litigar uma contra a outra. Então esta seria outra razão para esperar que em regiões mais desenvolvidas, a taxa de litigância seja maior.</p>
-<p>A nossa hipótese é que quanto maior o desenvolvimento, mais complexa fica a sociedade, mais intensas se tornam as atividades econômicas, o que leva mais contratos a serem celebrados, o que, por sua vez, gera eventualmente maior litigância. Portanto, a nossa hipótese inicial é a de que existe uma relação positiva entre desenvolvimento e litigiosidade</p>
+<p>Nossa hipótese é de que quanto maior o desenvolvimento, mais complexa fica a sociedade, mais intensas se tornam as atividades econômicas, o que leva mais contratos a serem celebrados, o que, por sua vez, gera maior litigância. Portanto, a nossa hipótese inicial é a de que existe uma relação positiva entre desenvolvimento e litigiosidade.</p>
+<p>Nesse artigo, não buscamos estabelecer uma relação causal. Analisamos tão somente a correlação entre litigiosidade e desenvolvimento. Para avaliar a relação causal entre litigiosidade e desenvolvimento, seria necessário outro desenho de estudo incluindo, por exemplo, a evolução da litigiosidade ao longo do tempo.</p>
+<p>Em <a href="https://github.com/abjur/cnjApp">estudos anteriores</a>, já identificamos uma correlação positiva entre litigiosidade e desenvolvimento. A correlação, no entanto, foi identificada no nível estadual. Aqui, analisamos no nível de comarca.</p>
 <h2 id="metodologia">Metodologia</h2>
 <h3 id="origem-das-bases-de-dados">Origem das bases de dados</h3>
-<p>Para testar essa hipótese, utilizaremos duas bases de dados, uma sobre dados relacionados à justiça e à quantidade de processos em cada município brasileiro, e outra sobre o desenvolvimento de cada município.</p>
-<p>Do lado da justiça, levantamos a quantidade de processos em cada município brasileiro. Para isso, utilizamos uma base com todos os processos citados nos Diários de Justiça Eletrônicos em determinado período. Ela foi obtida através da leitura automatizada de diários de justiça eletrônicos (DJE) de todo o Brasil. Coletamos todos os processos citados nos DJEs disponibilizados entre outubro de 2020 e janeiro de 2021. Os números de processo extraídos foram identificados através de uma expressão regular baseada no processo único (Res 65. do CNJ). Uma vez obtida, a base de processos foi cruzada com a nossa base <a href="https://github.com/abjur/forosCNJ">forosCNJ</a> para obter as comarcas em que os processos foram distribuídos. Originalmente, cada observação dessa base de dados correspondia a um único processo. Mas alteramos a base para contar a quantidade de processos por município.</p>
-<p>Do lado do desenvolvimento de cada município, utilizamos a base de dados do PNUD, do censo de 2010. Essa base nos traz a informação da população e do IDH de cada município brasileiro. Consideramos o IDH, e não o PIB, para medir o desenvolvimento porque o PIB indica apenas o crescimento econômico, mas não consegue indicar a qualidade desse crescimento. É possível o crescimento no PIB sem que haja uma melhora nas condições de vida da população atingida. Já o IDH, ele é composto por três parâmetros: o IDH Educação, IDH Longevidade e IDH Renda. Ao mensurar a educação de determinada região, ao lado da saúde e da renda é que observamos o desenvolvimento.</p>
+<p>Para testar nossa hipótese, utilizamos duas bases de dados. A primeira é sobre dados relacionados à justiça e à quantidade de processos em cada comarca brasileira, e a segunda sobre o desenvolvimento no município-sede dessas comarcas.</p>
+<p>Do lado do judiciário, levantamos a quantidade de processos em cada comarca. Para isso, utilizamos uma base com todos os processos citados nos Diários de Justiça Eletrônicos em determinado período. Ela foi obtida através da leitura automatizada de diários de justiça eletrônicos (DJE) de todo o Brasil. Coletamos todos os processos citados nos DJEs disponibilizados entre outubro de 2020 e janeiro de 2021. Os números de processo extraídos foram identificados através de uma expressão regular baseada no processo único (Res. 65 do CNJ). Uma vez obtida, a base de processos foi cruzada com a nossa base <a href="https://github.com/abjur/forosCNJ">forosCNJ</a> para obter as comarcas em que os processos foram distribuídos. Originalmente, cada observação dessa base de dados correspondia a um único processo. Mas alteramos a base para contar a quantidade de processos por município.</p>
+<p>Do lado do desenvolvimento de cada município-sede, utilizamos a <a href="http://www.atlasbrasil.org.br">base de dados do PNUD</a>, do censo de 2010. Essa base nos traz a informação da população e do IDH de cada município brasileiro. Consideramos o IDH, e não o PIB, para medir o desenvolvimento porque o PIB indica apenas o crescimento econômico, mas não consegue indicar a qualidade desse crescimento. É possível o crescimento no PIB sem que haja uma melhora nas condições de vida da população atingida. Já o IDH, ele é composto por três parâmetros: o IDH Educação, IDH Longevidade e IDH Renda. Ao mensurar a educação de determinada região, ao lado da saúde e da renda é que observamos o desenvolvimento.</p>
 <p>Além do IDH, essa base de dados nos traz informações a respeito do índice de Gini de cada município. O índice de Gini é uma métrica utilizada para mensurar desigualdade. Ele vai de 0 a 1. Quanto maior for o valor dessa taxa, mais desigual é a região em questão.</p>
-<p>Uma vez que obtivemos as duas bases, juntamos suas informações em uma base única, ficando com as informações sobre a quantidade de processos por município (base 1), com as informações a respeito do desenvolvimento, isto é, o valor global do IDH por município, o valor dos três índices do IDH (educação, longevidade e renda) e o índice de Gini.</p>
-<h3 id="descrição-das-bases">Descrição das bases</h3>
-<p>Como já citado anteriormente, ao fim do processo de recolhimento e padronização dos dados dos Diários de Justiça e da nossa base do CNJ, chegamos a uma base concreta que relaciona os índices de desenvolvimento analisados e a quantidade de processos em suas respectivas comarcas. Contudo vale a pena ressaltar a importância e a relevância que tais informações possuem para validar a tese que está sendo desenvolvida nesse post, o fato de que os índices de desenvolvimento das comarcas abordadas, podem ser diretamente proporcional aos números de processo em discussão dentro do município.</p>
-<p>Como os índices de IDH de educação, longevidade, renda per capita e o índice Gini são indicadores de desenvolvimento social, uma vez que não vão representar somente índices de crescimento econômico, mas sim se a população analisada está recebendo acesso a saúde, educação, qual está sendo a renda, e como indica o índice Gini qual é o grau de desigualdade que tal população apresenta. Apesar do IDH possuir suas limitações uma vez que escolhe índices bem específicos, acreditamos que ele seja o que mais representa o desenvolvimento de um município por completo, uma vez que abrange 3 esperas que funcionam como os reflexos da nossa realidade, indicando a taxa de escolaridade abrangendo a esfera da educação, a longevidade que deve ser um reflexo de como a área da saúde está organizada e por último a renda per capita, que visa analisar a esfera econômica e o poder aquisitivo.</p>
-<p>Com isso definido teremos condições de analisar o desenvolvimento social de cada município, ou seja, vamos conseguir averiguar o quanto o município vem se desenvolvendo e se a população vem acompanhando esse desenvolvimento, e por fim analisamos se o número de processos em discussão acompanha os índices da mesma forma.</p>
-<h3 id="alterações-nas-bases">Alterações nas bases</h3>
-<p>Contudo vale a pena ressaltar que foi realizado um filtro dentro na base do PNUD, retirando informações que se repetiam, e as linhas para somente informações referente ao ano de 2010, uma vez que era onde se localizava as informações mais atualizada, para que possamos bater os com os dados do CNJ que também são dados mais recentes. Outro ponto que deve ser abordado, antes de entrarmos mais a fundo nas visualizações e nos resultados em si, é o fato que a taxa de litigiosidade é relativa e não absoluta, como a ela é formada a partir da razão entre o número de processos pela população, sendo assim um município que apresenta uma baixa população e um alto número de processos pode gerar uma taxa de litigiosidade discrepante como por exemplo:</p>
-<p>A taxa de litigiosidade de 1000 processos é quase insignificante se o município for de São Paulo Capital, em que a população é de 20 milhões, mas é um número absurdamente grande para Ivolândia (GO), cuja população é de pouco mais de 2000 habitantes. Portanto o fato que deve ser evidenciado é que 1000 processos em São Paulo significaria que existe 1 processo para cada 20 mil habitantes, enquanto, 1000 processos em Ivolândia significaria 1 processo para cada 2 habitantes, assim a análise dos dados deve ser feita de forma cautelosa a fim de retirar informações refletem e que sejam palpáveis a realidade que verificamos nos municípios.</p>
+<p>Uma vez obtidas as duas bases, juntamos suas informações em uma base única, ficando com as informações sobre a quantidade de processos por município (base 1), com as informações a respeito do desenvolvimento, isto é, o valor global do IDH por município, o valor dos três índices do IDH (educação, longevidade e renda) e o índice de Gini.</p>
+<h3 id="comentários-sobre-idh-e-taxa-de-litigiosidade">Comentários sobre IDH e taxa de litigiosidade</h3>
+<p>Com relação às variáveis escolhidas para verificação da hipótese de pesquisa, cabem dois comentários. O primeiro é sobre a utilização do IDH como instrumento para medir o desenvolvimento. O segundo é sobre a escolha da taxa de litigiosidade ao invés da litigiosidade absoluta.</p>
+<p>O IDH é uma métrica bastante utilizada, mas também criticada pelos estudiosos. Apesar do IDH possuir limitações pela escolha de índices bem específicos, acreditamos que ele seja adequado para os fins do presente estudo, uma vez que abrange 3 esferas que funcionam como os reflexos da nossa realidade, indicando a taxa de escolaridade abrangendo a esfera da educação, a longevidade que deve ser um reflexo de como a área da saúde está organizada e a renda per capita, que visa analisar a esfera econômica e o poder aquisitivo.</p>
+<p>Com relação à taxa de litigiosidade, a razão foi calculada com base na população de 2010, compatível com o levantamento do IDH. A escolha de utilizar taxa de litigiosidade e não a litigiosidade absoluta, se deve ao natural crescimento da quantidade de processos de acordo com a população. Por exemplo, a taxa de litigiosidade de 1000 processos seria quase insignificante se o município for de São Paulo Capital, em que a população é de 20 milhões, mas é um número grande para Ivolândia (GO), cuja população é de pouco mais de 2000 habitantes.</p>
 <h2 id="resultados">Resultados</h2>
-<h3 id="municípios-e-taxa-de-litigiosidade">Municípios e taxa de litigiosidade</h3>
-<p>Para elaboração do estudo foi extraída a razão entre nº de quantindade de processo por população, criando a taxa de litigiosidade. O indicador permite uma análise diagnóstica sobre o potencial crescimento dos litígios de determinada região. É importante ressaltar também que por questões de proporcionalidade da análise fizemos transformação de logaritimo, a fim de produzir uma relação entre os dados de forma mais clara.</p>
-<p>A tabela <a href="#tab:municipios">1</a> mostra os 10 municípios (comarcas) com maiores taxas de ligiosidade. A maior taxa de litigiosidade é 2.255, da comarca de Aruanã, município do interior do estado de Goiás.</p>
+<h3 id="municípios-sede-de-comarca-e-taxa-de-litigiosidade">Municípios-sede de comarca e taxa de litigiosidade</h3>
+<p>Para elaboração dos gráficos foi extraída a razão entre a quantidade de quantidade de processos pela população, criando a taxa de litigiosidade. O indicador permite uma análise diagnóstica sobre o potencial crescimento dos litígios de determinada região. É importante ressaltar que por questões de proporcionalidade da análise fizemos transformação por logaritmo, a fim de produzir uma relação entre os dados de forma mais clara.</p>
+<p>A tabela <a href="#tab:municipios">1</a> mostra os 10 municípios-sede de comarca com maiores taxas de litigiosidade. A maior taxa de litigiosidade é 2.255, da comarca de Aruanã, município do interior do estado de Goiás.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <caption><span id="tab:municipios">Table 1: </span>10 municípios (comarcas) com maiores taxas de litigiosidade</caption>
@@ -2218,7 +2219,7 @@ gtag('config', 'UA-182605574-1');
 </tbody>
 </table>
 </div>
-<p>A tabela <a href="#tab:regiao">2</a> mostra as comarcas com maiores taxas de litigiosidade por região. Dentre as regiões do Brasil, foi constatado que entre o Centro-Oeste e o Nordeste temos uma diferença de 33,74% sobre a taxa de litigiosidade dos municípios que se destacam.</p>
+<p>A tabela <a href="#tab:regiao">2</a> mostra os municípios-sede de comarca com maiores taxas de litigiosidade por região. Dentre as regiões do Brasil, foi constatado que entre o Centro-Oeste e o Nordeste temos uma diferença de 33,74% sobre a taxa de litigiosidade dos municípios que se destacam.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <caption><span id="tab:regiao">Table 2: </span>5 municípios (comarcas) com maiores taxas de litigiosidade (Por região)</caption>
@@ -2258,8 +2259,8 @@ gtag('config', 'UA-182605574-1');
 </tbody>
 </table>
 </div>
-<h3 id="taxa-de-litigiosidade-por-idhm.">Taxa de litigiosidade por IDHM.</h3>
-<p>A tabela <a href="#tab:idhm">3</a> mostra os melhores indices de desenvolvimento de cada região. Revelando que entre os cinco, o IDH da região Sudeste está entre os maiores do País.</p>
+<h3 id="taxa-de-litigiosidade-por-idhm">Taxa de litigiosidade por IDHM</h3>
+<p>A tabela <a href="#tab:idhm">3</a> mostra os melhores índices de desenvolvimento de cada região. Revelando que entre os cinco, o IDH da região Sudeste está entre os maiores do País.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <caption><span id="tab:idhm">Table 3: </span>Melhores IDHM</caption>
@@ -2293,25 +2294,25 @@ gtag('config', 'UA-182605574-1');
 </tbody>
 </table>
 </div>
-<p>O Gráfico a seguir mostra a litigiosidade por idhm geral, busca-se destacar que maiores indices de desenvolvimento causam um crescimento na taxa de litigiosidade. É relevante notar que em análise do crescimento não é linear, podendo concluir que a evolução da litigação não é só relacionado ao IDH mas também uma questão de disponibilidade de recursos do Sistema de Justiça e o desempenho dos tribunais.</p>
+<p>A Figura <a href="#fig:lit-idhm">1</a> mostra a litigiosidade por IDH geral. É relevante notar que em análise do crescimento não é linear, sugerindo que a relação entre litigiosidade e desenvolvimento não é tão direta e simples, podendo ser influenciada por outros fatores.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-3"></span>
-<img src="litigiosidade_files/figure-html5/unnamed-chunk-3-1.png" alt="Litigiosidade por IDHM" width="624" />
+<div class="figure" style="text-align: center"><span id="fig:lit-idhm"></span>
+<img src="litigiosidade_files/figure-html5/lit-idhm-1.png" alt="Litigiosidade por IDHM" width="624" />
 <p class="caption">
 Figure 1: Litigiosidade por IDHM
 </p>
 </div>
 </div>
-<p>O Gráfico a seguir mostra os pontos das maiores taxas de litigiosidade por estado do Brasil. Destacando-se as regiões Centro-Oeste e Sul.</p>
+<p>A Figura <a href="#fig:lit-idhm-estado">2</a> a seguir mostra os pontos das maiores taxas de litigiosidade por região do Brasil. Com exceção do Centro-Oeste, todas as regiões apresentam correlação positiva entre a litigiosidade e o desenvolvimento. Na região nordeste, a correlação é próxima de zero.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-4"></span>
-<img src="litigiosidade_files/figure-html5/unnamed-chunk-4-1.png" alt="Litigiosidade por IDHM por estado" width="624" />
+<div class="figure" style="text-align: center"><span id="fig:lit-idhm-estado"></span>
+<img src="litigiosidade_files/figure-html5/lit-idhm-estado-1.png" alt="Litigiosidade por IDHM por região." width="624" />
 <p class="caption">
-Figure 2: Litigiosidade por IDHM por estado
+Figure 2: Litigiosidade por IDHM por região.
 </p>
 </div>
 </div>
-<p>A tabela <a href="#tab:media">4</a> abaixo mostra as médias obtidas do indicador de educação por região. Considerando que a média do IHDM de educação do Sul e Sudeste é 0.6335915 e 0.6437175, respectivamente. Sendo as mais altas entre as regiões do país.</p>
+<p>A Tabela <a href="#tab:media">4</a> mostra as médias obtidas do indicador de educação por região. Considerando que a média do IHDM de educação do Sul e Sudeste é 0.63 e 0.64, respectivamente. Sendo as mais altas entre as regiões do país.</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <caption><span id="tab:media">Table 4: </span>Médias do IDHM educação pelas regiões</caption>
@@ -2324,37 +2325,37 @@ Figure 2: Litigiosidade por IDHM por estado
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Sudeste</td>
-<td style="text-align: right;">0.6437175</td>
+<td style="text-align: right;">0.64</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Sul</td>
-<td style="text-align: right;">0.6335915</td>
+<td style="text-align: right;">0.63</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Nordeste</td>
-<td style="text-align: right;">0.5027484</td>
+<td style="text-align: right;">0.50</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Centro-Oeste</td>
-<td style="text-align: right;">0.6025647</td>
+<td style="text-align: right;">0.60</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Norte</td>
-<td style="text-align: right;">0.4840526</td>
+<td style="text-align: right;">0.48</td>
 </tr>
 </tbody>
 </table>
 </div>
-<p>Ainda com relação ao IDHM educação, a figura abaixo mostra a taxa de litigiosidade pelo indicador de Educação entre as regiões do Brasil. As regiões que se destacam é Sul e Sudeste, constatando um crescimento na taxa de ligiosidade. É possivel notar que as altas relacionadas à educação influenciam na procura do judiciário para a resolução dos litigios.</p>
+<p>Ainda com relação ao IDHM educação, a Figura <a href="#fig:idhm-educ">3</a> mostra a taxa de litigiosidade pelo indicador de Educação entre as regiões do Brasil. As regiões que se destacam é Sul e Sudeste, constatando um crescimento na taxa de litigiosidade. É possível notar que as altas relacionadas à educação influenciam na procura do judiciário para a resolução dos litígios.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<div class="figure" style="text-align: center"><span id="fig:unnamed-chunk-5"></span>
-<img src="litigiosidade_files/figure-html5/unnamed-chunk-5-1.png" alt="Litigiosidade por IDHM educação" width="624" />
+<div class="figure" style="text-align: center"><span id="fig:idhm-educ"></span>
+<img src="litigiosidade_files/figure-html5/idhm-educ-1.png" alt="Litigiosidade por IDHM educação" width="624" />
 <p class="caption">
 Figure 3: Litigiosidade por IDHM educação
 </p>
 </div>
 </div>
-<p>A figura mostra a taxa de litigiosidade por Gini (concentração de renda em determinado grupo). É observado que quanto menor o indice de Gini, menor é a litigância, revelando que a desigualdade de renda afeta na capacidade processual de cada região.</p>
+<p>A Figura <a href="#fig:litigiosidade-gini">4</a> mostra a taxa de litigiosidade por Gini (concentração de renda em determinado grupo). Quanto menor o Índice de Gini, menor é a litigiosidade, revelando que a desigualdade de renda está relacionada à capacidade processual de cada região.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <div class="figure" style="text-align: center"><span id="fig:litigiosidade-gini"></span>
 <img src="litigiosidade_files/figure-html5/litigiosidade-gini-1.png" alt="Litigiosidade por gini" width="624" />
@@ -2364,8 +2365,8 @@ Figure 4: Litigiosidade por gini
 </div>
 </div>
 <h2 id="conclusão">Conclusão</h2>
-<p>Após a exposição dos resultados, fica claro que o desenvolvimento contribui com as origens do crescimento da taxa de litigiosidade. Em primeira constatação demonstra-se que nas regiões que o indice de desenvovimento maior, a taxa de litigiosidade é maior. E ao contrário, regiões que apresentam menores indices, a taxa de litigiosidade diminui. Mas devemos considerar que o IDH leva em conta fatores como, renda, logetividade e educação, portanto, esse fato repercurte diretamente como a demanda judiciária será apresentada. Sendo que a influência do fator educacional e de renda se torna importante para o crescimento da taxa de litigância. Estados como Sudeste, Sul e Centro-Oeste apresentam os melhores IDH, evidenciando um desequilibrio entre o direito e a realidade social.</p>
-<p>Ao longo da pesquisa, foi possível observar que quanto mais complexa a sociedade, mais existe o potencial de reconhecimento do direito de proposição de ação. Mas é necessário apurar que o sistema jurídico precisa proporcionar tratamento de conflitos adequado e compátivel com as regiões. O que faz entender que o Poder judiciário deve seguir a evolução da realidade conflituosa, regulando o direito de forma, minimamente, eficiente. A desproporcionalidade da demanda evidencia que é extremamente recomendável que o poder publico crie políticas educacionais, estimulando e permitindo pessoas mais carentes a compreender quais são seus direitos.</p>
+<p>Após a exposição dos resultados, fica claro que o desenvolvimento está relacionado à taxa de litigiosidade. Em primeira constatação demonstra-se que nas regiões em que o índice de desenvolvimento é maior, a taxa de litigiosidade é maior. Considerando que o IDH leva em conta fatores como, renda, longevidade e educação, podemos afirmar que fatores sociais repercutem na demanda judiciária e acesso à justiça. Regiões como Sudeste, Sul e Centro-Oeste apresentam os melhores IDH, evidenciando um desequilíbrio entre a realidade judicial e o acesso à justiça.</p>
+<p>Ao longo da pesquisa, foi possível observar que quanto mais complexa a sociedade, maior o potencial de reconhecimento do direito de proposição de ações. Portanto, pode-se esperar que, à medida que a sociedade evolui, maior o potencial de litigiosidade. Para evitar que a melhora na qualidade de vida da população venha associada a um crescimento exacerbado da litigiosidade, cabe ao poder judiciário e à sociedade civil construir mais mecanismos de composição extrajudicial para a solução amigável de conflitos.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <div class="article-footer">
@@ -2418,7 +2419,7 @@ var disqus_config = function () {
   <p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
   <h3 id="citation">Citation</h3>
   <p>For attribution, please cite this work as</p>
-  <pre class="citation-appendix short">Torquato, et al. (2021, Feb. 15). Associação Brasileira de Jurimetria: Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento. Retrieved from https://lab.abj.org.br/posts/2021-01-15-litigiosidade/</pre>
+  <pre class="citation-appendix short">Torquato, et al. (2021, Feb. 16). Associação Brasileira de Jurimetria: Justiça e desenvolvimento: a relação entre a litigiosidade e o desenvolvimento. Retrieved from https://lab.abj.org.br/posts/2021-01-15-litigiosidade/</pre>
   <p>BibTeX citation</p>
   <pre class="citation-appendix long">@misc{torquato2021justiça,
   author = {Torquato, João and Trecenti, Julio and Witkoski, Katerine and Feliz, Ricardo},
