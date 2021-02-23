@@ -57,7 +57,7 @@ análises simples, conceitos de jurimetria, entre outras necessidades.
 Por conta da demanda, os horários tendem a ser disputados e, por termos uma 
 agenda dupla, de associados e não associados, o tempo para conseguirmos realizar
 o atendimento pode variar bastante. Se tiver interesse em saber mais, você pode
-entrar em contato conosco através do nosso e-mail [contato@abj.org.br](contato@abj.org.br) ou se associando através do [nosso site](https://abj.org.br/associados/).
+entrar em contato conosco através do nosso e-mail [contato@abj.org.br](mailto:contato@abj.org.br) ou se associando através do [nosso site](https://abj.org.br/associados/).
 
 ## Novo cronograma de eventos
 
