@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/anchor-4.2.2/anchor.min.js","caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/bowser-1.9.3/bowser.min.js","caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/distill-2.2.21/template.v2.js","caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/header-attrs-2.6/header-attrs.js","caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/jquery-1.11.3/jquery.min.js","caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/webcomponents-2.0.0/webcomponents.js","img/imagem.png","img/imagem1.png","img/imagem2.png","img/imagem3.png","img/imagem4.png","img/imagem5.png","img/imagem6.png","img/imagem7.png","img/imagem8.png","img/imagem9.png"]}
+  {"type":"character","attributes":{},"value":["camaras-reservadas-direito-empresarial_files/anchor-4.2.2/anchor.min.js","camaras-reservadas-direito-empresarial_files/bowser-1.9.3/bowser.min.js","camaras-reservadas-direito-empresarial_files/distill-2.2.21/template.v2.js","camaras-reservadas-direito-empresarial_files/header-attrs-2.7/header-attrs.js","camaras-reservadas-direito-empresarial_files/jquery-1.11.3/jquery.min.js","camaras-reservadas-direito-empresarial_files/popper-2.6.0/popper.min.js","camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy-bundle.umd.min.js","camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy-light-border.css","camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy.css","camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy.umd.min.js","camaras-reservadas-direito-empresarial_files/webcomponents-2.0.0/webcomponents.js","img/imagem.png","img/imagem1.png","img/imagem2.png","img/imagem3.png","img/imagem4.png","img/imagem5.png","img/imagem6.png","img/imagem7.png","img/imagem8.png","img/imagem9.png"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -307,6 +307,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -461,6 +466,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1128,7 +1144,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1243,6 +1259,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1403,12 +1433,16 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/header-attrs-2.6/header-attrs.js"></script>
-  <script src="caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/jquery-1.11.3/jquery.min.js"></script>
-  <script src="caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/anchor-4.2.2/anchor.min.js"></script>
-  <script src="caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/bowser-1.9.3/bowser.min.js"></script>
-  <script src="caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/webcomponents-2.0.0/webcomponents.js"></script>
-  <script src="caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial_files/distill-2.2.21/template.v2.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/header-attrs-2.7/header-attrs.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/popper-2.6.0/popper.min.js"></script>
+  <link href="camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="camaras-reservadas-direito-empresarial_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="camaras-reservadas-direito-empresarial_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
