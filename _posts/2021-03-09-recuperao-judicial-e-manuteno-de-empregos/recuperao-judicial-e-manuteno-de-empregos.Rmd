@@ -210,6 +210,7 @@ curso do processo de recuperação judicial e, posteriormente, indica a tendênc
 de subida com a obtenção da sentença, conforme Gráfico 2 a seguir: 
 
 ![Gráfico 2 - Mediana de vínculos empregatícios após a distribuição. Fonte: RAIS (2009/2018)](img/grafico_2.png){width=100%}
+
 A mediana padronizada pelo máximo de cada empresa colabora para esclarecer o que
 ocorreu com a quantidade de vínculos empregatícios formais informados anualmente
 pelas recuperandas através da RAIS. Reforça a conclusão de uma tendência de 
@@ -254,6 +255,7 @@ quantidade de dados de vínculos empregatícios formais entre a distribuição d
 ação e a obtenção da sentença:
 
 ![Gráfico 6 - Mediana de vínculos empregatícios pelo máximo após a sentença (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_6.png){width=100%}
+
 ![Gráfico 7 - Mediana de vínculos empregatícios pelo máximo após a distribuição (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_7.png){width=100%}
 
 A realidade empírica revela que o instrumento da ação de recuperação judicial é 
