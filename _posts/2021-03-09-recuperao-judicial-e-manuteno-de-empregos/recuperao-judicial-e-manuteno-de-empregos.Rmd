@@ -2,13 +2,15 @@
 title: "Recuperação judicial e manutenção de empregos"
 description: "A recuperação judicial alcança o objetivo de permitir a manutenção do emprego dos trabalhadores? O que diz a realidade empírica?"
 author:
-  - name: Tadeu Sena Alves
+  - name: Tadeu A. Sena Gomes
     url: {}
 date: 03-09-2021
 output:
   distill::distill_article:
     self_contained: false
 ---
+
+<div style="text-align: justify">
 
 O ambiente de negócios e o desenvolvimento econômico de um país sofre grande 
 influência pelos resultados que a regulação da insolvência entrega na realidade 
@@ -62,8 +64,8 @@ métodos empíricos e experimentais para examinar fenômenos jurídicos. De um m
 geral, esta seria uma consequência perfeitamente trivial da teorização do 
 conhecimento jurídico: todas as ciências possuem um componente teórico e 
 empírico central, e se o direito está se tornando cada vez mais teórico, no 
-sentido que aqui proponho, inevitavelmente também se mostrará mais empírico"
-^[ULEN, Thomas S. Um prêmio Nobel para a ciência jurídica: teoria, trabalho 
+sentido que aqui proponho, inevitavelmente também se mostrará mais empírico" 
+ULEN, Thomas S. Um prêmio Nobel para a ciência jurídica: teoria, trabalho 
 empírico e o método científico no estudo do direito. In: PORTO, Antonio 
 Maristrello; SAMPAIO, Patrícia (org.). Direito e economia em dois mundos: 
 doutrina jurídica e pesquisa empírica. Rio de Janeiro: FGV, 2014, p. 80.] pela 
@@ -137,7 +139,7 @@ qualidade de vida, tal como tida atualmente, estaria severamente comprometida.
 Portanto, empregando a metodologia empírica ao Direito, é necessário ir a campo 
 para buscar evidencias para responder se a ação de recuperação judicial alcança
 o objetivo de permitir a manutenção dos empregos dos trabalhadores na realidade
-empírica É isso que se passa a expor através da metodologia estatística.^["a 
+empírica. É isso que se passa a expor através da metodologia estatística.^["a 
 estatística é uma disciplina definida por sua metodologia e que pode ser 
 aplicada a qualquer objeto passível de experimentação e observação. Na definição
 de Stephen Stigler: “A estatística moderna oferece tecnologia quantitativa para 
@@ -200,21 +202,21 @@ significativamente pelo evento da sentença extintiva da recuperação judicial.
 partir desse referencial, a tendência volta a ser de crescimento ainda que não 
 uniforme, conforme Gráfico 1 a seguir:
 
-![Gráfico 1 - Mediana de vínculos empregatícios após a sentença. Fonte: RAIS (2009/2018)](img/grafico_1.png)
+![Gráfico 1 - Mediana de vínculos empregatícios após a sentença. Fonte: RAIS (2009/2018)](img/grafico_1.png){width=100%}
 
 Se observado o ano da distribuição do processo, também se observará que a 
 mediana dos resultados obtidos indica a redução dos vínculos empregatícios no 
 curso do processo de recuperação judicial e, posteriormente, indica a tendência 
 de subida com a obtenção da sentença, conforme Gráfico 2 a seguir: 
 
-![Gráfico 2 - Mediana de vínculos empregatícios após a distribuição. Fonte: RAIS (2009/2018)](img/grafico_2.png)
+![Gráfico 2 - Mediana de vínculos empregatícios após a distribuição. Fonte: RAIS (2009/2018)](img/grafico_2.png){width=100%}
 A mediana padronizada pelo máximo de cada empresa colabora para esclarecer o que
 ocorreu com a quantidade de vínculos empregatícios formais informados anualmente
 pelas recuperandas através da RAIS. Reforça a conclusão de uma tendência de 
 queda seguida por uma tendência de crescimento não uniforme, conforme Gráfico 3 
 a seguir:  
 
-![Gráfico 3 - Mediana de vínculos empregatícios pelo máximo após a sentença. Fonte: RAIS (2009/2018)](img/grafico_3.png)
+![Gráfico 3 - Mediana de vínculos empregatícios pelo máximo após a sentença. Fonte: RAIS (2009/2018)](img/grafico_3.png){width=100%}
 
 O valor da mediana se mostra mais próximo de identificar uma tendência da 
 realidade na medida em que ela é menos suscetível de ser influenciada por casos 
@@ -232,18 +234,18 @@ dos trabalhadores, relevante se faz destacar que somente 45 (quarenta e cinco)
 CNPJs possuíam informação de dados de vínculos empregatícios em todos os anos
 compreendidos entre 2009 e 2018. 
 
-Esse dado da realidade permite afirmar que tão somente 30% das empresas (leia-se
-CNPJs) que chegaram ao final de uma recuperação judicial com extinção por 
-sentença de cumprimento do plano permaneceram informando a quantidade de 
+Esse dado da realidade permite afirmar que tão somente 30% das "empresas" 
+(leia-se CNPJs) que chegaram ao final de uma recuperação judicial com extinção 
+por sentença de cumprimento do plano permaneceram informando a quantidade de 
 vínculos empregatícios anuais ao governo. 
 
 Caso recortada a análise apenas para esses casos que forneceram os dados anuais 
 por todo o período, também se verifica a tendência crescimento após a sentença, 
 como demonstrado nos Gráficos 4 e 5 a seguir:
 
-![Gráfico 4 - Mediana de vínculos empregatícios após a sentença (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_4.png)
+![Gráfico 4 - Mediana de vínculos empregatícios após a sentença (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_4.png){width=100%}
 
-![Gráfico 5 - Mediana de vínculos empregatícios após a distribuição (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_5.png)
+![Gráfico 5 - Mediana de vínculos empregatícios após a distribuição (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_5.png){width=100%}
 
 A mediana padronizada pelo dado máximo de cada empresa deixa o cenário mais 
 evidente de recuperação dos vínculos de empregos formais após o processo de 
@@ -251,14 +253,14 @@ recuperação judicial. A análise dos Gráficos 5 e 7 a seguir indica a menor
 quantidade de dados de vínculos empregatícios formais entre a distribuição da 
 ação e a obtenção da sentença:
 
-![Gráfico 6 - Mediana de vínculos empregatícios pelo máximo após a sentença (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_6.png)
-![Gráfico 7 - Mediana de vínculos empregatícios pelo máximo após a distribuição (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_7.png)
+![Gráfico 6 - Mediana de vínculos empregatícios pelo máximo após a sentença (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_6.png){width=100%}
+![Gráfico 7 - Mediana de vínculos empregatícios pelo máximo após a distribuição (considerando apenas CNPJ com informações em todo o período). Fonte: RAIS (2009/2018)](img/grafico_7.png){width=100%}
 
 A realidade empírica revela que o instrumento da ação de recuperação judicial é 
 capaz de permitir a manutenção e até mesmo o soerguimento dos empregos dos 
 trabalhadores. O cenário é o da hipótese de que o objetivo do art. 47 da lei foi
-alcançado na amostragem pesquisa no que se refere a manutenção dos empregos dos
-trabalhadores.
+alcançado na amostragem da pesquisa no que se refere a manutenção dos empregos 
+dos trabalhadores.
 
 Todavia, cabe a advertência de que isso se verificou de maneira estatisticamente
 inferior ao pretendido pelo programa normativo da legislação, considerando a 
@@ -275,3 +277,5 @@ empresária em recuperação judicial, o que poderia ser feito quando da introdu
 da lei 14.112/2020 caso fosse utilizado o parâmetro da RAIS para acompanhar os 
 vínculos formais constituídos pela sociedade que pede os benefícios da 
 legislação de recuperação judicial.
+
+</div>
