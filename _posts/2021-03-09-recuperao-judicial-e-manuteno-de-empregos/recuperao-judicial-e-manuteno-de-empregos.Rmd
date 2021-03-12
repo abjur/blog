@@ -293,6 +293,6 @@ knitr::include_graphics("img/foto.jpeg")
 
 *Tadeu A. Sena Gomes é associado da ABJ e escreveu para o Lab ABJ a convite da associação.* 
 
-Contato: [tg@senagomes.adv.br](mailto:tg@senagomes.adv.br) | [Instagram](https://www.instagram.com/tsenagomes/) | [Twitter](twitter.com/tsenagomes)
+Contato: [tg@senagomes.adv.br](mailto:tg@senagomes.adv.br) | [Instagram](https://www.instagram.com/tsenagomes/) | [Twitter](https://www.twitter.com/tsenagomes)
 :::
 
