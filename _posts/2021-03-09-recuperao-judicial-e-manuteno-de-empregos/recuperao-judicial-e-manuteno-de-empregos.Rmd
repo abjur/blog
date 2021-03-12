@@ -3,7 +3,7 @@ title: "Recuperação judicial e manutenção de empregos"
 description: "A recuperação judicial alcança o objetivo de permitir a manutenção do emprego dos trabalhadores? O que diz a realidade empírica?"
 author:
   - name: Tadeu A. Sena Gomes
-    url: {"mailto:tg@senagomes.adv.br"}
+    url: mailto:tg@senagomes.adv.br
 date: 03-12-2021
 output:
   distill::distill_article:
