@@ -4,9 +4,8 @@ description: |
   Preliminar.
 author:
   - name: Julio Trecenti
-    url: https://twitter.com/clente_
+    url: https://twitter.com/jtrecenti
   - name: Marcelo Guedes Nunes
-    url: https://twitter.com/renata_mh
 date: 12-23-2020
 output:
   distill::distill_article:
@@ -15,12 +14,15 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE
+)
+library(magrittr, include.only = "%>%")
+da_cand <- readr::read_rds("da_cand.rds")
+assuntos_tjsp_esaj_filter <- readr::read_rds("assuntos_tjsp_esaj_filter.rds")
 ```
 
 A presente análise busca identificar se políticos são mais propensos a figurarem em processos criminais em São Paulo. Além disso, investigamos se os candidatos com mais processos têm maior probabilidade de vencer as eleições, além da relação entre os crimes mais comuns e as condenações que geram inelegebilidade.
-
-## Resultados preliminares
 
 Para verificar se candidatos têm mais processos criminais que a população geral, precisamos calcular a proporção de pessoas que possuem processos na base de candidatos e na população geral.
 
@@ -31,18 +33,108 @@ A base de candidatos foi obtida do TSE. Os CPFs dos candidatos foram pesquisados
 - Ação Penal - Procedimento Sumaríssimo
 - Ação Penal de Competência do Júri
 
-Abaixo segue um exemplo de tabela.
+## Análise 1: eleitos contra não eleitos
 
-| nr_turno|ds_cargo |ds_genero |nr_cpf_candidato |eleito |tem_processo |
-|--------:|:--------|:---------|:----------------|:------|:------------|
-|        1|VEREADOR |MASCULINO |003******40      |Não    |Não          |
-|        1|VEREADOR |MASCULINO |401******38      |Sim    |Não          |
-|        1|VEREADOR |MASCULINO |301******96      |Não    |Não          |
-|        1|PREFEITO |MASCULINO |032******26      |Não    |Sim          |
-|        1|VEREADOR |FEMININO  |247******40      |Sim    |Não          |
+A Tabela \@ref(tab:eleitos) mostra a proporção de candidados eleitos e não eleitos com processos criminais no TJSP. Pela tabela, é possível notar que a proporção de processos judiciais dentre os eleitos é quase o dobro do que candidatos que não foram eleitos.
 
-A proporção de processos foi calculada pela média simples da variável `tem_processo`. Considerando todos os candidatos, essa proporção é de 0,339% (aproximadamente 34 em 10 mil). Já considerando apenas candidatos eleitos, essa proporção é de 0,658% (aproximadamente 66 em 10 mil).
+```{r eleitos}
+# da_cand %>% 
+#   dplyr::select(-nr_cpf_candidato) %>% 
+#   readr::write_rds("da_cand.rds", compress = "xz")
+da_cand %>% 
+  dplyr::bind_rows(dplyr::mutate(da_cand, eleito = "Total")) %>% 
+  dplyr::count(eleito, tem_processo) %>% 
+  dplyr::group_by(eleito) %>% 
+  dplyr::mutate(
+    ntot = sum(n),
+    p = n/ntot,
+    c1 = pmax(p - qnorm(.975) * sqrt(p*(1-p)/ntot), 0),
+    c2 = p + qnorm(.975) * sqrt(p*(1-p)/ntot),
+    dplyr::across(c(p, c1, c2), scales::percent, .01)
+  ) %>% 
+  dplyr::filter(tem_processo == "Sim") %>% 
+  dplyr::transmute(
+    eleito, ntot,
+    pct = stringr::str_glue("{p} ({c1}-{c2})")
+  ) %>% 
+  dplyr::ungroup() %>% 
+  purrr::set_names(
+    c("Eleito", "N Candidatos", "% processo")
+  ) %>% 
+  knitr::kable(caption = "Proporção de processos em candidatos eleitos e não eleitos.")
+```
 
-Para calcular a proporção de processos na população geral, consideramos a base de distribuições por classe disponível no Painel Justiça em Números e dados populacionais da Fundação Seade. Da mesma forma que a base anterior, consideramos apenas casos novos de primeiro grau ou juizados especiais entre 2014 e 2019, com as classes criminais supracitadas. Para a população, consideramos a estimativa populacional da Fundação Seade para pessoas com 18 anos ou mais. A proporção de processos encontrada foi de 0,872% (aproximadamente 87 em 10 mil).
+## Análise 1: homens e mulheres
 
-Pela análise realizada, temos que a proporção de pessoas em geral com processos criminais é maior do que a proporção de candidatos com processos criminais, seja esse candidato eleito ou não. Isso de certa forma refutaria a hipótese da patocracia, pelo menos nessa análise preliminar.
+A Tabela \@ref(tab:eleitos-sexo) mostra a proporção de candidados com processos criminais no TJSP, separando por sexo. Pela tabela, é possível notar que a proporção de processos judiciais dentre os homens é de quatro vezes a quantidade de processos dentre as mulheres.
+
+```{r eleitos-sexo}
+da_cand %>% 
+  dplyr::bind_rows(dplyr::mutate(da_cand, ds_genero = "Total")) %>% 
+  dplyr::count(ds_genero, tem_processo) %>% 
+  dplyr::group_by(ds_genero) %>% 
+  dplyr::mutate(
+    ntot = sum(n),
+    p = n/ntot,
+    c1 = pmax(p - qnorm(.975) * sqrt(p*(1-p)/ntot), 0),
+    c2 = p + qnorm(.975) * sqrt(p*(1-p)/ntot),
+    dplyr::across(c(p, c1, c2), scales::percent, .01)
+  ) %>% 
+  dplyr::filter(tem_processo == "Sim") %>% 
+  dplyr::ungroup() %>% 
+  dplyr::transmute(
+    sexo = dplyr::case_when(
+      ds_genero == "MASCULINO" ~ "Masculino",
+      ds_genero == "FEMININO" ~ "Feminino",
+      TRUE ~ "Total"
+    ), 
+    ntot,
+    pct = stringr::str_glue("{p} ({c1}-{c2})")
+  ) %>% 
+  purrr::set_names(
+    c("Sexo", "N Candidatos", "% processo")
+  ) %>% 
+  knitr::kable(caption = "Proporção de processos em candidatos eleitos e não eleitos.")
+```
+
+## Análise 2: Comparação com a população
+
+Para comparar com a população, precisamos obter mais duas bases de dados
+
+- Quantidade de processos por assunto no TJSP, obtida da consulta de julgados de primeiro grau do TJSP. Infelizmente o painel do Justiça em Números é muito inconsistente, e não existe uma maneira fácil de descobrir quantos casos novos temos por assunto. Por isso usamos as sentenças.
+- População em 2020 de pessoas com 20 anos ou mais, a partir dos dados da Fundação Seade.
+
+No total, temos `r sum(assuntos_tjsp_esaj_filter$n_esaj)` sentenças entre 2014 e 2019, considerando os mesmos assuntos que aparecem na base dos candidatos. Dividindo pela população, temos uma taxa de `r scales::percent(sum(assuntos_tjsp_esaj_filter$n_esaj) / assuntos_tjsp_esaj_filter$pop[1], .001)`, quase 5 vezes a taxa observada para os candidatos.
+
+Ao quebrar a taxa por assuntos, temos os resultados da Tabela \@ref(tab:esaj-assuntos). Mostramos apenas os casos que têm 10 ou mais processos envolvendo os candidatos. É possível notar que a proporção na população geral é maior que a proporção de pessoas candidatas quando o assunto não é relacionado a cargos públicos, e menor quanto o assunto é relacionado a cargos públicos. O mesmo resultado é observado considerando apenas pessoas eleitas, mas a tabela foi omitida por conta da pequena quantidade de observações.
+
+```{r esaj-assuntos}
+assuntos_tjsp_esaj_filter %>% 
+  dplyr::filter(nproc_total >= 10) %>% 
+  dplyr::transmute(
+    assunto, 
+    sentencas = n_esaj,
+    sentencas_pop = sentencas / pop * 1e5,
+    processos = nproc_total,
+    processos_pop = processos / pop_cand * 1e5,
+    razao = sentencas_pop / processos_pop
+  ) %>% 
+  dplyr::arrange(dplyr::desc(processos)) %>% 
+  purrr::set_names(c(
+    "Assunto", 
+    "Sentenças", "Sentenças/10M pop",
+    "Processos", "Processos/10M cand", 
+    "Razão das taxas"
+  )) %>% 
+  knitr::kable(caption = "Processos e taxas populacionais por assunto.", digits = 2)
+```
+
+## Conclusões preliminares
+
+- Candidatas mulheres têm menor proporção de processos.
+- Pessoas eleitas têm maior proporção de processos.
+- Pessoas candidatas têm menor proporção de processos que a população em geral para assuntos não relacionados a cargos públicos. Já em assuntos relacionados a cargos públicos, a proporção de processos é maior.
+
+Pela análise realizada, temos que a proporção de pessoas em geral com processos criminais é maior do que a proporção de pessoas candidatas com processos criminais, seja esse candidato eleito ou não. Isso de certa forma refutaria a hipótese da patocracia, pelo menos nessa análise preliminar.
+
+Para futuras análises, uma sugestão seria considerar uma amostra de pessoas, com verificação manual dos processos, para permitir o controle pela renda. Dessa forma, será possível identificar se pessoas candidatas ricos estão em mais processos criminais do que pessoas comuns ricas, por exemplo.

@@ -1,0 +1,27 @@
+O que foi feito até agora
+
+1) levantamento dos políticos.
+
+Fonte de dados: TSE. Dados dos candidatos na eleição de 2020, que contêm também a informação de eleição
+
+2) levantamento dos processos dos políticos.
+
+Fonte de dados: TJSP. Pesquisamos todos os processos no TJSP através do CPF do político (disponível na base 1). Filtramos apenas os casos da área criminal
+
+3) levantamento da população elegível
+
+Fonte de dados: Fundação Seade. No site da fundação, é possível obter a estimativa da população em 2020 de acordo com a faixa etária. Consideramos apenas a população de pessoas acima de 18 anos.
+
+4) levantamento da quantidade de processos na população
+
+Fonte de dados: CNJ. A partir do Painel Justiça em Números, é possível baixar a quantidade de casos novos por assunto em todos os tribunais. Pegamos apenas a quantidade de casos novos em assuntos criminais dentro do TJSP, em 2020.
+
+A comparação ocorre entre (2) dividido por (1) versus (4) dividido por (3).
+
+
+
+Próximos passos:
+
+a) obter (1) e (2) separado por sexo
+b) obter (2) e (4) separado por assunto
+c) comparar como as taxas variam por assunto e sexo

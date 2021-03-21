@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -111,12 +112,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Patocracia"]},{"type":"character","attributes":{},"value":["Preliminar.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://twitter.com/clente_"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Marcelo Guedes Nunes"]},{"type":"character","attributes":{},"value":["https://twitter.com/renata_mh"]}]}]},{"type":"character","attributes":{},"value":["12-23-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Patocracia"]},{"type":"character","attributes":{},"value":["Preliminar.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Julio Trecenti"]},{"type":"character","attributes":{},"value":["https://twitter.com/jtrecenti"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Marcelo Guedes Nunes"]}]}]},{"type":"character","attributes":{},"value":["12-23-2020"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["patocracia_files/anchor-4.2.2/anchor.min.js","patocracia_files/bowser-1.9.3/bowser.min.js","patocracia_files/distill-2.2.21/template.v2.js","patocracia_files/header-attrs-2.5/header-attrs.js","patocracia_files/jquery-1.11.3/jquery.min.js","patocracia_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["patocracia_files/anchor-4.2.2/anchor.min.js","patocracia_files/bowser-1.9.3/bowser.min.js","patocracia_files/distill-2.2.21/template.v2.js","patocracia_files/header-attrs-2.5/header-attrs.js","patocracia_files/header-attrs-2.7/header-attrs.js","patocracia_files/jquery-1.11.3/jquery.min.js","patocracia_files/popper-2.6.0/popper.min.js","patocracia_files/tippy-6.2.7/tippy-bundle.umd.min.js","patocracia_files/tippy-6.2.7/tippy-light-border.css","patocracia_files/tippy-6.2.7/tippy.css","patocracia_files/tippy-6.2.7/tippy.umd.min.js","patocracia_files/webcomponents-2.0.0/webcomponents.js","tarefas.txt"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -308,6 +309,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
 
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
   @media(min-width: 768px) {
 
   d-article pre,
@@ -462,6 +468,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -1129,7 +1146,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1244,6 +1261,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
 
       // clear polling timer
       clearInterval(tid);
@@ -1404,8 +1435,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="patocracia_files/header-attrs-2.5/header-attrs.js"></script>
+  <script src="patocracia_files/header-attrs-2.7/header-attrs.js"></script>
   <script src="patocracia_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="patocracia_files/popper-2.6.0/popper.min.js"></script>
+  <link href="patocracia_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="patocracia_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="patocracia_files/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="patocracia_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="patocracia_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="patocracia_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1421,7 +1456,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Patocracia","description":"Preliminar.","authors":[{"author":"Julio Trecenti","authorURL":"https://twitter.com/clente_","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Marcelo Guedes Nunes","authorURL":"https://twitter.com/renata_mh","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-12-23T00:00:00.000-03:00","citationText":"Trecenti & Nunes, 2020"}
+{"title":"Patocracia","description":"Preliminar.","authors":[{"author":"Julio Trecenti","authorURL":"https://twitter.com/jtrecenti","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""},{"author":"Marcelo Guedes Nunes","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2020-12-23T00:00:00.000-03:00","citationText":"Trecenti & Nunes, 2020"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1438,16 +1473,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-byline">
-  Julio Trecenti <a href="https://twitter.com/clente_" class="uri">https://twitter.com/clente_</a> 
+  Julio Trecenti <a href="https://twitter.com/jtrecenti" class="uri">https://twitter.com/jtrecenti</a> 
   
-,   Marcelo Guedes Nunes <a href="https://twitter.com/renata_mh" class="uri">https://twitter.com/renata_mh</a> 
+,   Marcelo Guedes Nunes  
   
 <br/>12-23-2020
 </div>
 
 <div class="d-article">
 <p>A presente análise busca identificar se políticos são mais propensos a figurarem em processos criminais em São Paulo. Além disso, investigamos se os candidatos com mais processos têm maior probabilidade de vencer as eleições, além da relação entre os crimes mais comuns e as condenações que geram inelegebilidade.</p>
-<h2 id="resultados-preliminares">Resultados preliminares</h2>
 <p>Para verificar se candidatos têm mais processos criminais que a população geral, precisamos calcular a proporção de pessoas que possuem processos na base de candidatos e na população geral.</p>
 <p>A base de candidatos foi obtida do TSE. Os CPFs dos candidatos foram pesquisados na consulta processual do TJSP. Variáveis indicadoras foram criadas para identificar se o candidato tem processo e se foi eleito. Para permitir a comparabilidade com os dados da população geral, consideramos nesse levantamento apenas processos distribuídos entre 2014 e 2019 e as classes processuais abaixo.</p>
 <ul>
@@ -1456,64 +1490,197 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <li>Ação Penal - Procedimento Sumaríssimo</li>
 <li>Ação Penal de Competência do Júri</li>
 </ul>
-<p>Abaixo segue um exemplo de tabela.</p>
+<h2 id="análise-1-eleitos-contra-não-eleitos">Análise 1: eleitos contra não eleitos</h2>
+<p>A Tabela <a href="#tab:eleitos">1</a> mostra a proporção de candidados eleitos e não eleitos com processos criminais no TJSP. Pela tabela, é possível notar que a proporção de processos judiciais dentre os eleitos é quase o dobro do que candidatos que não foram eleitos.</p>
+<div class="layout-chunk" data-layout="l-body">
 <table>
+<caption><span id="tab:eleitos">Table 1: </span>Proporção de processos em candidatos eleitos e não eleitos.</caption>
 <thead>
 <tr class="header">
-<th style="text-align: right;">nr_turno</th>
-<th style="text-align: left;">ds_cargo</th>
-<th style="text-align: left;">ds_genero</th>
-<th style="text-align: left;">nr_cpf_candidato</th>
-<th style="text-align: left;">eleito</th>
-<th style="text-align: left;">tem_processo</th>
+<th style="text-align: left;">Eleito</th>
+<th style="text-align: right;">N Candidatos</th>
+<th style="text-align: left;">% processo</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">VEREADOR</td>
-<td style="text-align: left;">MASCULINO</td>
-<td style="text-align: left;">003******40</td>
 <td style="text-align: left;">Não</td>
-<td style="text-align: left;">Não</td>
+<td style="text-align: right;">85292</td>
+<td style="text-align: left;">0.34% (0.30%-0.38%)</td>
 </tr>
 <tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">VEREADOR</td>
-<td style="text-align: left;">MASCULINO</td>
-<td style="text-align: left;">401******38</td>
 <td style="text-align: left;">Sim</td>
-<td style="text-align: left;">Não</td>
+<td style="text-align: right;">8153</td>
+<td style="text-align: left;">0.77% (0.58%-0.96%)</td>
 </tr>
 <tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">VEREADOR</td>
-<td style="text-align: left;">MASCULINO</td>
-<td style="text-align: left;">301******96</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">Não</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">PREFEITO</td>
-<td style="text-align: left;">MASCULINO</td>
-<td style="text-align: left;">032******26</td>
-<td style="text-align: left;">Não</td>
-<td style="text-align: left;">Sim</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">1</td>
-<td style="text-align: left;">VEREADOR</td>
-<td style="text-align: left;">FEMININO</td>
-<td style="text-align: left;">247******40</td>
-<td style="text-align: left;">Sim</td>
-<td style="text-align: left;">Não</td>
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">93445</td>
+<td style="text-align: left;">0.38% (0.34%-0.42%)</td>
 </tr>
 </tbody>
 </table>
-<p>A proporção de processos foi calculada pela média simples da variável <code>tem_processo</code>. Considerando todos os candidatos, essa proporção é de 0,339% (aproximadamente 34 em 10 mil). Já considerando apenas candidatos eleitos, essa proporção é de 0,658% (aproximadamente 66 em 10 mil).</p>
-<p>Para calcular a proporção de processos na população geral, consideramos a base de distribuições por classe disponível no Painel Justiça em Números e dados populacionais da Fundação Seade. Da mesma forma que a base anterior, consideramos apenas casos novos de primeiro grau ou juizados especiais entre 2014 e 2019, com as classes criminais supracitadas. Para a população, consideramos a estimativa populacional da Fundação Seade para pessoas com 18 anos ou mais. A proporção de processos foi de 0,872% (aproximadamente 87 em 10 mil).</p>
-<p>Pela análise realizada, temos que a proporção de pessoas em geral com processos criminais é maior do que a proporção de candidatos com processos criminais, seja esse candidato eleito ou não. Isso de certa forma refutaria a hipótese da patocracia, pelo menos nessa análise preliminar.</p>
+</div>
+<h2 id="análise-1-homens-e-mulheres">Análise 1: homens e mulheres</h2>
+<p>A Tabela <a href="#tab:eleitos-sexo">2</a> mostra a proporção de candidados com processos criminais no TJSP, separando por sexo. Pela tabela, é possível notar que a proporção de processos judiciais dentre os homens é de quatro vezes a quantidade de processos dentre as mulheres.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:eleitos-sexo">Table 2: </span>Proporção de processos em candidatos eleitos e não eleitos.</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Sexo</th>
+<th style="text-align: right;">N Candidatos</th>
+<th style="text-align: left;">% processo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Feminino</td>
+<td style="text-align: right;">31356</td>
+<td style="text-align: left;">0.12% (0.08%-0.16%)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Masculino</td>
+<td style="text-align: right;">62089</td>
+<td style="text-align: left;">0.51% (0.45%-0.57%)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: right;">93445</td>
+<td style="text-align: left;">0.38% (0.34%-0.42%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="análise-2-comparação-com-a-população">Análise 2: Comparação com a população</h2>
+<p>Para comparar com a população, precisamos obter mais duas bases de dados</p>
+<ul>
+<li>Quantidade de processos por assunto no TJSP, obtida da consulta de julgados de primeiro grau do TJSP. Infelizmente o painel do Justiça em Números é muito inconsistente, e não existe uma maneira fácil de descobrir quantos casos novos temos por assunto. Por isso usamos as sentenças.</li>
+<li>População em 2020 de pessoas com 20 anos ou mais, a partir dos dados da Fundação Seade.</li>
+</ul>
+<p>No total, temos 6.45344^{5} sentenças entre 2014 e 2019, considerando os mesmos assuntos que aparecem na base dos candidatos. Dividindo pela população, temos uma taxa de 1.937%, quase 5 vezes a taxa observada para os candidatos.</p>
+<p>Ao quebrar a taxa por assuntos, temos os resultados da Tabela <a href="#tab:esaj-assuntos">3</a>. Mostramos apenas os casos que têm 10 ou mais processos envolvendo os candidatos. É possível notar que a proporção na população geral é maior que a proporção de pessoas candidatas quando o assunto não é relacionado a cargos públicos, e menor quanto o assunto é relacionado a cargos públicos. O mesmo resultado é observado considerando apenas pessoas eleitas, mas a tabela foi omitida por conta da pequena quantidade de observações.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:esaj-assuntos">Table 3: </span>Processos e taxas populacionais por assunto.</caption>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 9%" />
+<col style="width: 16%" />
+<col style="width: 9%" />
+<col style="width: 17%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Assunto</th>
+<th style="text-align: right;">Sentenças</th>
+<th style="text-align: right;">Sentenças/10M pop</th>
+<th style="text-align: right;">Processos</th>
+<th style="text-align: right;">Processos/10M cand</th>
+<th style="text-align: right;">Razão das taxas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">CRIMES DA LEI DE LICITACOES</td>
+<td style="text-align: right;">440</td>
+<td style="text-align: right;">1.32</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">85.61</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CRIMES DE TRANSITO</td>
+<td style="text-align: right;">95112</td>
+<td style="text-align: right;">285.50</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">21.40</td>
+<td style="text-align: right;">13.34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ESTELIONATO</td>
+<td style="text-align: right;">21689</td>
+<td style="text-align: right;">65.10</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">20.33</td>
+<td style="text-align: right;">3.20</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FALSIDADE IDEOLOGICA</td>
+<td style="text-align: right;">2241</td>
+<td style="text-align: right;">6.73</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">18.19</td>
+<td style="text-align: right;">0.37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PECULATO</td>
+<td style="text-align: right;">473</td>
+<td style="text-align: right;">1.42</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">16.05</td>
+<td style="text-align: right;">0.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">RECEPTACAO</td>
+<td style="text-align: right;">41828</td>
+<td style="text-align: right;">125.56</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14.98</td>
+<td style="text-align: right;">8.38</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CRIMES DO SISTEMA NACIONAL DE ARMAS</td>
+<td style="text-align: right;">25875</td>
+<td style="text-align: right;">77.67</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">13.91</td>
+<td style="text-align: right;">5.58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">TRAFICO DE DROGAS E CONDUTAS AFINS</td>
+<td style="text-align: right;">37666</td>
+<td style="text-align: right;">113.06</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12.84</td>
+<td style="text-align: right;">8.80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CRIMES DE RESPONSABILIDADE</td>
+<td style="text-align: right;">99</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12.84</td>
+<td style="text-align: right;">0.02</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FURTO QUALIFICADO</td>
+<td style="text-align: right;">66180</td>
+<td style="text-align: right;">198.65</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">12.84</td>
+<td style="text-align: right;">15.47</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FURTO</td>
+<td style="text-align: right;">63446</td>
+<td style="text-align: right;">190.45</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">10.70</td>
+<td style="text-align: right;">17.80</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="conclusões-preliminares">Conclusões preliminares</h2>
+<ul>
+<li>Candidatas mulheres têm menor proporção de processos.</li>
+<li>Pessoas eleitas têm maior proporção de processos.</li>
+<li>Pessoas candidatas têm menor proporção de processos que a população em geral para assuntos não relacionados a cargos públicos. Já em assuntos relacionados a cargos públicos, a proporção de processos é maior.</li>
+</ul>
+<p>Pela análise realizada, temos que a proporção de pessoas em geral com processos criminais é maior do que a proporção de pessoas candidatas com processos criminais, seja esse candidato eleito ou não. Isso de certa forma refutaria a hipótese da patocracia, pelo menos nessa análise preliminar.</p>
+<p>Para futuras análises, uma sugestão seria considerar uma amostra de pessoas, com verificação manual dos processos, para permitir o controle pela renda. Dessa forma, será possível identificar se pessoas candidatas ricos estão em mais processos criminais do que pessoas comuns ricas, por exemplo.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
