@@ -64,7 +64,7 @@ da_cand %>%
   knitr::kable(caption = "Proporção de processos em candidatos eleitos e não eleitos.")
 ```
 
-## Análise 1: homens e mulheres
+## Análise 2: homens e mulheres
 
 A Tabela \@ref(tab:eleitos-sexo) mostra a proporção de candidados com processos criminais no TJSP, separando por sexo. Pela tabela, é possível notar que a proporção de processos judiciais dentre os homens é de quatro vezes a quantidade de processos dentre as mulheres.
 
@@ -97,7 +97,7 @@ da_cand %>%
   knitr::kable(caption = "Proporção de processos em candidatos eleitos e não eleitos.")
 ```
 
-## Análise 2: Comparação com a população
+## Análise 3: Comparação com a população
 
 Para comparar com a população, precisamos obter mais duas bases de dados
 
