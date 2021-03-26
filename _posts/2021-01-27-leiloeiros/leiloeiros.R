@@ -1,8 +1,8 @@
-library(magrittr)
-library(dplyr)
+library(tidyverse)
 
 leiloes <- obsFase3::da_leilao_tidy
 
+# Todos leiloeiros ---------------
 # selecionar todas as grafias possíveis de leiloeiros
 todos_leiloeiros <- leiloes %>% 
   group_by(id_leiloeiro) %>% 
@@ -29,7 +29,9 @@ todos_leiloeiros <- todos_leiloeiros %>%
       str_detect(leiloeiro, regex("Zukerman", ignore_case=TRUE)) ~ "Fabio Zukerman",
       str_detect(leiloeiro, regex("Samuel", ignore_case=TRUE)) ~ "Gustavo Cristiano Samuel dos Reis",
       str_detect(leiloeiro, regex("Moy", ignore_case=TRUE)) ~ "Renato Schlobach Moysés",
+      # Gold Leilões e Uilan Aparecido são a mesma coisa
       str_detect(leiloeiro, regex("Uilian", ignore_case=TRUE)) ~ "Uilian Aparecido da Silva",
+      str_detect(cpf_cnpj, "18.067.544/0001-36") ~ "Gold Leilões - Gold Intermediação de Ativos LTDA",
       str_detect(leiloeiro, regex("Villa Nova", ignore_case=TRUE)) ~ "Sérgio Villa Nova de Freitas",
       str_detect(leiloeiro, regex("Boya", ignore_case=TRUE)) ~ "Eduardo Jordão Boyadjian",
       str_detect(leiloeiro, regex("Franklin", ignore_case=TRUE)) ~ "Renata Franklin Simões",
@@ -40,6 +42,12 @@ todos_leiloeiros <- todos_leiloeiros %>%
       str_detect(leiloeiro, regex("casa reis", ignore_case=TRUE)) ~ "Casa Reis Leilões",
       str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
       str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
+      str_detect(cpf_cnpj, "15.086.104/0001") ~ "Lance Alienações Eletrônicas LTDA",
+      # HastaPublicaBR e Euclides Maraschi Junior são a mesma coisa
+      str_detect(cpf_cnpj, "144.470.838-41") ~ "Euclides Maraschi Junior",
+      str_detect(cpf_cnpj, "16.792.811/0001-02") ~ "HastaPublicaBR Promotora de Eventos LTDA",
+      str_detect(cpf_cnpj, "19.962.222/0001-13") ~ "D1Lance Intermediação de Ativos LTDA",
+      str_detect(cpf_cnpj, "537.866.888-34") ~ "Ronaldo Milan", 
     ),
     
     cpf_cnpj = dplyr::case_when(
@@ -66,6 +74,12 @@ todos_leiloeiros <- todos_leiloeiros %>%
       leiloeiro_arrumado == "Douglas José Fidalgo" ~ "16499659827",
       leiloeiro_arrumado == "Mega Leilões" ~ "03122040000102",
       leiloeiro_arrumado == "Casa Reis Leilões" ~ " 19116554000187",
+      leiloeiro_arrumado == "Lance Alienações Eletrônicas LTDA" ~ "15086104000138",
+      leiloeiro_arrumado == "Euclides Maraschi Junior" ~ "14447083841",
+      leiloeiro_arrumado == "HastaPublicaBR Promotora de Eventos LTDA" ~ "16792811000102",
+      leiloeiro_arrumado == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "18067544000136",
+      leiloeiro_arrumado == "D1Lance Intermediação de Ativos LTDA" ~ "19962222000113",
+      leiloeiro_arrumado == "Ronaldo Milan" ~ "53786688834",
       TRUE ~ cpf_cnpj
     ),
     
@@ -93,11 +107,19 @@ todos_leiloeiros <- todos_leiloeiros %>%
       leiloeiro_arrumado == "Douglas José Fidalgo" ~ "5535",
       leiloeiro_arrumado == "Mega Leilões" ~ "5426",
       leiloeiro_arrumado == "Casa Reis Leilões" ~ " 5448",
+      leiloeiro_arrumado == "Lance Alienações Eletrônicas LTDA" ~ "5937",
+      leiloeiro_arrumado == "Euclides Maraschi Junior" ~ "5665",
+      leiloeiro_arrumado == "HastaPublicaBR Promotora de Eventos LTDA" ~ "1057",
+      leiloeiro_arrumado == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "620",
+      leiloeiro_arrumado == "D1Lance Intermediação de Ativos LTDA" ~ "5366",
+      leiloeiro_arrumado == "Ronaldo Milan" ~ "29112",
       TRUE ~ id_leiloeiro
     )
   ) 
 
+# analise -------------------
 analise <- leiloes %>% 
+  dplyr::filter(modalidade == "leilao") %>% 
   dplyr::mutate(
     leiloeiro = dplyr::case_when(
       str_detect(leiloeiro, regex("ron.*faro|ron.*mon", ignore_case=TRUE)) ~ "Ronaldo Sérgio Montenegro Rodrigues Faro",
@@ -114,7 +136,9 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("Zukerman", ignore_case=TRUE)) ~ "Fabio Zukerman",
       str_detect(leiloeiro, regex("Samuel", ignore_case=TRUE)) ~ "Gustavo Cristiano Samuel dos Reis",
       str_detect(leiloeiro, regex("Moy", ignore_case=TRUE)) ~ "Renato Schlobach Moysés",
+      # Gold Leilões e Uilan Aparecido são a mesma coisa
       str_detect(leiloeiro, regex("Uilian", ignore_case=TRUE)) ~ "Uilian Aparecido da Silva",
+      str_detect(cpf_cnpj, "18.067.544/0001-36") ~ "Gold Leilões - Gold Intermediação de Ativos LTDA",
       str_detect(leiloeiro, regex("Villa Nova", ignore_case=TRUE)) ~ "Sérgio Villa Nova de Freitas",
       str_detect(leiloeiro, regex("Boya", ignore_case=TRUE)) ~ "Eduardo Jordão Boyadjian",
       str_detect(leiloeiro, regex("Franklin", ignore_case=TRUE)) ~ "Renata Franklin Simões",
@@ -125,6 +149,12 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("casa reis", ignore_case=TRUE)) ~ "Casa Reis Leilões",
       str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
       str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
+      str_detect(cpf_cnpj, "15.086.104/0001") ~ "Lance Alienações Eletrônicas LTDA",
+      # HastaPublicaBR e Euclides Maraschi Junior são a mesma coisa
+      str_detect(cpf_cnpj, "144.470.838-41") ~ "Euclides Maraschi Junior",
+      str_detect(cpf_cnpj, "16.792.811/0001-02") ~ "HastaPublicaBR Promotora de Eventos Ltda",
+      str_detect(cpf_cnpj, "19.962.222/0001-13") ~ "D1Lance Intermediação de Ativos LTDA",
+      str_detect(cpf_cnpj, "537.866.888-34") ~ "Ronaldo Milan", 
     ),
     
     cpf_cnpj = dplyr::case_when(
@@ -151,6 +181,12 @@ analise <- leiloes %>%
       leiloeiro == "Douglas José Fidalgo" ~ "16499659827",
       leiloeiro == "Mega Leilões" ~ "03122040000102",
       leiloeiro == "Casa Reis Leilões" ~ " 19116554000187",
+      leiloeiro == "Lance Alienações Eletrônicas LTDA" ~ "15086104000138",
+      leiloeiro == "Euclides Maraschi Junior" ~ "14447083841",
+      leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "16792811000102",
+      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "18067544000136",
+      leiloeiro == "D1Lance Intermediação de Ativos LTDA" ~ "19962222000113",
+      leiloeiro == "Ronaldo Milan" ~ "53786688834",
       TRUE ~ cpf_cnpj
     ),
     
@@ -178,42 +214,38 @@ analise <- leiloes %>%
       leiloeiro == "Douglas José Fidalgo" ~ "5535",
       leiloeiro == "Mega Leilões" ~ "5426",
       leiloeiro == "Casa Reis Leilões" ~ " 5448",
+      leiloeiro == "Lance Alienações Eletrônicas LTDA" ~ "5937",
+      leiloeiro == "Euclides Maraschi Junior" ~ "5665",
+      leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "1057",
+      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "620",
+      leiloeiro == "D1Lance Intermediação de Ativos LTDA" ~ "5366",
+      leiloeiro == "Ronaldo Milan" ~ "29112",
       TRUE ~ id_leiloeiro
     )
-  ) 
+  ) #%>% 
+  # o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
+  #unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
 # ----------
-# valor total dos processos (vtp)
+# valor total dos processos por leiloeiro (vtp)
 vtp <- analise %>% 
-  select(id_processo, valor_avaliacao_inicial) %>% 
-  group_by(id_processo) %>% 
+  group_by(id_processo, leiloeiro) %>% 
   unique() %>% 
-  summarise(valor_total_processo = sum(valor_avaliacao_inicial))
-
-# processos por leiloeiro
-pl <- analise %>% 
-  mutate(leiloeiro_infos = paste(leiloeiro, cpf_cnpj, id_leiloeiro, sep = "_")) %>% 
-  select(leiloeiro_infos, id_processo) %>%  
-  unique()
-
-# join de vtp e pl por id
-a <- full_join(vtp, pl, by = "id_processo")
-processos %>% 
-  slice(17:26) %>% 
-  rename()
-
-# quantidade de processos por leiloeiro
-processos <- a %>% 
-  unique() %>% 
-  group_by(leiloeiro_infos) %>% 
-  summarise(qtd_processos = n(), vtp = sum(valor_total_processo))
+  summarise(valor_total_processo = sum(valor_avaliacao_inicial, na.rm=T))
 
 # quantidade de processos por leiloeiro com o valor total que cada leiloeiro mexe
 processos <- analise %>% 
-  mutate(leiloeiro_infos = paste(leiloeiro, cpf_cnpj, id_leiloeiro, sep = "_")) %>% 
-  select(leiloeiro_infos, id_processo) %>%  
+  select(leiloeiro, id_processo) %>%  
   unique() %>% 
-  group_by(leiloeiro_infos) %>% 
+  group_by(leiloeiro) %>% 
   summarise(qtd_processos = n())
 
+a <- full_join(vtp, processos, by = "id_processo")
+# quantidade de processos por leiloeiro
+processos <- vtp %>% 
+  unique() %>% 
+  group_by(leiloeiro) %>% 
+  summarise(qtd_processos = n(), vtp = mean(valor_total_processo, na.rm=T))
 
+processos %>% 
+  slice(18:26)
