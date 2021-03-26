@@ -11,15 +11,15 @@ output:
     keep_md: true    
 ---
 
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
+
 # Introdução
 
-No presente texto pretendo apresentar brevemente o resultado de uma análise feita das ações de controle concentrado de constitucionalidade distribuídas ao [**Supremo Tribunal Federal**](www.stf.jus.br) até o fatídico ano de 2020. Como sabemos, a sua atuação (e omissão...) causa o grande impacto social, político e econômico em nossa sociedade.
+No presente texto pretendo apresentar brevemente o resultado de uma análise feita das ações de controle concentrado de constitucionalidade distribuídas ao [**Supremo Tribunal Federal**](https://portal.stf.jus.br/) até o fatídico ano de 2020. Como sabemos, a sua atuação (e omissão...) causa o grande impacto social, político e econômico em nossa sociedade.
 
-A análise ocorreu no contexto de elaboração de trabalho final do curso de "Web scraping" da [Curso-R](www.curso-r.com) e nela pude aplicar alguns conceitos apresentados pelo [Prof. José Jesus](https://github.com/jjesusfilho) em seu curso de [Jurimetria aplicada](https://jurimetria.consudata.com.br/): a ideia foi desenvolver ferramentas para raspar dados do Supremo Tribunal Federal (STF) e fazer algumas análises exploratórias preliminares e incipientes em cima destes dados.
+A análise ocorreu no contexto de elaboração de trabalho final do curso de "Web scraping" da [Curso-R](https://curso-r.com/) e nela pude aplicar alguns conceitos apresentados pelo [Prof. José Jesus](https://github.com/jjesusfilho) em seu curso de [Jurimetria aplicada](https://jurimetria.consudata.com.br/): a ideia foi desenvolver ferramentas para raspar dados do Supremo Tribunal Federal (STF) e fazer algumas análises exploratórias preliminares e incipientes em cima destes dados.
 
 Adaptada para esse importante blog, procurei dar enfoque nos resultados que permita algumas reflexões sobre os efeitos da pandemia no perfil de temas submetidos à Corte e como foi a atuação das partes legitimadas ao longo de 2020.
 
@@ -36,7 +36,7 @@ Essas classes processuais representam a atividade mais tradicional e típica de 
 
 Ainda, é possível verificar nessas ações como se dão **conflitos relevantes** não apenas entre sociedade civil e poder público mas também entre os Poderes Legislativo e Executivo entre si. Também, evidencia a uma das mais relevantes faces da atuação da Procuradoria-Geral da República.
 
-Durante a **pandemia**, também, essas ações têm sido especialmente importantes para definição de esferas de responsabilidade (vide ADPF 722), a discussão sobre o plano de vacinação (ADPF 754 e ADPF 756), a proteção a grupos indígenas e quilombolas, etc.
+Durante a **pandemia**, também, essas ações têm sido especialmente importantes para definição de esferas de responsabilidade (vide [ADPF 722](https://portal.stf.jus.br/processos/detalhe.asp?incidente=5967354)), a discussão sobre o plano de vacinação ([ADPF 754](https://portal.stf.jus.br/processos/detalhe.asp?incidente=6034102) e [ADPF 756](https://portal.stf.jus.br/processos/detalhe.asp?incidente=6035593)), a proteção a grupos indígenas e quilombolas, etc.
 
 A ideia foi mapear aspectos como quantidade de ações por tipo/ano, quais os principais litigantes dessas ações (considerando-se os poucos legitimados para tanto), quais os principais temas dessas ações, as palavras-chave mais utilizadas nas petições iniciais, etc.
 
@@ -288,4 +288,3 @@ Uma série de temas e questões ainda podem (e devem) ser exploradas, sobretudo 
 -   etc
 
 Mão à obra?
-
