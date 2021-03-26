@@ -5,6 +5,7 @@ author:
   - name: Renata Hirota
     url: https://twitter.com/renata_mh
 date: 03-22-2021
+preview: levantamentos.png
 output:
   distill::distill_article:
     self_contained: false
