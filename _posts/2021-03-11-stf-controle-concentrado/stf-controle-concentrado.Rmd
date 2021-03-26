@@ -79,8 +79,7 @@ O primeiro aspecto que podemos observar é a **quantidade** de ações de contro
 
 ```{r grafico_distribuicao_acoes, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_distribuicao_acoes %>% 
-  plotly::ggplotly()
+grafico_distribuicao_acoes 
 ```
 
 Aqui não estamos preocupados com o "saldo" de ações, ou seja, o gráfico acima *não é afetado pela produtividade do Tribunal* mas indica **como variou** a "procura" pela sua tutela constitucional ao longo do período.
@@ -91,8 +90,7 @@ Como já noticiado, é uma característica de seu governo o excesso de Decretos 
 
 ```{r grafico_perfil_ato_federal_questionado, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_perfil_atos_federais %>% 
-  plotly::ggplotly()
+grafico_perfil_atos_federais
 
 ```
 
@@ -108,8 +106,7 @@ Veremos abaixo a evolução de cada uma das classes ao longo dos últimos anos:
 
 ```{r grafico_acoes_classe, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_acoes_classe %>% 
-  plotly::ggplotly()
+grafico_acoes_classe 
 ```
 
 Percebe-se, naturalmente, uma prevalência da ADI, que se mantem constante, bem como uma baixa utilização da ADC e da ADO, que foram melhor regulamentadas ao longo do início dos anos 2000. Chama a atenção, contudo, como evoluiu - sobretudo nos últimos anos - a utilização da ADPF.
@@ -129,20 +126,18 @@ Sabemos que as ações de controle concentrado possuem um rol estreito de legiti
 
 Como se vê, basicamente são membros do **Executivo** (Presidente/Governadores), do **Legislativo** e o chefe do **Ministério Público**. Ao lado deles, os **partidos políticos**, a representação da **Advocacia** e alguns **poucos representantes da sociedade civil organizada** (como os sindicatos e as entidades de classe *nacionais*). Há, portanto, uma grande primazia de órgãos/autoridades públicas e grandes "conglomerados" da sociedade civil que detém essa legitimidade.
 
-Podemos observar, então, como ao longo dos últimos 5 anos tem sido o comportamento desses proponentes:
+Podemos observar, então, como ao longo dos últimos anos tem sido o comportamento desses proponentes:
 
 ```{r grafico_partes_categorizadas, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_partes_categorizadas %>% 
-  plotly::ggplotly()
+grafico_partes_categorizadas 
 ```
 
 Um outro ponto de vista interessante é observar não apenas o quanto cada classe de legitimado levou de ações ao STF em cada ano, mas também ver qual a esfera de competência do ato questionado. Isto é, se as ações eram relativas a atos federais ou subnacionais.
 
 ```{r grafico_esfera_ato_questionado, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_esfera_ato_questionado %>% 
-  plotly::ggplotly()
+grafico_esfera_ato_questionado 
 
 ```
 
@@ -154,8 +149,7 @@ Pensando no momento peculiar em que vivemos, um aspecto interessante a observar 
 
 ```{r grafico_distribuicao_2020_categoria, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_distribuicao_2020_categoria %>% 
-  plotly::ggplotly()
+grafico_distribuicao_2020_categoria
 ```
 
 Podemos ver que a atuação dos Estados e DF (via **Governadores**) se deu de forma mais intensa no início do ano, enquanto a **OAB** atuou de forma mais ativa nos primeiros meses da pandemia.
@@ -200,8 +194,7 @@ Veremos a seguir a proporção de ações relativas à pandemia em relação aos
 
 ```{r grafico_evolucao_acoes_covid, echo=FALSE, message=FALSE, warning=FALSE}
 
-grafico_evolucao_acoes_covid %>% 
-  plotly::ggplotly()
+grafico_evolucao_acoes_covid
 ```
 
 Vemos que, efetivamente, a partir de março esse foi um dos grandes temas que chegaram até a Corte, evidenciando sua importância inclusive no âmbito jurídico e político.
@@ -214,8 +207,7 @@ Vamos observar, brevemente, quais foram os legitimados que mais trouxeram o tema
 
 ```{r grafico_quem_covid, echo=FALSE, message=FALSE, warning=FALSE}
  
-grafico_quem_covid %>% 
-  plotly::ggplotly()
+grafico_quem_covid 
 ```
 
 Se relacionando de alguma maneira com a tendência de serem os protagonistas em número de ações, também quanto à COVID os partidos e as OSC foram recordistas de ações.
