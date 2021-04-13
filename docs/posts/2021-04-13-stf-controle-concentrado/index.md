@@ -3,12 +3,13 @@ title: "O STF, o controle concentrado e a pandemia"
 description: "Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020."
 author:
   - name: "Rodrigo Filippi Dornelles"
-    url: https://www.linkedin.com/in/rodrigo-dornelles-576705a2/
+    url: "https://www.linkedin.com/in/rodrigo-dornelles-576705a2/"
 date: 03-11-2021
 output:
   distill::distill_article:
     self_contained: false
     keep_md: true    
+preview: "stf-controle-concentrado_files/figure-html5/grafico_perfil_ato_federal_questionado-1.png"
 ---
 
 
