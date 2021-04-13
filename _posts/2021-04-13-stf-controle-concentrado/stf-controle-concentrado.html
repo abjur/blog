@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #20794d; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #20794d; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+  <!--radix_placeholder_meta_tags-->
+  <title>O STF, o controle concentrado e a pandemia</title>
+
+  <meta property="description" itemprop="description" content="Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2021-03-11"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-03-11"/>
+  <meta name="article:author" content="Rodrigo Filippi Dornelles"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="O STF, o controle concentrado e a pandemia"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="O STF, o controle concentrado e a pandemia"/>
+  <meta property="twitter:description" content="Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["O STF, o controle concentrado e a pandemia"]},{"type":"character","attributes":{},"value":["Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020."]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Rodrigo Filippi Dornelles"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/rodrigo-dornelles-576705a2/"]}]}]},{"type":"character","attributes":{},"value":["03-11-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","keep_md"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["stf-controle-concentrado_files/figure-html5/grafico_acoes_classe-1.png","stf-controle-concentrado_files/figure-html5/grafico_distribuicao_2020_categoria-1.png","stf-controle-concentrado_files/figure-html5/grafico_distribuicao_acoes-1.png","stf-controle-concentrado_files/figure-html5/grafico_esfera_ato_questionado-1.png","stf-controle-concentrado_files/figure-html5/grafico_evolucao_acoes_covid-1.png","stf-controle-concentrado_files/figure-html5/grafico_partes_categorizadas-1.png","stf-controle-concentrado_files/figure-html5/grafico_perfil_ato_federal_questionado-1.png","stf-controle-concentrado_files/figure-html5/grafico_quem_covid-1.png","stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-1.png","stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-2.png","stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-3.png","stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-4.png","stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-5.png","stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-6.png","stf-controle-concentrado_files/figure-html5/unnamed-chunk-2-1.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="stf-controle-concentrado_files/header-attrs-2.7/header-attrs.js"></script>
+  <script src="stf-controle-concentrado_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="stf-controle-concentrado_files/popper-2.6.0/popper.min.js"></script>
+  <link href="stf-controle-concentrado_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="stf-controle-concentrado_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="stf-controle-concentrado_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="stf-controle-concentrado_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="stf-controle-concentrado_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="stf-controle-concentrado_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="stf-controle-concentrado_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"O STF, o controle concentrado e a pandemia","description":"Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020.","authors":[{"author":"Rodrigo Filippi Dornelles","authorURL":"https://www.linkedin.com/in/rodrigo-dornelles-576705a2/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-03-11T00:00:00.000-03:00","citationText":"Dornelles, 2021"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>O STF, o controle concentrado e a pandemia</h1>
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p>Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020.</p>
+</div>
+
+<div class="d-byline">
+  Rodrigo Filippi Dornelles <a href="https://www.linkedin.com/in/rodrigo-dornelles-576705a2/" class="uri">https://www.linkedin.com/in/rodrigo-dornelles-576705a2/</a> 
+  
+<br/>03-11-2021
+</div>
+
+<div class="d-article">
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h1 id="introdução">Introdução</h1>
+<p>No presente texto pretendo apresentar brevemente o resultado de uma análise feita das ações de controle concentrado de constitucionalidade distribuídas ao <a href="https://portal.stf.jus.br/"><strong>Supremo Tribunal Federal</strong></a> até o fatídico ano de 2020. Como sabemos, a sua atuação (e omissão…) causa o grande impacto social, político e econômico em nossa sociedade.</p>
+<p>A análise ocorreu no contexto de elaboração de trabalho final do curso de “Web scraping” da <a href="https://curso-r.com/">Curso-R</a> e nela pude aplicar alguns conceitos apresentados pelo <a href="https://github.com/jjesusfilho">Prof. José Jesus</a> em seu curso de <a href="https://jurimetria.consudata.com.br/">Jurimetria aplicada</a>: a ideia foi desenvolver ferramentas para raspar dados do Supremo Tribunal Federal (STF) e fazer algumas análises exploratórias preliminares e incipientes em cima destes dados.</p>
+<p>Adaptada para esse importante blog, procurei dar enfoque nos resultados que permita algumas reflexões sobre os efeitos da pandemia no perfil de temas submetidos à Corte e como foi a atuação das partes legitimadas ao longo de 2020.</p>
+<h3 id="delimitação-do-tema">Delimitação do tema</h3>
+<p>Como mencionado, analisaremos exclusivamente as ações de <strong>controle concentrado de constitucionalidade</strong>. Isso é, as classes processuais relativas a:</p>
+<ul>
+<li><a href="https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_direta_de_inconstitucionalidade">Ação Direta de Inconstitucionalidade (ADI)</a>,</li>
+<li><a href="https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_declarat%C3%B3ria_de_constitucionalidade">Ação Declaratória de Constitucionalidade (ADC)</a>,</li>
+<li><a href="https://pt.wikipedia.org/wiki/A%C3%A7%C3%A3o_direta_de_inconstitucionalidade_por_omiss%C3%A3o">Ação Declaratória de Inconstitucionalidade por Omissão (ADO)</a> e</li>
+<li><a href="https://pt.wikipedia.org/wiki/Argui%C3%A7%C3%A3o_de_descumprimento_de_preceito_fundamental">Arguição de Descumprimento de Preceito Fundamental (ADPF)</a>.</li>
+</ul>
+<p>Essas classes processuais representam a atividade mais tradicional e típica de um Tribunal Constitucional em sua concepção clássica. Faz sentido, então, prestigiar e analisar a atuação do STF sob esse aspecto. (Não se ignore que o Supremo Tribunal Federal brasileiro tem competências que vão muito além disso, mas isso é papo para outro projeto…).</p>
+<p>Ainda, é possível verificar nessas ações como se dão <strong>conflitos relevantes</strong> não apenas entre sociedade civil e poder público mas também entre os Poderes Legislativo e Executivo entre si. Também, evidencia a uma das mais relevantes faces da atuação da Procuradoria-Geral da República.</p>
+<p>Durante a <strong>pandemia</strong>, também, essas ações têm sido especialmente importantes para definição de esferas de responsabilidade (vide <a href="https://portal.stf.jus.br/processos/detalhe.asp?incidente=5967354">ADPF 722</a>), a discussão sobre o plano de vacinação (<a href="https://portal.stf.jus.br/processos/detalhe.asp?incidente=6034102">ADPF 754</a> e <a href="https://portal.stf.jus.br/processos/detalhe.asp?incidente=6035593">ADPF 756</a>), a proteção a grupos indígenas e quilombolas, etc.</p>
+<p>A ideia foi mapear aspectos como quantidade de ações por tipo/ano, quais os principais litigantes dessas ações (considerando-se os poucos legitimados para tanto), quais os principais temas dessas ações, as palavras-chave mais utilizadas nas petições iniciais, etc.</p>
+<p>Com os dados ora obtidos espera-se poder realizar todas essas análises (e várias outras) e contribuir para que a comunidade também possa se debruçar e refletir sobre essas questões.</p>
+<h3 id="dados-utilizados-utilidade-e-pertinência-de-web-scraping">Dados utilizados: utilidade e pertinência de <em>web scraping</em></h3>
+<p>Justifica-se a utilidade tendo-se em vista a importância (<em>crescente?</em>) do STF no cotidiano, não só das pessoas em carreiras jurídicas mas também da academia e das cidadãs e cidadãos comuns.</p>
+<p>Por outro lado, não existe API disponibilizada pelo Tribunal que permita o acesso automatizado e, embora seja louvável a disponibilização de uma listagem de todo o acervo da Corte, a informações como partes, andamentos e as peças processuais não se encontram disponíveis. Daí ser necessário, no caso, realizar a raspagem nas páginas do Tribunal.</p>
+<p>Trata-se de serviço público (cujo acesso à justiça é, inclusive, previsto na Constituição Federal) que, a despeito de sua importância, ainda é um <em>ilustre desconhecido</em>…</p>
+<p>(E, sabemos, o juridiquês em nada ajuda: torço para que por meio da ciência de dados seja possível melhor compreender e melhor explicar o que faz o STF.)</p>
+<p>Para tanto, foi aplicada a técnica do web scraping tal qual (muito bem) ensinada pela Curso-R.</p>
+<h2 id="produtos-da-raspagem">Produtos da raspagem</h2>
+<p>Para os fins desse trabalho, foram selecionadas todas as ações <strong>autuadas</strong> a partir de 2000 (primeiro ano disponibilizado na listagem do STF) até 31/12/2020. Foram salvos dados sobre as ações em si (direto do STF), os respectivos números de incidente, as partes, os andamentos, e a petição inicial.</p>
+<p>Uma explicação mais detalhada das estratégias utilizadas bem como <a href="https://github.com/rfdornelles/ControledoControle">o acesso integral aos códigos e dados obtidos encontra-se disponível no repositório do projeto no GitHub</a>.</p>
+<h1 id="algumas-análises">Algumas Análises</h1>
+<p>Sem qualquer pretensão de esgotar o tema, apresentamos aqui algumas análises exploratórias apenas para ilustrar o potencial do tema e mostrar a beleza que é o mundo jurídico (especialmente quando a ele se olha pela lente dos dados).</p>
+<h2 id="distribuição-das-ações-ao-longo-dos-últimos-anos">Distribuição das ações ao longo dos últimos anos</h2>
+<p>O primeiro aspecto que podemos observar é a <strong>quantidade</strong> de ações de controle concentrado de constitucionalidade ao longo dos anos. Abaixo, sem fazer distinção de qual categoria, vamos ver como se deu essa distribuição:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_distribuicao_acoes-1.png" /><!-- --></p>
+</div>
+<p>Aqui não estamos preocupados com o “saldo” de ações, ou seja, o gráfico acima <em>não é afetado pela produtividade do Tribunal</em> mas indica <strong>como variou</strong> a “procura” pela sua tutela constitucional ao longo do período.</p>
+<p>E chama muito a atenção a <strong>tendência acentuada no aumento ao longo dos últimos anos</strong>, em especial a partir de 2019. Uma hipótese para esse aumento é o cenário de <em>crise institucional</em> presente no país desde a eleição do atual Presidente da República.</p>
+<p>Como já noticiado, é uma característica de seu governo o excesso de Decretos editados, muitas vezes indo além dos limites legais. <a href="https://noticias.uol.com.br/ultimas-noticias/agencia-estado/2019/05/18/30-medidas-do-governo-ja-sao-alvo-de-acoes-no-stf.htm">Já noticiou o UOL</a> que, antes de terminado o primeiro semestre de 2019, já havia mais de 30 medidas questionadas no STF. Alguns veículos, <a href="https://politica.estadao.com.br/noticias/geral,sem-articulacao-oposicao-investe-em-acoes-no-stf-contra-bolsonaro,70003019596">como o Estadão</a>, apontam uma espécie de estratégia da oposição de ir mais frequentemente ao Supremo contra atos da Presidência, sobretudo face um estado de tensão entre os Poderes.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_perfil_ato_federal_questionado-1.png" /><!-- --></p>
+</div>
+<p>Como podemos verificar, se olharmos apenas os atos questionados que são de competência federal, efetivamente há um crescimento na proporção de atos infra-legais (aí incluídos os Decretos, exclusivos do Presidente da República).</p>
+<p>Outra explicação, agravada pelo contexto acima descrito, é a <strong>pandemia de COVID-19</strong> que enfrentamos nesse momento. Veja-se que o ano de 2020 é recordista em ações constitucionais propostas.</p>
+<h2 id="evolução-nas-classes-processuais">Evolução nas classes processuais</h2>
+<p>Um outro aspecto interessante é observar <em>quais</em> os instrumentos vêm sendo mais utilizados dentre os 4 normalmente disponíveis no âmbito do controle de constitucionalidade.</p>
+<p>Veremos abaixo a evolução de cada uma das classes ao longo dos últimos anos:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_acoes_classe-1.png" /><!-- --></p>
+</div>
+<p>Percebe-se, naturalmente, uma prevalência da ADI, que se mantem constante, bem como uma baixa utilização da ADC e da ADO, que foram melhor regulamentadas ao longo do início dos anos 2000. Chama a atenção, contudo, como evoluiu - sobretudo nos últimos anos - a utilização da ADPF.</p>
+<p>Isso é curioso justamente por ser uma característica dessa ação a subsidiariedade. Ou seja, ela deveria ser residual em seu cabimento. Algumas hipóteses que podem explicar esse crescimento são uma maior criatividade dos proponentes, que vêm se ancorando em teses como a do “<em>estado de coisas inconstitucional</em>” a exemplo do utilizado nas ADPFs <a href="http://portal.stf.jus.br/processos/detalhe.asp?incidente=4783560">347</a>, <a href="http://portal.stf.jus.br/processos/detalhe.asp?incidente=5816502">635</a>, <a href="http://portal.stf.jus.br/processos/detalhe.asp?incidente=5952986">709</a> e <a href="http://portal.stf.jus.br/processos/detalhe.asp?incidente=6049993">760</a>.</p>
+<h2 id="atividade-dos-proponentes">Atividade dos proponentes</h2>
+<p>Sabemos que as ações de controle concentrado possuem um rol estreito de legitimados à sua propositura e que é previsto no <a href="http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm#art103">artigo 103 da Constituição Federal</a>. Basicamente, são esses:</p>
+<ul>
+<li>Presidente da República e Governadores,</li>
+<li>Poder Legislativo (Câmara dos Deputados, Senado, Assembleias Legislativas e Distrital),</li>
+<li>Procuradoria-Geral da República,</li>
+<li>Conselho Federal da OAB,</li>
+<li>Partidos políticos com representantes no Congresso Nacional,</li>
+<li>Confederações sindicais ou entidades de classe de âmbito nacional.</li>
+</ul>
+<p>Como se vê, basicamente são membros do <strong>Executivo</strong> (Presidente/Governadores), do <strong>Legislativo</strong> e o chefe do <strong>Ministério Público</strong>. Ao lado deles, os <strong>partidos políticos</strong>, a representação da <strong>Advocacia</strong> e alguns <strong>poucos representantes da sociedade civil organizada</strong> (como os sindicatos e as entidades de classe <em>nacionais</em>). Há, portanto, uma grande primazia de órgãos/autoridades públicas e grandes “conglomerados” da sociedade civil que detém essa legitimidade.</p>
+<p>Podemos observar, então, como ao longo dos últimos anos tem sido o comportamento desses proponentes:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_partes_categorizadas-1.png" /><!-- --></p>
+</div>
+<p>Um outro ponto de vista interessante é observar não apenas o quanto cada classe de legitimado levou de ações ao STF em cada ano, mas também ver qual a esfera de competência do ato questionado. Isto é, se as ações eram relativas a atos federais ou subnacionais.</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_esfera_ato_questionado-1.png" /><!-- --></p>
+</div>
+<p>Chama bastante atenção o fato de a Procuradoria-Geral da República aparentemente ter dedicado bastante ênfase nos atos de Estados e Municípios em detrimento dos atos federais.</p>
+<h4 id="em-2020-atuação-dos-proponentes-ao-longo-do-ano"><em>Em 2020: Atuação dos proponentes ao longo do ano</em></h4>
+<p>Pensando no momento peculiar em que vivemos, um aspecto interessante a observar é como se deu a atuação dos proponentes ao longo desse ano. Vejamos:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_distribuicao_2020_categoria-1.png" /><!-- --></p>
+</div>
+<p>Podemos ver que a atuação dos Estados e DF (via <strong>Governadores</strong>) se deu de forma mais intensa no início do ano, enquanto a <strong>OAB</strong> atuou de forma mais ativa nos primeiros meses da pandemia.</p>
+<p>As organizações da <strong>sociedade civil</strong> e os <strong>partidos</strong> tiveram atuação intensa durante todo o ano, com picos nas fases iniciais da pandemia.</p>
+<p>A <strong>Presidência</strong> da República, quando agiu, foi apenas no meio do ano. A <strong>PGR</strong>, por sua vez, teve atuação mais destacada no inicio da pandemia e mais recentemente, a partir de novembro.</p>
+<h4 id="atuação-da-osc-e-partidos">Atuação da OSC e Partidos</h4>
+<p>Embora quase residual em termos de competência para atuação, as organizações da sociedade civil (OSC), compreendendo sindicatos, confederações, etc têm tido <strong>atuação expressiva</strong> e de grande importância nos últimos anos. Da mesma forma, os partidos políticos têm se mostrado bastante combativos no âmbito do STF.</p>
+<p>Uma nota importante é que, ao contrário dessas associações, os Partidos políticos possuem a chamada “<em>legitimidade universal</em>” e, por isso, em tese podem apresentar ações em qualquer tema enquanto as OSCs apenas nos temas que dizem respeito direto aos seus associados.</p>
+<p>Veremos algumas dessas entidades que têm litigado perante o Supremo Tribunal Federal.</p>
+<h5 id="quais-partidos-políticos"><em>Quais partidos políticos</em></h5>
+<p>Abaixo lista de quais partidos mais apresentaram ações. Um grande destaque para os Partidos tradicionalmente tidos como de esquerda.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nome</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">PARTIDO SOCIALISTA BRASILEIRO PSB</td>
+<td style="text-align: right;">88</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PARTIDO DEMOCRATICO TRABALHISTA PDT</td>
+<td style="text-align: right;">87</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PARTIDO SOCIALISMO E LIBERDADE PSOL</td>
+<td style="text-align: right;">86</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PARTIDO SOCIAL LIBERAL PSL</td>
+<td style="text-align: right;">80</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">PARTIDO DA SOCIAL DEMOCRACIA BRASILEIRA PSDB</td>
+<td style="text-align: right;">73</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PARTIDO DOS TRABALHADORES</td>
+<td style="text-align: right;">67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">REDE SUSTENTABILIDADE</td>
+<td style="text-align: right;">66</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PARTIDO DEMOCRATICO TRABALHISTA</td>
+<td style="text-align: right;">52</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SOLIDARIEDADE</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">PARTIDO TRABALHISTA BRASILEIRO PTB</td>
+<td style="text-align: right;">40</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h5 id="quais-associações-sindicatos-etc"><em>Quais associações, sindicatos, etc</em></h5>
+<p>Aqui as associações que mais apresentaram ações de controle concentrado no STF. Destaque para associações ligadas às carreiras jurídicas.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">nome</th>
+<th style="text-align: right;">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ASSOCIACAO DOS MAGISTRADOS BRASILEIROS AMB</td>
+<td style="text-align: right;">102</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CONFEDERACAO NACIONAL DA INDUSTRIA</td>
+<td style="text-align: right;">72</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSOCIACAO NACIONAL DOS MEMBROS DO MINISTERIO PUBLICO CONAMP</td>
+<td style="text-align: right;">63</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CONFEDERACAO NACIONAL DO COMERCIO DE BENS SERVICOS E TURISMO CNC</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSOCIACAO NACIONAL DAS OPERADORAS CELULARES ACEL</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CONFEDERACAO BRASILEIRA DE TRABALHADORES POLICIAIS CIVIS COBRAPOL</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">CONFEDERACAO NACIONAL DO COMERCIO CNC</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">CONFEDERACAO DOS SERVIDORES PUBLICOS DO BRASIL CSPB</td>
+<td style="text-align: right;">41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ASSOCIACAO DOS NOTARIOS E REGISTRADORES DO BRASIL ANOREGBR</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ASSOCIACAO NACIONAL DOS MAGISTRADOS ESTADUAIS ANAMAGES</td>
+<td style="text-align: right;">37</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="o-supremo-e-a-pandemia">O Supremo e a Pandemia</h2>
+<p>Sabemos que uma das razões que mostram um pico de casos em 2020 são as implicações em todos os níveis que a pandemia de COVID-19 nos trouxe.</p>
+<p>Dúvidas sobre os limites federativos, questionamento de atos legislativos ou executivos, omissão do Governo Federal, etc foram algumas das muitas questões levadas à Corte.</p>
+<p>Veremos a seguir a proporção de ações relativas à pandemia em relação aos demais temas ao longo dos meses de janeiro até o fim de novembro de 2020:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_evolucao_acoes_covid-1.png" /><!-- --></p>
+</div>
+<p>Vemos que, efetivamente, a partir de março esse foi um dos grandes temas que chegaram até a Corte, evidenciando sua importância inclusive no âmbito jurídico e político.</p>
+<p>Nos meses de maio e julho, inclusive, essas ações relacionadas à pandemia foram mais frequentes do que os outros temas reunidos.</p>
+<h3 id="os-legitimados-e-a-covid">Os legitimados e a COVID</h3>
+<p>Vamos observar, brevemente, quais foram os legitimados que mais trouxeram o tema para a Corte:</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/grafico_quem_covid-1.png" /><!-- --></p>
+</div>
+<p>Se relacionando de alguma maneira com a tendência de serem os protagonistas em número de ações, também quanto à COVID os partidos e as OSC foram recordistas de ações.</p>
+<h3 id="vocabulário-das-ações">Vocabulário das ações</h3>
+<p>Por fim, encerrando o projeto, foi feita uma incipiente e exploratória análise das palavras mais comuns nas ações relacionadas a COVID e as que se dão em outros temas.</p>
+<p>Trata-se, muito mais, de um mínimo produto viável para verificar os termos mais frequentes com cada tema e, naturalmente, não é possível concluir quase nada. Divide-se esse intento com a comunidade na esperança de feedbacks e sugestões de como aprimorar essa análise no futuro.</p>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/unnamed-chunk-2-1.png" /><!-- --></p>
+</div>
+<p>Vemos que nas ações relativas ao COVID-19 aparece, - além de “saúde” - termos como <strong>indígenas</strong>, <strong>quilombolas</strong>, <strong>povos</strong>, <strong>dados</strong>, <strong>proteção</strong>, <strong>efeitos</strong>, etc, que podem sugerir que a tutela requerida ao Supremo é no sentido de buscar proteção para as consequências do contexto, tendo em mente também grupos vulnerabilizados.</p>
+<p>De outro lado, nos casos relativos a outros temas, vemos expressões como <strong>trabalho</strong>, <strong>Amazônia</strong>, <strong>decreto</strong>, <strong>ambiente</strong>, e <strong>recursos</strong>. Provavelmente temas da agenda ambiental, sobre aspectos trabalhistas e financeiros foram levados ao Tribunal ao longo desse ano.</p>
+<p>É também possível observar como variam as palavras mais usadas conforme a categoria do proponente. Foram separadas as palavras mais usadas por cada uma delas e plotadas as nuvens abaixo.</p>
+<p>Podemos formular algumas hipóteses sobre a atuação de cada um desses grupos?</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-1.png" /><!-- --><img src="stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-2.png" /><!-- --><img src="stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-3.png" /><!-- --><img src="stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-4.png" /><!-- --><img src="stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-5.png" /><!-- --><img src="stf-controle-concentrado_files/figure-html5/nuvem-por-requerente-6.png" /><!-- --></p>
+</div>
+<p>Provavelmente nada muito contundente por enquanto, mas pode ser interessante aplicar a esses dados técnicas mais aguçadas de mineração de texto.</p>
+<p>A título especulativo, destacaria que parece interessante o fato de <strong>partidos políticos</strong> terem destacados termos como <em>saúde</em>, <em>segurança</em>, <em>infraestrutura</em> e <em>eleitoral</em>. Lembrando do falado acima, a legitimidade universal sugere que esse grupo leva à Corte temas diversos.</p>
+<p>De outro lado, as <strong>organizações da sociedade civil</strong> - nas quais, como vimos, se destacam as entidades de classe de servidores públicos - têm entre os destaques os termos <em>competência</em>, <em>servidores</em>, <em>regime</em>, <em>cargo</em>, <em>concessão</em>, e outros sugestivos de matéria precipuamente de direito administrativo. Estariam essas entidades levando ao STF primordialmente temas relativos a direitos e deveres de suas categorias?</p>
+<p>A <strong>Ordem dos Advogados do Brasil</strong> em destaque para termos como <em>advogados</em>, <em>princípio</em>, <em>pagamento</em>, <em>recursos</em>, <em>custas</em>, <em>valores</em> e <em>competênci</em>a, possivelmente relacionados a questões tributárias, de processo e exercício da atividade da advocacia.</p>
+<p>A <strong>PGR</strong> traz com frequência termos como <em>código, normas</em>, <em>competência, administração</em>, <em>cargos</em> e outras expressões também bastante relacionadas ao direito público (embora o termo <em>civil</em> também seja bastante destacado).</p>
+<p>As palavras referentes à <strong>Presidência da República</strong> são bem pouco conclusivas, pois traz expressões como <em>ADPF, princípio</em>, <em>relator</em>, <em>preceitos</em>, <em>expressão</em> que são muito inerentes à retórica jurídica: ou seja, são expressões esperadas em qualquer tipo de ação constitucional, sendo difícil dizer a que argumentos de mérito podem estar relacionados. Contudo, há destaque grande para as expressões <em>exercício</em> e <em>liberdade</em>. O que poderá significar?</p>
+<p>Por fim, as expressões destacadas para <strong>Governadores</strong> indicam grande vínculo a matérias administrativas: <em>assembleia</em> e <em>legislativa</em> pode sugerir que a maior parte das ações digam respeito a normas Estaduais (aprovadas pela “Assembleia Legislativa”). Curiosamente, se nota dois nomes próprios: Jose e Silva, que provavelmente dizem respeito ao jurista <a href="https://pt.wikipedia.org/wiki/Jos%C3%A9_Afonso_da_Silva">José Afonso da Silva</a> - uma referência no âmbito do direito constitucional brasileiro.</p>
+<h2 id="próximos-passos">Próximos passos</h2>
+<p>Mais do que tirar grandes conclusões - o que seria leviano face a complexidade do tema - procuramos levantar discussões que possam ser úteis ao direito e à jurimetria.</p>
+<p>Contudo, há muito trabalho a ser feito para desvendar um pouco mais o comportamento de nossas instituições e sua interação com a esfera jurídica.</p>
+<p>O que se pode inferir, a princípio, é que há uma diferença muito grande na atuação entre os grupos legitimados e que houve, de fato, uma grande provocação do Supremo ao longo de 2020 para atuar com questões relativas à pandemia. O quadro político atual demonstra, então, a relevância de termos olhos atentos para essa Corte.</p>
+<p>Uma série de temas e questões ainda podem (e devem) ser exploradas, sobretudo se aplicadas técnicas de processamento de linguagem natural (NPL). Como exemplo:</p>
+<ul>
+<li>Análise aprofundada dos termos mais característicos de cada proponente</li>
+<li>Identificação das teses mais utilizadas</li>
+<li>Análise da atuação de outros sujeitos processuais como os <em>amicus curiae</em></li>
+<li>Comparação do tempo de tramitação entre as ações, a fim de verificar o que o Tribunal tem dado maior atenção</li>
+<li>Impacto das sessões virtuais assíncronas (o “Plenário Virtual”) na tramitação das ações de controle concentrado</li>
+<li>etc</li>
+</ul>
+<p>Mão à obra?</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
