@@ -4,7 +4,7 @@ description: "Pequena análise das ações de controle concentrado de constituci
 author:
   - name: "Rodrigo Filippi Dornelles"
     url: "https://www.linkedin.com/in/rodrigo-dornelles-576705a2/"
-date: 03-11-2021
+date: 04-13-2021
 output:
   distill::distill_article:
     self_contained: false
