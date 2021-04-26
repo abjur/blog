@@ -12,7 +12,23 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 13 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Litigiosidade e desenvolvimento</title>
+      <dc:creator>João Torquato</dc:creator>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <dc:creator>Katerine Witkoski</dc:creator>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-01-15-litigiosidade</link>
+      <description>Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento, utilizando uma base de processos que extraídos nos Diários de Justiça e informações de IDH municipal.</description>
+      <category>Analises</category>
+      <category>Justiça</category>
+      <category>Desenvolvimento</category>
+      <category>Litigiosidade</category>
+      <guid>https://lab.abj.org.br/posts/2021-01-15-litigiosidade</guid>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>O STF, o controle concentrado e a pandemia</title>
       <dc:creator>Rodrigo Filippi Dornelles</dc:creator>
