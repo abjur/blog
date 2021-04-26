@@ -425,18 +425,18 @@ Nos meses de maio e julho, inclusive, essas ações relacionadas à pandemia for
 Vamos observar, brevemente, quais foram os legitimados que mais trouxeram o tema para a Corte:
 
 ```{r grafico_quem_covid, echo=FALSE, message=FALSE, warning=FALSE}
-base_temas %>%
-  filter(ano == 2020) %>%
-  ggplot(aes(x = corona, fill = categoria)) +
-  geom_bar() +
-  theme_classic() +
-  scale_x_discrete(labels = c("Outros temas", "COVID")) +
-  scale_fill_brewer(palette = "Dark2") +
-  labs(x = NULL, y = "Ações propostas",
-       title = "Quem propôs as ações relacionadas ao COVID",
-       subtitle = "Agrupado pelas categorias de proponentes",
-       caption = "Até 31/12/2020")
-
+# base_temas %>%
+#   filter(ano == 2020) %>%
+#   ggplot(aes(x = corona, fill = categoria)) +
+#   geom_bar() +
+#   theme_classic() +
+#   scale_x_discrete(labels = c("Outros temas", "COVID")) +
+#   scale_fill_brewer(palette = "Dark2") +
+#   labs(x = NULL, y = "Ações propostas",
+#        title = "Quem propôs as ações relacionadas ao COVID",
+#        subtitle = "Agrupado pelas categorias de proponentes",
+#        caption = "Até 31/12/2020")
+knitr::include_graphics("grafico_quem_covid-1.png")
 ```
 
 Se relacionando de alguma maneira com a tendência de serem os protagonistas em número de ações, também quanto à COVID os partidos e as OSC foram recordistas de ações.

@@ -236,7 +236,7 @@ Nos meses de maio e julho, inclusive, essas ações relacionadas à pandemia for
 Vamos observar, brevemente, quais foram os legitimados que mais trouxeram o tema para a Corte:
 
 <div class="layout-chunk" data-layout="l-body">
-![](stf-controle-concentrado_files/figure-html5/grafico_quem_covid-1.png)<!-- -->
+<img src="grafico_quem_covid-1.png" width="624" />
 
 </div>
 
