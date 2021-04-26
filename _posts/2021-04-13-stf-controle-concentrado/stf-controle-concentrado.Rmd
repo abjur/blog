@@ -8,9 +8,9 @@ date: 04-13-2021
 output:
   distill::distill_article:
     self_contained: false
-    keep_md: true    
-preview: "stf-controle-concentrado_files/figure-html5/grafico_perfil_ato_federal_questionado-1.png"
+preview: "grafico_perfil_ato_federal_questionado-1.png"
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
