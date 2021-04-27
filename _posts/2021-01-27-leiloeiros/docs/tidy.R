@@ -1,36 +1,9 @@
----
-title: "Um perfil dos leiloeiros dos processos de falência em São Paulo"
-description: |
-Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo
-author:
-  - name: Ricardo Feliz
-    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
-date: "`r Sys.Date()`"
-categories:
-  - Falência
-  - Leilão
-  - Leiloeiro
-  - Jurimetria
-output:
-  distill::distill_article:
-    self_contained: false
----
+# tidy
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 
-```
-
-```{r importacao}
-# remotes::install_github("abjur/obsFase3")
-
-# Import da base de todos os leilões
 leiloes <- obsFase3::da_leilao_tidy
 
-```
-
-```{r arrumacao}
 analise <- leiloes %>% 
   dplyr::filter(modalidade == "leilao") %>% 
   dplyr::mutate(
@@ -49,7 +22,9 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("Zukerman", ignore_case=TRUE)) ~ "Fabio Zukerman",
       str_detect(leiloeiro, regex("Samuel", ignore_case=TRUE)) ~ "Gustavo Cristiano Samuel dos Reis",
       str_detect(leiloeiro, regex("Moy", ignore_case=TRUE)) ~ "Renato Schlobach Moysés",
+      # Gold Leilões e Uilan Aparecido são a mesma coisa
       str_detect(leiloeiro, regex("Uilian", ignore_case=TRUE)) ~ "Uilian Aparecido da Silva",
+      str_detect(cpf_cnpj, "18.067.544/0001-36") ~ "Gold Leilões - Gold Intermediação de Ativos LTDA",
       str_detect(leiloeiro, regex("Villa Nova", ignore_case=TRUE)) ~ "Sérgio Villa Nova de Freitas",
       str_detect(leiloeiro, regex("Boya", ignore_case=TRUE)) ~ "Eduardo Jordão Boyadjian",
       str_detect(leiloeiro, regex("Franklin", ignore_case=TRUE)) ~ "Renata Franklin Simões",
@@ -60,6 +35,12 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("casa reis", ignore_case=TRUE)) ~ "Casa Reis Leilões",
       str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
       str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
+      str_detect(cpf_cnpj, "15.086.104/0001") ~ "Lance Alienações Eletrônicas LTDA",
+      # HastaPublicaBR e Euclides Maraschi Junior são a mesma coisa
+      str_detect(cpf_cnpj, "144.470.838-41") ~ "Euclides Maraschi Junior",
+      str_detect(cpf_cnpj, "16.792.811/0001-02") ~ "HastaPublicaBR Promotora de Eventos Ltda",
+      str_detect(cpf_cnpj, "19.962.222/0001-13") ~ "D1Lance Intermediação de Ativos LTDA",
+      str_detect(cpf_cnpj, "537.866.888-34") ~ "Ronaldo Milan", 
     ),
     
     cpf_cnpj = dplyr::case_when(
@@ -86,6 +67,12 @@ analise <- leiloes %>%
       leiloeiro == "Douglas José Fidalgo" ~ "16499659827",
       leiloeiro == "Mega Leilões" ~ "03122040000102",
       leiloeiro == "Casa Reis Leilões" ~ " 19116554000187",
+      leiloeiro == "Lance Alienações Eletrônicas LTDA" ~ "15086104000138",
+      leiloeiro == "Euclides Maraschi Junior" ~ "14447083841",
+      leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "16792811000102",
+      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "18067544000136",
+      leiloeiro == "D1Lance Intermediação de Ativos LTDA" ~ "19962222000113",
+      leiloeiro == "Ronaldo Milan" ~ "53786688834",
       TRUE ~ cpf_cnpj
     ),
     
@@ -113,11 +100,20 @@ analise <- leiloes %>%
       leiloeiro == "Douglas José Fidalgo" ~ "5535",
       leiloeiro == "Mega Leilões" ~ "5426",
       leiloeiro == "Casa Reis Leilões" ~ " 5448",
+      leiloeiro == "Lance Alienações Eletrônicas LTDA" ~ "5937",
+      leiloeiro == "Euclides Maraschi Junior" ~ "5665",
+      leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "1057",
+      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "620",
+      leiloeiro == "D1Lance Intermediação de Ativos LTDA" ~ "5366",
+      leiloeiro == "Ronaldo Milan" ~ "29112",
       TRUE ~ id_leiloeiro
     )
-  ) 
+  ) %>% 
+  mutate(descricao = stringr::str_remove_all(descricao, stringr::regex("lote *(nº *)?[0-9.]+ *[:;-–]? *(?=[a-z0-9- ]{1,5})", TRUE))) #%>% 
+# o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
+# unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
-# base de dados com a relação de bens por leiloeiro
-```
+# É isso?
+# readr::write_rds(analise, "C://Users/ABJ/Documents/ABJ/github/djprocPublic/data/leiloes.rds")
 
-
+# ou eu posso transformar numa função né ? 
