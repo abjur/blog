@@ -24,7 +24,7 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("Moy", ignore_case=TRUE)) ~ "Renato Schlobach Moysés",
       # Gold Leilões e Uilan Aparecido são a mesma coisa
       str_detect(leiloeiro, regex("Uilian", ignore_case=TRUE)) ~ "Uilian Aparecido da Silva",
-      str_detect(cpf_cnpj, "18.067.544/0001-36") ~ "Gold Leilões - Gold Intermediação de Ativos LTDA",
+      str_detect(cpf_cnpj, "18.067.544/0001-36") ~ "Gold Leilões - Gold Intermediação de Ativos Ltda",
       str_detect(leiloeiro, regex("Villa Nova", ignore_case=TRUE)) ~ "Sérgio Villa Nova de Freitas",
       str_detect(leiloeiro, regex("Boya", ignore_case=TRUE)) ~ "Eduardo Jordão Boyadjian",
       str_detect(leiloeiro, regex("Franklin", ignore_case=TRUE)) ~ "Renata Franklin Simões",
@@ -35,11 +35,11 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("casa reis", ignore_case=TRUE)) ~ "Casa Reis Leilões",
       str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
       str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
-      str_detect(cpf_cnpj, "15.086.104/0001") ~ "Lance Alienações Eletrônicas LTDA",
+      str_detect(cpf_cnpj, "15.086.104/0001") ~ "Lance Alienações Eletrônicas Ltda",
       # HastaPublicaBR e Euclides Maraschi Junior são a mesma coisa
       str_detect(cpf_cnpj, "144.470.838-41") ~ "Euclides Maraschi Junior",
       str_detect(cpf_cnpj, "16.792.811/0001-02") ~ "HastaPublicaBR Promotora de Eventos Ltda",
-      str_detect(cpf_cnpj, "19.962.222/0001-13") ~ "D1Lance Intermediação de Ativos LTDA",
+      str_detect(cpf_cnpj, "19.962.222/0001-13") ~ "D1Lance Intermediação de Ativos Ltda",
       str_detect(cpf_cnpj, "537.866.888-34") ~ "Ronaldo Milan", 
     ),
     
