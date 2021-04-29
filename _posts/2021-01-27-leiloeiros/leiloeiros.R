@@ -66,6 +66,9 @@ processos %>%
 # A única constatação aqui é sobre o taxa de desvalorização do bem para cada leiloeiro, mas isso não é causal
 
 # Peguei um processo pra cada leiloeiro pra analisar. Ver amanhã ----------------
+
+
+# Peguei um processo pra cada leiloeiro pra analisar ----------------
 a <- analise %>% 
   dplyr::select(id_processo, leiloeiro) %>% 
   unique() %>% 
