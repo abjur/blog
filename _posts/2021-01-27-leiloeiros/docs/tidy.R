@@ -125,7 +125,8 @@ analise <- leiloes %>%
   mutate(leiloeiro_usar = case_when(
     !is.na(leiloeiro_pf) ~ leiloeiro_pf,
     is.na(leiloeiro_pf) ~ leiloeiro_pj
-  ))
+  )) %>% 
+  filter(!is.na(leiloeiro))
   # o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
 # unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
