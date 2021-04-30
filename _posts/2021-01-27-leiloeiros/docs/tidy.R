@@ -9,7 +9,9 @@ analise <- leiloes %>%
   dplyr::mutate(
     leiloeiro = dplyr::case_when(
       str_detect(leiloeiro, regex("ron.*faro|ron.*mon", ignore_case=TRUE)) ~ "Ronaldo Sérgio Montenegro Rodrigues Faro",
+      # Mega Leilões e Fernando José Cerello são a mesma coisa
       str_detect(leiloeiro, regex("Cerello", ignore_case=TRUE)) ~ "Fernando José Cerello Gonçalves Pereira",
+      str_detect(leiloeiro, regex("Mega", ignore_case=TRUE)) ~ "Mega Leilões",
       str_detect(leiloeiro, regex("Alexandridis", ignore_case=TRUE)) ~ "Georgios José Ilias Bernabé Alexandridis",
       str_detect(leiloeiro, regex("Moretto", ignore_case=TRUE)) ~ "Gustavo Moretto Guimarães de Oliveira",
       str_detect(leiloeiro, regex("Thais Silva", ignore_case=TRUE)) ~ "Thais Silva Moreira de Sousa",
@@ -31,7 +33,6 @@ analise <- leiloes %>%
       str_detect(leiloeiro, regex("Cardoso", ignore_case=TRUE)) ~ "Danilo Cardoso da Silva",
       str_detect(leiloeiro, regex("Fidalgo", ignore_case=TRUE)) ~ "Douglas José Fidalgo",
       str_detect(leiloeiro, regex("Affonso", ignore_case=TRUE)) ~ "Alfio Carlos Affonso Zalli Neto",
-      str_detect(leiloeiro, regex("Mega", ignore_case=TRUE)) ~ "Mega Leilões",
       str_detect(leiloeiro, regex("casa reis", ignore_case=TRUE)) ~ "Casa Reis Leilões",
       str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
       str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
@@ -67,11 +68,11 @@ analise <- leiloes %>%
       leiloeiro == "Douglas José Fidalgo" ~ "16499659827",
       leiloeiro == "Mega Leilões" ~ "03122040000102",
       leiloeiro == "Casa Reis Leilões" ~ " 19116554000187",
-      leiloeiro == "Lance Alienações Eletrônicas LTDA" ~ "15086104000138",
+      leiloeiro == "Lance Alienações Eletrônicas Ltda" ~ "15086104000138",
       leiloeiro == "Euclides Maraschi Junior" ~ "14447083841",
       leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "16792811000102",
-      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "18067544000136",
-      leiloeiro == "D1Lance Intermediação de Ativos LTDA" ~ "19962222000113",
+      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos Ltda" ~ "18067544000136",
+      leiloeiro == "D1Lance Intermediação de Ativos Ltda" ~ "19962222000113",
       leiloeiro == "Ronaldo Milan" ~ "53786688834",
       TRUE ~ cpf_cnpj
     ),
@@ -100,20 +101,52 @@ analise <- leiloes %>%
       leiloeiro == "Douglas José Fidalgo" ~ "5535",
       leiloeiro == "Mega Leilões" ~ "5426",
       leiloeiro == "Casa Reis Leilões" ~ " 5448",
-      leiloeiro == "Lance Alienações Eletrônicas LTDA" ~ "5937",
+      leiloeiro == "Lance Alienações Eletrônicas Ltda" ~ "5937",
       leiloeiro == "Euclides Maraschi Junior" ~ "5665",
       leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "1057",
-      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos LTDA" ~ "620",
-      leiloeiro == "D1Lance Intermediação de Ativos LTDA" ~ "5366",
+      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos Ltda" ~ "620",
+      leiloeiro == "D1Lance Intermediação de Ativos Ltda" ~ "5366",
       leiloeiro == "Ronaldo Milan" ~ "29112",
       TRUE ~ id_leiloeiro
     )
   ) %>% 
-  mutate(descricao = stringr::str_remove_all(descricao, stringr::regex("lote *(nº *)?[0-9.]+ *[:;-–]? *(?=[a-z0-9- ]{1,5})", TRUE))) #%>% 
-# o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
+  # Tratamento dos lotes
+  mutate(descricao = stringr::str_remove_all(descricao, stringr::regex("lote *(nº *)?[0-9.]+ *[:;-–]? *(?=[a-z0-9- ]{1,5})", TRUE))) %>% 
+  # Equivalência de leiloeiros
+  mutate(leiloeiro_pj = case_when(str_length(cpf_cnpj) >= 14 ~ leiloeiro)) %>%
+  mutate(leiloeiro_pf = case_when(
+    str_length(cpf_cnpj) < 14 ~ leiloeiro,
+    leiloeiro == "Mega Leilões" ~ "Fernando José Cerello Gonçalves Pereira",
+    leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "Euclides Maraschi Junior",
+    leiloeiro == "Gold Leilões - Gold Intermediação de Ativos Ltda" ~ "Uilian Aparecido da Silva",
+    leiloeiro == "Casa Reis Leilões" ~ "Eduardo dos Reis",
+    leiloeiro == "D1Lance Intermediação de Ativos Ltda" ~ "Dannae Vieira Avila"
+  )) %>% 
+  mutate(leiloeiro_usar = case_when(
+    !is.na(leiloeiro_pf) ~ leiloeiro_pf,
+    is.na(leiloeiro_pf) ~ leiloeiro_pj
+  ))
+  # o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
 # unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
 # É isso?
 # readr::write_rds(analise, "C://Users/ABJ/Documents/ABJ/github/djprocPublic/data/leiloes.rds")
 
 # ou eu posso transformar numa função né ? 
+
+
+
+# Peguei um processo pra cada leiloeiro pra analisar ----------------
+a <- analise %>% 
+  dplyr::select(id_processo, leiloeiro) %>% 
+  unique() %>% 
+  filter(!is.na(leiloeiro)) %>% 
+  group_by(leiloeiro) %>% 
+  slice(1)
+
+# Todos os processos de leiloeiro PJ
+a <- analise %>% 
+  dplyr::select(id_processo, leiloeiro, cpf_cnpj) %>% 
+  unique() %>%  
+  filter(!is.na(leiloeiro)) %>% 
+  filter(str_length(cpf_cnpj) >= 14)

@@ -4,6 +4,8 @@ leiloes <- obsFase3::da_leilao_tidy
 
 # PROCESSOS) quantidade de processos por leiloeiro +  valor total daqeule leiloeiro
 processos <- analise %>% 
+  select(!leiloeiro) %>% 
+  rename(leiloeiro = leiloeiro_usar) %>% 
   # as duas próximas linhas são pra pegar o valor total DE CADA PROCESSO
   dplyr::group_by(id_processo, leiloeiro) %>% 
   dplyr::summarise(valor_total_processo = sum(valor_avaliacao_inicial, na.rm=T)) %>% 
@@ -53,6 +55,7 @@ processos %>%
 processos %>% 
   arrange(vtp) %>% 
   mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>% 
+  filter(vtp > 100) %>% 
   ggplot() +
   geom_col(mapping = aes(x = vtp, y = leiloeiro)) +
   scale_x_log10(labels = scales::label_number_si(), breaks = 10^c(1:8))
@@ -67,12 +70,4 @@ processos %>%
 
 # Peguei um processo pra cada leiloeiro pra analisar. Ver amanhã ----------------
 
-
-# Peguei um processo pra cada leiloeiro pra analisar ----------------
-a <- analise %>% 
-  dplyr::select(id_processo, leiloeiro) %>% 
-  unique() %>% 
-  filter(!is.na(leiloeiro)) %>% 
-  group_by(leiloeiro) %>% 
-  slice(1)
 
