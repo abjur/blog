@@ -12,7 +12,20 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 17 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>s�b, 01 mai 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Um perfil dos leiloeiros dos processos de falência em São Paulo</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-01-27-leiloeiros</link>
+      <description>Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo</description>
+      <category>Falência</category>
+      <category>Leilão</category>
+      <category>Leiloeiro</category>
+      <category>Jurimetria</category>
+      <guid>https://lab.abj.org.br/posts/2021-01-27-leiloeiros</guid>
+      <pubDate>s�b, 01 mai 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-01-27-leiloeiros/leiloeiros_files/figure-html5/p1-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
     <item>
       <title>Facilitando análises sobre a Constituição</title>
       <dc:creator>Caio Lente</dc:creator>
@@ -22,7 +35,7 @@
       <category>Analises</category>
       <category>Dados</category>
       <guid>https://lab.abj.org.br/posts/2020-12-17-constituicao</guid>
-      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>qui, 17 dez 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-17-constituicao/exploracon.png" medium="image" type="image/png" width="722" height="464"/>
     </item>
     <item>
@@ -36,7 +49,7 @@
       <category>Analises</category>
       <category>CNJ</category>
       <guid>https://lab.abj.org.br/posts/2020-12-07-cifra-oculta</guid>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>seg, 14 dez 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/img/exemplo.png" medium="image" type="image/png" width="862" height="504"/>
     </item>
     <item>
@@ -48,7 +61,7 @@
       <category>Levantamentos</category>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2020-12-09-covid</guid>
-      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>qua, 09 dez 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-09-covid/covid_files/figure-html5/fig-semana-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -59,7 +72,7 @@
       <description>Levantamento da ABJ publicado pelo G1</description>
       <category>Levantamentos</category>
       <guid>https://lab.abj.org.br/posts/2020-11-10-candidatos2020</guid>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>ter, 10 nov 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-11-10-candidatos2020/candidatos2020.png" medium="image" type="image/png" width="629" height="339"/>
     </item>
     <item>
@@ -70,7 +83,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-empresas</guid>
-      <pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>sex, 23 out 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -81,7 +94,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-temas</guid>
-      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>qui, 10 set 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -92,7 +105,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-paps</guid>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>seg, 20 jul 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-paps/img/estrutura.png" medium="image" type="image/png" width="1200" height="825"/>
     </item>
     <item>
@@ -102,7 +115,7 @@
       <description>As mudanças no CARF após investigações de corrupção.</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2020-01-20-carf</guid>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>seg, 20 jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -113,7 +126,7 @@
 Esperamos que goste!</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2020-01-12-welcome</guid>
-      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>dom, 12 jan 2020 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-12-welcome/abj.png" medium="image" type="image/png" width="374" height="152"/>
     </item>
   </channel>

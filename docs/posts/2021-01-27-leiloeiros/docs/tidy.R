@@ -1,45 +1,9 @@
----
-title: "O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?"
-description: Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo
-author:
-  - name: Ricardo Feliz
-    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
-date: "`r Sys.Date()`"
-categories:
-  - Falência
-  - Leilão
-  - Leiloeiro
-  - Jurimetria
-output:
-  distill::distill_article:
-    self_contained: false
----
+# tidy
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-  echo = FALSE,
-  message = FALSE,
-  warning = FALSE,
-  fig.align = "center"
-)
-
-options(scipen = 999, digits = 10)
-
-# pacotes necessários
 library(tidyverse)
 
-```
-
-```{r}
-# 1) Importação
-# Import da base de todos os leilões
 leiloes <- obsFase3::da_leilao_tidy
 
-```
-
-```{r}
-# 2) Arrumação
-# a) base principal
 analise <- leiloes %>% 
   dplyr::filter(modalidade == "leilao") %>% 
   dplyr::mutate(
@@ -163,135 +127,27 @@ analise <- leiloes %>%
     is.na(leiloeiro_pf) ~ leiloeiro_pj
   )) %>% 
   filter(!is.na(leiloeiro))
+  # o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
+# unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
-# b) sub-base PROCESSO
-processos <- analise %>% 
-  select(!leiloeiro) %>% 
-  rename(leiloeiro = leiloeiro_usar) %>% 
-  dplyr::group_by(id_processo, leiloeiro) %>% 
-  dplyr::summarise(valor_total_processo = sum(valor_avaliacao_inicial, na.rm=T)) %>% 
+# É isso?
+# readr::write_rds(analise, "C://Users/ABJ/Documents/ABJ/github/djprocPublic/data/leiloes.rds")
+
+# ou eu posso transformar numa função né ? 
+
+
+
+# Peguei um processo pra cada leiloeiro pra analisar ----------------
+a <- analise %>% 
+  dplyr::select(id_processo, leiloeiro) %>% 
+  unique() %>% 
+  filter(!is.na(leiloeiro)) %>% 
   group_by(leiloeiro) %>% 
-  summarise(qtd_processos = n(), vtp = mean(valor_total_processo, na.rm=T)) %>% 
-  arrange(desc(qtd_processos)) %>% 
-  filter(vtp > 100)
+  slice(1)
 
-# c) sub-base SUCESSO
-sucesso <- analise %>% 
-  select(!leiloeiro) %>% 
-  rename(leiloeiro = leiloeiro_usar) %>% 
-  filter(leiloeiro != "Lance Alienações Eletrônicas Ltda") %>% 
-  arrange(desc(data_edital)) %>% 
-  group_by(id_processo, descricao) %>% 
-  slice(1) %>% 
-  select(id_processo, descricao, leiloeiro, valor_avaliacao_inicial, vendeu, valor_total_arrematado) %>% 
-  filter(is.na(valor_avaliacao_inicial) | valor_avaliacao_inicial > 0) %>%
-  mutate(across(
-    .cols = contains("valor"),
-    .fns = ~case_when(is.na(.x) ~ 0,
-           TRUE ~ .x)
-  )) %>%
-  mutate(vendeu = case_when(
-    is.na(vendeu) ~ "nao", 
-    TRUE ~ vendeu
-  )) %>% 
-  mutate(taxa_venda_valor = valor_total_arrematado / valor_avaliacao_inicial) %>% 
-  filter(taxa_venda_valor <= 10)
-```
-
-# Jogo 1
-
-``` {r p1, eval = TRUE}
-processos %>% 
-  arrange(qtd_processos) %>% 
-  mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>% 
-  ggplot() +
-    geom_col(mapping = aes(x = qtd_processos, y = leiloeiro))
-```
-
-# Jogo 2
-
-```{r p2, eval = TRUE}
-processos %>% 
-  arrange(vtp) %>% 
-  mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>% 
-  ggplot() +
-    geom_col(mapping = aes(x = vtp, y = leiloeiro)) +
-    scale_x_log10(labels = scales::label_number_si(), breaks = 10^c(1:8))
-```
-
-# Jogo 3
-
-```{r p3, eval = TRUE}
-sucesso %>%
-  group_by(leiloeiro, vendeu) %>%
-  summarise(qtd_bens = n()) %>% 
-  tidyr::pivot_wider(
-    names_from = vendeu,
-    values_from = qtd_bens
-  ) %>% 
-  mutate(across(
-    c(sim, nao),
-    ~replace_na(.x, 0)
-  )) %>% 
-  mutate(total_bens = sim + nao, taxa_sucesso = sim / total_bens) %>% 
-  group_by(leiloeiro) %>% 
-  summarise(taxa_sucesso = taxa_sucesso) %>% 
-  arrange(taxa_sucesso) %>% 
-  mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>% 
-  ggplot() + 
-    geom_col(mapping = aes(x = taxa_sucesso, y = leiloeiro))
-```
-
-# Jogo 4
-
-```{r p4, eval = TRUE}
-sucesso  %>% 
-  group_by(leiloeiro) %>% 
-  summarise(taxa_venda_media = mean(taxa_venda_valor)) %>% 
-  arrange(taxa_venda_media) %>% 
-  mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>%
-  ggplot() +
-    geom_col(mapping = aes(y = leiloeiro, x = taxa_venda_media))
-```
-
-# And the winner is... 
-
-```{r, eval = TRUE}
-a1 <- processos %>% 
-  arrange(qtd_processos) %>% 
-  mutate(score_mais_processos = as.numeric(forcats::as_factor(qtd_processos))) %>% 
-  arrange(vtp) %>% 
-  mutate(score_mais_valor = as.numeric(forcats::as_factor(vtp))) %>% 
-  select(leiloeiro, score_mais_processos, score_mais_valor)
-
-a2 <- sucesso %>% 
-  group_by(leiloeiro, vendeu) %>%
-  summarise(qtd_bens = n()) %>% 
-  tidyr::pivot_wider(
-    names_from = vendeu,
-    values_from = qtd_bens
-  ) %>% 
-  mutate(across(
-    c(sim, nao),
-    ~replace_na(.x, 0)
-  )) %>% 
-  mutate(total_bens = sim + nao, taxa_sucesso = sim / total_bens) %>% 
-  group_by(leiloeiro) %>% 
-  summarise(taxa_sucesso = taxa_sucesso) %>% 
-  arrange(taxa_sucesso) %>% 
-  mutate(score_mais_sucesso = as.numeric(forcats::as_factor(taxa_sucesso))) %>% 
-  select(leiloeiro, score_mais_sucesso)
-
-a3 <- sucesso %>% 
-  group_by(leiloeiro) %>% 
-  summarise(taxa_venda_media = mean(taxa_venda_valor)) %>% 
-  arrange(taxa_venda_media) %>% 
-  mutate(score_mais_venda = as.numeric(forcats::as_factor(taxa_venda_media))) %>% 
-  select(leiloeiro, score_mais_venda)
-
-left_join(a1, left_join(a2, a3, by = "leiloeiro"), by = "leiloeiro") %>% 
-  mutate(score_total = score_mais_venda + score_mais_sucesso + score_mais_processos + score_mais_valor) %>% 
-  mutate(score_total = as.numeric(forcats::as_factor(score_total))) %>% 
-  arrange(desc(score_total)) %>% 
-  knitr::kable()
-```
+# Todos os processos de leiloeiro PJ
+a <- analise %>% 
+  dplyr::select(id_processo, leiloeiro, cpf_cnpj) %>% 
+  unique() %>%  
+  filter(!is.na(leiloeiro)) %>% 
+  filter(str_length(cpf_cnpj) >= 14)

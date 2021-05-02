@@ -1,5 +1,29 @@
 [
   {
+    "path": "posts/2021-01-27-leiloeiros/",
+    "title": "O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?",
+    "description": "Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo",
+    "author": [
+      {
+        "name": "Ricardo Feliz",
+        "url": "https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"
+      }
+    ],
+    "date": "2021-05-02",
+    "categories": [
+      "Falência",
+      "Leilão",
+      "Leiloeiro",
+      "Jurimetria"
+    ],
+    "contents": "\r\n\r\n\r\n\r\n\r\n\r\n\r\nJogo 1\r\n\r\n\r\n\r\nJogo 2\r\n\r\n\r\n\r\nJogo 3\r\n\r\n\r\n\r\nJogo 4\r\n\r\n\r\n\r\nAnd the winner is…\r\n\r\nleiloeiro\r\nscore_mais_processos\r\nscore_mais_valor\r\nscore_mais_sucesso\r\nscore_mais_venda\r\nscore_total\r\nGustavo Cristiano Samuel dos Reis\r\n1\r\n16\r\n18\r\n23\r\n17\r\nCezar Augusto Badolato Silva\r\n3\r\n21\r\n13\r\n21\r\n17\r\nRenato Schlobach Moysés\r\n7\r\n22\r\n11\r\n14\r\n16\r\nAlfio Carlos Affonso Zalli Neto\r\n1\r\n18\r\n18\r\n16\r\n15\r\nWendell Marcel Calixto Félix\r\n2\r\n15\r\n15\r\n19\r\n14\r\nAntonio Hissao Sato Junio\r\n4\r\n12\r\n16\r\n18\r\n13\r\nRonaldo Milan\r\n1\r\n13\r\n14\r\n17\r\n12\r\nGustavo Moretto Guimarães de Oliveira\r\n4\r\n17\r\n12\r\n12\r\n12\r\nFernando José Cerello Gonçalves Pereira\r\n9\r\n23\r\n5\r\n8\r\n12\r\nEuclides Maraschi Junior\r\n2\r\n24\r\n8\r\n11\r\n12\r\nDouglas José Fidalgo\r\n1\r\n2\r\n18\r\n22\r\n11\r\nRonaldo Sérgio Montenegro Rodrigues Faro\r\n8\r\n20\r\n9\r\n6\r\n11\r\nSérgio Villa Nova de Freitas\r\n4\r\n3\r\n15\r\n20\r\n10\r\nAndré Macedo Campos Toledo\r\n2\r\n14\r\n17\r\n9\r\n10\r\nFabio Zukerman\r\n1\r\n5\r\n18\r\n13\r\n9\r\nEduardo Jordão Boyadjian\r\n1\r\n6\r\n15\r\n15\r\n9\r\nThais Silva Moreira de Sousa\r\n6\r\n19\r\n6\r\n5\r\n8\r\nRenata Franklin Simões\r\n4\r\n9\r\n10\r\n10\r\n7\r\nGeorgios José Ilias Bernabé Alexandridis\r\n5\r\n7\r\n7\r\n7\r\n6\r\nEduardo dos Reis\r\n1\r\n11\r\n3\r\n3\r\n5\r\nUilian Aparecido da Silva\r\n3\r\n10\r\n2\r\n2\r\n4\r\nDannae Vieira Avila\r\n4\r\n4\r\n4\r\n4\r\n3\r\nDora Plat\r\n2\r\n8\r\n1\r\n1\r\n2\r\nDanilo Cardoso da Silva\r\n1\r\n1\r\n1\r\n1\r\n1\r\n\r\n\r\n\r\n\r\n",
+    "preview": "posts/2021-01-27-leiloeiros/leiloeiros_files/figure-html5/p1-1.png",
+    "last_modified": "2021-05-02T12:53:06-03:00",
+    "input_file": "leiloeiros.utf8.md",
+    "preview_width": 1248,
+    "preview_height": 768
+  },
+  {
     "path": "posts/2020-12-17-constituicao/",
     "title": "Facilitando análises sobre a Constituição",
     "description": "Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo",
