@@ -92,8 +92,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   
   <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-05-02"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-05-02"/>
+  <meta property="article:published" itemprop="datePublished" content="2021-05-03"/>
+  <meta property="article:created" itemprop="dateCreated" content="2021-05-03"/>
   <meta name="article:author" content="Ricardo Feliz"/>
   
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
@@ -111,12 +111,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?"]},{"type":"character","attributes":{},"value":["Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]}]},{"type":"character","attributes":{},"value":["2021-05-02"]},{"type":"character","attributes":{},"value":["Falência","Leilão","Leiloeiro","Jurimetria"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","categories","output"]}},"value":[{"type":"character","attributes":{},"value":["O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?"]},{"type":"character","attributes":{},"value":["Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]}]},{"type":"character","attributes":{},"value":["2021-05-03"]},{"type":"character","attributes":{},"value":["Falência","Leilão","Leiloeiro","Jurimetria"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["docs/tidy.R","leiloeiros_files/anchor-4.2.2/anchor.min.js","leiloeiros_files/bowser-1.9.3/bowser.min.js","leiloeiros_files/distill-2.2.21/template.v2.js","leiloeiros_files/figure-html5/p1-1.png","leiloeiros_files/figure-html5/p2-1.png","leiloeiros_files/figure-html5/p3-1.png","leiloeiros_files/figure-html5/p4-1.png","leiloeiros_files/jquery-1.11.3/jquery.min.js","leiloeiros_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["docs/tidy.R","leiloeiros_files/anchor-4.2.2/anchor.min.js","leiloeiros_files/bowser-1.9.3/bowser.min.js","leiloeiros_files/distill-2.2.21/template.v2.js","leiloeiros_files/figure-html5/p1-1.png","leiloeiros_files/figure-html5/p2-1.png","leiloeiros_files/figure-html5/p3-1.png","leiloeiros_files/figure-html5/p4-1.png","leiloeiros_files/figure-html5/plot1-1.png","leiloeiros_files/figure-html5/plot2-1.png","leiloeiros_files/figure-html5/plot3-1.png","leiloeiros_files/figure-html5/plot4-1.png","leiloeiros_files/jquery-1.11.3/jquery.min.js","leiloeiros_files/popper-2.6.0/popper.min.js","leiloeiros_files/tippy-6.2.7/tippy-bundle.umd.min.js","leiloeiros_files/tippy-6.2.7/tippy-light-border.css","leiloeiros_files/tippy-6.2.7/tippy.css","leiloeiros_files/tippy-6.2.7/tippy.umd.min.js","leiloeiros_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -308,6 +308,11 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     text-decoration: underline;
   }
   
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+  
   @media(min-width: 768px) {
   
   d-article pre,
@@ -462,6 +467,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+  
+  /* Citation hover box */
+  
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+  
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
   
   
@@ -1129,7 +1145,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       var layout = $(this).attr('data-layout');
   
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1244,6 +1260,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
       // move appendix-bottom entries to the bottom
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
+  
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
   
       // clear polling timer
       clearInterval(tid);
@@ -1405,6 +1435,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   
   <!--/radix_placeholder_distill-->
   <script src="leiloeiros_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="leiloeiros_files/popper-2.6.0/popper.min.js"></script>
+  <link href="leiloeiros_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="leiloeiros_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="leiloeiros_files/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="leiloeiros_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="leiloeiros_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="leiloeiros_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1420,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?","description":"Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo","authors":[{"author":"Ricardo Feliz","authorURL":"https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-02T00:00:00.000-03:00","citationText":"Feliz, 2021"}
+{"title":"O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?","description":"Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo","authors":[{"author":"Ricardo Feliz","authorURL":"https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-05-03T00:00:00.000-03:00","citationText":"Feliz, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1445,7 +1479,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="d-byline">
   Ricardo Feliz <a href="https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/" class="uri">https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/</a> 
   
-<br/>2021-05-02
+<br/>2021-05-03
 </div>
 
 <div class="d-article">
@@ -1455,40 +1489,713 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<h1 id="jogo-1">Jogo 1</h1>
+<h1 id="introdução">Introdução</h1>
+<p>Sempre que uma empresa entra em falência, se inicia um procedimento de arrecadação dos ativos. Essa arrecadação pode levantar desde plásticos triturados, avaliados em R$ 1,00 (um real), até imóveis de R$ 157.000.000,00 (157 milhões de reais). Independente do valor, esses bens na maioria dos casos vão para leilão. E no leilão, há sempre algum responsável por alienar esses bens. O responsável é o leiloeiro. Esse leiloeiro irá determinar as condições de venda dos bens, o que envolve definir (1) se eles serão vendidos em lotes, agrupando vários bens em uma única venda, ou individualmente; (2) o valor mínimo que os bens poderão ser vendidos; (3) a data do leilão; (4) a modalidade do leilão (presencial, eletrônico ou ambos); (5) o lance mínimo, entre outras condições. O importante de notar é que cada leiloeiro possui certa discricionariedade para agir, pois há algumas escolhas que ele deverá realizar em cada leilão, ao definir as condições de arrematação dos bens.</p>
+<p>Se há várias estratégias possíveis para os leiloeiros utilizarem, então podemos dizer que alguns profissionais poderão realizar melhores escolhas do que outros. Assim, o que esse artigo busca é tentar definir qual leiloeiro foi mais bem sucedido nos leilões relacionados aos processos de falência de São Paulo.</p>
+<p>A base que utilizaremos para tanto é uma das bases de dados da 3ª fase do Observatório da Insolvência da ABJ, isto é, o observatório das falências em São Paulo. Mais especificamente, utilizaremos a base que contém todos os bens que foram a leilão, em SP. Cada observação é um bem diferente. E cada coluna é uma característica desse bem. As principais características que utilizaremos aqui são: o processo no qual esse bem se encontra; o leiloeiro responsável pela alienação desse bem; o valor de avaliação dos bens; a informação de se o bem vendeu ou não; e o preço pelo qual o bem foi arrematado.</p>
+<p>Com base nesses dados, podemos pensar em estratégias para determinar o sucesso dos leiloeiros. Iremos fazer isso colocando os leiloeiros para jogar diversos jogos entre si, disputando os melhores scores em cada jogo. Veremos a seguir as regras dos jogos.</p>
+<h1 id="as-regras-dos-jogos">As regras dos jogos</h1>
+<h2 id="dos-candidatos-habilitados">Dos candidatos habilitados</h2>
+<p>A única regra para a habilitação dos leiloeiros nos jogos é que eles sejam pessoas físicas. A base original continha algumas pessoas jurídicas. Entretanto, muitas dessas pessoas jurídicas estavam associadas a um único leiloeiro, sendo possível, portanto, substituir a pessoa jurídica por uma pessoa física facilmente. Isso aconteceu para o “Mega Leilões”, “Gold Leilões”, “D1 Lance”, “Hasta Pública” e “Casa Reis”. A tabela a seguir indica a relação entre as pessoas jurídicas e os respectivos leiloeiros por detrás delas.</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Pessoa jurídica</th>
+<th style="text-align: center;">Leiloeiro</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Mega Leilões</td>
+<td style="text-align: center;">Fernando José Cerello Gonçalves Pereira</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Hasta Publica BR</td>
+<td style="text-align: center;">Euclides Maraschi Junior</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Gold Leilões</td>
+<td style="text-align: center;">Uilian Aparecido da Silva</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Casa Reis Leilões</td>
+<td style="text-align: center;">Eduardo dos Reis</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">D1 Lance</td>
+<td style="text-align: center;">Dannae Vieira Avila</td>
+</tr>
+</tbody>
+</table>
+<p>Houve uma casa de leilões, entretanto, que não havia uma pessoa física correspondente. Foi a casa Lance Alienações Eletrônicas Ltda. Este, portanto, foi o único candidato desqualificado.</p>
+<p>Ao fim, ficamos com 24 concorrentes.</p>
+<h2 id="dos-jogos">Dos jogos</h2>
+<p>Ao todo há 4 jogos.</p>
+<p>O primeiro jogo é o <strong>Coletando leilões</strong>. Este jogo funciona da seguinte maneira: o juiz irá escolher algum leiloeiro de sua confiança para realizar o leilão. O leiloeiro que conseguir mais processos, será o vencedor. Há um total de 135 processos com leilões. Então o máximo de leilões que alguém pode acumular é 135, e o mínimo é 1.</p>
+<p>O segundo jogo é <strong>O tamanho do peixe</strong>. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões que lhes foi confiado. Para isso, calculamos o valor total de cada um dos processos e dividimos pelo total de bens. Ganha quem tiver um valor médio por processo maior.</p>
+<p>O terceiro jogo é <strong>Quem vende mais?</strong>. Este jogo (e o próximo também) está olhando, não para características dos leilões que foram encaminhados a cada um dos leiloeiros, mas para os resultados desses leilões. Assim, o que está sendo comparado aqui é o que chamaremos de “taxa_sucesso”. É uma conta simples: de todos os bens que poderiam ter sido vendidos, quantos de fato conseguiram ser alienados? Essa taxa é um valor de 0 a 1. O leiloeiro que obtiver a maior taxa será o ganhador.</p>
+<p>O quarto jogo e o último jogo é <strong>Quem dá mais?</strong>. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda. Essa taxa foi calculada por <em>valor vendido / valor de avaliação</em>. E o que comparou é a média dessa taxa de venda. Essa taxa irá assumir valores entre 0 e 1 se o bem tiver sido vendido por valores abaixo da avaliação (o que é bem frequente), mas irá assumir valores maiores que 1 caso o valor de venda seja maior que o valor de avaliação. Algumas taxas chegaram a ser de 140 e infinito. Esses valores representam uma inconsistência na base. Para evitar que tais valores fossem considerados na competição (o que seria considerado roubar no jogo!), aplicamos um filtro para manter apenas as taxas menores ou iguais a 10. Ou seja, os bens poderiam ser vendidos por no máximo 10 vezes mais que o valor de avaliação. Acima disso, aquele bem seria desconsiderado.</p>
+<h2 id="da-contagem-dos-pontos">Da contagem dos pontos</h2>
+<p>Para cada um dos jogos, podemos ordenadar os leiloeiros. Cada um dos jogos possui bases diferentes de pontuação. Por exemplo, no jogo 1, os jogadores podem fazer de 0 a 135 pontos, mas no jogo 3, os jogadores podem fazer só de 0 a 1 pontos. O problema é que dessa forma, o ganhador do jogo 1 teria mais vantagem do que o ganhador do jogo 3. Para resolver este problema, padronizamos as pontuações, de modo que a colocação de um jogador se tornou a sua pontuação em cada um dos jogos.</p>
+<p>Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre alguém teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação.</p>
+<p>Ao fim dos 4 jogos, as pontuações serão somadas, para criarmos um placar final. Então o jogador que acumular mais pontos ao fim dos 4 jogos será o vencedor.</p>
+<h2 id="do-prêmio">Do prêmio</h2>
+<p>Os leiloeiros que ficarem em 1º, 2º e 3º lugares irão receber uma menção especial ao final deste post.</p>
+<h1 id="que-comecem-os-jogos">QUE COMECEM OS JOGOS !</h1>
+<h2 id="jogo-1-coletando-leilões">Jogo 1: Coletando leilões</h2>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="leiloeiros_files/figure-html5/p1-1.png" width="624" style="display: block; margin: auto;" /></p>
+<p><img src="leiloeiros_files/figure-html5/plot1-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<h1 id="jogo-2">Jogo 2</h1>
+<p>No primeiro jogo, de número de processos que cada leiloeiro recebeu, tivemos um destaque fortíssimo. Fernando José Cerello Gonçalves Pereira assumiu a liderança com quase 40 processos ! O segundo lugar foi Ronaldo Faro, com 28 processos, e o terceiro colocado foi Renato Schlobach Moysés, com 24 processos. O quarto lugar teve apenas 12 processos em sua contagem, e foi Thays Silva Morerira de Sousa. Os próximos jogadores, não passaram de 10 processos, e a moda foi de apenas 1 processo!</p>
+<p>Com isso, o placar ficou:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="leiloeiros_files/figure-html5/p2-1.png" width="624" style="display: block; margin: auto;" /></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">leiloeiro</th>
+<th style="text-align: right;">qtd_processos</th>
+<th style="text-align: right;">score_jogo_1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renato Schlobach Moysés</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Antonio Hissao Sato Junio</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dannae Vieira Avila</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renata Franklin Simões</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Uilian Aparecido da Silva</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">André Macedo Campos Toledo</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dora Plat</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Euclides Maraschi Junior</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Danilo Cardoso da Silva</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Douglas José Fidalgo</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eduardo dos Reis</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fabio Zukerman</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ronaldo Milan</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
 </div>
-<h1 id="jogo-3">Jogo 3</h1>
+<p>Como houve muitos candidatos empatados, o primeiro lugar de Fernando rendeu-lhe apenas 9 pontos.</p>
+<h2 id="jogo-2-o-tamanho-do-peixe">Jogo 2: O tamanho do peixe</h2>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="leiloeiros_files/figure-html5/p3-1.png" width="624" style="display: block; margin: auto;" /></p>
+<p><img src="leiloeiros_files/figure-html5/plot2-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
-<h1 id="jogo-4">Jogo 4</h1>
+<p>No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quantidade de R$ 86.608.346,88 por processo (86 milhões de reais por processo). O ganhador foi Euclides Maraschi Junior. A disputa pelo segundo lugar foi acirradíssima. Por pouco, Fernando José Cerello ganhou de Renato Schlobach Moysés. O valor médio de seus processos foi, respectivamente, de R$ 29.938.436,60 (29 milhões) por proceso e de R$ 26.053.257,72 (26 milhões). Os últimos colocados tiveram arrecadações de 300 mil até 25 mil reais por processo. É uma diferença na escala de 100 vezes em relação aos primeiros colocados.</p>
+<p>No fim, o placar ficou:</p>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="leiloeiros_files/figure-html5/p4-1.png" width="624" style="display: block; margin: auto;" /></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">leiloeiro</th>
+<th style="text-align: right;">vtp</th>
+<th style="text-align: right;">score_jogo_2</th>
+<th style="text-align: right;">pontos_acumulados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Euclides Maraschi Junior</td>
+<td style="text-align: right;">86608346.87500</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
+<td style="text-align: right;">29938436.59795</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renato Schlobach Moysés</td>
+<td style="text-align: right;">26053257.71875</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">29</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
+<td style="text-align: right;">2439089.72667</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
+<td style="text-align: right;">2189231.78429</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
+<td style="text-align: right;">2134669.98250</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
+<td style="text-align: right;">1995000.00000</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
+<td style="text-align: right;">1724682.75000</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
+<td style="text-align: right;">1600000.00000</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
+<td style="text-align: right;">986579.95000</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">André Macedo Campos Toledo</td>
+<td style="text-align: right;">657767.50000</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ronaldo Milan</td>
+<td style="text-align: right;">522000.00000</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Antonio Hissao Sato Junio</td>
+<td style="text-align: right;">460986.00000</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Eduardo dos Reis</td>
+<td style="text-align: right;">347780.00000</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Uilian Aparecido da Silva</td>
+<td style="text-align: right;">283645.00000</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Renata Franklin Simões</td>
+<td style="text-align: right;">263835.93500</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dora Plat</td>
+<td style="text-align: right;">248669.01000</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">10</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
+<td style="text-align: right;">86924.93143</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
+<td style="text-align: right;">67090.00000</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fabio Zukerman</td>
+<td style="text-align: right;">52690.00000</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dannae Vieira Avila</td>
+<td style="text-align: right;">43476.45000</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
+<td style="text-align: right;">41404.08250</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Douglas José Fidalgo</td>
+<td style="text-align: right;">30000.00000</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Danilo Cardoso da Silva</td>
+<td style="text-align: right;">25290.00000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Esta disputa rendeu incríveis 24 pontos para Euclides ! Mas isso não foi suficiente para ultrapassar Fernando, nem Renato, que no placar geral estão respectivamente, com 6 e 3 pontos na frente de Euclides.</p>
+<h2 id="jogo-3-quem-vende-mais">Jogo 3: Quem vende mais?</h2>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="leiloeiros_files/figure-html5/plot3-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<p>O terceiro jogo foi o mais disputado até agora. Tivemos 3 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto ! Quem se deu melhor nessa competição foram aqueles que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. E aqueles com muitos bens tiveram dificuldades em vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Dora Plat e de Danilo Cardoso, que ficaram com uma taxa de sucesso de 0. Danilo tiha apenas 9 bens para alienar; e Dora, 30. Esse jogo embaralhou bastante a competição, deixando bem mais acirrada a disputa no placar geral.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">leiloeiro</th>
+<th style="text-align: right;">taxa_sucesso</th>
+<th style="text-align: right;">score_jogo_3</th>
+<th style="text-align: right;">pontos_acumulados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
+<td style="text-align: right;">1.0000000000</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Douglas José Fidalgo</td>
+<td style="text-align: right;">1.0000000000</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fabio Zukerman</td>
+<td style="text-align: right;">1.0000000000</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">24</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
+<td style="text-align: right;">1.0000000000</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">André Macedo Campos Toledo</td>
+<td style="text-align: right;">0.9895833333</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Antonio Hissao Sato Junio</td>
+<td style="text-align: right;">0.9600000000</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
+<td style="text-align: right;">0.8000000000</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
+<td style="text-align: right;">0.8000000000</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">22</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
+<td style="text-align: right;">0.8000000000</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">32</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ronaldo Milan</td>
+<td style="text-align: right;">0.7586206897</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
+<td style="text-align: right;">0.6821192053</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
+<td style="text-align: right;">0.6111111111</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Renato Schlobach Moysés</td>
+<td style="text-align: right;">0.5215366705</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Renata Franklin Simões</td>
+<td style="text-align: right;">0.4615384615</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">23</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
+<td style="text-align: right;">0.3354838710</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Euclides Maraschi Junior</td>
+<td style="text-align: right;">0.2873563218</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">34</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
+<td style="text-align: right;">0.2811671088</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
+<td style="text-align: right;">0.2644873700</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">31</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
+<td style="text-align: right;">0.2499176819</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dannae Vieira Avila</td>
+<td style="text-align: right;">0.0535714286</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eduardo dos Reis</td>
+<td style="text-align: right;">0.0322580645</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Uilian Aparecido da Silva</td>
+<td style="text-align: right;">0.0202020202</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">15</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Danilo Cardoso da Silva</td>
+<td style="text-align: right;">0.0000000000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dora Plat</td>
+<td style="text-align: right;">0.0000000000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">11</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>A liderança está agora com Renato Scholbach Moysés, mas 2 apenas 2 pontos atrás está Alfio Carlos Affonso Zalli Neto. Será que Renato conseguirá manter sua posição no último jogo?</p>
+<h2 id="jogo-4-quem-dá-mais">Jogo 4: Quem dá mais?</h2>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="leiloeiros_files/figure-html5/plot4-1.png" width="624" style="display: block; margin: auto;" /></p>
+</div>
+<p>Por fim, chegamos na final. Esse jogo foi difícil para os leiloeiros com grandes valores de bens em suas mãos, pois aqui o valor inicial contava muito. Não bastava que os bens simplesmente fossem vendidos, eles precisavam ser vendidos pelo maior valor possível.</p>
+<p>Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter um taxas de venda média maior do que 1 foi Cezar Augusto Badolato. Com isso, temos consolidado o placar final.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">leiloeiro</th>
+<th style="text-align: right;">taxa_venda_media</th>
+<th style="text-align: right;">score_jogo_4</th>
+<th style="text-align: right;">pontos_acumulados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
+<td style="text-align: right;">0.9725000000</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Douglas José Fidalgo</td>
+<td style="text-align: right;">0.8925000000</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
+<td style="text-align: right;">0.8411822620</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
+<td style="text-align: right;">0.6632201812</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
+<td style="text-align: right;">0.5500000000</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">51</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Antonio Hissao Sato Junio</td>
+<td style="text-align: right;">0.5384937114</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">50</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Ronaldo Milan</td>
+<td style="text-align: right;">0.5346760536</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
+<td style="text-align: right;">0.4000000000</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">53</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
+<td style="text-align: right;">0.3928216396</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Renato Schlobach Moysés</td>
+<td style="text-align: right;">0.3610294388</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">54</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Fabio Zukerman</td>
+<td style="text-align: right;">0.3157375432</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
+<td style="text-align: right;">0.3066809871</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Euclides Maraschi Junior</td>
+<td style="text-align: right;">0.2549147807</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Renata Franklin Simões</td>
+<td style="text-align: right;">0.2317884885</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">33</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">André Macedo Campos Toledo</td>
+<td style="text-align: right;">0.1568033851</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">42</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
+<td style="text-align: right;">0.1554450929</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">45</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
+<td style="text-align: right;">0.1249287130</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
+<td style="text-align: right;">0.1124662578</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
+<td style="text-align: right;">0.1102494721</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dannae Vieira Avila</td>
+<td style="text-align: right;">0.0379781178</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">16</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Eduardo dos Reis</td>
+<td style="text-align: right;">0.0168946774</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Uilian Aparecido da Silva</td>
+<td style="text-align: right;">0.0109066236</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">17</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Danilo Cardoso da Silva</td>
+<td style="text-align: right;">0.0000000000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dora Plat</td>
+<td style="text-align: right;">0.0000000000</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
+</tr>
+</tbody>
+</table>
 </div>
 <h1 id="and-the-winner-is">And the winner is…</h1>
+<p>Computando todos os jogos, temos o seguinte resultado:</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
 <colgroup>
-<col style="width: 32%" />
-<col style="width: 16%" />
-<col style="width: 13%" />
+<col style="width: 33%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
 <col style="width: 14%" />
-<col style="width: 13%" />
 <col style="width: 9%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">leiloeiro</th>
-<th style="text-align: right;">score_mais_processos</th>
-<th style="text-align: right;">score_mais_valor</th>
-<th style="text-align: right;">score_mais_sucesso</th>
-<th style="text-align: right;">score_mais_venda</th>
+<th style="text-align: right;">score_jogo_1</th>
+<th style="text-align: right;">score_jogo_2</th>
+<th style="text-align: right;">score_jogo_3</th>
+<th style="text-align: right;">score_jogo_4</th>
+<th style="text-align: right;">pontos_acumulados</th>
 <th style="text-align: right;">score_total</th>
 </tr>
 </thead>
@@ -1499,6 +2206,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">23</td>
+<td style="text-align: right;">58</td>
 <td style="text-align: right;">17</td>
 </tr>
 <tr class="even">
@@ -1507,6 +2215,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">21</td>
+<td style="text-align: right;">58</td>
 <td style="text-align: right;">17</td>
 </tr>
 <tr class="odd">
@@ -1515,6 +2224,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">22</td>
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">14</td>
+<td style="text-align: right;">54</td>
 <td style="text-align: right;">16</td>
 </tr>
 <tr class="even">
@@ -1523,6 +2233,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">16</td>
+<td style="text-align: right;">53</td>
 <td style="text-align: right;">15</td>
 </tr>
 <tr class="odd">
@@ -1531,6 +2242,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">19</td>
+<td style="text-align: right;">51</td>
 <td style="text-align: right;">14</td>
 </tr>
 <tr class="even">
@@ -1539,6 +2251,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">18</td>
+<td style="text-align: right;">50</td>
 <td style="text-align: right;">13</td>
 </tr>
 <tr class="odd">
@@ -1547,6 +2260,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">13</td>
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">17</td>
+<td style="text-align: right;">45</td>
 <td style="text-align: right;">12</td>
 </tr>
 <tr class="even">
@@ -1555,22 +2269,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">12</td>
 <td style="text-align: right;">12</td>
+<td style="text-align: right;">45</td>
 <td style="text-align: right;">12</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Euclides Maraschi Junior</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">24</td>
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">11</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">45</td>
 <td style="text-align: right;">12</td>
 </tr>
 <tr class="odd">
@@ -1579,6 +2296,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">22</td>
+<td style="text-align: right;">43</td>
 <td style="text-align: right;">11</td>
 </tr>
 <tr class="even">
@@ -1587,6 +2305,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">6</td>
+<td style="text-align: right;">43</td>
 <td style="text-align: right;">11</td>
 </tr>
 <tr class="odd">
@@ -1595,6 +2314,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">20</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">10</td>
 </tr>
 <tr class="even">
@@ -1603,22 +2323,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">14</td>
 <td style="text-align: right;">17</td>
 <td style="text-align: right;">9</td>
+<td style="text-align: right;">42</td>
 <td style="text-align: right;">10</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Fabio Zukerman</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">9</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Eduardo Jordão Boyadjian</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">15</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Fabio Zukerman</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">37</td>
 <td style="text-align: right;">9</td>
 </tr>
 <tr class="odd">
@@ -1627,6 +2350,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">6</td>
 <td style="text-align: right;">5</td>
+<td style="text-align: right;">36</td>
 <td style="text-align: right;">8</td>
 </tr>
 <tr class="even">
@@ -1635,6 +2359,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">9</td>
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">10</td>
+<td style="text-align: right;">33</td>
 <td style="text-align: right;">7</td>
 </tr>
 <tr class="odd">
@@ -1643,6 +2368,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
 <td style="text-align: right;">7</td>
+<td style="text-align: right;">26</td>
 <td style="text-align: right;">6</td>
 </tr>
 <tr class="even">
@@ -1651,6 +2377,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">11</td>
 <td style="text-align: right;">3</td>
 <td style="text-align: right;">3</td>
+<td style="text-align: right;">18</td>
 <td style="text-align: right;">5</td>
 </tr>
 <tr class="odd">
@@ -1659,6 +2386,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">10</td>
 <td style="text-align: right;">2</td>
 <td style="text-align: right;">2</td>
+<td style="text-align: right;">17</td>
 <td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
@@ -1667,6 +2395,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
 <td style="text-align: right;">4</td>
+<td style="text-align: right;">16</td>
 <td style="text-align: right;">3</td>
 </tr>
 <tr class="odd">
@@ -1675,6 +2404,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">8</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">12</td>
 <td style="text-align: right;">2</td>
 </tr>
 <tr class="even">
@@ -1683,11 +2413,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
 <td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
 <td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
 </div>
+<p>Ou seja, o vencedor é GUSTAVO CRISTIANO SAMUEL DOS REIS, com 60 pontos. Em segundo lugar, com apenas 1 ponto de diferença, temos CEZAR AUGUSTO BADOLATO SILVA. E em terceiro lugar, com 5 pontos a menos que o primeiro lugar, temos ALFIO CARLOS AFFONSO ZALLI NETO.</p>
+<p>Parabéns a todos os participantes.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
