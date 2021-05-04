@@ -51,7 +51,6 @@ sucesso <- analise %>%
   mutate(taxa_venda_valor = valor_total_arrematado / valor_avaliacao_inicial) %>% 
   filter(taxa_venda_valor <= 10)
   
-  
 # PLOTS
 # 1) Quantidade de processos por leiloeiro
 processos %>% 
@@ -103,6 +102,7 @@ sucesso  %>%
 # Jogo 1
 placar_jogo1 <- processos %>% 
   mutate(score_jogo_1 = as.numeric(forcats::as_factor(qtd_processos))) %>% 
+  mutate(score_jogo_1 = score_jogo_1/score_jogo_1()) %>% 
   select(leiloeiro, qtd_processos, score_jogo_1) %>% 
   arrange(desc(score_jogo_1))
 
