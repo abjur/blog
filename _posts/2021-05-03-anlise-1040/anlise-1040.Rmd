@@ -20,7 +20,7 @@ blue_abj <- viridis::viridis(1, 1, .2, .8)
 ```
 
 
-```{r}
+```{r eval=FALSE}
 redesim::redesim_min %>% 
   dplyr::filter(ano_mes >= "2021-01-01") %>% 
   dplyr::select(ano_mes, uf, municipio, dplyr::matches("viabi")) %>% 
@@ -49,7 +49,7 @@ redesim::redesim_min %>%
 ```
 
 
-```{r}
+```{r eval=FALSE}
 da_tempos <- redesim::redesim_min %>% 
   dplyr::filter(ano_mes >= "2021-01-01") %>% 
   dplyr::select(-dplyr::matches("total")) %>% 
@@ -74,7 +74,7 @@ da_tempos %>%
 ```
 
 
-```{r, fig.width=8, fig.height=8}
+```{r, fig.width=8, fig.height=8, layout="l-page", dpi=500}
 redesim::redesim_min %>% 
   dplyr::filter(ano_mes >= "2021-01-01") %>% 
   dplyr::select(-dplyr::matches("total")) %>% 
