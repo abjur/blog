@@ -1,0 +1,112 @@
+---
+title: "Análise 1040"
+description: |
+  A short description of the post.
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+date: 05-03-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(redesim)
+library(ggplot2)
+blue_abj <- viridis::viridis(1, 1, .2, .8)
+```
+
+
+```{r}
+redesim::redesim_min %>% 
+  dplyr::filter(ano_mes >= "2021-01-01") %>% 
+  dplyr::select(ano_mes, uf, municipio, dplyr::matches("viabi")) %>% 
+  tidyr::pivot_longer(dplyr::matches("viabi")) %>% 
+  dplyr::filter(!is.na(value)) %>% 
+  dplyr::mutate(value_cat = dplyr::case_when(
+    value <= 1 ~ "Até 1 hora",
+    value <= 12 ~ "1-12 horas",
+    value <= 24 ~ "12 horas-1 dia",
+    value <= 48 ~ "1-2 dias",
+    value <= 24*5 ~ "2-5 dias",
+    value > 24*5 ~ "Mais de 5 dias",
+    TRUE ~ "aff"
+  )) %>% 
+  dplyr::arrange(value) %>% 
+  dplyr::mutate(
+    value_cat = forcats::as_factor(value_cat),
+    value_cat = forcats::fct_rev(value_cat)
+  ) %>% 
+  dplyr::count(name, value_cat) %>% 
+  dplyr::mutate(prop = n/sum(n)) %>% 
+  ggplot(aes(n, value_cat)) +
+  geom_col(fill = blue_abj) +
+  facet_wrap(~name, scales = "free_x") +
+  theme_minimal()
+```
+
+
+```{r}
+da_tempos <- redesim::redesim_min %>% 
+  dplyr::filter(ano_mes >= "2021-01-01") %>% 
+  dplyr::select(-dplyr::matches("total")) %>% 
+  tibble::rowid_to_column() %>% 
+  tidyr::pivot_longer(dplyr::starts_with("qtde")) %>% 
+  dplyr::mutate(name = dplyr::case_when(
+    name == "qtde_hh_viabilidade_nome" ~ "Nome",
+    name == "qtde_hh_viabilidade_end" ~ "Endereço",
+    TRUE ~ "Registro"
+  )) %>% 
+  dplyr::group_by(rowid, name) %>% 
+  dplyr::summarise(value = sum(value), .groups = "drop_last") %>% 
+  dplyr::mutate(prop = value / sum(value)) %>% 
+  dplyr::ungroup()
+
+
+da_tempos %>% 
+  ggplot(aes(x = prop, y = name)) +
+  ggridges::geom_density_ridges() +
+  lims(x = c(0, 1))
+
+```
+
+
+```{r, fig.width=8, fig.height=8}
+redesim::redesim_min %>% 
+  dplyr::filter(ano_mes >= "2021-01-01") %>% 
+  dplyr::select(-dplyr::matches("total")) %>% 
+  tibble::rowid_to_column() %>% 
+  tidyr::pivot_longer(dplyr::starts_with("qtde")) %>% 
+  dplyr::mutate(name = dplyr::case_when(
+    name == "qtde_hh_viabilidade_nome" ~ "Nome",
+    name == "qtde_hh_viabilidade_end" ~ "Endereço",
+    TRUE ~ "Registro"
+  )) %>% 
+  dplyr::group_by(uf, name) %>% 
+  dplyr::summarise(value = sum(value), .groups = "drop_last") %>% 
+  dplyr::mutate(prop = value/sum(value)) %>% 
+  dplyr::ungroup() %>% 
+  dplyr::mutate(
+    uf = forcats::fct_reorder(uf, prop, max),
+    name = forcats::lvls_reorder(name, c(3, 1, 2))
+  ) %>% 
+  dplyr::filter(name != "Registro") %>% 
+  ggplot(aes(x = prop, y = uf, fill = name)) +
+  geom_col() +
+  scale_x_continuous(labels = scales::percent, breaks = seq(0, .3, .05)) +
+  scale_fill_viridis_d(begin = .2, end = .8) +
+  theme_minimal() +
+  labs(
+    x = "Proporção to tempo total de abertura",
+    y = "Unidade Federativa",
+    fill = "Análise",
+    title = "Impacto potencial da Medida Provisória 1.040/2021",
+    subtitle = "Proporção do tempo total destinada à análise de nome e endereço por Unidade Federativa",
+    caption = "Fonte: REDESIM\nAnálise: Associação Brasileira de Jurimetria"
+  ) +
+  theme(legend.position = c(.8, .8))
+```
+
