@@ -215,7 +215,7 @@ Com base nesses dados, podemos pensar em estratégias para determinar o sucesso 
 
 # As regras dos jogos
 
-## Dos candidatos habilitados
+### Dos candidatos habilitados
 
 A única regra para a habilitação dos leiloeiros nos jogos é que eles sejam pessoas físicas. A base original continha algumas pessoas jurídicas. Entretanto, muitas dessas pessoas jurídicas estavam associadas a um único leiloeiro, sendo possível, portanto, substituir a pessoa jurídica por uma pessoa física facilmente. Isso aconteceu para o "Mega Leilões", "Gold Leilões", "D1 Lance", "Hasta Pública" e "Casa Reis". A tabela a seguir indica a relação entre as pessoas jurídicas e os respectivos leiloeiros por detrás delas. 
 
@@ -233,19 +233,19 @@ Houve uma casa de leilões, entretanto, que não havia uma pessoa física corres
 
 Ao fim, ficamos com 24 concorrentes.
 
-## Dos jogos
+### Dos jogos
 
 Ao todo serão feitos 4 jogos. Cada jogo terá um, ou mais, ganhadores. O jogador que obtiver mais pontos ao final dos 4 jogos será o vecedor. 
 
-## Da contagem dos pontos
+### Da contagem dos pontos
 
 Para cada um dos jogos, podemos ordenadar os leiloeiros. Cada um dos jogos possui bases diferentes de pontuação. Por exemplo, no jogo 1, os jogadores podem fazer de 0 a 135 pontos, mas no jogo 3, os jogadores podem fazer só de 0 a 1 pontos. O problema é que dessa forma, o ganhador do jogo 1 teria mais vantagem do que o ganhador do jogo 3. Para resolver este problema, padronizamos as pontuações, de modo que a colocação de um jogador se tornou a sua pontuação em cada um dos jogos.  
 
-Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre alguém teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação. Mas o fato de nem todos os jogos chegarem a 24 pontos pode privilegiar alguns jogos, em detrimento de outros. Assim, esses pontos serão normalizados, ou seja, eles serão divididos pelo número de pontos do primeiro lugar. 
+Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação. O fato de nem todos os jogos chegarem a 24 pontos pode privilegiar alguns jogos, em detrimento de outros. Assim, esses pontos serão normalizados, ou seja, eles serão divididos pelo número de pontos do primeiro lugar. 
 
 Ao fim dos 4 jogos, as pontuações serão somadas, para criarmos um placar final. Então o jogador que acumular mais pontos ao fim dos 4 jogos será o vencedor. 
 
-## Do prêmio
+### Do prêmio
 
 Os leiloeiros que ficarem em 1º, 2º e 3º lugares irão receber uma menção especial ao final deste post. 
 
@@ -255,7 +255,7 @@ Os leiloeiros que ficarem em 1º, 2º e 3º lugares irão receber uma menção e
 
 O primeiro jogo é o **Coletando leilões**. Este jogo funciona da seguinte maneira: o juiz irá escolher algum leiloeiro de sua confiança para realizar o leilão. O leiloeiro que conseguir mais processos, será o vencedor. Há um total de 135 processos com leilões. Então o máximo de leilões que alguém pode acumular é 135, e o mínimo é 1.
 
-``` {r plot1, eval = TRUE}
+``` {r plot1, eval = TRUE, layout="l-body-outset"}
 processos %>% 
   arrange(qtd_processos) %>% 
   mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>% 
@@ -276,8 +276,8 @@ placar1 <- processos %>%
   arrange(desc(score_jogo_1))
 
 placar1 %>% 
-    rename("Leiloeiro" = leiloeiro, "Quantidade de processos" = qtd_processos, "Score jogo 1" = score_jogo_1) %>% 
-  knitr::kable(digits=2)
+  knitr::kable(digits=2, col.names = gsub("[_]", " ", names(placar1))) %>% 
+  kableExtra::scroll_box(height = "500px", width = "550px")
 ```
 
 Como houve muitos candidatos empatados, o primeiro lugar de Fernando rendeu-lhe apenas 9 pontos. 
@@ -286,7 +286,7 @@ Como houve muitos candidatos empatados, o primeiro lugar de Fernando rendeu-lhe 
 
 O segundo jogo é **O tamanho do peixe**. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões que lhes foi confiado. Para isso, calculamos o valor total de cada um dos processos e dividimos pelo total de bens. Ganha quem tiver um valor médio por processo maior. 
 
-```{r plot2, eval = TRUE}
+```{r plot2, eval = TRUE, layout="l-body-outset"}
 processos %>% 
   arrange(vtp) %>% 
   mutate(leiloeiro = forcats::as_factor(leiloeiro)) %>% 
@@ -302,18 +302,19 @@ No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quan
 No fim, o placar ficou:
 
 ```{r placar2, eval=TRUE, results='asis'}
-
-placar2 <- processos %>% 
+preplacar2 <- processos %>% 
   mutate(score_jogo_2 = as.numeric(forcats::as_factor(vtp))) %>% 
   select(leiloeiro, vtp, score_jogo_2) %>% 
   arrange(desc(score_jogo_2))
 
-left_join(placar1, placar2, by = "leiloeiro") %>% 
-  mutate(pontos_acumulados = score_jogo_1 + score_jogo_2) %>% 
-  select(leiloeiro, vtp, score_jogo_2, pontos_acumulados) %>% 
-  arrange(desc(score_jogo_2)) %>%
-  rename("Leiloeiro" = leiloeiro, "Valor médio por processo" = vtp, "Score jogo 2" = score_jogo_2, "Pontos acumulados" = pontos_acumulados) %>%
-  knitr::kable(digits=2)
+placar2 <- left_join(placar1, preplacar2, by = "leiloeiro") %>% 
+  mutate(pontos_acumulados = score_jogo_1 + score_jogo_2) %>%
+  select(leiloeiro, vtp, score_jogo_2, pontos_acumulados) %>%
+  rename(valor_medio_processo = vtp) %>% 
+  arrange(desc(score_jogo_2))
+
+knitr::kable(placar2, digits=2, col.names = gsub("[_]", " ", names(placar2))) %>% 
+  kableExtra::scroll_box(height = "500px", width = "100%")
 ```
 
 Esta disputa rendeu incríveis 24 pontos para Euclides ! Mas isso não foi suficiente para ultrapassar Fernando, nem Renato, que no placar geral estão respectivamente, com 6 e 3 pontos na frente de Euclides. 
@@ -322,7 +323,7 @@ Esta disputa rendeu incríveis 24 pontos para Euclides ! Mas isso não foi sufic
 
 O terceiro jogo é **Quem vende mais?**. Este jogo (e o próximo também) está olhando, não para características dos leilões que foram encaminhados a cada um dos leiloeiros, mas para os resultados desses leilões. Assim, o que está sendo comparado aqui é o que chamaremos de "taxa_sucesso". É uma conta simples: de todos os bens que poderiam ter sido vendidos, quantos de fato conseguiram ser alienados? Essa taxa é um valor de 0 a 1. O leiloeiro que obtiver a maior taxa será o ganhador. 
 
-```{r plot3, eval = TRUE}
+```{r plot3, eval = TRUE, layout="l-body-outset"}
 sucesso %>%
   group_by(leiloeiro, vendeu) %>%
   summarise(qtd_bens = n()) %>% 
@@ -346,7 +347,7 @@ sucesso %>%
 O terceiro jogo foi o mais disputado até agora. Tivemos 3 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto ! Quem se deu melhor nessa competição foram aqueles que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. E aqueles com muitos bens tiveram dificuldades em vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Dora Plat e de Danilo Cardoso, que ficaram com uma taxa de sucesso de 0. Danilo tiha apenas 9 bens para alienar; e Dora, 30. Esse jogo embaralhou bastante a competição, deixando bem mais acirrada a disputa no placar geral. 
 
 ```{r placar3, eval=TRUE, results='asis'}
-placar3 <- sucesso %>% 
+preplacar3 <- sucesso %>% 
   group_by(leiloeiro, vendeu) %>%
   summarise(qtd_bens = n()) %>% 
   tidyr::pivot_wider(
@@ -363,25 +364,26 @@ placar3 <- sucesso %>%
   select(leiloeiro, taxa_sucesso, score_jogo_3) %>% 
   arrange(desc(score_jogo_3))
 
-left_join(placar3, left_join(placar1, placar2, by = "leiloeiro"), by = "leiloeiro") %>% 
-  mutate(pontos_acumulados = score_jogo_1 + score_jogo_2 + score_jogo_3) %>% 
+placar3 <- left_join(preplacar3, placar2, by = "leiloeiro") %>% 
+  mutate(pontos_acumulados = pontos_acumulados + score_jogo_3) %>%
   select(leiloeiro, taxa_sucesso, score_jogo_3, pontos_acumulados) %>% 
-  arrange(desc(score_jogo_3)) %>% 
-  rename("Leiloeiro" = leiloeiro, "Taxa de sucesso" = taxa_sucesso, "Score jogo 3" = score_jogo_3, "Pontos acumulados" = pontos_acumulados) %>%
-  knitr::kable(digits=2)
+  arrange(desc(score_jogo_3))
+
+knitr::kable(placar3, digits=2, col.names = gsub("[_]", " ", names(placar3))) %>% 
+  kableExtra::scroll_box(height = "500px", width = "100%")
+
 ```
 
 A liderança está agora com Renato Scholbach Moysés, mas apenas 2 pontos atrás está Alfio Carlos Affonso Zalli Neto. Será que Renato conseguirá manter sua posição no último jogo? 
 
 ## Jogo 4: Quem dá mais?
 
-<<<<<<< HEAD
 O quarto e último jogo é **Quem dá mais?**. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda através da operação *valor vendido / valor de avaliação*. Essa taxa, na base de dados, variou de 0 (quando o bem não havia sido alienado) até 10 (quando o bem havia sido vendido por 10 vezes o preço de avaliação). Alguns bens ficaram com uma taxa de venda de infinito, mas isso ocorreu devido ao fato de que tais bens haviam sido avaliados em R$ 0,00 (zero reais). Dessa forma, realizou-se uma divisão por zero. Esses bens foram excluídos da análise. Além disso, como os bens não vendidos já foram considerados no jogo passado, para não prejudicar duplamente os leiloeiros, consideramos para este jogo apenas os bens vendidos. Assim, todos os bens cuja taxa de venda era igual a 0 foram filtrados e retirados. Com essa alteração, todos os leiloeiros que no jogo passado não venderam nenhum bem acabaram sendo desqualificados do jogo, ficando em último lugar. 
 
 A partir desta avariável, foi possível criar o critério de comparação deste jogo: a taxa média de venda. Esse critério buscou comparar a taxa média por que cada leiloeiro conseguia alienar os bens. A seguir, temos os resultados da competição. 
 
 ```{r plot4, eval = TRUE, layout="l-body-outset"}
-media4 <- mean(sucesso$taxa_venda)
+#media4 <- mean(sucesso$taxa_venda_valor)
 
 sucesso  %>% 
   filter(vendeu == "sim") %>% 
@@ -400,7 +402,7 @@ Vemos, acima que este jogo foi difícil para os leiloeiros com grandes valores d
 Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter um taxas de venda média maior do que 1 foi Cezar Augusto Badolato. Com isso, temos consolidado o placar final. 
 
 ```{r placar4, eval=TRUE, results='asis'}
-placar4 <- sucesso %>% 
+preplacar4 <- sucesso %>% 
   group_by(leiloeiro) %>% 
   summarise(taxa_venda_media = mean(taxa_venda_valor)) %>%
   arrange(taxa_venda_media) %>% 
@@ -408,12 +410,13 @@ placar4 <- sucesso %>%
   select(leiloeiro, taxa_venda_media, score_jogo_4) %>% 
   arrange(desc(score_jogo_4))
 
-left_join(placar4, left_join(placar3, left_join(placar1, placar2, by = "leiloeiro"), by = "leiloeiro"), by = "leiloeiro") %>% 
-  mutate(pontos_acumulados = score_jogo_1 + score_jogo_2 + score_jogo_3 + score_jogo_4) %>% 
+placar4 <- left_join(preplacar4, placar3, by = "leiloeiro") %>% 
+  mutate(pontos_acumulados = pontos_acumulados + score_jogo_4) %>%
   select(leiloeiro, taxa_venda_media, score_jogo_4, pontos_acumulados) %>% 
-  arrange(desc(score_jogo_4)) %>%
-  rename("Leiloeiro" = leiloeiro, "Taxa de venda média" = taxa_venda_media, "Score jogo 4" = score_jogo_4, "Pontos acumulados" = pontos_acumulados) %>%
-  knitr::kable(digits=2)
+  arrange(desc(score_jogo_4))
+
+knitr::kable(placar4, digits=2, col.names = gsub("[.]", " ", names(placar4))) %>% 
+  kableExtra::scroll_box(height = "500px", width = "100%")
 ```
 
 # E o ganhador é... 
@@ -421,27 +424,37 @@ left_join(placar4, left_join(placar3, left_join(placar1, placar2, by = "leiloeir
 Computando todos os jogos, temos o seguinte resultado:
 
 ```{r, eval=TRUE, results='asis'}
-left_join(placar4, left_join(placar3, left_join(placar1, placar2, by = "leiloeiro"), by = "leiloeiro"), by = "leiloeiro") %>% 
+placar_final <- left_join(preplacar4, left_join(preplacar3, left_join(preplacar2, placar1, by = "leiloeiro"), by = "leiloeiro"), by = "leiloeiro") %>% 
   mutate(pontos_acumulados = score_jogo_1 + score_jogo_2 + score_jogo_3 + score_jogo_4) %>% 
   mutate(score_total = as.numeric(forcats::as_factor(pontos_acumulados))) %>% 
   arrange(desc(score_total)) %>% 
-  select(leiloeiro, score_jogo_1, score_jogo_2, score_jogo_3, score_jogo_4, pontos_acumulados, score_total) %>% 
-  rename("Leiloeiro" = leiloeiro, "Score jogo 1" = score_jogo_1, "Score jogo 2" = score_jogo_2, "Score jogo 3" = score_jogo_3, "Score jogo 4" = score_jogo_4, "Pontos acumulados" = pontos_acumulados, "Colocação final" = score_total) %>%
-  knitr::kable(digits=2) %>% 
-  kableExtra::row_spec(1:3, bold=TRUE, background=cores_abj[2])
+  select(leiloeiro, score_jogo_1, score_jogo_2, score_jogo_3, score_jogo_4, pontos_acumulados, score_total) 
+
+placar_final %>% 
+  knitr::kable(digits=2, col.names = gsub("[_]", " ", names(placar_final))) %>% 
+  kableExtra::row_spec(1:3, bold=TRUE, background=cores_abj[2]) %>% 
+  kableExtra::scroll_box(height = "500px", width = "100%")
 ```
 
 Menção especial aos vencedores: o vencedor é **GUSTAVO CRISTIANO SAMUEL DOS REIS**, com 60 pontos. Em segundo lugar, com apenas 1 ponto de diferença, temos *CEZAR AUGUSTO BADOLATO SILVA*. E em terceiro lugar, com 5 pontos a menos que o primeiro lugar, temos ALFIO CARLOS AFFONSO ZALLI NETO. 
 
 Parabéns a todos os participantes. 
 
-## Considerações metodológicas 
+### Considerações metodológicas 
 
 Até aqui, assumi um tom informal para apresentar os dados sobre os leiloeiros de São Paulo. Esta escolha foi feita, pensando em divulgar estes dados de uma forma lúdica e acessível a qualquer leitor. Entretanto, essa escolha sacrificou, em alguns momentos, um rigor técnico-cientfíco importante. Nestas considerações finais, pretendo fazer algumas ressalvas sobre os resultados obtidos. 
 
-A primeira ressalva diz respeito ao que significa ser ganhador desta competição. O ponto que quero deixar claro é que o sucesso de um leiloeiro não necessariamente está ligado aos seus próprios esforços. Pela narrativa da "competição" que eu criei para apresentar os dados, poderia dar a entender que os leiloeiros ganhadores são aqueles que se esforçaram mais para ganhar e, portanto, são os melhores leiloeiros. Entretanto, o que eu preciso deixar claro é que o sucesso dos leiloeiros em cada um dos jogos envolvia fatores fatores que estavam muito além das vontades e capacidades de cada jogador. Vejamos caso a caso onde estavam as limitações. 
+As ressalvas dizem respeito ao que significa ser ganhador desta competição. O ponto que quero deixar claro é que o sucesso de um leiloeiro não necessariamente está ligado aos seus próprios esforços. Pela narrativa da "competição" que eu criei para apresentar os dados, poderia dar a entender que os leiloeiros ganhadores são aqueles que se esforçaram mais para ganhar e, portanto, são _os melhores_ leiloeiros. Entretanto, o que eu preciso deixar claro é que o sucesso dos leiloeiros em cada um dos jogos envolvia fatores que estavam muito além das vontades e capacidades de cada jogador. Vejamos caso a caso onde estavam as limitações. 
 
 Primeiro, no **jogo 1 (quantidade de processos)**, a quantidade de processos que um leiloeiro recebe está atrelada, no fim das contas, à escolha de um agente externo. O leiloeiro tem algum mérito em ser escolhido na medida em que o juiz escolhe alguém de sua confiança. O **jogo 2 (valor dos leilões)** padece do mesmo problema, pois não só o leiloeiro não escolhe a quantos processos ele é chamado, como ele também não escolhe o valor total de cada processo que lhe chega. É claro que há uma escolha, pequena, do leiloeiro ao ser chamado a um processo, pois ele pode rejeitar a oferta de realizar leilões de pequenos valores e aceitar apenas processos de grandes montas. Entretanto, o que me interessa aqui é que, à rigor, o valor do processo não é algo determinado pelo leiloeiro, mas é uma circunstância do processo, determinada externamente a ele. 
 
-Nos **jogos 3 (taxa de sucesso) e 4 (taxa de venda)**, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um agente externo, mas neste caso, o elemento externo são os "clientes" dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens).
+Nos **jogos 3 (taxa de sucesso)** e **4 (taxa de venda)**, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um agente externo, mas neste caso, o elemento externo são os "clientes" dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens).
+
+Feitos esses esclarecimentos, posso encerrar o artigo com algumas conclusões gerais. 
+### Considerações finais
+
+Os jogos entre os leiloeiros foram úteis para demonstrar que... 
+- Desigualdade entre leiloeiros
+- Valores altos
+- Recuperabilidade
 

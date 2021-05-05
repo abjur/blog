@@ -56,7 +56,7 @@ code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,7 +77,7 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
@@ -1888,7 +1888,10 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
-      var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
       window.tippy(this, {
         allowHTML: true,
         content: refHtml,
@@ -2186,7 +2189,7 @@ gtag('config', 'UA-182605574-1');
 <p>A base que utilizaremos para tanto é uma das bases de dados da 3ª fase do Observatório da Insolvência da ABJ<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, isto é, o observatório das falências em São Paulo. Mais especificamente, utilizaremos a base que contém todos os bens que foram a leilão, em SP. Cada observação é um bem diferente. E cada coluna é uma característica desse bem. As principais características que utilizaremos aqui são: o processo no qual esse bem se encontra; o leiloeiro responsável pela alienação desse bem; o valor de avaliação dos bens; a informação de se o bem vendeu ou não; e o preço pelo qual o bem foi arrematado.</p>
 <p>Com base nesses dados, podemos pensar em estratégias para determinar o sucesso dos leiloeiros. Essa comparação será feita colocando os leiloeiros para jogar diversos jogos entre si, disputando os melhores scores em cada jogo. Veremos a seguir as regras dos jogos.</p>
 <h1 id="as-regras-dos-jogos">As regras dos jogos</h1>
-<h2 id="dos-candidatos-habilitados">Dos candidatos habilitados</h2>
+<h3 id="dos-candidatos-habilitados">Dos candidatos habilitados</h3>
 <p>A única regra para a habilitação dos leiloeiros nos jogos é que eles sejam pessoas físicas. A base original continha algumas pessoas jurídicas. Entretanto, muitas dessas pessoas jurídicas estavam associadas a um único leiloeiro, sendo possível, portanto, substituir a pessoa jurídica por uma pessoa física facilmente. Isso aconteceu para o “Mega Leilões”, “Gold Leilões”, “D1 Lance”, “Hasta Pública” e “Casa Reis”. A tabela a seguir indica a relação entre as pessoas jurídicas e os respectivos leiloeiros por detrás delas.</p>
 <div class="l-body">
 <table>
@@ -2222,489 +2225,1045 @@ gtag('config', 'UA-182605574-1');
 </div>
 <p>Houve uma casa de leilões, entretanto, que não havia uma pessoa física correspondente. Foi a casa Lance Alienações Eletrônicas Ltda. Este, portanto, foi o único candidato desqualificado.</p>
 <p>Ao fim, ficamos com 24 concorrentes.</p>
-<h2 id="dos-jogos">Dos jogos</h2>
+<h3 id="dos-jogos">Dos jogos</h3>
 <p>Ao todo serão feitos 4 jogos. Cada jogo terá um, ou mais, ganhadores. O jogador que obtiver mais pontos ao final dos 4 jogos será o vecedor.</p>
-<h2 id="da-contagem-dos-pontos">Da contagem dos pontos</h2>
+<h3 id="da-contagem-dos-pontos">Da contagem dos pontos</h3>
 <p>Para cada um dos jogos, podemos ordenadar os leiloeiros. Cada um dos jogos possui bases diferentes de pontuação. Por exemplo, no jogo 1, os jogadores podem fazer de 0 a 135 pontos, mas no jogo 3, os jogadores podem fazer só de 0 a 1 pontos. O problema é que dessa forma, o ganhador do jogo 1 teria mais vantagem do que o ganhador do jogo 3. Para resolver este problema, padronizamos as pontuações, de modo que a colocação de um jogador se tornou a sua pontuação em cada um dos jogos.</p>
-<p>Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre alguém teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação. Mas o fato de nem todos os jogos chegarem a 24 pontos pode privilegiar alguns jogos, em detrimento de outros. Assim, esses pontos serão normalizados, ou seja, eles serão divididos pelo número de pontos do primeiro lugar.</p>
+<p>Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação. O fato de nem todos os jogos chegarem a 24 pontos pode privilegiar alguns jogos, em detrimento de outros. Assim, esses pontos serão normalizados, ou seja, eles serão divididos pelo número de pontos do primeiro lugar.</p>
 <p>Ao fim dos 4 jogos, as pontuações serão somadas, para criarmos um placar final. Então o jogador que acumular mais pontos ao fim dos 4 jogos será o vencedor.</p>
-<h2 id="do-prêmio">Do prêmio</h2>
+<h3 id="do-prêmio">Do prêmio</h3>
 <p>Os leiloeiros que ficarem em 1º, 2º e 3º lugares irão receber uma menção especial ao final deste post.</p>
 <h1 id="que-comecem-os-jogos">Que comecem os jogos!</h1>
 <h2 id="jogo-1-coletando-leilões">Jogo 1: Coletando leilões</h2>
 <p>O primeiro jogo é o <strong>Coletando leilões</strong>. Este jogo funciona da seguinte maneira: o juiz irá escolher algum leiloeiro de sua confiança para realizar o leilão. O leiloeiro que conseguir mais processos, será o vencedor. Há um total de 135 processos com leilões. Então o máximo de leilões que alguém pode acumular é 135, e o mínimo é 1.</p>
-<div class="layout-chunk" data-layout="l-body">
+<div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="leiloeiros_files/figure-html5/plot1-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <p>No primeiro jogo, de número de processos que cada leiloeiro recebeu, tivemos um destaque fortíssimo. Fernando José Cerello Gonçalves Pereira assumiu a liderança com quase 40 processos ! O segundo lugar foi Ronaldo Faro, com 28 processos, e o terceiro colocado foi Renato Schlobach Moysés, com 24 processos. O quarto lugar teve apenas 12 processos em sua contagem, e foi Thays Silva Morerira de Sousa. Os próximos jogadores, não passaram de 10 processos, e a moda foi de apenas 1 processo!</p>
 <p>Com isso, o placar ficou:</p>
 <div class="layout-chunk" data-layout="l-body">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:550px; ">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">Leiloeiro</th>
-<th style="text-align: right;">Quantidade de processos</th>
-<th style="text-align: right;">Score jogo 1</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+leiloeiro
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+qtd processos
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 1
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">9</td>
+<tr>
+<td style="text-align:left;">
+Fernando José Cerello Gonçalves Pereira
+</td>
+<td style="text-align:right;">
+39
+</td>
+<td style="text-align:right;">
+9
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
-<td style="text-align: right;">28</td>
-<td style="text-align: right;">8</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Sérgio Montenegro Rodrigues Faro
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+8
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Renato Schlobach Moysés</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">7</td>
+<tr>
+<td style="text-align:left;">
+Renato Schlobach Moysés
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">6</td>
+<tr>
+<td style="text-align:left;">
+Thais Silva Moreira de Sousa
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+6
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">5</td>
+<tr>
+<td style="text-align:left;">
+Georgios José Ilias Bernabé Alexandridis
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+5
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Antonio Hissao Sato Junio</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
+<tr>
+<td style="text-align:left;">
+Antonio Hissao Sato Junio
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Dannae Vieira Avila</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
+<tr>
+<td style="text-align:left;">
+Dannae Vieira Avila
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Moretto Guimarães de Oliveira
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Renata Franklin Simões</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
+<tr>
+<td style="text-align:left;">
+Renata Franklin Simões
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">4</td>
+<tr>
+<td style="text-align:left;">
+Sérgio Villa Nova de Freitas
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
+<tr>
+<td style="text-align:left;">
+Cezar Augusto Badolato Silva
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Uilian Aparecido da Silva</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">3</td>
+<tr>
+<td style="text-align:left;">
+Uilian Aparecido da Silva
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">André Macedo Campos Toledo</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<tr>
+<td style="text-align:left;">
+André Macedo Campos Toledo
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Dora Plat</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<tr>
+<td style="text-align:left;">
+Dora Plat
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Euclides Maraschi Junior</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<tr>
+<td style="text-align:left;">
+Euclides Maraschi Junior
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">2</td>
+<tr>
+<td style="text-align:left;">
+Wendell Marcel Calixto Félix
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Alfio Carlos Affonso Zalli Neto
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Danilo Cardoso da Silva</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Danilo Cardoso da Silva
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Douglas José Fidalgo</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Douglas José Fidalgo
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Eduardo dos Reis</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Eduardo dos Reis
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Eduardo Jordão Boyadjian
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Fabio Zukerman</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Fabio Zukerman
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Cristiano Samuel dos Reis
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Ronaldo Milan</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Milan
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
 <p>Como houve muitos candidatos empatados, o primeiro lugar de Fernando rendeu-lhe apenas 9 pontos.</p>
 <h2 id="jogo-2-o-tamanho-do-peixe">Jogo 2: O tamanho do peixe</h2>
 <p>O segundo jogo é <strong>O tamanho do peixe</strong>. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões que lhes foi confiado. Para isso, calculamos o valor total de cada um dos processos e dividimos pelo total de bens. Ganha quem tiver um valor médio por processo maior.</p>
-<div class="layout-chunk" data-layout="l-body">
+<div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="leiloeiros_files/figure-html5/plot2-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <p>No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quantidade de R$ 86.608.346,88 por processo (86 milhões de reais por processo). O ganhador foi Euclides Maraschi Junior. A disputa pelo segundo lugar foi acirradíssima. Por pouco, Fernando José Cerello ganhou de Renato Schlobach Moysés. O valor médio de seus processos foi, respectivamente, de R$ 29.938.436,60 (29 milhões) por proceso e de R$ 26.053.257,72 (26 milhões). Os últimos colocados tiveram arrecadações de 300 mil até 25 mil reais por processo. É uma diferença na escala de 100 vezes em relação aos primeiros colocados.</p>
 <p>No fim, o placar ficou:</p>
 <div class="layout-chunk" data-layout="l-body">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">Leiloeiro</th>
-<th style="text-align: right;">Valor médio por processo</th>
-<th style="text-align: right;">Score jogo 2</th>
-<th style="text-align: right;">Pontos acumulados</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+leiloeiro
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+valor medio processo
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pontos acumulados
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">Euclides Maraschi Junior</td>
-<td style="text-align: right;">86608346.88</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">26</td>
+<tr>
+<td style="text-align:left;">
+Euclides Maraschi Junior
+</td>
+<td style="text-align:right;">
+86608346.88
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+26
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
-<td style="text-align: right;">29938436.60</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">32</td>
+<tr>
+<td style="text-align:left;">
+Fernando José Cerello Gonçalves Pereira
+</td>
+<td style="text-align:right;">
+29938436.60
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+32
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Renato Schlobach Moysés</td>
-<td style="text-align: right;">26053257.72</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">29</td>
+<tr>
+<td style="text-align:left;">
+Renato Schlobach Moysés
+</td>
+<td style="text-align:right;">
+26053257.72
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+29
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
-<td style="text-align: right;">2439089.73</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">24</td>
+<tr>
+<td style="text-align:left;">
+Cezar Augusto Badolato Silva
+</td>
+<td style="text-align:right;">
+2439089.73
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+24
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
-<td style="text-align: right;">2189231.78</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">28</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Sérgio Montenegro Rodrigues Faro
+</td>
+<td style="text-align:right;">
+2189231.78
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+28
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
-<td style="text-align: right;">2134669.98</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">25</td>
+<tr>
+<td style="text-align:left;">
+Thais Silva Moreira de Sousa
+</td>
+<td style="text-align:right;">
+2134669.98
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+25
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
-<td style="text-align: right;">1995000.00</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">19</td>
+<tr>
+<td style="text-align:left;">
+Alfio Carlos Affonso Zalli Neto
+</td>
+<td style="text-align:right;">
+1995000.00
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
-<td style="text-align: right;">1724682.75</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">21</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Moretto Guimarães de Oliveira
+</td>
+<td style="text-align:right;">
+1724682.75
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+21
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
-<td style="text-align: right;">1600000.00</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">17</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Cristiano Samuel dos Reis
+</td>
+<td style="text-align:right;">
+1600000.00
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+17
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
-<td style="text-align: right;">986579.95</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">17</td>
+<tr>
+<td style="text-align:left;">
+Wendell Marcel Calixto Félix
+</td>
+<td style="text-align:right;">
+986579.95
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+17
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">André Macedo Campos Toledo</td>
-<td style="text-align: right;">657767.50</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">16</td>
+<tr>
+<td style="text-align:left;">
+André Macedo Campos Toledo
+</td>
+<td style="text-align:right;">
+657767.50
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+16
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Ronaldo Milan</td>
-<td style="text-align: right;">522000.00</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">14</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Milan
+</td>
+<td style="text-align:right;">
+522000.00
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+14
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Antonio Hissao Sato Junio</td>
-<td style="text-align: right;">460986.00</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">16</td>
+<tr>
+<td style="text-align:left;">
+Antonio Hissao Sato Junio
+</td>
+<td style="text-align:right;">
+460986.00
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+16
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Eduardo dos Reis</td>
-<td style="text-align: right;">347780.00</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">12</td>
+<tr>
+<td style="text-align:left;">
+Eduardo dos Reis
+</td>
+<td style="text-align:right;">
+347780.00
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+12
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Uilian Aparecido da Silva</td>
-<td style="text-align: right;">283645.00</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">13</td>
+<tr>
+<td style="text-align:left;">
+Uilian Aparecido da Silva
+</td>
+<td style="text-align:right;">
+283645.00
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+13
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Renata Franklin Simões</td>
-<td style="text-align: right;">263835.94</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">13</td>
+<tr>
+<td style="text-align:left;">
+Renata Franklin Simões
+</td>
+<td style="text-align:right;">
+263835.94
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+13
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Dora Plat</td>
-<td style="text-align: right;">248669.01</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">10</td>
+<tr>
+<td style="text-align:left;">
+Dora Plat
+</td>
+<td style="text-align:right;">
+248669.01
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+10
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
-<td style="text-align: right;">86924.93</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">12</td>
+<tr>
+<td style="text-align:left;">
+Georgios José Ilias Bernabé Alexandridis
+</td>
+<td style="text-align:right;">
+86924.93
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+12
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
-<td style="text-align: right;">67090.00</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">7</td>
+<tr>
+<td style="text-align:left;">
+Eduardo Jordão Boyadjian
+</td>
+<td style="text-align:right;">
+67090.00
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Fabio Zukerman</td>
-<td style="text-align: right;">52690.00</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">6</td>
+<tr>
+<td style="text-align:left;">
+Fabio Zukerman
+</td>
+<td style="text-align:right;">
+52690.00
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+6
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Dannae Vieira Avila</td>
-<td style="text-align: right;">43476.45</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">8</td>
+<tr>
+<td style="text-align:left;">
+Dannae Vieira Avila
+</td>
+<td style="text-align:right;">
+43476.45
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+8
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
-<td style="text-align: right;">41404.08</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">7</td>
+<tr>
+<td style="text-align:left;">
+Sérgio Villa Nova de Freitas
+</td>
+<td style="text-align:right;">
+41404.08
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+7
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Douglas José Fidalgo</td>
-<td style="text-align: right;">30000.00</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">3</td>
+<tr>
+<td style="text-align:left;">
+Douglas José Fidalgo
+</td>
+<td style="text-align:right;">
+30000.00
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Danilo Cardoso da Silva</td>
-<td style="text-align: right;">25290.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
+<tr>
+<td style="text-align:left;">
+Danilo Cardoso da Silva
+</td>
+<td style="text-align:right;">
+25290.00
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <p>Esta disputa rendeu incríveis 24 pontos para Euclides ! Mas isso não foi suficiente para ultrapassar Fernando, nem Renato, que no placar geral estão respectivamente, com 6 e 3 pontos na frente de Euclides.</p>
 <h2 id="jogo-3-quem-vende-mais">Jogo 3: Quem vende mais?</h2>
 <p>O terceiro jogo é <strong>Quem vende mais?</strong>. Este jogo (e o próximo também) está olhando, não para características dos leilões que foram encaminhados a cada um dos leiloeiros, mas para os resultados desses leilões. Assim, o que está sendo comparado aqui é o que chamaremos de “taxa_sucesso”. É uma conta simples: de todos os bens que poderiam ter sido vendidos, quantos de fato conseguiram ser alienados? Essa taxa é um valor de 0 a 1. O leiloeiro que obtiver a maior taxa será o ganhador.</p>
-<div class="layout-chunk" data-layout="l-body">
+<div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="leiloeiros_files/figure-html5/plot3-1.png" width="624" style="display: block; margin: auto;" /></p>
 </div>
 <p>O terceiro jogo foi o mais disputado até agora. Tivemos 3 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto ! Quem se deu melhor nessa competição foram aqueles que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. E aqueles com muitos bens tiveram dificuldades em vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Dora Plat e de Danilo Cardoso, que ficaram com uma taxa de sucesso de 0. Danilo tiha apenas 9 bens para alienar; e Dora, 30. Esse jogo embaralhou bastante a competição, deixando bem mais acirrada a disputa no placar geral.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">Leiloeiro</th>
-<th style="text-align: right;">Taxa de sucesso</th>
-<th style="text-align: right;">Score jogo 3</th>
-<th style="text-align: right;">Pontos acumulados</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+leiloeiro
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+taxa sucesso
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 3
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pontos acumulados
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">37</td>
+<tr>
+<td style="text-align:left;">
+Alfio Carlos Affonso Zalli Neto
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+37
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Douglas José Fidalgo</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">21</td>
+<tr>
+<td style="text-align:left;">
+Douglas José Fidalgo
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+21
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Fabio Zukerman</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">24</td>
+<tr>
+<td style="text-align:left;">
+Fabio Zukerman
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+24
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
-<td style="text-align: right;">1.00</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">35</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Cristiano Samuel dos Reis
+</td>
+<td style="text-align:right;">
+1.00
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+35
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">André Macedo Campos Toledo</td>
-<td style="text-align: right;">0.99</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">33</td>
+<tr>
+<td style="text-align:left;">
+André Macedo Campos Toledo
+</td>
+<td style="text-align:right;">
+0.99
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+33
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Antonio Hissao Sato Junio</td>
-<td style="text-align: right;">0.96</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">32</td>
+<tr>
+<td style="text-align:left;">
+Antonio Hissao Sato Junio
+</td>
+<td style="text-align:right;">
+0.96
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+32
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
-<td style="text-align: right;">0.80</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">22</td>
+<tr>
+<td style="text-align:left;">
+Eduardo Jordão Boyadjian
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+22
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
-<td style="text-align: right;">0.80</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">22</td>
+<tr>
+<td style="text-align:left;">
+Sérgio Villa Nova de Freitas
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+22
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
-<td style="text-align: right;">0.80</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">32</td>
+<tr>
+<td style="text-align:left;">
+Wendell Marcel Calixto Félix
+</td>
+<td style="text-align:right;">
+0.80
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+32
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Ronaldo Milan</td>
-<td style="text-align: right;">0.76</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">28</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Milan
+</td>
+<td style="text-align:right;">
+0.76
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+28
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">37</td>
+<tr>
+<td style="text-align:left;">
+Cezar Augusto Badolato Silva
+</td>
+<td style="text-align:right;">
+0.68
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+37
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
-<td style="text-align: right;">0.61</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">33</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Moretto Guimarães de Oliveira
+</td>
+<td style="text-align:right;">
+0.61
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+33
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Renato Schlobach Moysés</td>
-<td style="text-align: right;">0.52</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">40</td>
+<tr>
+<td style="text-align:left;">
+Renato Schlobach Moysés
+</td>
+<td style="text-align:right;">
+0.52
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+40
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Renata Franklin Simões</td>
-<td style="text-align: right;">0.46</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">23</td>
+<tr>
+<td style="text-align:left;">
+Renata Franklin Simões
+</td>
+<td style="text-align:right;">
+0.46
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+23
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
-<td style="text-align: right;">0.34</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">37</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Sérgio Montenegro Rodrigues Faro
+</td>
+<td style="text-align:right;">
+0.34
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+37
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Euclides Maraschi Junior</td>
-<td style="text-align: right;">0.29</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">34</td>
+<tr>
+<td style="text-align:left;">
+Euclides Maraschi Junior
+</td>
+<td style="text-align:right;">
+0.29
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+34
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
-<td style="text-align: right;">0.28</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">19</td>
+<tr>
+<td style="text-align:left;">
+Georgios José Ilias Bernabé Alexandridis
+</td>
+<td style="text-align:right;">
+0.28
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+19
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
-<td style="text-align: right;">0.26</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">31</td>
+<tr>
+<td style="text-align:left;">
+Thais Silva Moreira de Sousa
+</td>
+<td style="text-align:right;">
+0.26
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+31
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
-<td style="text-align: right;">0.25</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">37</td>
+<tr>
+<td style="text-align:left;">
+Fernando José Cerello Gonçalves Pereira
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+37
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Dannae Vieira Avila</td>
-<td style="text-align: right;">0.05</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">12</td>
+<tr>
+<td style="text-align:left;">
+Dannae Vieira Avila
+</td>
+<td style="text-align:right;">
+0.05
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+12
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Eduardo dos Reis</td>
-<td style="text-align: right;">0.03</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">15</td>
+<tr>
+<td style="text-align:left;">
+Eduardo dos Reis
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+15
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Uilian Aparecido da Silva</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">15</td>
+<tr>
+<td style="text-align:left;">
+Uilian Aparecido da Silva
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+15
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Danilo Cardoso da Silva</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">3</td>
+<tr>
+<td style="text-align:left;">
+Danilo Cardoso da Silva
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+3
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Dora Plat</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">11</td>
+<tr>
+<td style="text-align:left;">
+Dora Plat
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+11
+</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
 <p>A liderança está agora com Renato Scholbach Moysés, mas apenas 2 pontos atrás está Alfio Carlos Affonso Zalli Neto. Será que Renato conseguirá manter sua posição no último jogo?</p>
 <h2 id="jogo-4-quem-dá-mais">Jogo 4: Quem dá mais?</h2>
-<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD O quarto e último jogo é <strong>Quem dá mais?</strong>. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda através da operação <em>valor vendido / valor de avaliação</em>. Essa taxa, na base de dados, variou de 0 (quando o bem não havia sido alienado) até 10 (quando o bem havia sido vendido por 10 vezes o preço de avaliação). Alguns bens ficaram com uma taxa de venda de infinito, mas isso ocorreu devido ao fato de que tais bens haviam sido avaliados em R$ 0,00 (zero reais). Dessa forma, realizou-se uma divisão por zero. Esses bens foram excluídos da análise. Além disso, como os bens não vendidos já foram considerados no jogo passado, para não prejudicar duplamente os leiloeiros, consideramos para este jogo apenas os bens vendidos. Assim, todos os bens cuja taxa de venda era igual a 0 foram filtrados e retirados. Com essa alteração, todos os leiloeiros que no jogo passado não venderam nenhum bem acabaram sendo desqualificados do jogo, ficando em último lugar.</p>
+<p>O quarto e último jogo é <strong>Quem dá mais?</strong>. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda através da operação <em>valor vendido / valor de avaliação</em>. Essa taxa, na base de dados, variou de 0 (quando o bem não havia sido alienado) até 10 (quando o bem havia sido vendido por 10 vezes o preço de avaliação). Alguns bens ficaram com uma taxa de venda de infinito, mas isso ocorreu devido ao fato de que tais bens haviam sido avaliados em R$ 0,00 (zero reais). Dessa forma, realizou-se uma divisão por zero. Esses bens foram excluídos da análise. Além disso, como os bens não vendidos já foram considerados no jogo passado, para não prejudicar duplamente os leiloeiros, consideramos para este jogo apenas os bens vendidos. Assim, todos os bens cuja taxa de venda era igual a 0 foram filtrados e retirados. Com essa alteração, todos os leiloeiros que no jogo passado não venderam nenhum bem acabaram sendo desqualificados do jogo, ficando em último lugar.</p>
 <p>A partir desta avariável, foi possível criar o critério de comparação deste jogo: a taxa média de venda. Esse critério buscou comparar a taxa média por que cada leiloeiro conseguia alienar os bens. A seguir, temos os resultados da competição.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
 <p><img src="leiloeiros_files/figure-html5/plot4-1.png" width="624" style="display: block; margin: auto;" /></p>
@@ -2712,189 +3271,392 @@ gtag('config', 'UA-182605574-1');
 <p>Vemos, acima que este jogo foi difícil para os leiloeiros com grandes valores de bens em suas mãos, pois aqui o valor inicial contava muito. Não bastava que os bens simplesmente fossem vendidos, eles precisavam ser vendidos pelo maior valor possível. Em média, os leiloeiros conseguiam vender a uma taxa de</p>
 <p>Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter um taxas de venda média maior do que 1 foi Cezar Augusto Badolato. Com isso, temos consolidado o placar final.</p>
 <div class="layout-chunk" data-layout="l-body">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table>
 <thead>
-<tr class="header">
-<th style="text-align: left;">Leiloeiro</th>
-<th style="text-align: right;">Taxa de venda média</th>
-<th style="text-align: right;">Score jogo 4</th>
-<th style="text-align: right;">Pontos acumulados</th>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+leiloeiro
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+taxa_venda_media
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score_jogo_4
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pontos_acumulados
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td style="text-align: left;">Gustavo Cristiano Samuel dos Reis</td>
-<td style="text-align: right;">0.97</td>
-<td style="text-align: right;">23</td>
-<td style="text-align: right;">58</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Cristiano Samuel dos Reis
+</td>
+<td style="text-align:right;">
+0.97
+</td>
+<td style="text-align:right;">
+23
+</td>
+<td style="text-align:right;">
+58
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Douglas José Fidalgo</td>
-<td style="text-align: right;">0.89</td>
-<td style="text-align: right;">22</td>
-<td style="text-align: right;">43</td>
+<tr>
+<td style="text-align:left;">
+Douglas José Fidalgo
+</td>
+<td style="text-align:right;">
+0.89
+</td>
+<td style="text-align:right;">
+22
+</td>
+<td style="text-align:right;">
+43
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Cezar Augusto Badolato Silva</td>
-<td style="text-align: right;">0.84</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: right;">58</td>
+<tr>
+<td style="text-align:left;">
+Cezar Augusto Badolato Silva
+</td>
+<td style="text-align:right;">
+0.84
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+58
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Sérgio Villa Nova de Freitas</td>
-<td style="text-align: right;">0.66</td>
-<td style="text-align: right;">20</td>
-<td style="text-align: right;">42</td>
+<tr>
+<td style="text-align:left;">
+Sérgio Villa Nova de Freitas
+</td>
+<td style="text-align:right;">
+0.66
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+42
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Wendell Marcel Calixto Félix</td>
-<td style="text-align: right;">0.55</td>
-<td style="text-align: right;">19</td>
-<td style="text-align: right;">51</td>
+<tr>
+<td style="text-align:left;">
+Wendell Marcel Calixto Félix
+</td>
+<td style="text-align:right;">
+0.55
+</td>
+<td style="text-align:right;">
+19
+</td>
+<td style="text-align:right;">
+51
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Antonio Hissao Sato Junio</td>
-<td style="text-align: right;">0.54</td>
-<td style="text-align: right;">18</td>
-<td style="text-align: right;">50</td>
+<tr>
+<td style="text-align:left;">
+Antonio Hissao Sato Junio
+</td>
+<td style="text-align:right;">
+0.54
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+50
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Ronaldo Milan</td>
-<td style="text-align: right;">0.53</td>
-<td style="text-align: right;">17</td>
-<td style="text-align: right;">45</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Milan
+</td>
+<td style="text-align:right;">
+0.53
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+45
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Alfio Carlos Affonso Zalli Neto</td>
-<td style="text-align: right;">0.40</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">53</td>
+<tr>
+<td style="text-align:left;">
+Alfio Carlos Affonso Zalli Neto
+</td>
+<td style="text-align:right;">
+0.40
+</td>
+<td style="text-align:right;">
+16
+</td>
+<td style="text-align:right;">
+53
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Eduardo Jordão Boyadjian</td>
-<td style="text-align: right;">0.39</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">37</td>
+<tr>
+<td style="text-align:left;">
+Eduardo Jordão Boyadjian
+</td>
+<td style="text-align:right;">
+0.39
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+37
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Renato Schlobach Moysés</td>
-<td style="text-align: right;">0.36</td>
-<td style="text-align: right;">14</td>
-<td style="text-align: right;">54</td>
+<tr>
+<td style="text-align:left;">
+Renato Schlobach Moysés
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+54
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Fabio Zukerman</td>
-<td style="text-align: right;">0.32</td>
-<td style="text-align: right;">13</td>
-<td style="text-align: right;">37</td>
+<tr>
+<td style="text-align:left;">
+Fabio Zukerman
+</td>
+<td style="text-align:right;">
+0.32
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:right;">
+37
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Gustavo Moretto Guimarães de Oliveira</td>
-<td style="text-align: right;">0.31</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">45</td>
+<tr>
+<td style="text-align:left;">
+Gustavo Moretto Guimarães de Oliveira
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:right;">
+45
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Euclides Maraschi Junior</td>
-<td style="text-align: right;">0.25</td>
-<td style="text-align: right;">11</td>
-<td style="text-align: right;">45</td>
+<tr>
+<td style="text-align:left;">
+Euclides Maraschi Junior
+</td>
+<td style="text-align:right;">
+0.25
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:right;">
+45
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Renata Franklin Simões</td>
-<td style="text-align: right;">0.23</td>
-<td style="text-align: right;">10</td>
-<td style="text-align: right;">33</td>
+<tr>
+<td style="text-align:left;">
+Renata Franklin Simões
+</td>
+<td style="text-align:right;">
+0.23
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+33
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">André Macedo Campos Toledo</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">9</td>
-<td style="text-align: right;">42</td>
+<tr>
+<td style="text-align:left;">
+André Macedo Campos Toledo
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+42
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Fernando José Cerello Gonçalves Pereira</td>
-<td style="text-align: right;">0.16</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">45</td>
+<tr>
+<td style="text-align:left;">
+Fernando José Cerello Gonçalves Pereira
+</td>
+<td style="text-align:right;">
+0.16
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+45
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Georgios José Ilias Bernabé Alexandridis</td>
-<td style="text-align: right;">0.12</td>
-<td style="text-align: right;">7</td>
-<td style="text-align: right;">26</td>
+<tr>
+<td style="text-align:left;">
+Georgios José Ilias Bernabé Alexandridis
+</td>
+<td style="text-align:right;">
+0.12
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+26
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Ronaldo Sérgio Montenegro Rodrigues Faro</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">6</td>
-<td style="text-align: right;">43</td>
+<tr>
+<td style="text-align:left;">
+Ronaldo Sérgio Montenegro Rodrigues Faro
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+43
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Thais Silva Moreira de Sousa</td>
-<td style="text-align: right;">0.11</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">36</td>
+<tr>
+<td style="text-align:left;">
+Thais Silva Moreira de Sousa
+</td>
+<td style="text-align:right;">
+0.11
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+36
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Dannae Vieira Avila</td>
-<td style="text-align: right;">0.04</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">16</td>
+<tr>
+<td style="text-align:left;">
+Dannae Vieira Avila
+</td>
+<td style="text-align:right;">
+0.04
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+16
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Eduardo dos Reis</td>
-<td style="text-align: right;">0.02</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">18</td>
+<tr>
+<td style="text-align:left;">
+Eduardo dos Reis
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+18
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Uilian Aparecido da Silva</td>
-<td style="text-align: right;">0.01</td>
-<td style="text-align: right;">2</td>
-<td style="text-align: right;">17</td>
+<tr>
+<td style="text-align:left;">
+Uilian Aparecido da Silva
+</td>
+<td style="text-align:right;">
+0.01
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+17
+</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Danilo Cardoso da Silva</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">4</td>
+<tr>
+<td style="text-align:left;">
+Danilo Cardoso da Silva
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Dora Plat</td>
-<td style="text-align: right;">0.00</td>
-<td style="text-align: right;">1</td>
-<td style="text-align: right;">12</td>
+<tr>
+<td style="text-align:left;">
+Dora Plat
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+12
+</td>
 </tr>
 </tbody>
 </table>
 </div>
+</div>
 <h1 id="e-o-ganhador-é">E o ganhador é…</h1>
 <p>Computando todos os jogos, temos o seguinte resultado:</p>
 <div class="layout-chunk" data-layout="l-body">
+<div style="border: 1px solid #ddd; padding: 0px; overflow-y: scroll; height:500px; overflow-x: scroll; width:100%; ">
 <table>
 <thead>
 <tr>
-<th style="text-align:left;">
-Leiloeiro
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;">
+leiloeiro
 </th>
-<th style="text-align:right;">
-Score jogo 1
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 1
 </th>
-<th style="text-align:right;">
-Score jogo 2
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 2
 </th>
-<th style="text-align:right;">
-Score jogo 3
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 3
 </th>
-<th style="text-align:right;">
-Score jogo 4
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score jogo 4
 </th>
-<th style="text-align:right;">
-Pontos acumulados
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+pontos acumulados
 </th>
-<th style="text-align:right;">
-Colocação final
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;">
+score total
 </th>
 </tr>
 </thead>
@@ -3454,13 +4216,16 @@ Danilo Cardoso da Silva
 </tbody>
 </table>
 </div>
+</div>
 <p>Menção especial aos vencedores: o vencedor é <strong>GUSTAVO CRISTIANO SAMUEL DOS REIS</strong>, com 60 pontos. Em segundo lugar, com apenas 1 ponto de diferença, temos <em>CEZAR AUGUSTO BADOLATO SILVA</em>. E em terceiro lugar, com 5 pontos a menos que o primeiro lugar, temos ALFIO CARLOS AFFONSO ZALLI NETO.</p>
 <p>Parabéns a todos os participantes.</p>
-<h2 id="considerações-metodológicas">Considerações metodológicas</h2>
+<h3 id="considerações-metodológicas">Considerações metodológicas</h3>
 <p>Até aqui, assumi um tom informal para apresentar os dados sobre os leiloeiros de São Paulo. Esta escolha foi feita, pensando em divulgar estes dados de uma forma lúdica e acessível a qualquer leitor. Entretanto, essa escolha sacrificou, em alguns momentos, um rigor técnico-cientfíco importante. Nestas considerações finais, pretendo fazer algumas ressalvas sobre os resultados obtidos.</p>
-<p>A primeira ressalva diz respeito ao que significa ser ganhador desta competição. O ponto que quero deixar claro é que o sucesso de um leiloeiro não necessariamente está ligado aos seus próprios esforços. Pela narrativa da “competição” que eu criei para apresentar os dados, poderia dar a entender que os leiloeiros ganhadores são aqueles que se esforçaram mais para ganhar e, portanto, são os melhores leiloeiros. Entretanto, o que eu preciso deixar claro é que o sucesso dos leiloeiros em cada um dos jogos envolvia fatores fatores que estavam muito além das vontades e capacidades de cada jogador. Vejamos caso a caso onde estavam as limitações.</p>
+<p>As ressalvas dizem respeito ao que significa ser ganhador desta competição. O ponto que quero deixar claro é que o sucesso de um leiloeiro não necessariamente está ligado aos seus próprios esforços. Pela narrativa da “competição” que eu criei para apresentar os dados, poderia dar a entender que os leiloeiros ganhadores são aqueles que se esforçaram mais para ganhar e, portanto, são <em>os melhores</em> leiloeiros. Entretanto, o que eu preciso deixar claro é que o sucesso dos leiloeiros em cada um dos jogos envolvia fatores que estavam muito além das vontades e capacidades de cada jogador. Vejamos caso a caso onde estavam as limitações.</p>
 <p>Primeiro, no <strong>jogo 1 (quantidade de processos)</strong>, a quantidade de processos que um leiloeiro recebe está atrelada, no fim das contas, à escolha de um agente externo. O leiloeiro tem algum mérito em ser escolhido na medida em que o juiz escolhe alguém de sua confiança. O <strong>jogo 2 (valor dos leilões)</strong> padece do mesmo problema, pois não só o leiloeiro não escolhe a quantos processos ele é chamado, como ele também não escolhe o valor total de cada processo que lhe chega. É claro que há uma escolha, pequena, do leiloeiro ao ser chamado a um processo, pois ele pode rejeitar a oferta de realizar leilões de pequenos valores e aceitar apenas processos de grandes montas. Entretanto, o que me interessa aqui é que, à rigor, o valor do processo não é algo determinado pelo leiloeiro, mas é uma circunstância do processo, determinada externamente a ele.</p>
-<p>Nos <strong>jogos 3 (taxa de sucesso) e 4 (taxa de venda)</strong>, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um agente externo, mas neste caso, o elemento externo são os “clientes” dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens).</p>
+<p>Nos <strong>jogos 3 (taxa de sucesso)</strong> e <strong>4 (taxa de venda)</strong>, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um agente externo, mas neste caso, o elemento externo são os “clientes” dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens).</p>
+<p>Feitos esses esclarecimentos, posso encerrar o artigo com algumas conclusões gerais. ### Considerações finais</p>
+<p>Os jogos entre os leiloeiros foram úteis para demonstrar que… - Desigualdade entre leiloeiros - Valores altos - Recuperabilidade</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <section class="footnotes" role="doc-endnotes">
 <hr />
@@ -3539,7 +4304,7 @@ var disqus_config = function () {
 
 </script>
   <div>
-Â© Copyright ABJ. Todos os direitos reservados. CNPJ: 13.612.840/0001-57
+© Copyright ABJ. Todos os direitos reservados. CNPJ: 13.612.840/0001-57
 </div>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
