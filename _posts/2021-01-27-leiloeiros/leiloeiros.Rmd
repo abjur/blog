@@ -375,6 +375,7 @@ A liderança está agora com Renato Scholbach Moysés, mas apenas 2 pontos atrá
 
 ## Jogo 4: Quem dá mais?
 
+<<<<<<< HEAD
 O quarto e último jogo é **Quem dá mais?**. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda através da operação *valor vendido / valor de avaliação*. Essa taxa, na base de dados, variou de 0 (quando o bem não havia sido alienado) até 10 (quando o bem havia sido vendido por 10 vezes o preço de avaliação). Alguns bens ficaram com uma taxa de venda de infinito, mas isso ocorreu devido ao fato de que tais bens haviam sido avaliados em R$ 0,00 (zero reais). Dessa forma, realizou-se uma divisão por zero. Esses bens foram excluídos da análise. Além disso, como os bens não vendidos já foram considerados no jogo passado, para não prejudicar duplamente os leiloeiros, consideramos para este jogo apenas os bens vendidos. Assim, todos os bens cuja taxa de venda era igual a 0 foram filtrados e retirados. Com essa alteração, todos os leiloeiros que no jogo passado não venderam nenhum bem acabaram sendo desqualificados do jogo, ficando em último lugar. 
 
 A partir desta avariável, foi possível criar o critério de comparação deste jogo: a taxa média de venda. Esse critério buscou comparar a taxa média por que cada leiloeiro conseguia alienar os bens. A seguir, temos os resultados da competição. 
@@ -444,4 +445,3 @@ Primeiro, no **jogo 1 (quantidade de processos)**, a quantidade de processos que
 
 Nos **jogos 3 (taxa de sucesso) e 4 (taxa de venda)**, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um agente externo, mas neste caso, o elemento externo são os "clientes" dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens).
 
-A segunda ressalva diz respeito a alguns valores em específico sobre os quais devemos ter cautela. Refiro-me aos valores dos **jogos 3 e 4**. O que ocorre nestes jogos é que
