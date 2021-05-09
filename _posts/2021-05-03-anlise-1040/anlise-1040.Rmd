@@ -6,9 +6,12 @@ author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
 date: 05-03-2021
-output:
-  distill::distill_article:
-    self_contained: false
+# output:
+#   distill::distill_article:
+#     self_contained: false
+output: bookdown::word_document2
+editor_options: 
+  chunk_output_type: console
 ---
 
 
@@ -73,40 +76,184 @@ da_tempos %>%
 
 ```
 
+A MPV 1.040/2021 trouxe importantes mudanças nos procedimentos relacionados à abertura de empresas. Especificamente, a medida pode impactar na análise dos nomes empresariais, que poderiam se tornar praticamente nulos.
 
-```{r, fig.width=8, fig.height=8, layout="l-page", dpi=500}
-redesim::redesim_min %>% 
-  dplyr::filter(ano_mes >= "2021-01-01") %>% 
-  dplyr::select(-dplyr::matches("total")) %>% 
-  tibble::rowid_to_column() %>% 
-  tidyr::pivot_longer(dplyr::starts_with("qtde")) %>% 
-  dplyr::mutate(name = dplyr::case_when(
-    name == "qtde_hh_viabilidade_nome" ~ "Nome",
-    name == "qtde_hh_viabilidade_end" ~ "Endereço",
-    TRUE ~ "Registro"
-  )) %>% 
-  dplyr::group_by(uf, name) %>% 
-  dplyr::summarise(value = sum(value), .groups = "drop_last") %>% 
-  dplyr::mutate(prop = value/sum(value)) %>% 
-  dplyr::ungroup() %>% 
-  dplyr::mutate(
-    uf = forcats::fct_reorder(uf, prop, max),
-    name = forcats::lvls_reorder(name, c(3, 1, 2))
+Neste estudo preliminar, buscamos estimar os possíveis impactos da análise do nome empresarial no tempo total de abertura de empresa. Para isso, consideramos dados disponibilizados no site da Redesim entre janeiro de 2020 e março de 2021. Os tempos considerados foram:
+
+- __Tempo da análise de viabilidade__: considera o tempo máximo (em horas) entre a análise de viabilidade do endereço e a análise da viabilidade do nome.
+
+- __Tempo do registro__: considera a soma da quantidade de horas para liberação do DBE a partir do envio de dados pelo usuário e a quantidade de horas para deferimento do registro, também a partir do recebimento de documentação.
+
+Para analisar os dados, foi necessário realizar alguns filtros de limpeza. Primeiro, retiramos casos que relataram o número de horas de forma aproximada, em múltiplos de 12 horas. Além disso, consideramos apenas casos com tempos de análise de viabilidade de nome maiores que zero.
+
+A primeira pergunta que levantamos é: qual é a proporção de empresas que poderiam ser impactadas pela medida? A pergunta é relevante, pois, como o tempo de total de viabilidade é o máximo entre os tempos de viabilidade de nome e viabilidade de endereços, se o tempo da análise dos endereços for significativamente maior que o tempo da análise dos nomes, a mudança não teria impacto.
+
+```{r}
+library(magrittr)
+da_redesim <- redesim::redesim_min %>% 
+  dplyr::filter(
+    ano_mes >= "2020-01-01",
+    ano_mes <= "2021-03-01",
+    qtde_hh_viabilidade_total %% 24 != 0,
+    qtde_hh_viabilidade_nome > 0
+  )
+
+pct <- obsFase3::pct
+col_abj <- viridis::viridis(2, 1, .2, .8)
+blue_abj <- col_abj[1]
+green_abj <- col_abj[2]
+
+prop_viab_total <- da_redesim %>% 
+  with(mean(qtde_hh_viabilidade_nome > qtde_hh_viabilidade_end))
+```
+
+A Figura \@ref(fig:prop-viab) mostra a proporção de pedidos de registro em que o tempo da análise de nome foi maior que o tempo da análise de endereços. A proporção é uma estimativa da probabilidade de um registro futuro ser impactado pela MPV 1.040/2021.
+
+A média geral é de `r pct(prop_viab_total)`, sendo que existe alta variabilidade entre os estados. Amazonas e Ceará apresentam proporções maiores de 50% de registros impactados, enquanto Rio de Janeiro, Pernambuco, Santa Catarina, São Paulo e Pará apresentam proporções menores de 5%.
+
+```{r prop-viab, fig.cap="Proporção de registros que poderiam ser impactados pela MPV 1.040/2021 no tempo de análise de viabilidade de nome.", fig.width=8, fig.height=8, layout="l-body-outset", dpi=500}
+
+library(magrittr)
+
+da_redesim %>% 
+  dplyr::group_by(uf) %>% 
+  dplyr::summarise(
+    n = dplyr::n(),
+    m = mean(qtde_hh_viabilidade_nome > qtde_hh_viabilidade_end),
+    sd = sd(qtde_hh_viabilidade_nome > qtde_hh_viabilidade_end)
   ) %>% 
-  dplyr::filter(name != "Registro") %>% 
-  ggplot(aes(x = prop, y = uf, fill = name)) +
-  geom_col() +
-  scale_x_continuous(labels = scales::percent, breaks = seq(0, .3, .05)) +
-  scale_fill_viridis_d(begin = .2, end = .8) +
-  theme_minimal() +
-  labs(
-    x = "Proporção to tempo total de abertura",
-    y = "Unidade Federativa",
-    fill = "Análise",
-    title = "Impacto potencial da Medida Provisória 1.040/2021",
-    subtitle = "Proporção do tempo total destinada à análise de nome e endereço por Unidade Federativa",
-    caption = "Fonte: REDESIM\nAnálise: Associação Brasileira de Jurimetria"
+  dplyr::mutate(uf = forcats::fct_reorder(uf, m)) %>% 
+  ggplot2::ggplot(ggplot2::aes(m, uf)) +
+  ggplot2::geom_col(fill = blue_abj) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::scale_x_continuous(
+    labels = scales::percent_format(accuracy = 1), 
+    breaks = seq(0, 1, .1)
   ) +
-  theme(legend.position = c(.8, .8))
+  ggplot2::geom_vline(xintercept = prop_viab_total, col = 2, linetype = 2) +
+  ggplot2::labs(
+    x = "Proporção de registros que poderiam ser impactados",
+    y = "Unidade Federativa",
+    caption = "Fonte: Redesim\nElaboração: Associação Brasileira de Jurimetria"
+  )
+```
+
+A segunda pergunta que precisamos responder é: qual a magnitude do impacto? Para isso, precisamos considerar i) qual é a contribuição da análise de viabilidade para o tempo total do registro e ii) cenários de utilização efetiva da MPV, que podem ser criados pela proporção de empresas que utilizariam, de fato, o novo instituto, zerando o tempo da análise de viabilidade do nome.
+
+Para estimar os impactos da MPV, fizemos um estudo de simulação. A simulação considera três cenários diferentes para a utilização efetiva da MPV: 20%, 50% e 80%. Para cada cenário, fizemos mil simulações com os seguintes passos:
+
+- Sorteamos uma amostra dos registros em cada estado, de acordo com a proporção definida pelo cenário.
+- Na amostra obtida, zeramos o tempo de viabilidade de nome. Dessa forma, o tempo total de viabilidade é o tempo de análise do endereço.
+- Calculamos o tempo total de registro observado e o tempo total de registro estimado no cenário.
+- Agrupamos por unidade federativa e calculamos a redução do tempo estimado em relação ao tempo observado.
+
+A Figura \@ref(fig:prop-viab-end) mostra os resultados das simulações. Os tamanhos das barras são as estimativas de redução no tempo total de registro na Unidade Federativa considerada, e as cores das barras indicam os três cenários considerados. É possível notar que as Unidades Federativas com maior potencial de impacto da MPV são Amazonas e Paraíba. Já Pernambuco, Rio de Janeiro, Santa Catarina, São Paulo e Pará provavelmente serão pouco afetadas.
+
+```{r prop-viab-end, fig.cap = "Estimativas de redução no tempo total de registro, considerando mil simulações da base de dados da Redesim e cenários com 20%, 50% e 80% de adoção da MPV.", fig.width=8, fig.height=8, layout="l-body-outset", dpi=500}
+
+sorteio <- function(prop) {
+  da_redesim %>% 
+    dplyr::mutate(
+      zerou = runif(dplyr::n()) <= prop,
+      viabilidade_est = dplyr::if_else(
+        zerou, 
+        qtde_hh_viabilidade_end, 
+        qtde_hh_viabilidade_total
+      )
+    ) %>% 
+    dplyr::transmute(
+      uf, 
+      viabilidade_est,
+      viabilidade_obs = qtde_hh_viabilidade_total,
+      registro = qtde_hh_liberacao_dbe + qtde_horas_deferimento,
+      total_est = viabilidade_est + registro,
+      total_obs = viabilidade_obs + registro
+    ) %>% 
+    dplyr::mutate(m_total = 1 - sum(total_est) / sum(total_obs)) %>% 
+    dplyr::group_by(uf) %>% 
+    dplyr::summarise(
+      m = 1 - sum(total_est) / sum(total_obs),
+      m_total = dplyr::first(m_total)
+    )
+}
+
+cenarios <- c(
+  "Pessimista" = .2, 
+  "Moderado" = .5, 
+  "Otimista" = .8
+)
+
+da_cenarios <- purrr::map_dfr(cenarios, ~{
+  prop <- .x
+  purrr::map_dfr(seq_len(1000), ~sorteio(prop), .id = "sim")
+}, .id = "cenario")
+
+totais <- da_cenarios %>% 
+  dplyr::mutate(cenario = forcats::fct_rev(forcats::as_factor(cenario))) %>% 
+  dplyr::group_by(cenario) %>% 
+  dplyr::summarise(mu_total = mean(m_total)) %>% 
+  dplyr::ungroup()
+
+da_cenarios %>% 
+  dplyr::mutate(cenario = forcats::fct_rev(forcats::as_factor(cenario))) %>% 
+  dplyr::group_by(uf, cenario) %>% 
+  dplyr::summarise(
+    n = dplyr::n(),
+    sd = sd(m),
+    mu = mean(m),
+    .groups = "drop"
+  ) %>% 
+  dplyr::mutate(uf = forcats::fct_reorder(uf, mu)) %>% 
+  ggplot2::ggplot(ggplot2::aes(mu, uf, fill = cenario)) +
+  ggplot2::geom_col(position = "identity") +
+  ggplot2::scale_fill_viridis_d(begin = .2, end = .8, direction = -1) +
+  ggplot2::scale_x_continuous(
+    labels = scales::percent_format(1),
+    breaks = 0:15/100 * 2
+  ) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::labs(
+    x = "Estimativa de redução no tempo total de registro",
+    y = "Unidade Federativa",
+    fill = "Cenário",
+    caption = "Fonte: Redesim\nElaboração: Associação Brasileira de Jurimetria"
+  ) +
+  ggplot2::theme(legend.position = c(.7, .3))
+```
+
+No cenário pessimista, a redução esperada é de `r pct(totais$mu_total[3])`, variando entre zero e 4% nas Unidades Federativas. Já no cenário moderado, a redução esperada é de `r pct(totais$mu_total[2])`, variando entre zero quase 10%. No cenário otimista, a redução esperada é de `r pct(totais$mu_total[1])`, variando entre zero e pouco mais de 15%.
+
+Para finalizar, é importante reiterar que a presente análise não considera fatores externos, como tendência geral de queda no tempo dos registros e impactos da pandemia de Covid-19, entre outros. Trata-se de um exercício de simulação, a ser utilizado mais como um guia do que como uma predição.
+
+
+```{r eval=FALSE}
+aux_contrib <- da_redesim %>% 
+  dplyr::transmute(
+    uf, 
+    viabilidade = qtde_hh_viabilidade_end,
+    registro = qtde_hh_liberacao_dbe + qtde_horas_deferimento,
+    total = viabilidade + registro
+  )
+
+prop_viab_contrib <- aux_contrib %>% 
+  with(sum(viabilidade) / sum(total))
+
+aux_contrib %>% 
+  dplyr::group_by(uf) %>% 
+  dplyr::summarise(m = sum(viabilidade) / sum(total)) %>% 
+  dplyr::mutate(uf = forcats::fct_reorder(uf, m)) %>% 
+  ggplot2::ggplot(ggplot2::aes(m, uf)) +
+  ggplot2::geom_col(fill = blue_abj) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::scale_x_continuous(
+    labels = scales::percent_format(accuracy = 1), 
+    breaks = seq(0, 1, .1)
+  ) +
+  ggplot2::geom_vline(xintercept = prop_viab_contrib, col = 2, linetype = 2) +
+  ggplot2::labs(
+    x = "Proporção do tempo total dedicado à análise de viabilidade",
+    y = "Unidade Federativa",
+    caption = "Fonte: Redesim\nElaboração: Associação Brasileira de Jurimetria"
+  )
 ```
 
