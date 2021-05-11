@@ -1,5 +1,27 @@
 [
   {
+    "path": "posts/2021-12-01-cvm/",
+    "title": "A importância do uso da jurimetria na análise do mercado de capitais",
+    "description": "Este artigo traz uma discussão sobre a importância da pesquisa jurimétrica sobre o mercado de capitais.",
+    "author": [
+      {
+        "name": "Katerine Witkoski",
+        "url": "https://www.linkedin.com/in/katerinewitkoski/"
+      }
+    ],
+    "date": "2021-05-11",
+    "categories": [
+      "Analises",
+      "CVM",
+      "Jurimetria",
+      "Processos Administrativos Sancionadores"
+    ],
+    "contents": "\n\n\n\nSobre o observatório do Mercado de Capitais\nO Observatório do Mercado de Capitas é uma iniciativa da Associação Brasileira de Jurimetria (ABJ) e da Associação Brasileira das Companhias Abertas (Abrasca), levantou uma compreensão profunda sobre os aspectos da atuação reguladora da Comissão de Valores Mobiliários (CVM), visando apontar sobre a eficiência das sentenças dos processos administrativos sancionadores.\nA análise jurimétrica teve o propósito de avaliar criticamente suas normas jurídicas, suas aplicações, seus mecanismos judiciais de resolução de conflitos envolvendo acionistas (PAS, Termos de compromissos), os tipos de conflitos relacionados a esse tipo societário e os desafios do sistema de apuração.\nDa aplicação da jurimetria\nA Jurimetria traz conceitos que estudam de fato como o sistema jurídico funciona. Permite o entendimento do complexo jurídico-financeiro, impulsionando uma análise critíca sobre eficiência da atividade sancionadora da CVM. De fato, ao realizarmos uma análise mais empírica, concentramos a possibilidade expressiva de uma possibilidade de questionamento sobre o desenvolvimento das razões pelas quais existe a necessidade de uma entidade reguladora.\nA prerrogativa de aplicar jurimetria é analisar de forma intrínseca os métodos de apuração das possíveis infrações no mercado de capitais, estudando o funcionamento de todo o sistema operacional da CVM. Se concentrando no estudo de uma base de dados de processos com intuito de entender e expressar sobre os acontecimentos envolvidos na vivência da sociedade, bem como compreender e interpretar a legislação atual.\nPara o pesquisador jurimétrico consiste em entender que a jurimetria permite obter uma exploração de dados. De modo que a implementação da ciência de dados possa ampliar estudos que envolvam a sociedade como mérito da avaliação do sistema regulatório e cada vez mais trazer informação e dados promissores possibilitando que acadêmicos, militantes e a própria CVM possam tomar decisões melhores sobre os processos administrativos sancionadores.\nA realização da 1ª fase do Observatório de Capitais foi dedicada identificar características básicas tais como principais Temas dos processos sancionadores, as partes envolvidas, desfecho dos julgamentos, tempo de duração dos processos. E para o desenvolvimento desse estudo utilizou-se três etapas: listagem de processos, coleta de dados e a análise estatística.\nDa análise e resultados\nQuais são os temas mais comuns entre os Processos Administrativos:\nE em questão dos tempos:\nE em questão das partes envolvidas:\nE em questão dos desfechos:\nO que podemos esperar no futuro sobre a abordagem da pesquisa jurimétrica no mercado de capitais?\nconsolidar entendimentos.\navaliar os efeitos das alterações recentes na lei\nanalisar a eficiencia da atividade sancionadora\nampliação do estudo das políticas publicas\n\n\n\n",
+    "preview": {},
+    "last_modified": "2021-05-11T13:16:42-03:00",
+    "input_file": "cvm-post.knit.md"
+  },
+  {
     "path": "posts/2020-12-17-constituicao/",
     "title": "Facilitando análises sobre a Constituição",
     "description": "Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo",
