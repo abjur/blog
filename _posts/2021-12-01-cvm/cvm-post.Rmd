@@ -35,43 +35,101 @@ library(patchwork)
 ```{r}
 # carrega base disponivel no observatório
 
-
+base_mc <- obsMC::da_cvm_tidy
+base_temas <- obsCVM::da_tema_conduta
 
 ```
-## Sobre o observatório do Mercado de Capitais 
 
-O Observatório do Mercado de Capitas é uma iniciativa da Associação Brasileira de Jurimetria (ABJ) e da Associação Brasileira das Companhias Abertas (Abrasca), levantou uma compreensão profunda sobre os aspectos da atuação reguladora da Comissão de Valores Mobiliários (CVM), visando apontar sobre a eficiência das sentenças dos processos administrativos sancionadores. 
+Em meio de tanta evolução no mercado de capitais e as alterações nas disposições normativas sempre existiu uma dificuldade em estudar de forma mais empírica as medidas e a regulamentação da Comissão de Valores Mobiliários.  
 
-A análise jurimétrica teve o propósito de avaliar criticamente suas normas jurídicas, suas aplicações, seus mecanismos judiciais de resolução de conflitos envolvendo acionistas (PAS, Termos de compromissos), os tipos de conflitos relacionados a esse tipo societário e os desafios do sistema de apuração. 
+Por trás desse objetivo está o Observatório do Mercado de Capitais, que é uma iniciativa da Associação Brasileira de Jurimetria (ABJ) e da Associação Brasileira das Companhias Abertas (Abrasca). Com o projeto levantou-se uma compreensão profunda sobre os aspectos da atuação reguladora da Comissão de Valores Mobiliários (CVM). Analisando o relatório podemos discutir sobre as atividades reguladoras e a eficiência das sentenças nos processos administrativos sancionadores. 
+
+O projeto teve o propósito de avaliar criticamente suas normas jurídicas, suas aplicações, seus mecanismos judiciais de resolução de conflitos envolvendo acionistas (PAS, Termos de compromissos), os tipos de conflitos relacionados a esse tipo societário e os desafios do sistema de apuração. 
+
+E tema da vez é demonstrar como a relação entre jurimetria e o mercado de capitais pode impulsionar a ampliação do estudo de políticas públicas e de fato inspecionar a realidade sobre a ação disciplinar desta autarquia federal de considerável importância para as atividades no mercado financeiro. 
+
 
 ## Da aplicação da jurimetria 
 
-A Jurimetria traz conceitos que estudam de fato como o sistema jurídico funciona. Permite o entendimento do complexo jurídico-financeiro, impulsionando uma análise critíca sobre eficiência da atividade sancionadora da CVM. De fato, ao realizarmos uma análise mais empírica, concentramos a possibilidade expressiva de uma possibilidade de questionamento sobre o desenvolvimento das razões pelas quais existe a necessidade de uma entidade reguladora.
+A Jurimetria traz conceitos que estudam de fato como o sistema jurídico funciona. Permitindo o entendimento do complexo jurídico-financeiro e análise crítica sobre eficiência da atividade sancionadora da CVM. De fato, ao realizarmos uma análise mais empírica, concentramos a possibilidade expressiva de questionamento sobre o desenvolvimento das razões pelas quais existe a necessidade de uma entidade reguladora.
 
-A prerrogativa de aplicar jurimetria é analisar de forma intrínseca os métodos de apuração das possíveis infrações no mercado de capitais, estudando o funcionamento de todo o sistema operacional da CVM. Se concentrando no estudo de uma base de dados de processos com intuito de entender e expressar sobre os acontecimentos envolvidos na vivência da sociedade, bem como compreender e interpretar a legislação atual.
+A prerrogativa de aplicar a jurimetria é apresentar de forma intrínseca os métodos de apuração das possíveis infrações no mercado de capitais, estudando o funcionamento de todo o sistema operacional da CVM. Se concentrando em documentar uma base de dados de processos com intuito de entender e antecipar cenários, bem como interpretar a legislação atual.
 
-Para o pesquisador jurimétrico consiste em entender que a jurimetria permite obter uma exploração de dados. De modo que a implementação da ciência de dados possa ampliar estudos que envolvam a sociedade como mérito da avaliação do sistema regulatório e cada vez mais trazer informação e dados promissores possibilitando que acadêmicos, militantes e a própria CVM possam tomar decisões melhores sobre os processos administrativos sancionadores. 
+Faz parte do dia-a-dia do pesquisador jurimétrico implementar a ciência de dados, estatística e o direito de modo que sua união traz uma avaliação exploratória do sistema regulatório. E cada vez mais oferecer a sociedade o direito da informação acessível, o conhecimento e dados. Possibilitando que acadêmicos, militantes e a própria CVM possam tomar decisões melhores sobre os processos administrativos sancionadores. 
 
-A realização da 1ª fase do Observatório de Capitais foi dedicada identificar características básicas tais como principais Temas dos processos sancionadores, as partes envolvidas, desfecho dos julgamentos, tempo de duração dos processos.  E para o desenvolvimento desse estudo utilizou-se  três etapas: listagem de processos, coleta de dados e a análise estatística. 
-
+A realização da 1ª fase do Observatório de Capitais foi dedicada identificar características básicas tais como principais temas dos processos sancionadores, as partes envolvidas, desfecho dos julgamentos, tempo de duração dos processos.  E para o desenvolvimento desse estudo utilizou-se  três etapas: listagem de processos, coleta de dados e a análise estatística. 
 
 ## Da análise e resultados 
 
+De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos  citar as principais questões abordadas pelo [relatório](https://abjur.github.io/obsMC) do Observatório do Mercado de Capitais.
+
 ### Quais são os temas mais comuns entre os Processos Administrativos:
+
+```{r temas-comuns}
+base_temas %>%  
+  dplyr::select(tema, dispositivo_art) %>%
+  dplyr::group_by(tema) %>%
+  dplyr::count() %>%
+  dplyr::arrange(desc(n)) %>% 
+  dplyr::rename(Temas = tema, Quantidade = n) %>% 
+  knitr::kable(caption = "Temas mais comuns entre os processos administrativos.")
+
+```
+Podemos ver que os temas relacionados aos temas informacionais ..... 
+Figura \@ref(fig:temas-comuns)
+
+```{r informacionais-dispositivo, fig.cap="Quais são os principais motivos relacionados ao tema Informacional", layout="l-body-outset"}
+base_temas %>%
+  dplyr::select(tema, motivo) %>%
+  dplyr::filter(tema == "Informacionais") %>% 
+  group_by(motivo) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  ggplot() +
+  geom_col(
+    mapping = aes(x = n,  y = fct_reorder(motivo, n, .desc = FALSE)),
+    fill = "#102C68"
+  ) +
+  labs(
+    x = "Quantidade",
+    y = "Motivos Recorrentes"
+  ) +
+  theme_minimal(8)
+
+
+
+```
+E por que? 
+
+- dipostivos (fazer uma lista com os dispositivos que mais aparecem em Informacional - os 3 primeiros isso pode ser antes. )
+
+```{r dispositivo-analise, fig.cap="Quais são os principais motivos relacionados ao tema Informacional", layout="l-body-outset"}
+base_temas %>% 
+  dplyr::count(dispositivo_art)
+```
+- relacionar com os desfechos
+- art. 8ª
+- diferença dos desfechos conforme os temas 
 
 ### E em questão dos tempos:
 
-### E em questão das partes envolvidas: 
+20/10/5 anos 
 
-### E em questão dos desfechos:
+### Termos de compromisso
 
+TCC + temas 
+
+- insider
 
 ## O que podemos esperar no futuro sobre a abordagem da pesquisa jurimétrica no mercado de capitais? 
 
 - consolidar entendimentos.
-- avaliar os efeitos das alterações recentes na lei 
-- analisar a eficiencia da atividade sancionadora 
+- avaliar os efeitos das alterações recentes na lei - analisar a eficiencia da atividade sancionadora 
 - ampliação do estudo das políticas publicas 
+- previsibilidade do julgador
 
+Portanto, analisando no que se diz em respeito ao Mercado de Capitais e sua estrutura normativa e operacional, o impacto ao engajamento jurídico é de descomunal discussão, permitindo que as operações sejam realizadas de forma segura, eficientes e transparentes.
 
+Mas podemos também vislumbrar da importância da pesquisa jurimétrica em identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico. 
 
+É necessário que o legislador seja sensibilizado por todos os motivos demonstrados acima, para produzir leis que preenchem o vácuo hoje existente, e consequentemente que a fiscalização seja garantida afim que o mercado de valores possa produzir uma economia nacional e saudável.
