@@ -1499,7 +1499,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>Faz parte do dia-a-dia do pesquisador jurimétrico implementar a ciência de dados, estatística e o direito de modo que sua união traz uma avaliação exploratória do sistema regulatório. E cada vez mais oferecer a sociedade o direito da informação acessível, o conhecimento e dados. Possibilitando que acadêmicos, militantes e a própria CVM possam tomar decisões melhores sobre os processos administrativos sancionadores.</p>
 <p>A realização da 1ª fase do Observatório de Capitais foi dedicada identificar características básicas tais como principais temas dos processos sancionadores, as partes envolvidas, desfecho dos julgamentos, tempo de duração dos processos. E para o desenvolvimento desse estudo utilizou-se três etapas: listagem de processos, coleta de dados e a análise estatística.</p>
 <h2 id="da-análise-e-resultados">Da análise e resultados</h2>
-<p>De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos citar as principais questões abordadas pelo <a href="https://abjur.github.io/obsMC">relatório</a> do Observatório do Mercado de Capitais.</p>
+<p>De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos citar as principais questões abordadas pelo <a href="https://abjur.github.io/obsMC">relatório</a> do Observatório do Mercado de Capitais. - incluir descrição da base</p>
 <h3 id="quais-são-os-temas-mais-comuns-entre-os-processos-administrativos">Quais são os temas mais comuns entre os Processos Administrativos:</h3>
 <div class="layout-chunk" data-layout="l-body">
 <table>
@@ -1551,10 +1551,65 @@ Figure 1: Quais são os principais motivos relacionados ao tema Informacional
 </p>
 </div>
 </div>
+<ul>
+<li>relacionar com os desfechos - diferença dos desfechos conforme os temas #### pelo tema de informacionais
+<div class="layout-chunk" data-layout="l-body">
+</li>
+</ul>
+<table>
+<caption><span id="tab:desfecho-informacionais">Table 2: </span>Desfecho pelo Tema mais recorrente</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Temas</th>
+<th style="text-align: left;">Desfecho</th>
+<th style="text-align: right;">Quantidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Multa</td>
+<td style="text-align: right;">135</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Absolvição</td>
+<td style="text-align: right;">105</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Advertência</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Inabilitação</td>
+<td style="text-align: right;">5</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="por-todos-os-temas">por todos os temas</h4>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 10 x 3
+# Groups:   desfecho, motivo [10]
+   desfecho   motivo                                                 n
+   &lt;fct&gt;      &lt;chr&gt;                                              &lt;int&gt;
+ 1 Absolvição Operação fraudulenta                              273680
+ 2 Multa      Operação fraudulenta                              177760
+ 3 Multa      Não prestação de informações atualizadas          100845
+ 4 Absolvição Ato societário irregular                           84000
+ 5 Absolvição Abuso do poder de controle e atuação em conflito…  78994
+ 6 Absolvição Não prestação de informações atualizadas           78435
+ 7 Multa      Ato societário irregular                           72000
+ 8 Absolvição Violação do dever de lealdade de administradores…  67176
+ 9 Absolvição Descumprimento do dever de diligência              56784
+10 Absolvição Uso de informação privilegiada (insider trading)   51626</code></pre>
+</div>
 <p>E por que?</p>
 <div class="layout-chunk" data-layout="l-body">
 <table>
-<caption><span id="tab:dispositivos-temas">Table 2: </span>Instruções normativas por temas</caption>
+<caption><span id="tab:dispositivos-temas">Table 3: </span>Instruções normativas por temas</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Temas</th>
@@ -1621,9 +1676,6 @@ Figure 1: Quais são os principais motivos relacionados ao tema Informacional
 </ul>
 <p>Instrução CVM 8 08/10/1979</p>
 <p>Dispõe sobre condições artificiais de demanda, oferta ou preço de valores mobiliários, manipulação de preço, operações fraudulentas e práticas não eqüitativa. (POR QUE?)</p>
-<ul>
-<li>relacionar com os desfechos - diferença dos desfechos conforme os temas</li>
-</ul>
 <h3 id="e-em-questão-dos-tempos">E em questão dos tempos:</h3>
 <p>20/10/5 anos</p>
 <h3 id="termos-de-compromisso">Termos de compromisso</h3>
@@ -1641,7 +1693,7 @@ Figure 1: Quais são os principais motivos relacionados ao tema Informacional
 <p>Portanto, analisando no que se diz em respeito ao Mercado de Capitais e sua estrutura normativa e operacional, o impacto ao engajamento jurídico é de descomunal discussão, permitindo que as operações sejam realizadas de forma segura, eficientes e transparentes.</p>
 <p>Mas podemos também vislumbrar da importância da pesquisa jurimétrica em identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico.</p>
 <p>É necessário que o legislador seja sensibilizado por todos os motivos demonstrados acima, para produzir leis que preenchem o vácuo hoje existente, e consequentemente que a fiscalização seja garantida afim que o mercado de valores possa produzir uma economia nacional e saudável.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
