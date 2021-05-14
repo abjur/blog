@@ -40,7 +40,7 @@ base_temas <- obsCVM::da_tema_conduta
 
 ```
 
-Em meio de tanta evolução no mercado de capitais e as alterações nas disposições normativas sempre existiu uma dificuldade em estudar de forma mais empírica as medidas e a regulamentação da Comissão de Valores Mobiliários.  
+Em meio a tanta evolução no mercado de capitais e as alterações nas disposições normativas sempre existiu uma dificuldade em estudar de forma mais empírica as medidas e a regulamentação da Comissão de Valores Mobiliários.  
 
 Por trás desse objetivo está o Observatório do Mercado de Capitais, que é uma iniciativa da Associação Brasileira de Jurimetria (ABJ) e da Associação Brasileira das Companhias Abertas (Abrasca). Com o projeto levantou-se uma compreensão profunda sobre os aspectos da atuação reguladora da Comissão de Valores Mobiliários (CVM). Analisando o relatório podemos discutir sobre as atividades reguladoras e a eficiência das sentenças nos processos administrativos sancionadores. 
 
@@ -101,15 +101,30 @@ base_temas %>%
 ```
 E por que? 
 
-- dipostivos (fazer uma lista com os dispositivos que mais aparecem em Informacional - os 3 primeiros isso pode ser antes. )
+```{r dispositivos-temas}
 
-```{r dispositivo-analise, fig.cap="Quais são os principais motivos relacionados ao tema Informacional", layout="l-body-outset"}
-base_temas %>% 
-  dplyr::count(dispositivo_art)
+base_temas %>%
+  dplyr::select(dispositivo_art, tema, id_motivo) %>%
+  dplyr::mutate(
+    dispositivo_art =  stringr::str_remove_all(dispositivo_art, stringr::regex(", [a-z0-9]", ignore_case=TRUE))
+  ) %>% 
+dplyr::group_by(tema, dispositivo_art) %>% 
+  count() %>%
+  arrange(desc(n)) %>% 
+  head(10) %>% 
+  dplyr::rename(Temas = tema, Normativos = dispositivo_art, Quantidade = n) %>% 
+  knitr::kable(caption = "Instruções normativas por temas")
 ```
-- relacionar com os desfechos
-- art. 8ª
-- diferença dos desfechos conforme os temas 
+
+- Instrução 8 
+
+Instrução CVM 8
+08/10/1979
+
+Dispõe sobre condições artificiais de demanda, oferta ou preço de valores mobiliários, manipulação de preço, operações fraudulentas e práticas não eqüitativa. (POR QUE?)
+
+
+- relacionar com os desfechos - diferença dos desfechos conforme os temas 
 
 ### E em questão dos tempos:
 
