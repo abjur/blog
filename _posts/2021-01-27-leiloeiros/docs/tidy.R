@@ -133,10 +133,6 @@ analise <- leiloes %>%
 # É isso?
 # readr::write_rds(analise, "C://Users/ABJ/Documents/ABJ/github/djprocPublic/data/leiloes.rds")
 
-# ou eu posso transformar numa função né ? 
-
-
-
 # Peguei um processo pra cada leiloeiro pra analisar ----------------
 a <- analise %>% 
   dplyr::select(id_processo, leiloeiro) %>% 
@@ -151,3 +147,18 @@ a <- analise %>%
   unique() %>%  
   filter(!is.na(leiloeiro)) %>% 
   filter(str_length(cpf_cnpj) >= 14)
+
+# anonimização ------------------------------------------------------------
+set.seed(1)
+
+leiloeiros <- analise %>% 
+  distinct(leiloeiro, cpf_cnpj) %>% 
+  mutate(leiloeiro_anonimo = randomNames::randomNames(29, which.names="first", ethnicity = 4)) %>% 
+  mutate(tipo_leiloeiro = case_when(
+    str_length(cpf_cnpj) >= 14 ~ "pj", 
+    TRUE ~ "pf"
+  )) %>% 
+  select(-cpf_cnpj)
+
+analise <- left_join(analise, leiloeiros, by="leiloeiro") %>% 
+  select(-leiloeiro, -leiloeiro_usar, -leiloeiro_pf, -leiloeiro_pj, -cpf_cnpj, -id_leiloeiro)

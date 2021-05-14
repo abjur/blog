@@ -168,6 +168,9 @@ analise <- leiloes %>%
 
 # b) sub-base PROCESSO
 processos <- analise %>% 
+  arrange(desc(data_edital)) %>% 
+  group_by(id_processo, descricao) %>% 
+  slice(1) %>%
   select(!leiloeiro) %>% 
   rename(leiloeiro = leiloeiro_usar) %>% 
   dplyr::group_by(id_processo, leiloeiro) %>% 
@@ -203,15 +206,17 @@ sucesso <- analise %>%
 
 # Introdução
 
-Sempre que uma empresa entra em falência, se inicia um procedimento de arrecadação dos ativos. Essa arrecadação pode levantar desde plásticos triturados, avaliados em R\$ 1,00 (um real), até imóveis de R\$ 157.000.000,00 (157 milhões de reais). Independente do valor, esses bens na maioria dos casos vão para leilão. E no leilão, há sempre algum responsável por alienar esses bens. O responsável é o leiloeiro. Esse leiloeiro irá determinar as condições de venda dos bens, o que envolve definir (1) se eles serão vendidos em lotes, agrupando vários bens em uma única venda, ou individualmente; (2) o valor mínimo que os bens poderão ser vendidos; (3) a data do leilão; (4) a modalidade do leilão (presencial, eletrônico ou ambos); (5) o lance mínimo, entre outras condições. O importante de notar é que cada leiloeiro possui certa discricionariedade para agir, pois há algumas escolhas que ele deverá realizar em cada leilão, ao definir as condições de arrematação dos bens. 
+Sempre que uma empresa entra em falência, inicia-se um procedimento para satisfazer os seus credores. Como, por definição, a falência ocorre quando a falida se mostra incapaz de honrar suas dívidas, muitas vezes, só resta uma alternativa: alienar todos os bens da empresa para arrecadar algum ativo para satisfazer as dívidas. O procedimento para a alienação dos bens se inicia pela arrecadação dos bens Essa arrecadação pode levantar desde plásticos triturados, avaliados em R\$ 1,00 (um real), até imóveis de R\$ 157.000.000,00 (157 milhões de reais). Uma vez arrecadados, independentemente do valor, esses bens vão, via de regra, a leilão. E no leilão, há sempre algum responsável por alienar esses bens: o leiloeiro. 
 
-Se há várias estratégias possíveis para os leiloeiros utilizarem, então podemos dizer que alguns profissionais poderão realizar melhores escolhas do que outros. Assim, o que esse artigo busca é tentar definir qual leiloeiro foi mais bem sucedido nos leilões relacionados aos processos de falência de São Paulo.
+O leiloeiro é uma figura importante nos processos de falência. Ele é responsável por determinar as condições de venda dos bens arrecadados, o que envolve definir (1) se eles serão vendidos em lotes, agrupando vários bens em uma única venda, ou individualmente; (2) qual será o valor mínimo que os bens poderão ser vendidos; (3) a data do leilão; (4) a modalidade do leilão (presencial, eletrônico ou ambos); (5) o lance mínimo, entre outras condições. O importante é notar que cada leiloeiro possui certa discricionariedade para agir, pois há algumas escolhas que ele deverá realizar a cada leilão. 
 
-A base que utilizaremos para tanto é uma das bases de dados da 3ª fase do Observatório da Insolvência da ABJ[^labelfoot], isto é, o observatório das falências em São Paulo. Mais especificamente, utilizaremos a base que contém todos os bens que foram a leilão, em SP. Cada observação é um bem diferente. E cada coluna é uma característica desse bem. As principais características que utilizaremos aqui são: o processo no qual esse bem se encontra; o leiloeiro responsável pela alienação desse bem; o valor de avaliação dos bens; a informação de se o bem vendeu ou não; e o preço pelo qual o bem foi arrematado. 
+Se há várias estratégias possíveis para os leiloeiros utilizarem, então é possível que algumas escolhas levem a um sucesso maior ou menor nas alienações. Assim, o que esse artigo busca é tentar definir qual leiloeiro foi mais bem sucedido nos leilões relacionados aos processos de falência em São Paulo.
 
-[^labelfoot]: O observatório da insolvência é uma iniciativa do Núcleo de Estudos de Processos de Insolvência - NEPI da PUC-SP e da Associação Brasileira de Jurimetria – ABJ e tem o objetivo de levantar e analisar dados a respeito das empresas em crise que se dirigem ao Poder Judiciário para viabilizar meios de recuperação ou, em último caso, para serem liquidadas. Trata-se de um projeto incremental, que se iniciou com o estudo dos processos de recuperação judicial e que, nessa etapa, expandiu seu escopo para todos processos de falências do Estado de São Paulo. O estudo tem lançamento previsto para 2021.
+Faremos este estudo com uma das bases de dados da 3ª fase do Observatório da Insolvência da ABJ[^labelfoot], isto é, o Observatório das Falências em São Paulo. Mais especificamente, utilizaremos a base que contém todos os bens que foram a leilão em SP. Cada observação é um bem diferente. E cada coluna é uma característica desse bem. As principais características que utilizaremos aqui são: o processo no qual esse bem se encontra; o leiloeiro responsável pela alienação desse bem; o valor de avaliação dos bens; a informação de se o bem vendeu ou não; e o preço pelo qual o bem foi arrematado (caso tenha sido). 
 
-Com base nesses dados, podemos pensar em estratégias para determinar o sucesso dos leiloeiros. Essa comparação será feita  colocando os leiloeiros para jogar diversos jogos entre si, disputando os melhores scores em cada jogo. Veremos a seguir as regras dos jogos. 
+[^labelfoot]: O Observatório da Insolvência é uma iniciativa do Núcleo de Estudos de Processos de Insolvência - NEPI da PUC-SP e da Associação Brasileira de Jurimetria – ABJ e tem o objetivo de levantar e analisar dados a respeito das empresas em crise que se dirigem ao Poder Judiciário para viabilizar meios de recuperação ou, em último caso, para serem liquidadas. Trata-se de um projeto incremental, que se iniciou com o estudo dos processos de recuperação judicial e que, nessa etapa, expandiu seu escopo para todos processos de falências do Estado de São Paulo. O estudo tem lançamento previsto para 2021.
+
+Com base nesses dados, podemos pensar em estratégias para determinar o sucesso dos leiloeiros. Essa comparação será feita colocando os leiloeiros para jogar diversos jogos entre si, disputando os melhores scores em cada jogo. Veremos a seguir as regras dos jogos. 
 
 # As regras dos jogos
 
@@ -239,11 +244,11 @@ Ao todo serão feitos 4 jogos. Em cada jogo, os leiloeiros irão marcar pontos. 
 
 ### Da contagem dos pontos
 
-Para cada um dos jogos, podemos ordenadar os leiloeiros. Cada um dos jogos possui bases diferentes de pontuação. Por exemplo, no jogo 1, os jogadores podem fazer de 0 a 135 pontos, mas no jogo 3, os jogadores podem fazer só de 0 a 1 pontos. O problema é que dessa forma, o ganhador do jogo 1 teria mais vantagem do que o ganhador do jogo 3. Para resolver este problema, padronizamos as pontuações, de modo que a colocação de um jogador se tornou a sua pontuação em cada um dos jogos.  
+Para cada um dos jogos, podemos ordenadar os leiloeiros com base em algum critério. O que diferencia cada um dos jogos é justamente este critério que será utilizado como base para a comparação. Quanto melhor um leiloeiro for em um jogo, mais pontos ele irá fazer. Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação. 
 
-Como há 24 concorrentes, a pontuação máxima que alguém pode fazer em cada um dos jogos é de 24 pontos e a mínima, de 1 ponto. Entretanto, nem sempre teremos alguém pontuando 24 pontos, pois, quando dois ou mais leiloeiros empatam entre si, eles recebem a mesma pontuação. O fato de nem todos os jogos chegarem a 24 pontos pode privilegiar alguns jogos, em detrimento de outros. Assim, esses pontos serão normalizados, ou seja, eles serão divididos pelo número de pontos do primeiro lugar. 
+O fato de nem todos os jogos chegarem a 24 pontos acaba fazendo com que os jogos com mais empates valham menos pontos do que os jogos com menos empates. A fim de contornar este problema, e equilibrar os pesos dos jogos, os pontos de cada jogo serão normalizados, ou seja, eles serão divididos pelo número máximo de pontos alcançados. Por exemplo, se em algum jogo houver 10 empates, a pontuação máxima será, não de 24 pontos, mas de 15 pontos. Assim, cada pontuação será dividida, neste caso, por 15, de modo que em todos os jogos o primeiro lugar sempre pontue 1.00 ponto, e o último lugar algo entre 0.00 e 1.00. 
 
-Ao fim dos 4 jogos, as pontuações serão somadas, para criarmos um placar final. Então o jogador que acumular mais pontos ao fim dos 4 jogos será o vencedor. 
+Ao fim dos 4 jogos, as pontuações serão somadas, para criarmos um placar final. Então o jogador que acumular mais pontos ao fim dos 4 jogos será o vencedor. Como há 4 jogos valendo, no máximo 1 pontos, então a pontuação máxima é de 4 pontos. 
 
 ### Do prêmio
 
@@ -253,21 +258,25 @@ Os leiloeiros que ficarem em 1º, 2º e 3º lugares irão receber uma menção e
 
 ## Jogo 1: Coletando leilões
 
-O primeiro jogo é o **Coletando leilões**. Este jogo funciona da seguinte maneira: o juiz irá escolher algum leiloeiro de sua confiança para realizar o leilão. O leiloeiro que conseguir mais processos, será o vencedor. Há um total de 135 processos com leilões. Então o máximo de leilões que alguém pode acumular é 135, e o mínimo é 1.
+O primeiro jogo é o **Coletando leilões**. Este jogo funciona da seguinte maneira: o juiz irá escolher algum leiloeiro de sua confiança para realizar o leilão. O leiloeiro que conseguir mais processos, será o vencedor. Há um total de 135 processos com leilões. Então o máximo de leilões que alguém pode acumular é 135, e o mínimo é 1. O que este jogo está buscando analisar é a distribuição de processos entre os leiloeiros. 
 
 ``` {r plot1, eval = TRUE, layout="l-body-outset"}
 media1 <- mean(processos$qtd_processos)
+median1 <- median(processos$qtd_processos)
 
 processos %>% 
   mutate(leiloeiro = forcats::fct_reorder(leiloeiro, qtd_processos)) %>% 
   ggplot() +
     geom_col(mapping = aes(x = qtd_processos, y = leiloeiro), fill=cores_abj[1]) +
-    geom_vline(xintercept=media1, size=.5, color="red") + 
+    geom_vline(xintercept=media1, size=1, color="red", linetype = 2) + 
+    geom_vline(xintercept=median1, size=1, color="steelblue", linetype = 2) + 
     labs(x="quantidade de processos", y="leiloeiros") +
     theme_minimal()
 ```
 
-No primeiro jogo, de número de processos que cada leiloeiro recebeu, tivemos um destaque fortíssimo. Fernando José Cerello Gonçalves Pereira assumiu a liderança com quase 40 processos ! O segundo lugar foi Ronaldo Faro, com 28 processos, e o terceiro colocado foi Renato Schlobach Moysés, com 24 processos. O quarto lugar teve apenas 12 processos em sua contagem, e foi Thays Silva Moreira de Sousa. Os próximos jogadores, não passaram de 10 processos, e a moda foi de apenas 1 processo! 
+Olhando para os resultados deste jogo no @plot1, é fácil de vermos um grande destaque! Fernando José Cerello Gonçalves Pereira. Sr. Fernando assumiu a liderança com quase 40 processos acumulados ! O segundo lugar foi Ronaldo Faro, com 28 processos, e o terceiro colocado foi Renato Schlobach Moysés, com 24 processos. 
+
+Vemos que os três primeiros lugares estão muito acima da média (linha vermelha), que é de 6 processos por leiloeiro. Mas essa média pode enganar. A quantidade de processos por leiloeiro é, na verdade, de 1 processo apenas (esta é a moda). A média acaba ficando alta por causa dos primeiros colocados, que "puxam" a média para cima. Essa média é tão alta que de 24 jogadores, apenas 5 estão acima da média. Uma medida mais apropriada para essas distribuições assimétricas é a mediana (linha azul). Com a mediana, vemos que 2,5 processos por leiloeiro divide exatamente no meio os jogadores, ou seja, há 12 jogadores com 3 processos ou mais e 12 jogadores com 2 processos ou menos. 
 
 Com isso, o placar ficou:
 
@@ -283,26 +292,32 @@ placar1 %>%
   kableExtra::scroll_box(height = "500px", width = "550px")
 ```
 
-Como houve muitos candidatos empatados, o primeiro lugar de Fernando rendeu-lhe apenas 9 pontos. 
+## Jogo 2: Quanto vale? 
 
-## Jogo 2: O tamanho do peixe
+O segundo jogo é **Quanto vale?**. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões relacionados a esses processos. Basicamente, o que queremos observar é se, por exemplo, o Fernando, que recebeu 39 processos, não ficou, na verdade com 39 processos de preços irrisórios, enquanto o Alfio, que ficou com apenas 1 processo, na verdade não ficou encarregado de realizar um leilão milionário.  
 
-O segundo jogo é **O tamanho do peixe**. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões que lhes foi confiado. Para isso, calculamos o valor total de cada um dos processos e dividimos pelo total de bens. Ganha quem tiver um valor médio por processo maior. 
+Usamos como base, para calcular o valor total de um leilão, os valores individuais de avaliação de cada bem. E para calcular o valor médio de cada leilão por leiloeiro, apenas dividimos o valor total de cada leilão, pela quantidade de processos que foram confiados a cada leiloeiro. Ganha este jogo quem tiver um valor médio por processo maior. 
 
 ```{r plot2, eval = TRUE, layout="l-body-outset"}
 media2 <- mean(processos$vtp)
+median2 <- median(processos$vtp)
 
 processos %>% 
   mutate(leiloeiro = forcats::fct_reorder(leiloeiro, vtp)) %>% 
   ggplot() +
     geom_col(mapping = aes(x = vtp, y = leiloeiro), fill=cores_abj[1]) +
-    geom_vline(xintercept = media2, size=.5, color="red") +
+    geom_vline(xintercept = media2, size=1, color="red", linetype = 2) +
+    geom_vline(xintercept = median2, size=1, color="steelblue", linetype = 2) +
     scale_x_log10(labels = scales::label_number_si(), breaks = 10^c(1:8)) +
     labs(x = "valor médio por processo", y="leiloeiros") +
     theme_minimal()
 ```
 
-No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quantidade de R\$ 86.608.346,88 por processo (86 milhões de reais por processo). O ganhador foi Euclides Maraschi Junior. A disputa pelo segundo lugar foi acirradíssima. Por pouco, Fernando José Cerello ganhou de Renato Schlobach Moysés. O valor médio de seus processos foi, respectivamente, de R\$ 29.938.436,60 (29 milhões) por proceso e de R\$ 26.053.257,72 (26 milhões). Os últimos colocados tiveram arrecadações de 300 mil até 25 mil reais por processo. É uma diferença na escala de 100 vezes em relação aos primeiros colocados. 
+No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quantidade de R\$ 39.196.854,33	 por processo (39 milhões de reais por processo). O ganhador foi Euclides Maraschi Junior. A disputa pelo segundo lugar foi acirrada. Em segundo lugar, veio Renato Schlobach Moysés, com um valor médio de R\$ 24.096.983,39 por processo (24 milhões de reais por processo) e, em terceiro, com um valor médio de R\$ 17.154.507,55 (17 milhões de reais por processo), veio leiloeiro Fernando José Cerello Gonçalves Pereira. 
+
+Aqui novamente observamos uma grande assimetria na distribuição dos processos. A média (linha em vermelhO) foi de R\$ 3.845.099,36 (3 milhões de reais por processo), mas apenas os três primeiros colocados estão acima desta média! Se usarmos a mediana (linha azul) como medida de centro, teremos uma medida menos sensível aos extremos e, com isso, conseguiremos observar melhor os resultados de cada leiloeiro. A mediana do valor por processo é de R\$ 270.052,20 (270 mil reais por processo), que é um número 14 vezes menor que a média. 
+
+Olhando especificamente para os 5 últimos colocados, observamos que eles tiveram arrecadações de até 30 mil reais por processo. É uma diferença de mais de 1300 vezes em relação ao primeiro colocado. Foi uma disputa destruidora para alguns competidores.  
 
 No fim, o placar ficou:
 
@@ -326,11 +341,11 @@ knitr::kable(placar2, digits=2, col.names = gsub("[_]", " ", names(placar2))) %>
   kableExtra::scroll_box(height = "500px", width = "100%")
 ```
 
-Esta disputa rendeu incríveis 24 pontos para Euclides ! Mas isso não foi suficiente para ultrapassar Fernando, nem Renato, que no placar geral estão respectivamente, com 6 e 3 pontos na frente de Euclides. 
+Fernando continua na liderança, com Ronaldo Faro e Renato Moysés na sua cola. Será que Fernando irá conseguir manter sua posição nos próximos jogos? 
 
 ## Jogo 3: Quem vende mais?
 
-O terceiro jogo é **Quem vende mais?**. Este jogo (e o próximo também) está olhando, não para características dos leilões que foram encaminhados a cada um dos leiloeiros, mas para os resultados desses leilões. Assim, o que está sendo comparado aqui é o que chamaremos de "taxa_sucesso". É uma conta simples: de todos os bens que poderiam ter sido vendidos, quantos de fato conseguiram ser alienados? Essa taxa é um valor de 0 a 1. O leiloeiro que obtiver a maior taxa será o ganhador. 
+O terceiro jogo é **Quem vende mais?**. Este jogo (e o próximo também) está olhando, não para características dos leilões que foram encaminhados a cada um dos leiloeiros, mas para os *resultados* desses leilões. Assim, o que está sendo comparado aqui é o que chamaremos de "taxa sucesso". É uma conta simples: de todos os bens que poderiam ter sido vendidos, quantos de fato conseguiram ser alienados? Para calcular essa taxa, fizemos a razão entre a quantidade de bens que venderam (ou seja, a quantidade de bens em que a variável `vendeu` era igual a "sim"), sobre a quantidade de bens totais por leiloeiro. Essa taxa resulta em um valor de 0 (não vendeu nada) a 1 (vendeu tudo que tinha). O leiloeiro que obtiver a maior taxa será o ganhador. 
 
 ```{r plot3, eval = TRUE, layout="l-body-outset"}
 jogo3 <- sucesso %>% 
@@ -352,12 +367,20 @@ media3 <- mean(jogo3$taxa_sucesso)
 
 ggplot(jogo3) + 
   geom_col(mapping = aes(x = taxa_sucesso, y = leiloeiro), fill=cores_abj[1]) +
-  geom_vline(xintercept=media3, size=.5, color="red") +
+  geom_vline(xintercept=media3, size=1, color="red", linetype = 2) +
   labs(x="taxa de sucesso", y="leiloeiros") +
   theme_minimal()
 ```
 
-O terceiro jogo foi o mais disputado até agora. Tivemos 3 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto ! Quem se deu melhor nessa competição foram aqueles que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. E aqueles com muitos bens tiveram dificuldades em vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Dora Plat e de Danilo Cardoso, que ficaram com uma taxa de sucesso de 0. Danilo tiha apenas 9 bens para alienar; e Dora, 30. Esse jogo embaralhou bastante a competição, deixando bem mais acirrada a disputa no placar geral. 
+Este jogo foi o mais disputado até agora. Tivemos 3 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto! Quem se deu melhor nessa competição foram aqueles jogadores que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Dora Plat e de Danilo Cardoso, que ficaram com uma taxa de sucesso de 0. Danilo tiha apenas 9 bens para alienar, e Dora, 30.
+
+Além disso, aqueles leiloeiros com muitos bens (que, em geral, foram os ganhadores dos dois jogos passados), tiveram dificuldades em vender tudo. 
+
+Como não houve uma grande assimetria nos resultados (até porque a própria natureza da variável não permitira isso, uma vez que ela permitia apenas valores entre 0 e 1), média já foi suficiente para nos ajudar a observar os resultados. A média neste caso é muito próximo da taxa de sucesso de 50%. Uma taxa de sucesso próxima a 50% significa que a chance de um bem ser alienado ou não é aleatória. Assim, a interpretação disso é que aqueles leiloeiros com uma taxa de sucesso muito próxima da média (de 50% de chance de sucesso) conseguiram alienar seus bens de forma aleatória, enquanto os leiloeiros muito abaixo ou muito acima da média não o fizeram de forma aleatória. 
+
+Mas temos de tomar um cuidado aqui para interpretar os casos que se distanciam da média. Apesar de não ser aleatório o fator que explica o sucesso dos leiloeiros, tampouco podemos dizer que o que explica o sucesso ou falha dos leilões é, exclusivamente, as atitudades dos leiloeiros. Como já dissemos, ter poucos bens aumenta muito a chance de alienar tudo, assim como aumenta também a chance de não alienar nada. 
+
+O que foi positivo neste jogo é que ele embaralhou bastante os jogadores, deixando bem mais acirrada a disputa no placar geral. 
 
 ```{r placar3, eval=TRUE, results='asis'}
 preplacar3 <- jogo3 %>% 
@@ -376,13 +399,17 @@ knitr::kable(placar3, digits=2, col.names = gsub("[_]", " ", names(placar3))) %>
 
 ```
 
-A liderança está agora com Renato Scholbach Moysés, mas apenas 2 pontos atrás está Alfio Carlos Affonso Zalli Neto. Será que Renato conseguirá manter sua posição no último jogo? 
+Faltando apenas um jogo para encerrar a competição, Renato Schlobach Moysés ultrapassou Fernando José Cerello Gonçalves Pereira! Renato está agora com 2.35 pontos, no geral. Atrás dele setá Fernando, com 2.19 pontos e, logo na sua cola, vem Ronaldo Faro, com apenas 0.02 pontos de diferença. Outros jogadores também começaram a entrar no radar, como Cezar Augusto Badolato Silva, Antonio Hissao Sato Junio e Gustavo Moretto Guimarães de Oliveir.
+
+A única coisa que podemos afirmar nas vésperas do quarto e último jogo é que temos muitas dúvidas e poucas respostas sobre quem será o ganhador. 
 
 ## Jogo 4: Quem dá mais?
 
-O quarto e último jogo é **Quem dá mais?**. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda através da operação *valor vendido / valor de avaliação*. Essa taxa, na base de dados, variou de 0 (quando o bem não havia sido alienado) até 10 (quando o bem havia sido vendido por 10 vezes o preço de avaliação). Alguns bens ficaram com uma taxa de venda de infinito, mas isso ocorreu devido ao fato de que tais bens haviam sido avaliados em R$ 0,00 (zero reais). Dessa forma, realizou-se uma divisão por zero. Esses bens foram excluídos da análise. Além disso, como os bens não vendidos já foram considerados no jogo passado, para não prejudicar duplamente os leiloeiros, consideramos para este jogo apenas os bens vendidos. Assim, todos os bens cuja taxa de venda era igual a 0 foram filtrados e retirados. Com essa alteração, todos os leiloeiros que no jogo passado não venderam nenhum bem acabaram sendo desqualificados do jogo, ficando em último lugar. 
+O quarto e último jogo é **Quem dá mais?**. O que vai ser comparado é, não a taxa de bens vendidos, mas o valor pelos quais esses bens foram vendidos. Para cada bem alienado, foi calculada uma taxa de venda através da operação *valor vendido / valor de avaliação*. Essa taxa, na base de dados, variou de 0 (quando o bem não havia sido alienado) até 10 (quando o bem havia sido vendido por 10 vezes o preço de avaliação). Alguns bens ficaram com uma taxa de venda de infinito, mas isso ocorreu devido ao fato de que tais bens haviam sido avaliados em R$ 0,00 (zero reais), o que gerou uma divisão por zero. Esses bens foram excluídos da análise, pois representariam uma vantagem indevida para alguns competidores.
 
-A partir desta avariável, foi possível criar o critério de comparação deste jogo: a taxa média de venda. Esse critério buscou comparar a taxa média por que cada leiloeiro conseguia alienar os bens. A seguir, temos os resultados da competição. 
+Além disso, como os bens não vendidos já foram considerados no jogo passado, consideramos para este jogo apenas os bens vendidos. Assim, todos os bens cuja taxa de venda era igual a 0 foram filtrados e retirados. Com essa alteração, todos os leiloeiros que no jogo passado não venderam nenhum bem acabaram sendo desqualificados do jogo, ficando em último lugar. 
+
+A partir da taxa de venda de cada bem, foi possível criar o critério de comparação deste quarto e último jogo: a taxa média de venda. Esse critério buscou comparar a taxa média por que cada leiloeiro conseguia alienar os bens. A seguir, temos os resultados da competição. 
 
 ```{r plot4, eval = TRUE, layout="l-body-outset"}
 jogo4 <- sucesso  %>% 
@@ -395,14 +422,16 @@ media4 <- mean(jogo4$taxa_venda_media)
 
 ggplot(jogo4) +
   geom_col(mapping = aes(y = leiloeiro, x = taxa_venda_media), fill=cores_abj[1]) +
-  geom_vline(xintercept = media4, size=.5, color="red") +
+  geom_vline(xintercept = media4, size=1, color="red", linetype = 2) +
   labs(x="taxa de venda média",y="leiloeiros") +
   theme_minimal()
 ```
 
-Vemos, acima que este jogo foi difícil para os leiloeiros com grandes valores de bens em suas mãos, pois aqui o valor inicial contava muito. Não bastava que os bens simplesmente fossem vendidos, eles precisavam ser vendidos pelo maior valor possível. Em média, os leiloeiros conseguiam vender a uma taxa de  
+Este jogo foi difícil para os leiloeiros com grandes valores de bens em suas mãos, pois aqui o valor inicial contava muito. Não bastava que os bens simplesmente fossem vendidos, eles precisavam ser vendidos pelo maior valor possível. Em média, os leiloeiros conseguiam vender seus bens a uma taxa de 60% do valor de avaliação inicial. 
 
-Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter um taxas de venda média maior do que 1 foi Cezar Augusto Badolato. Com isso, temos consolidado o placar final. 
+Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter uma taxa de venda média maior do que 1 foi Cezar Augusto Badolato. 
+
+Com isso, temos consolidado o placar final. 
 
 ```{r placar4, eval=TRUE, results='asis'}
 preplacar4 <- sucesso %>% 
@@ -447,27 +476,37 @@ placar_final %>%
 
 ```
 
+Com isso, podemos declarar oficialmente que o vencedor é... 
 
-Menção especial aos vencedores: o vencedor é **GUSTAVO CRISTIANO SAMUEL DOS REIS**, com 60 pontos. Em segundo lugar, com apenas 1 ponto de diferença, temos *CEZAR AUGUSTO BADOLATO SILVA*. E em terceiro lugar, com 5 pontos a menos que o primeiro lugar, temos ALFIO CARLOS AFFONSO ZALLI NETO. 
+
+Menção especial aos vencedores: o vencedor é **RENATO SCLOBACH MOYSÉS**, com 2.91 pontos, de um total de 4.0 pontos possíveis. Em segundo lugar, com 2.84, temos *CEZAR AUGUSTO BADOLATO SILVA*. E em terceiro lugar, com 2.78 pontos, temos GUSTAVO CRISTIANO SAMUEL DOS REIS.
 
 Parabéns a todos os participantes. 
 
-### Considerações metodológicas 
+# Considerações finais 
 
-Até aqui, assumi um tom informal para apresentar os dados sobre os leiloeiros de São Paulo. Esta escolha foi feita, pensando em divulgar estes dados de uma forma lúdica e acessível a qualquer leitor. Entretanto, essa escolha sacrificou, em alguns momentos, um rigor técnico-cientfíco importante. Nestas considerações finais, pretendo fazer algumas ressalvas sobre os resultados obtidos. 
+Até aqui, assumi um tom informal para apresentar os dados sobre os leiloeiros de São Paulo. Esta escolha foi feita, pensando em divulgar estes dados de uma forma lúdica e acessível a qualquer leitor. Entretanto, essa escolha deixou de lado, em alguns momentos, um rigor técnico-cientfíco importante. Nestas considerações finais, pretendo fazer alguns comentários sobre os resultados obtidos. 
 
-As ressalvas dizem respeito ao que significa ser ganhador desta competição. O ponto que quero deixar claro é que o sucesso de um leiloeiro não necessariamente está ligado aos seus próprios esforços. Pela narrativa da "competição" que eu criei para apresentar os dados, poderia dar a entender que os leiloeiros ganhadores são aqueles que se esforçaram mais para ganhar e, portanto, são _os melhores_ leiloeiros. Entretanto, o que eu preciso deixar claro é que o sucesso dos leiloeiros em cada um dos jogos envolvia fatores que estavam muito além das vontades e capacidades de cada jogador. Vejamos caso a caso onde estavam as limitações. 
+### O que significa "ganhar" esta competição?
 
-Primeiro, no **jogo 1 (quantidade de processos)**, a quantidade de processos que um leiloeiro recebe está atrelada, no fim das contas, à escolha de um agente externo. O leiloeiro tem algum mérito em ser escolhido na medida em que o juiz escolhe alguém de sua confiança. O **jogo 2 (valor dos leilões)** padece do mesmo problema, pois não só o leiloeiro não escolhe a quantos processos ele é chamado, como ele também não escolhe o valor total de cada processo que lhe chega. É claro que há uma escolha, pequena, do leiloeiro ao ser chamado a um processo, pois ele pode rejeitar a oferta de realizar leilões de pequenos valores e aceitar apenas processos de grandes montas. Entretanto, o que me interessa aqui é que, à rigor, o valor do processo não é algo determinado pelo leiloeiro, mas é uma circunstância do processo, determinada externamente a ele. 
+O primeiro comentário diz respeito ao que significa ser ganhador desta competição. O ponto que quero deixar claro é que o sucesso de um leiloeiro não necessariamente está ligado aos seus próprios esforços. Pela narrativa da "competição" que eu criei para apresentar os dados, poderia dar a entender que os leiloeiros ganhadores são aqueles que se esforçaram mais para ganhar e, portanto, são _os melhores_ leiloeiros. Entretanto, o que eu preciso deixar claro é que o sucesso dos leiloeiros em cada um dos jogos envolvia fatores que estavam muito além das vontades e capacidades de cada jogador. Vejamos em cada jogo onde estavam estas limitações. 
 
-Nos **jogos 3 (taxa de sucesso)** e **4 (taxa de venda)**, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um agente externo, mas neste caso, o elemento externo são os "clientes" dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens).
+No **jogo 1 (quantidade de processos)**, a quantidade de processos que um leiloeiro recebe está atrelada, não a alguma atitude dos leiloeiros, mas à escolha de um outro agente, o juiz. O leiloeiro tem algum mérito em ser escolhido na medida em que o juiz escolhe alguém de sua confiança, mas no fim das contas ele não consegue determinar se irá ser escolhido ou não. 
 
-Feitos esses esclarecimentos, posso encerrar o artigo com algumas conclusões gerais. 
+O **jogo 2 (valor dos leilões)** padece do mesmo problema, pois não só o leiloeiro não escolhe a quantos processos ele é chamado, como ele também não escolhe o valor total de cada processo que lhe chega. É claro que há uma escolha, pequena, do leiloeiro ao ser chamado a um processo, pois ele pode rejeitar ou aceitar a oferta de realizar leilões. Uma possível estratégia para ganhar o jogo 2 seria a de aceitar apenas processos de grandes valores, mas essa estratégia não faz sentido fora do contexto dessa competição que criamos. A realidade é que os leiloeiros querem realizar a maior quantidade possível de leilões. Mas, novamente, o que me interessa aqui é que, à rigor, o valor do processo não é algo determinado pelo leiloeiro, mas é uma circunstância do processo, determinada externamente a ele. 
 
-### Considerações finais
+Nos **jogos 3 (taxa de sucesso)** e **4 (taxa de venda)**, há um problema parecido. Neles, persiste a questão de que o sucesso do leiloeiro é determinado por um fator externo, mas neste caso, o elemento externo são os "clientes" dos leilões, isto é, os arrematantes. Basicamente, o sucesso ou não da alienação dos bens depende mais da vontade de alguém em comprá-los, do que os esforços do leiloeiro. Apenas em parte o leiloeiro é responsável pelo sucesso da venda dos bens. O mérito (ou não) dos leiloeiros na venda dos bens pode ser que, ou ele tenha colocado um preço mínimo de venda muito alto, o que afastou alguns clientes (e, portanto, diminuiu a sua taxa de sucesso total); ou ele colocou um preço baixo demais, arrecadando menos do que ele poderia ter arrecadado (e, portanto, diminuiu a taxa de venda dos bens). Mas neste artigo, não aplicamos técnicas que poderiam testar se essas diferentes estratégias dos leiloeiros resultou em um maior ou menor sucesso; vimos apenas dados descritivos.
 
-Os jogos entre os leiloeiros foram úteis para demonstrar que... 
-- Desigualdade entre leiloeiros
-- Valores altos
-- Recuperabilidade
+### Queremos eliminar as assimetrias entre leiloeiros?
 
+O segundo comentário decorre de uma constatação evidente nos jogos 1 e 2: existe uma grande assimetria entre os leiloeiros. No jogo 1, vemos que de 135 processos, 91 estão nas mãos de apenas 3 leiloeiros, o que representa 61% de todos os leilões nas falência em São Paulo. Já no jogo 2, observamos que 3 leiloeiros concentram 70% do valor de todos os processos. Ao todo, os leilões das falências envolveram R\$ 1.394.399.449,00 (1,3 bilhão de reais). Apenas três leiloeiros concentram em si o montante total de R$ 986.337.377,20 (980 milhões de reais). Ou seja, é evidente a assimetria na distribuição de leilões nas falências de São Paulo. Essa assimetria se dá, em grande medida, pelas escolhas dos juízes, uma vez que são eles quem nomeiam os leiloeiros. A ressalva que desejo fazer é a de que essa assimetria não necessariamente é algo ruim, não é algo que necessariamente deva ser combatido. Podemos especular alguns motivos pelos quais essa concentração de leiloeiros seria desejável. 
+
+Uma primeira razão para isso é que leiloeiros menores não tem a capacidade de realizar muitos leilões em paralelo, assim, dada a grande quantidade de falências que tramitam em São Paulo, é uma escolha sensata que os juízes escolham reiteradamente os leilões de maior porte em vários processos.
+
+Outro possível motivo é que as falências são decretadas em estado de crise e inadimplência. Muitas vezes, as inadimplências recaem sobre créditos alimentícios, isto é, créditos trabalhistas. Isso pode gerar uma urgência muito grande para que os bens sejam alienados rapidamente. Por esse motivo os juízes podem acabar nomeando os leiloeiros mais experientes, com mais técnica e capacidade para realizar as alienações de forma rápida. É claro que vender rápido tem um custo, que muitas vezes é realizar alienações por preços baixos. Então, até por este motivo, é que podemos explicar o desempenho ruim nos jogos 3 e 4 dos leiloeiros que ganharam os jogos 1 e 2. 
+
+Ainda outro motivo para escolher leiloeiros grandes em processos grandes é que são exatamente estes leiloeiros os mais bem preparados para realizar os leilões. Os processos de maiores valores são os processos mais complexos, que exigem dos leiloeiros mais técnica, mais experiência e, muitas vezes, mais mãos. Os leilões não são realizados por uma única pessoa. Quanto maior é o processo, mais pessoas são envolvidas. Então este é outro motivo que pode explicar a concentração de processos e de valores nas mãos de poucos leiloeiros. 
+
+### Conclusão
+
+Querendo ou não eliminar assimetrias, elegendo ou não um leiloeiro melhor do que os outros, o que este artigo buscou foi dar alguma luz para os leilões judiciais nos processos de falência em São Paulo. A abordagem para tanto foi a apresentação descritiva de alguns dados. A estatística descritiva tem um papel fundamental para a pesquisa, pois ela pode abrir horizontes para novas pesquisas, novas perguntas e novas ideias. A este papel, deixo você, caro leitor, encarregado de pensar.
