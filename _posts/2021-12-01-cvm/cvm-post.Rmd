@@ -62,6 +62,7 @@ A realização da 1ª fase do Observatório de Capitais foi dedicada identificar
 ## Da análise e resultados 
 
 De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos  citar as principais questões abordadas pelo [relatório](https://abjur.github.io/obsMC) do Observatório do Mercado de Capitais.
+- incluir descrição da base 
 
 ### Quais são os temas mais comuns entre os Processos Administrativos:
 
@@ -99,6 +100,56 @@ base_temas %>%
 
 
 ```
+
+- relacionar com os desfechos - diferença dos desfechos conforme os temas 
+#### pelo tema de informacionais 
+```{r desfecho-informacionais}
+base_mc %>%
+ dplyr::filter(
+    teve_psj == "Sim",
+    desfecho != "Sem informação"
+  ) %>%
+  dplyr::group_by(tema) %>%
+  dplyr::filter(tema == "Informacionais") %>%
+   dplyr::group_by(tema, desfecho) %>% 
+   dplyr::summarise(
+    n = dplyr::n(),
+    .groups = "drop_last"
+  ) %>% 
+    arrange(desc(n)) %>% 
+  head(10) %>% 
+  dplyr::rename(Temas = tema, Desfecho = desfecho, Quantidade = n) %>% 
+  knitr::kable(caption = "Desfecho pelo Tema mais recorrente")
+ 
+```
+
+
+
+#### por todos os temas 
+```{r deschefos-motivo}
+
+para_join <- base_temas %>%
+  dplyr::select(motivo, tema) 
+  
+join_base <- para_join %>%
+  dplyr::left_join(base_mc)
+
+join_base %>%
+ dplyr::filter(
+    teve_psj == "Sim",
+    desfecho != "Sem informação"
+  ) %>%
+  dplyr::group_by(motivo) %>% 
+   #dplyr::filter(dplyr::n() > 100) %>%
+  dplyr::group_by(desfecho, motivo) %>% 
+  dplyr::count(desfecho) %>% 
+  arrange(desc(n)) %>% 
+  head(10)# %>% 
+  #dplyr::mutate(prop = pct(n/sum(n))) %>%
+  #dplyr::ungroup() 
+  #dplyr::rename(Temas = tema, Normativos = dispositivo_art, Quantidade = n) %>% 
+  #knitr::kable(caption = "Instruções normativas por temas")
+``` 
 E por que? 
 
 ```{r dispositivos-temas}
@@ -124,7 +175,7 @@ Instrução CVM 8
 Dispõe sobre condições artificiais de demanda, oferta ou preço de valores mobiliários, manipulação de preço, operações fraudulentas e práticas não eqüitativa. (POR QUE?)
 
 
-- relacionar com os desfechos - diferença dos desfechos conforme os temas 
+
 
 ### E em questão dos tempos:
 
