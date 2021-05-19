@@ -51,6 +51,8 @@ E tema da vez é demonstrar como a relação entre jurimetria e o mercado de cap
 
 ## Da aplicação da jurimetria 
 
+A Jurimetria é o estudo empirico do direito, utilizando-se de métodos quantitativos. Definindo-se principalmente pela aplicação da estatística ao direito. 
+
 A Jurimetria traz conceitos que estudam de fato como o sistema jurídico funciona. Permitindo o entendimento do complexo jurídico-financeiro e análise crítica sobre eficiência da atividade sancionadora da CVM. De fato, ao realizarmos uma análise mais empírica, concentramos a possibilidade expressiva de questionamento sobre o desenvolvimento das razões pelas quais existe a necessidade de uma entidade reguladora.
 
 A prerrogativa de aplicar a jurimetria é apresentar de forma intrínseca os métodos de apuração das possíveis infrações no mercado de capitais, estudando o funcionamento de todo o sistema operacional da CVM. Se concentrando em documentar uma base de dados de processos com intuito de entender e antecipar cenários, bem como interpretar a legislação atual.
@@ -61,10 +63,16 @@ A realização da 1ª fase do Observatório de Capitais foi dedicada identificar
 
 ## Da análise e resultados 
 
-De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos  citar as principais questões abordadas pelo [relatório](https://abjur.github.io/obsMC) do Observatório do Mercado de Capitais.
-- incluir descrição da base 
+De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos  citar as principais questões abordadas pelo [relatório](https://abjur.github.io/obsMC) do Observatório do Mercado de Capitais. Mais especificamente essas questões:
 
-### Quais são os temas mais comuns entre os Processos Administrativos:
+- Temas e dispositivos mais presentes nos Processos Administrativos Sancionadores.
+- Tempos. 
+- Termos de compromisso. 
+
+Para a análise forma utilizadas duas bases de dados relacionadas ao projeto do Observatório do Mercado de Capitais. Uma mais genérica contendo informações sobre os Processos Adminsitrativos Sancionadores e outra sendo mais específica sobre os Temas e dispositivos presentes. 
+
+
+### Quais são os temas mais comuns entre os Processos Administrativos Sancionadores:
 
 ```{r temas-comuns}
 base_temas %>%  
@@ -126,6 +134,7 @@ base_mc %>%
 
 
 #### por todos os temas 
+
 ```{r deschefos-motivo}
 
 para_join <- base_temas %>%
@@ -174,13 +183,25 @@ Instrução CVM 8
 
 Dispõe sobre condições artificiais de demanda, oferta ou preço de valores mobiliários, manipulação de preço, operações fraudulentas e práticas não eqüitativa. (POR QUE?)
 
-
-
-
 ### E em questão dos tempos:
+```{r tempos-anos, fig.cap="Tempos em relação a 5,10,20 anos", layout="l-body-outset"}
+#base_mc %>%
+ # dplyr::filter(
+  #  teve_psj == "Sim",
+   # desfecho %in% c("Suspensão", "Inabilitação", "Proibição"),
+    #prazo_cat != "Sem prazo"
+#  ) %>%
+  
+  #ggplot2::ggplot() +
+ # ggplot2::aes(x = prazo, y = desfecho) +
+  #ggplot2::geom_point(
+  #    ) +
+  #facet_wrap( ~ prazo ) +
+  #ggplot2::scale_fill_viridis_d(begin = 0.2, end = 0.8) 
 
-20/10/5 anos 
+# tentativa 5/10/20 anos 
 
+```
 ### Termos de compromisso
 
 TCC + temas 
@@ -190,12 +211,13 @@ TCC + temas
 ## O que podemos esperar no futuro sobre a abordagem da pesquisa jurimétrica no mercado de capitais? 
 
 - consolidar entendimentos.
-- avaliar os efeitos das alterações recentes na lei - analisar a eficiencia da atividade sancionadora 
-- ampliação do estudo das políticas publicas 
-- previsibilidade do julgador
+- avaliar os efeitos das alterações recentes na lei - analisar a eficiencia da atividade sancionadora.
+- ampliação do estudo das políticas publicas.
+- previsibilidade do julgador.
 
 Portanto, analisando no que se diz em respeito ao Mercado de Capitais e sua estrutura normativa e operacional, o impacto ao engajamento jurídico é de descomunal discussão, permitindo que as operações sejam realizadas de forma segura, eficientes e transparentes.
 
 Mas podemos também vislumbrar da importância da pesquisa jurimétrica em identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico. 
 
 É necessário que o legislador seja sensibilizado por todos os motivos demonstrados acima, para produzir leis que preenchem o vácuo hoje existente, e consequentemente que a fiscalização seja garantida afim que o mercado de valores possa produzir uma economia nacional e saudável.
+
