@@ -130,24 +130,6 @@ analise <- leiloes %>%
   # o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
 # unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
-# É isso?
-# readr::write_rds(analise, "C://Users/ABJ/Documents/ABJ/github/djprocPublic/data/leiloes.rds")
-
-# Peguei um processo pra cada leiloeiro pra analisar ----------------
-a <- analise %>% 
-  dplyr::select(id_processo, leiloeiro) %>% 
-  unique() %>% 
-  filter(!is.na(leiloeiro)) %>% 
-  group_by(leiloeiro) %>% 
-  slice(1)
-
-# Todos os processos de leiloeiro PJ
-a <- analise %>% 
-  dplyr::select(id_processo, leiloeiro, cpf_cnpj) %>% 
-  unique() %>%  
-  filter(!is.na(leiloeiro)) %>% 
-  filter(str_length(cpf_cnpj) >= 14)
-
 # anonimização ------------------------------------------------------------
 set.seed(1)
 
@@ -162,3 +144,19 @@ leiloeiros <- analise %>%
 
 analise <- left_join(analise, leiloeiros, by="leiloeiro") %>% 
   select(-leiloeiro, -leiloeiro_usar, -leiloeiro_pf, -leiloeiro_pj, -cpf_cnpj, -id_leiloeiro)
+
+# testes ------------------------------------------------------------------
+# Peguei um processo pra cada leiloeiro pra analisar
+a <- analise %>% 
+  dplyr::select(id_processo, leiloeiro) %>% 
+  unique() %>% 
+  filter(!is.na(leiloeiro)) %>% 
+  group_by(leiloeiro) %>% 
+  slice(1)
+
+# Todos os processos de leiloeiro PJ
+a <- analise %>% 
+  dplyr::select(id_processo, leiloeiro, cpf_cnpj) %>% 
+  unique() %>%  
+  filter(!is.na(leiloeiro)) %>% 
+  filter(str_length(cpf_cnpj) >= 14)
