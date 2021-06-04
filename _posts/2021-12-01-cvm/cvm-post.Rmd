@@ -32,11 +32,21 @@ library(patchwork)
 ```
 
 
-```{r}
+```{r include=FALSE}
 # carrega base disponivel no observatório
 
 base_mc <- obsMC::da_cvm_tidy
 base_temas <- obsCVM::da_tema_conduta
+
+# Unir dispositivos, motivos e temas na base principal 
+para_join <- base_temas %>%
+  dplyr::select(n_interno_abj, motivo, tema) %>% 
+  dplyr::mutate(id_processo = as.double(n_interno_abj)) %>% 
+  glimpse()# visualizar se corrigiu o problema de character e double
+  
+join_base <- para_join %>%
+  dplyr::left_join(base_mc) 
+
 
 ```
 
@@ -67,100 +77,112 @@ De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemo
 
 - Temas e dispositivos mais presentes nos Processos Administrativos Sancionadores.
 - Tempos. 
-- Termos de compromisso. 
+- Termos de Compromisso. 
 
 Para a análise forma utilizadas duas bases de dados relacionadas ao projeto do Observatório do Mercado de Capitais. Uma mais genérica contendo informações sobre os Processos Adminsitrativos Sancionadores e outra sendo mais específica sobre os Temas e dispositivos presentes. 
 
 
 ### Quais são os temas mais comuns entre os Processos Administrativos Sancionadores:
 
+A [Lei nº 13.506/17](http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/L13506.htm) em seu art. 3º é possível enumerar as possíveis infrações, previstas penalidades de forma isolada ou cumulativa, capacitando a CVM de aplicar penas com o objetivo de proporcionar efeito educativo e preventivo aos participantes do mercado de valores.
+
+Em análise sobre os processos administrativos sancionadores e as penalidades aplicadas pela CVM é estabelecido uma avaliação sobre o impacto da conduta e os prejuízos causados ao mercado. Também sobre como é o regulamento da suposta infração, bem qual o ressarcimento às partes lesadas. 
+
+Nesse cenário, poderemos levantar quais são práticas mais constantes no mercado de valores mobiliários:
+
 ```{r temas-comuns}
-base_temas %>%  
-  dplyr::select(tema, dispositivo_art) %>%
+base_temas %>%
   dplyr::group_by(tema) %>%
-  dplyr::count() %>%
-  dplyr::arrange(desc(n)) %>% 
-  dplyr::rename(Temas = tema, Quantidade = n) %>% 
+  dplyr::summarise(n = dplyr::n_distinct(n_interno_abj), .groups = "drop") %>%
+  dplyr::arrange(desc(n)) %>%
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
+  dplyr::rename(Temas = tema,
+                Quantidade = n,
+                "Proporção" = prop) %>%
   knitr::kable(caption = "Temas mais comuns entre os processos administrativos.")
 
 ```
-Podemos ver que os temas relacionados aos temas informacionais ..... 
-Figura \@ref(fig:temas-comuns)
 
-```{r informacionais-dispositivo, fig.cap="Quais são os principais motivos relacionados ao tema Informacional", layout="l-body-outset"}
+Considerando que um processo administrativo pode envolver diversos temas, podemos observar que os temas informacionais equivale 46,6% dos temas mais comuns entre os processos administrativos analisados. Uma companhia no Brasil (aberta ou fechada) precisam estar admitidas na negociação no mercado de valores mobiliários. Portanto, a CVM estabeleceu condições de registro de emissora, que devem ser disponibilizadas periodicamente para os acionistas e enviadas a própria CVM.
+
+Outro aspecto a ser observado são os motivos relacionados a esse tema em específico. 
+
+```{r informacionais-motivo, fig.cap="Quais são os principais motivos relacionados ao tema Informacional", layout="l-body-outset"}
 base_temas %>%
-  dplyr::select(tema, motivo) %>%
-  dplyr::filter(tema == "Informacionais") %>% 
-  group_by(motivo) %>%
-  count() %>%
-  arrange(desc(n)) %>%
-  ggplot() +
-  geom_col(
-    mapping = aes(x = n,  y = fct_reorder(motivo, n, .desc = FALSE)),
-    fill = "#102C68"
-  ) +
-  labs(
-    x = "Quantidade",
-    y = "Motivos Recorrentes"
-  ) +
+  dplyr::filter(tema == "Informacionais") %>%
+  group_by(tema, motivo) %>%
+  dplyr::summarise(n = dplyr::n_distinct(n_interno_abj),
+                   .groups = "drop") %>%
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
+  ggplot2::ggplot() +
+  ggplot2::geom_col(mapping = aes(x = prop,  y = fct_reorder(motivo, n, .desc = FALSE)),
+                    fill = "#102C68") +
+  ggplot2::geom_label(aes(prop, motivo, label = n),
+                      vjust = 0.5) +
+  ggplot2::scale_x_continuous(labels = scales::percent) +
+  labs(x = "Quantidade",
+       y = "Motivos Recorrentes") +
   theme_minimal(8)
-
-
-
 ```
+Na Figura \@ref(fig:informacionais-motivo) o motivo de "Não prestação de informações atualizadas" demonstrou ter mais relevância, chegando a 335 casos relacionados a esse motivo, enquanto a "Não indicação de representante legal" só constam 2 casos. 
 
-- relacionar com os desfechos - diferença dos desfechos conforme os temas 
-#### pelo tema de informacionais 
+Basicamente, predominam motivos relacionadas ao descumprimento de obrigações necessárias de manutenção de informações entre elas o registro de companhia aberta, os envio de informações periódicas e eventuais, que sejam as demonstrações editais de assembleias, informações trimestrais, acordos de convocação, atas financeiras, acionistas, dentre outras. *([ICVM no 202/93](http://conteudo.cvm.gov.br/legislacao/instrucoes/inst202.html), combinado com os artigos 132, 133, 142 e 176 da [LSA](http://www.planalto.gov.br/ccivil_03/leis/l6404consol.htm))*
+
+Como também problemas ou falta da atualização do registro de companhia de regulamentos de fundos de investimento regulados pela CVM, submetendo as negociações pela Bolsa de Valores a uma autorização prévia, previsto pelo pelas instruções [202/93](http://conteudo.cvm.gov.br/legislacao/instrucoes/inst202.html) e [480/09](http://conteudo.cvm.gov.br/legislacao/instrucoes/inst480.html). 
+
+Posto isto, é interessante analisar os desfechos desses processos administrativos e a diferença entre o tema mais recorrente a outros temas classificados:
+
+#### Pelo tema Informacional 
+
 ```{r desfecho-informacionais}
 base_mc %>%
- dplyr::filter(
-    teve_psj == "Sim",
-    desfecho != "Sem informação"
-  ) %>%
+  dplyr::filter(teve_psj == "Sim",
+                desfecho != "Sem informação") %>%
   dplyr::group_by(tema) %>%
   dplyr::filter(tema == "Informacionais") %>%
-   dplyr::group_by(tema, desfecho) %>% 
-   dplyr::summarise(
-    n = dplyr::n(),
-    .groups = "drop_last"
-  ) %>% 
-    arrange(desc(n)) %>% 
-  head(10) %>% 
-  dplyr::rename(Temas = tema, Desfecho = desfecho, Quantidade = n) %>% 
-  knitr::kable(caption = "Desfecho pelo Tema mais recorrente")
+  dplyr::group_by(desfecho) %>%
+  dplyr::summarise(n = dplyr::n(),
+                   .groups = "drop_last") %>%
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
+  arrange(desc(n)) %>%
+  dplyr::rename(Desfecho = desfecho,
+                Quantidade = n,
+                "%" = prop) %>%
+  knitr::kable(caption = "Desfecho pelo tema mais recorrente")
  
 ```
+Pela análise, foi possível observar que o desfecho que tem mais recorrência entre o tema é de multa pecuniária, alcançando 11% dentre os outros desfechos. É possivel interpretar que o alto indice de aplicação de multa pode ter relação com a aplicação simultanea de diferentes penas, considerando que a aplicação da pena de multa pode ser cumulada com uma sanção de natureza restrintiva de direitos. 
 
-
-
-#### por todos os temas 
+#### Por todos os temas 
 
 ```{r deschefos-motivo}
-
-para_join <- base_temas %>%
-  dplyr::select(motivo, tema) 
-  
-join_base <- para_join %>%
-  dplyr::left_join(base_mc)
-
 join_base %>%
- dplyr::filter(
-    teve_psj == "Sim",
-    desfecho != "Sem informação"
-  ) %>%
-  dplyr::group_by(motivo) %>% 
-   #dplyr::filter(dplyr::n() > 100) %>%
-  dplyr::group_by(desfecho, motivo) %>% 
-  dplyr::count(desfecho) %>% 
-  arrange(desc(n)) %>% 
-  head(10)# %>% 
-  #dplyr::mutate(prop = pct(n/sum(n))) %>%
-  #dplyr::ungroup() 
-  #dplyr::rename(Temas = tema, Normativos = dispositivo_art, Quantidade = n) %>% 
-  #knitr::kable(caption = "Instruções normativas por temas")
-``` 
-E por que? 
+  dplyr::filter(teve_psj == "Sim",
+                desfecho != "Sem informação") %>%
+  dplyr::group_by(desfecho, tema) %>%
+  dplyr::summarise(n = dplyr::n(),
+                   .groups = "drop") %>%
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
+  #dplyr::mutate(prop = as.character()) %>% 
+  dplyr::ungroup() %>%
+  dplyr::select(tema, desfecho, prop) %>%
+  tidyr::pivot_wider(names_from = desfecho,
+                     values_from = prop, 
+                     #values_fill = "0,0%"
+                     ) %>%
+  dplyr::rename(Tema = tema) %>%
+  knitr::kable(caption = "Desfecho por todos os temas")
 
+# como tirar esses NAs?
+
+``` 
+ A partir desses resultados observamos a proporção dos desfechos de acordo com o tema. O tema que tem mais assosiação a Absolvição são relacionados a Ilicitos de mercado enquanto ### precisa verificar se está correta a análise 
+ 
+ 
 ```{r dispositivos-temas}
 
 base_temas %>%
@@ -168,18 +190,16 @@ base_temas %>%
   dplyr::mutate(
     dispositivo_art =  stringr::str_remove_all(dispositivo_art, stringr::regex(", [a-z0-9]", ignore_case=TRUE))
   ) %>% 
-dplyr::group_by(tema, dispositivo_art) %>% 
-  count() %>%
-  arrange(desc(n)) %>% 
-  head(10) %>% 
-  dplyr::rename(Temas = tema, Normativos = dispositivo_art, Quantidade = n) %>% 
+  dplyr::group_by(tema, dispositivo_art) %>% 
+  head(5) %>% 
+  #dplyr::rename(Temas = tema, Normativos = dispositivo_art, Quantidade = n) %>% 
   knitr::kable(caption = "Instruções normativas por temas")
 ```
 
 - Instrução 8 
 
 Instrução CVM 8
-08/10/1979
+08/10/1979 (adicionar ainda)
 
 Dispõe sobre condições artificiais de demanda, oferta ou preço de valores mobiliários, manipulação de preço, operações fraudulentas e práticas não eqüitativa. (POR QUE?)
 
@@ -206,7 +226,7 @@ Dispõe sobre condições artificiais de demanda, oferta ou preço de valores mo
 
 TCC + temas 
 
-- insider
+- tema mais polêmico: insider - e temas de compromisso (adicionar ainda )
 
 ## O que podemos esperar no futuro sobre a abordagem da pesquisa jurimétrica no mercado de capitais? 
 
@@ -214,6 +234,19 @@ TCC + temas
 - avaliar os efeitos das alterações recentes na lei - analisar a eficiencia da atividade sancionadora.
 - ampliação do estudo das políticas publicas.
 - previsibilidade do julgador.
+
+✓ Identificar as formas políticas e jurídicas da estrutura organizacional da CVM.
+
+✓ Verificar quais são as práticas mais constantes no mercado de valores
+mobiliários.
+
+✓ Identificar quais são os cenários econômicos possíveis e como a CVM se articula
+em relação a essas modalidades.
+
+✓ Encontrar possíveis convergências e conflitos sobre os conceitos analisados.
+
+✓ Analisar mérito jurídico da implementação dos processos administrativos
+sancionadores.
 
 Portanto, analisando no que se diz em respeito ao Mercado de Capitais e sua estrutura normativa e operacional, o impacto ao engajamento jurídico é de descomunal discussão, permitindo que as operações sejam realizadas de forma segura, eficientes e transparentes.
 
