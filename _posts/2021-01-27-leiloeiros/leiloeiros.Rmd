@@ -1,6 +1,7 @@
 ---
 title: "O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?"
-description: Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo
+description: Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo. Para isso, optou-se por uma abordagem lúdica ao longo do texto, mas com considerações críticas ao final. 
+
 author:
   - name: Ricardo Feliz
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
@@ -33,7 +34,8 @@ library(tidyverse)
 ```{r}
 # 1) Importação
 # Import da base de todos os leilões
-leiloes <- obsFase3::da_leilao_tidy
+analise <- leiloeiros::analise %>% 
+  rename(leiloeiro = leiloeiro_anonimo)
 
 cores_abj <- viridis::viridis(2, 1, .2, .8)
 
@@ -41,151 +43,20 @@ cores_abj <- viridis::viridis(2, 1, .2, .8)
 
 ```{r}
 # 2) Arrumação
-# a) base principal
-analise <- leiloes %>% 
-  dplyr::filter(modalidade == "leilao") %>% 
-  dplyr::mutate(
-    leiloeiro = dplyr::case_when(
-      str_detect(leiloeiro, regex("ron.*faro|ron.*mon", ignore_case=TRUE)) ~ "Ronaldo Sérgio Montenegro Rodrigues Faro",
-      # Mega Leilões e Fernando José Cerello são a mesma coisa
-      str_detect(leiloeiro, regex("Cerello", ignore_case=TRUE)) ~ "Fernando José Cerello Gonçalves Pereira",
-      str_detect(leiloeiro, regex("Mega", ignore_case=TRUE)) ~ "Mega Leilões",
-      str_detect(leiloeiro, regex("Alexandridis", ignore_case=TRUE)) ~ "Georgios José Ilias Bernabé Alexandridis",
-      str_detect(leiloeiro, regex("Moretto", ignore_case=TRUE)) ~ "Gustavo Moretto Guimarães de Oliveira",
-      str_detect(leiloeiro, regex("Thais Silva", ignore_case=TRUE)) ~ "Thais Silva Moreira de Sousa",
-      str_detect(leiloeiro, regex("Macedo Campos", ignore_case=TRUE)) ~ "André Macedo Campos Toledo",
-      str_detect(leiloeiro, regex("Sato", ignore_case=TRUE)) ~ "Antonio Hissao Sato Junio",
-      str_detect(leiloeiro, regex("Wendell", ignore_case=TRUE)) ~ "Wendell Marcel Calixto Félix",
-      str_detect(leiloeiro, regex("badolato", ignore_case=TRUE)) ~ "Cezar Augusto Badolato Silva",
-      str_detect(leiloeiro, regex("Dannae", ignore_case=TRUE)) ~ "Dannae Vieira Avila",
-      str_detect(leiloeiro, regex("Dora Plat", ignore_case=TRUE)) ~ "Dora Plat",
-      str_detect(leiloeiro, regex("Zukerman", ignore_case=TRUE)) ~ "Fabio Zukerman",
-      str_detect(leiloeiro, regex("Samuel", ignore_case=TRUE)) ~ "Gustavo Cristiano Samuel dos Reis",
-      str_detect(leiloeiro, regex("Moy", ignore_case=TRUE)) ~ "Renato Schlobach Moysés",
-      # Gold Leilões e Uilan Aparecido são a mesma coisa
-      str_detect(leiloeiro, regex("Uilian", ignore_case=TRUE)) ~ "Uilian Aparecido da Silva",
-      str_detect(cpf_cnpj, "18.067.544/0001-36") ~ "Gold Leilões - Gold Intermediação de Ativos Ltda",
-      str_detect(leiloeiro, regex("Villa Nova", ignore_case=TRUE)) ~ "Sérgio Villa Nova de Freitas",
-      str_detect(leiloeiro, regex("Boya", ignore_case=TRUE)) ~ "Eduardo Jordão Boyadjian",
-      str_detect(leiloeiro, regex("Franklin", ignore_case=TRUE)) ~ "Renata Franklin Simões",
-      str_detect(leiloeiro, regex("Cardoso", ignore_case=TRUE)) ~ "Danilo Cardoso da Silva",
-      str_detect(leiloeiro, regex("Fidalgo", ignore_case=TRUE)) ~ "Douglas José Fidalgo",
-      str_detect(leiloeiro, regex("Affonso", ignore_case=TRUE)) ~ "Alfio Carlos Affonso Zalli Neto",
-      str_detect(leiloeiro, regex("casa reis", ignore_case=TRUE)) ~ "Casa Reis Leilões",
-      str_detect(leiloeiro, regex("juiz|Furtado|adm|AJ|trustee", ignore_case=TRUE)) ~ "não leiloeiro",
-      str_detect(leiloeiro, regex("juiz", ignore_case=TRUE)) ~ "zjuiz",
-      str_detect(cpf_cnpj, "15.086.104/0001") ~ "Lance Alienações Eletrônicas Ltda",
-      # HastaPublicaBR e Euclides Maraschi Junior são a mesma coisa
-      str_detect(cpf_cnpj, "144.470.838-41") ~ "Euclides Maraschi Junior",
-      str_detect(cpf_cnpj, "16.792.811/0001-02") ~ "HastaPublicaBR Promotora de Eventos Ltda",
-      str_detect(cpf_cnpj, "19.962.222/0001-13") ~ "D1Lance Intermediação de Ativos Ltda",
-      str_detect(cpf_cnpj, "537.866.888-34") ~ "Ronaldo Milan", 
-    ),
-    
-    cpf_cnpj = dplyr::case_when(
-      leiloeiro == "Ronaldo Sérgio Montenegro Rodrigues Faro" ~ "08046824887",
-      leiloeiro == "Fernando José Cerello Gonçalves Pereira" ~ "21989241883",
-      leiloeiro == "Georgios José Ilias Bernabé Alexandridis" ~ "25419334879",
-      leiloeiro == "Gustavo Moretto Guimarães de Oliveira" ~ " 28034586838",
-      leiloeiro == "Thais Silva Moreira de Sousa" ~ " 36171181862",
-      leiloeiro == "André Macedo Campos Toledo" ~ "",
-      leiloeiro == "Antonio Hissao Sato Junio" ~ "27110999890",
-      leiloeiro == "Wendell Marcel Calixto Félix" ~ "16239428884",
-      leiloeiro == "Cezar Augusto Badolato Silva" ~ "07538221808",
-      leiloeiro == "Dannae Vieira Avila" ~ "36947855829",
-      leiloeiro == "Dora Plat" ~ "07080906806",
-      leiloeiro == "Fabio Zukerman" ~ "21575323826",
-      leiloeiro == "Gustavo Cristiano Samuel dos Reis" ~ "27358397886",
-      leiloeiro == "Renato Schlobach Moysés" ~ "09141676858",
-      leiloeiro == "Uilian Aparecido da Silva" ~ "11645230821",
-      leiloeiro == "Sérgio Villa Nova de Freitas" ~ "33201862800",
-      leiloeiro == "Eduardo Jordão Boyadjian" ~ "12634759819",
-      leiloeiro == "Renata Franklin Simões" ~ "20538037890",
-      leiloeiro == "Danilo Cardoso da Silva" ~ "31191072800",
-      leiloeiro == "Alfio Carlos Affonso Zalli Neto" ~ " 39681014804",
-      leiloeiro == "Douglas José Fidalgo" ~ "16499659827",
-      leiloeiro == "Mega Leilões" ~ "03122040000102",
-      leiloeiro == "Casa Reis Leilões" ~ " 19116554000187",
-      leiloeiro == "Lance Alienações Eletrônicas Ltda" ~ "15086104000138",
-      leiloeiro == "Euclides Maraschi Junior" ~ "14447083841",
-      leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "16792811000102",
-      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos Ltda" ~ "18067544000136",
-      leiloeiro == "D1Lance Intermediação de Ativos Ltda" ~ "19962222000113",
-      leiloeiro == "Ronaldo Milan" ~ "53786688834",
-      TRUE ~ cpf_cnpj
-    ),
-    
-    id_leiloeiro = dplyr::case_when(
-      leiloeiro == "Ronaldo Sérgio Montenegro Rodrigues Faro" ~ "6331",
-      leiloeiro == "Fernando José Cerello Gonçalves Pereira" ~ "5406",
-      leiloeiro == "Georgios José Ilias Bernabé Alexandridis" ~ "7633",
-      leiloeiro == "Gustavo Moretto Guimarães de Oliveira" ~ "7979",
-      leiloeiro == "Thais Silva Moreira de Sousa" ~ "34064",
-      leiloeiro == "André Macedo Campos Toledo" ~ "",
-      leiloeiro == "Antonio Hissao Sato Junio" ~ "858",
-      leiloeiro == "Wendell Marcel Calixto Félix" ~ "23601",
-      leiloeiro == "Cezar Augusto Badolato Silva" ~ "5393",
-      leiloeiro == "Dannae Vieira Avila" ~ "28025",
-      leiloeiro == "Dora Plat" ~ "5608",
-      leiloeiro == "Fabio Zukerman" ~ "5508",
-      leiloeiro == "Gustavo Cristiano Samuel dos Reis" ~ "5596",
-      leiloeiro == "Renato Schlobach Moysés" ~ "466",
-      leiloeiro == "Uilian Aparecido da Silva" ~ "26542",
-      leiloeiro == "Sérgio Villa Nova de Freitas" ~ "5604",
-      leiloeiro == "Eduardo Jordão Boyadjian" ~ "924",
-      leiloeiro == "Renata Franklin Simões" ~ "669",
-      leiloeiro == "Danilo Cardoso da Silva" ~ "7794",
-      leiloeiro == "Alfio Carlos Affonso Zalli Neto" ~ "21977",
-      leiloeiro == "Douglas José Fidalgo" ~ "5535",
-      leiloeiro == "Mega Leilões" ~ "5426",
-      leiloeiro == "Casa Reis Leilões" ~ " 5448",
-      leiloeiro == "Lance Alienações Eletrônicas Ltda" ~ "5937",
-      leiloeiro == "Euclides Maraschi Junior" ~ "5665",
-      leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "1057",
-      leiloeiro == "Gold Leilões - Gold Intermediação de Ativos Ltda" ~ "620",
-      leiloeiro == "D1Lance Intermediação de Ativos Ltda" ~ "5366",
-      leiloeiro == "Ronaldo Milan" ~ "29112",
-      TRUE ~ id_leiloeiro
-    )
-  ) %>% 
-  # Tratamento dos lotes
-  mutate(descricao = stringr::str_remove_all(descricao, stringr::regex("lote *(nº *)?[0-9.]+ *[:;-–]? *(?=[a-z0-9- ]{1,5})", TRUE))) %>% 
-  # Equivalência de leiloeiros
-  mutate(leiloeiro_pj = case_when(str_length(cpf_cnpj) >= 14 ~ leiloeiro)) %>%
-  mutate(leiloeiro_pf = case_when(
-    str_length(cpf_cnpj) < 14 ~ leiloeiro,
-    leiloeiro == "Mega Leilões" ~ "Fernando José Cerello Gonçalves Pereira",
-    leiloeiro == "HastaPublicaBR Promotora de Eventos Ltda" ~ "Euclides Maraschi Junior",
-    leiloeiro == "Gold Leilões - Gold Intermediação de Ativos Ltda" ~ "Uilian Aparecido da Silva",
-    leiloeiro == "Casa Reis Leilões" ~ "Eduardo dos Reis",
-    leiloeiro == "D1Lance Intermediação de Ativos Ltda" ~ "Dannae Vieira Avila"
-  )) %>% 
-  mutate(leiloeiro_usar = case_when(
-    !is.na(leiloeiro_pf) ~ leiloeiro_pf,
-    is.na(leiloeiro_pf) ~ leiloeiro_pj
-  )) %>% 
-  filter(!is.na(leiloeiro))
-
-# b) sub-base PROCESSO
+# a) sub-base PROCESSO
 processos <- analise %>% 
   arrange(desc(data_edital)) %>% 
   group_by(id_processo, descricao) %>% 
   slice(1) %>%
-  select(!leiloeiro) %>% 
-  rename(leiloeiro = leiloeiro_usar) %>% 
   dplyr::group_by(id_processo, leiloeiro) %>% 
-  dplyr::summarise(valor_total_processo = sum(valor_avaliacao_inicial, na.rm=T)) %>% 
+  dplyr::summarise(valor_total_processo = sum(valor_avaliacao_inicial, na.rm=TRUE)) %>% 
   group_by(leiloeiro) %>% 
-  summarise(qtd_processos = n(), vtp = mean(valor_total_processo, na.rm=T)) %>% 
+  summarise(qtd_processos = n(), vtp = mean(valor_total_processo, na.rm=TRUE)) %>% 
   arrange(desc(qtd_processos)) %>% 
   filter(vtp > 100)
 
-# c) sub-base SUCESSO
-
+# b) sub-base SUCESSO
 sucesso <- analise %>% 
-  select(!leiloeiro) %>% 
-  rename(leiloeiro = leiloeiro_usar) %>% 
-  filter(leiloeiro != "Lance Alienações Eletrônicas Ltda") %>% 
   arrange(desc(data_edital)) %>% 
   group_by(id_processo, descricao) %>% 
   slice(1) %>% 
@@ -222,21 +93,13 @@ Com base nesses dados, podemos pensar em estratégias para determinar o sucesso 
 
 ### Dos candidatos habilitados
 
-A única regra para a habilitação dos leiloeiros nos jogos é que eles sejam pessoas físicas. A base original continha algumas pessoas jurídicas. Entretanto, muitas dessas pessoas jurídicas estavam associadas a um único leiloeiro, sendo possível, portanto, substituir a pessoa jurídica por uma pessoa física facilmente. Isso aconteceu para o "Mega Leilões", "Gold Leilões", "D1 Lance", "Hasta Pública" e "Casa Reis". A tabela a seguir indica a relação entre as pessoas jurídicas e os respectivos leiloeiros por detrás delas. 
+A única regra para a habilitação dos leiloeiros nos jogos é que eles sejam pessoas físicas. A base original continha algumas pessoas jurídicas. Entretanto, muitas dessas pessoas jurídicas estavam associadas a um único leiloeiro, sendo possível, portanto, substituir a pessoa jurídica por uma pessoa física facilmente. Isso aconteceu para 5 casas de leilões. Houve, entretanto, uma casa de leilões que não havia uma pessoa física correspondente. Foi a casa Lance Alienações Eletrônicas Ltda. Este, portanto, foi o único candidato desqualificado.
 
-::: l-body
-|Pessoa jurídica|Leiloeiro|
-|:--------------|:--------|
-|Mega Leilões|Fernando José Cerello Gonçalves Pereira|
-|Hasta Publica BR|Euclides Maraschi Junior|
-|Gold Leilões|Uilian Aparecido da Silva|
-|Casa Reis Leilões|Eduardo dos Reis|
-|D1 Lance|Dannae Vieira Avila|
-:::
+Ao fim, ficamos com 24 concorrentes. 
 
-Houve uma casa de leilões, entretanto, que não havia uma pessoa física correspondente. Foi a casa Lance Alienações Eletrônicas Ltda. Este, portanto, foi o único candidato desqualificado.
+### Da privacidade dos concorrentes
 
-Ao fim, ficamos com 24 concorrentes.
+Para preservar a identidade dos candidatos e não criar um ordenamento dos leiloeiros profissionais, optou-se por anonimizar os dados. Assim, cada leiloeiro possui um nome aleatório. 
 
 ### Dos jogos
 
@@ -274,7 +137,7 @@ processos %>%
     theme_minimal()
 ```
 
-Olhando para os resultados deste jogo no @plot1, é fácil de vermos um grande destaque! Fernando José Cerello Gonçalves Pereira. Sr. Fernando assumiu a liderança com quase 40 processos acumulados ! O segundo lugar foi Ronaldo Faro, com 28 processos, e o terceiro colocado foi Renato Schlobach Moysés, com 24 processos. 
+Olhando para os resultados deste jogo no @plot1, é fácil de vermos um grande destaque! Seu nome é Mei. Mei assumiu a liderança com quase 40 processos acumulados ! O segundo lugar foi Shaahir, com 28 processos, e o terceiro colocado foi Ameena, com 24 processos. 
 
 Vemos que os três primeiros lugares estão muito acima da média (linha vermelha), que é de 6 processos por leiloeiro. Mas essa média pode enganar. A quantidade de processos por leiloeiro é, na verdade, de 1 processo apenas (esta é a moda). A média acaba ficando alta por causa dos primeiros colocados, que "puxam" a média para cima. Essa média é tão alta que de 24 jogadores, apenas 5 estão acima da média. Uma medida mais apropriada para essas distribuições assimétricas é a mediana (linha azul). Com a mediana, vemos que 2,5 processos por leiloeiro divide exatamente no meio os jogadores, ou seja, há 12 jogadores com 3 processos ou mais e 12 jogadores com 2 processos ou menos. 
 
@@ -294,7 +157,7 @@ placar1 %>%
 
 ## Jogo 2: Quanto vale? 
 
-O segundo jogo é **Quanto vale?**. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões relacionados a esses processos. Basicamente, o que queremos observar é se, por exemplo, o Fernando, que recebeu 39 processos, não ficou, na verdade com 39 processos de preços irrisórios, enquanto o Alfio, que ficou com apenas 1 processo, na verdade não ficou encarregado de realizar um leilão milionário.  
+O segundo jogo é **Quanto vale?**. Este jogo busca comparar, não a quantidade de processos de cada leiloeiro, mas o valor médio dos leilões relacionados a esses processos. Basicamente, o que queremos observar é se, por exemplo, Mei, que recebeu 39 processos, não ficou, na verdade com 39 processos de preços irrisórios, enquanto Fikiri, que ficou com apenas 1 processo, na verdade não ficou encarregado de realizar um leilão milionário.  
 
 Usamos como base, para calcular o valor total de um leilão, os valores individuais de avaliação de cada bem. E para calcular o valor médio de cada leilão por leiloeiro, apenas dividimos o valor total de cada leilão, pela quantidade de processos que foram confiados a cada leiloeiro. Ganha este jogo quem tiver um valor médio por processo maior. 
 
@@ -313,9 +176,9 @@ processos %>%
     theme_minimal()
 ```
 
-No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quantidade de R\$ 39.196.854,33	 por processo (39 milhões de reais por processo). O ganhador foi Euclides Maraschi Junior. A disputa pelo segundo lugar foi acirrada. Em segundo lugar, veio Renato Schlobach Moysés, com um valor médio de R\$ 24.096.983,39 por processo (24 milhões de reais por processo) e, em terceiro, com um valor médio de R\$ 17.154.507,55 (17 milhões de reais por processo), veio leiloeiro Fernando José Cerello Gonçalves Pereira. 
+No segundo jogo, o primeiro lugar saiu disparado na frente, com a incrível quantidade de R\$ 39.196.854,33	 por processo (39 milhões de reais por processo). A ganhadora foi Nicole. A disputa pelo segundo lugar foi acirrada. Em segundo lugar, veio Ameena, com um valor médio de R\$ 24.096.983,39 por processo (24 milhões de reais por processo) e, em terceiro, com um valor médio de R\$ 17.154.507,55 (17 milhões de reais por processo), veio leiloeiro Mei. 
 
-Aqui novamente observamos uma grande assimetria na distribuição dos processos. A média (linha em vermelhO) foi de R\$ 3.845.099,36 (3 milhões de reais por processo), mas apenas os três primeiros colocados estão acima desta média! Se usarmos a mediana (linha azul) como medida de centro, teremos uma medida menos sensível aos extremos e, com isso, conseguiremos observar melhor os resultados de cada leiloeiro. A mediana do valor por processo é de R\$ 270.052,20 (270 mil reais por processo), que é um número 14 vezes menor que a média. 
+Aqui novamente observamos uma grande assimetria na distribuição dos processos. A média (linha em vermelho) foi de R\$ 3.845.099,36 (3 milhões de reais por processo), mas apenas os três primeiros colocados estão acima desta média! Se usarmos a mediana (linha azul) como medida de centro, teremos uma medida menos sensível aos extremos e, com isso, conseguiremos observar melhor os resultados de cada leiloeiro. A mediana do valor por processo é de R\$ 270.052,20 (270 mil reais por processo), que é um número 14 vezes menor que a média. 
 
 Olhando especificamente para os 5 últimos colocados, observamos que eles tiveram arrecadações de até 30 mil reais por processo. É uma diferença de mais de 1300 vezes em relação ao primeiro colocado. Foi uma disputa destruidora para alguns competidores.  
 
@@ -341,7 +204,7 @@ knitr::kable(placar2, digits=2, col.names = gsub("[_]", " ", names(placar2))) %>
   kableExtra::scroll_box(height = "500px", width = "100%")
 ```
 
-Fernando continua na liderança, com Ronaldo Faro e Renato Moysés na sua cola. Será que Fernando irá conseguir manter sua posição nos próximos jogos? 
+Mei continua na liderança, com Ameena e Shaahir na sua cola. Será que Mei irá conseguir manter sua posição nos próximos jogos? 
 
 ## Jogo 3: Quem vende mais?
 
@@ -372,7 +235,7 @@ ggplot(jogo3) +
   theme_minimal()
 ```
 
-Este jogo foi o mais disputado até agora. Tivemos 3 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto! Quem se deu melhor nessa competição foram aqueles jogadores que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Dora Plat e de Danilo Cardoso, que ficaram com uma taxa de sucesso de 0. Danilo tiha apenas 9 bens para alienar, e Dora, 30.
+Este jogo foi o mais disputado até agora. Tivemos 4 leiloeiros empatados em primeiro lugar, todos com uma taxa de sucesso de 1 ponto! Quem se deu melhor nessa competição foram aqueles jogadores que tinham poucos bens para alienar. Com poucos bens era fácil vender tudo. Mas na verdade, ter poucos bens também mostrou um enorme risco: o peso individualmente de um único bem, caso ele não fosse alienado, mostrou-se devastador para os competidores, pois a taxa de sucesso dispencava. Foi o caso de Bernadette e de Muaaid, que ficaram com uma taxa de sucesso de 0. Muaaid tiha apenas 9 bens para alienar, e Bernadette, 30.
 
 Além disso, aqueles leiloeiros com muitos bens (que, em geral, foram os ganhadores dos dois jogos passados), tiveram dificuldades em vender tudo. 
 
@@ -399,7 +262,7 @@ knitr::kable(placar3, digits=2, col.names = gsub("[_]", " ", names(placar3))) %>
 
 ```
 
-Faltando apenas um jogo para encerrar a competição, Renato Schlobach Moysés ultrapassou Fernando José Cerello Gonçalves Pereira! Renato está agora com 2.35 pontos, no geral. Atrás dele setá Fernando, com 2.19 pontos e, logo na sua cola, vem Ronaldo Faro, com apenas 0.02 pontos de diferença. Outros jogadores também começaram a entrar no radar, como Cezar Augusto Badolato Silva, Antonio Hissao Sato Junio e Gustavo Moretto Guimarães de Oliveir.
+Faltando apenas um jogo para encerrar a competição, Ameena ultrapassou Mei! Ameena está agora com 2.35 pontos, no geral. Atrás dele está Mei, com 2.19 pontos e, logo na sua cola, vem Shaahir, com apenas 0.02 pontos de diferença. Outros jogadores também começaram a entrar no radar, como Caitlyn (1.93 pontos), Hamna (1.92 pontos) e Lindsey (1.90 pontos).
 
 A única coisa que podemos afirmar nas vésperas do quarto e último jogo é que temos muitas dúvidas e poucas respostas sobre quem será o ganhador. 
 
@@ -416,7 +279,8 @@ jogo4 <- sucesso  %>%
   filter(vendeu == "sim") %>% 
   group_by(leiloeiro) %>% 
   summarise(taxa_venda_media = mean(taxa_venda_valor)) %>% 
-  mutate(leiloeiro = forcats::fct_reorder(leiloeiro, taxa_venda_media))
+  mutate(leiloeiro = forcats::fct_reorder(leiloeiro, taxa_venda_media)) %>% 
+  ungroup()
 
 media4 <- mean(jogo4$taxa_venda_media)
 
@@ -429,12 +293,16 @@ ggplot(jogo4) +
 
 Este jogo foi difícil para os leiloeiros com grandes valores de bens em suas mãos, pois aqui o valor inicial contava muito. Não bastava que os bens simplesmente fossem vendidos, eles precisavam ser vendidos pelo maior valor possível. Em média, os leiloeiros conseguiam vender seus bens a uma taxa de 60% do valor de avaliação inicial. 
 
-Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter uma taxa de venda média maior do que 1 foi Cezar Augusto Badolato. 
+Muitos candidatos foram desclassificados neste jogo, pois eles não conseguiram vender nenhum bem no jogo passado. Dos que ficaram, era possível que eles vendessem seus bens por taxas de venda maiores que 1, entretanto, o único que conseguiu ter uma taxa de venda média maior do que 1 foi Caitlyn. 
 
 Com isso, temos consolidado o placar final. 
 
 ```{r placar4, eval=TRUE, results='asis'}
-preplacar4 <- sucesso %>% 
+preplacar4 <- sucesso %>%
+  group_by(leiloeiro) %>% 
+  mutate(n_vendas = sum(vendeu == "sim")) %>% 
+  ungroup() %>% 
+  filter(vendeu == "sim" | n_vendas == 0) %>% 
   group_by(leiloeiro) %>% 
   summarise(taxa_venda_media = mean(taxa_venda_valor)) %>%
   arrange(taxa_venda_media) %>% 
@@ -443,10 +311,10 @@ preplacar4 <- sucesso %>%
   select(leiloeiro, taxa_venda_media, score_jogo_4) %>% 
   arrange(desc(score_jogo_4))
 
-placar4 <- left_join(preplacar4, placar3, by = "leiloeiro") %>% 
+placar4 <- left_join(placar3, preplacar4, by = "leiloeiro") %>% 
   mutate(pontos_acumulados = pontos_acumulados + score_jogo_4) %>%
   select(leiloeiro, taxa_venda_media, score_jogo_4, pontos_acumulados) %>% 
-  arrange(desc(score_jogo_4))
+  arrange(desc(score_jogo_4)) 
 
 knitr::kable(placar4, digits=2, col.names = gsub("[.]", " ", names(placar4))) %>% 
   kableExtra::scroll_box(height = "500px", width = "100%")
@@ -476,10 +344,9 @@ placar_final %>%
 
 ```
 
-Com isso, podemos declarar oficialmente que o vencedor é... 
+Com isso, podemos declarar oficialmente que o leiloeiro vencedor é... 
 
-
-Menção especial aos vencedores: o vencedor é **RENATO SCLOBACH MOYSÉS**, com 2.91 pontos, de um total de 4.0 pontos possíveis. Em segundo lugar, com 2.84, temos *CEZAR AUGUSTO BADOLATO SILVA*. E em terceiro lugar, com 2.78 pontos, temos GUSTAVO CRISTIANO SAMUEL DOS REIS.
+Menção especial aos vencedores: o leiloeiro vencedor é **AMEENA**, com 3.04 pontos, de um total de 4.0 pontos possíveis. Em segundo lugar, com 2.93, temos *LINDSEY*. E em terceiro lugar, com 2.86 pontos, temos Caitlyn.
 
 Parabéns a todos os participantes. 
 
@@ -499,14 +366,16 @@ Nos **jogos 3 (taxa de sucesso)** e **4 (taxa de venda)**, há um problema parec
 
 ### Queremos eliminar as assimetrias entre leiloeiros?
 
-O segundo comentário decorre de uma constatação evidente nos jogos 1 e 2: existe uma grande assimetria entre os leiloeiros. No jogo 1, vemos que de 135 processos, 91 estão nas mãos de apenas 3 leiloeiros, o que representa 61% de todos os leilões nas falência em São Paulo. Já no jogo 2, observamos que 3 leiloeiros concentram 70% do valor de todos os processos. Ao todo, os leilões das falências envolveram R\$ 1.394.399.449,00 (1,3 bilhão de reais). Apenas três leiloeiros concentram em si o montante total de R$ 986.337.377,20 (980 milhões de reais). Ou seja, é evidente a assimetria na distribuição de leilões nas falências de São Paulo. Essa assimetria se dá, em grande medida, pelas escolhas dos juízes, uma vez que são eles quem nomeiam os leiloeiros. A ressalva que desejo fazer é a de que essa assimetria não necessariamente é algo ruim, não é algo que necessariamente deva ser combatido. Podemos especular alguns motivos pelos quais essa concentração de leiloeiros seria desejável. 
+O segundo comentário decorre de uma constatação evidente nos jogos 1 e 2: existe uma grande assimetria entre os leiloeiros. No jogo 1, vemos que de 135 processos, 91 estão nas mãos de apenas 3 leiloeiros, o que representa 61% de todos os leilões nas falência em São Paulo. Já no jogo 2, observamos que 3 leiloeiros concentram 70% do valor de todos os processos. Ao todo, os leilões das falências envolveram R\$ 1.394.399.449,00 (1,3 bilhão de reais), sendo que apenas três leiloeiros concentram em si o montante total de R$ 986.337.377,20 (980 milhões de reais). Ou seja, é evidente a assimetria na distribuição de leilões nas falências de São Paulo. Essa assimetria se dá, em grande medida, pelas escolhas dos juízes, uma vez que são eles quem nomeiam os leiloeiros. A ressalva que desejo fazer é a de que essa assimetria não necessariamente é algo ruim, não é algo que necessariamente deva ser combatido. Ela pode ser ruim por muitas perspectivas e em muitos casos, mas não devemos fazer essa leitura automática. A seguir, especulo sobre alguns motivos pelos quais essa concentração de leiloeiros não é necessariamente ruim. 
 
-Uma primeira razão para isso é que leiloeiros menores não tem a capacidade de realizar muitos leilões em paralelo, assim, dada a grande quantidade de falências que tramitam em São Paulo, é uma escolha sensata que os juízes escolham reiteradamente os leilões de maior porte em vários processos.
+Uma primeira razão para isso é que leiloeiros menores não tem a capacidade de realizar muitos leilões em paralelo, ao mesmo tempo. Como existem muitos processos de falência acontecendo em paralelo, é natural que aconteçam também muitos leilões sobrepostos, em autos diferentes. Mas nem todos os leiloeiros tem capacidade para lidar com um grande número de leilões ao mesmo tempo. Assim, dada a grande quantidade de falências que tramitam em São Paulo, é sensata a escolha dos juízes em repetir os leiloeiros de maior porte em vários processos.
 
-Outro possível motivo é que as falências são decretadas em estado de crise e inadimplência. Muitas vezes, as inadimplências recaem sobre créditos alimentícios, isto é, créditos trabalhistas. Isso pode gerar uma urgência muito grande para que os bens sejam alienados rapidamente. Por esse motivo os juízes podem acabar nomeando os leiloeiros mais experientes, com mais técnica e capacidade para realizar as alienações de forma rápida. É claro que vender rápido tem um custo, que muitas vezes é realizar alienações por preços baixos. Então, até por este motivo, é que podemos explicar o desempenho ruim nos jogos 3 e 4 dos leiloeiros que ganharam os jogos 1 e 2. 
+Outro possível motivo decorre do fato de que as falências são decretadas em estado de crise e inadimplência. Muitas vezes, as inadimplências recaem sobre créditos trabalhistas, que posuem caráter alimentício, uma vez que os trabalhadores dependem destes créditos para viver. Isso pode gerar uma urgência muito grande para que os bens sejam alienados rapidamente. Por esse motivo os juízes podem acabar nomeando os leiloeiros mais experientes, com mais técnica e capacidade para realizar as alienações de forma rápida. É claro que vender rápido tem um preço a se pagar, que são vendas a preços mais baixos do que poderia ser vendido. E até por este motivo que podemos explicar o desempenho ruim nos jogos 3 e 4 dos leiloeiros que ganharam os jogos 1 e 2. E é por este motivo também que devemos ponderar se a concentração de leilões é prejudicial até nesses casos. 
 
-Ainda outro motivo para escolher leiloeiros grandes em processos grandes é que são exatamente estes leiloeiros os mais bem preparados para realizar os leilões. Os processos de maiores valores são os processos mais complexos, que exigem dos leiloeiros mais técnica, mais experiência e, muitas vezes, mais mãos. Os leilões não são realizados por uma única pessoa. Quanto maior é o processo, mais pessoas são envolvidas. Então este é outro motivo que pode explicar a concentração de processos e de valores nas mãos de poucos leiloeiros. 
+Ainda outro motivo para escolher leiloeiros grandes em processos grandes é que são exatamente estes leiloeiros com maior infraestrutura para realizar os leilões. Os processos de maiores valores são os processos mais complexos, que exigem dos leiloeiros mais técnica, mais experiência e, muitas vezes, mais mão-de-obra. Os leilões não são realizados por uma única pessoa. Quanto maior é o processo, mais pessoas precisam ser envolvidas. Então este é outro motivo que pode explicar a concentração de processos e de valores nas mãos de poucos leiloeiros. 
+
+Com estas considerações não desejo defender a assimetria na distribuição de leilões, mas desejo fazer considerações importantes a quem se propuser a repensar o modelo atual de distribuição de leilões nos processos de falências. 
 
 ### Conclusão
 
-Querendo ou não eliminar assimetrias, elegendo ou não um leiloeiro melhor do que os outros, o que este artigo buscou foi dar alguma luz para os leilões judiciais nos processos de falência em São Paulo. A abordagem para tanto foi a apresentação descritiva de alguns dados. A estatística descritiva tem um papel fundamental para a pesquisa, pois ela pode abrir horizontes para novas pesquisas, novas perguntas e novas ideias. A este papel, deixo você, caro leitor, encarregado de pensar.
+Querendo ou não eliminar assimetrias, elegendo ou não um leiloeiro melhor do que os outros, o que este artigo buscou foi dar alguma luz para os leilões judiciais nos processos de falência em São Paulo. A abordagem para tanto foi a apresentação descritiva de alguns dados. A estatística descritiva tem um papel fundamental para a pesquisa, pois ela pode abrir horizontes para novas pesquisas, novas perguntas e novas ideias. Este artigo, portanto, buscou suscitar reflexões de uma forma lúdica e crítica. Ao papel de continuar a desenvolver as questões costuradas ao longo deste texto, deixo você, caro leitor, encarregado de pensar.

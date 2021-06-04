@@ -130,14 +130,23 @@ analise <- leiloes %>%
   # o unite() faz o que o paste() fazia, mas ele já deleta as colunas antigas + ele tem um sep = "_" por default
 # unite(leiloeiro_infos, leiloeiro, cpf_cnpj, id_leiloeiro)
 
-# É isso?
-# readr::write_rds(analise, "C://Users/ABJ/Documents/ABJ/github/djprocPublic/data/leiloes.rds")
+# anonimização ------------------------------------------------------------
+set.seed(1)
 
-# ou eu posso transformar numa função né ? 
+leiloeiros <- analise %>% 
+  distinct(leiloeiro, cpf_cnpj) %>% 
+  mutate(leiloeiro_anonimo = randomNames::randomNames(29, which.names="first", ethnicity = 4)) %>% 
+  mutate(tipo_leiloeiro = case_when(
+    str_length(cpf_cnpj) >= 14 ~ "pj", 
+    TRUE ~ "pf"
+  )) %>% 
+  select(-cpf_cnpj)
 
+analise <- left_join(analise, leiloeiros, by="leiloeiro") %>% 
+  select(-leiloeiro, -leiloeiro_usar, -leiloeiro_pf, -leiloeiro_pj, -cpf_cnpj, -id_leiloeiro)
 
-
-# Peguei um processo pra cada leiloeiro pra analisar ----------------
+# testes ------------------------------------------------------------------
+# Peguei um processo pra cada leiloeiro pra analisar
 a <- analise %>% 
   dplyr::select(id_processo, leiloeiro) %>% 
   unique() %>% 
