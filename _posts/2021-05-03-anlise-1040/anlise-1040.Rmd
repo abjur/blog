@@ -1,10 +1,12 @@
 ---
-title: "Análise 1040"
+title: "Impactos da MPV 1.040/2021 no tempo de abertura de empresas"
 description: |
-  A short description of the post.
+  Neste texto, analisamos os impactos potenciais da MPV 1.040/2021 através de um estudo simples de simulação de cenários.
 author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
+  - name: Marcelo Guedes Nunes
+    url: https://www.linkedin.com/in/marcelo-guedes-nunes-849a4536/
 date: 05-03-2021
 output:
   # distill::distill_article:
