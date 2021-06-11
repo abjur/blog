@@ -12,7 +12,17 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 20 May 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Impactos da MPV 1.040/2021 no tempo de abertura de empresas</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <dc:creator>Marcelo Guedes Nunes</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-06-11-analise-1040</link>
+      <description>Neste texto, analisamos os impactos potenciais da MPV 1.040/2021 através de um estudo simples de simulação de cenários.</description>
+      <guid>https://lab.abj.org.br/posts/2021-06-11-analise-1040</guid>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-06-11-analise-1040/analise-1040_files/figure-html5/prop-viab-1.png" medium="image" type="image/png" width="8000" height="8000"/>
+    </item>
     <item>
       <title>Efeitos da assimetria de interesses nos litígios</title>
       <dc:creator>Ricardo Feliz</dc:creator>
