@@ -95,7 +95,7 @@ Do lado do desenvolvimento de cada município-sede, utilizamos a [base de dados 
 	
 Uma vez obtidas as duas bases, juntamos suas informações em uma base única, ficando com as informações sobre a quantidade de processos por município (base 1), com as informações a respeito do desenvolvimento, isto é, o valor global do IDH por município, o valor dos três índices do IDH (educação, longevidade e renda) e o índice de Gini. 
   
-### Comentários sobre as métricas utilisadas (IDH, índice de gini e taxa de litigiosidade)
+### Comentários sobre as métricas utilizadas (IDH, índice de gini e taxa de litigiosidade)
 
 Este estudo se utiliza de três métricas importantes para medir a relação entre justiça e desenvolvimento: o IDH, o índice de gini e a taxa de litigiosidade. 
 
