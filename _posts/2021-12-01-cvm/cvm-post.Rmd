@@ -42,7 +42,7 @@ base_temas <- obsMC::da_tema_conduta
 para_join <- base_temas %>%
   dplyr::select(n_interno_abj, motivo, tema) %>% 
   dplyr::mutate(id_processo = as.double(n_interno_abj)) %>% 
-  glimpse()# visualizar se corrigiu o problema de character e double
+  glimpse()# visualizar se corrigir o problema de character e double
   
 join_base <- para_join %>%
   dplyr::left_join(base_mc) 
@@ -50,178 +50,165 @@ join_base <- para_join %>%
 
 ```
 
-Em meio a tanta evolução no mercado de capitais e as alterações nas disposições normativas, sempre existiu uma dificuldade em estudar de forma empírica as medidas e a regulamentação da Comissão de Valores Mobiliários (CVM).
+Devido à  evolução no mercado de capitais e às alterações nas disposições normativas, existe uma dificuldade em estudar de forma empírica as medidas e a regulamentação da Comissão de Valores Mobiliários (CVM).
 
-Por trás desse objetivo está o Observatório do Mercado de Capitais, que é uma iniciativa da Associação Brasileira de Jurimetria (ABJ) e da Associação Brasileira das Companhias Abertas (Abrasca). Com o projeto levantou-se uma compreensão profunda dos aspectos da atuação reguladora da CVM. Analisando o relatório podemos discutir sobre as atividades reguladoras e a eficiência das decisões nos Processos Administrativos Sancionadores (PAS). 
+Para levantar a possibilidade da análise jurimétrica da competência da CVM ao julgar o processo é preciso apresentar o real impacto do fenômeno das práticas jurídicas e econômicas. Portanto, a compreensão do funcionamento do processo administrativo sancionador da CVM é essencial. 
 
-O projeto teve o propósito de avaliar criticamente as normas jurídicas, suas aplicações, seus mecanismos judiciais de resolução de conflitos envolvendo acionistas (PAS, Termos de compromissos), os tipos de conflitos relacionados a esse tipo societário e os desafios do sistema de apuração. 
+Por trás desse objetivo está o Observatório do Mercado de Capitais, que é uma iniciativa da Associação Brasileira de Jurimetria (ABJ) em parceria com a  Associação Brasileira das Companhias Abertas (Abrasca). Com o projeto, levantou-se uma compreensão profunda dos aspectos da atuação reguladora da CVM. E analisando o relatório foi possível discutir sobre as atividades reguladoras e a eficiência das decisões nos Processos Administrativos Sancionadores (PAS). 
+
+Estruturalmente, a CVM tem objetivos claros de desenvolver, regular e fiscalizar todo o mercado econômico de valores mobiliários, protegendo os interesses dos investidores e assegurando a ampla transparência de informações das companhias abertas, mas socialmente no mundo jurídico pode-se discutir o efeito da prática legal desta autarquia.
+
+O projeto teve exatamente esse propósito de avaliar criticamente as normas jurídicas, suas aplicações, seus mecanismos judiciais de resolução de conflitos envolvendo acionistas (PAS, Termos de compromissos), os tipos de conflitos relacionados a esse tipo societário e os desafios do sistema de apuração. 
 
 Neste texto, demonstramos como o uso da jurimetria nos processos relacionados ao mercado de capitais pode impulsionar a ampliação do estudo de políticas públicas e de fato inspecionar a realidade sobre a ação disciplinar desta autarquia federal importante para as atividades no mercado financeiro. 
 
+
 ## Da aplicação da jurimetria 
 
-A Jurimetria é o estudo empirico do direito, utilizando-se de métodos quantitativos. É caracterizada principalmente pela aplicação da estatística ao direito. 
+A Jurimetria é o estudo empírico do direito por meio de  métodos quantitativos. Ela é caracterizada principalmente pela aplicação da estatística ao direito. A ideia de aplicar a jurimetria ao estudo da CVM é trazer conceitos que estudam de fato como o sistema jurídico funciona, para compreender o complexo jurídico-financeiro e realizar uma análise crítica sobre eficiência da atividade sancionadora da CVM. De fato, ao se realizar uma análise mais empírica, é possível  identificar a possibilidade expressiva de questionamento sobre o desenvolvimento das razões pelas quais existe a necessidade de uma entidade reguladora.
 
-A Jurimetria traz conceitos que estudam de fato como o sistema jurídico funciona. Permitindo o entendimento do complexo jurídico-financeiro e análise crítica sobre eficiência da atividade sancionadora da CVM. De fato, ao realizarmos uma análise mais empírica, concentramos a possibilidade expressiva de questionamento sobre o desenvolvimento das razões pelas quais existe a necessidade de uma entidade reguladora.
+A prerrogativa de aplicar a jurimetria é apresentar de forma inerente os métodos de apuração das possíveis infrações no mercado de capitais, estudando o funcionamento de todo o sistema operacional da CVM e se concentrando em documentar uma base de dados de processos com intuito de entender e antecipar cenários, bem como interpretar a legislação atual.
 
-A prerrogativa de aplicar a jurimetria é apresentar de forma intrínseca os métodos de apuração das possíveis infrações no mercado de capitais, estudando o funcionamento de todo o sistema operacional da CVM. Se concentrando em documentar uma base de dados de processos com intuito de entender e antecipar cenários, bem como interpretar a legislação atual.
+Faz parte do dia-a-dia do pesquisador jurimétrico implementar a ciência de dados, estatística e o direito. A união desses elementos permite ao pesquisador em jurimetria realizar uma avaliação exploratória do sistema regulatório e cada vez mais oferecer à sociedade o direito da informação acessível, o conhecimento e dados. Essa maior transparência com as informações que a jurimetria garante possibilita que acadêmicos, militantes e a própria CVM possam tomar decisões melhores sobre os processos administrativos sancionadores. 
 
-Faz parte do dia-a-dia do pesquisador jurimétrico implementar a ciência de dados, estatística e o direito de modo que sua união traz uma avaliação exploratória do sistema regulatório. E cada vez mais oferecer a sociedade o direito da informação acessível, o conhecimento e dados. Possibilitando que acadêmicos, militantes e a própria CVM possam tomar decisões melhores sobre os processos administrativos sancionadores. 
+A realização da 1ª fase do Observatório do Mercado de Capitais foi dedicada a identificar características básicas dos processos administrativos sancionadores, tais como seus principais temas, as partes envolvidas, o desfecho dos julgamentos e o tempo de duração dos processos.  O desenvolvimento desse estudo se constitui de três etapas: listagem de processos, coleta de dados e a análise estatística. A partir dos detalhes da classificação dos processos podemos construir quais variáveis de fato influenciam nos paradigmas da reflexão acadêmica e probabilística da identificação e prevenção dos problemas sociais jurídicos.
 
-A realização da 1ª fase do Observatório do Mercado de Capitais foi dedicada identificar características básicas tais como principais temas dos processos sancionadores, as partes envolvidas, desfecho dos julgamentos, tempo de duração dos processos.  E para o desenvolvimento desse estudo utilizou-se  três etapas: listagem de processos, coleta de dados e a análise estatística. 
+Portanto, o conceito jurimétrico como metodologia se torna uma ferramenta essencial na aplicação legal mais próxima à realidade, utilizando-se de métodos analíticos de fatos sociais e econômicos que possibilita a tradução intuitiva dos dados gerados a partir da pesquisa e assim ampliando a visão a respeito do direito.
 
 ## Da análise e resultados 
 
 De vários dilemas interessantes que a CVM levanta entre os pesquisadores podemos  citar as principais questões abordadas pelo [relatório](https://abjur.github.io/obsMC) do Observatório do Mercado de Capitais. Mais especificamente essas questões:
 
 - Temas e dispositivos mais presentes nos Processos Administrativos Sancionadores.
-- Tempos. 
-- Termos de Compromisso. 
+- Desfechos. 
 
 Para a análise foram utilizadas duas bases de dados relacionadas ao projeto do Observatório do Mercado de Capitais. Uma mais genérica contendo informações sobre os PAS e outra sendo mais específica sobre os Temas e dispositivos presentes. 
 
+
 ### Os temas mais comuns nos PAS
 
-A [Lei nº 13.506/17](http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/L13506.htm) em seu art. 3º permite enumerar as possíveis infrações, previstas penalidades de forma isolada ou cumulativa, capacitando a CVM de aplicar penas com o objetivo de proporcionar efeito educativo e preventivo aos participantes do mercado de valores.
+A [Lei nº 3.506/17](http://www.planalto.gov.br/ccivil_03/_ato2015-2018/2017/lei/L13506.htm) em seu art. 3º permite enumerar as possíveis infrações, previstas penalidades de forma isolada ou cumulativa, capacitando a CVM a aplicar penas, de efeito educativo ou preventivo aos participantes do mercado de valores.
 
-Em análise sobre os processos administrativos sancionadores e as penalidades aplicadas pela CVM é estabelecido uma avaliação sobre o impacto da conduta e os prejuízos causados ao mercado. Também sobre como é o regulamento da suposta infração, bem qual o ressarcimento às partes lesadas. 
+A análise da CVM sobre a aplicação das penalidades envolve avaliar o impacto da conduta e os prejuízos causados ao mercado, bem como a tipificação da suposta infração e  o ressarcimento às partes lesadas. 
 
-Nesse cenário, poderemos levantar quais são práticas mais constantes no mercado de valores mobiliários:
+Nesse cenário, é possível levantar quais são práticas mais constantes no mercado de valores mobiliários:
+
 
 ```{r temas-comuns}
-base_temas %>%
-  dplyr::group_by(tema) %>%
-  dplyr::summarise(n = dplyr::n_distinct(n_interno_abj), .groups = "drop") %>%
-  dplyr::arrange(desc(n)) %>%
-  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
-  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
-  dplyr::rename(
-    Temas = tema,
-    Quantidade = n,
-    "Proporção" = prop
-  ) %>%
-  knitr::kable(
-    caption = "Temas mais comuns entre os processos administrativos."
-  )
+base_temas |>
+  dplyr::group_by(tema) |>
+  dplyr::summarise(n = dplyr::n_distinct(n_interno_abj), .groups = "drop") |>
+  dplyr::arrange(desc(n)) |>
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) |>
+  dplyr::mutate(prop = formattable::percent(prop, 1)) |>
+  dplyr::rename(Temas = tema,
+                Quantidade = n,
+                "Proporção" = prop) |>
+  knitr::kable(caption = "Temas mais comuns entre os processos administrativos.")
 
 ```
 
-Considerando que um PAS pode envolver diversos temas, podemos observar que os temas informacionais aparecem em 46,6% dos casos analisados. Uma companhia no Brasil (aberta ou fechada) precisa estar admitida na negociação no mercado de valores mobiliários. Portanto, a CVM estabeleceu condições de registro de emissora, que devem ser disponibilizadas periodicamente para os acionistas e enviadas a própria CVM.
+Considerando que um PAS pode envolver diversos temas, podemos observar que os temas informacionais aparecem em 46,6% dos casos analisados. Uma companhia no Brasil (aberta ou fechada) precisa estar admitida na negociação no mercado de valores mobiliários. Portanto, a CVM estabeleceu condições de registro de emissora, que devem ser disponibilizadas periodicamente para os acionistas e enviadas à própria CVM.
 
 Outro aspecto a ser observado são os motivos relacionados a esse tema em específico. 
 
+
 ```{r informacionais-motivo, fig.cap="Principais motivos relacionados ao tema Informacional.", layout="l-body-outset"}
-base_temas %>%
-  dplyr::filter(tema == "Informacionais") %>%
-  group_by(tema, motivo) %>%
-  dplyr::summarise(
-    n = dplyr::n_distinct(n_interno_abj),
-    .groups = "drop"
-  ) %>%
-  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
-  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
-  dplyr::mutate(
-    motivo = stringr::str_wrap(motivo, 25),
-    motivo = fct_reorder(motivo, n, .desc = FALSE)
-  ) %>% 
+base_temas |>
+  dplyr::filter(tema == "Informacionais") |>
+  group_by(tema, motivo) |>
+  dplyr::summarise(n = dplyr::n_distinct(n_interno_abj),
+                   .groups = "drop") |>
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) |>
+  dplyr::mutate(prop = formattable::percent(prop, 1)) |>
+  dplyr::mutate(motivo = stringr::str_wrap(motivo, 25),
+                motivo = fct_reorder(motivo, n, .desc = FALSE)) |>
   ggplot2::ggplot() +
   ggplot2::geom_col(mapping = aes(x = prop,  y = motivo), fill = "#102C68") +
-  ggplot2::geom_label(
-    aes(prop/2, motivo, label = n),
-    vjust = 0.5
-  ) +
+  ggplot2::geom_label(aes(prop / 2, motivo, label = n),
+                      vjust = 0.5) +
   ggplot2::scale_x_continuous(labels = scales::percent) +
-  labs(
-    x = "Quantidade",
-    y = "Motivos Recorrentes"
-  ) +
+  labs(x = "Quantidade",
+       y = "Motivos Recorrentes") +
   theme_minimal(12)
 ```
 Na Figura \@ref(fig:informacionais-motivo) o motivo de "Não prestação de informações atualizadas" demonstrou ter mais relevância, chegando a 335 casos relacionados a esse motivo, enquanto a "Não indicação de representante legal" só constam 2 casos. 
 
-Basicamente, crimes relacionados ao descumprimento de obrigações necessárias para manutenção de informações se enquadrariam entre elas: o registro de companhia aberta, os envio de informações periódicas e eventuais, que sejam as demonstrações editais de assembleias, informações trimestrais, acordos de convocação, atas financeiras, acionistas, dentre outras[^foot1]. 
+Basicamente, crimes relacionados ao descumprimento de obrigações necessárias para manutenção de informações se enquadram entre elas: o registro de companhia aberta, os envio de informações periódicas e eventuais, que sejam as demonstrações editais de assembleias, informações trimestrais, acordos de convocação, atas financeiras, acionistas, dentre outras[^foot1]. 
 
 [^foot1]: [ICVM no 202/93](http://conteudo.cvm.gov.br/legislacao/instrucoes/inst202.html), combinado com os artigos 132, 133, 142 e 176 da [LSA](http://www.planalto.gov.br/ccivil_03/leis/l6404consol.htm))
 
 Posto isto, é interessante analisar os desfechos desses processos administrativos e a diferença entre o tema mais recorrente a outros temas classificados.
 
+
 #### Pelo tema Informacional 
 
 ```{r desfecho-informacionais}
-base_mc %>%
-  dplyr::filter(
-    teve_psj == "Sim",
-    desfecho != "Sem informação"
-  ) %>%
-  dplyr::group_by(tema) %>%
-  dplyr::filter(tema == "Informacionais") %>%
-  dplyr::group_by(desfecho) %>%
-  dplyr::summarise(n = dplyr::n(), .groups = "drop_last") %>%
-  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
-  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
-  arrange(desc(n)) %>%
-  dplyr::rename(
-    Desfecho = desfecho,
-    Quantidade = n,
-    "%" = prop
-  ) %>%
+base_mc |>
+  dplyr::filter(teve_psj == "Sim",
+                desfecho != "Sem informação") |>
+  dplyr::group_by(tema) |>
+  dplyr::filter(tema == "Informacionais") |>
+  dplyr::group_by(desfecho) |>
+  dplyr::summarise(n = dplyr::n(), .groups = "drop_last") |>
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) |>
+  dplyr::mutate(prop = formattable::percent(prop, 1)) |>
+  arrange(desc(n)) |>
+  janitor::adorn_totals() |> 
+  dplyr::rename(Desfecho = desfecho,
+                Quantidade = n,
+                "%" = prop) |>
   knitr::kable(caption = "Desfecho pelo tema mais recorrente")
  
 ```
 
-Pela análise, foi possível observar que o desfecho que tem mais recorrência entre o tema é de multa pecuniária, alcançando 11% dentre os outros desfechos. É possivel interpretar que o alto indice de aplicação de multa pode ter relação com a aplicação simultanea de diferentes penas, considerando que a aplicação da pena de multa pode ser cumulada com uma sanção de natureza restrintiva de direitos. 
+Pela análise, foi possível observar que o desfecho que tem mais recorrência entre o tema é de multa pecuniária, alcançando 11%. É possível interpretar que o alto índice de aplicação de multa pode ter relação com a aplicação simultânea de diferentes penas, considerando que a aplicação da pena de multa pode ser cumulada com uma sanção de natureza restritiva de direitos. 
+
+Para compreender a proporção entre os desfechos relacionados aos temas informacionais, comparar essa proporção com os desfechos dos processos em geral, levantando portanto de fato uma relevância entre os desfechos principais. 
+
+
 
 #### Por todos os temas 
 
 ```{r deschefos-motivo}
-join_base %>%
+join_base |> 
   dplyr::filter(
     teve_psj == "Sim",
     desfecho != "Sem informação"
-  ) %>%
-  dplyr::group_by(desfecho, tema) %>%
+  ) |> 
+  dplyr::group_by(desfecho, tema) |> 
   dplyr::summarise(n = dplyr::n(),
-                   .groups = "drop") %>%
-  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) %>%
-  #dplyr::mutate(prop = as.character()) %>% 
-  dplyr::ungroup() %>%
-  dplyr::select(tema, desfecho, prop) %>%
+                   .groups = "drop") |> 
+  dplyr::mutate(prop = n / dplyr::n_distinct(base_temas$n_interno_abj)) |> 
+  dplyr::ungroup() |> 
+  dplyr::select(tema, desfecho, prop) |> 
   tidyr::pivot_wider(
     names_from = desfecho,
     values_from = prop, 
     values_fill = 0
-  ) %>%
-  dplyr::mutate(dplyr::across(-tema, formattable::percent, 1)) %>%
-  dplyr::rename(Tema = tema) %>%
+  ) |> 
+  dplyr::mutate(dplyr::across(-tema, formattable::percent, 1)) |> 
+  dplyr::rename(Tema = tema) |> 
   knitr::kable(caption = "Desfecho por todos os temas")
 
 ``` 
 
-A partir desses resultados observamos a proporção dos desfechos de acordo com o tema. O tema que tem mais assosiação a Absolvição são relacionados a Ilicitos de mercado enquant
 
-```{r dispositivos-temas}
-
-base_temas %>%
-  dplyr::select(dispositivo_art, tema, id_motivo) %>%
-  dplyr::mutate(
-    dispositivo_art =  stringr::str_remove_all(dispositivo_art, stringr::regex(", [a-z0-9]", ignore_case=TRUE))
-  ) %>% 
-  dplyr::group_by(tema, dispositivo_art) %>% 
-  head(5) %>% 
-  #dplyr::rename(Temas = tema, Normativos = dispositivo_art, Quantidade = n) %>% 
-  knitr::kable(caption = "Instruções normativas por temas")
-```
-
+Entre o desfecho mais recorrente pelo tema informacional (multa) foi observado entre todos os temas que os crimes relacionados aos ilícitos de mercado (condições artificiais de demanda, oferta ou preço de valores mobiliários; manipulação de preços; operação fraudulenta; e a prática não equitativa) são de maior número (74,2%) enquanto o tema informacional obtém a porcentagem de 27,2% dos casos que tiveram multa como desfecho principal. 
 
 ## O que podemos esperar no futuro sobre a abordagem da pesquisa jurimétrica no mercado de capitais? 
 
+A partir da análise que foi feita sobre o Mercado de Capitais, podemos concluir que é necessário um maior engajamento jurídico a respeito das discussões do processo administrativo sancionador.  
+
+Nesse sentido destaco os principais pontos que podemos levantar ao realizar um estudo jurimétrico: 
+
 ✓ Consolidar entendimentos.
 
-✓ Avaliar os efeitos das alterações recentes na lei - analisar a eficiencia da atividade sancionadora.
+✓ Avaliar os efeitos das alterações recentes na lei, analisando a eficiência da atividade sancionadora.
 
-✓ Ampliação do estudo das políticas publicas.
+✓ Ampliar o estudo das políticas públicas.
 
-✓ Previsibilidade do julgador.
+✓ Entender a previsibilidade do julgador.
 
 ✓ Identificar as formas políticas e jurídicas da estrutura organizacional da CVM.
 
@@ -236,8 +223,9 @@ em relação a essas modalidades.
 ✓ Analisar mérito jurídico da implementação dos processos administrativos
 sancionadores.
 
-Portanto, analisando no que se diz em respeito ao Mercado de Capitais e sua estrutura normativa e operacional, o impacto ao engajamento jurídico é de descomunal discussão, permitindo que as operações sejam realizadas de forma segura, eficientes e transparentes.
+Ademais, é interessante, não só ponderar sobre a ordem econômica e o efeito jurídico sobre os desfechos dos processos nas possibilidades de solução de conflitos que a CVM disponibiliza atualmente e quais são seus critérios de aplicação das sanções, como também vislumbrar a importância da pesquisa jurimétrica para identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico. 
 
-Mas podemos também vislumbrar da importância da pesquisa jurimétrica em identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico. 
-É necessário que o legislador seja sensibilizado por todos os motivos demonstrados acima, para produzir leis que preenchem o vácuo hoje existente, e consequentemente que a fiscalização seja garantida afim que o mercado de valores possa produzir uma economia nacional e saudável.
+Por fim, busca-se a consolidação da norma jurídica em seu fenômeno prático, revelando a contribuição de seus princípios e suas ideias para o aperfeiçoamento de um órgão de marcantes objetivos. E ainda, busca-se contribuir com o legislador por todos os motivos demonstrados acima, a fim de influenciar na formação de novas leis que preenchem o vácuo hoje existente e, consequentemente, garantir que o mercado de valores possa produzir uma economia saudável e funcional. 
+
+
 
