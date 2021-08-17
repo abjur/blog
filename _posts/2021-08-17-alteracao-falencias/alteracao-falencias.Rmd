@@ -1,24 +1,28 @@
 ---
-title: "Nova lei Falencias"
-description: | 
-
-author: 
-  - name: "Fábio Ulhoa Coelho"
-    url: https://www.linkedin.com/in/fabio-ulhoa-coelho-8541a799/?originalSubdomain=br
-  - name: "Marcelo Guedes Nunes"
-    url: https://www.linkedin.com/in/marcelo-guedes-nunes-849a4536/
+title: "Alterações da Lei de Falências"
+description: |
+  Uma avaliação da Reforma de 2020.
+author:
+    - name: Fábio Ulhoa Coelho
+      url: https://www.linkedin.com/in/fabio-ulhoa-coelho-8541a799/?originalSubdomain=br
+    - name: Marcelo Guedes Nunes
+      url: https://www.linkedin.com/in/marcelo-guedes-nunes-849a4536/      
 date: "`r Sys.Date()`"
+bibliography: bibfile.bib
 categories:
-  - Lei n. 11.101/05
-  - Lei n. 14.112/20
-  - Nova Lei de Falências 
-  - 
+  - Nova Lei de Falências
 output:
   distill::distill_article:
     self_contained: false
 ---
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center"
+)
 blue_abj <- viridis::viridis(1, 1, .2, .8)
 ```
 
@@ -35,7 +39,7 @@ A receita é simples. Pelo menos, parece simples. Qualquer reforma legislativa d
    
 ### 2. O desmanche das empresas no Brasil
    
-   Os mercados são sistemas econômicos que têm como principal função estabelecer um ambiente de competição apto a selecionar empresários. Todos os anos empresas iniciam atividades nos mais diversos ramos, porém apenas uma fração delas é selecionada para sobreviver, de acordo com sua capacidade de prover serviços e produtos com vantajosa relação custo-benefício para os consumidores. Por essa razão, todos os anos o ciclo de vida empresarial se repete: empresas nascem, crescem e morrem. De acordo com o Mapa de Empresas do Ministério da Economia, o Brasil tinha em fevereiro de 2021 o total de 19.353.877 empresários (dos quais 4.421.995 de sociedades empresárias),  operando em uma economia cujo produto interno bruto monta aproximadamente US$ 1,434 trilhăo.  Trata-se de um dos maiores mercados capitalistas da atualidade, posicionando-se como a 12a economia do mundo.
+   Os mercados são sistemas econômicos que têm como principal função estabelecer um ambiente de competição apto a selecionar empresários. Todos os anos empresas iniciam atividades nos mais diversos ramos, porém apenas uma fração delas é selecionada para sobreviver, de acordo com sua capacidade de prover serviços e produtos com vantajosa relação custo-benefício para os consumidores. Por essa razão, todos os anos o ciclo de vida empresarial se repete: empresas nascem, crescem e morrem. De acordo com o Mapa de Empresas do Ministério da Economia, o Brasil tinha em fevereiro de 2021 o total de 19.353.877 empresários (dos quais 4.421.995 de sociedades empresárias)[@gov],  operando em uma economia cujo produto interno bruto monta aproximadamente US$ 1,434 trilhăo.  Trata-se de um dos maiores mercados capitalistas da atualidade, posicionando-se como a 12a economia do mundo.
    Entre 2016 e 2020, ainda de acordo com o Mapa de Empresas, 6.506.599 empresas foram encerradas no Brasil. Como nos mercados cabe ao empresário a produção de bens e serviços, o fechamento de empresas é intuitivamente associado ao encolhimento da economia.  A associação entre quantidade de empresas abertas e crescimento econômico está na base de diversas políticas públicas nacionais e internacionais, como por exemplo o Doing Business do Banco Mundial. O relatório de 2020 reafirma a premissa de que a facilidade da abertura de empresas está relacionada com boa performance econômica: _"The difference in an entrepreneur's experience in top- and bottom performing economies is discernible in almost all Doing Business topics. For example, it takes nearly six times longer on average to start a business in the economies ranked in the bottom 50 than it does in the top 20"_ (p. 5). E que essa facilidade caracterizaria uma relaçăo causal, na qual a liberdade econômica, em especial a liberdade de constituir um novo negócio, implicaria em melhor desempenho econômico: _"Research demonstrates a causal relationship between economic freedom and gross domestic product (GDP) growth, where freedom regarding wages and prices, property rights, and licensing requirements leads to economic development"_ (p. 2).
   No entanto, ao observarmos o comportamento do PIB e o número de empresas encerradas entre 2016 e 2019 não é possível identificar uma associação entre a retração da economia e uma diminuição na quantidade de encerramentos. Na verdade, observa-se o oposto.  Por exemplo, 2018 foi o ano com maior quantidade de encerramentos (2.419.233 empresas extintas, quase o triplo do ano anterior) e foi ao mesmo tempo o ano de melhor desempenho do PIB nessa meia década, com crescimento de 1,8%. Também o ano 2020, quando em decorręncia da retraçăo de 4,1% no PIB   era esperado um severo aumento na quantidade de empresas encerradas, observou-se o contrário: uma significativa diminuiçăo na quantidade de entăo em relação á 2019. 
   
@@ -139,4 +143,6 @@ A receita é simples. Pelo menos, parece simples. Qualquer reforma legislativa d
     A má compreensăo do princípio da preservaçăo da empresa é um problema que pode estar na raiz de várias distorçőes de nosso sistema legal: sonegaçăo, inadimplemento, vulgarizaçăo da desconsideraçăo da personalidade jurídica, voracidade da justiça do trabalho contra empregadores e informalidade empresarial. 
     Não se compreendeu, em suma, que o extermínio do processo falimentar não transformará o Brasil em um país onde todo empresário será uma Luíza Trajano nos negócios e em que toda empresa será bem-sucedida. Essa associação é falsa. Os números mostram que o país já não tem praticamente falências, a quantidade de empresas aumenta todo ano e ainda assim o PIB não cresce. 
     A visível consequęncia da elevada razăo resoluçăo/liquidaçăo no Brasil (em outras palavras, o "extermínio da falęncia") é nos tornarmos um _desmanche de empresas_, um mercado em que a informalidade prepondera e no qual se deslocam os prejuízos do empresário inadimplente para os seus credores hipossuficientes e dependentes. 
-    
+
+
+
