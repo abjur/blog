@@ -14,6 +14,7 @@ categories:
 output:
   distill::distill_article:
     self_contained: false
+preview: "fig/imagem1.png"
 ---
 
 ```{r setup, include=FALSE}
@@ -83,7 +84,7 @@ Tabela 1: Série com o total de empresas encerradas e o subtotal de limitadas en
   [^sera]: [SERASA](https://www.serasaexperian.com.br/conteudos/indicadores-economicos/) Acesso em análise em 11 de abril de 2021.
 
 
-![Figuras 1 e 2. Quantidade mensal de falências requeridas e decretadas entre 1995 e 2021 no Brasil.](fig/imagem1.png.png) 
+![Figuras 1 e 2. Quantidade mensal de falências requeridas e decretadas entre 1995 e 2021 no Brasil.](fig/imagem1.png) 
 
   Quando, por outro lado, observamos a quantidade de pedidos de recuperação no mesmo período, detectamos uma série que cresce de maneira consistente, com poucas inflexões de queda, desde a sua introdução no sistema jurídico brasileiro até hoje. Para comparar a trajetória dos dois processos de insolvência, a tabela abaixo apresenta a quantidade de pedidos de falęncia e de recuperaçăo judicial no Brasil entre 2005 e 2020.[^sera2] 
   
