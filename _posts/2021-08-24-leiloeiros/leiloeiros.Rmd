@@ -4,11 +4,11 @@ description: Este artigo busca compreender o perfil dos leiloeiros nos processos
 author:
   - name: Ricardo Feliz
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
-date: "`r Sys.Date()`"
+date: 08-24-2021
 categories:
-  - Falência
+  - Falencias
   - Observatorio
-  - Jurimetria
+  - Analises
 output:
   distill::distill_article:
     self_contained: false
