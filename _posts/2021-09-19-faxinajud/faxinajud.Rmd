@@ -6,9 +6,13 @@ author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
 date: 09-19-2021
+categories:
+  - dados abertos
+  - programação
 output:
   distill::distill_article:
     self_contained: false
+preview: faxinajud.png
 ---
 
 ```{r setup, include=FALSE}
@@ -24,22 +28,22 @@ Por isso, construímos um dashboard interativo que, além de mostrar as principa
 
 A ferramenta foi a [vencedora do desafio CNJ Inova](https://enap.gov.br/pt/acontece/noticias/vencedor-no-cnj-inova-identifica-e-corrige-inconsistencias-de-dados-em-processos-judiciais), primeira hackathon do CNJ para trabalhar com dados do DataJud.
 
-A plataforma mostra inconsistências identificadas através de regras e ou modelagem estatística. Até o momento, foram implementadas mais de 15 regras, a partir de uma amostra de 100 mil processos, extraída aleatoriamente da base fornecida para este desafio.
+A plataforma mostra inconsistências identificadas através de regras e/ou modelagem estatística. Até o momento, foram implementadas mais de 15 regras, a partir de uma amostra de 100 mil processos, extraída aleatoriamente da base fornecida para este desafio.
 
-Uma parte das inconsistências já tem uma proposta de solução para o problema, sendo necessário apenas a verificação das sugestões. Outra parte das inconsistências necessita de verificação manual, que idealmente deve ser feita pelos técnicos judiciários dos tribunais de origem.
+Uma parte das inconsistências já tem uma proposta de solução para o problema, sendo necessária apenas a verificação das sugestões. Outra parte das inconsistências necessita de verificação manual, que idealmente deve ser feita pela equipe técnica judiciária dos tribunais de origem.
 
 A plataforma é modular, no sentido de que as inconsistências consideradas podem ser aprimoradas ou, ainda, novas inconsistências podem ser incluídas ao longo do tempo. Dessa forma, é possível fazer um monitoramento contínuo dos problemas da base, tornando-a cada vez melhor.
 
-É possível acessar com dois tipos perfis distintos: pessoa técnica judiciária e pessoa pesquisadora do CNJ.
+É possível acessar com duas classes de perfis distintos: técnica judiciária e pesquisadora do CNJ.
 
-A pessoa técnica judiciária pode realizar as atividades a seguir.
+Quem se enquadra na classe técnica judiciária pode realizar as atividades a seguir:
 
 - Visualizar a posição de seu tribunal perante os demais.
 - Visualizar inconsistências.
 - Fazer o download da planilha de inconsistências.
 - Submeter uma tabela de inconsistências arrumadas. As tabelas submetidas são inseridas em um banco de dados de sugestões.
 
-Já a pessoa pesquisadora do CNJ, além das atividades supracitadas, pode visualizar as inconsistências submetidas para decidir se utilizará as sugestões.
+Já quem faz pesquisas no CNJ, além das atividades supracitadas, pode visualizar as inconsistências submetidas para decidir se utilizará as sugestões.
 
 As tabelas de sugestões podem ser internamente utilizadas pelo CNJ para produzir a base de dados arrumada dos processos. Dessa forma, todo o sistema judiciário pode contribuir com arrumações dos dados, para que o DataJud se torne cada vez mais completo e correto.
 
@@ -71,7 +75,7 @@ O menu principal contém 4 (quatro) cards e 1 (um) gráfico e 1 (uma) tabela, de
 
 ![](https://raw.githubusercontent.com/abjur/inovaCNJ/master/images/inconsistencias.gif)
 
-A aba de inconsistências apresenta uma série de caixas, cada uma sobre uma possível inconsistência. É a aba principal do aplicativo, a ser utilizada principalmente pelas pessoas técnicas judiciárias.
+A aba de inconsistências apresenta uma série de caixas, cada uma sobre uma possível inconsistência. É a aba principal do aplicativo, a ser utilizada principalmente pela equipe técnica judiciária.
 
 -   **Botão de download**: Faz o download de uma planilha Excel com todos os processos com algum problema identificado.
 
@@ -83,28 +87,28 @@ A aba de inconsistências apresenta uma série de caixas, cada uma sobre uma pos
 
 -   **Botão de maximizar**: dá ênfase na inconsistência selecionada, possibilitando outras ações:
 
-    -   **Botão de upload:** Faz o upload de uma base de dados arrumada. A ideia é que a pessoa técnica judiciária faça o download da base e, em seguida, faça as correções nas colunas `info_`. Em seguida, ela faz o upload da base de dados com as correções.
+    -   **Botão de upload:** Faz o upload de uma base de dados arrumada. A ideia é que a equipe técnica judiciária faça o download da base, faça as correções nas colunas `info_` e, em seguida, faça o upload da base de dados com as correções.
     -   **Botão de submeter**: Faz verificações na base de dados submetida (formato das colunas e da base enviada) e faz o upload em um banco de dados que fica na nuvem.
 
 ## Aba 3: Verificação das inconsistências submetidas
 
 ![](https://raw.githubusercontent.com/abjur/inovaCNJ/master/images/verificador.gif)
 
-Essa aba deve ser utilizada pela pessoa pesquisadora do CNJ para realizar a verificação das informações submetidas pelos tribunais.
+Essa aba deve ser utilizada por pesquisadores do CNJ para realizar a verificação das informações submetidas pelos tribunais.
 
 A primeira caixa permite o download das bases arrumadas, consolidando todas as correções automáticas e manuais que foram submetidas na plataforma.
 
 A primeira tabela da aba mostra todas as tabelas submetidas. Ao clicar em uma linha, os dados arrumados sugeridos são mostrados na segunda tabela. A base pode ser baixada para inspeção manual e, eventualmente, pode ser usada para fazer uma nova submissão na aba de inconsistências.
 
-As bases validadas ficam em um banco de dados, e podem ser utilizadas pelo CNJ para corrigir as inconsistências do DataJud. No final, o CNJ pode disponibilizar tanto a base bruta do DataJud quanto a base arrumada.
+As bases validadas ficam em um banco de dados e podem ser utilizadas pelo CNJ para corrigir as inconsistências do DataJud. No final, o CNJ pode disponibilizar tanto a base bruta do DataJud quanto a base arrumada.
 
 ## Aba 4: Validação de dados
 
 ![](https://raw.githubusercontent.com/abjur/inovaCNJ/master/images/validador_arquivos.gif)
 
-Essa aba pode ser utilizada para verificar as inconsistências de um arquivo .json específico, antes de submetê-lo para o CNJ. Da mesma forma que as abas anteriores, é possível visualizar as inconsistências e suas correções.
+Essa aba pode ser utilizada para verificar as inconsistências de um arquivo .json específico, antes de submetê-lo ao CNJ. Da mesma forma que as abas anteriores, é possível visualizar as inconsistências e suas correções.
 
 
-Se quiser acessar o código utilizado para criar a ferramenta, entre nesse link: https://github.com/abjur/inovaCNJ
+Se quiser acessar o código utilizado para criar a ferramenta, entre neste link: https://github.com/abjur/inovaCNJ
 
-Se quiser acessar a ferramenta que está em produção entre nesse link: https://faxinajud.pje.jus.br
+Se quiser acessar a ferramenta que está em produção, entre neste link: https://faxinajud.pje.jus.br
