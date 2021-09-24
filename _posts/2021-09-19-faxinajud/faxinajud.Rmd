@@ -92,7 +92,7 @@ A aba de inconsistências apresenta uma série de caixas, cada uma sobre uma pos
 
 ## Aba 3: Verificação das inconsistências submetidas
 
-![](https://raw.githubusercontent.com/abjur/inovaCNJ/master/images/verificador.gif)
+![](https://raw.githubusercontent.com/abjur/inovaCNJ/master/images/verificacao.gif)
 
 Essa aba deve ser utilizada por pesquisadores do CNJ para realizar a verificação das informações submetidas pelos tribunais.
 
