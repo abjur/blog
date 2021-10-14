@@ -12,15 +12,114 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Estudo sobre a Lei Maria da Penha</title>
-      <dc:creator>Grupo de Jurimetria da USP</dc:creator>
-      <link>https://lab.abj.org.br/posts/2021-03-05-violencia-mulher</link>
-      <description>O Grupo de Jurimetria da USP, através deste trabalho, propõe estudar a Lei Maria da Penha sob a luz da jurimetria.</description>
-      <guid>https://lab.abj.org.br/posts/2021-03-05-violencia-mulher</guid>
-      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
-      <media:content url="https://lab.abj.org.br/posts/2021-03-05-violencia-mulher/img/senado.png" medium="image" type="image/png" width="927" height="453"/>
+      <title>FaxinaJud</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-09-19-faxinajud</link>
+      <description>Ferramenta para detecção de inconsistências da nova base de dados do CNJ: DataJud.</description>
+      <category>dados abertos</category>
+      <category>programação</category>
+      <guid>https://lab.abj.org.br/posts/2021-09-19-faxinajud</guid>
+      <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-09-19-faxinajud/faxinajud.png" medium="image" type="image/png" width="1159" height="587"/>
+    </item>
+    <item>
+      <title>O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-08-24-leiloeiros</link>
+      <description>Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo. Para isso, optou-se por uma abordagem lúdica ao longo do texto, mas com considerações críticas ao final.</description>
+      <category>Falencias</category>
+      <category>Observatorio</category>
+      <category>Analises</category>
+      <guid>https://lab.abj.org.br/posts/2021-08-24-leiloeiros</guid>
+      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-08-24-leiloeiros/leiloeiros_files/figure-html5/plot1-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Alterações da Lei de Falências</title>
+      <dc:creator>Fábio Ulhoa Coelho</dc:creator>
+      <dc:creator>Marcelo Guedes Nunes</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-08-17-alteracao-falencias</link>
+      <description>Uma avaliação da Reforma de 2020.</description>
+      <category>Nova Lei de Falências</category>
+      <guid>https://lab.abj.org.br/posts/2021-08-17-alteracao-falencias</guid>
+      <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title>Painéis do CNJ</title>
+      <dc:creator>Bárbara Tassoni</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-07-26-paineis-cnj</link>
+      <description>Conheça um pouco mais sobre os 6 Painéis do CNJ: Justiça em Números, Produtividade, Demandas Repetitivas, Violência Doméstica, Sócio Ambiental e Priorização 1º Grau</description>
+      <category>Geral</category>
+      <category>CNJ</category>
+      <guid>https://lab.abj.org.br/posts/2021-07-26-paineis-cnj</guid>
+      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-07-26-paineis-cnj/paineis.png" medium="image" type="image/png" width="1781" height="1182"/>
+    </item>
+    <item>
+      <title>Litigiosidade e desenvolvimento</title>
+      <dc:creator>João Torquato</dc:creator>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <dc:creator>Katerine Witkoski</dc:creator>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-01-15-litigiosidade</link>
+      <description>Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento, utilizando uma base de processos que extraídos nos Diários de Justiça e informações de IDH municipal.</description>
+      <category>Analises</category>
+      <category>Justiça</category>
+      <category>Desenvolvimento</category>
+      <category>Litigiosidade</category>
+      <guid>https://lab.abj.org.br/posts/2021-01-15-litigiosidade</guid>
+      <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Impactos da MPV 1.040/2021 no tempo de abertura de empresas</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <dc:creator>Marcelo Guedes Nunes</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-06-11-analise-1040</link>
+      <description>Neste texto, analisamos os impactos potenciais da MPV 1.040/2021 através de um estudo simples de simulação de cenários.</description>
+      <guid>https://lab.abj.org.br/posts/2021-06-11-analise-1040</guid>
+      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-06-11-analise-1040/analise-1040_files/figure-html5/prop-viab-1.png" medium="image" type="image/png" width="8000" height="8000"/>
+    </item>
+    <item>
+      <title>Efeitos da assimetria de interesses nos litígios</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-05-20-assimetria</link>
+      <description>Análise de como a assimetria de interesses entre as partes pode afetar resultados de processos</description>
+      <category>Geral</category>
+      <guid>https://lab.abj.org.br/posts/2021-05-20-assimetria</guid>
+      <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-05-20-assimetria/assimetria.png" medium="image" type="image/png" width="1159" height="587"/>
+    </item>
+    <item>
+      <title>O STF, o controle concentrado e a pandemia</title>
+      <dc:creator>Rodrigo Filippi Dornelles</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-04-13-stf-controle-concentrado</link>
+      <description>Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020.</description>
+      <guid>https://lab.abj.org.br/posts/2021-04-13-stf-controle-concentrado</guid>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-04-13-stf-controle-concentrado/grafico_perfil_ato_federal_questionado-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Levantamentos feitos pela ABJ</title>
+      <dc:creator>Renata Hirota</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-03-22-levantamentos-abj</link>
+      <description>Com frequência, recebemos pedidos de dados para pesquisas acadêmicas. Estes são alguns dos principais levantamentos que fizemos em 2020</description>
+      <guid>https://lab.abj.org.br/posts/2021-03-22-levantamentos-abj</guid>
+      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-03-22-levantamentos-abj/levantamentos.png" medium="image" type="image/png" width="596" height="298"/>
+    </item>
+    <item>
+      <title>Recuperação judicial e manutenção de empregos</title>
+      <dc:creator>Tadeu A. Sena Gomes</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos</link>
+      <description>A recuperação judicial alcança o objetivo de permitir a manutenção do emprego dos trabalhadores? O que diz a realidade empírica?</description>
+      <guid>https://lab.abj.org.br/posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos</guid>
+      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos/img/grafico_1.png" medium="image" type="image/png" width="1159" height="587"/>
+>>>>>>> origin/master
     </item>
     <item>
       <title>Novas perspectivas para 2021</title>
@@ -191,12 +290,12 @@ Esperamos que goste!</description>
     <item>
       <title>Características e evolução das decisões nas Câmaras Reservadas de Direito Empresarial</title>
       <dc:creator>Julio Trecenti</dc:creator>
-      <link>https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial</link>
+      <link>https://lab.abj.org.br/posts/2019-09-17-camaras-reservadas-direito-empresarial</link>
       <description>Análise das principais características e evolução das decisões das câmaras por assunto e comarca de origem</description>
       <category>Analises</category>
-      <guid>https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial</guid>
+      <guid>https://lab.abj.org.br/posts/2019-09-17-camaras-reservadas-direito-empresarial</guid>
       <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
-      <media:content url="https://lab.abj.org.br/posts/2019-09-17-caractersticas-e-evoluo-das-decises-nas-cmaras-reservadas-de-direito-empresarial/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
+      <media:content url="https://lab.abj.org.br/posts/2019-09-17-camaras-reservadas-direito-empresarial/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
       <title>Um ano e meio das varas empresariais de São Paulo: uma iniciativa de sucesso</title>
