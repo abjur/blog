@@ -5,7 +5,7 @@ description: |
 author:
   - name: Katerine Witkoski
     url: https://www.linkedin.com/in/katerinewitkoski/
-date: "`r Sys.Date()`"
+date: 2021-10-27
 categories:
   - Analises
   - CVM
