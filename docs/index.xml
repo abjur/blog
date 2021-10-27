@@ -12,7 +12,16 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 19 Sep 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 08 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Estudo sobre a Lei Maria da Penha</title>
+      <dc:creator>Grupo de Jurimetria da USP</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-03-05-violencia-mulher</link>
+      <description>O Grupo de Jurimetria da USP, através deste trabalho, propõe estudar a Lei Maria da Penha sob a luz da jurimetria.</description>
+      <guid>https://lab.abj.org.br/posts/2021-03-05-violencia-mulher</guid>
+      <pubDate>Mon, 08 Nov 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2021-03-05-violencia-mulher/img/senado.png" medium="image" type="image/png" width="927" height="453"/>
+    </item>
     <item>
       <title>FaxinaJud</title>
       <dc:creator>Julio Trecenti</dc:creator>
@@ -92,6 +101,14 @@
       <guid>https://lab.abj.org.br/posts/2021-05-20-assimetria</guid>
       <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-05-20-assimetria/assimetria.png" medium="image" type="image/png" width="1159" height="587"/>
+    </item>
+    <item>
+      <title>Análise 1040</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <link>https://lab.abj.org.br/posts/2021-05-03-anlise-1040</link>
+      <description>A short description of the post.</description>
+      <guid>https://lab.abj.org.br/posts/2021-05-03-anlise-1040</guid>
+      <pubDate>Mon, 03 May 2021 00:00:00 +0000</pubDate>
     </item>
     <item>
       <title>O STF, o controle concentrado e a pandemia</title>
