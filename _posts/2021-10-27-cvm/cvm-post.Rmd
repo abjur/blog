@@ -134,7 +134,7 @@ base_temas |>
 ```
 Na Figura \@ref(fig:informacionais-motivo) o motivo de "Não prestação de informações atualizadas" demonstrou ter mais relevância, chegando a 335 casos relacionados a esse motivo, enquanto a "Não indicação de representante legal" só constam 2 casos. 
 
-Basicamente, crimes relacionados ao descumprimento de obrigações necessárias para manutenção de informações se enquadram entre elas: o registro de companhia aberta, os envio de informações periódicas e eventuais, que sejam as demonstrações editais de assembleias, informações trimestrais, acordos de convocação, atas financeiras, acionistas, dentre outras[^foot1]. 
+Dentre crimes relacionados ao descumprimento de obrigações necessárias para manutenção de informações, se enquadram: o registro de companhia aberta, o envio de informações periódicas e eventuais, que sejam as demonstrações editais de assembleias, informações trimestrais, acordos de convocação, atas financeiras, acionistas, dentre outras[^foot1]. 
 
 [^foot1]: [ICVM no 202/93](http://conteudo.cvm.gov.br/legislacao/instrucoes/inst202.html), combinado com os artigos 132, 133, 142 e 176 da [LSA](http://www.planalto.gov.br/ccivil_03/leis/l6404consol.htm))
 
@@ -162,9 +162,9 @@ base_mc |>
  
 ```
 
-Pela análise, foi possível observar que o desfecho que tem mais recorrência entre o tema é de multa pecuniária, alcançando 11%. É possível interpretar que o alto índice de aplicação de multa pode ter relação com a aplicação simultânea de diferentes penas, considerando que a aplicação da pena de multa pode ser cumulada com uma sanção de natureza restritiva de direitos. 
+Pela análise, foi possível observar que o desfecho que tem mais recorrência entre o tema é de multa pecuniária, alcançando 11%. É possível interpretar que o alto índice de aplicação de multa pode ter relação com a aplicação simultânea de diferentes penas, considerando que a aplicação da pena de multa pode ser acumulada com uma sanção de natureza restritiva de direitos. 
 
-Para compreender a proporção entre os desfechos relacionados aos temas informacionais, comparar essa proporção com os desfechos dos processos em geral, levantando portanto de fato uma relevância entre os desfechos principais. 
+Para compreender a proporção entre os desfechos relacionados aos temas informacionais, essa proporção foi comparada com os desfechos dos processos em geral, levantando portanto de fato uma relevância entre os desfechos principais. 
 
 
 
@@ -200,7 +200,7 @@ Entre o desfecho mais recorrente pelo tema informacional (multa) foi observado e
 
 A partir da análise que foi feita sobre o Mercado de Capitais, podemos concluir que é necessário um maior engajamento jurídico a respeito das discussões do processo administrativo sancionador.  
 
-Nesse sentido destaco os principais pontos que podemos levantar ao realizar um estudo jurimétrico: 
+Nesse sentido, destacam-se os principais pontos que podemos levantar ao realizar um estudo jurimétrico: 
 
 ✓ Consolidar entendimentos.
 
@@ -223,9 +223,9 @@ em relação a essas modalidades.
 ✓ Analisar mérito jurídico da implementação dos processos administrativos
 sancionadores.
 
-Ademais, é interessante, não só ponderar sobre a ordem econômica e o efeito jurídico sobre os desfechos dos processos nas possibilidades de solução de conflitos que a CVM disponibiliza atualmente e quais são seus critérios de aplicação das sanções, como também vislumbrar a importância da pesquisa jurimétrica para identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico. 
+Ademais, é interessante não só ponderar sobre a ordem econômica e o efeito jurídico sobre os desfechos dos processos nas possibilidades de solução de conflitos que a CVM disponibiliza atualmente e quais são seus critérios de aplicação das sanções, como também vislumbrar a importância da pesquisa jurimétrica para identificar de fato a eficiência desse sistema e a prática no mercado de valores mobiliários no cenário atual econômico. 
 
-Por fim, busca-se a consolidação da norma jurídica em seu fenômeno prático, revelando a contribuição de seus princípios e suas ideias para o aperfeiçoamento de um órgão de marcantes objetivos. E ainda, busca-se contribuir com o legislador por todos os motivos demonstrados acima, a fim de influenciar na formação de novas leis que preenchem o vácuo hoje existente e, consequentemente, garantir que o mercado de valores possa produzir uma economia saudável e funcional. 
+Por fim, busca-se a consolidação da norma jurídica em seu fenômeno prático, revelando a contribuição de seus princípios e suas ideias para o aperfeiçoamento de um órgão de marcantes objetivos. E ainda, busca-se contribuir com o legislador por todos os motivos demonstrados acima, a fim de influenciar na formação de novas leis que preencham o vácuo hoje existente e, consequentemente, garantir que o mercado de valores possa produzir uma economia saudável e funcional. 
 
 
 
