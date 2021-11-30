@@ -1,10 +1,10 @@
 ---
 title: "Estudo Comparativo entre o OBS/SP e OBS/RJ"
 description: |
-  Este artigo tem como objetivo realizar uma analise comparativa entre os observatorio de Recuperação Judicial no Estado de São Paulo e Rio de Janeiro. 
+  Este artigo tem como objetivo realizar uma analise comparativa entre os observatorio de Recuperação Judicial no Estado de São Paulo e Rio de Janeiro.
 author:
   - name: João Torquato
-    url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/  
+    url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/
 date: "`r Sys.Date()`"
 categories:
   - Analises
@@ -15,8 +15,8 @@ output:
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE, 
-  message = FALSE, 
+  echo = FALSE,
+  message = FALSE,
   warning = FALSE,
   fig.align = "center"
 )
@@ -48,7 +48,7 @@ library(obsRJRJ)
 
 #) carrega base `da_relatorio' disponivel no pacote Obs Fase 2
 
-base_sp <- obsFase2::da_relatorio 
+base_sp <- obsFase2::da_relatorio
 
 #b) carrega base 'da_rjrj' disponível no pacote OBS RJRJ
 
@@ -67,7 +67,7 @@ base_filtrada_rj<-base_rj[,-c(1,2,3,4,5,7,8,10,11,12,13,14,15,16,17,18,19,20,21,
 
 base_filtrada_sp<-base_sp[,-c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,18,19,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81)]%>%
   mutate(origem = "SP")
-  
+
 
 # Base principal
 base_sp_rj <-dplyr::bind_rows(base_filtrada_sp,base_filtrada_rj)
@@ -79,7 +79,7 @@ base_sp_rj <-dplyr::bind_rows(base_filtrada_sp,base_filtrada_rj)
 
 ## Introdução
 
-  A Associação Brasileria de Jurimetria (ABJ) é uma instituição que possui como princípio, através do levantamento de subsídios empíricos e quantitativos, a elaboração de políticas públicas, a disseminação da  jurimetria como um ramo do conhecimento jurídico, incentivar e organizar  pesquisadores com preocupação em investigar e descrever os processos de decisão em que são criadas as normas individuais e concretas. Dessa forma foram criados os projetos de Observatório de Insolvência, que visam analisar de forma empírica os processos de Recuperação Judicial no Estado de São Paulo e do Rio de Janeiro. Com o recolhimento desses dados é construído uma base de dados, neste caso vão ser utilizadas as bases "OBSFase2" que possui os dados da 2° fase do Observatório de Recuperações Judiciais no estado de São paulo, e a base "OBSRJRJ" referente ao dados recolhidos no Observatório 2° do fase do Observatório de Recuperações Judiciais no Estado do Rio de Janeiro. 
+  A Associação Brasileria de Jurimetria (ABJ) é uma instituição que possui como princípio, através do levantamento de subsídios empíricos e quantitativos, a elaboração de políticas públicas, a disseminação da  jurimetria como um ramo do conhecimento jurídico, incentivar e organizar  pesquisadores com preocupação em investigar e descrever os processos de decisão em que são criadas as normas individuais e concretas. Dessa forma foram criados os projetos de Observatório de Insolvência, que visam analisar de forma empírica os processos de Recuperação Judicial no Estado de São Paulo e do Rio de Janeiro. Com o recolhimento desses dados é construído uma base de dados, neste caso vão ser utilizadas as bases "OBSFase2" que possui os dados da 2° fase do Observatório de Recuperações Judiciais no estado de São paulo, e a base "OBSRJRJ" referente ao dados recolhidos no Observatório 2° do fase do Observatório de Recuperações Judiciais no Estado do Rio de Janeiro.
 
 ### Definição do problema
 
@@ -87,24 +87,24 @@ base_sp_rj <-dplyr::bind_rows(base_filtrada_sp,base_filtrada_rj)
 
 
   Devemos também apresentar uma breve apresentação das bases, a referente ao estado de são paulo possui todos os processos de recuperação judicial distribuídos entre janeiro de 2010 a julho de 2017, totalizando um total de 1194 processos, com dados sobre AGC’s, plano de recuperação, desfecho, ativos e passivos, lista de credores e etc. Por outro lado a base referente ao Observatório do Rio de Janeiro possui um total de 236 processos de recuperação Judicial, em um primeiro recolhimento foi estabelecido o escopo de tempo onde os processos de recuperação Judicial que foram distribuídos a partir 2006,  após a montagem lista de processos, foi realizado um recorte foi adaptado para o período de 2010 a 2018, uma vez que é importante restringir o escopo para comparar as conclusões do Rio de Janeiro e São Paulo,a base contém informações de mesma natureza que a base de São paulo como. com dados sobre AGC’s, plano de recuperação, desfecho, ativos e passivos, lista de credores e etc.
- 
 
-|                                          |  São Paulo | Rio de janeiro       | 
+
+|                                          |  São Paulo | Rio de janeiro       |
 |:----------------------------------------:|:----------:|:--------------------:|
-| N° de casos                              |  1194      |          205         |    
+| N° de casos                              |  1194      |          205         |
 | Taxa de Deferimento (V. comum)           |  74,88%    |         73,62%       |
 | Taxa de Deferimento (V. Especializada)   |  54,74%    |         70,17%       |
 | Taxa de Aprovação de Plano               |  66,50%    |         81,3%        |
 | Taxa de Indeferimento (V. comum)         |  25,11%    |         26,38%       |
 | Taxa de Indeferimento (V. Especializada) |  45,26%    |         29,83%       |
 
-  Como a tabela demonstra, São Paulo possui uma taxa de deferimento maior nas Varas Comuns (74,88%) do que nas especializadas, o mesmo ocorre no Rio de Janeiro que possui uma maior taxa de deferimento nas Varas Comuns (73,62%). Por outro lado, já em relação às taxas de indeferimento, o padrão se inverte, tanto em São Paulo como no Rio de Janeiro as taxas de indeferimento são maiores nas varas especializadas. 
+  Como a tabela demonstra, São Paulo possui uma taxa de deferimento maior nas Varas Comuns (74,88%) do que nas especializadas, o mesmo ocorre no Rio de Janeiro que possui uma maior taxa de deferimento nas Varas Comuns (73,62%). Por outro lado, já em relação às taxas de indeferimento, o padrão se inverte, tanto em São Paulo como no Rio de Janeiro as taxas de indeferimento são maiores nas varas especializadas.
 
 
 ### Deferimento:
 
   Apresentadas as informações quantitativas gerais dos dois Estados, em seguida vamos realizar uma análise mais aprofundada em relação ao tempo de deferimento. Nesse sentido estamos considerando o intervalo de tempo para o deferimento, a diferença entre a data de distribuição e a data de deferimento.
-O grafico abaixo demostra o intervalo de tempo, em dias, para o deferimentos nos casos de São Paulo e Rio Janeiro. Para chegar no numero de dias foi realizado a diferneça entre a data de deferimento e a data de distribuição. 
+O grafico abaixo demostra o intervalo de tempo, em dias, para o deferimentos nos casos de São Paulo e Rio Janeiro. Para chegar no numero de dias foi realizado a diferneça entre a data de deferimento e a data de distribuição.
 
 ```{r, include = FALSE}
 ##Configuração datas
@@ -112,15 +112,15 @@ O grafico abaixo demostra o intervalo de tempo, em dias, para o deferimentos nos
 base_sp_rj%>%
   mutate(dt_dist2=str_sub(dt_dist2,start=0,end=10))%>%
   dplyr::mutate(dt_dist2 = dmy(dt_dist2))
-  
-base_sp_rj%>%  
+
+base_sp_rj%>%
   mutate(data_dist=str_sub(data_dist,start=0,end=10))%>%
   dplyr::mutate(data_dist = dmy(data_dist))
 
 base_sp_rj%>%
   mutate(data_deferido=str_sub(data_deferido,start=0,end=10))%>%
   dplyr::mutate(data_deferido = dmy(data_deferido))
-  
+
 base_sp_rj%>%
   mutate(data_deferimento=str_sub(data_deferimento,start=0,end=10))%>%
   dplyr::mutate(data_deferimento = dmy(data_deferimento))
@@ -157,12 +157,12 @@ base_sp_rj%>%
 pct <- \(x) scales::percent(x, accuracy = .1)
 ```
 
-### Desfecho plano 
+### Desfecho plano
 
   Neste tópico vão ser analisadas as informações compiladas relacionadas ao desfecho das negociações referentes ao plano de Recuperação Judicial, o plano desenvolve a função fundamental para a reestruturação da empresa. Nele vão ser detalhados todos as informações da situação financeira da empresa, os créditos que estão sendo discutidos nos processos e as medidas que irão ser tomadas a fim de estruturar a empresa, com o intuito de superar a crise. Nos gráficos abaixo vamos analisar os resultados dessas discussões. Vale a pena ressaltar que os gráficos resumem as quatro variáveis que mais apareceram nos casos analisados.
-  
-  
-```{r Desfecho plano São Paulo}
+
+
+```{r Desfecho plano SP}
 
 base_filtrada_sp%>%
   dplyr::select(resultado_final) %>%
@@ -183,8 +183,8 @@ base_filtrada_sp%>%
   ggplot2::labs(x = "Proporção", y = "Resultado Plano SP") +
   ggplot2::theme_minimal(10)
 ```
- 
- No Estado de São Paulo assim como no Rio de Janeiro é possível se verificar que, liderando as taxas temos os processos onde os planos foram aprovados, o primeiro estado possui uma taxa de 71,5% de aprovação, enquanto o segundo a taxa sobe para 84,1%, o que é um alívio uma vez que é o curso natural do processo a aprovação do plano. Em segundo lugar é válido pontuar a taxa de indeferimento dos planos, em São Paulo a taxa de reprovação do plano é de 7%, enquanto no Rio de Janeiro cai para 4.4%. Contudo nos dois gráficos temos 2 taxas que destoam entre os Estados, em primeiro lugar temos São Paulo temos processos que convolaram em falência antes da primeira AGC, representando 14,7% dos casos. Essa taxa pode ser interpretada como um sinal que evidencia que as empresas estão entrando com o pedido de recuperação tarde demais, no sentido de que a empresa se encontra em uma situação tão delicada que mesmo com os benefícios concedidos no deferimento, ela não possui ativo ou meios para se manter em funcionamento. 
+
+ No Estado de São Paulo assim como no Rio de Janeiro é possível se verificar que, liderando as taxas temos os processos onde os planos foram aprovados, o primeiro estado possui uma taxa de 71,5% de aprovação, enquanto o segundo a taxa sobe para 84,1%, o que é um alívio uma vez que é o curso natural do processo a aprovação do plano. Em segundo lugar é válido pontuar a taxa de indeferimento dos planos, em São Paulo a taxa de reprovação do plano é de 7%, enquanto no Rio de Janeiro cai para 4.4%. Contudo nos dois gráficos temos 2 taxas que destoam entre os Estados, em primeiro lugar temos São Paulo temos processos que convolaram em falência antes da primeira AGC, representando 14,7% dos casos. Essa taxa pode ser interpretada como um sinal que evidencia que as empresas estão entrando com o pedido de recuperação tarde demais, no sentido de que a empresa se encontra em uma situação tão delicada que mesmo com os benefícios concedidos no deferimento, ela não possui ativo ou meios para se manter em funcionamento.
 
 ```{r Desfecho plano Rio de Janeiro}
 
@@ -210,11 +210,11 @@ base_filtrada_rj%>%
 
 Por outro lado, em relação ao Estado do Rio de Janeiro temos uma porcentagem de 3.3% dos casos onde o plano foi aprovado por Cram Down. Podemos definir Cram Down como o instrumento jurídico o qual possibilita ao juiz impor, aos credores discordantes, a aprovação do plano apresentado pelo devedor e já aceito pela maioria, fundamentado pelo art. 58, § 1° da LRF, em São Paulo a percentagem de aprovações por Cram Down salta para 4,3%.
 
-### O defecho do processo: 
+### O defecho do processo:
 
   Os gráficos abaixo demonstram os dados coletados no que diz respeito aos desfechos das dos processos onde o pedido de RJ foi deferido e tiveram seus planos aprovados.  Em primeiro lugar, temos os dados do Estado de São Paulo, nesse sentido é possível verificar que 55,1% dos casos analisados ainda estão em curso, nisso se enquadram processos onde estão cumprindo o plano . Em segundo temos os processos encerrados, que estão divididos em 2 categorias, processos que se encerraram com a recuperação da  empresa, essa representa 24,4% dos casos no estado de São Paulo, por outro lado processos em que a convolação em falência representam 20,5% casos.
 
-```{r Desfecho processo São Paulo}
+```{r Desfecho processo SP}
 
 base_filtrada_sp%>%
   dplyr::select(desfecho_final) %>%
@@ -236,7 +236,7 @@ base_filtrada_sp%>%
   ggplot2::theme_minimal(10)
 ```
 
-Já por outro lado, em seu Estado vizinho, Rio de Janeiro, apesar do comportamento ser bem similar existem algumas diferenças, em primeiro lugar ainda temos os casos que se encontram ativos e ainda não encerraram o comprimento do plano representando uma taxa de 75,3% dos casos. Em seguida, assim como São Paulo, temos os casos encerrados, novamente, em 2 categorias.  Os casos que se encerraram sem falência, casos onde houve o cumprimento do plano representam a porcentagem de 24,2%% dos casos, e por fim temos os casos que acabaram com o processo falimentar da empresa representando 3,5% dos casos. 
+Já por outro lado, em seu Estado vizinho, Rio de Janeiro, apesar do comportamento ser bem similar existem algumas diferenças, em primeiro lugar ainda temos os casos que se encontram ativos e ainda não encerraram o comprimento do plano representando uma taxa de 75,3% dos casos. Em seguida, assim como São Paulo, temos os casos encerrados, novamente, em 2 categorias.  Os casos que se encerraram sem falência, casos onde houve o cumprimento do plano representam a porcentagem de 24,2%% dos casos, e por fim temos os casos que acabaram com o processo falimentar da empresa representando 3,5% dos casos.
 
 
 
@@ -264,6 +264,6 @@ base_filtrada_rj%>%
 
 ### Conclusão:
 
-  Apresentados todos os dados existe mais um questionamento que acredito ser válido ser levantado, como é possível observar ficar no Gráfico 1, o Rio de Janeiro tem um tempo de deferimento um pouco mais rápido se comparado com a curva de São Paulo. 
-  Contudo, o gráfico 5 demonstra que quando se analisa casos encerrados podemos verificar que a taxa de processos ativos no Rio de Janeiro é maior que a do estado de São Paulo. Comportamento que não se repete nas taxas de processos encerrados, seja por quebra da recuperanda ou cumprimento do plano, onde o estado de São Paulo possui taxas maiores. 
-  Podemos deduzir que o sistema jurídico do Rio de Janeiro possui uma tendência a deixar mais os processos ativos, mesmo que ele seja deferido de forma mais ágil, e tenha uma maior porcentagem de aprovação de planos, os processos ficam ativos por mais tempo quando comparado com São Paulo, que por sua vez tem uma tendência em encerrar mais os processos. 
+  Apresentados todos os dados existe mais um questionamento que acredito ser válido ser levantado, como é possível observar ficar no Gráfico 1, o Rio de Janeiro tem um tempo de deferimento um pouco mais rápido se comparado com a curva de São Paulo.
+  Contudo, o gráfico 5 demonstra que quando se analisa casos encerrados podemos verificar que a taxa de processos ativos no Rio de Janeiro é maior que a do estado de São Paulo. Comportamento que não se repete nas taxas de processos encerrados, seja por quebra da recuperanda ou cumprimento do plano, onde o estado de São Paulo possui taxas maiores.
+  Podemos deduzir que o sistema jurídico do Rio de Janeiro possui uma tendência a deixar mais os processos ativos, mesmo que ele seja deferido de forma mais ágil, e tenha uma maior porcentagem de aprovação de planos, os processos ficam ativos por mais tempo quando comparado com São Paulo, que por sua vez tem uma tendência em encerrar mais os processos.
