@@ -1,0 +1,76 @@
+---
+title: "O uso do poder discricionário pelo Ministério Público de São Paulo"
+description: |
+  Este artigo discute a forma como o Ministério Público exerce a sua discricionariedade, a partir de dados cadastrais da instituição.
+author:
+  - name: Ricardo Feliz
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: 2021-12-08
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+```
+
+# Introdução 
+
+Os resultados e discussões apresentados neste artigo da minha pesquisa realizada no âmbito do meu Trabalho de Conclusão de Curso. Esta é apenas uma divulgação do meu trabalho. Meu objeto de análise é o Ministério Público Paulista. O que eu busco analisar é o _uso do poder discricionário_ pelos promotores públicos. Eu parto da ideia de que o núcleo duro da independência funcional (uma das garantias constitucionais mais fundamentais à instituição ministerial e seus membros) é a discricionariedade. Compreendo discricionariedade em seu sentido comum, de _liberdade de agir_. Nesse sentido, parto da ideia de que os promotores públicos possuem uma certa liberdade de agir garantida constitucionalmente. Partindo desta ideia o que eu discuto é como a discricionariedade é utilizada na prática. Em outras palavras, o que eu discuto é o _uso do poder discricionário_ pelos promotores públicos paulistas. 
+
+Há uma literatura bem homogênea apontando para uma das formas do _uso do poder discricionário_ pelos promotores. É uma literatura tão variada quanto cientistas políticos, cientistas sociais e juristas, e todos apontam para o fato de que os promotores atuam (e devem atuar!) de forma discricionária para escolher _como_ agir frente a um caso de alguma violação a direitos difusos e coletivos. As formas de atuação possíveis seriam, de um lado, uma atuação extrajudicial, marcada pela realização de muitas diligências e pela conclusão de casos com a celebração de Termos de Ajustamento de Conduta (TAC); do outro, uma atuação mais judicializada, que recorre ao Judiciária como forma de resolver os conflitos de direitos difusos e coletivos, por meio da propositura de Ações Civis Públicas (ACPs). Ao primeiro tipo de promotor, chamamos de _promotor de fatos_; ao segundo, de _promotor de gabinete_; ou ainda, ao primeiro tipo, podemos chamar de _Ministério Público resolutivo_, e ao segundo, de _Ministério Público demandista_
+
+Esta forma de uso do poder discricionário já está bem documentada tanto pela doutrina, como por estudos empíricos. O que eu desejo discutir é de outra ordem, portanto. Desejo verificar se os promotores exercem sua discricionariedade escolhendo não _como_ os promotores atuam, mas escolhendo _no que_ eles vão atuar. Meu foco, então, não é a forma ou os meios de atuação, mas o seu objeto. 
+
+A discussão a respeito da escolha do objeto em que os promotores irão atuar é mais sensível do que a discussão de forma. Enquanto a escolha da forma de atuação é um poder discricionário necessário para o bom desempenho das atribuições constitucionais dadas aos membros do Ministério Público, a escolha do objeto não necessariamente funciona dessa maneira. A questão é que os promotores possuem o dever de agir sempre que for identificada uma hipótese de atuação. Então teoricamente não haveria de se falar em escolha no que atuar; não haveria escolha do objeto de atuação. 
+
+É justamente tendo este problema em vista que a minha pesquisa buscou analisar este uso específico do poder discricionário sobre o objeto de atuação. A forma para estudarmos este problema foi uma análise quantitativa dos dados cadastrais do Ministério Público. 
+
+# Metodologia
+
+A base de dados utilizada para este trabalho foi concedida pelo próprio Ministério Público. É uma base criada a partir dos registros de casos que cada promotor público realiza no sistema do SIS MP Integrado. Cada linha da base é um procedimento diferente, que foi registrado por um promotor público. A junção de vários procedimentos resulta em um caso. Como a base não é organizada em torno do caso, mas é organizada em torno de procedimentos, então mais de um código de procedimento pode se referir a um mesmo caso; e um caso se torna a junção de vários procedimentos. Cada linha, então, é identificada por um código de procedimento. Essa informação está contida na primeira coluna da base. As demais colunas descrever características deste procedimento.
+
+Com estes dados, foi possível extrair informações de como o Ministério Público Paulista reagiu a cada uma das provocações. As provocações estavam sempre representadas na base como uma Notícia de Fato (NF). E as notícias de fato tinham dois perfis distintos: um perfil relacionado ao tema; e outro relacionado ao tipo de parte que provocou. 
+
+Quanto ao tema, há 8 temas possíveis de atuação do Ministério Público em casos de direitos difusos e coletivos: Inclusão Social, Meio Ambiente, Habitação e Urbanismo, Consumidor, Infância e Juventude, Pessoa com Deficiência, Saúde Pública e Proteção ao Idoso.
+
+Quanto ao tipo de parte, consideramos 4 tipos de partes distintos: pessoa física, pessoa jurídica de direito privado, sociedade civil organizada e poder público. 
+
+Estes dois perfis das notícias de fato foram comparados com os perfis dos casos que foram arquivados (ou seja, que os promotores não atuaram) e com o perfil dos casos em houve uma ação civil pública ou um termo de ajustamento de conduta (ou seja, que os promotores atuaram). Como são 2 perfis distintos (tema e tipo de parte) para 2 grupos diferentes (nf x casos em que os promotores não atuaram; nf x casos em que os promotores atuaram), temos 4 comparações ao todo. A análise feita para discutir o uso do poder discricionário na escolha do objeto de atuação se pautou nestas 4 comparações. Foi realizado um teste de homogeneidade para cada uma das 4 comparações. As comparações foram elaboradas na forma de hipóteses. São duas hipóteses, analisadas em duas dimensões distintas (tema e tipo de parte):
+H1: O perfil das notícias de fato é estatisticamente igual ao perfil dos arquivamentos
+H2: O perfil das notícias de fato é estatisticamente igual ao perfil das ações civis públicas e dos termos de ajustamento de conduta. 
+
+A seguir, apresento os resultados desses testes e discuto seus significados. 
+
+# Resultados
+Testamos duas hipóteses, em duas dimensões distintas. A primeira hipótese era aquela que comparava os grupos de notícias de fato com o grupo de arquivamentos (nf x arq) e se perguntava se os grupos eram estatisticamente diferentes entre si. Essa avaliação foi feita para os temas de cada grupo, bem como para o tipo de parte que provocou o Ministério Público. A segunda hipótese era aquela que comparava os grupos de notícias de fato com o grupo de ações civis públicas e termos de ajustamento de conduta (nf x ac/tac). Novamente, essa segunda hipótese foi testada para duas características diferentes dos casos, os temas e os tipos de partes que provocaram os promotores. O Quadro \@ref(tab:tab-01) resume os resultados dos testes de cada hipótese. 
+
+```{r tab-01, }
+hipotese <- c("H1", "H1", "H2", "H2")
+comparacao <- c("nf x arq", "nf x arq", "nf x ac/tac", "nf x ac/tac")
+categoria <- c("temas", "partes", "temas", "partes")
+pvalor <- c("< 0,001", "0,2781", "< 0,001", "0,0117")
+rejeitou <- c("rejeitou a 99% de confiança", "não rejeitou", "rejeitou a 99% de confiança", "rejeitou a 95% de confiança, mas não a 99%")
+
+quadro1 <- data.frame(hipotese, comparacao, categoria, pvalor, rejeitou)
+
+knitr::kable(quadro1, caption = "Resultados dos testes de hipótese")
+
+```
+
+O que esses resultados indicam é que há uma diferença entre o perfil dos casos que chegam a ele em comparação com o perfil dos casos em que ele atua. O que nos resta discutir é o sentido dessa diferença 
+
+Discussões
+Ao encontrarmos evidências que sustentam que o uso do poder discricionário dos promotores se dá na escolha de agir ou não, percebemos no Ministério Público um potencial filtro aos direitos difusos e coletivos. Encontramos, pois, uma margem de atuação dos promotores que não costuma ser analisada pelo direito. Disso, decorre uma questão importante: qual é a legalidade dessa margem de atuação?
+
+Devemos ser cuidadosos com essa análise. Uma resposta rápida e formalista seria a de que essa margem, por si só, é ilícita e está em violação ao princípio da obrigatoriedade. Essa resposta seria meramente formal, pois consideraria o uso do poder discricionário como uma afronta à lei. Entretanto, o problema não é meramente formal. É possível exercer o poder discricionário sem recair em um problema de legalidade. A questão é de outra ordem. O problema de legalidade no uso do poder discricionário é um problema material, é um problema de motivação. Não faz sentido estudarmos se essa margem de atuação é lícita ou ilícita. No lugar, o que faz sentido é estudar as motivações quando a discricionariedade é exercida. Esse exercício poderia ser ilegal por duas razões: (1) a ausência de motivação, ou (2) a atuação guiada por motivos ilícitos.
+
+Os nossos dados não trazem informação alguma a respeito da motivação. E por isso não podemos concluir nada a respeito da legalidade desse poder discricionário. Muitas questões se abrem, então, para continuarmos essa pesquisa: o MP está motivando seus atos? Quem controla isso? Onde isso está publicizado? Em grande medida, o procedimento de arquivamento pode nos dar essas respostas, pois o arquivamento deve ser devidamente motivado (o que não necessariamente implica dizer que eles sejam devidamente motivados) e devem passar, com remessa obrigatória, pela revisão pelo CNMP (o que não implica que essa revisão esteja desempenhando corretamente a sua função). O ponto importante aqui não é criticar o Ministério Público ou não, mas é apontar para lacunas no conhecimento que impedem o avanço dessa discussão. Essas questões ficam abertas para pesquisas futuras.
+
+O texto completo está disponível em: _______ (eu posso passar o pdf, mas o texto ainda não foi aprovado pela banca, e ele provavelmente vai ganhar um link oficial da faculdade eu acho. Ai não sei oq eu coloco)
