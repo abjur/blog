@@ -10,6 +10,9 @@ output:
   distill::distill_article:
     self_contained: false
 preview: "imagens-lab.png"
+categories:
+  - Ministerio Publico
+  - Analises
 ---
 
 
