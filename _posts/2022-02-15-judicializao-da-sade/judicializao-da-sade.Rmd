@@ -1,0 +1,14 @@
+---
+title: "Judicialização da Saúde"
+description: |
+  Este artigo busca discutir alguns aspectos sobre o estudo quantitativo da judicialização da saúde. 
+author:
+  - name: Ricardo Feliz
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: 2022-02-15
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+A judicialização da saúde 
