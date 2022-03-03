@@ -1,0 +1,78 @@
+---
+title: "2022: uma projeção para o próximo ano na ABJ"
+description: |
+  Ampliação no cronograma de eventos, novos projetos e atividades da ABJ para este ano
+author:
+  - name: Pedro Henrique Sperber
+    url: https://www.linkedin.com/in/pedro-henrique-sperber-rosa-26214116a/
+date: 2022-03-03
+output:
+  distill::distill_article:
+    self_contained: false
+preview: imagens-lab.png
+categories:
+  - Institucional
+---
+
+O ano de 2021 fortaleceu a ABJ em diversas vertentes dentro da associação.
+Como falamos no [artigo publicado no mês passado](https://lab.abj.org.br/posts/2022-02-04-retrospectiva-2021/),
+o último ano nos trouxe a experiência de aumentar ainda mais nossa abrangência
+nos projetos desenvolvidos. Foi um ano de lançamentos: novos resultados nos
+observatórios, abertura do nosso [Fórum de Jurimetria](https://forum.abj.org.br/),
+além de um número inédito de eventos e um avanço institucional significativo
+para a ABJ.
+
+A divulgação, que acontecerá em breve, sobre os resultados da 3ª fase do
+Observatório da Insolvência será o primeiro evento de um ano que promete ter
+uma grande variedade de atrações por aqui. Confira alguns dos planos da ABJ para
+2022 neste post!
+
+## Cronograma de eventos
+
+Assim como no ano passado, continuaremos com os nossos encontros mensais do Café
+Jurimétrico, trazendo conteúdos diversificados entre temas técnicos, práticos e
+teóricos, de assuntos relevantes para nossa comunidade. Já na primeira edição do
+ano receberemos o Diretor da Escola de Contas do Tribunal de Contas do Município
+de São Paulo, Gilson Piqueras Garcia, num bate-papo que abordará o lançamento do
+seu livro _Jurimetria aplicada aos Tribunais de Contas_.
+
+Além dos cafés e eventos temáticos como o Marco Civil da Internet, estão
+mapeados para acontecer outros lançamentos de resultados dos projetos de
+Observatórios, incluindo do Observatório da Insolvência: Recuperações Judiciais
+do Rio Grande do Sul. Mais adiante, ainda teremos novidades sobre as novas fases
+dos Observatórios do Mercado de Capitais e da Insolvência no Rio de Janeiro.
+
+## Novos projetos e atendimento a pesquisadores
+
+Ainda sem data para a divulgação dos resultados, estaremos ativos em diversos
+projetos que serão trabalhados em 2022. Fruto de uma parceria entre CIEE, IASP e
+ABJ, o Observatório da Litigiosidade é um exemplo: o estudo busca entender
+melhor a litigiosidade no Brasil e será trabalhado no decorrer deste ano pelos
+nossos pesquisadores.
+
+Também estamos elaborando em parceria com o CBAr (Comitê Brasileiro de
+Arbitragem) o Observatório da Arbitragem, que visa analisar casos complexos
+relacionados à arbitragem no TJSP, que necessitam da leitura de autos e
+construção de bases de dados de forma manual.
+
+Faz parte da missão da ABJ incentivar pesquisas e reunir pessoas com interesse
+pelo estudo da jurimetria, e por isso em 2022 continuaremos nossos atendimentos
+semanais a pesquisas de pessoas associadas e não-associadas. Os horários e
+datas variam conforme a demanda e disponibilidade, mas já é possível acessar
+nossa agenda pública para marcar um bate-papo com a nossa equipe. Se você faz
+parte do nosso quadro associativo, a agenda diferenciada com mais opções de
+horários disponíveis pode ser encontrada no link através do Portal da ABJ com
+seu login e senha exclusivos.
+
+
+## Equipe da ABJ no site
+
+Agora na aba _Institucional_ do nosso site, é possível conhecer todos os
+colaboradores que integram o #timeabj, desde o conselho científico, aos
+diretores, equipe de pesquisa e comunicação e comitês da associação. Também
+foram acrescentadas informações como os perfis Lattes, LinkedIn e e-mail para
+contato.
+
+Nosso time está muito animado para mais um ano com diversos desafios e projeções
+altamente positivas para a associação. Faça parte da nossa história e
+compartilhe conosco as realizações que teremos este ano!

@@ -1,5 +1,26 @@
 [
   {
+    "path": "posts/2022-03-03-2022-projecao/",
+    "title": "2022: uma projeção para o próximo ano na ABJ",
+    "description": "Ampliação no cronograma de eventos, novos projetos e atividades da ABJ para este ano",
+    "author": [
+      {
+        "name": "Pedro Henrique Sperber",
+        "url": "https://www.linkedin.com/in/pedro-henrique-sperber-rosa-26214116a/"
+      }
+    ],
+    "date": "2022-03-03",
+    "categories": [
+      "Institucional"
+    ],
+    "contents": "\nO ano de 2021 fortaleceu a ABJ em diversas vertentes dentro da\nassociação. Como falamos no artigo\npublicado no mês passado, o último ano nos trouxe a experiência de\naumentar ainda mais nossa abrangência nos projetos desenvolvidos. Foi um\nano de lançamentos: novos resultados nos observatórios, abertura do\nnosso Fórum de Jurimetria, além\nde um número inédito de eventos e um avanço institucional significativo\npara a ABJ.\nA divulgação, que acontecerá em breve, sobre os resultados da 3ª fase\ndo Observatório da Insolvência será o primeiro evento de um ano que\npromete ter uma grande variedade de atrações por aqui. Confira alguns\ndos planos da ABJ para 2022 neste post!\nCronograma de eventos\nAssim como no ano passado, continuaremos com os nossos encontros\nmensais do Café Jurimétrico, trazendo conteúdos diversificados entre\ntemas técnicos, práticos e teóricos, de assuntos relevantes para nossa\ncomunidade. Já na primeira edição do ano receberemos o Diretor da Escola\nde Contas do Tribunal de Contas do Município de São Paulo, Gilson\nPiqueras Garcia, num bate-papo que abordará o lançamento do seu livro\nJurimetria aplicada aos Tribunais de Contas.\nAlém dos cafés e eventos temáticos como o Marco Civil da Internet,\nestão mapeados para acontecer outros lançamentos de resultados dos\nprojetos de Observatórios, incluindo do Observatório da Insolvência:\nRecuperações Judiciais do Rio Grande do Sul. Mais adiante, ainda teremos\nnovidades sobre as novas fases dos Observatórios do Mercado de Capitais\ne da Insolvência no Rio de Janeiro.\nNovos projetos e\natendimento a pesquisadores\nAinda sem data para a divulgação dos resultados, estaremos ativos em\ndiversos projetos que serão trabalhados em 2022. Fruto de uma parceria\nentre CIEE, IASP e ABJ, o Observatório da Litigiosidade é um exemplo: o\nestudo busca entender melhor a litigiosidade no Brasil e será trabalhado\nno decorrer deste ano pelos nossos pesquisadores.\nTambém estamos elaborando em parceria com o CBAr (Comitê Brasileiro\nde Arbitragem) o Observatório da Arbitragem, que visa analisar casos\ncomplexos relacionados à arbitragem no TJSP, que necessitam da leitura\nde autos e construção de bases de dados de forma manual.\nFaz parte da missão da ABJ incentivar pesquisas e reunir pessoas com\ninteresse pelo estudo da jurimetria, e por isso em 2022 continuaremos\nnossos atendimentos semanais a pesquisas de pessoas associadas e\nnão-associadas. Os horários e datas variam conforme a demanda e\ndisponibilidade, mas já é possível acessar nossa agenda pública para\nmarcar um bate-papo com a nossa equipe. Se você faz parte do nosso\nquadro associativo, a agenda diferenciada com mais opções de horários\ndisponíveis pode ser encontrada no link através do Portal da ABJ com seu\nlogin e senha exclusivos.\nEquipe da ABJ no site\nAgora na aba Institucional do nosso site, é possível\nconhecer todos os colaboradores que integram o #timeabj, desde o\nconselho científico, aos diretores, equipe de pesquisa e comunicação e\ncomitês da associação. Também foram acrescentadas informações como os\nperfis Lattes, LinkedIn e e-mail para contato.\nNosso time está muito animado para mais um ano com diversos desafios\ne projeções altamente positivas para a associação. Faça parte da nossa\nhistória e compartilhe conosco as realizações que teremos este ano!\n\n\n\n",
+    "preview": "posts/2022-03-03-2022-projecao/imagens-lab.png",
+    "last_modified": "2022-03-03T18:54:59-03:00",
+    "input_file": "2022-projecao.knit.md",
+    "preview_width": 1159,
+    "preview_height": 587
+  },
+  {
     "path": "posts/2022-02-04-retrospectiva-2021/",
     "title": "Retrospectiva 2021",
     "description": "Este artigo faz uma retrospectiva dos eventos, projetos e observatórios que a ABJ realizou no ano de 2021.",
