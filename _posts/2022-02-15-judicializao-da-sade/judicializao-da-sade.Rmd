@@ -11,4 +11,24 @@ output:
     self_contained: false
 ---
 
-A judicialização da saúde 
+A judicialização da saúde é um problema que já há muitas décadas vem se apresentando para o Sistema de Saúde brasileiro. Em 2013, já eram mais de R$ 1,3 bilhões gastos anualmente pela União para cobrir os gastos de decisões judiciais que determinam o oferecimento de medicamentos, exames e cirurgias. E em 2019, a fila de processos somava mais de 90 mil [citar CNJ INSPER, 2019]. Do lado dos requerentes, a judicialização da saúde representa uma chance de conseguir efetivar o seu direito à saúde. A demora do Judiciário pode inviabilizar esse direito de ser efetivado.
+
+Dado a magntiude que a judicialização da saúde tem, tanto no orçamento público, como na vida dos beneficiários do Sistema Único de Saúde, esse é um problema que exige soluções complexas. 
+
+É dentro desse contexto que desejo discutir, brevemente, no que a jurimetria pode ajudar. Antes de avançar nestas reflexões, é preciso fazer uma ressalva importante a respeito do que estamos considerando como "jurimetria" aqui. O campo da jurimetria ainda está em definição e não possui contornos muito definidos. Nesse sentido, surge uma questão preliminar de o que devemos considerar como estudos de jurimetria, a fim de pensarmos como esses estudos podem contribuir para a melhor prestação jurisdicional e administrativa do direito à saúde. Vamos considerar a jurimetria de uma forma bem abrangente, como uma técnica de análise quantitativa, utilizada para analisar determinado objeto. No caso em tela, a jurimetria estará presente ao se realizar estudos quantitativos sobre a atuação dos tribunais em direitos ligados à saúde. 
+
+Feita essa consideração inicial, podemos focar na questão de como a jurimetria pode auxiliar a prestação jurisdicional e administrativo do direito à saúde. Há duas formas a que devemos nos atentar de como a jurimetria pode desempenhar essa função. 
+
+Em primeiro lugar, estudos quantitativos nos auxiliam a *descrever* a realidade desse tipo de judicialização. As técnicas quantitativas conseguem nos auxiliar a descrever (a) o perfil das demandas; (b) o perfil dos requerentes; (c) o perfil dos requeridos; e (d) a resposta do Judiciário. 
+
+Sobre o perfil da demanda, há que se saber quais são os pedidos realizados? É um pedido de medicamento? De exame? De serviço médico especializado? Qual medicamento, exame ou serviço está sendo requisitado? Qual é o valor desse pedido? E, por fim, qual é o tipo de ação que está sendo ajuizada? Uma ação constitucional? Essas são questões importantes a respeito do perfil da demanda.
+
+Do lado do perfil dos requerentes, temos que nos atentar para descrever a situação das pessoas que chegam até o Judiciário. Quem são essas pessoas? São pessoas carentes, que não tem outras formas de acessar esses medicamentos e serviços? Ou são pessoas de classe média, conscientes de seus direitos, que estão pressionando o Estado para ampliar a prestação do serviço de saúde? 
+
+Do lado do perfil dos requeridos, há um esforço de se descrever também o demandado. Quem é o polo passivo da demanda? É algum ente federativo, como a União, algum Estado ou Município? É o próprio SUS? Ou são pessoas de direito privado? Empresas, prestadores de serviço, ou os próprios servidores públicos? 
+
+Por fim, do lado da resposta do Judiciário, o que os juízes têm respondido? As demandas têm sido concedidas? A resposta dos juízes varia de acordo com o perfil do requerente, ou com o perfil do requerido? Quais são os argumentos levantados? O quão padronizadas são as decisões? Elas citam a jurisprudência dos tribunais superiores, tais como Recursos Especiais do STJ, ou Recursos Extraordinários do STF? Há citação também de órgãos técnicos, tais como os parecers do NATJUS? 
+
+Todas essas questões de caráter eminentemente descritivo vêm sido enfrentadas por uma vasta literatura nacional e internacional, de juristas, cientistas sociais, cientistas políticos, entre outros.
+
+O segundo grupo de questões, muito menos exploradas, se ligam a análise de modelos 
