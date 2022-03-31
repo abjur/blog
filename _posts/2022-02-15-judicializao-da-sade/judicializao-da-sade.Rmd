@@ -6,6 +6,7 @@ author:
   - name: Ricardo Feliz
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
 date: 2022-02-15
+preview: judicializao-da-sade.png
 output:
   distill::distill_article:
     self_contained: false
