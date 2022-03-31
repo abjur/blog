@@ -1,0 +1,88 @@
+---
+title: "Como a jurimetria pode auxiliar a pesquisar a judicialização da saúde"
+description: |
+  Este artigo busca discutir alguns aspectos práticos de como a jurimetria pode ser usada em pesquisas de judicialização da saúde. Para tanto, o artigo se divide em duas partes principais: (a) possíveis perguntas que a jurimetria pode responder; (b) um desenho de pesquisa possível para atacar essas perguntas. O objetivo deste artigo é ampliar os horizontes de pesquisa utilizando jurimetria, mostrando como ela pode ajudar na prática da pesquisa. 
+author:
+  - name: Ricardo Feliz
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: 2022-02-15
+preview: judicializao-da-sade.png
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+## Considerações iniciais
+
+A judicialização da saúde é um problema que já há muitas décadas vem se apresentando para o Sistema de Saúde brasileiro. Em 2013, já eram mais de R$ 1,3 bilhões gastos anualmente pela União para cobrir os gastos de decisões judiciais que determinam o oferecimento de medicamentos, exames e cirurgias. E em 2019, a fila de processos somava mais de 90 mil [citar CNJ INSPER, 2019]. Do lado dos requerentes, a judicialização da saúde representa uma chance de conseguir efetivar o seu direito à saúde. A demora do Judiciário pode inviabilizar esse direito de ser efetivado.
+
+Dado a magntiude que a judicialização da saúde tem, tanto no orçamento público, como na vida dos beneficiários do Sistema Único de Saúde, esse é um problema que exige soluções complexas. É dentro desse contexto que desejo discutir, brevemente, no que a jurimetria pode ajudar. 
+
+Antes de avançar nestas reflexões, é preciso fazer uma ressalva importante a respeito do que estamos considerando como "jurimetria" aqui. O campo da jurimetria ainda está em definição e não possui contornos muito definidos. Nesse sentido, surge uma questão preliminar de o que devemos considerar como estudos de jurimetria, a fim de pensarmos como esses estudos podem contribuir para a melhor prestação jurisdicional e administrativa do direito à saúde. Vamos considerar a jurimetria de uma forma bem abrangente, como uma técnica de análise quantitativa, utilizada para analisar determinado objeto. No caso em tela, a jurimetria estará presente ao se realizar estudos quantitativos sobre a atuação dos tribunais em direitos ligados à saúde. 
+
+Feita essa consideração inicial, podemos focar na questão de como a jurimetria pode auxiliar a prestação jurisdicional e administrativo do direito à saúde. Em um primeiro momento, vamos tratar de perguntas de caráter eminentemente descritivo que a jurimetria pode ajudar a responder. A seguir, traçamos propos um desenho de pesquisa para realizar estudos sobre isso. 
+
+## Perguntas de pesquisa
+
+Estudos quantitativos nos auxiliam a *descrever* a realidade desse tipo de judicialização. As técnicas quantitativas conseguem nos auxiliar a descrever (a) o perfil das demandas; (b) o perfil dos requerentes; (c) o perfil dos requeridos; e (d) a resposta do Judiciário. 
+
+Sobre o perfil da demanda, há que se saber quais são os pedidos realizados. É um pedido de medicamento? De exame? De serviço médico especializado? Qual medicamento, exame ou serviço está sendo requisitado? Qual é o valor desse pedido? Qual é o tipo de ação que está sendo ajuizada para realizar esse pedido? É uma ação coletiva ou uma ação individual? Essas são questões importantes a respeito do perfil da demanda.
+
+Do lado do perfil dos requerentes, temos que nos atentar para descrever a situação das pessoas que chegam até o Judiciário. Quem são essas pessoas? São pessoas carentes, que não tem outras formas de acessar esses medicamentos e serviços? Ou são pessoas de classe média, conscientes de seus direitos, que estão pressionando o Estado para ampliar a prestação do serviço de saúde? Elas têm gênero ou etnia específicos? Ou esses marcadores sociais da diferença são aleatórios na judicialização da saúde? 
+
+Do lado dos requeridos, há um esforço de se descrever também o seu perfil Quem é o polo passivo da demanda? É algum ente federativo, como a União, algum Estado ou Município? É o próprio SUS? Ou são pessoas de direito privado? Empresas, prestadores de serviço? Ou são os próprios servidores públicos, como médicos, enfermeiras, psicólogos?
+
+Por fim, do lado da resposta do Judiciário, o que os juízes têm respondido? As demandas têm sido concedidas? As respostas dos juízes variam de acordo com o perfil do requerente? E com o perfil do requerido? Quais são os fundamentos da decisão? O quão padronizadas são as decisões? Elas citam a jurisprudência dos tribunais superiores, tais como Recursos Especiais do STJ, ou Recursos Extraordinários do STF? Há citação também de órgãos técnicos, tais como os parecers do NATJUS? Há maior deferimento para ações coletivas do que para ações individuais? 
+
+## Um desenho de pesquisa de possível
+
+Para essas questões, há um desenho de pesquisa muito utilizado na ABJ. Esta seção se dedica a explorar os contornos desse desenho de pesquisa. 
+
+A primeira discussão por que precisamos passar é qual é o escopo geográfico do estudo? Dificilmente será possível estudar o Brasil inteiro, pois são muitos tribunais de justiça diferentes, com formas de acesso aos dados muito distintas. Por enquanto, pesquisas nacionais ainda não são uma opção viável, ao menos que haja um grande aporte de recursos para tanto. Dado esse contexto, aparece o problema de como delimitar o escopo geográfico da pesquisa. Devemos nos atentar a algumas questões de direito que podem impactar a delimitação do escopo geográfico da pesquisa:
+- Que tipo de demanda pode ser ajuizada, sobre o direito à saúde em sede constitucional? Ou seja, qual é o objeto das ações constitucionais sobre dirieto à saúde? 
+- Quais são as demandas possíveis de serem feitas na Justiça Estadual, notadamente, nos Tribunais de Justiça?
+- Quais são os assuntos discutidos em sede recursal? 
+- Qual é a competência da Justiça Federal para julgar processos relacionados a saúde? 
+
+Todas essas questões importam para delimitar o escopo geográfico porque elas nos auxiliam a decidir em qual tribunal iremos realizar a pesquisa. Essas questões, entretanto, não nos auxiliam a decidir o Estado que será estudado (caso seja esse o foco da pesquisa). Muitas vezes, a decisão do Estado é realizada por conveniência (familiaridade com o Tribunal) ou disponibilidade de dados. 
+
+Uma vez decidido o Tribunal que será estudado (Justiça Federal? Tribunal de Justiça? STJ? STF? Varas comuns?), é preciso identificar os processos que serão analisados. Para tanto, fazemos o levantamento de todos os processos que tratam do tema da judicialização da saúde no tribunal escolhido. O levantamento pode ser feito por algum mecanismo de raspagem de dados, utilizando a consulta pública do tribunal; bem com pode ser feito via pedido de Lei de Acesso à Informação. Nos dois casos, é preciso delimitar as palavras-chave que serão utilizadas para encontrar os processos. Algumas palavras importantes são: "direito à saúde", "medicamento", "exames médicos", "serviços de saúde". 
+
+Uma vez que encontramos os processos a serem analisados, podemos prosseguir para a coleta das informações de cada um dos processos processos. De início, podemos coletar as informações da capa dos processo, por mecanismos de web scraping. Para realizar web scraping, o tribunal não pode ter RECAPTCHAS. Encontrar um tribunal que não tenha proteção contra robôs pode ser um critério para se escolher o Estado em que realizar a pesquisa. Essas informações de capa que podemos encontrar facilmente tratam de:
+- Nome e funções das partes;
+- Data de distribuição do processo;
+- Vara competente;
+- Foro;
+- Juiz;
+- Assunto processual;
+- Classe processual;
+- Status do processo (em andamento, extinto ou suspenso);
+- Movimentações.
+
+A partir dessas informações, a gente consegue construir uma base inicial cuja unidade amostral é o id do processo e cada coluna é uma dessas informações. Para desenvolver a base em mais informações, podemos analisar melhor as partes e as movimentações. 
+
+Para desenvolver as partes, podemos classificá-las em tipos diferentes (Estado, Município, União, servidor público, SUS, associação civil, pessoa física, empresa, etc.), bem como podemos contar a quantidade de partes em cada polo. Já para desenvolver as informações das movimentações, podemos extrair os textos das decisões, despachos, sentenças, editais, etc que estejam disponíveis. A partir disso, conseguimos determinar se houve sentença ou não, as datas de algumas movimentações específicas, se houve pedido liminar, o nome dos medicamentos, citações ao NATJUS, a REx do STF, a REsp do STJ, entre outras informações. 
+
+Há, entretanto, uma vasta gama de informações que não podem ser coletadas de forma automática. São as informações que exigem, ou uma leitura de documentos não disponibilizados nas movimentações (tais como o texto da petição inicial), ou que exigem, não uma mera leitura do documento, mas uma interpretação do seu texto, por exemplo, para extrair a fundamentação de uma sentença. Para estes casos, a pesquisa se desdobra em uma terceira etapa (sendo que a primeira etapa era listar os processos, a segunda etapa era extrair as informações processuais de forma automatizada). Essa etapa exige uma classificação manual de cada processo. Entretanto, como a classificação manual é demorada (e, portanto, custosa), sugere-se que não se classifique _todos_ os processos, mas apenas uma amostra dentre o total de casos listados. 
+
+Para se obter a amostra de casos a serem classificados manualmente, devemos nos recorrer a procedimentos de amostragem. O procedimentos mais simples é o da amostragem aleatória simples, em que, dentre o total de casos listados, seleciona-se, aleatoriamente, alguns. A dificuldade está em determinar a quantidade de casos. Quanto mais casos mais robustas são as informações, entretanto, um maior número de casos também significa mais tempo dispendido na classificação, o que leva a um maior custo de se realizar a pesquisa. 
+
+Em paralelo à amostragem dos casos, deve-se preparar um formulário de classificação. A elaboração do formulário será guiada por questões de interesse direto da pesquisa. Uma boa técnica na hora de elaborar os campos a serem preenchidos no formulário é evitar, ao máximo, a criação de campos abertos de resposta. Isso gera inconsistências nos dados, o que dificulta a sua análise depois. 
+
+Com o formulário pronto e a amostra selecionada, segue-se para a etapa de classificação manual dos processos. Uma vez finalizada essa etapa, devemos realizar uma fase de testagem da qualidade dos dados. As informações coletadas estava inconsistentes? Incompletas? Por que havia informações inconsistentes? Foi um problema da forma como extraímos as informações? Foi um erro humano, na hora de realizar a classificação manual do processo?
+
+Com os dados coletados, tanto pela extração autoḿatica, como pela classificação manual e com os testes de qualidade realizados, podemos prosseguir à análise dos dados. Se as etapas anteriores foram bem feitas, a análise será rápida e direta.
+
+Este é o proecedimento que normalmente utilizamos na ABJ. Neste desenho de pesquisa, o importante é sempre documentar as escolhas realizadas no decorrer do processo. Algumas escolhas importantes são, por exemplo, ao desenvolvermos uma tipologia para classificar as partes, que palavras utilizamos para classificar cada parte em cada categoria? As bases normalmente contém nomes de partes, mas as tipologias contém categorias genéricas que englobam todas as infinitas variações de nomes de partes. Como foi feita essa atribuição de cada parte para um grupo? 
+
+Ou ainda, ao elaborar o formulário, recomendamos não deixar campos abertos para preenchimento. Nesse caso, então, sugere-se a criação de listas, por exemplo. Imaginemos, portanto, o caso de uma pesquisa querer extrair as fundamentações das sentenças para conceder ou não um determinado medicamento. Há muitas fundamentações possíveis, então, como fazer para limitar o escopo das fundamentações em um número finito de opções dentro de uma lista? A criação dessa lista envolve também escolhas metodológicas importantíssimas, que devem ser documentadas e reportadas na pesquisa. 
+
+## Considerações finais
+
+Neste artigo, tentamos discutir como a jurimetria pode auxiliar a elucidar um determinado tema, no caso, a judicialização da saúde. Para tanto, discutimos, em primeiro lugar, perguntas que podem ser respondidas pela técnica da jurimetria. As perguntas abordadas aqui são perguntas de caráter eminentemente descritivas. Há outros tipos de perguntas que não foram avaliadas aqui, tais como perguntas que relacionam a judicialização da saúde com os impactos orçamentários nos municípios; que tratam dos impactos dessa judicialização para a gestão pública; ou nas consequências desse tipo de demanda judicial sobre o acesso à justiça em saúde; ou ainda questões que tratam dos efeitos dessa demanda na efetivação do direito social à saúde. 
+
+Após levantarmos essas questões de natureza descritiva, propusemos a discutir um desenho de pesquisa possível. O desenho apresentado é aquele que a ABJ utiliza em uma série de estudos, para tratar uma variedade de temas. Esse desenho pressupõe que o pesquisador tenha algumas habilidades em programação (para extrair informações dos processos) e que ele tenha noções em Direito (para tomar decisões metodológicas, como a delimitação do escopo geográfico, ou para elaborar os campos de preenchimento do formulário de classificação). 
+
+Espera-se que este artigo tenha chamado a atenção para o potencial da jurimetria par auxiliar a prestação jurisdicional da judicializaçõ da saúde. E com isso, inspirado pesquisadores a se debruçarem sobre este tema. 
+
+
