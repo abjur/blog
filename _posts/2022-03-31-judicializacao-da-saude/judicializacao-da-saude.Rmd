@@ -10,6 +10,9 @@ preview: judicializacao-da-saude.png
 output:
   distill::distill_article:
     self_contained: false
+categories:
+  - Pesquisa
+  - Saude
 ---
 
 ## Considerações iniciais
