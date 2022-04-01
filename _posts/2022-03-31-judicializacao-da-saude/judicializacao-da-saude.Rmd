@@ -11,7 +11,6 @@ output:
   distill::distill_article:
     self_contained: false
 categories:
-  - Pesquisa
   - Saude
 ---
 
