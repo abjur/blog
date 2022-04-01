@@ -12,7 +12,16 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Thu, 03 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 31 Mar 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Como a jurimetria pode auxiliar a pesquisar a judicialização da saúde</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/2022-03-31-judicializacao-da-saude</link>
+      <description>Este artigo busca discutir alguns aspectos práticos de como a jurimetria pode ser usada em pesquisas de judicialização da saúde. Para tanto, o artigo se divide em duas partes principais: (a) possíveis perguntas que a jurimetria pode responder; (b) um desenho de pesquisa possível para atacar essas perguntas. O objetivo deste artigo é ampliar os horizontes de pesquisa utilizando jurimetria, mostrando como ela pode ajudar na prática da pesquisa.</description>
+      <guid>https://lab.abj.org.br/posts/2022-03-31-judicializacao-da-saude</guid>
+      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2022-03-31-judicializacao-da-saude/judicializacao-da-saude.png" medium="image" type="image/png" width="1159" height="587"/>
+    </item>
     <item>
       <title>2022: uma projeção para o próximo ano na ABJ</title>
       <dc:creator>Pedro Henrique Sperber</dc:creator>
@@ -22,15 +31,6 @@
       <guid>https://lab.abj.org.br/posts/2022-03-03-2022-projecao</guid>
       <pubDate>Thu, 03 Mar 2022 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-03-03-2022-projecao/imagens-lab.png" medium="image" type="image/png" width="1159" height="587"/>
-    </item>
-    <item>
-      <title>Como a jurimetria pode auxiliar a pesquisar a judicialização da saúde</title>
-      <dc:creator>Ricardo Feliz</dc:creator>
-      <link>https://lab.abj.org.br/posts/2022-02-15-judicializao-da-sade</link>
-      <description>Este artigo busca discutir alguns aspectos práticos de como a jurimetria pode ser usada em pesquisas de judicialização da saúde. Para tanto, o artigo se divide em duas partes principais: (a) possíveis perguntas que a jurimetria pode responder; (b) um desenho de pesquisa possível para atacar essas perguntas. O objetivo deste artigo é ampliar os horizontes de pesquisa utilizando jurimetria, mostrando como ela pode ajudar na prática da pesquisa.</description>
-      <guid>https://lab.abj.org.br/posts/2022-02-15-judicializao-da-sade</guid>
-      <pubDate>Tue, 15 Feb 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://lab.abj.org.br/posts/2022-02-15-judicializao-da-sade/judicializao-da-sade.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
       <title>Retrospectiva 2021</title>
