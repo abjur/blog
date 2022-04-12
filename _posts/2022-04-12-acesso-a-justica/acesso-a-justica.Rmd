@@ -1,0 +1,41 @@
+---
+title: "Ideias de como medir o Acesso à Justiça"
+description: |
+  Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas. 
+author:
+  - name: Ricardo Feliz Okamoto
+    url: https://www.linkedin.com/in/pedro-henrique-sperber-rosa-26214116a/
+date: 2022-04-12
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+A questão do acesso à justiça começou a ser discutida mundialmente após os estudos de Cappelletti e Garth em 1975 no Projeto Florença. Os autores identificaram três movimentos de ampliação do acesso à justiça no mundo, que eles denomineram de três "ondas". 
+
+A primeira onda compreendeu o problema de acesso à justiça como um problema de falta de acesso por falta de recursos, ou seja, muitas pessoas não conseguiam resolver seus problemas judicialmente pois não tinham dinheiro para pagar as custas judiciais, advogados ou até o deslocamento até os tribunais para realizar audiências. Deste problema, nasceu a primeira onda, sobre hipossuficientes. 
+
+A segunda onda compreendeu o acesso à justiça de direitos que não tinham algum sujeito para defendê-los. Era o problema dos direitos difusos e coletivos. A grande questão desses direitos era como defender um direito de que ninguém é titular? Pode um cidadão qualquer propor uma ação para defender um direito que é de todos? E se algum outro cidadão discordar da forma como o direito está sendo defendido? Ele pode propor outra ação, distinta daquela inicial, para tratar do mesmo problema? Ou ele poderia anular a ação da qual ele discorda? Por causa desse tipo de questão, a respeito da titularidade das ações coletivas (ou melhor dizendo, a respeito de quem pode representar a coletividade e defender os seus direitos jurisdicionalmente), surgiu a segunda onda de acesso à justiça: a onda de direitos difusos e coletivos. 
+
+Por fim, a terceira onda veio da percepção de que alguns conflitos não poderiam ser resolvidos judicialmente, ou que poderiam ser melhor resolvidos fora da arena judicial. Essa terceira onda trouxe, então, para as discussões sobre acesso à justiça a noção de que "justiça" não significa apenas Judiciário; essa onda, então, ampliou as formas de prestação da justiça, trazendo para o centro os mecanismos adequados de solução de conflitos (MASCs), tais como a mediação, a conciliação e a arbitragem. Há quem chame os MASCs de mecanismos *alternativos* de resolução de conflito, entretanto, chamar de esses mecanismos de "alternativos" acaba por diminuir a sua importância, por ressaltar o quanto que o Judiciário é a forma "principal" (em detrimetno de "alternativa") de resolução de conflitos. Por essa razão, optamos por chamar os MASCs de mecanismos *adequados* de resolução de conflitos, uma vez que alguns conflitos são melhor endereçados por meio de métodos de solução de conflito amigáveis, não litigiosos e informais. A essa terceira onda, então, é a onda de procedimentos e instituições para aprimorar o sistema de processamento de litígios. 
+
+Cada uma dessas três ondas está relacionada a soluções específicas para o acesso à justiça. 
+
+# Onda 1
+
+Falar de:
+- Justiça gratuita
+- Custas ao final
+- Defensorias públicas
+
+# Onda 2
+
+Falar de:
+- Ministério Público (muita literatura hehhe)
+- Associações (ver os textos do Avritzer sobre como medir isso)
+
+# Onda 3
+
+Falar de:
+- Conciliação
+- Arbitragem
