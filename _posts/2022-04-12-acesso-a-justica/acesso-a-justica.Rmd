@@ -19,16 +19,36 @@ A segunda onda compreendeu o acesso à justiça de direitos que não tinham algu
 
 Por fim, a terceira onda veio da percepção de que alguns conflitos não poderiam ser resolvidos judicialmente, ou que poderiam ser melhor resolvidos fora da arena judicial. Essa terceira onda trouxe, então, para as discussões sobre acesso à justiça a noção de que "justiça" não significa apenas Judiciário; essa onda, então, ampliou as formas de prestação da justiça, trazendo para o centro os mecanismos adequados de solução de conflitos (MASCs), tais como a mediação, a conciliação e a arbitragem. Há quem chame os MASCs de mecanismos *alternativos* de resolução de conflito, entretanto, chamar de esses mecanismos de "alternativos" acaba por diminuir a sua importância, por ressaltar o quanto que o Judiciário é a forma "principal" (em detrimetno de "alternativa") de resolução de conflitos. Por essa razão, optamos por chamar os MASCs de mecanismos *adequados* de resolução de conflitos, uma vez que alguns conflitos são melhor endereçados por meio de métodos de solução de conflito amigáveis, não litigiosos e informais. A essa terceira onda, então, é a onda de procedimentos e instituições para aprimorar o sistema de processamento de litígios. 
 
-Cada uma dessas três ondas está relacionada a soluções específicas para o acesso à justiça. 
+Cada uma dessas três ondas está relacionada a soluções específicas para o acesso à justiça. A primeira onda se relaciona à criação da Defensoria Pública e dos Juízados Especiais Cíveis (JEC), bem com se à justiça gratuita e e à assistência judiciária. A segunda onda se relaciona às novas atribuições do Ministério Público, dadas pela Lei de Ação Civil Pública e consagrada pela Constituição Federal. E a terceira onda se relaciona à Lei de Arbitragem e aos CEJUSCs. 
+
+Hoje em dia, já se fala em 7 ondas de acesso à justiça, e, no lugar do Projeto Florença, há o _Global Access to Justice Program_. Apesar das novas ondas, discutiremos a mensuração apenas das três ondas clássicas de acesso à justiça, uma vez que as demais ondas ainda não possuem contornos muito bem delimitados, o que dificultaria a nossa discussão. 
+
+Feita essa última consideração, podemos prosseguir à discussão central do texto. O que queremos discutir a seguir é como mensurar o desempenho do acesso à justiça a respeito dessas três ondas clássicas. Este texto não pretende dar alguma resposta ou solução final à mensuração das ondas de acesso à justiça, mas busca dar um empurrão no debate com a comunidade a respeito de como realizar esta tarefa. Tampouco este texto busca examinar com minúcia todas as dimensões da mensuração dos conceitos. O que este texto busca fazer é dar ideias e problemas relacionados a essa mensuração. Cada onda irá trazer uma problemática diferente na mensuração e, decerto, não será uma análise exaustiva dos indicadores possíveis, nem de seus problemas. 
+
 
 # Onda 1
 
-Falar de:
-- Justiça gratuita
-- Custas ao final
-- Defensorias públicas
+A respeito da primeira onda, podemos pensar em algumas medidas importantes para avaliar a prestação do acesso à justiça. Para este texto, iremos apenas discutir a mensuração da _justiça gratuita_. Uma forma fácil de medir a justiça gratuita é por meio da proporção entre o total de processos em que a justiça gratuita foi deferida e o total de processos em que a justiça gratuita foi solicitada.
+
+$$
+justica\:gratuita = \frac{pedidos\:de\:justica\:gratuita\:deferida} {total\:de\:pedidos\:de\:justica\:gratuita}
+$$
+O que devemos esperar desse indicador? Esse indicador poderá variar de 0 a 1, em que 1 significa que todos os pedidos de justiça gratuita foram deferidos e 0, que nenhum pedido foi aceito. Nunca encontraremos nenhum dos dois polos, a realidade deve estar em algo entre 1 e 0. O que precisamos saber é o que significa encontrar, por exemplo, que 0,6 (ou 60%) dos pedidos de justiça gratuita foram deferidos? Isso seria melhor do que 0,4 (40%)? Quanto mais próximo de 1 melhor? Não necessariamente. Nem todos os pedidos de justiça gratuita devem ser deferidos, pois pode haver fraude no pedido (ou seja, o autor da demanda pode estar afirmando enganosamente ser pobre para não pagar as custas judiciais), ou simplesmente porque o que uma pessoa considera como ser pobre é diferente dos critérios do Judiciário para tanto, gerando um desencontro de expectativas entre os usuários do sistema de justiça e os seus servidores. Então para sabermos interpretar o que este indicador está nos mostrando, precisamos compreender a realidade a respeito dos *pedidos* de justiça gratuita. Algumas perguntas importantes são:
+- Qual é a chance de um pedido de justiça gratuita ser fraudulento? 
+- Qual é a chance de um pedido de justiça gratuita estar em descompasso com o que o Judiciário considera como "hipossuficiente"?
+- Qual é a chance de o requerente de justiça gratuita não conseguir provar a sua situação de insuficiência financeira (não porque ele não o seja hipossuficiente, mas simplesmente porque ele não conseguiu reunir os documentos necessários para tanto)?
+
+Essas perguntas todas importam na medida em que elas nos informam sobre qual é a proporção de deferimento esperado. O que queremos é maximizar a quantidade de deferimentos de "pedidos reais" e minimizar a quantidade de deferimentos de "pedidos falsos". Por "pedidos reais"  me referiro apenas aos pedidos de justiça gratuita que realmente expressam a necessidade financeira de alguém. E por "pedidos falsos" me refiro aos pedidos de justiça gratuita que eram fraudulentos ou que não expressavam uma real necessidade financeira de alguém. A depender da quantidade de *pedidos* de cada uma dessas categorias, teremos uma determinada expectativa a respeito do indicador. Por exemplo, se 30% dos pedidos forem "falsos", então temos de ter uma expectativa de que quanto mais próximo de 0,7 (70%), melhor será o acesso à justiça para hipossuficientes. Se encontrássemos por exemplo, dentro desse mesmo contexto, um resultado muito inferior aos 70% esperados, poderíamos usar isso como um indicador de que os juízes estão sendo muito rígidos na concessão de justiça gratuita. Mas ainda, mesmo se encontrássemos um valor próximo dos 70% isso não significaria que o acesso à justiça está bom. Poderia ser que muitos "pedidos reais" estão sendo indeferidos, mas que eles estão sendo "compensados" por uma altissima taxa de deferimento dos "pedidos falsos". 
+
+A grande questão de um indicador desses é que para se ter essa expectativa a respeito dos resultados do indicador, é preciso realizar estudos robustos e contínuos sobre a realidade por trás dos pedidos de justiça gratuita. Um estudo desses seria demorado e caro. Quantitativamente, conseguiríamos apenas determinar a taxa de deferimento de justiça gratuita, mas não conseguiríamos delimitar um parâmetro para a interpretação desse resultado. 
 
 # Onda 2
+
+Sobre a segunda onda, vamos tratar de um segundo problema: 
+
+
+http://www.cadastrodeentidades.sp.gov.br/(S(kw4r2z55xq5qeze1ykb1tc45))/RelatorioDominioPublico.aspx
+
 
 Falar de:
 - Ministério Público (muita literatura hehhe)
@@ -39,3 +59,7 @@ Falar de:
 Falar de:
 - Conciliação
 - Arbitragem
+
+# Primeiro problema da mensuração: e o que não chega ao Judiciário?
+
+Muitos critérios objetivos que temos para analisar o acesso à justiça são tirados de dados dos tribunais. Podemos, ver, por exemplo, qual é a porcentagem de deferimento de pedidos de acesso à justiça gratuita, ou de assistência jurídica. Entretanto, em qualquer análise que _comece_ pelos dados dos tribunais, estaremos diante de um grande problema: o viés de seleção. Por exemplo, quando olhamos para dados das pessoas que solicitam justiça gratuita, estamos olhando apenas para as pessoas que efetivamente conseguiram chegar até o Judiciário, mesmo que em condições de hipossuficiência. Entretanto, há uma vasta gama de pessoas que possuem problemas financeiros até piores do que as que chegam no Judiciário que, justamente por estarem mais desassistidos, sequer conseguem provocar o Judiciário a resolver seus problemas. Então uma primeira reflexão que temos de
