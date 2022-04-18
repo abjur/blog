@@ -1,11 +1,11 @@
 ---
-title: "Ideias de como medir o Acesso à Justiça"
+title: "Questões sobre indicadores de acesso à justiça"
 description: |
   Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas. 
 author:
   - name: Ricardo Feliz Okamoto
-    url: https://www.linkedin.com/in/pedro-henrique-sperber-rosa-26214116a/
-date: 2022-04-12
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: 2022-04-25
 output:
   distill::distill_article:
     self_contained: false
@@ -44,22 +44,38 @@ A grande questão de um indicador desses é que para se ter essa expectativa a r
 
 # Onda 2
 
-Sobre a segunda onda, vamos tratar de um segundo problema: 
+Sobre a segunda onda, vamos tratar de um outro problema sobre indicadores sobre a Justiça. 
 
+Uma forma de se medir o acesso à justiça da segunda onda (sobre direitos difusos e coletivos) seria tentar mensurar quantas questões coletivas chegam até o Judiciário. Esse número teoricamente é fácil de se obter, pois poderia ser calculado como a soma de todas as ações que dizam respeito a algum tema de interesse coletivo. 
 
-http://www.cadastrodeentidades.sp.gov.br/(S(kw4r2z55xq5qeze1ykb1tc45))/RelatorioDominioPublico.aspx
+Pode até existir alguma dificuldade em se decidir que ações deveriam entrar ou não nessa soma. Em geral, com certeza, consideraríamos todas as ações coletivas, tais como ações civis públicas, ações populares, mandados de segurança coletivos, habeas corpus coletivos, mandados de injunção e ações constitucionais (ADC, ADI, ADI por omissão e ADPF). Mas poderíamos nos questionar se devemos considerar também ações ordinárias. Associações podem entrar com ações ordinárias para resolver os problemas coletivos; o Ministério Público, a fim de proteger o meio ambiente, pode ingressar com alguma ação de obrigação de não fazer, a fim de cessar um dano ambiental; pode-se até, por meio de ação de indenização por danos morais, exigir a reparação a um grupo que foi prejudicado. De alguma forma, então, poderíamos considerar, além de todas as ações coletivas, todas as ações em que consta alguma entidade representativa da coletividade em um dos polos da ação, sejam organizações da socidade civil (como associações), seja o Ministério Público. Mas ainda, poderíamos pensar se ações sem alguma coletividade em um dos polos deveria ser considerada? É muito frequente nas discussões sobre a judicialização de direitos sociais que indivíduos defendam seus próprios direitos sociais subjetivos contra o Estado. É o que acontece na judicialização da saúde (em que indivíduos, e não associações, requerem a prestação de algum medicamento ou serviço médico para o SUS), ou na judicialização das creches (em que indivíduos, e não associações, requerem vaga em creches públicas). Nesses casos todos, a ação proposta não é uma ação coletiva (mas talvez desse ser), e tampouco possui em um dos polos alguma entidade representativa de interesses coletivos, tais como associações, ou o Ministério Público. Neste caso, poderia surgir uma dúvida se devemos considerar estas ações ou não.
 
+Então, poderia até existir alguma dificuldade em se decidir o que considerar ou não nessa soma, mas uma vez superado este problema, conta é fácil de se realizar. O grande problema desse número é a sua interpretação. O que acontece é, por mais que eu tenha a soma de todas as ações coletivas, como saber se esse número é bom ou ruim? Como saber se esse número indica que o acesso à justiça de direitos difusos e coletivos está sendo efetivado ou não? A questão é que precisamos de algum comparativo; esse número deve ser medido em relação a algo. E o problema é justamente definir que "algo" é este. 
 
-Falar de:
-- Ministério Público (muita literatura hehhe)
-- Associações (ver os textos do Avritzer sobre como medir isso)
+Uma primeira ideia seria a de comparar a quantidade de ações coletivas em relação ao total de ações no Judiciário. Mas se essa for a comparação, então como interpretar seu resultado? Essa taxa iria variar de 0 (não há ações coletivas) a 1 (todas as ações do Judiciário dizem respeito a ações coletivas). E o que significaria essa taxa? Será que quanto maior a proporção, mais efetivo estará sendo o acesso à justiça desses direitos? Não parece que seja isso. Neste caso, pouco importa a proporção de casos em relação ao todo, pois o Judiciário é sede de muitos outros conflitos, que não possuem natureza coletiva. Então é esperado que a proporção dessas ações no total seja baixa, sendo, portanto, pouco relevante essa comparação.
+
+Uma segunda ideia seria a de comparar as ações coletivas que entram na arena judicial com a quantidade de casos envolvendo direitos difusos e coletivos no mundo real. Ou seja, quantos conflitos envolvendo direitos difusos e coletivos existem no mundo, e quantos desses conflitos chegam até a arena judicial? Com aquela soma que descrevemos anteriormente, teríamos acesso à segunda parte da pergunta ("quantos conflitos chegam até a arena judicial?"), mas não teríamos informação alguma sobre a primeira pergunta ("quantos conflitos envolvendo direitos difusos e coletivos existem no mundo?"). Acontece que não é fácil (e, talvez, sequer possível) de se obter esse número. Sem informações sobre quais conflitos que se travam no mundo real, não conseguimos ter ideia de quantos conflitos coletivos estão, de fato, conseguindo chegar até a arena judicial. Assim, o indicador poderia ser:
+
+$$
+direitos\:difusos\:e\:coletivos = \frac{acoes\:coletivas} {conflitos\:coletivos\:no\:mundo}
+$$
+
+Então, o que esse segundo problema está indicando é que devemos olhar para as ações do Judiciário, em comparação com o mundo real; este problema nos chama a atenção para a dimensão do viés de seleção dos problemas que chegam ao Judiciário, ou seja, quais casos do mundo real são "selecionados" para chegar até os tribunais? 
 
 # Onda 3
 
-Falar de:
-- Conciliação
-- Arbitragem
+Por fim, podemos olhar para a terceira onda, de conflitos que seriam melhor resolvidos fora da arena judicial. Neste caso, vamos fazer algo um pouco diferente. Ao invés de propormos um indicador e discuti-lo, vamos usar as discussões dos indicadores anteriores para avaliar um indicador já existente, criado pelo  Grupo de Pesquisa LIODS e pelo CNJ^[Disponível em: https://www.cnj.jus.br/wp-content/uploads/2021/04/Relatorio_Indice-de-Acesso-a-Justica_LIODS_29-4-2021.pdf]. O indicador é um indicador anual expresso pela seguinte fórmula:
 
-# Primeiro problema da mensuração: e o que não chega ao Judiciário?
+$$
+taxa\:de\:conciliacao\:(por\:ano) = \frac{quantidade\:total\:de\:sentencas\:homologatorias\:de\:acordo} {quantidade\:total\:de\:sentencas}
+$$
 
-Muitos critérios objetivos que temos para analisar o acesso à justiça são tirados de dados dos tribunais. Podemos, ver, por exemplo, qual é a porcentagem de deferimento de pedidos de acesso à justiça gratuita, ou de assistência jurídica. Entretanto, em qualquer análise que _comece_ pelos dados dos tribunais, estaremos diante de um grande problema: o viés de seleção. Por exemplo, quando olhamos para dados das pessoas que solicitam justiça gratuita, estamos olhando apenas para as pessoas que efetivamente conseguiram chegar até o Judiciário, mesmo que em condições de hipossuficiência. Entretanto, há uma vasta gama de pessoas que possuem problemas financeiros até piores do que as que chegam no Judiciário que, justamente por estarem mais desassistidos, sequer conseguem provocar o Judiciário a resolver seus problemas. Então uma primeira reflexão que temos de
+O que queremos discutir é o que essa taxa está nos indicando e como interpretá-la. A primeira informação a que devemos nos atentar é que essa taxa varia de 0 a 1, em que 0 significa que nenhum acordo é homologado e 1 significa que todos os processos acabam com um acordo entre as partes. O que seria uma taxa desejável? Quanto mais próximo de 1, melhor? E se a proporção de acordos for alta, isso necessariamente significa que a conciliação é alta? 
+
+Essa interpretação é difícil, pois não temos um parâmetro de quantos processos deveriam acabar em acordos. Mas o que podemos ter certeza é que, mesmo se encontrássemos uma taxa de 1, isso não significaria que o acesso à justiça na terceira onda está sendo efetivo. Isso pode significar apenas que todos os conflitos que chegam até o Judiciário forem resolvidos de forma amigável. A realidade, entretanto, poderia ser a de que muitos conflitos que se travam no mundo real não estão conseguindo chegar na arena judicial por alguma barreira de acesso à justiça e, por isso, que observamos no Judiciário uma taxa de conciliação tão alta. Ou ainda, uma taxa alta de conciliação poderia indicar que alguns _players_ do Judiciário estão usando como estratégia de litigância a conciliação, talvez como uma forma de evadir da decisão judicial. Então voltamos ao ponto de partida: precisamos ter parâmetros interpretativos para os indicadores, e estes parâmetros dependem de se estudar, menos a resposta do Judiciário aos problemas que lhe chegam, e mais a realidade pré-judicial, ou ainda a natureza das demandas que chegam até o Judiciário.  
+
+# Conclusão
+
+Para todas as ondas de acesso à justiça, discutimos indicadores que poderiam nos dizer se o acesso à justiça está sendo efetivado ou não. O objetivo ao se discutir esses indicadores era, menos conceituar e propor indicadores, e mais discutir problemas gerais de indicadores. Apresentamos ao longo das ondas 1 e 2 de acesso à justiça problemas relacionados à interpretação dos indicadores. Na primeira onda o problema apareceu como um viés de seleção entre os pedidos em comparação com os deferimentos; e na segunda onda, como um viés de seleção entre os casos do mundo real em comparação com os casos que chegam até a arena judicial. Para a terceira onda, utilizamos um indicador existente para pensá-lo criticamente, a partir das reflexões trazidas nas outras duas ondas. 
+
+A ideia deste texto era suscitar um debate de mensuração do acesso à justiça, bem como o de estimular pesquisas que caminhem para este sentido. 
