@@ -9,6 +9,9 @@ date: 2022-05-02
 output:
   distill::distill_article:
     self_contained: false
+preview: imagem.png
+categories:
+  - Acesso justiça
 ---
 
 A questão do acesso à justiça começou a ser discutida mundialmente após os

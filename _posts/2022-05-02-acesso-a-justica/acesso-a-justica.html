@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007ba5; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #007ba5; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #007ba5; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Questões sobre indicadores de acesso à justiça</title>
+
+  <meta property="description" itemprop="description" content="Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2022-05-02"/>
+  <meta property="article:created" itemprop="dateCreated" content="2022-05-02"/>
+  <meta name="article:author" content="Ricardo Feliz Okamoto"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Questões sobre indicadores de acesso à justiça"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Questões sobre indicadores de acesso à justiça"/>
+  <meta property="twitter:description" content="Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output","preview","categories"]}},"value":[{"type":"character","attributes":{},"value":["Questões sobre indicadores de acesso à justiça"]},{"type":"character","attributes":{},"value":["Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","url"]}},"value":[{"type":"character","attributes":{},"value":["Ricardo Feliz Okamoto"]},{"type":"character","attributes":{},"value":["https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"]}]}]},{"type":"character","attributes":{},"value":["2022-05-02"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["imagem.png"]},{"type":"character","attributes":{},"value":["Acesso justiça"]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["imagem.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme
+    $('code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="acesso-a-justica_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="acesso-a-justica_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="acesso-a-justica_files/popper-2.6.0/popper.min.js"></script>
+  <link href="acesso-a-justica_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="acesso-a-justica_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="acesso-a-justica_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="acesso-a-justica_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="acesso-a-justica_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="acesso-a-justica_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="acesso-a-justica_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Questões sobre indicadores de acesso à justiça","description":"Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas.","authors":[{"author":"Ricardo Feliz Okamoto","authorURL":"https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2022-05-02T00:00:00.000-03:00","citationText":"Okamoto, 2022"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Questões sobre indicadores de acesso à justiça</h1>
+<!--radix_placeholder_categories-->
+<div class="dt-tags">
+<div class="dt=tag">Acesso justiça</div>
+</div>
+<!--/radix_placeholder_categories-->
+<p><p>Este artigo busca discutir a mensuração do acesso à justiça. Como
+podemos medir? Quais são os problemas teóricos em realizar esta tarefa?
+Essas são algumas questões que serão debatidas.</p></p>
+</div>
+
+<div class="d-byline">
+  Ricardo Feliz Okamoto <a
+href="https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/"
+class="uri">https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/</a> 
+  
+<br/>2022-05-02
+</div>
+
+<div class="d-article">
+<p>A questão do acesso à justiça começou a ser discutida mundialmente
+após os estudos de Cappelletti e Garth em 1975 no Projeto Florença. Os
+autores identificaram três movimentos de ampliação do acesso à justiça
+no mundo, que eles denomineram de três “ondas”.</p>
+<p>A primeira onda compreendeu o problema de acesso à justiça como um
+problema de falta de acesso por falta de recursos, ou seja, muitas
+pessoas não conseguiam resolver seus problemas judicialmente pois não
+tinham dinheiro para pagar as custas judiciais, advogados ou até o
+deslocamento até os tribunais para realizar audiências. Deste problema,
+nasceu a primeira onda, sobre hipossuficientes.</p>
+<p>A segunda onda compreendeu o acesso à justiça de direitos que não
+tinham algum sujeito para defendê-los. Era o problema dos direitos
+difusos e coletivos. A grande questão desses direitos era: como defender
+um direito de que ninguém é titular? Pode um cidadão qualquer propor uma
+ação para defender um direito que é de todos? E se algum outro cidadão
+discordar da forma como o direito está sendo defendido? Ele pode propor
+outra ação, distinta daquela inicial, para tratar do mesmo problema? Ou
+ele poderia anular a ação da qual ele discorda? Por causa desse tipo de
+questão, a respeito da titularidade das ações coletivas (ou melhor
+dizendo, a respeito de quem pode representar a coletividade e defender
+os seus direitos jurisdicionalmente), surgiu a segunda onda de acesso à
+justiça: a onda de direitos difusos e coletivos.</p>
+<p>Por fim, a terceira onda veio da percepção de que alguns conflitos
+não poderiam ser resolvidos judicialmente, ou que poderiam ser melhor
+resolvidos fora da arena judicial. Essa terceira onda trouxe, então,
+para as discussões sobre acesso à justiça a noção de que “justiça” não
+significa apenas Judiciário; essa onda, então, ampliou as formas de
+prestação da justiça, trazendo para o centro os mecanismos adequados de
+solução de conflitos (MASCs), tais como a mediação, a conciliação e a
+arbitragem. Há quem chame os MASCs de mecanismos <em>alternativos</em>
+de resolução de conflito, entretanto, chamar de esses mecanismos de
+“alternativos” acaba por diminuir a sua importância, por ressaltar o
+quanto que o Judiciário é a forma “principal” (em detrimetno de
+“alternativa”) de resolução de conflitos. Por essa razão, optamos por
+chamar os MASCs de mecanismos <em>adequados</em> de resolução de
+conflitos, uma vez que alguns conflitos são melhor endereçados por meio
+de métodos de solução de conflito amigáveis, não litigiosos e informais.
+A essa terceira onda, então, é a onda de procedimentos e instituições
+para aprimorar o sistema de processamento de litígios.</p>
+<p>Cada uma dessas três ondas está relacionada a soluções específicas
+para o acesso à justiça. A primeira onda se relaciona à criação da
+Defensoria Pública e dos Juízados Especiais Cíveis (JEC), bem como à
+justiça gratuita e e à assistência judiciária. A segunda onda se
+relaciona às novas atribuições do Ministério Público, dadas pela Lei de
+Ação Civil Pública e consagrada pela Constituição Federal. E a terceira
+onda se relaciona à Lei de Arbitragem e aos CEJUSCs.</p>
+<p>Hoje em dia, já se fala em 7 ondas de acesso à justiça, e, no lugar
+do Projeto Florença, há o <em>Global Access to Justice Program</em>.
+Apesar das novas ondas, discutiremos a mensuração apenas das três ondas
+clássicas de acesso à justiça, uma vez que as demais ondas ainda não
+possuem contornos muito bem delimitados, o que dificultaria a nossa
+discussão.</p>
+<p>Feita essa última consideração, podemos prosseguir à discussão
+central do texto. O que queremos discutir a seguir é como mensurar o
+desempenho do acesso à justiça a respeito dessas três ondas clássicas.
+Este texto não pretende dar alguma resposta ou solução final à
+mensuração das ondas de acesso à justiça, mas busca dar um empurrão no
+debate com a comunidade a respeito de como realizar esta tarefa.
+Tampouco este texto busca examinar com minúcia todas as dimensões da
+mensuração dos conceitos. O que este texto busca fazer é dar ideias e
+problemas relacionados a essa mensuração. Cada onda irá trazer uma
+problemática diferente na mensuração e, decerto, não será uma análise
+exaustiva dos indicadores possíveis, nem de seus problemas.</p>
+<h1 id="onda-1">Onda 1</h1>
+<p>A respeito da primeira onda, podemos pensar em algumas medidas
+importantes para avaliar a prestação do acesso à justiça. Para este
+texto, iremos apenas discutir a mensuração da <em>justiça gratuita</em>.
+Uma forma fácil de medir a justiça gratuita é por meio da proporção
+entre o total de processos em que a justiça gratuita foi deferida e o
+total de processos em que a justiça gratuita foi solicitada.</p>
+<p><span class="math display">\[
+\text{justica gratuita} = \frac{\text{pedidos de justica gratuita
+deferida}}
+{\text{total de pedidos de justica gratuita}}
+\]</span></p>
+<p>O que devemos esperar desse indicador? Esse indicador poderá variar
+de 0 a 1, em que 1 significa que todos os pedidos de justiça gratuita
+foram deferidos e 0, que nenhum pedido foi aceito. Nunca encontraremos
+nenhum dos dois polos, a realidade deve estar em algo entre 1 e 0. O que
+precisamos saber é o que significa encontrar, por exemplo, que 0,6 (ou
+60%) dos pedidos de justiça gratuita foram deferidos. Isso seria melhor
+do que 0,4 (40%)? Quanto mais próximo de 1, melhor? Não necessariamente.
+Nem todos os pedidos de justiça gratuita devem ser deferidos, pois pode
+haver fraude no pedido (ou seja, o autor da demanda pode estar afirmando
+enganosamente ser pobre para não pagar as custas judiciais), ou
+simplesmente porque o que uma pessoa considera como ser pobre é
+diferente dos critérios do Judiciário para tanto, gerando um desencontro
+de expectativas entre os usuários do sistema de justiça e os seus
+servidores. Então para sabermos interpretar o que este indicador está
+nos mostrando, precisamos compreender a realidade a respeito dos
+<em>pedidos</em> de justiça gratuita. Algumas perguntas importantes
+são:</p>
+<ul>
+<li>Qual é a chance de um pedido de justiça gratuita ser
+fraudulento?</li>
+<li>Qual é a chance de um pedido de justiça gratuita estar em
+descompasso com o que o Judiciário considera como
+“hipossuficiente”?</li>
+<li>Qual é a chance de o requerente de justiça gratuita não conseguir
+provar a sua situação de insuficiência financeira (não porque ele não o
+seja hipossuficiente, mas simplesmente porque ele não conseguiu reunir
+os documentos necessários para tanto)?</li>
+</ul>
+<p>Essas perguntas todas importam à medida em que elas nos informam
+sobre qual é a proporção de deferimento esperado. O que queremos é
+maximizar a quantidade de deferimentos de “pedidos reais” e minimizar a
+quantidade de deferimentos de “pedidos falsos”. Por “pedidos reais” me
+referiro apenas aos pedidos de justiça gratuita que realmente expressam
+a necessidade financeira de alguém. E por “pedidos falsos” me refiro aos
+pedidos de justiça gratuita que eram fraudulentos ou que não expressavam
+uma real necessidade financeira de alguém. A depender da quantidade de
+<em>pedidos</em> de cada uma dessas categorias, teremos uma determinada
+expectativa a respeito do indicador. Por exemplo, se 30% dos pedidos
+forem “falsos”, então temos de ter uma expectativa de que quanto mais
+próximo de 0,7 (70%), melhor será o acesso à justiça para
+hipossuficientes. Se encontrássemos por exemplo, dentro desse mesmo
+contexto, um resultado muito inferior aos 70% esperados, poderíamos usar
+isso como um indicador de que os juízes estão sendo muito rígidos na
+concessão de justiça gratuita. Mas ainda, mesmo se encontrássemos um
+valor próximo dos 70% isso não significaria que o acesso à justiça está
+bom. Poderia ser que muitos “pedidos reais” estão sendo indeferidos, mas
+que eles estão sendo “compensados” por uma altissima taxa de deferimento
+dos “pedidos falsos”.</p>
+<p>A grande questão de um indicador desses é que para se ter essa
+expectativa a respeito dos resultados do indicador, é preciso realizar
+estudos robustos e contínuos sobre a realidade por trás dos pedidos de
+justiça gratuita. Um estudo desses seria demorado e caro.
+Quantitativamente, conseguiríamos apenas determinar a taxa de
+deferimento de justiça gratuita, mas não conseguiríamos delimitar um
+parâmetro para a interpretação desse resultado.</p>
+<h1 id="onda-2">Onda 2</h1>
+<p>Sobre a segunda onda, vamos tratar de um outro problema sobre
+indicadores sobre a Justiça.</p>
+<p>Uma forma de se medir o acesso à justiça da segunda onda (sobre
+direitos difusos e coletivos) seria tentar mensurar quantas questões
+coletivas chegam até o Judiciário. Esse número teoricamente é fácil de
+se obter, pois poderia ser calculado como a soma de todas as ações que
+dizam respeito a algum tema de interesse coletivo.</p>
+<p>Pode até existir alguma dificuldade em se decidir que ações deveriam
+entrar ou não nessa soma. Em geral, com certeza, consideraríamos todas
+as ações coletivas, tais como ações civis públicas, ações populares,
+mandados de segurança coletivos, habeas corpus coletivos, mandados de
+injunção e ações constitucionais (ADC, ADI, ADI por omissão e ADPF). Mas
+poderíamos nos questionar se devemos considerar também ações ordinárias.
+Associações podem entrar com ações ordinárias para resolver os problemas
+coletivos; o Ministério Público, a fim de proteger o meio ambiente, pode
+ingressar com alguma ação de obrigação de não fazer, a fim de cessar um
+dano ambiental; pode-se até, por meio de ação de indenização por danos
+morais, exigir a reparação a um grupo que foi prejudicado. De alguma
+forma, então, poderíamos considerar, além de todas as ações coletivas,
+todas as ações em que consta alguma entidade representativa da
+coletividade em um dos polos da ação, sejam organizações da socidade
+civil (como associações), seja o Ministério Público. Mas ainda,
+poderíamos pensar se ações sem alguma coletividade em um dos polos
+deveria ser considerada? É muito frequente nas discussões sobre a
+judicialização de direitos sociais que indivíduos defendam seus próprios
+direitos sociais subjetivos contra o Estado. É o que acontece na
+judicialização da saúde (em que indivíduos, e não associações, requerem
+a prestação de algum medicamento ou serviço médico para o SUS), ou na
+judicialização das creches (em que indivíduos, e não associações,
+requerem vaga em creches públicas). Nesses casos todos, a ação proposta
+não é uma ação coletiva (mas talvez desse ser), e tampouco possui em um
+dos polos alguma entidade representativa de interesses coletivos, tais
+como associações, ou o Ministério Público. Neste caso, poderia surgir
+uma dúvida se devemos considerar estas ações ou não.</p>
+<p>Então, poderia até existir alguma dificuldade em se decidir o que
+considerar ou não nessa soma, mas uma vez superado este problema, conta
+é fácil de se realizar. O grande problema desse número é a sua
+interpretação. O que acontece é, por mais que eu tenha a soma de todas
+as ações coletivas, como saber se esse número é bom ou ruim? Como saber
+se esse número indica que o acesso à justiça de direitos difusos e
+coletivos está sendo efetivado ou não? A questão é que precisamos de
+algum comparativo; esse número deve ser medido em relação a algo. E o
+problema é justamente definir que “algo” é este.</p>
+<p>Uma primeira ideia seria a de comparar a quantidade de ações
+coletivas em relação ao total de ações no Judiciário. Mas se essa for a
+comparação, então como interpretar seu resultado? Essa taxa iria variar
+de 0 (não há ações coletivas) a 1 (todas as ações do Judiciário dizem
+respeito a ações coletivas). E o que significaria essa taxa? Será que
+quanto maior a proporção, mais efetivo estará sendo o acesso à justiça
+desses direitos? Não parece que seja isso. Neste caso, pouco importa a
+proporção de casos em relação ao todo, pois o Judiciário é sede de
+muitos outros conflitos, que não possuem natureza coletiva. Então é
+esperado que a proporção dessas ações no total seja baixa, sendo,
+portanto, pouco relevante essa comparação.</p>
+<p>Uma segunda ideia seria a de comparar as ações coletivas que entram
+na arena judicial com a quantidade de casos envolvendo direitos difusos
+e coletivos no mundo real. Ou seja, quantos conflitos envolvendo
+direitos difusos e coletivos existem no mundo, e quantos desses
+conflitos chegam até a arena judicial? Com aquela soma que descrevemos
+anteriormente, teríamos acesso à segunda parte da pergunta (“quantos
+conflitos chegam até a arena judicial?”), mas não teríamos informação
+alguma sobre a primeira pergunta (“quantos conflitos envolvendo direitos
+difusos e coletivos existem no mundo?”). Acontece que não é fácil (e,
+talvez, sequer possível) de se obter esse número. Sem informações sobre
+quais conflitos que se travam no mundo real, não conseguimos ter ideia
+de quantos conflitos coletivos estão, de fato, conseguindo chegar até a
+arena judicial. Assim, o indicador poderia ser:</p>
+<p><span class="math display">\[
+\text{direitos difusos e coletivos} = \frac{\text{acoes coletivas}}
+{\text{conflitos coletivos no mundo}}
+\]</span></p>
+<p>Então, o que esse segundo problema está indicando é que devemos olhar
+para as ações do Judiciário, em comparação com o mundo real; este
+problema nos chama a atenção para a dimensão do viés de seleção dos
+problemas que chegam ao Judiciário, ou seja, quais casos do mundo real
+são “selecionados” para chegar até os tribunais?</p>
+<h1 id="onda-3">Onda 3</h1>
+<p>Por fim, podemos olhar para a terceira onda, de conflitos que seriam
+melhor resolvidos fora da arena judicial. Neste caso, vamos fazer algo
+um pouco diferente. Ao invés de propormos um indicador e discuti-lo,
+vamos usar as discussões dos indicadores anteriores para avaliar um
+indicador já existente, criado pelo Grupo de Pesquisa LIODS e pelo CNJ<a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>. O indicador é um indicador anual
+expresso pela seguinte fórmula:</p>
+<p><span class="math display">\[
+\text{taxa de conciliacao (por ano)} = \frac{\text{quantidade total de
+sentencas
+homologatorias de acordo}} {\text{quantidade total de sentencas}}
+\]</span></p>
+<p>O que queremos discutir é o que essa taxa está nos indicando e como
+interpretá-la. A primeira informação a que devemos nos atentar é que
+essa taxa varia de 0 a 1, em que 0 significa que nenhum acordo é
+homologado e 1 significa que todos os processos acabam com um acordo
+entre as partes. O que seria uma taxa desejável? Quanto mais próximo de
+1, melhor? E se a proporção de acordos for alta, isso necessariamente
+significa que a conciliação é alta?</p>
+<p>Essa interpretação é difícil, pois não temos um parâmetro de quantos
+processos deveriam acabar em acordos. Mas o que podemos ter certeza é
+que, mesmo se encontrássemos uma taxa de 1, isso não significaria que o
+acesso à justiça na terceira onda está sendo efetivo. Isso pode
+significar apenas que todos os conflitos que chegam até o Judiciário
+forem resolvidos de forma amigável. A realidade, entretanto, poderia ser
+a de que muitos conflitos que se travam no mundo real não estão
+conseguindo chegar na arena judicial por alguma barreira de acesso à
+justiça e, por isso, que observamos no Judiciário uma taxa de
+conciliação tão alta. Ou ainda, uma taxa alta de conciliação poderia
+indicar que alguns <em>players</em> do Judiciário estão usando como
+estratégia de litigância a conciliação, talvez como uma forma de evadir
+da decisão judicial. Então voltamos ao ponto de partida: precisamos ter
+parâmetros interpretativos para os indicadores, e estes parâmetros
+dependem de se estudar, menos a resposta do Judiciário aos problemas que
+lhe chegam, e mais a realidade pré-judicial, ou ainda a natureza das
+demandas que chegam até o Judiciário.</p>
+<h1 id="conclusão">Conclusão</h1>
+<p>Para todas as ondas de acesso à justiça, discutimos indicadores que
+poderiam nos dizer se o acesso à justiça está sendo efetivado ou não. O
+objetivo ao se discutir esses indicadores era, menos conceituar e propor
+indicadores, e mais discutir problemas gerais de indicadores.
+Apresentamos ao longo das ondas 1 e 2 primeira onda o problema apareceu
+como um viés de seleção entre os pedidos em de acesso à justiça
+problemas relacionados à interpretação dos indicadores. Na comparação
+com os deferimentos; e na segunda onda, como um viés de seleção entre os
+casos do mundo real em comparação com os casos que chegam até a arena
+judicial. Para a terceira onda, utilizamos um indicador existente para
+pensá-lo criticamente, a partir das reflexões trazidas nas outras duas
+ondas.</p>
+<p>A ideia deste texto era suscitar um debate de mensuração do acesso à
+justiça, bem como o de estimular pesquisas que caminhem para este
+sentido.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p>Disponível em: <a
+href="https://www.cnj.jus.br/wp-content/uploads/2021/04/Relatorio_Indice-de-Acesso-a-Justica_LIODS_29-4-2021.pdf"
+class="uri">https://www.cnj.jus.br/wp-content/uploads/2021/04/Relatorio_Indice-de-Acesso-a-Justica_LIODS_29-4-2021.pdf</a><a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>
