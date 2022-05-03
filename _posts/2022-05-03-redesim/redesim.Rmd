@@ -1,0 +1,260 @@
+---
+title: "Redesim"
+description: |
+  Analisando dados da Rede Nacional para a Simplificação do Registro e da Legalização de Empresas e Negócios.
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+date: 2022-05-03
+output:
+  distill::distill_article:
+    self_contained: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introdução
+
+A [Rede Nacional para a Simplificação do Registro e da Legalização de Empresas e Negócios - Redesim](https://www.gov.br/empresas-e-negocios/pt-br/redesim/sobre-a-redesim) foi criada pelo Governo Federal por meio da Lei Nº 11.598, de 3 de dezembro de 2007, e tem por premissas básicas (copiado do site do Governo Federal):
+
+- Abreviar e simplificar os procedimentos para abertura de empresas e
+- Diminuir o tempo e o custo para o registro e a legalização das empresas, reduzindo a burocracia ao mínimo necessário.
+
+Para nossos fins jurimétricos, a vantagem da Redesim é que com ela temos uma base de dados bastante interessante 
+
+Em 2021, construímos no Laboratório de Jurimetria um robô de captura dos dados da Redesim. O robô pode ser acessado através do pacote [`{redesim}`](https://github.com/abjur/redesim), que pode ser acessado no GitHub da ABJ.
+
+Para instalar o pacote, basta rodar:
+
+```{r eval=FALSE, echo=TRUE}
+remotes::install_github("abjur/redesim")
+```
+
+Para baixar uma base de dados com o robô, basta utilizar a função `redesim_fetch`. No código abaixo, baixamos todos os dados de janeiro a abril 2022, de todas as unidades federativas.
+
+```{r eval=FALSE, echo=TRUE}
+ufs <- sort(unique(abjData::muni$uf_sigla))
+da <- redesim::redesim_fetch(
+  ano = 2022, 
+  mes = 1:4,
+  uf = ufs
+)
+```
+
+No final, temos uma base de dados com as seguintes informações:
+
+```{r eval=FALSE, echo=TRUE}
+dplyr::glimpse(da)
+```
+
+    Rows: 217,903
+    Columns: 42
+    $ ano_mes_uf                    <chr> "2022-01_AC", "2022-01_AC", "20…
+    $ serial                        <chr> "AC22011900001", "AC22010400002…
+    $ dt_inic_viabilidade           <date> 2022-01-18, 2021-12-22, 2021-1…
+    $ hh_inic_viabilidade           <Period> 9H 23M 42S, 7H 10M 35S, 9H 2…
+    $ dt_fim_viabilidade_nome       <date> 2022-01-18, 2021-12-22, 2021-1…
+    $ hh_fim_viabilidade_nome       <Period> 9H 32M 53S, 7H 53M 42S, 9H 4…
+    $ qtde_hh_viabilidade_nome      <dbl> 0.15, 0.72, 0.34, 14.58, 14.72,…
+    $ dt_fim_viabilidade_end        <date> 2022-01-18, 2021-12-22, 2021-1…
+    $ hh_fim_viabilidade_end        <Period> 9H 23M 42S, 9H 6M 24S, 9H 25…
+    $ qtde_hh_viabilidade_end       <dbl> 0.00, 1.94, 0.00, 17.90, 15.15,…
+    $ dt_fim_viabilidade_total      <date> 2022-01-18, 2021-12-22, 2021-1…
+    $ hh_fim_viabilidade_total      <Period> 9H 32M 53S, 9H 6M 24S, 9H 45…
+    $ qtde_hh_viabilidade_total     <dbl> 0.15, 1.94, 0.34, 17.90, 15.15,…
+    $ data_transmissao              <date> 2022-01-18, 2021-12-22, 2021-1…
+    $ hora_transmissao              <chr> "16:37:26", "12:31:43", "13:47:…
+    $ qtde_hh_transmissao           <dbl> 7.08, 3.41, 4.03, 5.63, 27.10, …
+    $ data_liberacao_dbe            <date> 2022-01-18, 2021-12-22, 2021-1…
+    $ hora_liberacao_dbe            <chr> "16:48:00", "12:48:00", "13:55:…
+    $ qtde_hh_liberacao_dbe         <dbl> 0.19, 0.29, 0.13, 0.07, 0.20, 0…
+    $ data_recebimento_dbe          <date> 2022-01-19, 2022-01-04, 2022-0…
+    $ hh_recebimento_dbe            <Period> 11H 45M 43S, 16H 14M 21S, 18…
+    $ qtde_hh_recebimento_dbe       <dbl> 18.95, 219.43, 388.20, 69.15, 5…
+    $ ind_rec_dbe                   <chr> "S05", "S05", "S05", "S05", "S0…
+    $ data_deferimento              <date> 2022-01-19, 2022-01-04, 2022-0…
+    $ hora_deferimento              <chr> "15:08:08", "16:14:21", "13:58:…
+    $ qtde_horas_deferimento        <dbl> 3.38, 0.00, 211.85, 25.60, 0.00…
+    $ ind_lib_dbe                   <chr> "S06", "S06", "S06", "S06", "S0…
+    $ municipio                     <chr> "RIO BRANCO", "RIO BRANCO", "RI…
+    $ uf                            <chr> "AC", "AC", "AC", "AC", "AC", "…
+    $ nat_jur                       <chr> "206", "206", "214", "206", "20…
+    $ atividade_economica_principal <chr> "4712100", "4744099", "4724500"…
+    $ tipo_de_unidade               <chr> NA, NA, NA, NA, NA, NA, NA, NA,…
+    $ forma_atuacao_01              <chr> "S", "S", "S", "S", "S", "S", "…
+    $ forma_atuacao_02              <chr> "N", "N", "N", "S", "N", "N", "…
+    $ forma_atuacao_03              <chr> "N", "N", "N", "N", "N", "N", "…
+    $ forma_atuacao_04              <chr> "N", "N", "N", "N", "N", "N", "…
+    $ forma_atuacao_05              <chr> "N", "N", "N", "N", "N", "N", "…
+    $ forma_atuacao_06              <chr> "N", "N", "N", "N", "N", "N", "…
+    $ forma_atuacao_07              <chr> "N", "N", "N", "N", "N", "N", "…
+    $ forma_atuacao_08              <chr> "N", "N", "N", "N", "N", "N", "…
+    $ tipo_orgao_registro           <chr> "Junta Comercial", "Junta Comer…
+    $ cnae                          <list> [<tbl_df[99 x 2]>], [<tbl_df[9…
+
+
+## Atividades empresariais mais comuns
+
+Meu interesse principal para demonstrar o poder dessa base é no Código Nacional de Atividades Empresariais (CNAE).
+
+```{r eval=FALSE}
+dados_minimos <- da |> 
+  dplyr::select(
+    ano_mes_uf,
+    data_deferimento,
+    uf, municipio,
+    cnae = atividade_economica_principal
+  ) |> 
+  dplyr::inner_join(
+    qsacnpj::tab_cnae,
+    c("cnae" = "cod_cnae")
+  ) |> 
+  dplyr::select(
+    ano_mes_uf:municipio,
+    dplyr::starts_with("nm_")
+  )
+```
+
+Em 2022, as atividades empresariais mais comuns são dadas pela tabela abaixo:
+
+```{r eval=FALSE}
+
+dados_tabela <- dados_minimos |>
+  dplyr::count(
+    secao = nm_secao, divisao = nm_divisao, 
+    grupo = nm_grupo, classe = nm_classe, 
+    subclasse = nm_cnae
+  ) |> 
+  dplyr::mutate(
+    dplyr::across(
+      secao:subclasse, tidyr::replace_na, 
+      "Sem informa\u00e7\u00e3o"
+    ),
+    dplyr::across(secao:subclasse, stringr::str_to_sentence)
+  ) |>
+  dplyr::mutate(prop = n/sum(n)) |> 
+  dplyr::arrange(dplyr::desc(n)) |>
+  dplyr::relocate(prop, .after = n)
+
+readr::write_rds(dados_tabela, "dados_tabela.rds", compress = "xz")
+
+```
+
+
+```{r, echo=FALSE, eval=TRUE, layout="l-screen-inset"}
+readr::read_rds("dados_tabela.rds") |>
+  reactable::reactable(
+    columns = list(
+      secao = reactable::colDef("Se\u00e7\u00e3o", minWidth = 300),
+      n = reactable::colDef("N", aggregate = "sum"),
+      prop = reactable::colDef(
+        "%", aggregate = "sum",
+        format = reactable::colFormat(percent = TRUE, digits = 1)
+      ),
+      divisao = reactable::colDef("Divis\u00e3o", minWidth = 200),
+      grupo = reactable::colDef("Grupo", minWidth = 100),
+      classe = reactable::colDef("Classe", minWidth = 100),
+      subclasse = reactable::colDef("Subclasse", minWidth = 150)
+    ),
+    groupBy = c("secao", "divisao", "grupo", "classe"),
+    compact = TRUE
+  )
+```
+
+
+## Regiões com maior atividade empresarial
+
+Abaixo, também fiz um mapinha mostrando a atividade empresarial. O tamanho do círculo é proporcional à taxa de empresas por 100 mil habitantes. Considerei apenas municípios com mais de 100 mil habitantes no ano de 2010.
+
+```{r eval=FALSE}
+readr::write_rds(municipios, "municipios.rds", compress = "xz")
+dados_mapa <- dados_minimos |> 
+  dplyr::count(uf, municipio) |> 
+  munifacil::limpar_colunas(municipio, uf) |> 
+  munifacil::incluir_codigo_ibge() |> 
+  dplyr::inner_join(abjData::muni, c("id_municipio" = "muni_id")) |> 
+  dplyr::inner_join(
+    dplyr::filter(abjData::pnud_min, ano == "2010"),
+    c("id_municipio" = "muni_id")
+  ) |> 
+  dplyr::transmute(
+    code_muni = as.numeric(id_municipio), municipio,
+    lon = lon.x, lat = lat.x, n, pop
+  ) |> 
+  dplyr::filter(pop >= 1e5)
+
+readr::write_rds(dados_mapa, "dados_mapa.rds", compress = "xz")
+```
+
+
+```{r mapa1, echo=FALSE, eval=TRUE, layout="l-page", dpi = 300, width = 10, height = 10}
+estados <- geobr::read_state(showProgress = FALSE)
+dados_mapa <- readr::read_rds("dados_mapa.rds")
+dados_mapa |> 
+  ggplot2::ggplot() +
+  ggplot2::geom_sf(
+    colour = "black", size = .3,
+    fill = "gray95",
+    data = estados
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(x = lon, y = lat, size = n/pop*1e5),
+    alpha = .3,
+    colour = viridis::viridis(2, 1, .2, .8)[1]
+  ) +
+  ggplot2::geom_point(
+    ggplot2::aes(x = lon, y = lat),
+    size = .1,
+    colour = viridis::viridis(2, 1, .2, .8)[2]
+  ) +
+  ggplot2::scale_size_continuous(range = c(0.1, 4)) +
+  ggplot2::coord_sf() +
+  ggplot2::theme_void(12) +
+  ggplot2::labs(
+    x = "",
+    y = "",
+    size = "Empresas/100k\nhabitantes"
+  )
+```
+
+Outro mapa legal que daria para fazer é mostrando as silhuetas dos municípios. Agora a taxa de empresas por 100 mil habitantes está mapeada nas cores. Os municípios marcados são os que apresentam maiores taxas. A atividade apresentação nesses lugares está quente!
+
+```{r mapa2, echo=FALSE, eval=TRUE, layout="l-page", dpi = 300, width = 10, height = 10}
+
+municipios <- geobr::read_municipality(showProgress = FALSE)
+
+dados_repel <- dados_mapa |> 
+  dplyr::arrange(dplyr::desc(n/pop*1e5)) |> 
+  dplyr::slice_head(n = 5)
+
+municipios |> 
+  dplyr::left_join(dados_mapa, "code_muni") |> 
+  dplyr::mutate(prop = n/pop*1e5) |> 
+  ggplot2::ggplot() +
+  ggplot2::geom_sf(
+    ggplot2::aes(fill = prop), 
+    colour = "transparent"
+  ) +
+  ggrepel::geom_label_repel(
+    ggplot2::aes(
+      x = lon, y = lat, 
+      label = stringr::str_to_title(municipio)
+    ),
+    data = dados_repel,
+    alpha = .7
+  ) +
+  ggplot2::scale_fill_viridis_b(
+    begin = .1, end = .9, option = "C", 
+    na.value = "gray95"
+  ) +
+  ggplot2::theme_void(12) +
+  ggplot2::labs(fill = "Empresas/100k\nhabitantes")
+
+
+```
+
+Muito legal né? Que análises você faria com essa base de dados?
+
