@@ -75,31 +75,47 @@ Em nossa análise, consideramos que um PAS pode ter até dez condutas distintas.
 No final, após considerar todas as motivações de acusação e instrumentos normativos, chegamos a uma taxonomia com 36 condutas, inseridas na Tabela \@ref(tab:condutas), na ordem de frequência dos processos. Pode-se observar que a conduta mais frequente é o descumprimento do dever de diligência, relacionado ao art. 153 da Lei 6.404/1976. Destaca-se também a divulgação de informações periódicas, envolvendo o art. 16 da ICVM 202/1993, posteriormente revogada pela ICVM 408/2009.
 
 ```{r condutas}
-obsCVM::da_tema_conduta %>%
+obsMC::da_tema_conduta %>%
   dplyr::filter(!is.na(conduta)) %>%
-  dplyr::group_by(tema, conduta) %>%
-  dplyr::summarise(
-    motivo = dplyr::first(motivo),
-    dispositivo = paste(unique(dispositivo_art), collapse = " / "),
-    n = dplyr::n_distinct(n_interno_abj),
-    .groups = "drop"
+  dplyr::mutate(
+    conduta = stringr::str_replace(
+      conduta,
+      "Autorização da CVM para administação de carteiras",
+      "Registro na CVM para administação de carteiras"
+    ),
+    dispositivo_art = stringr::str_replace(dispositivo_art, "ICVM 306/1999, 3", "Lei 6385, 23")
   ) %>%
-  dplyr::mutate(prop = n / dplyr::n_distinct(obsCVM::da_tema_conduta$n_interno_abj)) %>%
-  dplyr::mutate(prop = formattable::percent(prop, 1)) %>% 
-  dplyr::arrange(desc(prop)) %>% 
-  dplyr::relocate(conduta) %>% 
-  purrr::set_names(c("Conduta", "Tema", "Motivo", "Dispositivo", "N", "%")) %>% 
+  dplyr::group_by(tema, conduta) %>%
+  dplyr::mutate(tema = dplyr::case_when(
+    tema =  stringr::str_detect(
+      conduta,
+      stringr::regex("Normas de conduta de administradores de carteiras")
+    ) ~ "Ilícitos de mercado",
+    TRUE ~ tema
+  )) %>%
+  dplyr::count(conduta, tema, motivo, dispositivo_art) %>% 
+  # dplyr::summarise(
+  #   motivo = dplyr::first(motivo),
+  #   dispositivo = paste(unique(dispositivo_art), collapse = " / "),
+  #   n = dplyr::n_distinct(n_interno_abj),
+  #   .groups = "drop"
+  # ) %>%
+  dplyr::mutate(prop = n / dplyr::n_distinct(obsMC::da_tema_conduta$n_interno_abj)) %>%
+  dplyr::mutate(prop = formattable::percent(prop, 1)) %>%
+  dplyr::arrange(desc(prop)) %>%
+  dplyr::relocate(conduta) %>%
+  purrr::set_names(c("Conduta", "Tema", "Motivo", "Dispositivo", "N", "%")) %>%
   knitr::kable(caption = "Lista de condutas identificadas na análise. Como um processo pode envolver várias condutas, as proporções somam mais do que 100%.")
 ```
 
 Ao analisar os temas, encontramos o resultado da Tabela \@ref(tab:temas). O tema mais frequente nos processos analisados são problemas informacionais, enquanto o tema menos frequente são os relacionados a intermediação.
 
 ```{r temas}
-obsCVM::da_tema_conduta %>%
+obsMC::da_tema_conduta %>%
   dplyr::group_by(tema) %>% 
   dplyr::summarise(n = dplyr::n_distinct(n_interno_abj), .groups = "drop") %>% 
   dplyr::arrange(dplyr::desc(n)) %>% 
-  dplyr::mutate(prop = n / dplyr::n_distinct(obsCVM::da_tema_conduta$n_interno_abj)) %>% 
+  dplyr::mutate(prop = n / dplyr::n_distinct(obsMC::da_tema_conduta$n_interno_abj)) %>% 
   dplyr::mutate(prop = formattable::percent(prop, 1)) %>% 
   purrr::set_names(c("Tema", "N", "%")) %>%
   knitr::kable(caption = "Quantidade de processos que envolve cada tema. Como um processo pode envolver vários temas, as proporções somam mais do que 100%.")
@@ -108,7 +124,7 @@ obsCVM::da_tema_conduta %>%
 A Figura \@ref(fig:temas-agg) contém as combinações mais frequentes de temas dentro de um mesmo processo. A tabela mostra que um processo com vários temas é incomum, já que as 15 combinações mais frequentes concentram 91,2% dos casos. Assumindo essa pequena perda de informação, é possível analisar as combinações de tema como variável no nível de processo.
 
 ```{r temas-agg, fig.cap="Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%."}
-obsCVM::da_tema_conduta %>%
+obsMC::da_tema_conduta %>%
   dplyr::group_by(n_interno_abj) %>% 
   dplyr::summarise(tema = paste(unique(tema), collapse = ", "), .groups = "drop") %>% 
   dplyr::mutate(tema = forcats::fct_lump_n(tema, 15, other_level = "Outros")) %>% 

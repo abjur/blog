@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -49,40 +50,42 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #545454; font-weight: bold; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #a1024a; } /* BaseN */
+code span { color: #00769e; } /* Normal */
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #657422; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007faa; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #008000; } /* Char */
-code span.cn { color: #d91e18; } /* Constant */
-code span.co { color: #545454; } /* Comment */
-code span.cv { color: #545454; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #aa5d00; } /* DataType */
-code span.dv { color: #a1024a; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.cf { color: #00769e; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #a1024a; } /* Float */
-code span.fu { color: #4254a7; } /* Function */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #545454; font-weight: bold; } /* Information */
-code span.kw { color: #007faa; font-weight: bold; } /* Keyword */
-code span.op { color: #696969; } /* Operator */
-code span.ot { color: #007faa; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #008000; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #008000; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #008000; } /* VerbatimString */
-code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #00769e; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #00769e; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
 <title>Associação Brasileira de Jurimetria: Temas e condutas</title>
@@ -135,7 +138,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["temas_files/bowser-1.9.3/bowser.min.js","temas_files/distill-2.2.21/template.v2.js","temas_files/figure-html5/temas-agg-1.png","temas_files/header-attrs-2.5/header-attrs.js","temas_files/jquery-1.11.3/jquery.min.js","temas_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["temas_files/anchor-4.2.2/anchor.min.js","temas_files/bowser-1.9.3/bowser.min.js","temas_files/distill-2.2.21/template.v2.js","temas_files/figure-html5/temas-agg-1.png","temas_files/header-attrs-2.14/header-attrs.js","temas_files/header-attrs-2.5/header-attrs.js","temas_files/jquery-1.11.3/jquery.min.js","temas_files/jquery-3.6.0/jquery-3.6.0.js","temas_files/jquery-3.6.0/jquery-3.6.0.min.js","temas_files/jquery-3.6.0/jquery-3.6.0.min.map","temas_files/popper-2.6.0/popper.min.js","temas_files/tippy-6.2.7/tippy-bundle.umd.min.js","temas_files/tippy-6.2.7/tippy-light-border.css","temas_files/tippy-6.2.7/tippy.css","temas_files/tippy-6.2.7/tippy.umd.min.js","temas_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
 <meta name="distill:offset" content="../.."/>
@@ -473,8 +476,15 @@ d-title {
   top: 0;
 }
 
+/* adjust viewport for navbar height */
+/* helps vertically center bootstrap (non-distill) content */
+.min-vh-100 {
+  min-height: calc(100vh - 100px) !important;
+}
+
 </style>
 
+<script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <link href="../../site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
 <link href="../../site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
 <script src="../../site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -582,19 +592,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
           var results = fuse.search(query, searchOptions);
           callback(results
             .map(function(result) { return result.item; })
-            .filter(function(item) { return !!item.description; })
           );
         },
         templates: {
           suggestion: function(suggestion) {
+            var img = suggestion.preview && Object.keys(suggestion.preview).length > 0
+              ? `<img src="${offsetURL(suggestion.preview)}"</img>`
+              : '';
             var html = `
               <div class="search-item">
                 <h3>${suggestion.title}</h3>
                 <div class="search-item-description">
-                  ${suggestion.description}
+                  ${suggestion.description || ''}
                 </div>
                 <div class="search-item-preview">
-                  <img src="${suggestion.preview ? offsetURL(suggestion.preview) : ''}"</img>
+                  ${img}
                 </div>
               </div>
             `;
@@ -617,6 +629,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 
 <style type="text/css">
+
+.nav-search {
+  font-size: x-small;
+}
 
 /* Algolioa Autocomplete */
 
@@ -692,6 +708,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 }
 
 .algolia-autocomplete .aa-dropdown-menu .aa-suggestion .search-item h3 {
+  font-size: 1rem;
   margin-block-start: 0;
   margin-block-end: 5px;
 }
@@ -919,6 +936,11 @@ d-article pre a:hover {
   text-decoration: underline;
 }
 
+d-article details {
+  grid-column: text;
+  margin-bottom: 0.8em;
+}
+
 @media(min-width: 768px) {
 
 d-article pre,
@@ -1036,10 +1058,6 @@ figure img.external {
   margin-top: 1.5em;
 }
 
-.figure img {
-  width: 100%;
-}
-
 .figure .caption {
   color: rgba(0, 0, 0, 0.6);
   font-size: 12px;
@@ -1073,6 +1091,17 @@ d-article .citation {
 
 div.hanging-indent{
   margin-left: 1em; text-indent: -1em;
+}
+
+/* Citation hover box */
+
+.tippy-box[data-theme~=light-border] {
+  background-color: rgba(250, 250, 250, 0.95);
+}
+
+.tippy-content > p {
+  margin-bottom: 0;
+  padding: 2px;
 }
 
 
@@ -1740,7 +1769,7 @@ function init_distill() {
     var layout = $(this).attr('data-layout');
 
     // apply layout to markdown level block elements
-    var elements = $(this).children().not('div.sourceCode, pre, script');
+    var elements = $(this).children().not('details, div.sourceCode, pre, script');
     elements.each(function(i, el) {
       var layout_div = $('<div class="' + layout + '"></div>');
       if (layout_div.hasClass('shaded')) {
@@ -1856,6 +1885,54 @@ function init_distill() {
     $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
     $('.appendix-bottom').remove();
 
+    // hoverable references
+    $('span.citation[data-cites]').each(function() {
+      if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+        var fn = $(this).children()[0]
+        $(this).html(fn.shadowRoot.querySelector("sup"))
+        $(this).id = fn.id
+        fn.remove()
+      }
+      var refs = $(this).attr('data-cites').split(" ");
+      var refHtml = refs.map(function(ref) {
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
+      }).join("\n");
+      window.tippy(this, {
+        allowHTML: true,
+        content: refHtml,
+        maxWidth: 500,
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start'
+      });
+    });
+
+    // fix footnotes in tables (#411)
+    // replacing broken distill.pub feature
+    $('table d-footnote').each(function() {
+      // we replace internal showAtNode methode which is triggered when hovering a footnote
+      this.hoverBox.showAtNode = function(node) {
+        // ported from https://github.com/distillpub/template/pull/105/files
+        calcOffset = function(elem) {
+            let x = elem.offsetLeft;
+            let y = elem.offsetTop;
+            // Traverse upwards until an `absolute` element is found or `elem`
+            // becomes null.
+            while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                x += elem.offsetLeft;
+                y += elem.offsetTop;
+            }
+
+            return { left: x, top: y };
+        }
+        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+        const bbox = node.getBoundingClientRect();
+        const offset = calcOffset(node);
+        this.show([offset.left + bbox.width, offset.top + bbox.height]);
+      }
+    })
+
     // clear polling timer
     clearInterval(tid);
 
@@ -1954,6 +2031,8 @@ function init_common() {
   // mark non-body figures created by knitr chunks as 100% width
   $('.layout-chunk').each(function(i, val) {
     var figures = $(this).find('img, .html-widget');
+    // ignore leaflet img layers (#106)
+    figures = figures.filter(':not(img[class*="leaflet"])')
     if ($(this).attr('data-layout') !== "l-body") {
       figures.css('width', '100%');
     } else {
@@ -1976,7 +2055,7 @@ function init_common() {
   // get rid of index.html references in header
   if (window.location.protocol !== "file:") {
     $('.distill-site-header a[href]').each(function(i,val) {
-      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+      $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
     });
   }
 
@@ -2015,15 +2094,19 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!--/radix_placeholder_distill-->
-  <script src="../../site_libs/header-attrs-2.5/header-attrs.js"></script>
-  <script src="../../site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="../../site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="../../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="../../site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="../../site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="../../site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="../../site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="../../site_libs/anchor-4.2.2/anchor.min.js"></script>
   <script src="../../site_libs/bowser-1.9.3/bowser.min.js"></script>
   <script src="../../site_libs/webcomponents-2.0.0/webcomponents.js"></script>
   <script src="../../site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-182605574-1"></script>
-<script>
+<script type="text/javascript" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=UA-182605574-1"></script>
+<script type="text/javascript" cookie-consent="tracking">
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
@@ -2167,10 +2250,10 @@ gtag('config', 'UA-182605574-1');
 <table>
 <caption><span id="tab:condutas">Table 1: </span>Lista de condutas identificadas na análise. Como um processo pode envolver várias condutas, as proporções somam mais do que 100%.</caption>
 <colgroup>
-<col style="width: 29%" />
-<col style="width: 8%" />
 <col style="width: 32%" />
-<col style="width: 24%" />
+<col style="width: 9%" />
+<col style="width: 35%" />
+<col style="width: 17%" />
 <col style="width: 1%" />
 <col style="width: 2%" />
 </colgroup>
@@ -2188,26 +2271,26 @@ gtag('config', 'UA-182605574-1');
 <tr class="odd">
 <td style="text-align: left;">Descumprimento do dever de diligência</td>
 <td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
 <td style="text-align: left;">Lei 6404, 153</td>
-<td style="text-align: right;">135</td>
-<td style="text-align: right;">11.0%</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">10.7%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Informações periódicas</td>
-<td style="text-align: left;">Informacionais</td>
-<td style="text-align: left;">Não prestação de informações atualizadas</td>
-<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16 / ICVM 480/2009, 21</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">10.3%</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Falhas nas demonstrações financeiras</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
 <td style="text-align: left;">Lei 6404, 176</td>
-<td style="text-align: right;">115</td>
-<td style="text-align: right;">9.4%</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">8.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">7.4%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Assembleia geral ordinária</td>
@@ -2226,28 +2309,12 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">6.5%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dever de informar do administrador</td>
-<td style="text-align: left;">Informacionais</td>
-<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
-<td style="text-align: left;">Lei 6404, 157</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">5.5%</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Obrigação de divulgação de fato relevante</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Problemas na divulgação de fato relevante</td>
 <td style="text-align: left;">ICVM 358/2002, 3</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">5.5%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Dever de lealdade</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Violação do dever de lealdade de administradores de fundo de investimento</td>
-<td style="text-align: left;">Lei 6404, 155</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">5.2%</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">5.7%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Convovação de assembleia-geral</td>
@@ -2266,14 +2333,6 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">4.8%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Desvio de poder</td>
-<td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Violação do dever pelos administradores</td>
-<td style="text-align: left;">Lei 6404, 154</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">4.7%</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Prestação de informações eventuais</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -2281,7 +2340,7 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">55</td>
 <td style="text-align: right;">4.5%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Falhas em escrituração contábil</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
@@ -2289,31 +2348,47 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">53</td>
 <td style="text-align: right;">4.3%</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
-<td style="text-align: left;">Auditoria</td>
-<td style="text-align: left;">Inadimplemento de regras do CFC</td>
-<td style="text-align: left;">ICVM 308/1999, 20</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">4.1%</td>
-</tr>
 <tr class="odd">
 <td style="text-align: left;">Abuso de poder</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Abuso do poder de controle e atuação em conflito de interesses por acionistas</td>
 <td style="text-align: left;">Lei 6404, 117</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">4.1%</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">4.2%</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Registro na CVM para administação de carteiras</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">Lei 6385, 23</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">4.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dever de lealdade</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Violação do dever de lealdade de administradores de fundo de investimento</td>
+<td style="text-align: left;">Lei 6404, 155</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">3.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dever de informar do administrador</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Lei 6404, 157</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">3.8%</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Insider trading (primário)</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Uso de informação privilegiada (insider trading)</td>
 <td style="text-align: left;">ICVM 358/2002, 13</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">3.6%</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">3.7%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Operação fraudulenta</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Operação fraudulenta</td>
@@ -2321,7 +2396,7 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">3.4%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Operação sem autorização da CVM</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Operação fraudulenta</td>
@@ -2329,21 +2404,61 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">3.4%</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 480/2009, 21</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">3.1%</td>
+</tr>
 <tr class="odd">
 <td style="text-align: left;">Responsabilidade do DRI</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
 <td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 6</td>
-<td style="text-align: right;">36</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">3.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Falhas nas demonstrações financeiras</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">Lei 6404, 176</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2.9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16</td>
+<td style="text-align: right;">35</td>
 <td style="text-align: right;">2.9%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Condições artificiais de negócio</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Operação fraudulenta</td>
-<td style="text-align: left;">ICVM 8/1979, a</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">2.4%</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 153</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2.9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">2.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: left;">Inadimplemento de regras do CFC</td>
+<td style="text-align: left;">ICVM 308/1999, 20</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">2.5%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Ato societário irregular</td>
@@ -2354,22 +2469,14 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">2.3%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Registro na CVM para administação de carteiras</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Operação fraudulenta</td>
-<td style="text-align: left;">ICVM 306/1999, 3</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">2.1%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Autorização da CVM para administação de carteiras</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Operação fraudulenta</td>
-<td style="text-align: left;">Lei 6385, 23</td>
+<td style="text-align: left;">Dever de informar do administrador</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">Lei 6404, 157</td>
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">2.0%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Falhas nas demonstrações financeiras</td>
 <td style="text-align: left;">Societário</td>
 <td style="text-align: left;">Ato societário irregular</td>
@@ -2377,7 +2484,39 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">2.0%</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Oferta pública</td>
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Lei 6385, 19</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
 <tr class="odd">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obrigações do administrador do fundo de investimento</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">ICVM 409/2004, 65</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condições artificiais de negócio</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">ICVM 8/1979, a</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">1.9%</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Identificação e cadastro atualizado de clientes</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -2385,7 +2524,7 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">22</td>
 <td style="text-align: right;">1.8%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Informações periódicas e eventuais</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -2393,7 +2532,7 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">1.7%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Prática não equitativa</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Operação fraudulenta</td>
@@ -2401,11 +2540,19 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">1.6%</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: left;">Descumprimento de normas/responsabilidades profissionais de auditoria</td>
+<td style="text-align: left;">ICVM 308/1999, 20</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">1.6%</td>
+</tr>
 <tr class="even">
-<td style="text-align: left;">Oferta pública sem registro</td>
-<td style="text-align: left;">Oferta pública</td>
-<td style="text-align: left;">Oferta pública sem registro</td>
-<td style="text-align: left;">Lei 6385, 19</td>
+<td style="text-align: left;">Normas de conduta de administradores de carteiras</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">ICVM 306/1999, 14</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">1.6%</td>
 </tr>
@@ -2419,17 +2566,17 @@ gtag('config', 'UA-182605574-1');
 </tr>
 <tr class="even">
 <td style="text-align: left;">Dever de lealdade</td>
-<td style="text-align: left;">Informacionais</td>
-<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Uso de informação privilegiada (insider trading)</td>
 <td style="text-align: left;">Lei 6404, 155</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">1.5%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Normas de conduta de administradores de carteiras</td>
-<td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Descumprimento do dever de diligência</td>
-<td style="text-align: left;">ICVM 306/1999, 14</td>
+<td style="text-align: left;">Dever de lealdade</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Lei 6404, 155</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">1.5%</td>
 </tr>
@@ -2466,6 +2613,14 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">1.4%</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Formulário de informações trimestrais – ITR</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -2473,15 +2628,15 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">1.3%</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Obrigações do administrador do fundo de investimento</td>
-<td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Violação do dever pelos administradores</td>
-<td style="text-align: left;">ICVM 409/2004, 65</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">1.3%</td>
-</tr>
 <tr class="even">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
+<td style="text-align: left;">ICVM 480/2009, 21</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1.2%</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Dever de informar do administrador</td>
 <td style="text-align: left;">Societário</td>
 <td style="text-align: left;">Violação do dever pelos administradores</td>
@@ -2489,13 +2644,21 @@ gtag('config', 'UA-182605574-1');
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">1.2%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Fiscalização da gestão dos diretores</td>
 <td style="text-align: left;">Societário</td>
 <td style="text-align: left;">Ato societário irregular</td>
 <td style="text-align: left;">Lei 6404, 142, III</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">1.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condições artificiais de negócio</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Criação de condições artificiais de negócio</td>
+<td style="text-align: left;">ICVM 8/1979, a</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1.1%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Manipulação de preços</td>
@@ -2560,7 +2723,7 @@ gtag('config', 'UA-182605574-1');
 </div>
 <p>A Figura <a href="#fig:temas-agg">1</a> contém as combinações mais frequentes de temas dentro de um mesmo processo. A tabela mostra que um processo com vários temas é incomum, já que as 15 combinações mais frequentes concentram 91,2% dos casos. Assumindo essa pequena perda de informação, é possível analisar as combinações de tema como variável no nível de processo.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:temas-agg"></span>
+<div class="figure"><span style="display:block;" id="fig:temas-agg"></span>
 <img src="temas_files/figure-html5/temas-agg-1.png" alt="Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%." width="624" />
 <p class="caption">
 Figure 1: Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%.
@@ -2581,20 +2744,20 @@ Figure 1: Combinações de temas mais frequentes nos processos analisados. Nesse
     </span>
     <span class="article-sharing">
       Share: &nbsp;
-      <a href="https://twitter.com/share?text=Temas%20e%20condutas&amp;url=https%3A%2F%2Flab.abj.org.br%2Fposts%2F2020-10-23-temas%2F">
-        <i class="fab fa-twitter"></i>
+      <a href="https://twitter.com/share?text=Temas%20e%20condutas&amp;url=https%3A%2F%2Flab.abj.org.br%2Fposts%2F2020-10-23-temas%2F" aria-label="share on twitter">
+        <i class="fab fa-twitter" aria-hidden="true"></i>
       </a>
-      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Flab.abj.org.br%2Fposts%2F2020-10-23-temas%2F&amp;title=Temas%20e%20condutas">
-        <i class="fab fa-linkedin"></i>
+      <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Flab.abj.org.br%2Fposts%2F2020-10-23-temas%2F&amp;title=Temas%20e%20condutas" aria-label="share on linkedin">
+        <i class="fab fa-linkedin" aria-hidden="true"></i>
       </a>
-      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Flab.abj.org.br%2Fposts%2F2020-10-23-temas%2F">
-        <i class="fab fa-facebook"></i>
+      <a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=https%3A%2F%2Flab.abj.org.br%2Fposts%2F2020-10-23-temas%2F" aria-label="share on facebook">
+        <i class="fab fa-facebook" aria-hidden="true"></i>
       </a>
     </span>
   </p>
   <script id="dsq-count-scr" src="https://abjur.disqus.com/count.js" async></script>
   <div id="disqus_thread" class="hidden"></div>
-  <script>
+  <script type="text/javascript" cookie-consent="functionality">
 var disqus_config = function () {
   this.page.url = 'https://lab.abj.org.br/posts/2020-10-23-temas/';
   this.page.identifier = 'posts/2020-10-23-temas/';
@@ -2632,20 +2795,21 @@ var disqus_config = function () {
 }</pre>
 </div>
 <!--/radix_placeholder_appendices-->
-<!--radix_placeholder_navigation_after_body-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<!--radix_placeholder_navigation_after_body--><html><body>
 <div class="distill-site-nav distill-site-footer">
-  <script>
+<script>
   var element = document.getElementsByClassName("posts-container")[0];
   element.classList.remove("posts-with-sidebar");
   
-  $(".logo").wrap("<a href="https://abj.org.br" target="_blank"/>");
+  $(".logo").wrap("<a href='https://abj.org.br' target='_blank'></a>");
 
-</script>
-  <div>
+</script><div>
 © Copyright ABJ. Todos os direitos reservados. CNPJ: 13.612.840/0001-57
 </div>
 </div>
 <!--/radix_placeholder_navigation_after_body-->
+</body></html>
 
 
 </body>

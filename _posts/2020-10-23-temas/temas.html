@@ -23,6 +23,7 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -49,40 +50,42 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #545454; font-weight: bold; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #a1024a; } /* BaseN */
+code span { color: #00769e; } /* Normal */
+code span.al { color: #ad0000; } /* Alert */
+code span.an { color: #5e5e5e; } /* Annotation */
+code span.at { color: #657422; } /* Attribute */
+code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007faa; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #008000; } /* Char */
-code span.cn { color: #d91e18; } /* Constant */
-code span.co { color: #545454; } /* Comment */
-code span.cv { color: #545454; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #aa5d00; } /* DataType */
-code span.dv { color: #a1024a; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.cf { color: #00769e; } /* ControlFlow */
+code span.ch { color: #20794d; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #5e5e5e; } /* Comment */
+code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+code span.dt { color: #ad0000; } /* DataType */
+code span.dv { color: #ad0000; } /* DecVal */
+code span.er { color: #ad0000; } /* Error */
 code span.ex { } /* Extension */
-code span.fl { color: #a1024a; } /* Float */
-code span.fu { color: #4254a7; } /* Function */
+code span.fl { color: #ad0000; } /* Float */
+code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
-code span.in { color: #545454; font-weight: bold; } /* Information */
-code span.kw { color: #007faa; font-weight: bold; } /* Keyword */
-code span.op { color: #696969; } /* Operator */
-code span.ot { color: #007faa; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #008000; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #008000; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #008000; } /* VerbatimString */
-code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warning */
+code span.in { color: #5e5e5e; } /* Information */
+code span.kw { color: #00769e; } /* Keyword */
+code span.op { color: #5e5e5e; } /* Operator */
+code span.ot { color: #00769e; } /* Other */
+code span.pp { color: #ad0000; } /* Preprocessor */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
+code span.ss { color: #20794d; } /* SpecialString */
+code span.st { color: #20794d; } /* String */
+code span.va { color: #111111; } /* Variable */
+code span.vs { color: #20794d; } /* VerbatimString */
+code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Temas e condutas</title>
@@ -115,7 +118,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["temas_files/bowser-1.9.3/bowser.min.js","temas_files/distill-2.2.21/template.v2.js","temas_files/figure-html5/temas-agg-1.png","temas_files/header-attrs-2.5/header-attrs.js","temas_files/jquery-1.11.3/jquery.min.js","temas_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["temas_files/anchor-4.2.2/anchor.min.js","temas_files/bowser-1.9.3/bowser.min.js","temas_files/distill-2.2.21/template.v2.js","temas_files/figure-html5/temas-agg-1.png","temas_files/header-attrs-2.14/header-attrs.js","temas_files/header-attrs-2.5/header-attrs.js","temas_files/jquery-1.11.3/jquery.min.js","temas_files/jquery-3.6.0/jquery-3.6.0.js","temas_files/jquery-3.6.0/jquery-3.6.0.min.js","temas_files/jquery-3.6.0/jquery-3.6.0.min.map","temas_files/popper-2.6.0/popper.min.js","temas_files/tippy-6.2.7/tippy-bundle.umd.min.js","temas_files/tippy-6.2.7/tippy-light-border.css","temas_files/tippy-6.2.7/tippy.css","temas_files/tippy-6.2.7/tippy.umd.min.js","temas_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -263,7 +266,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   d-article pre,
   d-article div.sourceCode,
   d-article div.sourceCode pre {
-    overflow: hidden;
+    overflow: auto;
   }
 
   d-article div.sourceCode {
@@ -305,6 +308,11 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   d-article pre a:hover {
     border-bottom: none;
     text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
   }
 
   @media(min-width: 768px) {
@@ -424,10 +432,6 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
     margin-top: 1.5em;
   }
 
-  .figure img {
-    width: 100%;
-  }
-
   .figure .caption {
     color: rgba(0, 0, 0, 0.6);
     font-size: 12px;
@@ -461,6 +465,17 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 
   div.hanging-indent{
     margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
   }
 
 
@@ -678,6 +693,211 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
     margin-bottom: 0.5em;
   }
 
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
 
   /* Improve display for browsers without grid (IE/Edge <= 15) */
 
@@ -807,6 +1027,12 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
     hyphens: none;
   }
 
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
   </style>
 
   <script type="application/javascript">
@@ -917,7 +1143,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
       var layout = $(this).attr('data-layout');
 
       // apply layout to markdown level block elements
-      var elements = $(this).children().not('div.sourceCode, pre, script');
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
       elements.each(function(i, el) {
         var layout_div = $('<div class="' + layout + '"></div>');
         if (layout_div.hasClass('shaded')) {
@@ -1033,6 +1259,54 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
       $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
       $('.appendix-bottom').remove();
 
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
+
       // clear polling timer
       clearInterval(tid);
 
@@ -1131,6 +1405,8 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1153,7 +1429,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -1192,8 +1468,12 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="temas_files/header-attrs-2.5/header-attrs.js"></script>
-  <script src="temas_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="temas_files/header-attrs-2.14/header-attrs.js"></script>
+  <script src="temas_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="temas_files/popper-2.6.0/popper.min.js"></script>
+  <link href="temas_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="temas_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="temas_files/tippy-6.2.7/tippy.umd.min.js"></script>
   <script src="temas_files/anchor-4.2.2/anchor.min.js"></script>
   <script src="temas_files/bowser-1.9.3/bowser.min.js"></script>
   <script src="temas_files/webcomponents-2.0.0/webcomponents.js"></script>
@@ -1222,8 +1502,8 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <h1>Temas e condutas</h1>
 <!--radix_placeholder_categories-->
 <div class="dt-tags">
-<div class="dt=tag">Observatorio</div>
-<div class="dt=tag">CVM</div>
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
 </div>
 <!--/radix_placeholder_categories-->
 <p><p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p></p>
@@ -1280,10 +1560,10 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <table>
 <caption><span id="tab:condutas">Table 1: </span>Lista de condutas identificadas na análise. Como um processo pode envolver várias condutas, as proporções somam mais do que 100%.</caption>
 <colgroup>
-<col style="width: 29%" />
-<col style="width: 8%" />
 <col style="width: 32%" />
-<col style="width: 24%" />
+<col style="width: 9%" />
+<col style="width: 35%" />
+<col style="width: 17%" />
 <col style="width: 1%" />
 <col style="width: 2%" />
 </colgroup>
@@ -1301,26 +1581,26 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <tr class="odd">
 <td style="text-align: left;">Descumprimento do dever de diligência</td>
 <td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
 <td style="text-align: left;">Lei 6404, 153</td>
-<td style="text-align: right;">135</td>
-<td style="text-align: right;">11.0%</td>
+<td style="text-align: right;">131</td>
+<td style="text-align: right;">10.7%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Informações periódicas</td>
-<td style="text-align: left;">Informacionais</td>
-<td style="text-align: left;">Não prestação de informações atualizadas</td>
-<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16 / ICVM 480/2009, 21</td>
-<td style="text-align: right;">126</td>
-<td style="text-align: right;">10.3%</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Falhas nas demonstrações financeiras</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
 <td style="text-align: left;">Lei 6404, 176</td>
-<td style="text-align: right;">115</td>
-<td style="text-align: right;">9.4%</td>
+<td style="text-align: right;">102</td>
+<td style="text-align: right;">8.3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16</td>
+<td style="text-align: right;">91</td>
+<td style="text-align: right;">7.4%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Assembleia geral ordinária</td>
@@ -1339,28 +1619,12 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">6.5%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Dever de informar do administrador</td>
-<td style="text-align: left;">Informacionais</td>
-<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
-<td style="text-align: left;">Lei 6404, 157</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">5.5%</td>
-</tr>
-<tr class="odd">
 <td style="text-align: left;">Obrigação de divulgação de fato relevante</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Problemas na divulgação de fato relevante</td>
 <td style="text-align: left;">ICVM 358/2002, 3</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">5.5%</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Dever de lealdade</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Violação do dever de lealdade de administradores de fundo de investimento</td>
-<td style="text-align: left;">Lei 6404, 155</td>
-<td style="text-align: right;">64</td>
-<td style="text-align: right;">5.2%</td>
+<td style="text-align: right;">70</td>
+<td style="text-align: right;">5.7%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Convovação de assembleia-geral</td>
@@ -1379,14 +1643,6 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">4.8%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Desvio de poder</td>
-<td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Violação do dever pelos administradores</td>
-<td style="text-align: left;">Lei 6404, 154</td>
-<td style="text-align: right;">58</td>
-<td style="text-align: right;">4.7%</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Prestação de informações eventuais</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -1394,7 +1650,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">55</td>
 <td style="text-align: right;">4.5%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Falhas em escrituração contábil</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
@@ -1402,31 +1658,47 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">53</td>
 <td style="text-align: right;">4.3%</td>
 </tr>
-<tr class="even">
-<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
-<td style="text-align: left;">Auditoria</td>
-<td style="text-align: left;">Inadimplemento de regras do CFC</td>
-<td style="text-align: left;">ICVM 308/1999, 20</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">4.1%</td>
-</tr>
 <tr class="odd">
 <td style="text-align: left;">Abuso de poder</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Abuso do poder de controle e atuação em conflito de interesses por acionistas</td>
 <td style="text-align: left;">Lei 6404, 117</td>
-<td style="text-align: right;">50</td>
-<td style="text-align: right;">4.1%</td>
+<td style="text-align: right;">52</td>
+<td style="text-align: right;">4.2%</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Registro na CVM para administação de carteiras</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">Lei 6385, 23</td>
+<td style="text-align: right;">51</td>
+<td style="text-align: right;">4.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dever de lealdade</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Violação do dever de lealdade de administradores de fundo de investimento</td>
+<td style="text-align: left;">Lei 6404, 155</td>
+<td style="text-align: right;">48</td>
+<td style="text-align: right;">3.9%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Dever de informar do administrador</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Lei 6404, 157</td>
+<td style="text-align: right;">47</td>
+<td style="text-align: right;">3.8%</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Insider trading (primário)</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Uso de informação privilegiada (insider trading)</td>
 <td style="text-align: left;">ICVM 358/2002, 13</td>
-<td style="text-align: right;">44</td>
-<td style="text-align: right;">3.6%</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">3.7%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Operação fraudulenta</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Operação fraudulenta</td>
@@ -1434,7 +1706,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">3.4%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Operação sem autorização da CVM</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Operação fraudulenta</td>
@@ -1442,21 +1714,61 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">42</td>
 <td style="text-align: right;">3.4%</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">ICVM 480/2009, 21</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">3.1%</td>
+</tr>
 <tr class="odd">
 <td style="text-align: left;">Responsabilidade do DRI</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
 <td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 6</td>
-<td style="text-align: right;">36</td>
+<td style="text-align: right;">37</td>
+<td style="text-align: right;">3.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Falhas nas demonstrações financeiras</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">Lei 6404, 176</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2.9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
+<td style="text-align: left;">ICVM 202/1993 (rev. ICVM 480/2009), 16</td>
+<td style="text-align: right;">35</td>
 <td style="text-align: right;">2.9%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Condições artificiais de negócio</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Operação fraudulenta</td>
-<td style="text-align: left;">ICVM 8/1979, a</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">2.4%</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 153</td>
+<td style="text-align: right;">35</td>
+<td style="text-align: right;">2.9%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;">2.6%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: left;">Inadimplemento de regras do CFC</td>
+<td style="text-align: left;">ICVM 308/1999, 20</td>
+<td style="text-align: right;">31</td>
+<td style="text-align: right;">2.5%</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Ato societário irregular</td>
@@ -1467,22 +1779,14 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">2.3%</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Registro na CVM para administação de carteiras</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Operação fraudulenta</td>
-<td style="text-align: left;">ICVM 306/1999, 3</td>
-<td style="text-align: right;">26</td>
-<td style="text-align: right;">2.1%</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Autorização da CVM para administação de carteiras</td>
-<td style="text-align: left;">Ilícitos de mercado</td>
-<td style="text-align: left;">Operação fraudulenta</td>
-<td style="text-align: left;">Lei 6385, 23</td>
+<td style="text-align: left;">Dever de informar do administrador</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Não prestação de informações atualizadas</td>
+<td style="text-align: left;">Lei 6404, 157</td>
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">2.0%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Falhas nas demonstrações financeiras</td>
 <td style="text-align: left;">Societário</td>
 <td style="text-align: left;">Ato societário irregular</td>
@@ -1490,7 +1794,39 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">25</td>
 <td style="text-align: right;">2.0%</td>
 </tr>
+<tr class="even">
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Oferta pública</td>
+<td style="text-align: left;">Oferta pública sem registro</td>
+<td style="text-align: left;">Lei 6385, 19</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
 <tr class="odd">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Obrigações do administrador do fundo de investimento</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Violação do dever pelos administradores</td>
+<td style="text-align: left;">ICVM 409/2004, 65</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2.0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condições artificiais de negócio</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Operação fraudulenta</td>
+<td style="text-align: left;">ICVM 8/1979, a</td>
+<td style="text-align: right;">23</td>
+<td style="text-align: right;">1.9%</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Identificação e cadastro atualizado de clientes</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -1498,7 +1834,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">22</td>
 <td style="text-align: right;">1.8%</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Informações periódicas e eventuais</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -1506,7 +1842,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">21</td>
 <td style="text-align: right;">1.7%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Prática não equitativa</td>
 <td style="text-align: left;">Ilícitos de mercado</td>
 <td style="text-align: left;">Operação fraudulenta</td>
@@ -1514,11 +1850,19 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">20</td>
 <td style="text-align: right;">1.6%</td>
 </tr>
+<tr class="odd">
+<td style="text-align: left;">Auditores independentes (obrigações CFC)</td>
+<td style="text-align: left;">Auditoria</td>
+<td style="text-align: left;">Descumprimento de normas/responsabilidades profissionais de auditoria</td>
+<td style="text-align: left;">ICVM 308/1999, 20</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">1.6%</td>
+</tr>
 <tr class="even">
-<td style="text-align: left;">Oferta pública sem registro</td>
-<td style="text-align: left;">Oferta pública</td>
-<td style="text-align: left;">Oferta pública sem registro</td>
-<td style="text-align: left;">Lei 6385, 19</td>
+<td style="text-align: left;">Normas de conduta de administradores de carteiras</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Descumprimento do dever de diligência</td>
+<td style="text-align: left;">ICVM 306/1999, 14</td>
 <td style="text-align: right;">19</td>
 <td style="text-align: right;">1.6%</td>
 </tr>
@@ -1532,17 +1876,17 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 <tr class="even">
 <td style="text-align: left;">Dever de lealdade</td>
-<td style="text-align: left;">Informacionais</td>
-<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Uso de informação privilegiada (insider trading)</td>
 <td style="text-align: left;">Lei 6404, 155</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">1.5%</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Normas de conduta de administradores de carteiras</td>
-<td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Descumprimento do dever de diligência</td>
-<td style="text-align: left;">ICVM 306/1999, 14</td>
+<td style="text-align: left;">Dever de lealdade</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Problemas na divulgação de fato relevante</td>
+<td style="text-align: left;">Lei 6404, 155</td>
 <td style="text-align: right;">18</td>
 <td style="text-align: right;">1.5%</td>
 </tr>
@@ -1579,6 +1923,14 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">1.4%</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">Desvio de poder</td>
+<td style="text-align: left;">Societário</td>
+<td style="text-align: left;">Ato societário irregular</td>
+<td style="text-align: left;">Lei 6404, 154</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">1.4%</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Formulário de informações trimestrais – ITR</td>
 <td style="text-align: left;">Informacionais</td>
 <td style="text-align: left;">Não prestação de informações atualizadas</td>
@@ -1586,15 +1938,15 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">16</td>
 <td style="text-align: right;">1.3%</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">Obrigações do administrador do fundo de investimento</td>
-<td style="text-align: left;">Societário</td>
-<td style="text-align: left;">Violação do dever pelos administradores</td>
-<td style="text-align: left;">ICVM 409/2004, 65</td>
-<td style="text-align: right;">16</td>
-<td style="text-align: right;">1.3%</td>
-</tr>
 <tr class="even">
+<td style="text-align: left;">Informações periódicas</td>
+<td style="text-align: left;">Informacionais</td>
+<td style="text-align: left;">Falhas em escrituração contábil, livros sociais e DFs</td>
+<td style="text-align: left;">ICVM 480/2009, 21</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">1.2%</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">Dever de informar do administrador</td>
 <td style="text-align: left;">Societário</td>
 <td style="text-align: left;">Violação do dever pelos administradores</td>
@@ -1602,13 +1954,21 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">1.2%</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Fiscalização da gestão dos diretores</td>
 <td style="text-align: left;">Societário</td>
 <td style="text-align: left;">Ato societário irregular</td>
 <td style="text-align: left;">Lei 6404, 142, III</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">1.2%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Condições artificiais de negócio</td>
+<td style="text-align: left;">Ilícitos de mercado</td>
+<td style="text-align: left;">Criação de condições artificiais de negócio</td>
+<td style="text-align: left;">ICVM 8/1979, a</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">1.1%</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Manipulação de preços</td>
@@ -1673,7 +2033,7 @@ code span.wa { color: #545454; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <p>A Figura <a href="#fig:temas-agg">1</a> contém as combinações mais frequentes de temas dentro de um mesmo processo. A tabela mostra que um processo com vários temas é incomum, já que as 15 combinações mais frequentes concentram 91,2% dos casos. Assumindo essa pequena perda de informação, é possível analisar as combinações de tema como variável no nível de processo.</p>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:temas-agg"></span>
+<div class="figure"><span style="display:block;" id="fig:temas-agg"></span>
 <img src="temas_files/figure-html5/temas-agg-1.png" alt="Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%." width="624" />
 <p class="caption">
 Figure 1: Combinações de temas mais frequentes nos processos analisados. Nesse caso, as proporções somam 100%.
