@@ -7,6 +7,8 @@ author:
     url: https://www.linkedin.com/in/rafael-stern-898b49a/
   - name: Ricardo Feliz Okamoto
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+  - name: João Torquato
+    url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/
   - name: Katerine Witkoski
     url: https://www.linkedin.com/in/katerinewitkoski/
 date: "`r Sys.Date()`"
