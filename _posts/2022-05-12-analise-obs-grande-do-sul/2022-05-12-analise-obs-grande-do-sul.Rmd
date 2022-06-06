@@ -1,13 +1,13 @@
 ---
 title: "Análise do Observatório da Insolvência - Rio Grande do Sul"
 description: |
-  Este artigo busca análisar o mais novo Observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.
+  Este artigo busca analisar o mais novo observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.
 author:
   - name: Katerine Witkoski
     url: https://www.linkedin.com/in/katerinewitkoski/
 date: "`r Sys.Date()`"
 categories:
-  - Analises
+  - Análises
   - Insolvência
   - Recuperação Judicial
 output:
@@ -55,37 +55,43 @@ As informações foram coletadas principalmente pela classificação manual, que
 
 Essa fase se constituí em uma prática completamente investigativa e minuciosa, a qual os pesquisadores coletam informações pré determinadas, interpretando texto e decisões. Após essa fase, são determinados níveis de qualidade e padrões aperfeiçoando a classificação dos dados, passando por diversos métodos de testes de qualidade, reduzindo falhas no processo de classificação e prejuízos de erros de inconsistências de dados. 
 
-A base de dados é originalmente dividida em três unidades observacionais: processos, partes e planos.  No total possui 505 casos, aos quais “401 tiveram o processamento da recuperação deferido, e somente 177 tiveram o plano de recuperação aprovado. Em 64 casos com plano aprovado, o processo foi encerrado após aprovação do plano, seja por cumprimento do plano ou falência”.  # colocar referência
+A base de dados é originalmente dividida em três unidades observacionais: processos, partes e planos.  No total possui 505 casos, aos quais “401 tiveram o processamento da recuperação deferido, e somente 177 tiveram o plano de recuperação aprovado. Em 64 casos com plano aprovado, o processo foi encerrado após aprovação do plano, seja por cumprimento do plano ou falência”[^foot1].
+
+[^foot1]: [Relatório ABJ - Observatório da Insolvência - Rio Grande do Sul](https://abjur.github.io/obsRJRS/relatorio/index.html)
+
 
 ## Resultados
 
-No fim, de janeiro de 2021 é de importância destacar que entraram em vigor as alterações trazidas pela Lei Lei nº 14.112/20 à Lei nº 11.101/05, a qual se trata a recuperação judicial. O novo texto levantou pontos diversos pontos positivos para a análise, como por exemplo, a inclusão da constatação prévia expressamente prevista na lei, formalizando a possibilidade de, após o ajuizamento do pedido de recuperação judicial, o juiz nomear profissional especializado para promover a constatação das reais condições de funcionamento e regularidade da documentação do devedor. 
+No fim, de janeiro de 2021 é de importância destacar que entraram em vigor as alterações trazidas pela Lei Lei nº 14.112/20 à Lei nº 11.101/05, a qual se trata a recuperação judicial. 
+
+O novo texto levantou pontos diversos pontos positivos para a análise, como por exemplo, a inclusão da constatação prévia expressamente prevista na lei, formalizando a possibilidade de, após o ajuizamento do pedido de recuperação judicial, o juiz nomear profissional especializado para promover a constatação das reais condições de funcionamento e regularidade da documentação do devedor.
+
 Em nosso estudo “observamos menor incidência de casos com pedidos para constatação prévia. Isso é explicado pela forma determinada e realizada a perícia, que atualmente é muito comum acontecer de forma extraordinária aos moldes de decisão interlocutória. Dificultando a coleta de informações sobre esse tema.”
 
 ```{r constatacao,  eval = TRUE, echo = FALSE}
 da_sul_def |>
   dplyr::filter(!is.na(deferido))  |>
-  dplyr::filter(!is.na(pericia),!is.na(emenda)) |>
+  dplyr::filter(!is.na(pericia), !is.na(emenda)) |>
   dplyr::count(pericia, emenda, deferido)  |>
   tidyr::pivot_wider(names_from = deferido,
                      values_from = n,
                      values_fill = 0) |>
-  dplyr::mutate(taxa_def = abjDash::pct(`Sim` / (`Sim` + `Não`))) |>
+  dplyr::mutate(taxa_def = abjDash::pct( `Sim` / (`Sim` + `Não`))) |>
   dplyr::mutate(
     pericia = dplyr::case_when(
       pericia == "Sim" ~ "Com constatação prévia",
       pericia == "Não" ~ "Sem constatação prévia"
     )
-  ) |>
-  ggplot2::ggplot(ggplot2::aes(x = pericia, y = taxa_def, colour = emenda)) +
-  ggplot2::geom_col(colour = "grey") +
-  ggplot2::scale_colour_viridis_d(begin = 0.2, end = 0.8) +
+  ) |> 
+  ggplot2::ggplot(ggplot2::aes(x = emenda, y = taxa_def, fill = pericia)) +
+  ggplot2::geom_col() +
+  ggplot2::scale_fill_viridis_d(begin = 0.2, end = 0.8) +
   ggplot2::theme_minimal(14) +
   ggplot2::theme(legend.position = "bottom") +
-  ggplot2::labs(x = "Constatação Prévia",
+  ggplot2::labs(x = "Emenda determinada",
                 y = "Taxa de deferimento",
-                colour = "Emenda determinada")
-  
+                fill = "Constatação Prévia")
+
   
 ```
 
@@ -110,7 +116,6 @@ da_sul_def |>
   )
 ```
 
-
-
 Pelos dados coletados, as varas especializadas determinam maior número de emendas à petição inicial. Do total de processos da especializada, 39,5% sofrem emendas à petição inicial. Na comum, esses números são de apenas 25,0%.
 
+Por fim, a Lei nº 11.101/2005 traz diversas medidas para que o empresário cumpra a fim de tentar reerguer a atividade empresária sem participar do processo de falência, e a pesquisa demonstrou uma extrema importância que a possibilidade de analisar a prática de todo o  procedimento responsável em regulamentar a vida da empresa em momentos de dificuldade econômica, mantendo principalmente na medida do possível uma relação mais equilibrada com segurança e proteção dos direitos de todos os envolvidos.
