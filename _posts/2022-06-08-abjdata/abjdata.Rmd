@@ -1,0 +1,25 @@
+---
+title: "abjData"
+description: |
+  A short description of the post.
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+  - name: Ricardo Feliz Okamoto
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+  - name: Katerine Witkoski
+    url: https://www.linkedin.com/in/katerinewitkoski/
+date: 2022-06-08
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+Hoje colocamos no ar o pacote `{abjData}`. O pacote contém bases de dados úteis para quem trabalha com jurimetria, e algumas amostras de bases de dados que utilizamos em nosso livro.
+
+(em construção...)
