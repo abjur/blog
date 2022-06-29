@@ -28,6 +28,15 @@
       <media:content url="https://lab.abj.org.br/posts/2022-05-25-ferramenta-adocao/img/imagem_1.png" medium="image" type="image/png" width="1178" height="804"/>
     </item>
     <item>
+      <title>Redesim</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <link>https://lab.abj.org.br/posts/2022-05-03-redesim</link>
+      <description>Analisando dados da Rede Nacional para a Simplificação do Registro e da Legalização de Empresas e Negócios.</description>
+      <guid>https://lab.abj.org.br/posts/2022-05-03-redesim</guid>
+      <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2022-05-03-redesim/redesim.png" medium="image" type="image/png" width="3900" height="2400"/>
+    </item>
+    <item>
       <title>Questões sobre indicadores de acesso à justiça</title>
       <dc:creator>Ricardo Feliz Okamoto</dc:creator>
       <link>https://lab.abj.org.br/posts/2022-05-02-acesso-a-justica</link>
