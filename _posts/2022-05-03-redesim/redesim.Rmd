@@ -24,7 +24,7 @@ A [Rede Nacional para a Simplificação do Registro e da Legalização de Empres
 - Abreviar e simplificar os procedimentos para abertura de empresas e
 - Diminuir o tempo e o custo para o registro e a legalização das empresas, reduzindo a burocracia ao mínimo necessário.
 
-Para nossos fins jurimétricos, a vantagem da Redesim é que com ela temos uma base de dados bastante interessante 
+Para nossos fins jurimétricos, a vantagem da Redesim é que com ela temos uma base de dados bastante interessante.
 
 Em 2021, construímos no Laboratório de Jurimetria um robô de captura dos dados da Redesim. O robô pode ser acessado através do pacote [`{redesim}`](https://github.com/abjur/redesim), que pode ser acessado no GitHub da ABJ.
 
