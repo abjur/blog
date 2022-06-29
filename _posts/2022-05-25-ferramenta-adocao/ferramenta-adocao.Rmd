@@ -11,7 +11,7 @@ author:
     url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/
   - name: Katerine Witkoski
     url: https://www.linkedin.com/in/katerinewitkoski/
-date: "`r Sys.Date()`"
+date: 2022-05-25
 output:
   distill::distill_article:
     self_contained: false
