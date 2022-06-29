@@ -5,7 +5,7 @@ description: |
 author:
   - name: Rafael Bassi Stern
     url: https://www.linkedin.com/in/rafael-stern-898b49a/
-  - name: Ricardo Feliz Okamoto
+  - name: Ricardo Feliz
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
   - name: João Torquato
     url: https://www.linkedin.com/in/jo%C3%A3o-marcelo-torquato-157b0a16a/

@@ -3,7 +3,7 @@ title: "Questões sobre indicadores de acesso à justiça"
 description: |
   Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas.
 author:
-  - name: Ricardo Feliz Okamoto
+  - name: Ricardo Feliz
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
 date: 2022-05-02
 output:
