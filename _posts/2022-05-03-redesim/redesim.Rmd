@@ -6,6 +6,7 @@ author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
 date: 2022-05-03
+preview: redesim.png
 output:
   distill::distill_article:
     self_contained: true
