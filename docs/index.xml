@@ -12,7 +12,16 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 25 May 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Redesim</title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <link>https://lab.abj.org.br/posts/2022-05-03-redesim</link>
+      <description>Analisando dados da Rede Nacional para a Simplificação do Registro e da Legalização de Empresas e Negócios.</description>
+      <guid>https://lab.abj.org.br/posts/2022-05-03-redesim</guid>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2022-05-03-redesim/redesim.png" medium="image" type="image/png" width="3900" height="2400"/>
+    </item>
     <item>
       <title>Uma nova ferramenta para auxiliar os processos de adoção</title>
       <dc:creator>Rafael Bassi Stern</dc:creator>
@@ -26,15 +35,6 @@
       <guid>https://lab.abj.org.br/posts/2022-05-25-ferramenta-adocao</guid>
       <pubDate>Wed, 25 May 2022 00:00:00 +0000</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-05-25-ferramenta-adocao/img/imagem_1.png" medium="image" type="image/png" width="1178" height="804"/>
-    </item>
-    <item>
-      <title>Redesim</title>
-      <dc:creator>Julio Trecenti</dc:creator>
-      <link>https://lab.abj.org.br/posts/2022-05-03-redesim</link>
-      <description>Analisando dados da Rede Nacional para a Simplificação do Registro e da Legalização de Empresas e Negócios.</description>
-      <guid>https://lab.abj.org.br/posts/2022-05-03-redesim</guid>
-      <pubDate>Tue, 03 May 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://lab.abj.org.br/posts/2022-05-03-redesim/redesim.png" medium="image" type="image/png" width="3900" height="2400"/>
     </item>
     <item>
       <title>Questões sobre indicadores de acesso à justiça</title>
