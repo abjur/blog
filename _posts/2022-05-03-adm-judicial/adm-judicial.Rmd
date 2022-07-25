@@ -6,6 +6,7 @@ author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
 date: 2022-05-03
+preview: distill-preview.png
 output:
   distill::distill_article:
     self_contained: true
@@ -17,15 +18,15 @@ knitr::opts_chunk$set(echo = FALSE)
 
 O Direito se manifesta em muitos lugares, mas certamente o primeiro que pensamos é o judiciário. Eu pelo menos, mesmo trabalhando por muitos anos na área, ainda imagino aquele martelinho do juiz togado quando penso em direito.
 
-```{r, fig.cap='Foto de Tingey Injury Law Firm, retirada do Unsplash.'}
-knitr::include_graphics("gavel.jpg")
+```{r, fig.cap='Foto de Tingey Injury Law Firm, retirada do Unsplash'}
+knitr::include_graphics("distill-preview.png")
 ```
 
-Como o Direito remete naturalmente ao judiciário, é natural imaginar que a jurimetria remete à análise de dados do judiciário. De fato, muito do que se faz em jurimetria hoje é fonte de aplicações da estatística nas decisões judiciais, mas isso não significa que tudo na Jurimetria utiliza o judiciário.
+Como o Direito remete naturalmente ao judiciário, é natural imaginar que a jurimetria remeta à análise de dados do judiciário. De fato, muito do que se faz em jurimetria hoje é fonte de aplicações da estatística nas decisões judiciais, mas isso não significa que tudo na Jurimetria utiliza o judiciário: há também uma parte do direito que se refere à estrutura administrativa do Estado.
 
-## Pesquisas usando dados administrativas
+## Pesquisas usando dados administrativos
 
-A ABJ possui pelo menos quatro pesquisas analisando dados do Administrativo. As fontes de dados costumam ser as decisões de autarquias e outros órgãos do Governo. Descrevemos essas pesquisas abaixo.
+A ABJ possui pelo menos quatro pesquisas analisando dados da Administração Pública. As fontes de dados costumam ser as decisões de autarquias e outros órgãos do Governo, mas há também dados sobre as próprias entidades analisadas. Descrevemos essas pesquisas abaixo.
 
 O [Diagnóstico do Contencioso Tributário Administrativo](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/estudos/diagnostico-do-contencioso-tributario-administrativo) no Brasil traz as conclusões e os principais desafios relacionados à resolução de litígios administrativos tributários. O Relatório representa um esforço conjunto entre a Secretaria Especial da Receita Federal do Brasil e o Banco Interamericano de Desenvolvimento (BID).
 
@@ -33,13 +34,14 @@ O [Diagnóstico do Contencioso Tributário Administrativo](https://www.gov.br/re
 
 [Nosso estudo sobre o CARF](https://abj.org.br/cases/carf/) foi um dos primeiros trabalhos da ABJ, com o objetivo objetivo de auxiliar na elaboração e alteração de leis sobre o tema. Especificamente, o estudo buscou: i) analisar a evolução temporal do volume processual relacionado a: Tributo e Seção/conselho; ii) analisar o resultado do processo, relacionando-o com Tributo, Seção/conselho e tempo; iii) analisar o resultado do processo, relacionando-o com tipo de relator; iv) estudar a relação dos resultados dos processos com as seções de julgamento, os tipos societários e outras variáveis; v) associar os fundamentos de mérito por tributo com a quantidade de resultados favoráveis, relativamente aos contribuintes.
 
-Por fim, o estudo sobre [critérios objetivos para porte e tráfico de drogas](https://abj.org.br/cases/drogas-stf/) buscou investigar a necessidade da implementação de critérios objetivos para distinguir porte e tráfico de drogas, além de descrever os possíveis impactos sociais de sua aplicação.
+Por fim, o estudo sobre [critérios objetivos para porte e tráfico de drogas](https://abj.org.br/cases/drogas-stf/) buscou investigar a necessidade da implementação de critérios objetivos para distinguir porte e tráfico de drogas, além de descrever os possíveis impactos sociais de sua aplicação. A base utilizada neste estudo foi o Registro Digital de Ocorrências (RDO) da
+Secretaria de Segurança Pública do Estado de São Paulo (SSP-SP).
 
-## Por quê é difícil analisar dados do administrativo?
+## Por quê é difícil analisar dados da Administração Públic em comparação com os dados do Judiciário?
 
-A análise de dados de decisões administrativas costuma ser complicada. Isso ocorre porque não temos um CNJ dos dados administrativos e, por isso, cada entidade tem sua forma de organizar e disponibilizar os dados. O que mais sentimos falta nesse sentido são a [Resolução 46 (Tabelas Processuais Unificadas)](https://atos.cnj.jus.br/atos/detalhar/167) e a [Resolução 65 (Numeração Única)](https://atos.cnj.jus.br/atos/detalhar/119), que são os principais guias para realização de pesquisas no judiciário.
+A análise de dados de decisões administrativas costuma ser complicada. Isso ocorre porque não temos um "CNJ dos dados administrativos" e, por isso, cada entidade tem sua forma de organizar e disponibilizar os dados. O que mais sentimos falta nesse sentido são a [Resolução 46 (Tabelas Processuais Unificadas)](https://atos.cnj.jus.br/atos/detalhar/167) e a [Resolução 65 (Numeração Única)](https://atos.cnj.jus.br/atos/detalhar/119), que são os principais guias para realização de pesquisas no judiciário.
 
-A falta de uniformidade dos dados atrapalha muito a realização de pesquisas. Por exemplo, no estudo mais recente da ABJ sobre o [Contencioso Tributário Administrativo](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/estudos/diagnostico-do-contencioso-tributario-administrativo), precisamos construir um algoritmo de construção da base para cada estado e município que fizeram parte da pesquisa, além dos dados do CARF. Isso deu um trabalho muito grande e pouco relicável. Imagina expandir isso para o Brasil todo, é um caos!
+A falta de uniformidade dos dados atrapalha muito a realização de pesquisas. Por exemplo, no estudo mais recente da ABJ sobre o [Contencioso Tributário Administrativo](https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/publicacoes/estudos/diagnostico-do-contencioso-tributario-administrativo), precisamos construir um algoritmo de construção da base para cada estado e município que fizeram parte da pesquisa, além dos dados do CARF. Isso deu um trabalho muito grande e pouco replicável. Imagina expandir isso para o Brasil todo, seria um caos!
 
 Já no judiciário, estamos na expectativa do lançamento do DataJud. O DataJud é uma base de dados unificada dos processos judiciais de todo o Brasil, organizada pelo CNJ. Quando a base for liberada, veremos visualizações e análises aparecendo com muito mais frequência e teremos acesso a dados sobre diversas temáticas, como [nesse sistema](https://sirenejud.cnj.jus.br/mapa/geral), que mostra dados sobre o Meio Ambiente.
 
