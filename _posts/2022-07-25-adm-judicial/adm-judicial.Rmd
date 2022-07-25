@@ -5,7 +5,7 @@ description: |
 author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
-date: 2022-05-03
+date: 2022-07-25
 preview: distill-preview.png
 output:
   distill::distill_article:
@@ -37,7 +37,7 @@ O [Diagnóstico do Contencioso Tributário Administrativo](https://www.gov.br/re
 Por fim, o estudo sobre [critérios objetivos para porte e tráfico de drogas](https://abj.org.br/cases/drogas-stf/) buscou investigar a necessidade da implementação de critérios objetivos para distinguir porte e tráfico de drogas, além de descrever os possíveis impactos sociais de sua aplicação. A base utilizada neste estudo foi o Registro Digital de Ocorrências (RDO) da
 Secretaria de Segurança Pública do Estado de São Paulo (SSP-SP).
 
-## Por quê é difícil analisar dados da Administração Públic em comparação com os dados do Judiciário?
+## Por quê é difícil analisar dados da Administração Pública em comparação com os dados do Judiciário?
 
 A análise de dados de decisões administrativas costuma ser complicada. Isso ocorre porque não temos um "CNJ dos dados administrativos" e, por isso, cada entidade tem sua forma de organizar e disponibilizar os dados. O que mais sentimos falta nesse sentido são a [Resolução 46 (Tabelas Processuais Unificadas)](https://atos.cnj.jus.br/atos/detalhar/167) e a [Resolução 65 (Numeração Única)](https://atos.cnj.jus.br/atos/detalhar/119), que são os principais guias para realização de pesquisas no judiciário.
 
