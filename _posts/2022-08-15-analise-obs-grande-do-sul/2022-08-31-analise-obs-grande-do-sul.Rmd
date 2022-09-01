@@ -5,7 +5,7 @@ description: |
 author:
   - name: Katerine Witkoski
     url: https://www.linkedin.com/in/katerinewitkoski/
-date: 2022-08-15
+date: 2022-08-31
 categories:
   - Análises
   - Insolvência
