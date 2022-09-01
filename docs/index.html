@@ -2288,1119 +2288,1117 @@
   <!--radix_placeholder_article_listing-->
 
 
-  <script type="application/javascript">
+<script type="application/javascript">
 
-    function init_posts_list() {
+function init_posts_list() {
 
-      function load_image(img) {
-        var src = $(img).attr('data-src');
-        if (src) {
-          $(img).attr('src', src);
-          $(img).on("load", function () {
-            img.removeAttribute('data-src');
-          });
-        }
+  function load_image(img) {
+    var src = $(img).attr('data-src');
+    if (src) {
+      $(img).attr('src', src);
+      $(img).on("load", function() {
+        img.removeAttribute('data-src');
+      });
+    }
+  }
+
+  function set_posts_visible(posts, visible) {
+    if (visible) {
+
+      // show bottom border by default
+      $(posts).removeClass('post-preview-last');
+
+      // apply limits if need be
+      var max_posts = 25;
+      var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
+      if (apply_limits && posts.length > max_posts) {
+        posts = $(posts).slice(0, max_posts);
+      } else {
+        $('.posts-more a').addClass('hidden');
       }
 
-      function set_posts_visible(posts, visible) {
-        if (visible) {
+      // apply last style
+      $(posts.slice(-1)[0]).addClass('post-preview-last');
 
-          // show bottom border by default
-          $(posts).removeClass('post-preview-last');
+      $(posts).removeClass('hidden');
+      $(posts).find('img[data-src]').each(function(i, img) {
+        load_image(img);
+      });
+    } else {
+      $(posts).addClass('hidden');
+    }
+  }
 
-          // apply limits if need be
-          var max_posts = 25;
-          var apply_limits = $('.posts-container').hasClass('posts-apply-limit');
-          if (apply_limits && posts.length > max_posts) {
-            posts = $(posts).slice(0, max_posts);
-          } else {
-            $('.posts-more a').addClass('hidden');
+  function apply_hash_filter() {
+
+    // clear active state
+    $('.categories .active').removeClass('active');
+
+    // mark all posts invisible to start
+    set_posts_visible($('.posts-list').children('a'), false);
+
+    // if we have a hash filter
+    if (window.location.hash && window.location.hash.startsWith("#category:")) {
+
+      // mark posts that match the category visible
+      var page_category = window.location.hash.replace(/^#category:/, "");
+      page_category = decodeURIComponent(page_category)
+      var posts = $('.post-metadata').map(function(idx, script) {
+        var metadata = $.parseJSON($(script).html());
+        var post = null;
+        $.each(metadata.categories, function(idx, category) {
+          category = category.replace(/ /g,"_");
+          if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
+            post = $(script).parent().get();
+            return false;
           }
-
-          // apply last style
-          $(posts.slice(-1)[0]).addClass('post-preview-last');
-
-          $(posts).removeClass('hidden');
-          $(posts).find('img[data-src]').each(function (i, img) {
-            load_image(img);
-          });
-        } else {
-          $(posts).addClass('hidden');
-        }
-      }
-
-      function apply_hash_filter() {
-
-        // clear active state
-        $('.categories .active').removeClass('active');
-
-        // mark all posts invisible to start
-        set_posts_visible($('.posts-list').children('a'), false);
-
-        // if we have a hash filter
-        if (window.location.hash && window.location.hash.startsWith("#category:")) {
-
-          // mark posts that match the category visible
-          var page_category = window.location.hash.replace(/^#category:/, "");
-          page_category = decodeURIComponent(page_category)
-          var posts = $('.post-metadata').map(function (idx, script) {
-            var metadata = $.parseJSON($(script).html());
-            var post = null;
-            $.each(metadata.categories, function (idx, category) {
-              category = category.replace(/ /g, "_");
-              if ((page_category || '').toLowerCase() === "articles" || category === page_category) {
-                post = $(script).parent().get();
-                return false;
-              }
-            });
-            return post;
-          });
-          set_posts_visible(posts, true);
-
-          // mark the hash active
-          $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
-
-          // update the list_caption
-          var list_caption = $('.posts-list-caption');
-          var caption = (page_category || '').toLowerCase() === "articles"
-            ? list_caption.attr('data-caption')
-            : ('Category: ' + page_category.replace(/_/g, " "));
-          list_caption.text(caption);
-
-        } else {
-
-          // no hash filter, make all posts visible (subject to max display)
-          set_posts_visible($('.posts-list').children(), true);
-
-          // reset list caption
-          var list_caption = $('.posts-list-caption');
-          list_caption.text(list_caption.attr('data-caption'));
-
-
-        }
-      }
-
-      // more articles
-      function apply_post_limits(apply) {
-        if (apply) {
-          $('.posts-container').addClass('posts-apply-limit');
-          $('.posts-more a').removeClass('hidden');
-        } else {
-          $('.posts-container').removeClass('posts-apply-limit');
-          $('.posts-more a').addClass('hidden');
-        }
-      }
-
-      // click handling for tags
-      $('.dt-tag').click(function (ev) {
-        window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
-        return false;
-      })
-
-      // hash filter handling
-      apply_hash_filter();
-      $(window).on('hashchange', function () {
-        apply_post_limits(true);
-        apply_hash_filter();
+        });
+        return post;
       });
+      set_posts_visible(posts, true);
 
-      // more articles link
-      $('.posts-more a').click(function (e) {
-        e.preventDefault();
-        apply_post_limits(false);
-        apply_hash_filter();
-        return false;
-      });
+      // mark the hash active
+      $('.categories li>a[href="' + decodeURIComponent(window.location.hash) + '"]').addClass('active');
+
+      // update the list_caption
+      var list_caption = $('.posts-list-caption');
+      var caption = (page_category || '').toLowerCase() === "articles"
+        ? list_caption.attr('data-caption')
+        : ('Category: ' + page_category.replace(/_/g," "));
+      list_caption.text(caption);
+
+    } else {
+
+      // no hash filter, make all posts visible (subject to max display)
+      set_posts_visible($('.posts-list').children(), true);
+
+      // reset list caption
+      var list_caption = $('.posts-list-caption');
+      list_caption.text(list_caption.attr('data-caption'));
+
 
     }
+  }
 
-  </script>
+  // more articles
+  function apply_post_limits(apply) {
+    if (apply) {
+      $('.posts-container').addClass('posts-apply-limit');
+      $('.posts-more a').removeClass('hidden');
+    } else {
+      $('.posts-container').removeClass('posts-apply-limit');
+      $('.posts-more a').addClass('hidden');
+    }
+  }
+
+  // click handling for tags
+  $('.dt-tag').click(function(ev) {
+    window.location.hash = '#category:' + $(this).text().replace(/ /g, "_");
+    return false;
+  })
+
+  // hash filter handling
+  apply_hash_filter();
+  $(window).on('hashchange',function() {
+    apply_post_limits(true);
+    apply_hash_filter();
+  });
+
+  // more articles link
+  $('.posts-more a').click(function(e) {
+    e.preventDefault();
+    apply_post_limits(false);
+    apply_hash_filter();
+    return false;
+  });
+
+}
+
+</script>
 
 
 
-  <div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
-    <div class="posts-list">
-      <h1 class="posts-list-caption" data-caption="Direito na Medida">Direito na Medida</h1>
-      <a href="posts/2022-07-25-adm-judicial/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">July 25, 2022</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img src="posts/2022-07-25-adm-judicial/distill-preview.png" />
-        </div>
-        <div class="description">
-          <h2>Processos administrativos e judiciais</h2>
-          <div class="dt-tags"></div>
-          <p>Muitas pessoas confundem jurimetria como análise das decisões do judiciário. Neste post, explicamos essa
-            dúvida.</p>
-        </div>
-      </a>
-      <a href="posts/2022-05-02-acesso-a-justica/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Acesso justiça"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">May 2, 2022</div>
-          <div class="dt-authors">
-            <div class="dt-author">Ricardo Feliz</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img src="posts/2022-05-02-acesso-a-justica/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Questões sobre indicadores de acesso à justiça</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Acesso justiça</div>
-          </div>
-          <p>Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas
-            teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas.</p>
-        </div>
-      </a>
-      <a href="posts/2022-03-31-judicializacao-da-saude/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Saude"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">March 31, 2022</div>
-          <div class="dt-authors">
-            <div class="dt-author">Ricardo Feliz</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img src="posts/2022-03-31-judicializacao-da-saude/judicializacao-da-saude.png" />
-        </div>
-        <div class="description">
-          <h2>Como a jurimetria pode auxiliar a pesquisar a judicialização da saúde</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Saude</div>
-          </div>
-          <p>Este artigo busca discutir alguns aspectos práticos de como a jurimetria pode ser usada em pesquisas de
-            judicialização da saúde. Para tanto, o artigo se divide em duas partes principais: (a) possíveis perguntas
-            que a jurimetria pode responder; (b) um desenho de pesquisa possível para atacar essas perguntas. O objetivo
-            deste artigo é ampliar os horizontes de pesquisa utilizando jurimetria, mostrando como ela pode ajudar na
-            prática da pesquisa.</p>
-        </div>
-      </a>
-      <a href="posts/2022-03-03-2022-projecao/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Institucional"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">March 3, 2022</div>
-          <div class="dt-authors">
-            <div class="dt-author">Pedro Henrique Sperber</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img src="posts/2022-03-03-2022-projecao/imagens-lab.png" />
-        </div>
-        <div class="description">
-          <h2>2022: uma projeção para o próximo ano na ABJ</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Institucional</div>
-          </div>
-          <p>Ampliação no cronograma de eventos, novos projetos e atividades da ABJ para este ano</p>
-        </div>
-      </a>
-      <a href="posts/2022-02-04-retrospectiva-2021/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Feb. 4, 2022</div>
-          <div class="dt-authors">
-            <div class="dt-author">Pedro Henrique Sperber</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img src="posts/2022-02-04-retrospectiva-2021/retrospectiva-2021.png" />
-        </div>
-        <div class="description">
-          <h2>Retrospectiva 2021</h2>
-          <div class="dt-tags"></div>
-          <p>Este artigo faz uma retrospectiva dos eventos, projetos e observatórios que a ABJ realizou no ano de 2021.
-          </p>
-        </div>
-      </a>
-      <a href="posts/2021-12-17-discricionariedade-do-mp/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Ministerio Publico","Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Dec. 17, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Ricardo Feliz</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-12-17-discricionariedade-do-mp/imagens-lab.png" />
-        </div>
-        <div class="description">
-          <h2>O uso do poder discricionário pelo Ministério Público de São Paulo</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Ministerio Publico</div>
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Este artigo discute a forma como o Ministério Público exerce a sua discricionariedade, a partir de dados
-            cadastrais da instituição.</p>
-        </div>
-      </a>
-      <a href="posts/2021-11-30-comparativo-rj-sp/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Nov. 30, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">João Torquato</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img
-            data-src="posts/2021-11-30-comparativo-rj-sp/comparativo_sp_rj_files/figure-html5/Tempo-Deferimento-1.png" />
-        </div>
-        <div class="description">
-          <h2>Estudo Comparativo entre o OBS/SP e OBS/RJ</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Este artigo tem como objetivo realizar uma analise comparativa entre os observatorio de Recuperação
-            Judicial no Estado de São Paulo e Rio de Janeiro.</p>
-        </div>
-      </a>
-      <a href="posts/2021-10-27-cvm/" class="post-preview">
-        <script class="post-metadata"
-          type="text/json">{"categories":["Analises","CVM","Jurimetria","Processos Administrativos Sancionadores"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Oct. 27, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Katerine Witkoski</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-10-27-cvm/cvm-post_files/figure-html5/informacionais-motivo-1.png" />
-        </div>
-        <div class="description">
-          <h2>A importância do uso da jurimetria na análise do mercado de capitais</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-            <div class="dt-tag">CVM</div>
-            <div class="dt-tag">Jurimetria</div>
-            <div class="dt-tag">Processos Administrativos Sancionadores</div>
-          </div>
-          <p>Este artigo traz uma discussão sobre a importância da pesquisa jurimétrica sobre o mercado de capitais.</p>
-        </div>
-      </a>
-      <a href="posts/2021-09-19-faxinajud/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["dados abertos","programação"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Sept. 19, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-09-19-faxinajud/faxinajud.png" />
-        </div>
-        <div class="description">
-          <h2>FaxinaJud</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">dados abertos</div>
-            <div class="dt-tag">programação</div>
-          </div>
-          <p>Ferramenta para detecção de inconsistências da nova base de dados do CNJ: DataJud.</p>
-        </div>
-      </a>
-      <a href="posts/2021-08-24-leiloeiros/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Falencias","Observatorio","Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Aug. 24, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Ricardo Feliz</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-08-24-leiloeiros/leiloeiros_files/figure-html5/plot1-1.png" />
-        </div>
-        <div class="description">
-          <h2>O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Falencias</div>
-            <div class="dt-tag">Observatorio</div>
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo. Para isso,
-            optou-se por uma abordagem lúdica ao longo do texto, mas com considerações críticas ao final.</p>
-        </div>
-      </a>
-      <a href="posts/2021-08-17-alteracao-falencias/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Nova Lei de Falências"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Aug. 17, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Fábio Ulhoa Coelho</div>
-            <div class="dt-author">Marcelo Guedes Nunes</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img />
-        </div>
-        <div class="description">
-          <h2>Alterações da Lei de Falências</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Nova Lei de Falências</div>
-          </div>
-          <p>Uma avaliação da Reforma de 2020.</p>
-        </div>
-      </a>
-      <a href="posts/2021-07-26-paineis-cnj/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral","CNJ"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">July 26, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-07-26-paineis-cnj/paineis.png" />
-        </div>
-        <div class="description">
-          <h2>Painéis do CNJ</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-            <div class="dt-tag">CNJ</div>
-          </div>
-          <p>Conheça um pouco mais sobre os 6 Painéis do CNJ: Justiça em Números, Produtividade, Demandas Repetitivas,
-            Violência Doméstica, Sócio Ambiental e Priorização 1º Grau</p>
-        </div>
-      </a>
-      <a href="posts/2021-01-15-litigiosidade/" class="post-preview">
-        <script class="post-metadata"
-          type="text/json">{"categories":["Analises","Justiça","Desenvolvimento","Litigiosidade"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">June 30, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">João Torquato</div>
-            <div class="dt-author">Julio Trecenti</div>
-            <div class="dt-author">Katerine Witkoski</div>
-            <div class="dt-author">Ricardo Feliz</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png" />
-        </div>
-        <div class="description">
-          <h2>Litigiosidade e desenvolvimento</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-            <div class="dt-tag">Justiça</div>
-            <div class="dt-tag">Desenvolvimento</div>
-            <div class="dt-tag">Litigiosidade</div>
-          </div>
-          <p>Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento,
-            utilizando uma base de processos que extraídos nos Diários de Justiça e informações de IDH municipal.</p>
-        </div>
-      </a>
-      <a href="posts/2021-06-11-analise-1040/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">June 3, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-            <div class="dt-author">Marcelo Guedes Nunes</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-06-11-analise-1040/analise-1040_files/figure-html5/prop-viab-1.png" />
-        </div>
-        <div class="description">
-          <h2>Impactos da MPV 1.040/2021 no tempo de abertura de empresas</h2>
-          <div class="dt-tags"></div>
-          <p>Neste texto, analisamos os impactos potenciais da MPV 1.040/2021 através de um estudo simples de simulação
-            de cenários.</p>
-        </div>
-      </a>
-      <a href="posts/2021-05-20-assimetria/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">May 20, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Ricardo Feliz</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-05-20-assimetria/assimetria.png" />
-        </div>
-        <div class="description">
-          <h2>Efeitos da assimetria de interesses nos litígios</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>Análise de como a assimetria de interesses entre as partes pode afetar resultados de processos</p>
-        </div>
-      </a>
-      <a href="posts/2021-04-13-stf-controle-concentrado/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">April 13, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Rodrigo Filippi Dornelles</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-04-13-stf-controle-concentrado/grafico_perfil_ato_federal_questionado-1.png" />
-        </div>
-        <div class="description">
-          <h2>O STF, o controle concentrado e a pandemia</h2>
-          <div class="dt-tags"></div>
-          <p>Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020.</p>
-        </div>
-      </a>
-      <a href="posts/2021-03-22-levantamentos-abj/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">March 22, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Renata Hirota</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-03-22-levantamentos-abj/levantamentos.png" />
-        </div>
-        <div class="description">
-          <h2>Levantamentos feitos pela ABJ</h2>
-          <div class="dt-tags"></div>
-          <p>Com frequência, recebemos pedidos de dados para pesquisas acadêmicas. Estes são alguns dos principais
-            levantamentos que fizemos em 2020</p>
-        </div>
-      </a>
-      <a href="posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">March 12, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Tadeu A. Sena Gomes</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos/img/grafico_1.png" />
-        </div>
-        <div class="description">
-          <h2>Recuperação judicial e manutenção de empregos</h2>
-          <div class="dt-tags"></div>
-          <p>A recuperação judicial alcança o objetivo de permitir a manutenção do emprego dos trabalhadores? O que diz
-            a realidade empírica?</p>
-        </div>
-      </a>
-      <a href="posts/2021-02-23-novas-perspectivas-para-2021/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Feb. 23, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-02-23-novas-perspectivas-para-2021/Novas perspectivas.png" />
-        </div>
-        <div class="description">
-          <h2>Novas perspectivas para 2021</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>Fórum aberto de jurimetria, atendimento a pesquisadores, novo cronograma de eventos e outras atividades
-            previstas da ABJ para este ano</p>
-        </div>
-      </a>
-      <a href="posts/2021-02-01-pericia-emenda/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Feb. 1, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Alice Braile</div>
-            <div class="dt-author">Beatriz Nunes Cloud</div>
-            <div class="dt-author">Alfredo Cabrini Souza e Silva</div>
-            <div class="dt-author">Rafael Vasconcellos de Arruda</div>
-            <div class="dt-author">Gabriel José de Orleans e Bragança</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-02-01-pericia-emenda/grafico.png" />
-        </div>
-        <div class="description">
-          <h2>Perícia prévia e emenda à petição inicial</h2>
-          <div class="dt-tags"></div>
-          <p>O presente artigo tem por objetivo abordar a aplicação da perícia prévia e a emenda à petição inicial nos
-            processos de recuperação judicial e seus impactos nas decisões de deferimento do processamento.</p>
-        </div>
-      </a>
-      <a href="posts/2021-01-27-retrospectiva-2020/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":[]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Jan. 27, 2021</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2021-01-27-retrospectiva-2020/abj-2020.png" />
-        </div>
-        <div class="description">
-          <h2>Retrospectiva 2020</h2>
-          <div class="dt-tags"></div>
-          <p>Um resumo sobre andamento de projetos e atividades da ABJ em 2020</p>
-        </div>
-      </a>
-      <a href="posts/2020-12-17-constituicao/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises","Dados"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Dec. 17, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Caio Lente</div>
-            <div class="dt-author">Renata Hirota</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-12-17-constituicao/exploracon.png" />
-        </div>
-        <div class="description">
-          <h2>Facilitando análises sobre a Constituição</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-            <div class="dt-tag">Dados</div>
-          </div>
-          <p>Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo</p>
-        </div>
-      </a>
-      <a href="posts/2020-12-07-cifra-oculta/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises","CNJ"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Dec. 14, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Ricardo Feliz</div>
-            <div class="dt-author">João Torquato</div>
-            <div class="dt-author">Julio Trecenti</div>
-            <div class="dt-author">Katerine Witkoski</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-12-07-cifra-oculta/img/exemplo.png" />
-        </div>
-        <div class="description">
-          <h2>O problema da cifra oculta nos tribunais brasileiros</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-            <div class="dt-tag">CNJ</div>
-          </div>
-          <p>Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados
-            utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro,
-            Amazonas e Pernambuco.</p>
-        </div>
-      </a>
-      <a href="posts/2020-12-09-covid/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Levantamentos","Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Dec. 9, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-            <div class="dt-author">João Marcelo Torquato</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-12-09-covid/covid_files/figure-html5/fig-semana-1.png" />
-        </div>
-        <div class="description">
-          <h2>Sentenças que mencionam Covid-19 no TJSP</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Levantamentos</div>
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.</p>
-        </div>
-      </a>
-      <a href="posts/2020-11-10-candidatos2020/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Levantamentos"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Nov. 10, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-            <div class="dt-author">Renata Hirota</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-11-10-candidatos2020/candidatos2020.png" />
-        </div>
-        <div class="description">
-          <h2>Eleições 2020: Candidatos envolvidos em processos criminais</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Levantamentos</div>
-          </div>
-          <p>Levantamento da ABJ publicado pelo G1</p>
-        </div>
-      </a>
-      <a href="posts/2020-10-23-empresas/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Oct. 23, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png" />
-        </div>
-        <div class="description">
-          <h2>Empresas CVM</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Observatorio</div>
-            <div class="dt-tag">CVM</div>
-          </div>
-          <p>Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores
-            Mobiliários.</p>
-        </div>
-      </a>
-      <a href="posts/2020-10-23-temas/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Sept. 10, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png" />
-        </div>
-        <div class="description">
-          <h2>Temas e condutas</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Observatorio</div>
-            <div class="dt-tag">CVM</div>
-          </div>
-          <p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores
-            Mobiliários.</p>
-        </div>
-      </a>
-      <a href="posts/2020-10-23-paps/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">July 20, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-10-23-paps/img/estrutura.png" />
-        </div>
-        <div class="description">
-          <h2>Processos pré-sancionadores</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Observatorio</div>
-            <div class="dt-tag">CVM</div>
-          </div>
-          <p>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</p>
-        </div>
-      </a>
-      <a href="posts/2020-01-20-carf/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Jan. 20, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Renata Hirota</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png" />
-        </div>
-        <div class="description">
-          <h2>Cinco anos de Operação Zelotes</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>As mudanças no CARF após investigações de corrupção.</p>
-        </div>
-      </a>
-      <a href="posts/2020-01-12-welcome/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Jan. 12, 2020</div>
-          <div class="dt-authors">
-            <div class="dt-author">Marcelo Guedes Nunes</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2020-01-12-welcome/abj.png" />
-        </div>
-        <div class="description">
-          <h2>Nosso portal</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>Esse é o laboratório da Associação Brasileira de Jurimetria.
-            Esperamos que goste!</p>
-        </div>
-      </a>
-      <a href="posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Nov. 19, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Como o big data pode auxiliar a prática da lei</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>Benefícios e implicações das novas tecnologias para a prática jurídica</p>
-        </div>
-      </a>
-      <a href="posts/2019-10-15-mas-afinal-o-que-jurimetria/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Conceitos","Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Oct. 15, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Fernando Corrêa</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2019-10-15-mas-afinal-o-que-jurimetria/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Mas, afinal, o que é jurimetria?</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Conceitos</div>
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>Responder à pergunta "o que é?" frequentemente nos afasta do "como se faz?. Não há uma cartilha a ser
-            seguida, apenas um conjunto de princípios que deixam próximas todas as formas de Jurimetria</p>
-        </div>
-      </a>
-      <a href="posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/"
-        class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Sept. 27, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img
-            data-src="posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Favoritismo Judicial de políticos: Evidências nos Juizados Especiais Cíveis</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Mais de 6.000 simulações de decisões judiciais imparciais mostram que réus comuns têm decisão favorável nos
-            JECs em 25% dos casos, enquanto que políticos têm decisão favorável em 31% dos processos.</p>
-        </div>
-      </a>
-      <a href="posts/2019-09-17-camaras-reservadas-direito-empresarial/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Sept. 17, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2019-09-17-camaras-reservadas-direito-empresarial/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Características e evolução das decisões nas Câmaras Reservadas de Direito Empresarial</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Análise das principais características e evolução das decisões das câmaras por assunto e comarca de origem
-          </p>
-        </div>
-      </a>
-      <a href="posts/2019-09-02-um-ano-e-meio-das-varas-empresariais-de-so-paulo-uma-iniciativa-de-sucesso/"
-        class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Sept. 2, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Marcelo Guedes Nunes</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img
-            data-src="posts/2019-09-02-um-ano-e-meio-das-varas-empresariais-de-so-paulo-uma-iniciativa-de-sucesso/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Um ano e meio das varas empresariais de São Paulo: uma iniciativa de sucesso</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Especialização o Poder Judiciário paulista passou a ser vista pela comunidade empresarialista como uma
-            alternativa viável e competitiva para resoluções</p>
-        </div>
-      </a>
-      <a href="posts/2019-08-27-jurimetria-e-inteligncia-artificial/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Conceitos"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Aug. 27, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2019-08-27-jurimetria-e-inteligncia-artificial/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Jurimetria e Inteligência Artificial</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Conceitos</div>
-          </div>
-          <p>Diferenças entre os dois conceitos e como a jurimetria utiliza IA nos seus processos práticos</p>
-        </div>
-      </a>
-      <a href="posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">Aug. 20, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Bárbara Tassoni</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Jurimetria e dados: A importância de bases estruturadas</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>Dados sozinhos, fora de contexto, não transmitem mensagens. Mas quando adequadamente tratados, conseguimos
-            interpretá-los e transformá-los em informações que podem ser usadas para melhorar uma tomada de decisão</p>
-        </div>
-      </a>
-      <a href="posts/2019-05-05-o-abandono-afetivo-e-seu-padro-de-julgamento-em-so-paulo/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">May 5, 2019</div>
-          <div class="dt-authors">
-            <div class="dt-author">Amanda Alves de Souza</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2019-05-05-o-abandono-afetivo-e-seu-padro-de-julgamento-em-so-paulo/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>O Abandono Afetivo e seu padrão de julgamento em São Paulo</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>A short description of the post.</p>
-        </div>
-      </a>
-      <a href="posts/2018-05-21-nuances-no-clculo-de-tempos-processuais/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Conceitos","Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">May 21, 2018</div>
-          <div class="dt-authors">
-            <div class="dt-author">Fernando Corrêa</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2018-05-21-nuances-no-clculo-de-tempos-processuais/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Nuances no cálculo de tempos processuais</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Conceitos</div>
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Uma comparação metodológica entre estudos prospectivos e retrospectivos no cálculo de tempos</p>
-        </div>
-      </a>
-      <a href="posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/"
-        class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">May 14, 2018</div>
-          <div class="dt-authors">
-            <div class="dt-author">Jhenifer Caetano Veloso</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img
-            data-src="posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Contribuições da ABJ para o aprimoramento do sistema de adoção do Brasil</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>Pesquisa da ABJ inspirou o Projeto de Lei 5850/2016, sancionado em 22/11/2017 (Lei 13.509/2017), que
-            agiliza procedimentos relacionados à destituição de poder familiar e à adoção de crianças e adolescentes</p>
-        </div>
-      </a>
-      <a href="posts/2018-04-16-princpios-conflitantes-e-a-jurimetria/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">April 16, 2018</div>
-          <div class="dt-authors">
-            <div class="dt-author">Rafael Bassi Stern</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2018-04-16-princpios-conflitantes-e-a-jurimetria/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Princípios conflitantes e a Jurimetria</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Geral</div>
-          </div>
-          <p>A jurimetria apresenta-se como uma ferramenta valiosa para complementar argumentos jurídicos tradicionais
-            na interpretação da Constituição</p>
-        </div>
-      </a>
-      <a href="posts/2018-03-13-quando-a-doutrina-jurdica-pode-ser-til-de-verdade/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">March 13, 2018</div>
-          <div class="dt-authors">
-            <div class="dt-author">Marcelo Guedes Nunes</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2018-03-13-quando-a-doutrina-jurdica-pode-ser-til-de-verdade/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Quando a doutrina jurídica pode ser útil de verdade?</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Analises</div>
-          </div>
-          <p>O direito não pode ser reduzido a um ramo literário de interpretação de textos das normas, desatento às
-            consequências sociais das suas decisões</p>
-        </div>
-      </a>
-      <a href="posts/2018-03-01-por-que-usar-r-para-jurimetria/" class="post-preview">
-        <script class="post-metadata" type="text/json">{"categories":["Programacao"]}</script>
-        <div class="metadata">
-          <div class="publishedDate">March 1, 2018</div>
-          <div class="dt-authors">
-            <div class="dt-author">Julio Trecenti</div>
-          </div>
-        </div>
-        <div class="thumbnail">
-          <img data-src="posts/2018-03-01-por-que-usar-r-para-jurimetria/img/imagem.png" />
-        </div>
-        <div class="description">
-          <h2>Por que usar R para jurimetria?</h2>
-          <div class="dt-tags">
-            <div class="dt-tag">Programacao</div>
-          </div>
-          <p>A dificuldade de acessar e mastigar os dados leva à necessidade de utilizar ferramentas computacionais
-            adequadas</p>
-        </div>
-      </a>
-    </div>
-    <div class="posts-sidebar">
-      <div class="sidebar-section categories">
-        <h3>Categories</h3>
-        <ul>
-          <li>
-            <a href="#category:Articles">Articles</a>
-            <span class="category-count">(43)</span>
-          </li>
-          <li>
-            <a href="#category:Acesso_justiça">Acesso justiça</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Analises">Analises</a>
-            <span class="category-count">(16)</span>
-          </li>
-          <li>
-            <a href="#category:CNJ">CNJ</a>
-            <span class="category-count">(2)</span>
-          </li>
-          <li>
-            <a href="#category:Conceitos">Conceitos</a>
-            <span class="category-count">(3)</span>
-          </li>
-          <li>
-            <a href="#category:CVM">CVM</a>
-            <span class="category-count">(4)</span>
-          </li>
-          <li>
-            <a href="#category:Dados">Dados</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:dados_abertos">dados abertos</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Desenvolvimento">Desenvolvimento</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Falencias">Falencias</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Geral">Geral</a>
-            <span class="category-count">(8)</span>
-          </li>
-          <li>
-            <a href="#category:Institucional">Institucional</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Jurimetria">Jurimetria</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Justiça">Justiça</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Levantamentos">Levantamentos</a>
-            <span class="category-count">(2)</span>
-          </li>
-          <li>
-            <a href="#category:Litigiosidade">Litigiosidade</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Ministerio_Publico">Ministerio Publico</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Nova_Lei_de_Falências">Nova Lei de Falências</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Observatorio">Observatorio</a>
-            <span class="category-count">(4)</span>
-          </li>
-          <li>
-            <a href="#category:Processos_Administrativos_Sancionadores">Processos Administrativos Sancionadores</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Programacao">Programacao</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:programação">programação</a>
-            <span class="category-count">(1)</span>
-          </li>
-          <li>
-            <a href="#category:Saude">Saude</a>
-            <span class="category-count">(1)</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <div class="posts-more">
-      <a href="#">More articles &raquo;</a>
-    </div>
-  </div>
-  <!--/radix_placeholder_article_listing-->
+<div class="posts-container posts-with-sidebar posts-apply-limit l-screen-inset">
+<div class="posts-list">
+<h1 class="posts-list-caption" data-caption="Direito na Medida">Direito na Medida</h1>
+<a href="posts/2022-08-15-analise-obs-grande-do-sul/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Análises","Insolvência","Recuperação Judicial"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 31, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Katerine Witkoski</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2022-08-15-analise-obs-grande-do-sul/2022-08-31-analise-obs-grande-do-sul_files/figure-html5/constatacao-1.png"/>
+</div>
+<div class="description">
+<h2>Análise do Observatório da Insolvência - Rio Grande do Sul</h2>
+<div class="dt-tags">
+<div class="dt-tag">Análises</div>
+<div class="dt-tag">Insolvência</div>
+<div class="dt-tag">Recuperação Judicial</div>
+</div>
+<p>Este artigo busca analisar o mais novo observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.</p>
+</div>
+</a>
+<a href="posts/2022-05-12-analise-obs-grande-do-sul/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Análises","Insolvência","Recuperação Judicial"]}</script>
+<div class="metadata">
+<div class="publishedDate">June 6, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Katerine Witkoski</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2022-05-12-analise-obs-grande-do-sul/2022-05-12-analise-obs-grande-do-sul_files/figure-html5/constatacao-1.png"/>
+</div>
+<div class="description">
+<h2>Análise do Observatório da Insolvência - Rio Grande do Sul</h2>
+<div class="dt-tags">
+<div class="dt-tag">Análises</div>
+<div class="dt-tag">Insolvência</div>
+<div class="dt-tag">Recuperação Judicial</div>
+</div>
+<p>Este artigo busca analisar o mais novo observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.</p>
+</div>
+</a>
+<a href="posts/2022-05-02-acesso-a-justica/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Acesso justiça"]}</script>
+<div class="metadata">
+<div class="publishedDate">May 2, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Ricardo Feliz</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2022-05-02-acesso-a-justica/imagem.png"/>
+</div>
+<div class="description">
+<h2>Questões sobre indicadores de acesso à justiça</h2>
+<div class="dt-tags">
+<div class="dt-tag">Acesso justiça</div>
+</div>
+<p>Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas.</p>
+</div>
+</a>
+<a href="posts/2022-03-31-judicializacao-da-saude/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Saude"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 31, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Ricardo Feliz</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2022-03-31-judicializacao-da-saude/judicializacao-da-saude.png"/>
+</div>
+<div class="description">
+<h2>Como a jurimetria pode auxiliar a pesquisar a judicialização da saúde</h2>
+<div class="dt-tags">
+<div class="dt-tag">Saude</div>
+</div>
+<p>Este artigo busca discutir alguns aspectos práticos de como a jurimetria pode ser usada em pesquisas de judicialização da saúde. Para tanto, o artigo se divide em duas partes principais: (a) possíveis perguntas que a jurimetria pode responder; (b) um desenho de pesquisa possível para atacar essas perguntas. O objetivo deste artigo é ampliar os horizontes de pesquisa utilizando jurimetria, mostrando como ela pode ajudar na prática da pesquisa.</p>
+</div>
+</a>
+<a href="posts/2022-03-03-2022-projecao/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Institucional"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 3, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Pedro Henrique Sperber</div>
+</div>
+</div>
+<div class="thumbnail">
+<img src="posts/2022-03-03-2022-projecao/imagens-lab.png"/>
+</div>
+<div class="description">
+<h2>2022: uma projeção para o próximo ano na ABJ</h2>
+<div class="dt-tags">
+<div class="dt-tag">Institucional</div>
+</div>
+<p>Ampliação no cronograma de eventos, novos projetos e atividades da ABJ para este ano</p>
+</div>
+</a>
+<a href="posts/2022-02-04-retrospectiva-2021/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Feb. 4, 2022</div>
+<div class="dt-authors">
+<div class="dt-author">Pedro Henrique Sperber</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2022-02-04-retrospectiva-2021/retrospectiva-2021.png"/>
+</div>
+<div class="description">
+<h2>Retrospectiva 2021</h2>
+<div class="dt-tags"></div>
+<p>Este artigo faz uma retrospectiva dos eventos, projetos e observatórios que a ABJ realizou no ano de 2021.</p>
+</div>
+</a>
+<a href="posts/2021-12-17-discricionariedade-do-mp/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Ministerio Publico","Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 17, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Ricardo Feliz</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-12-17-discricionariedade-do-mp/imagens-lab.png"/>
+</div>
+<div class="description">
+<h2>O uso do poder discricionário pelo Ministério Público de São Paulo</h2>
+<div class="dt-tags">
+<div class="dt-tag">Ministerio Publico</div>
+<div class="dt-tag">Analises</div>
+</div>
+<p>Este artigo discute a forma como o Ministério Público exerce a sua discricionariedade, a partir de dados cadastrais da instituição.</p>
+</div>
+</a>
+<a href="posts/2021-11-30-comparativo-rj-sp/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 30, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">João Torquato</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-11-30-comparativo-rj-sp/comparativo_sp_rj_files/figure-html5/Tempo-Deferimento-1.png"/>
+</div>
+<div class="description">
+<h2>Estudo Comparativo entre o OBS/SP e OBS/RJ</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>Este artigo tem como objetivo realizar uma analise comparativa entre os observatorio de Recuperação Judicial no Estado de São Paulo e Rio de Janeiro.</p>
+</div>
+</a>
+<a href="posts/2021-10-27-cvm/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises","CVM","Jurimetria","Processos Administrativos Sancionadores"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 27, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Katerine Witkoski</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-10-27-cvm/cvm-post_files/figure-html5/informacionais-motivo-1.png"/>
+</div>
+<div class="description">
+<h2>A importância do uso da jurimetria na análise do mercado de capitais</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+<div class="dt-tag">CVM</div>
+<div class="dt-tag">Jurimetria</div>
+<div class="dt-tag">Processos Administrativos Sancionadores</div>
+</div>
+<p>Este artigo traz uma discussão sobre a importância da pesquisa jurimétrica sobre o mercado de capitais.</p>
+</div>
+</a>
+<a href="posts/2021-09-19-faxinajud/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["dados abertos","programação"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 19, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-09-19-faxinajud/faxinajud.png"/>
+</div>
+<div class="description">
+<h2>FaxinaJud</h2>
+<div class="dt-tags">
+<div class="dt-tag">dados abertos</div>
+<div class="dt-tag">programação</div>
+</div>
+<p>Ferramenta para detecção de inconsistências da nova base de dados do CNJ: DataJud.</p>
+</div>
+</a>
+<a href="posts/2021-08-24-leiloeiros/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Falencias","Observatorio","Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 24, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Ricardo Feliz</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-08-24-leiloeiros/leiloeiros_files/figure-html5/plot1-1.png"/>
+</div>
+<div class="description">
+<h2>O jogo dos leiloeiros: quem é o melhor leiloeiro judicial de São Paulo?</h2>
+<div class="dt-tags">
+<div class="dt-tag">Falencias</div>
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">Analises</div>
+</div>
+<p>Este artigo busca compreender o perfil dos leiloeiros nos processos de falência em São Paulo. Para isso, optou-se por uma abordagem lúdica ao longo do texto, mas com considerações críticas ao final.</p>
+</div>
+</a>
+<a href="posts/2021-08-17-alteracao-falencias/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Nova Lei de Falências"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 17, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Fábio Ulhoa Coelho</div>
+<div class="dt-author">Marcelo Guedes Nunes</div>
+</div>
+</div>
+<div class="thumbnail">
+<img/>
+</div>
+<div class="description">
+<h2>Alterações da Lei de Falências</h2>
+<div class="dt-tags">
+<div class="dt-tag">Nova Lei de Falências</div>
+</div>
+<p>Uma avaliação da Reforma de 2020.</p>
+</div>
+</a>
+<a href="posts/2021-07-26-paineis-cnj/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral","CNJ"]}</script>
+<div class="metadata">
+<div class="publishedDate">July 26, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-07-26-paineis-cnj/paineis.png"/>
+</div>
+<div class="description">
+<h2>Painéis do CNJ</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+<div class="dt-tag">CNJ</div>
+</div>
+<p>Conheça um pouco mais sobre os 6 Painéis do CNJ: Justiça em Números, Produtividade, Demandas Repetitivas, Violência Doméstica, Sócio Ambiental e Priorização 1º Grau</p>
+</div>
+</a>
+<a href="posts/2021-01-15-litigiosidade/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises","Justiça","Desenvolvimento","Litigiosidade"]}</script>
+<div class="metadata">
+<div class="publishedDate">June 30, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">João Torquato</div>
+<div class="dt-author">Julio Trecenti</div>
+<div class="dt-author">Katerine Witkoski</div>
+<div class="dt-author">Ricardo Feliz</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png"/>
+</div>
+<div class="description">
+<h2>Litigiosidade e desenvolvimento</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+<div class="dt-tag">Justiça</div>
+<div class="dt-tag">Desenvolvimento</div>
+<div class="dt-tag">Litigiosidade</div>
+</div>
+<p>Este artigo busca investigar se existe uma relação entre a taxa de litigiosidade com o desenvolvimento, utilizando uma base de processos que extraídos nos Diários de Justiça e informações de IDH municipal.</p>
+</div>
+</a>
+<a href="posts/2021-06-11-analise-1040/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">June 3, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+<div class="dt-author">Marcelo Guedes Nunes</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-06-11-analise-1040/analise-1040_files/figure-html5/prop-viab-1.png"/>
+</div>
+<div class="description">
+<h2>Impactos da MPV 1.040/2021 no tempo de abertura de empresas</h2>
+<div class="dt-tags"></div>
+<p>Neste texto, analisamos os impactos potenciais da MPV 1.040/2021 através de um estudo simples de simulação de cenários.</p>
+</div>
+</a>
+<a href="posts/2021-05-20-assimetria/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">May 20, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Ricardo Feliz</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-05-20-assimetria/assimetria.png"/>
+</div>
+<div class="description">
+<h2>Efeitos da assimetria de interesses nos litígios</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
+<p>Análise de como a assimetria de interesses entre as partes pode afetar resultados de processos</p>
+</div>
+</a>
+<a href="posts/2021-04-13-stf-controle-concentrado/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">April 13, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Rodrigo Filippi Dornelles</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-04-13-stf-controle-concentrado/grafico_perfil_ato_federal_questionado-1.png"/>
+</div>
+<div class="description">
+<h2>O STF, o controle concentrado e a pandemia</h2>
+<div class="dt-tags"></div>
+<p>Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020.</p>
+</div>
+</a>
+<a href="posts/2021-03-22-levantamentos-abj/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">March 22, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Renata Hirota</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-03-22-levantamentos-abj/levantamentos.png"/>
+</div>
+<div class="description">
+<h2>Levantamentos feitos pela ABJ</h2>
+<div class="dt-tags"></div>
+<p>Com frequência, recebemos pedidos de dados para pesquisas acadêmicas. Estes são alguns dos principais levantamentos que fizemos em 2020</p>
+</div>
+</a>
+<a href="posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">March 12, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Tadeu A. Sena Gomes</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos/img/grafico_1.png"/>
+</div>
+<div class="description">
+<h2>Recuperação judicial e manutenção de empregos</h2>
+<div class="dt-tags"></div>
+<p>A recuperação judicial alcança o objetivo de permitir a manutenção do emprego dos trabalhadores? O que diz a realidade empírica?</p>
+</div>
+</a>
+<a href="posts/2021-02-23-novas-perspectivas-para-2021/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">Feb. 23, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-02-23-novas-perspectivas-para-2021/Novas perspectivas.png"/>
+</div>
+<div class="description">
+<h2>Novas perspectivas para 2021</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
+<p>Fórum aberto de jurimetria, atendimento a pesquisadores, novo cronograma de eventos e outras atividades previstas da ABJ para este ano</p>
+</div>
+</a>
+<a href="posts/2021-02-01-pericia-emenda/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Feb. 1, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Alice Braile</div>
+<div class="dt-author">Beatriz Nunes Cloud</div>
+<div class="dt-author">Alfredo Cabrini Souza e Silva</div>
+<div class="dt-author">Rafael Vasconcellos de Arruda</div>
+<div class="dt-author">Gabriel José de Orleans e Bragança</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-02-01-pericia-emenda/grafico.png"/>
+</div>
+<div class="description">
+<h2>Perícia prévia e emenda à petição inicial</h2>
+<div class="dt-tags"></div>
+<p>O presente artigo tem por objetivo abordar a aplicação da perícia prévia e a emenda à petição inicial nos processos de recuperação judicial e seus impactos nas decisões de deferimento do processamento.</p>
+</div>
+</a>
+<a href="posts/2021-01-27-retrospectiva-2020/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":[]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 27, 2021</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2021-01-27-retrospectiva-2020/abj-2020.png"/>
+</div>
+<div class="description">
+<h2>Retrospectiva 2020</h2>
+<div class="dt-tags"></div>
+<p>Um resumo sobre andamento de projetos e atividades da ABJ em 2020</p>
+</div>
+</a>
+<a href="posts/2020-12-17-constituicao/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises","Dados"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 17, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Caio Lente</div>
+<div class="dt-author">Renata Hirota</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-12-17-constituicao/exploracon.png"/>
+</div>
+<div class="description">
+<h2>Facilitando análises sobre a Constituição</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+<div class="dt-tag">Dados</div>
+</div>
+<p>Repositório da ABJ organiza emendas constitucionais para explorar mudanças realizadas ao longo do tempo</p>
+</div>
+</a>
+<a href="posts/2020-12-07-cifra-oculta/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises","CNJ"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 14, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Ricardo Feliz</div>
+<div class="dt-author">João Torquato</div>
+<div class="dt-author">Julio Trecenti</div>
+<div class="dt-author">Katerine Witkoski</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-12-07-cifra-oculta/img/exemplo.png"/>
+</div>
+<div class="description">
+<h2>O problema da cifra oculta nos tribunais brasileiros</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+<div class="dt-tag">CNJ</div>
+</div>
+<p>Este artigo busca quantificar o tamanho da cifra oculta nos tribunais brasileiros. A base de dados utilizada para tanto é composta por observações dos tribunais de 1º grau de São Paulo, Rio de Janeiro, Amazonas e Pernambuco.</p>
+</div>
+</a>
+<a href="posts/2020-12-09-covid/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Levantamentos","Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Dec. 9, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+<div class="dt-author">João Marcelo Torquato</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-12-09-covid/covid_files/figure-html5/fig-semana-1.png"/>
+</div>
+<div class="description">
+<h2>Sentenças que mencionam Covid-19 no TJSP</h2>
+<div class="dt-tags">
+<div class="dt-tag">Levantamentos</div>
+<div class="dt-tag">Analises</div>
+</div>
+<p>Um levantamento da Consulta de Julgados de Primeiro Grau do TJSP.</p>
+</div>
+</a>
+<a href="posts/2020-11-10-candidatos2020/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Levantamentos"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 10, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+<div class="dt-author">Renata Hirota</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-11-10-candidatos2020/candidatos2020.png"/>
+</div>
+<div class="description">
+<h2>Eleições 2020: Candidatos envolvidos em processos criminais</h2>
+<div class="dt-tags">
+<div class="dt-tag">Levantamentos</div>
+</div>
+<p>Levantamento da ABJ publicado pelo G1</p>
+</div>
+</a>
+<a href="posts/2020-10-23-empresas/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 23, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png"/>
+</div>
+<div class="description">
+<h2>Empresas CVM</h2>
+<div class="dt-tags">
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
+</div>
+<p>Análise das empresas envolvidas nos processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
+</div>
+</a>
+<a href="posts/2020-10-23-temas/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 10, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png"/>
+</div>
+<div class="description">
+<h2>Temas e condutas</h2>
+<div class="dt-tags">
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
+</div>
+<p>Análise e taxonomia de temas e condutas em processos administrativos sancionadores da Comissão de Valores Mobiliários.</p>
+</div>
+</a>
+<a href="posts/2020-10-23-paps/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Observatorio","CVM"]}</script>
+<div class="metadata">
+<div class="publishedDate">July 20, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-10-23-paps/img/estrutura.png"/>
+</div>
+<div class="description">
+<h2>Processos pré-sancionadores</h2>
+<div class="dt-tags">
+<div class="dt-tag">Observatorio</div>
+<div class="dt-tag">CVM</div>
+</div>
+<p>Análise dos processos pré sancionadores na Comissão de Valores Mobiliários.</p>
+</div>
+</a>
+<a href="posts/2020-01-20-carf/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 20, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Renata Hirota</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png"/>
+</div>
+<div class="description">
+<h2>Cinco anos de Operação Zelotes</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>As mudanças no CARF após investigações de corrupção.</p>
+</div>
+</a>
+<a href="posts/2020-01-12-welcome/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">Jan. 12, 2020</div>
+<div class="dt-authors">
+<div class="dt-author">Marcelo Guedes Nunes</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2020-01-12-welcome/abj.png"/>
+</div>
+<div class="description">
+<h2>Nosso portal</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
+<p>Esse é o laboratório da Associação Brasileira de Jurimetria. 
+Esperamos que goste!</p>
+</div>
+</a>
+<a href="posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">Nov. 19, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Como o big data pode auxiliar a prática da lei</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
+<p>Benefícios e implicações das novas tecnologias para a prática jurídica</p>
+</div>
+</a>
+<a href="posts/2019-10-15-mas-afinal-o-que-jurimetria/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Conceitos","Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">Oct. 15, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Fernando Corrêa</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-10-15-mas-afinal-o-que-jurimetria/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Mas, afinal, o que é jurimetria?</h2>
+<div class="dt-tags">
+<div class="dt-tag">Conceitos</div>
+<div class="dt-tag">Geral</div>
+</div>
+<p>Responder à pergunta "o que é?" frequentemente nos afasta do "como se faz?. Não há uma cartilha a ser seguida, apenas um conjunto de princípios que deixam próximas todas as formas de Jurimetria</p>
+</div>
+</a>
+<a href="posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 27, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Favoritismo Judicial de políticos: Evidências nos Juizados Especiais Cíveis</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>Mais de 6.000 simulações de decisões judiciais imparciais mostram que réus comuns têm decisão favorável nos JECs em 25% dos casos, enquanto que políticos têm decisão favorável em 31% dos processos.</p>
+</div>
+</a>
+<a href="posts/2019-09-17-camaras-reservadas-direito-empresarial/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 17, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-09-17-camaras-reservadas-direito-empresarial/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Características e evolução das decisões nas Câmaras Reservadas de Direito Empresarial</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>Análise das principais características e evolução das decisões das câmaras por assunto e comarca de origem</p>
+</div>
+</a>
+<a href="posts/2019-09-02-um-ano-e-meio-das-varas-empresariais-de-so-paulo-uma-iniciativa-de-sucesso/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">Sept. 2, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Marcelo Guedes Nunes</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-09-02-um-ano-e-meio-das-varas-empresariais-de-so-paulo-uma-iniciativa-de-sucesso/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Um ano e meio das varas empresariais de São Paulo: uma iniciativa de sucesso</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>Especialização o Poder Judiciário paulista passou a ser vista pela comunidade empresarialista como uma alternativa viável e competitiva para resoluções</p>
+</div>
+</a>
+<a href="posts/2019-08-27-jurimetria-e-inteligncia-artificial/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Conceitos"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 27, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-08-27-jurimetria-e-inteligncia-artificial/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Jurimetria e Inteligência Artificial</h2>
+<div class="dt-tags">
+<div class="dt-tag">Conceitos</div>
+</div>
+<p>Diferenças entre os dois conceitos e como a jurimetria utiliza IA nos seus processos práticos</p>
+</div>
+</a>
+<a href="posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">Aug. 20, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Bárbara Tassoni</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Jurimetria e dados: A importância de bases estruturadas</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
+<p>Dados sozinhos, fora de contexto, não transmitem mensagens. Mas quando adequadamente tratados, conseguimos interpretá-los e transformá-los em informações que podem ser usadas para melhorar uma tomada de decisão</p>
+</div>
+</a>
+<a href="posts/2019-05-05-o-abandono-afetivo-e-seu-padro-de-julgamento-em-so-paulo/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">May 5, 2019</div>
+<div class="dt-authors">
+<div class="dt-author">Amanda Alves de Souza</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2019-05-05-o-abandono-afetivo-e-seu-padro-de-julgamento-em-so-paulo/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>O Abandono Afetivo e seu padrão de julgamento em São Paulo</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>A short description of the post.</p>
+</div>
+</a>
+<a href="posts/2018-05-21-nuances-no-clculo-de-tempos-processuais/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Conceitos","Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">May 21, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Fernando Corrêa</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2018-05-21-nuances-no-clculo-de-tempos-processuais/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Nuances no cálculo de tempos processuais</h2>
+<div class="dt-tags">
+<div class="dt-tag">Conceitos</div>
+<div class="dt-tag">Analises</div>
+</div>
+<p>Uma comparação metodológica entre estudos prospectivos e retrospectivos no cálculo de tempos</p>
+</div>
+</a>
+<a href="posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">May 14, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Jhenifer Caetano Veloso</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Contribuições da ABJ para o aprimoramento do sistema de adoção do Brasil</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>Pesquisa da ABJ inspirou o Projeto de Lei 5850/2016, sancionado em 22/11/2017 (Lei 13.509/2017), que agiliza procedimentos relacionados à destituição de poder familiar e à adoção de crianças e adolescentes</p>
+</div>
+</a>
+<a href="posts/2018-04-16-princpios-conflitantes-e-a-jurimetria/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Geral"]}</script>
+<div class="metadata">
+<div class="publishedDate">April 16, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Rafael Bassi Stern</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2018-04-16-princpios-conflitantes-e-a-jurimetria/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Princípios conflitantes e a Jurimetria</h2>
+<div class="dt-tags">
+<div class="dt-tag">Geral</div>
+</div>
+<p>A jurimetria apresenta-se como uma ferramenta valiosa para complementar argumentos jurídicos tradicionais na interpretação da Constituição</p>
+</div>
+</a>
+<a href="posts/2018-03-13-quando-a-doutrina-jurdica-pode-ser-til-de-verdade/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Analises"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 13, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Marcelo Guedes Nunes</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2018-03-13-quando-a-doutrina-jurdica-pode-ser-til-de-verdade/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Quando a doutrina jurídica pode ser útil de verdade?</h2>
+<div class="dt-tags">
+<div class="dt-tag">Analises</div>
+</div>
+<p>O direito não pode ser reduzido a um ramo literário de  interpretação de textos das normas, desatento às consequências sociais das suas decisões</p>
+</div>
+</a>
+<a href="posts/2018-03-01-por-que-usar-r-para-jurimetria/" class="post-preview">
+<script class="post-metadata" type="text/json">{"categories":["Programacao"]}</script>
+<div class="metadata">
+<div class="publishedDate">March 1, 2018</div>
+<div class="dt-authors">
+<div class="dt-author">Julio Trecenti</div>
+</div>
+</div>
+<div class="thumbnail">
+<img data-src="posts/2018-03-01-por-que-usar-r-para-jurimetria/img/imagem.png"/>
+</div>
+<div class="description">
+<h2>Por que usar R para jurimetria?</h2>
+<div class="dt-tags">
+<div class="dt-tag">Programacao</div>
+</div>
+<p>A dificuldade de acessar e mastigar os dados leva à necessidade de utilizar ferramentas computacionais adequadas</p>
+</div>
+</a>
+</div>
+<div class="posts-sidebar">
+<div class="sidebar-section categories">
+<h3>Categories</h3>
+<ul>
+<li>
+<a href="#category:Articles">Articles</a>
+<span class="category-count">(44)</span>
+</li>
+<li>
+<a href="#category:Acesso_justiça">Acesso justiça</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Analises">Analises</a>
+<span class="category-count">(16)</span>
+</li>
+<li>
+<a href="#category:Análises">Análises</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:CNJ">CNJ</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Conceitos">Conceitos</a>
+<span class="category-count">(3)</span>
+</li>
+<li>
+<a href="#category:CVM">CVM</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#category:Dados">Dados</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:dados_abertos">dados abertos</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Desenvolvimento">Desenvolvimento</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Falencias">Falencias</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Geral">Geral</a>
+<span class="category-count">(8)</span>
+</li>
+<li>
+<a href="#category:Insolvência">Insolvência</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Institucional">Institucional</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Jurimetria">Jurimetria</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Justiça">Justiça</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Levantamentos">Levantamentos</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Litigiosidade">Litigiosidade</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Ministerio_Publico">Ministerio Publico</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Nova_Lei_de_Falências">Nova Lei de Falências</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Observatorio">Observatorio</a>
+<span class="category-count">(4)</span>
+</li>
+<li>
+<a href="#category:Processos_Administrativos_Sancionadores">Processos Administrativos Sancionadores</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Programacao">Programacao</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:programação">programação</a>
+<span class="category-count">(1)</span>
+</li>
+<li>
+<a href="#category:Recuperação_Judicial">Recuperação Judicial</a>
+<span class="category-count">(2)</span>
+</li>
+<li>
+<a href="#category:Saude">Saude</a>
+<span class="category-count">(1)</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="posts-more">
+<a href="#">More articles &raquo;</a>
+</div>
+</div>
+<!--/radix_placeholder_article_listing-->
 
 
 

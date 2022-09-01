@@ -12,15 +12,30 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Mon, 25 Jul 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 31 Aug 2022 00:00:00 +0000</lastBuildDate>
     <item>
-      <title>Processos administrativos e judiciais</title>
-      <dc:creator>Julio Trecenti</dc:creator>
-      <link>https://lab.abj.org.br/posts/2022-07-25-adm-judicial</link>
-      <description>Muitas pessoas confundem jurimetria como análise das decisões do judiciário. Neste post, explicamos essa dúvida.</description>
-      <guid>https://lab.abj.org.br/posts/2022-07-25-adm-judicial</guid>
-      <pubDate>Mon, 25 Jul 2022 00:00:00 +0000</pubDate>
-      <media:content url="https://lab.abj.org.br/posts/2022-07-25-adm-judicial/distill-preview.png" medium="image" type="image/png" width="1920" height="1280"/>
+      <title>Análise do Observatório da Insolvência - Rio Grande do Sul</title>
+      <dc:creator>Katerine Witkoski</dc:creator>
+      <link>https://lab.abj.org.br/posts/2022-08-15-analise-obs-grande-do-sul</link>
+      <description>Este artigo busca analisar o mais novo observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.</description>
+      <category>Análises</category>
+      <category>Insolvência</category>
+      <category>Recuperação Judicial</category>
+      <guid>https://lab.abj.org.br/posts/2022-08-15-analise-obs-grande-do-sul</guid>
+      <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2022-08-15-analise-obs-grande-do-sul/2022-08-31-analise-obs-grande-do-sul_files/figure-html5/constatacao-1.png" medium="image" type="image/png" width="1248" height="768"/>
+    </item>
+    <item>
+      <title>Análise do Observatório da Insolvência - Rio Grande do Sul</title>
+      <dc:creator>Katerine Witkoski</dc:creator>
+      <link>https://lab.abj.org.br/posts/2022-05-12-analise-obs-grande-do-sul</link>
+      <description>Este artigo busca analisar o mais novo observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.</description>
+      <category>Análises</category>
+      <category>Insolvência</category>
+      <category>Recuperação Judicial</category>
+      <guid>https://lab.abj.org.br/posts/2022-05-12-analise-obs-grande-do-sul</guid>
+      <pubDate>Mon, 06 Jun 2022 00:00:00 +0000</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2022-05-12-analise-obs-grande-do-sul/2022-05-12-analise-obs-grande-do-sul_files/figure-html5/constatacao-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
       <title>Questões sobre indicadores de acesso à justiça</title>
@@ -330,7 +345,7 @@
       <title>Nosso portal</title>
       <dc:creator>Marcelo Guedes Nunes</dc:creator>
       <link>https://lab.abj.org.br/posts/2020-01-12-welcome</link>
-      <description>Esse é o laboratório da Associação Brasileira de Jurimetria.
+      <description>Esse é o laboratório da Associação Brasileira de Jurimetria. 
 Esperamos que goste!</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2020-01-12-welcome</guid>
