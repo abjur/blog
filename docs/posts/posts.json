@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/2022-09-20-dados-ambiental/",
+    "title": "Processos ambientais",
+    "description": "Onde estão? Quais são as iniciativas? Neste post, falamos um pouco sobre esse tema.",
+    "author": [
+      {
+        "name": "Julio Trecenti",
+        "url": "https://www.linkedin.com/in/jtrecenti/"
+      }
+    ],
+    "date": "2022-09-20",
+    "categories": [],
+    "contents": "\nO tema ambiental é muito importante no Brasil, sendo a base não só para a própria saúde do planeta, mas também para diversos programas políticos e para a imagem do país no cenário internacional. Muitas entidades do terceiro setor focam em pesquisas e ações nessa área, não só por conta da importância, mas também por conta da possibilidade de conseguir investimentos de entidades de fomento no Brasil e no mundo.\nDentro do tema ambiental, uma das vertentes com maior potencial investigativo no momento são os processos judiciais. Como vimos várias vezes por aqui no laboratório de Jurimetria, o judiciário é um reflexo (com viés, claro) dos conflitos que acontecem na sociedade. Por isso, entender como funciona o judiciário nos ajuda a entender quais são e onde estão parte dos problemas sociais.\nA área jurídica, no entanto, ainda sofre muito com o problema de abertura de dados. Temos dados públicos, mas não abertos, que ficam escondidos no meio de vários sites com sistemas cada vez mais difíceis de acessar. Iniciativas como o Datajud e o Codex são uma espécie de luz no fim do túnel, mas o túnel parece cada vez mais longo.\nNesse sentido, uma grata surpesa recente foi o SireneJud. Trata-se de uma plataforma aberta para acesso a dados de processos envolvendo a Amazônia Legal. É uma das únicas bases disponibilizadas pelo CNJ que possui um link para download dos dados, que é o básico do básico que precisamos ter para fazer pesquisas no judiciário.\n\n\n\n\nVale ressaltar que disponibilizar um dashboard publicamente é diferente de tornar os dados abertos. Os dashboards apresentam estatísticas dos dados, não os dados em si. Sempre que ouvimos de alguém que “foram disponibilizados dados sobre X”, o nosso interesse está em acessar a base de dados, não as estatisticas.\n\nQuando baixamos os dados, no entanto, nos deparamos com isso aqui (tentativa realizada no dia 27/08/2022, às 11h):\n\nOu seja, os dados estão abertos, mas não tão abertos assim. Melhor seria se os dados fossem disponibilizados em uma plataforma própria para isso, como o CKAN, usados pelo portal de dados abertos do Brasil, que é referência mundial em abertura de dados, mas do poder executivo.\nVale um disclaimer: não estamos com isso criticando nem invalidando iniciativas como o SireneJud. Trata-se de um marco na área ambiental, que temos de comemorar. Somente abrindo os dados do judiciário teremos mais pesquisas e mais participação social, que são a base do aprimoramento do sistema.\nNa falta de dados abertos, o que as entidades do terceiro setor acabam fazendo é recorrendo a robôs de busca (raspagem de dados). Esses robôs são ferramentas que acessam os dados do judiciário imitando o que um ser humano faria, mas de forma sistemática. Essa técnica está longe de ser ideal, uma vez que exige grande conhecimento específico e congestiona os sistemas dos tribunais, mas é um último recurso quando sobra vontade de fazer pesquisa e faltam dados.\nÉ o exemplo do JusAmbiente, plataforma criada a partir de uma parceria do JusBrasil e várias entidades, que aproveitaram os recursos computacionais da empresa para disponibilizar alguns dados de forma aberta. Nem tudo na plataforma está disponível, infelizmente, mas pelo menos a lista dos processos por assunto e comarca está lá.\nVamos mostrar apenas um gráfico para demonstrar potencialidades de ter dados abertos. O que faremos é um mapa das comarcas dos processos que fazem parte da base de dados, separando por justiça.\n\n\n\n\n\n\nO gráfico mostra como as ações estão distribuídas regionalmente. Na justiça estadual, as quantidades são mais pulverizadas, com maior concentração na comarca de Ubatuba. Já na justiça federal, os processos estão mais concentrados, com destaque à comarca de Jales.\nEssa foi apenas uma pequena demonstração do poder de disponibilizar dados de forma aberta. Aproveite e explore os dados do JusAmbiente! Quando o SireneJud funcionar, aproveite e baixe os dados também.\n\n\n\n",
+    "preview": "posts/2022-09-20-dados-ambiental/images/paste-82EEACE3.png",
+    "last_modified": "2022-09-20T14:34:57-03:00",
+    "input_file": "adm-judicial.knit.md",
+    "preview_width": 504,
+    "preview_height": 304
+  },
+  {
     "path": "posts/2022-08-31-analise-obs-grande-do-sul/",
     "title": "Análise do Observatório da Insolvência - Rio Grande do Sul",
     "description": "Este artigo busca analisar o mais novo observatório da Associação Brasileira de Jurimetria. A base de dados é composta por recuperações judiciais do Estado do Rio Grande do Sul.",
