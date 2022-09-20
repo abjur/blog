@@ -5,7 +5,7 @@ description: |
 author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
-date: 2022-08-27
+date: 2022-09-20
 preview: images/paste-82EEACE3.png
 output:
   distill::distill_article:
@@ -48,8 +48,8 @@ Na falta de dados abertos, o que as entidades do terceiro setor acabam fazendo �
 Vamos mostrar apenas um gráfico para demonstrar potencialidades de ter dados abertos. O que faremos é um mapa das comarcas dos processos que fazem parte da base de dados, separando por justiça.
 
 ```{r eval=FALSE}
-dados_com_ibge <- readxl::read_excel("dados/Processos-por-Comarca.xlsx") |> 
-  janitor::clean_names() |> 
+dados_com_ibge <- readxl::read_excel("dados/Processos-por-Comarca.xlsx") |>
+  janitor::clean_names() |>
   dplyr::mutate(
     justica = dplyr::case_when(
       stringr::str_detect(processo, "\\.8\\.") ~ "Estadual",
@@ -69,20 +69,20 @@ dados_com_ibge <- readxl::read_excel("dados/Processos-por-Comarca.xlsx") |>
       TRUE ~ comarca
     ),
     uf = "SP"
-  ) |> 
-  dplyr::filter(comarca != "") |> 
-  dplyr::count(justica, uf, comarca) |> 
-  munifacil::limpar_colunas(comarca, uf) |> 
-  munifacil::incluir_codigo_ibge(diagnostico = FALSE) |> 
+  ) |>
+  dplyr::filter(comarca != "") |>
+  dplyr::count(justica, uf, comarca) |>
+  munifacil::limpar_colunas(comarca, uf) |>
+  munifacil::incluir_codigo_ibge(diagnostico = FALSE) |>
   dplyr::mutate(code_muni = as.numeric(id_municipio))
 
 sao_paulo <- geobr::read_municipality(35)
 
 grafico <- function(dados, lab) {
-  dados |> 
+  dados |>
     ggplot2::ggplot() +
     ggplot2::geom_sf(
-      ggplot2::aes(fill = n), 
+      ggplot2::aes(fill = n),
       colour = "transparent",
       size = .0001
     ) +
@@ -96,12 +96,12 @@ grafico <- function(dados, lab) {
     ggplot2::labs(title = lab)
 }
 
-gg_estadual <- sao_paulo |> 
-  dplyr::left_join(dplyr::filter(dados_com_ibge, justica == "Estadual")) |> 
+gg_estadual <- sao_paulo |>
+  dplyr::left_join(dplyr::filter(dados_com_ibge, justica == "Estadual")) |>
   grafico("Estadual")
 
-gg_federal <- sao_paulo |> 
-  dplyr::left_join(dplyr::filter(dados_com_ibge, justica == "Federal")) |> 
+gg_federal <- sao_paulo |>
+  dplyr::left_join(dplyr::filter(dados_com_ibge, justica == "Federal")) |>
   grafico("Federal")
 
 library(patchwork)
