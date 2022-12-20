@@ -1,5 +1,28 @@
 [
   {
+    "path": "posts/obs-diigtal-litigios/",
+    "title": "O que você precisa saber sobre o Observatório Digital dos Litígios Judiciais no Brasil",
+    "description": "Conheça mais sobre o projeto realizado entre a ABJ, CIEE e IASP, para fornecer dados sobre a movimentação judiciária do país",
+    "author": [
+      {
+        "name": "Bárbara Tassoni",
+        "url": {}
+      },
+      {
+        "name": "Renata Hirota",
+        "url": "https://www.linkedin.com/in/renatahirota/"
+      }
+    ],
+    "date": "2022-12-19",
+    "categories": [],
+    "contents": "\nNo final de agosto de 2022 a Associação Brasileira de Jurimetria (ABJ), o Centro de Integração Empresa-Escola (CIEE) e o Instituto dos Advogados de São Paulo (IASP) se uniram para realizar o lançamento do Observatório Digital dos Litígios Judiciais no Brasil, projeto que originou uma plataforma pública para fornecimento de dados sobre a movimentação judiciária do país.\nAtravés do alinhamento das missões de cada instituição, que dividem um interesse comum pelo aprimoramento da educação, o observatório foi criado com o objetivo de tornar os dados do judiciário mais transparentes e acessíveis, possibilitando à sociedade geral acessar informações importantes do nosso sistema e aos pesquisadores, fornecendo os dados para realização de estudos quantitativos.\nA importância social de realizar pesquisas e basear a tomada de decisão através de dados é uma prática endossada pela ABJ ao longo de seus anos de atuação. Ao unir forças com grandes instituições como CIEE e IASP, que trabalham em prol da sociedade geral e jurídica, temos como reflexo um projeto que pode abrir portas em diversas frentes no consumo dos dados gerados pelo sistema Judiciário.\nO projeto, disponibilizado através de um site único, pode ser acessado de qualquer aparelho conectado à internet e permite não só a visualização de gráficos personalizáveis de acordo com o filtro definido pelo usuário, mas também o download da base de dados utilizada para gerar os insights. Podendo ser consumido por qualquer pessoa interessada em saber mais sobre como funciona o judiciário; quantos novos processos judiciais foram recebidos, quantos foram resolvidos, qual a taxa de congestionamento dos processos, ou seja, quantos, em percentual, processos ficaram parados sem solução, entre muitas outras possibilidades. Essas informações, além de permitirem a criação de Leis e estratégias de melhoria para o sistema Judiciário, também mune a sociedade de conhecimento e viabiliza novos pensamentos e soluções para problemas e entraves encontrados na prestação jurisdicional.\nO esforço conjunto das instituições em proporcionar à sociedade uma ferramenta gratuita, pública e transparente, tem como objetivo ser uma alternativa isenta, científica e despolarizada para embasar debates em torno da atuação judiciária brasileira. Essa possibilidade de observação dos dados capacita melhores estudos, discussões e reflexões e aumenta o nível da pesquisa nacional, que garante à sociedade brasileira mais chances de melhorar políticas públicas e debater melhores projetos de leis através dos resultados observados.\nMetodologia e Análises\nA ferramenta disponibiliza índices relacionados à litigiosidade e produtividade dos tribunais, com filtros possibilitam estudar processos nas esferas Estadual, Trabalhista e Federal de forma separada, analisar dados mensais ou anuais, no nível estadual ou municipal, e casos criminais ou não criminais.\nSão apresentadas estatísticas como a taxa de litigiosidade e sua relação com o Índice de Desenvolvimento Humano (IDH), que podem ser usadas como um guia para investigar como o sistema judiciário está funcionando. Por exemplo, verificamos que no estado de São Paulo a correlação entre litigiosidade e IDH em processos criminais é negativa (-0,12), mas no Ceará é positiva (0,16).\nOs índices de produtividade são importantes para identificar gargalos na administração do sistema de justiça. São apresentados dados de movimentação processual, índice de atendimento à demanda e taxa de congestionamento judiciária.\nPara quem tem interesse nos dados brutos para fins de pesquisa, é possível fazer o download com os filtros desejados, o que facilita análises personalizadas.\nOs dados foram obtidos por meio do cruzamento de informações do Módulo de Produtividade Mensal (MPM) do CNJ; no entanto, a partir de novembro de 2022, o CNJ parou de atualizar o MPM. Por conta dessa mudança, os dados foram congelados e a atualização do Observatório ficará disponível em 2023.\n\n\n\n",
+    "preview": "posts/obs-diigtal-litigios/obs-litigios.png",
+    "last_modified": "2022-12-19T21:54:12-03:00",
+    "input_file": "obs-diigtal-litigios.knit.md",
+    "preview_width": 2560,
+    "preview_height": 1355
+  },
+  {
     "path": "posts/2022-09-20-dados-ambiental/",
     "title": "Processos ambientais",
     "description": "Onde estão? Quais são as iniciativas? Neste post, falamos um pouco sobre esse tema.",
