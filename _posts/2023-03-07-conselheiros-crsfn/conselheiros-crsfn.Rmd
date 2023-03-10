@@ -1,0 +1,520 @@
+---
+title: "Análise dos Conselheiros do CRSFN"
+description: |
+  Neste post, analiso os Conselheiros do Conselho de Recursos do Sistema Financeiro Nacional (CRSFN).
+author:
+  - name: Ricardo Feliz Okamoto
+    url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
+date: 2023-03-07
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r bases}
+da <- obsCRSFN::aux_conselheiro |> 
+  dplyr::mutate(
+    tipo_indicacao = tidyr::replace_na(tipo_indicacao, "Não identificado"),
+    tipo_indicacao = dplyr::case_when(
+      tipo_indicacao == "Entidades" ~ "Privada",
+      tipo_indicacao == "Público" ~ "Pública",
+      TRUE ~ tipo_indicacao
+    )
+  )
+    
+conselheiro_inicial <- da |>
+  dplyr::mutate(
+    txt = stringr::str_replace(txt, "janeiro", "01.01"),
+    txt = stringr::str_replace(txt, "fevereiro", "01.02"),
+    txt = stringr::str_replace(txt, "março", "01.03"),
+    txt = stringr::str_replace(txt, "abril", "01.04"),
+    txt = stringr::str_replace(txt, "maio", "01.05"),
+    txt = stringr::str_replace(txt, "junho", "01.06"),
+    txt = stringr::str_replace(txt, "julho", "01.07"),
+    txt = stringr::str_replace(txt, "agosto", "01.08"),
+    txt = stringr::str_replace(txt, "setembro", "01.09"),
+    txt = stringr::str_replace(txt, "outubro", "01.10"),
+    txt = stringr::str_replace(txt, "novembro", "01.11"),
+    txt = stringr::str_replace(txt, "dezembro", "01.12"),
+    txt = stringr::str_replace(txt, "1º", "01"),
+    txt = stringr::str_replace_all(txt, "/", "\\."),
+    txt = stringr::str_replace_all(txt, "\\.\\.", "\\."),
+    n_mandatos = stringr::str_count(txt, "[Cc]onselheir[oa]"),
+    n_reconducoes = stringr::str_count(txt, "[Rr]econd"),
+    mandatos = stringr::str_split(txt, "(?=[Cc]onselheir[oa])")
+  ) |>
+  tidyr::unnest(mandatos) |>
+  dplyr::group_by(id_conselheiro) |>
+  dplyr::mutate(
+    id_mandato = seq_len(dplyr::n()), .before = 2
+  ) |>
+  dplyr::ungroup() |>
+  dplyr::mutate(
+    mandato_final = stringr::str_extract(mandatos, stringr::regex("[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{2,4}(?= ?[-–]? ?$)")),
+    mandato_final = lubridate::dmy(mandato_final),
+    mandato_inicial = stringr::str_remove(mandatos, stringr::regex(" a [0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{4} ?[-–] ?$")),
+    mandato_inicial = stringr::str_extract(mandato_inicial, stringr::regex("[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{2,4} ?$")),
+    mandato_inicial = lubridate::dmy(mandato_inicial),
+    mandato_final = dplyr::case_when(
+      nome == "Silvânio Covas" ~ lubridate::dmy("28/02/2006"), # o site está escrito 29/02/2006, mas 2006 não era ano bissexto pra ter dia 29/02
+      nome == "Antonio Augusto de Sá Freire Filho" & id_mandato == 1 ~ lubridate::dmy("18.01.2018"), # o site tinha um typo, colocando 18/01/2028
+      TRUE ~ mandato_final
+    ),
+    reconducao = stringr::str_detect(mandatos, "[Rr]econd"),
+    reconducao = dplyr::case_when(
+      !reconducao & (!is.na(mandato_inicial) | !is.na(mandato_final)) ~ NA,
+      TRUE ~ reconducao
+    ),
+    tempo_reconducao = stringr::str_extract(mandatos, "(?<=período de ).+(?= anos)"),
+    tempo_reconducao = dplyr::if_else(!reconducao, NA_character_, tempo_reconducao),
+    tempo_reconducao = dplyr::case_when(
+      tempo_reconducao == "dois" ~ lubridate::years(2),
+      reconducao & is.na(tempo_reconducao) ~ lubridate::years(2),
+      tempo_reconducao == "três" ~ lubridate::years(3)
+    ),
+    dt_inicio_reconducao = stringr::str_extract(
+      mandatos,
+      "[(?<=a partir (de )?)(?<=para o período de )][0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{2,4}"
+    ),
+    dt_inicio_reconducao = dplyr::if_else(!reconducao, NA_character_, dt_inicio_reconducao),
+    dt_inicio_reconducao = lubridate::dmy(dt_inicio_reconducao),
+    dt_fim_reconducao = as.Date(dt_inicio_reconducao + tempo_reconducao),
+    tipo_vaga = dplyr::case_when(
+      stringr::str_detect(mandatos, stringr::regex("conselheir[ao] titular", TRUE)) ~ "Titular",
+      stringr::str_detect(mandatos, stringr::regex("conselheir[ao] suplente", TRUE)) ~ "Suplente",
+      TRUE ~ NA_character_
+    ),
+    tipo_vaga = ifelse(is.na(tipo_vaga), "Não identificado", tipo_vaga)
+  ) |>
+  dplyr::group_by(id_conselheiro) |>
+  tidyr::fill(reconducao, .direction = "up") |>
+  tidyr::fill(tempo_reconducao, .direction = "up") |>
+  tidyr::fill(dt_inicio_reconducao, .direction = "up") |>
+  tidyr::fill(dt_fim_reconducao, .direction = "up")
+  # não colocar ungroup aqui, pois a função push_up não vai funcionar se colocar
+
+push_up <- function(x, n){
+  c(x[-(seq(n))], rep(NA, n))
+}
+
+conselheiro_inicial$tipo_vaga <- push_up(conselheiro_inicial$tipo_vaga, 1)
+
+conselheiro_wide <- conselheiro_inicial |>
+  dplyr::filter(
+    id_mandato != max(id_mandato) |
+      is.na(txt)
+  ) |>
+  dplyr::ungroup() |>
+  dplyr::select(-mandatos, -dplyr::contains("reconducao")) |>
+  # dplyr::filter(tipo_vaga == "Titular") |>
+  tidyr::pivot_wider(names_from = id_mandato, values_from = c(mandato_inicial, mandato_final, tipo_vaga)) |>
+  dplyr::select(
+    id_conselheiro,
+    nome,
+    tipo_indicacao,
+    entidade,
+    n_mandatos,
+    n_reconducoes,
+    txt,
+    tipo_vaga_1,
+    mandato_1_inicio = mandato_inicial_1,
+    mandato_1_fim = mandato_final_1,
+    tipo_vaga_2,
+    mandato_2_inicio = mandato_inicial_2,
+    mandato_2_fim = mandato_final_2,
+    tipo_vaga_3,
+    mandato_3_inicio = mandato_inicial_3,
+    mandato_3_fim = mandato_final_3,
+    tipo_vaga_4,
+    mandato_4_inicio = mandato_inicial_4,
+    mandato_4_fim = mandato_final_4
+  )
+
+conselheiro_long <- conselheiro_inicial |>
+  dplyr::filter(
+    id_mandato != max(id_mandato) |
+      is.na(txt)
+  ) |> 
+  dplyr::ungroup() |>
+  dplyr::select(-mandatos, -dplyr::contains("reconducao")) |>
+  dplyr::mutate(
+    periodo = lubridate::interval(mandato_inicial, mandato_final)
+  )
+```
+
+# Introdução
+
+O Conselho de Recursos do Sistema Financeiro Nacional (CRSFN), também conhecido com "Conselinho", é a segunda instância administrativa de diversos órgãos julgadores, principalmente da Comissão de Valores Mobiliários (CVM) e do Banco Central do Brasil (BCB). Quem realiza os julgamentos no Conselinho é um Colegiado de 8 conselheiros titulares (com mais 8 conselheiros suplentes). Não necessariamente todos os julgamentos acontecem com 8 conselheiros, pois é possível que alguém tenha que faltar nas sessões, ou que esteja impedido de participar de uma determinada sessão. Existem os suplentes de cada conselheiro titular, mas às vezes nem o titular e nem o suplente podem participar do julgameto. 
+
+O que este artigo busca fazer é descrever com mais minúcias a estrutura de conselheiros do CRSFN. Não vamos aqui investigar a relação dos conselheiros com o desfecho dos julgamentos, estamos interessados única e exclusivamente na descrição da estrutura e composição dos conselheiros. 
+
+## Composição paritária e o tipo de indicação
+
+Os 8 conselheiros (mais os 8 suplentes) do CRSFN têm uma composição paritária, em que 4 conselheiros titulares (mais 4 suplentes) são indicados por entidades privadas e os demais 4 (mais 4 suplentes), pelo Poder Público. A Tabela \@ref(tab:tipo-indicacao) apresenta a distribuição dos tipos de indicação entre os conselheiros. 
+
+```{r tipo-indicacao}
+da |> 
+  dplyr::count(tipo_indicacao) |> 
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2)
+  ) |>
+  dplyr::arrange(desc(n)) |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Quantidade de conselheiro de acordo com o tipo de indicação",
+    col.names = c("Tipo de indicação", "N", "%")
+  )
+```
+
+Era esperado que a quantidade de conselheiros de cada origem (Pública/Privada) fosse muito próxima, mas há uma diferença significativa entre as indicações de natureza pública e privada, pois há mais conselheiros indicados pelas entidades privadas do que pelo Poder Público. 
+
+Essa diferença é mantida se a gente quebrar a visualização de acordo com o tipo de indicação de cada conselheiro, conforme as Tabelas \@ref(tab:tipo-indicacao-titular) e \@ref(tab:tipo-indicacao-suplente). A soma da quantidade total de conselheiros nas duas tabelas é maior do que `r nrow(da)` pois existem conselheiros que tiveram tanto mandatos como suplentes, quanto mandatos como titulares, sendo contados duas vezes, portanto.
+
+```{r tipo-indicacao-titular}
+conselheiro_long |> 
+  dplyr::filter(tipo_vaga == "Titular") |> 
+  dplyr::count(tipo_indicacao) |> 
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2)
+  ) |> 
+  dplyr::arrange(desc(n)) |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Quantidade de conselheiro titulares de acordo com o tipo de indicação",
+    col.names = c("Tipo de indicação", "N", "%")
+  )
+```
+
+```{r tipo-indicacao-suplente}
+conselheiro_long |> 
+  dplyr::filter(tipo_vaga == "Suplente") |> 
+  dplyr::count(tipo_indicacao) |> 
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2)
+  ) |> 
+  dplyr::arrange(desc(n)) |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Quantidade de conselheiro suplentes de acordo com o tipo de indicação",
+    col.names = c("Tipo de indicação", "N", "%")
+  )
+```
+
+O que pode explicar a maior quantidade de indicações de conselheiros por entidades privadas do que pelo Poder Público em um contexto de um Colegiado com composição paritária é a rotatividade desses conselheiros. 
+
+## Tempo dos mandatos
+
+```{r}
+tempo_total_medio <- conselheiro_long |> 
+  dplyr::mutate(
+    tempo_mandato = mandato_final - mandato_inicial
+  ) |> 
+  dplyr::group_by(id_conselheiro) |> 
+  dplyr::summarise(tempo_mandato = sum(tempo_mandato)) |> 
+  dplyr::ungroup() |> 
+  dplyr::summarise(
+    tempo = mean(tempo_mandato, na.rm=TRUE),
+    tempo = tempo / 365.25,
+    tempo = abjDash::tempo_lab(tempo)
+  ) |> 
+  dplyr::pull() 
+```
+
+Outra informação a respeito dos conselheiros que podemos tentar observar é quanto tempo os conselheiros ficam no cargo. O tempo total médio é de `r tempo_total_medio`. Dizemos que é o "tempo *total* médio" ao invés de apenas "tempo total" porque, primeiro, somamos o tempo de todos os mandatos dos conselheiros, para determinar o tempo total em que um determinado conselheiro ocupou uma cadeira, seja de suplente, seja de titular, dentro do CRSFN. Em seguida, fazemos a média de tempo por conselheiro, isto é, somamos todos os tempos e dividimos pela quantidade de conselheiros. 
+
+Podemos quebrar este tempo pelo tipo de indicação, de forma a descobrir se o tempo de permanência no Conselinho dos conselheiros indicados pelo Poder Público ou por entidades privadas é o mesmo. Observamos que, na verdade, os conselheiros indicados por entidades privadas ficam por mais tempo no cargo do que os conselheiros indicados pelo Poder Público, conforme mostra a Tabela \@ref(tab:tempo-indicacao). 
+
+```{r tempo-indicacao}
+conselheiro_long |> 
+  dplyr::mutate(
+    tempo_mandato = mandato_final - mandato_inicial
+  ) |> 
+  dplyr::filter(
+    tipo_indicacao != "Não identificado",
+    tipo_vaga %in% c("Suplente", "Titular"),
+    # !is.na(tempo_mandato)
+  ) |> 
+  dplyr::group_by(id_conselheiro, tipo_indicacao) |> 
+  dplyr::summarise(
+    tempo_mandato = sum(tempo_mandato)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::group_by(tipo_indicacao) |> 
+  dplyr::summarise(
+    n = dplyr::n(),
+    tempo = mean(tempo_mandato, na.rm = TRUE),
+    tempo = as.integer(tempo / 365.25),
+    tempo = abjDash::tempo_lab_one(tempo)
+  ) |>
+  dplyr::ungroup() |> 
+  dplyr::arrange(desc(n)) |> 
+  knitr::kable(
+    caption = "Tempo médio total dos mandatos dos conselheiro de acordo com o tipo de indicação",
+    col.names = c("Tipo de indicação", "N", "Tempo médio total")
+  )
+```
+
+Podemos, ainda, verificar o tempo de ocupação de cargo pelo tipo de vaga que o conselheiro ocupa, isto é, vagas de Titulares ou de Suplentes. A Tabela \@ref(tab:tempo-vaga) nos mostra que não há diferença entre os dois tipos de cargo. 
+
+```{r tempo-vaga}
+conselheiro_long |> 
+  dplyr::mutate(
+    tempo_mandato = mandato_final - mandato_inicial
+  ) |> 
+  dplyr::filter(
+    tipo_indicacao != "Não identificado",
+    tipo_vaga %in% c("Suplente", "Titular"),
+    # !is.na(tempo_mandato)
+  ) |> 
+  dplyr::group_by(id_conselheiro, tipo_vaga) |> 
+  dplyr::summarise(
+    tempo_mandato = sum(tempo_mandato)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::group_by(tipo_vaga) |> 
+  dplyr::summarise(
+    n = dplyr::n(),
+    tempo = mean(tempo_mandato, na.rm = TRUE),
+    tempo = as.integer(tempo / 365.25),
+    tempo = abjDash::tempo_lab_one(tempo)
+  ) |>
+  dplyr::ungroup() |> 
+  dplyr::arrange(desc(n)) |> 
+  knitr::kable(
+    caption = "Tempo médio total dos mandatos dos conselheiro de acordo com o tipo de vaga ocupada",
+    col.names = c("Tipo de vaga", "N", "Tempo médio total")
+  )
+```
+
+Por fim, podemos cruzar as duas informações ao mesmo tempo. O que observamos é que apenas a média de tempo dos conselheiros titulares indicados por entidades privadas é maior do que o resto, conforme a Tabela \@ref(tab:tempo-indicacao-vaga). 
+
+```{r tempo-indicacao-vaga}
+conselheiro_long |> 
+  dplyr::mutate(
+    tempo_mandato = mandato_final - mandato_inicial
+  ) |> 
+  dplyr::filter(
+    tipo_indicacao != "Não identificado",
+    tipo_vaga %in% c("Suplente", "Titular"),
+    # !is.na(tempo_mandato)
+  ) |> 
+  dplyr::group_by(id_conselheiro, tipo_indicacao, tipo_vaga) |> 
+  dplyr::summarise(
+    tempo_mandato = sum(tempo_mandato)
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::group_by(tipo_indicacao, tipo_vaga) |> 
+  dplyr::summarise(
+    n = dplyr::n(),
+    tempo = mean(tempo_mandato, na.rm = TRUE),
+    tempo = as.integer(tempo / 365.25),
+    tempo = abjDash::tempo_lab_one(tempo)
+  ) |>
+  dplyr::ungroup() |> 
+  dplyr::arrange(desc(n)) |> 
+  knitr::kable(
+    caption = "Tempo médio total dos mandatos dos conselheiro de acordo com o tipo de indicação e tipo de vaga ocupada",
+    col.names = c("Tipo de indicação", "Tipo de vaga", "N", "Tempo médio total")
+  )
+```
+
+## Titular ou suplente?
+
+```{r}
+da_vagas <- conselheiro_long |>
+  dplyr::group_by(id_conselheiro) |> 
+  dplyr::summarise(tipo_vaga = paste0(tipo_vaga, collapse = ", ")) |> 
+  dplyr::mutate(
+    suplente = stringr::str_detect(tipo_vaga, "Suplente"),
+    titular = stringr::str_detect(tipo_vaga, "Titular"),
+    tipo_vaga = dplyr::case_when(
+      suplente & !titular ~ "Suplente",
+      !suplente & titular ~ "Titular",
+      suplente & titular ~ "Ambos",
+      TRUE ~ "Não identificado"
+    )
+  ) |> 
+  dplyr::count(tipo_vaga) |> 
+  dplyr::arrange(desc(n)) |> 
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2),
+    tipo_vaga = forcats::fct_inorder(tipo_vaga),
+    tipo_vaga = forcats::fct_relevel(tipo_vaga, "Não identificado", after = Inf)
+  ) |> 
+  dplyr::arrange(tipo_vaga)
+
+n_um_tipo_vaga <- da_vagas |>
+  dplyr::filter(tipo_vaga %in% c("Titular", "Suplente")) |>
+  dplyr::pull(n) |> 
+  sum()
+
+pct_um_tipo_vaga <- da_vagas |>
+  dplyr::filter(tipo_vaga %in% c("Titular", "Suplente")) |>
+  dplyr::pull(prop) |> 
+  sum()
+```
+
+Podemos ainda verificar sobre a hierarquia de titulares e suplentes, a fim de saber se os conselheiros podem "progredir" de suplente a titular, "regredir" de titular a suplente, ou se eles permanecem sempre iguais. Observamos que `r pct_um_tipo_vaga` dos conselheiros ocupam apenas um tipo de cargo em sua vida, seja ela de Titular ou de Suplente, isto é `r n_um_tipo_vaga` conselheiros de `r nrow(da)`, conforme Tabela \@ref(tab:tipo-vaga). 
+
+```{r tipo-vaga}
+da_vagas |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Tipo de vaga ocupada por cada conselheiro",
+    col.names = c("Tipo de vaga", "N", "%")
+  )
+```
+
+Muitos desses casos são de conselheiros que só ocuparam o cargo durante um mandato e, portanto, sequer tiveram a chance de "progredirem", "regredirem" ou permanecerem no mesmo cargo. Por isso na Tabela \@ref(tab:mandato-uma-vaga), observamos esses `r n_um_tipo_vaga` conselheiros que ocuparam só uma vaga, mas de acordo com a quantidade de mandatos que eles ocuparam. 
+
+```{r mandato-uma-vaga}
+conselheiro_long |>
+  dplyr::group_by(id_conselheiro) |> 
+  dplyr::summarise(
+    tipo_vaga = paste0(tipo_vaga, collapse = ", "), 
+    n_mandatos
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::distinct() |> 
+  dplyr::mutate(
+    suplente = stringr::str_detect(tipo_vaga, "Suplente"),
+    titular = stringr::str_detect(tipo_vaga, "Titular"),
+    tipo_vaga = dplyr::case_when(
+      suplente & !titular ~ "Suplente",
+      !suplente & titular ~ "Titular",
+      suplente & titular ~ "Ambos",
+      TRUE ~ "Não identificado"
+    )
+  ) |> 
+  dplyr::filter(tipo_vaga %in% c("Suplente", "Titular")) |> 
+  dplyr::count(n_mandatos) |> 
+  dplyr::arrange(n_mandatos) |> 
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2)
+  ) |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Quantidade de mandatos por conselheiro que só ocupou um cargo",
+    col.names = c("Quantidade de mandatos", "N", "%")
+  )
+```
+
+Nessa tabela, observamos que a maior parte dos conselheiros ocupou o cargo durante um único mandato apenas. Assim, podemos reescrever a Tabela \@ref(tab:tipo-vaga) com apenas os conselheiros que tiveram mais de um mandato a fim de ter uma visão mais precisa a respeito de, quando era possível, se os conselheiros permaneciam com o mesmo tipo de vaga, ou se eles transitavam entre cargos de suplente e de titular. Essas informações estão resumidas na Tabela \@ref(tab:tipo-vaga-mandato), que indica que, mesmo entre aqueles que tiveram mais de um mandato no CRSFN, prevalece a permanência de cargo. 
+
+```{r tipo-vaga-mandato}
+conselheiro_long |>
+  dplyr::group_by(id_conselheiro) |> 
+  dplyr::summarise(
+    tipo_vaga = paste0(tipo_vaga, collapse = ", "), 
+    n_mandatos
+  ) |> 
+  dplyr::ungroup() |> 
+  dplyr::distinct() |> 
+  dplyr::mutate(
+    suplente = stringr::str_detect(tipo_vaga, "Suplente"),
+    titular = stringr::str_detect(tipo_vaga, "Titular"),
+    tipo_vaga = dplyr::case_when(
+      suplente & !titular ~ "Suplente",
+      !suplente & titular ~ "Titular",
+      suplente & titular ~ "Ambos",
+      TRUE ~ "Não identificado"
+    )
+  ) |> 
+  dplyr::filter(n_mandatos > 1) |> 
+  dplyr::count(tipo_vaga) |> 
+  dplyr::arrange(desc(n)) |>
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2)
+  ) |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Tipo de vaga ocupada por conselheiros que tiveram mais de um mandato",
+    col.names = c("Tipo de vaga", "N", "%")
+  )
+
+n_ambos <- da_vagas |> 
+  dplyr::filter(tipo_vaga == "Ambos") |> 
+  dplyr::pull(n)
+```
+
+```{r}
+da_transicoes <- conselheiro_long |>
+  dplyr::group_by(id_conselheiro) |> 
+  dplyr::summarise(tipo_vaga = paste0(tipo_vaga, collapse = ", ")) |> 
+  dplyr::mutate(
+    suplente = stringr::str_detect(tipo_vaga, "Suplente"),
+    titular = stringr::str_detect(tipo_vaga, "Titular"),
+    tipo_vaga2 = dplyr::case_when(
+      suplente & !titular ~ "Suplente",
+      !suplente & titular ~ "Titular",
+      suplente & titular ~ "Ambos",
+      TRUE ~ "Não identificado"
+    )
+  ) |> 
+  dplyr::filter(tipo_vaga2 == "Ambos") |> 
+  dplyr::count(tipo_vaga) |> 
+  dplyr::mutate(
+    prop = n/sum(n),
+    prop = formattable::percent(prop, 2)
+  ) |> 
+  dplyr::arrange(tipo_vaga) 
+
+n_progrediu <- da_transicoes |>
+  dplyr::filter(tipo_vaga == "Suplente, Titular") |> 
+  dplyr::pull(n)
+
+n_regrediu <- da_transicoes |>
+  dplyr::filter(tipo_vaga == "Titular, Suplente") |> 
+  dplyr::pull(n)
+
+n_varia <- da_transicoes |>
+  dplyr::filter(!tipo_vaga %in% c("Titular, Suplente", "Suplente, Titular")) |> 
+  dplyr::pull(n) |> 
+  sum()
+
+conselheiro_mais_trocas <- conselheiro_long |>
+  dplyr::group_by(id_conselheiro, nome) |> 
+  dplyr::summarise(tipo_vaga = paste0(tipo_vaga, collapse = ", ")) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(size = stringr::str_length(tipo_vaga)) |> 
+  dplyr::filter(size == max(size)) |> 
+  dplyr::pull(nome)
+
+ordem_trocas <- conselheiro_long |>
+  dplyr::group_by(id_conselheiro, nome) |> 
+  dplyr::summarise(tipo_vaga = paste0(tipo_vaga, collapse = ", ")) |> 
+  dplyr::ungroup() |> 
+  dplyr::mutate(size = stringr::str_length(tipo_vaga)) |> 
+  dplyr::filter(size == max(size)) |> 
+  dplyr::pull(tipo_vaga)
+```
+
+Por fim, podemos olhar para estes `r n_ambos` casos de conselheiros que ocuparam tanto cargos de Suplentes, como de Titulares, a fim de verificar como se deu a transição de cargos. Na Tabela \@ref(tab:varios-mandatos-tipo-vaga) vemos a transição de cargos desses `r n_ambos` conselheiros. São `r n_progrediu` conselheiros que progrediram de cargo, outros `r n_regrediu` que regrediram e `r n_varia` conselheiros que variam de cargo ao longo do tempo. O conselheiro que teve mais trocas de cargo é o `r conselheiro_mais_trocas`, que ocupou os cargos na seguinte ordem: `r ordem_trocas`
+
+```{r varios-mandatos-tipo-vaga}
+da_transicoes |> 
+  janitor::adorn_totals() |> 
+  knitr::kable(
+    caption = "Ordem de ocupação das vagas, dentre os conselheiros que ocuparam mais de um tipo de vaga",
+    col.names = c("Tipo de vaga", "N", "%")
+  )
+```
+
+## Conclusões
+
+Neste artigo, pudemos ver algumas informações que o mero texto da lei não consegue nos revelar. Vimos que, por mais que exista uma composição paritária entre conselheiros indicados por entidades privadas e conselheiros indicados pelo Poder Público, que historicamente as entidades privadas indicaram mais conselheiros do que o Poder Público e que os conselheiros de origem privada ocuparam seus cargos por mais tempo, em média, do que os conselheiros de origem pública. 
+
+Vimos também que por mais que a lei disponha sobre reconduções de mandatos, a maior parte dos conselheiros ocupa um cargo por um único mandato e que, quando ele permanece no Conselinho, raramente ele muda de caso, tendo encontrado apenas `r n_ambos` conselheiros que mudaram de cargo. 
+
+
+
