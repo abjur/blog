@@ -148,7 +148,7 @@ conselheiro_long <- conselheiro_inicial |>
 
 # Introdução
 
-O Conselho de Recursos do Sistema Financeiro Nacional (CRSFN), também conhecido com "Conselinho", é a segunda instância administrativa de diversos órgãos julgadores, principalmente da Comissão de Valores Mobiliários (CVM) e do Banco Central do Brasil (BCB). Quem realiza os julgamentos no Conselinho é um Colegiado de 8 conselheiros titulares (com mais 8 conselheiros suplentes). Não necessariamente todos os julgamentos acontecem com 8 conselheiros, pois é possível que alguém tenha que faltar nas sessões, ou que esteja impedido de participar de uma determinada sessão. Existem os suplentes de cada conselheiro titular, mas às vezes nem o titular e nem o suplente podem participar do julgameto. 
+O Conselho de Recursos do Sistema Financeiro Nacional (CRSFN), também conhecido com "Conselhinho", é a segunda instância administrativa de diversos órgãos julgadores, principalmente da Comissão de Valores Mobiliários (CVM) e do Banco Central do Brasil (BCB). Quem realiza os julgamentos no Conselhinho é um Colegiado de 8 conselheiros titulares (com mais 8 conselheiros suplentes). Não necessariamente todos os julgamentos acontecem com 8 conselheiros, pois é possível que alguém tenha que faltar nas sessões, ou que esteja impedido de participar de uma determinada sessão. Existem os suplentes de cada conselheiro titular, mas às vezes nem o titular e nem o suplente podem participar do julgameto. 
 
 O que este artigo busca fazer é descrever com mais minúcias a estrutura de conselheiros do CRSFN. Não vamos aqui investigar a relação dos conselheiros com o desfecho dos julgamentos, estamos interessados única e exclusivamente na descrição da estrutura e composição dos conselheiros. 
 
@@ -229,7 +229,7 @@ tempo_total_medio <- conselheiro_long |>
 
 Outra informação a respeito dos conselheiros que podemos tentar observar é quanto tempo os conselheiros ficam no cargo. O tempo total médio é de `r tempo_total_medio`. Dizemos que é o "tempo *total* médio" ao invés de apenas "tempo total" porque, primeiro, somamos o tempo de todos os mandatos dos conselheiros, para determinar o tempo total em que um determinado conselheiro ocupou uma cadeira, seja de suplente, seja de titular, dentro do CRSFN. Em seguida, fazemos a média de tempo por conselheiro, isto é, somamos todos os tempos e dividimos pela quantidade de conselheiros. 
 
-Podemos quebrar este tempo pelo tipo de indicação, de forma a descobrir se o tempo de permanência no Conselinho dos conselheiros indicados pelo Poder Público ou por entidades privadas é o mesmo. Observamos que, na verdade, os conselheiros indicados por entidades privadas ficam por mais tempo no cargo do que os conselheiros indicados pelo Poder Público, conforme mostra a Tabela \@ref(tab:tempo-indicacao). 
+Podemos quebrar este tempo pelo tipo de indicação, de forma a descobrir se o tempo de permanência no Conselhinho dos conselheiros indicados pelo Poder Público ou por entidades privadas é o mesmo. Observamos que, na verdade, os conselheiros indicados por entidades privadas ficam por mais tempo no cargo do que os conselheiros indicados pelo Poder Público, conforme mostra a Tabela \@ref(tab:tempo-indicacao). 
 
 ```{r tempo-indicacao}
 conselheiro_long |> 
@@ -514,7 +514,7 @@ da_transicoes |>
 
 Neste artigo, pudemos ver algumas informações que o mero texto da lei não consegue nos revelar. Vimos que, por mais que exista uma composição paritária entre conselheiros indicados por entidades privadas e conselheiros indicados pelo Poder Público, que historicamente as entidades privadas indicaram mais conselheiros do que o Poder Público e que os conselheiros de origem privada ocuparam seus cargos por mais tempo, em média, do que os conselheiros de origem pública. 
 
-Vimos também que por mais que a lei disponha sobre reconduções de mandatos, a maior parte dos conselheiros ocupa um cargo por um único mandato e que, quando ele permanece no Conselinho, raramente ele muda de caso, tendo encontrado apenas `r n_ambos` conselheiros que mudaram de cargo. 
+Vimos também que por mais que a lei disponha sobre reconduções de mandatos, a maior parte dos conselheiros ocupa um cargo por um único mandato e que, quando ele permanece no Conselhinho, raramente ele muda de caso, tendo encontrado apenas `r n_ambos` conselheiros que mudaram de cargo. 
 
 
 
