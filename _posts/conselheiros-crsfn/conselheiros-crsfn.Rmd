@@ -191,6 +191,28 @@ conselheiro_long |>
   )
 ```
 
+```{r plot-tipo-indicacao-titular}
+conselheiro_long |>  
+  dplyr::filter(tipo_vaga == "Titular") |>  
+  dplyr::count(tipo_indicacao) |>  
+  dplyr::mutate( 
+    prop = n/sum(n), 
+    prop = formattable::percent(prop, 2) 
+  ) |>  
+  dplyr::arrange(desc(n)) |>  
+  dplyr::mutate(lab = stringr::str_c(n, " (", prop, ")")) |> 
+  ggplot2::ggplot(ggplot2::aes( 
+    x = tipo_indicacao, y = n, fill = tipo_indicacao,  
+    label = lab 
+  )) + 
+  ggplot2::geom_col() + 
+  ggplot2::geom_label(fill = "white", nudge_y = -5) + 
+  ggplot2::scale_fill_viridis_d(begin = .2, end = .8) + 
+  ggplot2::labs(x = "Tipo de indicação", y = "") + 
+  ggplot2::theme_minimal(16) + 
+  ggplot2::theme(legend.position = "none")  
+```
+
 ```{r tipo-indicacao-suplente}
 conselheiro_long |> 
   dplyr::filter(tipo_vaga == "Suplente") |> 
