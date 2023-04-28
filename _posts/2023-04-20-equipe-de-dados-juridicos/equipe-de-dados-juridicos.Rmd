@@ -6,7 +6,7 @@ author:
   - name: Julio Trecenti
     url: https://www.linkedin.com/in/jtrecenti/
 date: 2023-04-20
-# preview: images/paste-82EEACE3.png
+preview: images/equipe-de-dados-juridicos.png
 output:
   distill::distill_article:
     self_contained: true
