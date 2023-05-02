@@ -1,5 +1,24 @@
 [
   {
+    "path": "posts/jurimetria-fundamentacao-decisao/",
+    "title": "Como utilizar a jurimetria para fundamentação de uma decisão?",
+    "description": "Com o crescimento do uso de tecnologias e da análise de dados no campo jurídico, a jurimetria se destaca como uma ferramenta eficiente na fundamentação de decisões judiciais. Neste artigo, vamos explicar como a jurimetria pode ser utilizada para embasar decisões com maior segurança e precisão.",
+    "author": [
+      {
+        "name": "Bárbara Tassoni",
+        "url": {}
+      }
+    ],
+    "date": "2023-05-02",
+    "categories": [],
+    "contents": "\nEssa área do conhecimento, que é multidisciplinar e envolve a necessidade de conhecimentos estatísticos, permite que pesquisadores obtenham informações precisas e confiáveis a partir da análise de dados, possibilitando a identificação de tendências, padrões e relações entre variáveis. Assim, é possível avaliar cenários e fazer previsões com base em informações objetivas e quantificáveis, contribuindo para a tomada de decisões mais embasadas e fundamentadas em dados concretos.\nComo isso funciona na prática?\nPara fundamentar uma decisão utilizando um estudo estatístico, o primeiro passo é definir o problema jurídico que se deseja analisar e coletar os dados necessários. Esses dados podem ser obtidos por meio de sistemas de informação dos tribunais ou de outras fontes confiáveis. Depois de coletar os dados, é preciso tratá-los e analisá-los estatisticamente. Estudar o seu objeto, ou seja, aquele fato/cenário que você deseja conhecer e do qual extrair os principais insights, é o caminho a seguir para que se tenha clareza dos próximos passos que deverão ser dados.\nVamos supor que um advogado esteja atuando em um processo de indenização por danos morais e queira saber qual é o valor médio de indenização que foi concedido em casos semelhantes nos últimos cinco anos. Para fazer isso, ele pode coletar dados dos tribunais sobre processos de indenização por danos morais e, em seguida, analisá-los estatisticamente para chegar a um valor médio. Ou então que uma advogada esteja atuando em um processo em que o juiz tem histórico de decisões contrárias ao seu argumento. Nesse caso, ela pode usar a Jurimetria para identificar o comportamento desse juiz em relação a casos semelhantes e, assim, preparar sua estratégia de defesa de forma mais eficiente.\nA Jurimetria, em outros casos, pode também embasar a necessidade de mudanças na legislação ou na estrutura do judiciário para lidar com demandas específicas, como quando, por exemplo, os dados indicam um aumento no número de processos de determinado tipo, ou em diversas outras situações.\nA ABJ tem trabalhado continuamente em sua missão de auxiliar a prestação jurisdicional brasileira com melhores tomadas de decisões, através dos estudos jurimétricos que elaboramos.\nA exemplo disso, temos as proposições do estudo sobre tempos de processos relacionados a adoção que foram utilizadas como base para parte das mudanças do ECA, realizadas em 2017 (Lei 13.509/2017). Ou as proposições do estudo sobre os maiores litigantes na Justiça Consumerista, que foram consideradas na integração do PJe com o consumidor.gov.br. Destaca-se também a Resolução 331/CNJ, que está em linha com o que a ABJ defende desde sua criação sobre abertura de dados do Judiciário.\nSeja no mundo corporativo privado, com soluções eficientes para o dia a dia dos operadores do direito de escritórios e departamentos jurídicos ou em iniciativas públicas, ONGs e órgãos governamentais, que visem ações em prol da sociedade, a Jurimetria abarca essas diferentes frentes e nos possibilita uma tomada de decisão mais consciente e estratégica.\n\n\n\n",
+    "preview": "posts/jurimetria-fundamentacao-decisao/imagem.png",
+    "last_modified": "2023-05-02T15:56:02-03:00",
+    "input_file": "jurimetria-fundamentacao-decisao.knit.md",
+    "preview_width": 1159,
+    "preview_height": 600
+  },
+  {
     "path": "posts/conselheiros-crsfn/",
     "title": "Análise dos Conselheiros do CRSFN",
     "description": "Neste post, analiso os Conselheiros do Conselho de Recursos do Sistema Financeiro Nacional (CRSFN).",

@@ -12,14 +12,23 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 07 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>2023-05-02</lastBuildDate>
+    <item>
+      <title>Como utilizar a jurimetria para fundamentação de uma decisão?</title>
+      <dc:creator>Bárbara Tassoni</dc:creator>
+      <link>https://lab.abj.org.br/posts/jurimetria-fundamentacao-decisao</link>
+      <description>Com o crescimento do uso de tecnologias e da análise de dados no campo jurídico, a jurimetria se destaca como uma ferramenta eficiente na fundamentação de decisões judiciais. Neste artigo, vamos explicar como a jurimetria pode ser utilizada para embasar decisões com maior segurança e precisão.</description>
+      <guid>https://lab.abj.org.br/posts/jurimetria-fundamentacao-decisao</guid>
+      <pubDate>2023-05-02</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/jurimetria-fundamentacao-decisao/imagem.png" medium="image" type="image/png" width="1159" height="600"/>
+    </item>
     <item>
       <title>Análise dos Conselheiros do CRSFN</title>
       <dc:creator>Ricardo Feliz Okamoto</dc:creator>
       <link>https://lab.abj.org.br/posts/conselheiros-crsfn</link>
       <description>Neste post, analiso os Conselheiros do Conselho de Recursos do Sistema Financeiro Nacional (CRSFN).</description>
       <guid>https://lab.abj.org.br/posts/conselheiros-crsfn</guid>
-      <pubDate>Tue, 07 Mar 2023 00:00:00 +0000</pubDate>
+      <pubDate>2023-03-07</pubDate>
       <media:content url="https://lab.abj.org.br/posts/conselheiros-crsfn/conselheiros-crsfn_files/figure-html5/plot-tipo-indicacao-titular-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -29,7 +38,7 @@
       <link>https://lab.abj.org.br/posts/obs-digital-litigios</link>
       <description>Conheça mais sobre o projeto realizado entre a ABJ, CIEE e IASP, para fornecer dados sobre a movimentação judiciária do país</description>
       <guid>https://lab.abj.org.br/posts/obs-digital-litigios</guid>
-      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-12-19</pubDate>
       <media:content url="https://lab.abj.org.br/posts/obs-digital-litigios/obs-litigios.png" medium="image" type="image/png" width="2560" height="1355"/>
     </item>
     <item>
@@ -38,7 +47,7 @@
       <link>https://lab.abj.org.br/posts/2022-09-20-dados-ambiental</link>
       <description>Onde estão? Quais são as iniciativas? Neste post, falamos um pouco sobre esse tema.</description>
       <guid>https://lab.abj.org.br/posts/2022-09-20-dados-ambiental</guid>
-      <pubDate>Tue, 20 Sep 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-09-20</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-09-20-dados-ambiental/images/paste-82EEACE3.png" medium="image" type="image/png" width="504" height="304"/>
     </item>
     <item>
@@ -50,7 +59,7 @@
       <category>Insolvência</category>
       <category>Recuperação Judicial</category>
       <guid>https://lab.abj.org.br/posts/2022-08-31-analise-obs-grande-do-sul</guid>
-      <pubDate>Wed, 31 Aug 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-08-31</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-08-31-analise-obs-grande-do-sul/2022-08-31-analise-obs-grande-do-sul_files/figure-html5/constatacao-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -60,7 +69,7 @@
       <description>Este artigo busca discutir a mensuração do acesso à justiça. Como podemos medir? Quais são os problemas teóricos em realizar esta tarefa? Essas são algumas questões que serão debatidas.</description>
       <category>Acesso justiça</category>
       <guid>https://lab.abj.org.br/posts/2022-05-02-acesso-a-justica</guid>
-      <pubDate>Mon, 02 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-05-02</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-05-02-acesso-a-justica/imagem.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -70,7 +79,7 @@
       <description>Este artigo busca discutir alguns aspectos práticos de como a jurimetria pode ser usada em pesquisas de judicialização da saúde. Para tanto, o artigo se divide em duas partes principais: (a) possíveis perguntas que a jurimetria pode responder; (b) um desenho de pesquisa possível para atacar essas perguntas. O objetivo deste artigo é ampliar os horizontes de pesquisa utilizando jurimetria, mostrando como ela pode ajudar na prática da pesquisa.</description>
       <category>Saude</category>
       <guid>https://lab.abj.org.br/posts/2022-03-31-judicializacao-da-saude</guid>
-      <pubDate>Thu, 31 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-03-31</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-03-31-judicializacao-da-saude/judicializacao-da-saude.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -80,7 +89,7 @@
       <description>Ampliação no cronograma de eventos, novos projetos e atividades da ABJ para este ano</description>
       <category>Institucional</category>
       <guid>https://lab.abj.org.br/posts/2022-03-03-2022-projecao</guid>
-      <pubDate>Thu, 03 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-03-03</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-03-03-2022-projecao/imagens-lab.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -89,7 +98,7 @@
       <link>https://lab.abj.org.br/posts/2022-02-04-retrospectiva-2021</link>
       <description>Este artigo faz uma retrospectiva dos eventos, projetos e observatórios que a ABJ realizou no ano de 2021.</description>
       <guid>https://lab.abj.org.br/posts/2022-02-04-retrospectiva-2021</guid>
-      <pubDate>Fri, 04 Feb 2022 00:00:00 +0000</pubDate>
+      <pubDate>2022-02-04</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2022-02-04-retrospectiva-2021/retrospectiva-2021.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -100,7 +109,7 @@
       <category>Ministerio Publico</category>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2021-12-17-discricionariedade-do-mp</guid>
-      <pubDate>Fri, 17 Dec 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-12-17</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-12-17-discricionariedade-do-mp/imagens-lab.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -110,7 +119,7 @@
       <description>Este artigo tem como objetivo realizar uma analise comparativa entre os observatorio de Recuperação Judicial no Estado de São Paulo e Rio de Janeiro.</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2021-11-30-comparativo-rj-sp</guid>
-      <pubDate>Tue, 30 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-11-30</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-11-30-comparativo-rj-sp/comparativo_sp_rj_files/figure-html5/Tempo-Deferimento-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -123,7 +132,7 @@
       <category>Jurimetria</category>
       <category>Processos Administrativos Sancionadores</category>
       <guid>https://lab.abj.org.br/posts/2021-10-27-cvm</guid>
-      <pubDate>Wed, 27 Oct 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-10-27</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-10-27-cvm/cvm-post_files/figure-html5/informacionais-motivo-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -134,7 +143,7 @@
       <category>dados abertos</category>
       <category>programação</category>
       <guid>https://lab.abj.org.br/posts/2021-09-19-faxinajud</guid>
-      <pubDate>Sun, 19 Sep 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-09-19</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-09-19-faxinajud/faxinajud.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -146,7 +155,7 @@
       <category>Observatorio</category>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2021-08-24-leiloeiros</guid>
-      <pubDate>Tue, 24 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-08-24</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-08-24-leiloeiros/leiloeiros_files/figure-html5/plot1-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -157,7 +166,7 @@
       <description>Uma avaliação da Reforma de 2020.</description>
       <category>Nova Lei de Falências</category>
       <guid>https://lab.abj.org.br/posts/2021-08-17-alteracao-falencias</guid>
-      <pubDate>Tue, 17 Aug 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-08-17</pubDate>
     </item>
     <item>
       <title>Painéis do CNJ</title>
@@ -167,7 +176,7 @@
       <category>Geral</category>
       <category>CNJ</category>
       <guid>https://lab.abj.org.br/posts/2021-07-26-paineis-cnj</guid>
-      <pubDate>Mon, 26 Jul 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-07-26</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-07-26-paineis-cnj/paineis.png" medium="image" type="image/png" width="1781" height="1182"/>
     </item>
     <item>
@@ -183,7 +192,7 @@
       <category>Desenvolvimento</category>
       <category>Litigiosidade</category>
       <guid>https://lab.abj.org.br/posts/2021-01-15-litigiosidade</guid>
-      <pubDate>Wed, 30 Jun 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-06-30</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-01-15-litigiosidade/litigiosidade_files/figure-html5/lit-idhm-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -193,7 +202,7 @@
       <link>https://lab.abj.org.br/posts/2021-06-11-analise-1040</link>
       <description>Neste texto, analisamos os impactos potenciais da MPV 1.040/2021 através de um estudo simples de simulação de cenários.</description>
       <guid>https://lab.abj.org.br/posts/2021-06-11-analise-1040</guid>
-      <pubDate>Thu, 03 Jun 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-06-03</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-06-11-analise-1040/analise-1040_files/figure-html5/prop-viab-1.png" medium="image" type="image/png" width="8000" height="8000"/>
     </item>
     <item>
@@ -203,7 +212,7 @@
       <description>Análise de como a assimetria de interesses entre as partes pode afetar resultados de processos</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2021-05-20-assimetria</guid>
-      <pubDate>Thu, 20 May 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-05-20</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-05-20-assimetria/assimetria.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -212,7 +221,7 @@
       <link>https://lab.abj.org.br/posts/2021-04-13-stf-controle-concentrado</link>
       <description>Pequena análise das ações de controle concentrado de constitucionalidade ao STF entre 2000 e 2020.</description>
       <guid>https://lab.abj.org.br/posts/2021-04-13-stf-controle-concentrado</guid>
-      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-04-13</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-04-13-stf-controle-concentrado/grafico_perfil_ato_federal_questionado-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -221,7 +230,7 @@
       <link>https://lab.abj.org.br/posts/2021-03-22-levantamentos-abj</link>
       <description>Com frequência, recebemos pedidos de dados para pesquisas acadêmicas. Estes são alguns dos principais levantamentos que fizemos em 2020</description>
       <guid>https://lab.abj.org.br/posts/2021-03-22-levantamentos-abj</guid>
-      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-03-22</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-03-22-levantamentos-abj/levantamentos.png" medium="image" type="image/png" width="596" height="298"/>
     </item>
     <item>
@@ -230,7 +239,7 @@
       <link>https://lab.abj.org.br/posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos</link>
       <description>A recuperação judicial alcança o objetivo de permitir a manutenção do emprego dos trabalhadores? O que diz a realidade empírica?</description>
       <guid>https://lab.abj.org.br/posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos</guid>
-      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-03-12</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-03-09-recuperao-judicial-e-manuteno-de-empregos/img/grafico_1.png" medium="image" type="image/png" width="1159" height="587"/>
     </item>
     <item>
@@ -240,7 +249,7 @@
       <description>Fórum aberto de jurimetria, atendimento a pesquisadores, novo cronograma de eventos e outras atividades previstas da ABJ para este ano</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2021-02-23-novas-perspectivas-para-2021</guid>
-      <pubDate>Tue, 23 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-02-23</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-02-23-novas-perspectivas-para-2021/Novas perspectivas.png" medium="image" type="image/png" width="674" height="464"/>
     </item>
     <item>
@@ -253,7 +262,7 @@
       <link>https://lab.abj.org.br/posts/2021-02-01-pericia-emenda</link>
       <description>O presente artigo tem por objetivo abordar a aplicação da perícia prévia e a emenda à petição inicial nos processos de recuperação judicial e seus impactos nas decisões de deferimento do processamento.</description>
       <guid>https://lab.abj.org.br/posts/2021-02-01-pericia-emenda</guid>
-      <pubDate>Mon, 01 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-02-01</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-02-01-pericia-emenda/grafico.png" medium="image" type="image/png" width="703" height="282"/>
     </item>
     <item>
@@ -262,7 +271,7 @@
       <link>https://lab.abj.org.br/posts/2021-01-27-retrospectiva-2020</link>
       <description>Um resumo sobre andamento de projetos e atividades da ABJ em 2020</description>
       <guid>https://lab.abj.org.br/posts/2021-01-27-retrospectiva-2020</guid>
-      <pubDate>Wed, 27 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-01-27</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2021-01-27-retrospectiva-2020/abj-2020.png" medium="image" type="image/png" width="1080" height="1080"/>
     </item>
     <item>
@@ -274,7 +283,7 @@
       <category>Analises</category>
       <category>Dados</category>
       <guid>https://lab.abj.org.br/posts/2020-12-17-constituicao</guid>
-      <pubDate>Thu, 17 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-12-17</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-17-constituicao/exploracon.png" medium="image" type="image/png" width="722" height="464"/>
     </item>
     <item>
@@ -288,7 +297,7 @@
       <category>Analises</category>
       <category>CNJ</category>
       <guid>https://lab.abj.org.br/posts/2020-12-07-cifra-oculta</guid>
-      <pubDate>Mon, 14 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-12-14</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-07-cifra-oculta/img/exemplo.png" medium="image" type="image/png" width="862" height="504"/>
     </item>
     <item>
@@ -300,7 +309,7 @@
       <category>Levantamentos</category>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2020-12-09-covid</guid>
-      <pubDate>Wed, 09 Dec 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-12-09</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-12-09-covid/covid_files/figure-html5/fig-semana-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -311,7 +320,7 @@
       <description>Levantamento da ABJ publicado pelo G1</description>
       <category>Levantamentos</category>
       <guid>https://lab.abj.org.br/posts/2020-11-10-candidatos2020</guid>
-      <pubDate>Tue, 10 Nov 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-11-10</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-11-10-candidatos2020/candidatos2020.png" medium="image" type="image/png" width="629" height="339"/>
     </item>
     <item>
@@ -322,7 +331,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-empresas</guid>
-      <pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-10-23</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-empresas/empresas_files/figure-html5/tipo-empresa-final-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -333,7 +342,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-temas</guid>
-      <pubDate>Thu, 10 Sep 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-09-10</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-temas/temas_files/figure-html5/temas-agg-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -344,7 +353,7 @@
       <category>Observatorio</category>
       <category>CVM</category>
       <guid>https://lab.abj.org.br/posts/2020-10-23-paps</guid>
-      <pubDate>Mon, 20 Jul 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-07-20</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-10-23-paps/img/estrutura.png" medium="image" type="image/png" width="1200" height="825"/>
     </item>
     <item>
@@ -354,7 +363,7 @@
       <description>As mudanças no CARF após investigações de corrupção.</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2020-01-20-carf</guid>
-      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-01-20</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-20-carf/zelotes_files/figure-html5/unnamed-chunk-2-1.png" medium="image" type="image/png" width="1248" height="768"/>
     </item>
     <item>
@@ -365,7 +374,7 @@
 Esperamos que goste!</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2020-01-12-welcome</guid>
-      <pubDate>Sun, 12 Jan 2020 00:00:00 +0000</pubDate>
+      <pubDate>2020-01-12</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2020-01-12-welcome/abj.png" medium="image" type="image/png" width="374" height="152"/>
     </item>
     <item>
@@ -375,7 +384,7 @@ Esperamos que goste!</description>
       <description>Benefícios e implicações das novas tecnologias para a prática jurídica</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei</guid>
-      <pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-11-19</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-11-19-como-o-big-data-pode-auxiliar-a-prtica-da-lei/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -386,7 +395,7 @@ Esperamos que goste!</description>
       <category>Conceitos</category>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2019-10-15-mas-afinal-o-que-jurimetria</guid>
-      <pubDate>Tue, 15 Oct 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-10-15</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-10-15-mas-afinal-o-que-jurimetria/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -396,7 +405,7 @@ Esperamos que goste!</description>
       <description>Mais de 6.000 simulações de decisões judiciais imparciais mostram que réus comuns têm decisão favorável nos JECs em 25% dos casos, enquanto que políticos têm decisão favorável em 31% dos processos.</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis</guid>
-      <pubDate>Fri, 27 Sep 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-09-27</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-09-27-favoritismo-judicial-de-polticos-evidncias-nos-juizados-especiais-cveis/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -406,7 +415,7 @@ Esperamos que goste!</description>
       <description>Análise das principais características e evolução das decisões das câmaras por assunto e comarca de origem</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2019-09-17-camaras-reservadas-direito-empresarial</guid>
-      <pubDate>Tue, 17 Sep 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-09-17</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-09-17-camaras-reservadas-direito-empresarial/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -416,7 +425,7 @@ Esperamos que goste!</description>
       <description>Especialização o Poder Judiciário paulista passou a ser vista pela comunidade empresarialista como uma alternativa viável e competitiva para resoluções</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2019-09-02-um-ano-e-meio-das-varas-empresariais-de-so-paulo-uma-iniciativa-de-sucesso</guid>
-      <pubDate>Mon, 02 Sep 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-09-02</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-09-02-um-ano-e-meio-das-varas-empresariais-de-so-paulo-uma-iniciativa-de-sucesso/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -426,7 +435,7 @@ Esperamos que goste!</description>
       <description>Diferenças entre os dois conceitos e como a jurimetria utiliza IA nos seus processos práticos</description>
       <category>Conceitos</category>
       <guid>https://lab.abj.org.br/posts/2019-08-27-jurimetria-e-inteligncia-artificial</guid>
-      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-08-27</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-08-27-jurimetria-e-inteligncia-artificial/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -436,7 +445,7 @@ Esperamos que goste!</description>
       <description>Dados sozinhos, fora de contexto, não transmitem mensagens. Mas quando adequadamente tratados, conseguimos interpretá-los e transformá-los em informações que podem ser usadas para melhorar uma tomada de decisão</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas</guid>
-      <pubDate>Tue, 20 Aug 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-08-20</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-08-20-jurimetria-e-dados-a-importncia-de-bases-estruturadas/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -446,7 +455,7 @@ Esperamos que goste!</description>
       <description>A short description of the post.</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2019-05-05-o-abandono-afetivo-e-seu-padro-de-julgamento-em-so-paulo</guid>
-      <pubDate>Sun, 05 May 2019 00:00:00 +0000</pubDate>
+      <pubDate>2019-05-05</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2019-05-05-o-abandono-afetivo-e-seu-padro-de-julgamento-em-so-paulo/img/imagem.png" medium="image" type="image/png" width="760" height="600"/>
     </item>
     <item>
@@ -457,7 +466,7 @@ Esperamos que goste!</description>
       <category>Conceitos</category>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2018-05-21-nuances-no-clculo-de-tempos-processuais</guid>
-      <pubDate>Mon, 21 May 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-05-21</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2018-05-21-nuances-no-clculo-de-tempos-processuais/img/imagem.png" medium="image" type="image/png" width="600" height="250"/>
     </item>
     <item>
@@ -467,7 +476,7 @@ Esperamos que goste!</description>
       <description>Pesquisa da ABJ inspirou o Projeto de Lei 5850/2016, sancionado em 22/11/2017 (Lei 13.509/2017), que agiliza procedimentos relacionados à destituição de poder familiar e à adoção de crianças e adolescentes</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil</guid>
-      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-05-14</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2018-05-14-contribuies-da-abj-para-o-aprimoramento-do-sistema-de-adoo-do-brasil/img/imagem.png" medium="image" type="image/png" width="600" height="250"/>
     </item>
     <item>
@@ -477,7 +486,7 @@ Esperamos que goste!</description>
       <description>A jurimetria apresenta-se como uma ferramenta valiosa para complementar argumentos jurídicos tradicionais na interpretação da Constituição</description>
       <category>Geral</category>
       <guid>https://lab.abj.org.br/posts/2018-04-16-princpios-conflitantes-e-a-jurimetria</guid>
-      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-04-16</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2018-04-16-princpios-conflitantes-e-a-jurimetria/img/imagem.png" medium="image" type="image/png" width="600" height="250"/>
     </item>
     <item>
@@ -487,7 +496,7 @@ Esperamos que goste!</description>
       <description>O direito não pode ser reduzido a um ramo literário de  interpretação de textos das normas, desatento às consequências sociais das suas decisões</description>
       <category>Analises</category>
       <guid>https://lab.abj.org.br/posts/2018-03-13-quando-a-doutrina-jurdica-pode-ser-til-de-verdade</guid>
-      <pubDate>Tue, 13 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-03-13</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2018-03-13-quando-a-doutrina-jurdica-pode-ser-til-de-verdade/img/imagem.png" medium="image" type="image/png" width="600" height="250"/>
     </item>
     <item>
@@ -497,7 +506,7 @@ Esperamos que goste!</description>
       <description>A dificuldade de acessar e mastigar os dados leva à necessidade de utilizar ferramentas computacionais adequadas</description>
       <category>Programacao</category>
       <guid>https://lab.abj.org.br/posts/2018-03-01-por-que-usar-r-para-jurimetria</guid>
-      <pubDate>Thu, 01 Mar 2018 00:00:00 +0000</pubDate>
+      <pubDate>2018-03-01</pubDate>
       <media:content url="https://lab.abj.org.br/posts/2018-03-01-por-que-usar-r-para-jurimetria/img/imagem.png" medium="image" type="image/png" width="600" height="250"/>
     </item>
   </channel>
