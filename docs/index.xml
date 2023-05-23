@@ -12,7 +12,16 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>2023-05-02</lastBuildDate>
+    <lastBuildDate>2023-05-23</lastBuildDate>
+    <item>
+      <title>Como montar uma equipe de ciência de dados jurídicos? </title>
+      <dc:creator>Julio Trecenti</dc:creator>
+      <link>https://lab.abj.org.br/posts/2023-05-23-equipe-de-dados-juridicos</link>
+      <description>Uma equipe de dados jurídicos exige interdisciplinariedade. Quais áreas precisam se associar? E o que cada área tem a contribuir?</description>
+      <guid>https://lab.abj.org.br/posts/2023-05-23-equipe-de-dados-juridicos</guid>
+      <pubDate>2023-05-23</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/2023-05-23-equipe-de-dados-juridicos/images/equipe-de-dados-juridicos.png" medium="image" type="image/png" width="1159" height="600"/>
+    </item>
     <item>
       <title>Como utilizar a jurimetria para fundamentação de uma decisão?</title>
       <dc:creator>Bárbara Tassoni</dc:creator>
