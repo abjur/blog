@@ -1,0 +1,53 @@
+---
+title: "Como montar uma equipe de ciência de dados jurídicos? "
+description: |
+  Uma equipe de dados jurídicos exige interdisciplinariedade. Quais áreas precisam se associar? E o que cada área tem a contribuir?
+author:
+  - name: Julio Trecenti
+    url: https://www.linkedin.com/in/jtrecenti/
+date: 2023-04-20
+preview: images/equipe-de-dados-juridicos.png
+output:
+  distill::distill_article:
+    self_contained: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Interdisciplinaridade e colaboração: montando uma equipe de ciência de dados no setor jurídico
+
+A ciência de dados jurídicos, ou jurimetria, tem ganhado destaque nos últimos anos. Essa área combina habilidades em direito, estatística e computação para analisar grandes volumes de dados e gerar insights para tomada de decisão, seja dentro de um escritório ou departamento jurídico, seja para pensar em políticas públicas ou aprimorar a administração do judiciário. 
+
+Montar uma equipe de ciência de dados jurídicos é uma tarefa que exige atenção à interdisciplinaridade e à colaboração entre profissionais de diferentes áreas. A interdisciplinaridade é crucial nessa área, pois permite a colaboração entre especialistas com diferentes habilidades e conhecimentos. Ao unir profissionais de áreas distintas, como direito, estatística e computação, a equipe será capaz de abordar problemas complexos e oferecer soluções inovadoras. Essa abordagem interdisciplinar também permite que a equipe enxergue novas perspectivas e desenvolva estratégias mais eficientes, levando a resultados mais significativos e confiáveis.
+
+## Direito
+
+Os profissionais de direito têm um papel fundamental na equipe de ciência de dados jurídicos. Eles fornecem conhecimento especializado sobre leis, regulamentações e práticas legais, além de entenderem as especificidades e terminologias do setor. Algumas atividades que podem ser desempenhadas por profissionais de direito incluem:
+
+- Identificar questões jurídicas relevantes e áreas de interesse para análise de dados. Na academia, isso envolve a construção das questões norteadoras. Nas empresas, isso envolve a identificação das dores da empresa.
+- Realizar a leitura de documentos jurídicos e descrever para o restante da equipe como eles são produzidos. Ou seja, a pessoa do direito ajuda a desenhar o processo gerador de dados.
+- Interpretar os resultados das análises de dados à luz das leis e regulamentações aplicáveis, bem como os princípios jurídicos mais importantes.
+
+## Estatística
+
+Especialistas em estatística são essenciais para analisar, interpretar e modelar dados jurídicos. Eles utilizam métodos estatísticos para identificar padrões e tendências, auxiliando na tomada de decisões e na previsão de resultados. Algumas atividades que podem ser desempenhadas por estatísticos incluem:
+
+- Desenhar a metodologia das pesquisas e as técnicas de amostragem adequadas para atingir os objetivos do projeto.
+- Limpar os dados brutos para torná-los passíveis de análise estatística. Os dados jurídicos geralmente são bem sujos e precisam de vários tratamentos.
+- Desenvolver modelos estatísticos para prever resultados de processos judiciais.
+- Analisar dados para identificar padrões e tendências relevantes, como a correlação entre fatores específicos e decisões judiciais.
+
+## Computação
+Os profissionais da computação e engenharia de dados contribuem com habilidades para extrair, processar e  armazenar grandes volumes de dados jurídicos de forma consistente. Eles também desenvolvem e implementam algoritmos específicos para a análise de dados jurídicos. Algumas atividades que podem ser desempenhadas por profissionais de computação incluem:
+
+- Criar sistemas de armazenamento e processamento de dados eficientes e escaláveis;
+- Desenvolver algoritmos de raspagem de dados para coletar e armazenar os documentos jurídicos.
+- Automatizar os fluxos de dados para que todas as pontas da análise possam se comunicar.
+
+# Conclusão, pelo chatGPT
+
+Montar uma equipe de ciência de dados jurídicos requer uma abordagem interdisciplinar que una profissionais de direito, estatística e computação. A colaboração entre esses especialistas é fundamental para enfrentar os desafios complexos e inovar na prestação de serviços jurídicos. 
+
+Em suma, a chave para o sucesso na ciência de dados jurídicos é a interdisciplinaridade e a colaboração entre profissionais com diferentes formações e habilidades. Essa abordagem permite que a equipe aborde problemas de maneira mais holística e desenvolva soluções que geram um impacto positivo no setor jurídico e na sociedade como um todo.
