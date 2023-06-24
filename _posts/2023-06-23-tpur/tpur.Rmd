@@ -100,8 +100,29 @@ Uma informação importante a respeito das TPUs é como que as Tabelas, em gené
 
 Quanto à Classe e ao Assunto, quem registra o tópico específico a que se refere um processo é a própria pessoa que protocola uma petição inicial.
 
-Quanto às Movimentações, quem classifica uma movimentação de acordo com as TPUs
+Quanto às Movimentações, quem classifica uma movimentação de acordo com as TPUs é o Magistrado ou o Serventuário. Essa característica da classificação das movimentações se manifesta na própria TPU, que se inicia com as macro categorias de "Magistrado" e "Serventuário" apenas. 
+
+(inserir foto da TPU de movimentos)
 
 Quanto aos Documentos processuais, quem os classifica em um processo varia de acordo com quem produziu o documento. Basicamente, quem classifica um determinado documento é quem traz o documento ao processo. Se o documento foi protocolado por advogado (ou figuras correlatas, tais como promotores, defensores e procuradores), então é o próprio advogado quem determina o tipo de documento; se é o Cartório Judicial quem protocola um documento, então é ele mesmo que classifica o tipo de documento. E se é o juiz, então é o próprio magistrado que classifica o documento que ele está subindo. 
 
+### Colunas
+
+### Versões
+
+É importante saber que as TPUs são atualizadas continuamente. Não há periodicidade definida para essas atualizações. Elas são feitas de acordo com o julgamento de conveniência do Comitê Gestor da Numeração Única e das Tabelas Processuais Unificadas. Além de fazer as mudanças nas TPUs de ofício, o Comitê recebe sugestões dos tribunais. Essas sugestões, por sua vez, podem gerar mudanças nas TPUs, que acabam se tornando versões novas. 
+
+Normalmente, as novas versões não trazem grandes mudanças. Elas alteram alguma descrição no glossário, ou adicionam alguma classificação nova. Mas é importante se ater a essas alterações no tempo quando se está realizando uma pesquisa. 
+
+Na ABJ, em uma pesquisa, tivemos problemas relacionados à mudança de versões das TPUs. Estávamos realizando uma pesquisa sobre a judicialização da saúde na Justiça Federal do Ceará, entre 2015 e 2021. Fomos, então, nas TPUs de Assunto para escolher os assuntos relacionados ao tema da pesquisa. Com base nisso, identificamos os seguintes códigos:
+
+12521, 12520, 12508, 12509, 12510, 12498, 12497, 12499, 12496, 12495, 12494, 12493, 12505, 12506, 12518, 12512, 12513, 12514, 12515, 12516, 12517, 14759, 12502, 12503, 12500, 12504, 12519, 12490, 12487, 12488, 12489, 13017, 12416
+
+Entretanto, depois de termos realizado um pedido de dados à JFCE com os códigos de assunto acima, percebemos que a TPU tinha sofrido grandes alterações especificamente na taxonomia a respeito de temas ligados a judicialização da saúde. Essas mudanças aconteceram em decorrência de um estudo do Insper para o Justiça Pesquisa realizado em 2018 e publicado em 2019 (inserir o link). Então faltaram os seguintes códigos de assuntos:
+
+12416, 12494, 12519, 12502, 12496, 12506, 12495, 12488, 12493, 12500, 12503, 12487, 12489, 12512, 12516, 12513, 12504, 13017, 12505, 12498, 10892, 11884, 10856, 7698, 6064, 9196, 10045, 10100, 10653, 11852, 10356, 10655, 11885, 10671, 10090, 10003, 7769, 8986, 10067, 10126, 10504, 10125, 10656, 11857, 10423, 10244, 11883, 10023, 10437, 10662, 10458, 10070, 9098, 9995, 11847, 10543, 10438, 10273, 9518, 9532, 10287, 11855, 10487, 11856, 10677, 10454, 10894, 10376, 10283, 9994, 10121, 7618, 10111, 11989, 10737, 5922, 10399, 6011, 10364, 10280, 10010, 7657, 9581, 10066, 10014, 9985, 10225, 10091, 10065, 10370, 10069, 10095, 11854, 10263, 7706, 10396, 10710, 6193, 10108, 6007, 10445, 10680, 10294, 9596, 5988, 12222, 12223, 11851, 10880, 12224, 7703, 4703, 10083, 9606, 5952, 9607, 12379, 10118, 10556, 6001, 11843, 10173, 12612, 11848, 9991, 10004, 10434, 7775, 10424, 7949, 10435, 5947, 10500, 7689, 12378
+
 ## Como usar
+
+Saber essas informações a respeito das TPUs
+
