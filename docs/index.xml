@@ -12,7 +12,16 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>2023-05-23</lastBuildDate>
+    <lastBuildDate>2023-07-04</lastBuildDate>
+    <item>
+      <title>Raciocínios probabilísticos e o papel da estatística na análise probatória</title>
+      <dc:creator>Renata Hirota</dc:creator>
+      <link>https://lab.abj.org.br/posts/estatistica-probabilidade-analise-probatoria</link>
+      <description>​​A estatística desempenha um papel crucial na análise probatória do Direito, fornecendo ferramentas para o pensamento probabilístico, tomada de decisões embasada e coleta de dados adequada. Este artigo explora como a estatística contribui para uma análise mais precisa das evidências, destacando a importância da imparcialidade, objetividade e consistência.</description>
+      <guid>https://lab.abj.org.br/posts/estatistica-probabilidade-analise-probatoria</guid>
+      <pubDate>2023-07-04</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/estatistica-probabilidade-analise-probatoria/banners_lab.png" medium="image" type="image/png" width="1159" height="600"/>
+    </item>
     <item>
       <title>Como montar uma equipe de ciência de dados jurídicos? </title>
       <dc:creator>Julio Trecenti</dc:creator>
