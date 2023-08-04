@@ -12,7 +12,18 @@
       <link>https://lab.abj.org.br</link>
     </image>
     <generator>Distill</generator>
-    <lastBuildDate>2023-07-24</lastBuildDate>
+    <lastBuildDate>2023-08-04</lastBuildDate>
+    <item>
+      <title>Metodologia de Pesquisa em Jurimetria: um começo</title>
+      <dc:creator>Ricardo Feliz</dc:creator>
+      <link>https://lab.abj.org.br/posts/metodologia-pesquisa-comeco</link>
+      <description>Toda pesquisa em jurimetria precisa passar por quatro etapas que exigem cuidados metodológicos específicos: listagem de processos, extração de dados, tratamento dos dados e análise. Neste texto, inauguramos uma série de postagens que vão se tornar um livro da ABJ sobre metodologia de pesquisa em jurimetria.</description>
+      <category>Metodologia</category>
+      <category>Pesquisa</category>
+      <guid>https://lab.abj.org.br/posts/metodologia-pesquisa-comeco</guid>
+      <pubDate>2023-08-04</pubDate>
+      <media:content url="https://lab.abj.org.br/posts/metodologia-pesquisa-comeco/EXT-2023.png" medium="image" type="image/png" width="1159" height="600"/>
+    </item>
     <item>
       <title>O Judiciário e além: aplicações da jurimetria</title>
       <dc:creator>Ricardo Feliz</dc:creator>
