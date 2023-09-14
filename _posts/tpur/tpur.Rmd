@@ -1,11 +1,11 @@
 ---
-title: "tpur"
+title: "Entendendo as Tabelas Processuais Unificadas (TPUs)"
 description: |
   Este texto busca detalhar o funcionamento e a estrutura das Tabelas Processuais Unificadas (TPUs), bem como explicar como utilizar as TPUs em uma pesquisa. 
 author:
   - name: Ricardo Feliz
     url: https://www.linkedin.com/in/ricardo-feliz-okamoto-a20344171/
-date: 2023-06-23
+date: 2023-08-11
 output:
   distill::distill_article:
     self_contained: true
@@ -30,7 +30,10 @@ cores_abj <-  viridis::viridis(2, 1, .2, .8)
 
 ### O que são?
 
-As Tabelas Processuais Unificadas (TPUs) buscam sistematizar uniformizar a taxonomia e terminolgia de ["classes, assuntos, movimentações e documentos processuais aplicáveis a todos os órgãos do Poder Judiciário"](https://www.cnj.jus.br/programas-e-acoes/tabela-processuais-unificadas/). 
+As Tabelas Processuais Unificadas (TPUs) buscam sistematizar e uniformizar a
+taxonomia e terminolgia de ["classes, assuntos, movimentações e documentos
+processuais aplicáveis a todos os órgãos do Poder
+Judiciário"](https://www.cnj.jus.br/programas-e-acoes/tabela-processuais-unificadas/). 
 
 ### Desde quando elas existem?
 
@@ -38,7 +41,11 @@ Desde a Resolução nº 46 de 18 de dezembro de 12 de 2007.
 
 ### Órgão Competente
 
-Quem faz a gestão das TPUs é o Conselho Nacional de Justiça (CNJ) por meio do **Comitê Gestor da Numeração Única e das Tabelas Processuais Unificadas**. Esse Comitê é composto por 15 membros (art. 1, [Portaria n. 135/2010](https://atos.cnj.jus.br/atos/detalhar/271)). Os membros são originários dos seguintes órgãos:
+Quem faz a gestão das TPUs é o Conselho Nacional de Justiça (CNJ) por meio do
+**Comitê Gestor da Numeração Única e das Tabelas Processuais Unificadas**. Esse
+Comitê é composto por 15 membros (art. 1, [Portaria n.
+135/2010](https://atos.cnj.jus.br/atos/detalhar/271)). Os membros são
+originários dos seguintes órgãos:
 
 - 1 representante do Conselho Nacional de Justiça (CNJ)
 - 1 representante do Supremo Tribunal Federal (STF)
@@ -46,23 +53,28 @@ Quem faz a gestão das TPUs é o Conselho Nacional de Justiça (CNJ) por meio do
 - 1 representante do Tribunal Superior do Trabalho (TST)
 - 1 representante do Tribunal Superior Eleitoral (TSE)
 - 1 representante do Supremo Tribunal Militar (STM)
-- 5 representantes dos Tribunais de Justiça (TJs), sendo apenas um por região geográfica
+- 5 representantes dos Tribunais de Justiça (TJs), sendo apenas um por região
+  geográfica
 - 1 representante dos Tribunais Militares Estaduais
 - 1 representante do Conselho da Justiça Federal
 - 1 representante do Conselho Superior da Justiça do Trabalho
 - 1 representante do Conselho Nacional do Ministério Público
 
-Esses representantes são nomeados pelo Presidente do CNJ (art. 4, Portaria n. 135/2010).
+Esses representantes são nomeados pelo Presidente do CNJ (art. 4, Portaria n.
+135/2010).
 
-A função deste comitê é, principalmente, realizar a revisão e o aperfeiçoamento constante das TPUs.
+A função deste comitê é, principalmente, realizar a revisão e o aperfeiçoamento
+constante das TPUs.
 
 ## Funcionamento
 
-Antes de passarmos para detalhes do funcionamento das TPUs, precisamos nos familizar com elas, para quem ainda não as conhece.
+As TPUs se referem a 4 tabelas, em formato de árvore: Classe, Assunto,
+Movimentos e Documentos processuais. Você pode explorar as TPUs no seguinte
+link:
+[https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php](https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php)
 
-As TPUs se referem a 4 tabelas, em formato de árvore: Classe, Assunto, Movimentos e Documentos processuais. Você pode explorar as TPUs no seguinte link: https://www.cnj.jus.br/sgt/consulta_publica_assuntos.php
-
-E a seguir há uma demonstração de como funciona uma das árvores, no caso, a árvore de assuntos. 
+A seguir, demonstramos como como funciona uma das árvores, no caso, a
+árvore de assuntos. 
 
 <video width="640" height="480" controls>
   <source src="img/tpu_exemplo.mp4" type="video/mp4">
@@ -70,61 +82,98 @@ E a seguir há uma demonstração de como funciona uma das árvores, no caso, a 
 
 ### O que significa cada TPU?
 
-Como já falamos, as TPUs se referem a 4 Tabelas: Classe, Assunto, Movimentos e Documentos processuais.
+Como já falamos, as TPUs se referem a 4 Tabelas: Classe, Assunto, Movimentos e
+Documentos processuais.
 
-A TPU de Classe se refere à classificação de um processo quanto ao procedimento adotado, seja na esfera judicial, seja na esfera administrativa, para atender ao pedido.
+A TPU de Classe se refere à classificação de um processo quanto ao procedimento
+adotado, seja na esfera judicial, seja na esfera administrativa, para atender ao
+pedido.
 
-A TPU de Assunto se refere à classificação de um processo quanto à matéria ou aos temas discutidos.
+A TPU de Assunto se refere à classificação de um processo quanto à matéria ou
+aos temas discutidos.
 
 ```{r, out.width="50%"}
 knitr::include_graphics("img/classe_assunto_exemplo.png")
 ```
 
-A TPU de Movimentos se refere, não a um processo, mas uma movimentação dentro do processo. A sua ideia é resumir o tipo de movimentação de que se trata. 
+A TPU de Movimentos se refere não a um processo, mas uma movimentação dentro do
+processo. A sua ideia é resumir o tipo de movimentação de que se trata. 
 
 ```{r, out.width="80%"}
 knitr::include_graphics("img/movimentos_exemplo.png")
 ```
 
-Por fim, a TPU de Documentos processuais é uma Tabela que se refere, também, a movimentações. Cada movimentação traz um tipo de documento (petições iniciais, sentenças, despachos). E esses documentos estão também padronizados pelas TPUs.
+Por fim, a TPU de Documentos processuais é uma Tabela que se refere, também, a
+movimentações. Cada movimentação traz um tipo de documento (petições iniciais,
+sentenças, despachos). E esses documentos estão também padronizados pelas TPUs.
 
 ```{r, out.width="40%"}
 knitr::include_graphics("img/documentos_exemplo.png")
 ```
 
-### Como se organizam as TPUs?
+### Como as TPUs são organizadas?
 
-As 4 TPUs se organizam em um formato hierárquico de árvore, composto por 6 níveis de classificação. O nível 1 é sempre o nível mais genérico, que vai se especificando até chegar no nível mais detalhado. O nível mais detalhado, teoricamente é o nível 6, mas, na verdade, raramente isso acontece, pois o último nível de uma determinada ramificação pode ser o quinto nível, ou até o mesmo o segundo, terceiro ou quarto. Nas TPUs de Movimentos e de Documentos processuais, apesar de o nível 6 ser possível, não há nenhuma categoria ocupando este nível. 
+As 4 TPUs se organizam em um formato hierárquico de árvore, composto por 6
+níveis de classificação. O nível 1 é sempre o nível mais genérico, que vai se
+especificando até chegar no nível mais detalhado. O nível mais detalhado,
+teoricamente, é o nível 6, mas, na verdade, raramente isso acontece, pois o
+último nível de uma determinada ramificação pode ser o quinto nível, ou até o
+mesmo o segundo, terceiro ou quarto. Nas TPUs de Movimentos e de Documentos
+processuais, apesar de o nível 6 ser possível, não há nenhuma categoria ocupando
+este nível. 
 
 ### Quem registra?
 
-Uma informação importante a respeito das TPUs é como que as Tabelas, em genérico, se materializam dentro de um processo em específico. Isso varia para cada uma das quatro TPUs. 
+Uma informação importante a respeito das TPUs é como que as Tabelas, em
+genérico, se materializam dentro de um processo em específico. Isso varia para
+cada uma das quatro TPUs. 
 
-Quanto à Classe e ao Assunto, quem registra o tópico específico a que se refere um processo é a própria pessoa que protocola uma petição inicial.
+Quanto à Classe e ao Assunto, quem registra o tópico específico a que se refere
+um processo é a própria pessoa que protocola uma petição inicial.
 
-Quanto às Movimentações, quem classifica uma movimentação de acordo com as TPUs é o Magistrado ou o Serventuário. Essa característica da classificação das movimentações se manifesta na própria TPU, que se inicia com as macro categorias de "Magistrado" e "Serventuário" apenas.
+Quanto às Movimentações, quem classifica uma movimentação de acordo com as TPUs
+é o Magistrado ou o Serventuário. Essa característica da classificação das
+movimentações se manifesta na própria TPU, que se inicia com as macro categorias
+de "Magistrado" e "Serventuário" apenas.
 
 ```{r, out.width="40%"}
 knitr::include_graphics("img/tpu_movimentos.png")
 ```
 
-Quanto aos Documentos processuais, quem os classifica em um processo varia de acordo com quem produziu o documento. Basicamente, quem classifica um determinado documento é quem traz o documento ao processo. Se o documento foi protocolado por advogado (ou figuras correlatas, tais como promotores, defensores e procuradores), então é o próprio advogado quem determina o tipo de documento; se é o Cartório Judicial quem protocola um documento, então é ele mesmo que classifica o tipo de documento. E se é o juiz, então é o próprio magistrado que classifica o documento que ele está subindo. 
+Quanto aos Documentos processuais, quem os classifica em um processo varia de
+acordo com quem produziu o documento. Basicamente, quem classifica um
+determinado documento é quem traz o documento ao processo. Se o documento foi
+protocolado por advogado (ou figuras correlatas, tais como promotores,
+defensores e procuradores), então é o próprio advogado quem determina o tipo de
+documento; se é o Cartório Judicial quem protocola um documento, então é ele
+mesmo que classifica o tipo de documento. E se é o juiz, então é o próprio
+magistrado que classifica o documento que ele está subindo. 
 
 ### Como acessar?
 
-As TPUs podem ser acessadas no site do Sistema de Gestão Processual (SGT) do CNJ, no seguinte link: https://www.cnj.jus.br/sgt/consulta_publica_classes.php. Ao acessar este link, nos deparamos com a página de Consulta Pública de uma TPU. No exemplo abaixo, observamos a página de consulta pública das Classes processuais.
+As TPUs podem ser acessadas no site do Sistema de Gestão Processual (SGT) do
+CNJ, no seguinte link: https://www.cnj.jus.br/sgt/consulta_publica_classes.php.
+Ao acessar este link, nos deparamos com a página de Consulta Pública de uma TPU.
+No exemplo abaixo, observamos a página de consulta pública das Classes
+processuais.
 
 ```{r, out.width="80%"}
 knitr::include_graphics("img/tpu_consulta_publica.png")
 ```
 
-Nesta consulta pública, podemos digitar palavras-chave de interesse, obtendo como resultado as categorias que contém a palavra-chave pesquisada. 
+Nesta consulta pública, podemos digitar palavras-chave de interesse, obtendo
+como resultado as categorias que contém a palavra-chave pesquisada. 
 
-Entretanto, a Consulta Pública pode ser enganadora, pois ela pode dar a entender que os códigos e as categorias representadas na página são estáticas, como se elas sempre tivessem sido assim. Mas, como já vimos, as TPUs estão em constante atualização. 
+Entretanto, a Consulta Pública pode ser enganadora, pois ela pode dar a entender
+que os códigos e as categorias representadas na página são estáticas, como se
+elas sempre tivessem sido assim. Mas, como já vimos, as TPUs estão em constante
+atualização. 
 
-Então se quisermos ter uma visão histórica das TPUs, que compreenda todas as categorias atuais e passadas, temos que verificar as versões passadas das TPUs. Para tanto, basta ir na aba "Versões / Manual". 
+Então se quisermos ter uma visão histórica das TPUs, que compreenda todas as
+categorias atuais e passadas, temos que verificar as versões passadas das TPUs.
+Para tanto, basta ir na aba "Versões / Manual". 
 
-Ali, iremos encontrar várias tabelas para uma mesma versão, conforme a imagem abaixo
+Ali, encontramos várias tabelas para uma mesma versão, conforme a imagem abaixo:
 
 ```{r, out.width="100%"}
 knitr::include_graphics("img/versoes_passadas_classes.png")
@@ -136,7 +185,14 @@ n_tabelas <- tpur::sgt |>
   nrow()
 ```
 
-Nesta imagem, podemos observar que existem tabelas para cada uma das 6 Justiças no Brasil. E, para cada Justiça, há uma ramificação maior, pois há uma tabela específica para o primeiro grau, segundo grau e o tribunal superior daquela Justiça. Ao todo, são `r n_tabelas` tabelas. A combinação das 26 tabelas equivale à tabela que está disponível na Consulta Pública. Então, para cada versão das TPUs, temos 26 tabelas menores, cuja combinação se torna a tabela completa que observamos na consulta pública. Abaixo, vemos as tabelas existentes. 
+Nesta imagem, podemos observar que existem tabelas para cada uma das 6 Justiças
+no Brasil. E, para cada Justiça, há uma ramificação maior, pois há uma tabela
+específica para o primeiro grau, segundo grau e o tribunal superior daquela
+Justiça. Ao todo, são `r n_tabelas` tabelas. A combinação das 26 tabelas
+equivale à tabela que está disponível na Consulta Pública. Então, para cada
+versão das TPUs, temos 26 tabelas menores, cuja combinação se torna a tabela
+completa que observamos na consulta pública. Abaixo, vemos as tabelas
+existentes. 
 
 ```{r}
 tpur::sgt |> 
@@ -145,11 +201,15 @@ tpur::sgt |>
   knitr::kable()
 ```
 
-Existem essas ramificações para as TPUs de Classe, Assunto e Movimentos. Mas a TPU de Documentos processuais é sempre única, não se subidivindo entre uma tabela para cada tribunal.
+Essas ramificações existem para as TPUs de Classe, Assunto e Movimentos. Mas a
+TPU de Documentos processuais é sempre única, não se subidivindo entre uma
+tabela para cada tribunal.
 
-O excel gerado para cada umas TPUs, que depois pode ser unificado, possui mais informações do que aquelas visíveis na Consulta Pública. Cada TPU é composta por 18 colunas, que você pode ver na Tabela \@ref(tab:informacoes_tpus)
+O excel gerado para cada uma das TPUs, depois pode ser unificado, possui mais
+informações do que aquelas visíveis na Consulta Pública. Cada TPU é composta por
+18 colunas, que você pode ver na Tabela \@ref(tab:informacoes-tpus)
 
-```{r informacoes_tpus}
+```{r informacoes-tpus}
 tibble::tibble(
   colunas = tpur::classes |> 
     head(1) |> 
@@ -164,8 +224,8 @@ tibble::tibble(
     "Nível 4",
     "Nível 5",
     "Nível 6",
-    "Código da categoira de nível mais específico",
-    "Código da cateogira de nível imediatamente superior",
+    "Código da categoria de nível mais específico",
+    "Código da categoria de nível imediatamente superior",
     "Norma a que se refere a categoria (CC, CPC, CP, CPP, ECA, CF, etc...)",
     "Artigo específico dentro da norma",
     "Sigla",
@@ -184,13 +244,23 @@ tibble::tibble(
   knitr::kable(caption = "Descrição das informações das TPUs")
 ```
 
-As colunas principais são as colunas de níveis, bem como o seu código e o glossário. São estas colunas que irei explicar com mais detalhes. 
+As colunas principais são as colunas de níveis, bem como o seu código e o
+glossário. São estas colunas que irei explicar com mais detalhes. 
 
-As colunas de níveis são sempre 6, ou seja, todas as TPUs podem ter, no máximo, 6 níveis. O nível 1 é sempre o nível mais genérico. Ele não possui "Código pai". O nível mais específico não é necessariamente o nível 6, pois a ramificação da árvore pode acabar em níveis menores, variando, portanto, do nível 2 ao 6. 
+As colunas de níveis são sempre 6, ou seja, todas as TPUs podem ter, no máximo,
+6 níveis. O nível 1 é sempre o nível mais genérico. Ele não possui "Código pai".
+O nível mais específico não é necessariamente o nível 6, pois a ramificação da
+árvore pode acabar em níveis menores, variando, portanto, do nível 2 ao 6. 
 
-Cada linha das TPUs representa uma categoria única, que possui um código único e que nunca se repete. Não há repetição dentro de uma mesma TPU, nem entre TPUs, isto é, você nunca vai encontrar dois códigos iguais dentro de uma TPU de Classe ou Assunto ou Movimento ou Documento e tampouco você vai encontrar um código presente em uma TPU de Classe dentro de uma TPU de Assunto, por exemplo. O código é sempre o identificador único de uma determinada categoria. 
+Cada linha das TPUs representa uma categoria única, que possui um código único e
+que nunca se repete. Não há repetição dentro de uma mesma TPU, nem entre TPUs,
+isto é, você nunca vai encontrar dois códigos iguais dentro de uma TPU de Classe
+ou Assunto ou Movimento ou Documento e tampouco você vai encontrar um código
+presente em uma TPU de Classe dentro de uma TPU de Assunto, por exemplo. O
+código é sempre o identificador único de uma determinada categoria. 
 
-Por fim, temos o Glossário. O glossário é uma explicação do conteúdo que se espera que esteja relacionado a uma determinada categoria. 
+Por fim, temos o Glossário. O glossário é uma explicação do conteúdo que se
+espera que esteja relacionado a uma determinada categoria. 
 
 ### Versões
 
@@ -200,11 +270,17 @@ n_versoes <- tpur::sgt |>
   nrow()
 ```
 
-Além de saber como funcionam as TPUs em sua forma mais extensa, precisamos ter uma compreensão maior a respeito das versões de cada uma das TPUs. Atualmente temos `r n_versoes` das TPUs.
+Além de saber como funcionam as TPUs em sua forma mais extensa, precisamos ter
+uma compreensão maior a respeito das versões de cada uma das TPUs. Atualmente
+temos `r n_versoes` das TPUs.
 
-Vimos que cada TPU (exceto a de Documentos processuais) é o reusltado da junção de 26 tabelas menores. Entretanto, isso nem sempre foi assim. Versões mais antigas das TPus não possuíam as 26 tabelas; elas eram versões mais enxutas. Vemos na Tabela \@ref(tab:n_tabelas_versao) a progressão da quantidade de tabelas que cada TPU continha ao longo de suas várias versões. 
+Vimos que cada TPU (exceto a de Documentos processuais) é o reusltado da junção
+de 26 tabelas menores. Entretanto, isso nem sempre foi assim. Versões mais
+antigas das TPus não possuíam as 26 tabelas; elas eram versões mais enxutas.
+Vemos na Tabela \@ref(tab:n-tabelas-versao) a progressão da quantidade de
+tabelas que cada TPU continha ao longo de suas várias versões. 
 
-```{r n_tabelas_versao}
+```{r n-tabelas-versao}
 tpur::sgt |> 
   dplyr::filter(tipo_abbr == "C") |>
   dplyr::count(data_versao) |> 
@@ -214,9 +290,10 @@ tpur::sgt |>
   )
 ```
 
-A atualização dessas várias versões se dá de forma contínua. Podemos observar a distribuição das versões na Figura \@ref(fig:distribuicao_versoes).
+A atualização dessas várias versões se dá de forma contínua. Podemos observar a
+distribuição das versões na Figura \@ref(fig:distribuicao-versoes).
 
-```{r distribuicao_versoes, fig.cap="Distribuição das versões por ano"}
+```{r distribuicao-versoes, fig.cap="Distribuição das versões por ano"}
  tpur::sgt |> 
   dplyr::distinct(data_versao) |> 
   dplyr::mutate(ano = lubridate::year(data_versao)) |> 
@@ -235,39 +312,92 @@ A atualização dessas várias versões se dá de forma contínua. Podemos obser
 
 ```
 
-Pelo gráfico fica claro que não periodicidade definida para essas atualizações. Há duas formas de uma atualização ser realizada. Via de regra, elas são feitas de acordo com o julgamento de conveniência do Comitê Gestor da Numeração Única e das Tabelas Processuais Unificadas. Mas além dessa possibilidade de fazer as mudanças nas TPUs de ofício, o Comitê recebe sugestões dos tribunais ou da sociedade civil. Essas sugestões, por sua vez, podem gerar mudanças nas TPUs, que acabam se tornando versões novas. 
+Pelo gráfico fica claro que não periodicidade definida para essas atualizações.
+Há duas formas de uma atualização ser realizada. Via de regra, elas são feitas
+de acordo com o julgamento de conveniência do Comitê Gestor da Numeração Única e
+das Tabelas Processuais Unificadas. Mas além dessa possibilidade de fazer as
+mudanças nas TPUs de ofício, o Comitê recebe sugestões dos tribunais ou da
+sociedade civil. Essas sugestões, por sua vez, podem gerar mudanças nas TPUs,
+que acabam se tornando versões novas. 
 
-Normalmente, as novas versões não trazem grandes mudanças. Elas alteram alguma descrição no glossário, ou adicionam alguma classificação nova. Mas é importante se ater a essas alterações no tempo quando se está realizando uma pesquisa. 
+Normalmente, as novas versões não trazem grandes mudanças. Elas alteram alguma
+descrição no glossário, ou adicionam alguma classificação nova. Mas é importante
+se ater a essas alterações no tempo quando se está realizando uma pesquisa. 
 
-Na ABJ, em uma pesquisa, tivemos problemas relacionados à mudança de versões das TPUs. Estávamos realizando uma pesquisa sobre a judicialização da saúde na Justiça Federal do Ceará, entre 2015 e 2021. Fomos, então, nas TPUs de Assunto para escolher os assuntos relacionados ao tema da pesquisa. Com base nisso, identificamos os seguintes códigos:
+Na ABJ, em uma pesquisa, tivemos problemas relacionados à mudança de versões das
+TPUs. Estávamos realizando uma pesquisa sobre a judicialização da saúde na
+Justiça Federal do Ceará, entre 2015 e 2021. Fomos, então, nas TPUs de Assunto
+para escolher os assuntos relacionados ao tema da pesquisa. Com base nisso,
+identificamos os seguintes códigos:
 
-12521, 12520, 12508, 12509, 12510, 12498, 12497, 12499, 12496, 12495, 12494, 12493, 12505, 12506, 12518, 12512, 12513, 12514, 12515, 12516, 12517, 14759, 12502, 12503, 12500, 12504, 12519, 12490, 12487, 12488, 12489, 13017, 12416
+12521, 12520, 12508, 12509, 12510, 12498, 12497, 12499, 12496, 12495, 12494,
+12493, 12505, 12506, 12518, 12512, 12513, 12514, 12515, 12516, 12517, 14759,
+12502, 12503, 12500, 12504, 12519, 12490, 12487, 12488, 12489, 13017, 12416
 
-Entretanto, depois de termos realizado um pedido de dados à JFCE com os códigos de assunto acima, percebemos que a TPU tinha sofrido grandes alterações especificamente na taxonomia a respeito de temas ligados a judicialização da saúde. Essas mudanças aconteceram em decorrência de um estudo do Insper para o Justiça Pesquisa realizado em 2018 e publicado em 2019 (inserir o link). Então faltaram os seguintes códigos de assuntos:
+Entretanto, depois de termos realizado um pedido de dados à JFCE com os códigos
+de assunto acima, percebemos que a TPU tinha sofrido grandes alterações
+especificamente na taxonomia a respeito de temas ligados a judicialização da
+saúde. Essas mudanças aconteceram em decorrência de um estudo do Insper para o
+Justiça Pesquisa realizado em 2018 e publicado em 2019 (inserir o link). Então
+faltaram os seguintes códigos de assuntos:
 
-10892, 11884, 10856, 7698, 6064, 9196, 10045, 10100, 10653, 11852, 10356, 10655, 11885, 10671, 10090, 10003, 7769, 8986, 10067, 10126, 10504, 10125, 10656, 11857, 10423, 10244, 11883, 10023, 10437, 10662, 10458, 10070, 9098, 9995, 11847, 10543, 10438, 10273, 9518, 9532, 10287, 11855, 10487, 11856, 10677, 10454, 10894, 10376, 10283, 9994, 10121, 7618, 10111, 11989, 10737, 5922, 10399, 6011, 10364, 10280, 10010, 7657, 9581, 10066, 10014, 9985, 10225, 10091, 10065, 10370, 10069, 10095, 11854, 10263, 7706, 10396, 10710, 6193, 10108, 6007, 10445, 10680, 10294, 9596, 5988, 12222, 12223, 11851, 10880, 12224, 7703, 4703, 10083, 9606, 5952, 9607, 12379, 10118, 10556, 6001, 11843, 10173, 12612, 11848, 9991, 10004, 10434, 7775, 10424, 7949, 10435, 5947, 10500, 7689, 12378
+10892, 11884, 10856, 7698, 6064, 9196, 10045, 10100, 10653, 11852, 10356, 10655,
+11885, 10671, 10090, 10003, 7769, 8986, 10067, 10126, 10504, 10125, 10656,
+11857, 10423, 10244, 11883, 10023, 10437, 10662, 10458, 10070, 9098, 9995,
+11847, 10543, 10438, 10273, 9518, 9532, 10287, 11855, 10487, 11856, 10677,
+10454, 10894, 10376, 10283, 9994, 10121, 7618, 10111, 11989, 10737, 5922, 10399,
+6011, 10364, 10280, 10010, 7657, 9581, 10066, 10014, 9985, 10225, 10091, 10065,
+10370, 10069, 10095, 11854, 10263, 7706, 10396, 10710, 6193, 10108, 6007, 10445,
+10680, 10294, 9596, 5988, 12222, 12223, 11851, 10880, 12224, 7703, 4703, 10083,
+9606, 5952, 9607, 12379, 10118, 10556, 6001, 11843, 10173, 12612, 11848, 9991,
+10004, 10434, 7775, 10424, 7949, 10435, 5947, 10500, 7689, 12378
 
 ## Como usar
 
-Saber essas informações a respeito das TPUs é importante para utilizá-las de forma adequada. Vamos dividir a utilização das TPUs em duas partes: primeiro, vamos ensinar como utilizar o pacote da ABJ para lidar com as TPUs, em seguida, vamos discutir como melhor utilizar as TPUs para pedidos de Lei de Acesso à Informação (LAI).
+Saber essas informações a respeito das TPUs é importante para utilizá-las de
+forma adequada. Vamos dividir a utilização das TPUs em duas partes: primeiro,
+vamos ensinar como utilizar o pacote da ABJ para lidar com as TPUs, em seguida,
+vamos discutir como melhor utilizar as TPUs para pedidos de Lei de Acesso à
+Informação (LAI).
 
 ### [tpur](https://github.com/abjur/tpur)
 
-`tpur` é o pacote da ABJ para lidar com as TPUs. Ele está em desenvolvimento ainda e aceita sugestões de melhoria e de futuras implementações. A ideia básica deste pacote é que, por meio de funções básicas de "read", ou seja, de leitura das TPUs, os pesquisadores consigam ter acesso aos códigos importantes a eles. 
+`tpur` é o pacote da ABJ para lidar com as TPUs. Ele está em desenvolvimento
+ainda e aceita sugestões de melhoria e de futuras implementações. A ideia básica
+deste pacote é que, por meio de funções básicas de "read", ou seja, de leitura
+das TPUs, os pesquisadores consigam ter acesso aos códigos importantes a eles. 
 
-Atualmente, há apenas duas funções de leitura implementadas, as funções para as TPUs de Assunto e as de Classes. 
+Atualmente, há apenas duas funções de leitura implementadas, as funções para as
+TPUs de Assunto e as de Classes. 
 
 ```{r eval=FALSE, include=TRUE}
 tpur::tpu_assunto_read()
 tpur::tpu_classe_read()
 ```
 
-Todas as funções de leitura (as existentes, de Classe e Assunto, e as futuras, de Movimentos e Documentos) recebem duas informações, dividida em três argumentos: (1) uma palavra-chave, cujo argumento na função é `busca` (2) o período desejado, que se divide nos argumentos `ini` e `fim`, para representar a data de início e a data de fim do escopo. O argumento de `busca` é obrigatório, mas os argumentos de datas não são. Se alguma data não for colocada, será considerado o dia de hoje. A ideia é que uma simples palavra-chave possa retornar todos os códigos desejados ao longo da história das TPUs. 
+Todas as funções de leitura (as existentes, de Classe e Assunto, e as futuras,
+de Movimentos e Documentos) recebem duas informações, dividida em três
+argumentos: (1) uma palavra-chave, cujo argumento na função é `busca` (2) o
+período desejado, que se divide nos argumentos `ini` e `fim`, para representar a
+data de início e a data de fim do escopo. O argumento de `busca` é obrigatório,
+mas os argumentos de datas não são. Se alguma data não for colocada, será
+considerado o dia de hoje. A ideia é que uma simples palavra-chave possa
+retornar todos os códigos desejados ao longo da história das TPUs. 
 
-O pacote está limitado também no escopo temporal que ele abrange. Atualmente, foi possível extrair apenas as TPUs de 31/03/2023 até 20/09/2022. 
+O pacote está limitado também no escopo temporal que ele abrange. Atualmente,
+foi possível extrair apenas as TPUs de 31/03/2023 até 20/09/2022. 
 
 ### Lei de Acesso à Informação (LAI)
 
-A importância das TPUs para a LAI é de ordem prática. Ao se pedir a um Tribunal por dados de processos, normalmente queremos que o tribunal faça filtros dentre todos seus milhares de processos, para que eles nos passem somente os processos necessários à nossa pesquisa. Esses filtros de escopo são feitas, via de regra, com base nas Classes e Assuntos dos processos. Assim, em um pedido de LAI temos que especificar quais Classes e quais Assuntos queremos. 
+A importância das TPUs para a LAI é de ordem prática. Ao se pedir a um Tribunal
+por dados de processos, normalmente queremos que o tribunal faça filtros dentre
+todos seus milhares de processos, para que eles nos passem somente os processos
+necessários à nossa pesquisa. Esses filtros de escopo são feitas, via de regra,
+com base nas Classes e Assuntos dos processos. Assim, em um pedido de LAI temos
+que especificar quais Classes e quais Assuntos queremos. 
 
-Do ponto de vista da equipe técnica do Tribunal, que realiza a extração dos dados, é preferível que o pedido de LAI contenha não o nome das Classes ou Assuntos desejados, mas os códigos dessas Classes e Assuntos. Por essa razão é que as funções do pacote `tpur` retornam os códigos das TPUs, ao invés da sua descrição. 
+Do ponto de vista da equipe técnica do Tribunal, que realiza a extração dos
+dados, é preferível que o pedido de LAI contenha não o nome das Classes ou
+Assuntos desejados, mas os códigos dessas Classes e Assuntos. Por essa razão é
+que as funções do pacote `tpur` retornam os códigos das TPUs, ao invés da sua
+descrição. 
