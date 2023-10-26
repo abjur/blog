@@ -1,5 +1,27 @@
 [
   {
+    "path": "posts/pre-teste/",
+    "title": "A importância do pré-teste em pesquisas jurimétricas",
+    "description": "Uma avaliação preliminar pode refinar e aperfeiçoar a metodologia de pesquisa, evitando tempo e recursos a longo prazo",
+    "author": [
+      {
+        "name": "Renata Hirota",
+        "url": "https://www.linkedin.com/in/renatahirota/"
+      }
+    ],
+    "date": "2023-10-26",
+    "categories": [
+      "Metodologia",
+      "Pesquisa"
+    ],
+    "contents": "\nA pesquisa jurimétrica, baseada na aplicação de métodos quantitativos e\nestatísticos ao estudo do Direito, é uma ferramenta valiosa para entender\npadrões, comportamentos e fenômenos jurídicos. No entanto, para garantir a\nqualidade e a confiabilidade dos resultados obtidos, é crucial realizar um\npré-teste robusto antes de implementar o estudo em sua totalidade.\nValidação do instrumento de pesquisa\nAntes de iniciar um estudo jurimétrico, é essencial garantir que o instrumento\nde pesquisa seja claro, preciso e pertinente. O pré-teste oferece a oportunidade\nde validar as perguntas, garantindo que sejam compreendidas da maneira desejada\npelos respondentes e que capturem as informações relevantes para o estudo. É\nnesse momento em que, na ABJ, avaliamos se as perguntas norteadoras da pesquisa\nestão sendo respondidas pelas informações que estamos coletando.\nIdentificação de problemas potenciais\nDurante o pré-teste, é possível identificar problemas que podem surgir durante a\ncoleta de dados. Alguns exemplos incluem:\nProcessos fora do escopo: Identificação de processos que não se enquadram no\nescopo da pesquisa, permitindo ajustes na definição dos critérios de inclusão e\nexclusão.\nErro de lógica no questionário: Identificação de perguntas com formulações\nconfusas ou que podem levar a respostas contraditórias, exigindo ajustes na\nredação.\nPadronização de datas: Garantir que as datas nas perguntas estejam\npadronizadas para evitar confusões e inconsistências na interpretação das\nrespostas.\nA antecipação desses problemas permite ajustes e refinamentos antes do início\noficial do estudo.\nAprimoramento da metodologia\nAo avaliar os resultados do pré-teste, podemos ajustar a metodologia do estudo,\naperfeiçoando a abordagem, a ordem das perguntas e as opções de resposta. Essas\nmelhorias garantem que o estudo seja conduzido de maneira mais eficaz e forneça\nresultados mais precisos.\nEconomia de Recursos\nConduzir um pré-teste pode economizar tempo e recursos a longo prazo.\nIdentificar problemas cedo evita a necessidade de revisões extensas e retrabalho\ndurante o estudo principal, economizando tempo e reduzindo os custos associados\nà coleta e análise de dados.\nAumento da credibilidade dos resultados\nUm pré-teste minucioso transmite credibilidade aos resultados da pesquisa.\nDemonstra o compromisso da pesquisa em garantir a validade e a confiabilidade\ndos dados coletados, aumentando a confiança na precisão e relevância dos\nresultados finais.\nConclusão\nO pré-teste é uma etapa crítica e muitas vezes subestimada na condução de\nestudos jurimétricos. Ao investir tempo e esforço nessa fase inicial, podemos\naprimorar a qualidade da pesquisa, obter dados mais precisos e fornecer insights\nvaliosos para a área jurídica. É um investimento que vale a pena para garantir a\nsolidez e a credibilidade de qualquer pesquisa jurimétrica.\n\n\n\n",
+    "preview": "posts/pre-teste/img.png",
+    "last_modified": "2023-10-26T16:57:57-03:00",
+    "input_file": "pre-teste.knit.md",
+    "preview_width": 1159,
+    "preview_height": 600
+  },
+  {
     "path": "posts/tpur/",
     "title": "Entendendo as Tabelas Processuais Unificadas (TPUs)",
     "description": "Este texto busca detalhar o funcionamento e a estrutura das Tabelas Processuais Unificadas (TPUs), bem como explicar como utilizar as TPUs em uma pesquisa.",
