@@ -1,0 +1,170 @@
+---
+title: "Efeitos Causais de Decisões Judiciais"
+description: |
+  Juízes mais rigorosos ou mais lenientes ao decidir a condenação de um réu podem ser utilizados para estimar efeitos causais das suas decisões.
+author:
+  - name: Vitor Augusto Possebom
+    url: https://sites.google.com/site/vitorapossebom/
+date: 2023-12-14
+output:
+  distill::distill_article:
+    self_contained: false
+preview: banner.png
+---
+
+
+Economia do Crime é um campo das Ciências Econômicas que está intimamente ligado
+à Jurimetria. Pesquisadores de Economia do Crime estudam questões ligadas ao
+comportamento de criminosos, vítimas, policiais, promotores, juízes e réus.
+Recentemente, uma ativa área de pesquisa tem se esforçado em responder perguntas
+ligadas aos efeitos de uma decisão judicial (condenação ou abertura de um
+processo penal) sobre o comportamento dos réus e de seus familiares.
+
+Esse texto fará um breve resumo de quatro artigos nessa área.
+
+1. Usando dados da Noruega, Bhuller, Dahl, Løken e Mogstad (2020,
+[https://doi.org/10.1086/705330](https://doi.org/10.1086/705330)) analisam o
+impacto do encarceramento sobre o réu, focando em reincidência criminal e
+empregabilidade futuras.
+2. Usando dados da Colômbia, Arteaga (2023,
+[https://doi.org/10.1162/rest_a_01129](https://doi.org/10.1162/rest_a_01129))
+estuda o impacto do encarceramento do pai sobre a escolaridade de seus filhos.
+3. Usando dados de um condado nos Estados Unidos, Agan, Doleac e Harvey (2023,
+[https://doi.org/10.1093/qje/qjad005](https://doi.org/10.1093/qje/qjad005))
+analisam a decisão do promotor de iniciar um processo penal e discutem os
+efeitos dessa decisão sobre o envolvimento criminal futuro dos indivíduos.
+4. Usando dados de São Paulo e coletados pela Associação Brasileira de
+Jurimetria (ABJ), Possebom (2023,
+[https://doi.org/10.1162/rest_a_01372](https://doi.org/10.1162/rest_a_01372))
+foca em crimes de baixo potencial ofensivo e estuda o efeito de uma condenação
+judicial sobre a reincidência criminal dos réus. Antes de explicar cada um
+desses artigos, é importante entender os desafios estatísticos por trás dessas
+perguntas.
+
+Imagine-se que, como Bhuller, Dahl, Løken e Mogstad (2020), o pesquisador deseja
+entender o efeito do encarceramento sobre a probabilidade de o réu cometer um
+novo crime em até dois anos após a decisão judicial. Ele coleta todos os
+processos penais de uma determinada localidade (Noruega ou São Paulo, por
+exemplo) e mede quais réus foram condenados ao encarceramento e quais réus não
+foram condenados a esse tipo de pena. Ele também observa quais réus são
+processados por um outro crime em até dois anos após a decisão judicial inicial.
+
+Inicialmente, o pesquisador faz uma diferença simples de médias. Ele compara a
+proporção de encarcerados que reincidiram criminalmente contra a proporção de
+réus não- encarcerados que reincidiram. Imagine-se que ele encontra que o
+primeiro grupo tem uma maior probabilidade de reincidência.
+
+Esse pesquisador pode concluir que encarceramento causa comportamento criminoso
+futuro? Esta conclusão seria precipitada se baseada unicamente nessa análise
+simples de médias.
+
+Juízes levam em consideração uma multitude de fatores no momento de decidir a
+pena de um réu condenado, incluindo a conduta social e a personalidade do agente
+(por exemplo, Artigo 59 do Código Penal Brasileiro). Essa multiplicidade de
+fatores na decisão judicial pode fazer com que o grupo encarcerado seja de maior
+risco mesmo na ausência de encarceramento. Em outras palavras, o grupo
+encarcerado cometeria mais crimes no futuro independentemente de serem
+encarcerados ou não pela decisão judicial. Isso faz com que o grupo de réus
+não-encarcerados não seja um bom grupo de comparação para o grupo de réus
+encarcerados, levando a resultados sobre-estimados para o efeito do
+encarceramento sobre reincidência criminal.
+
+Mas como o pesquisador pode corrigir esse problema e estimar o verdadeiro efeito
+de encarceramento sobre reincidência criminal?
+
+No Brasil e em vários países, existem duas características do sistema judicial
+que podem ser exploradas pelo pesquisador para responder a essa pergunta.
+Primeiro, dentro de um mesmo foro, muitos processos são alocados aleatoriamente
+para os juízes que trabalham naquele foro. (No Brasil, esses são os casos de
+distribuição livre.) Segundo, juízes diferentes possuem diferente graus de
+leniência. Em outras palavras, alguns juízes encarceram uma grande proporção dos
+casos que analisam (baixa leniência) e outros juízes encarceram uma baixa
+proporção dos casos que analisam (alta leniência).
+
+O pesquisador pode explorar a alocação aleatória de juízes pouco lenientes e
+muito lenientes dentro de um mesmo foro para estimar o efeito do encarceramento
+sobre reincidência criminal futura. Ao alocar um réu para um juiz pouco leniente
+em vez de um juiz muito leniente, o sistema de distribuição livre induz uma
+mudança na probabilidade de encarceramento que é independente das
+características do réu, incluindo seu potencial para reincidência criminal
+futura. Com isso, o pesquisador pode utilizar a porção do encarceramento cuja
+variação é explicada pela leniência do juiz e comparar réus que são, na média,
+similares (afinal, a alocação de juízes é aleatória). Todavia, alguns desses
+réus similares foram encarcerados por terem encontrado juízes mais rígidos. Essa
+comparação permite estimar o efeito do encarceramento sobre reincidência
+criminal. Essa técnica estatística é conhecida como _variáveis instrumentais_.
+
+Os quatro artigos mencionados acima utilizam essa técnica estatística para
+responder a suas perguntas sobre os efeitos de decisões judiciais sobre o
+comportamento dos réus e de seus familiares. Abaixo, encontram-se breves resumos
+dos contextos e dos resultados encontrados por esses autores.
+
+## 1. “Incarceration, Recidivism, and Employment” por Bhuller, Dahl, Løken e Mogstad (2020)
+
+Bhuller, Dahl, Løken e Mogstad (2020) analisam o efeito do encarceramento sobre
+reincidência criminal e empregabilidade dos réus na Noruega. Na sua amostra,
+eles observam os processos penais entre 2005 e 2009 nos quais o réu não
+confessou o crime. Esse tipo de processo representa 26% de todos os processos
+penais na Noruega e metade deles levam ao encarceramento do réu. Considerando
+apenas o grupo de réus encarcerados, o tempo médio de encarceramento é de
+aproximadamente 6 meses.
+
+Os autores encontram que o encarceramento levou a uma redução de 29 pontos
+percentuais (p.p.) na probabilidade de reincidência criminal em até cinco anos
+após a decisão judicial.
+
+Os resultados sobre empregabilidade dos réus são mais complexos. Caso o réu
+tenha tido um emprego nos cinco anos antes da decisão judicial, o encarceramento
+reduz em 29 p.p. a probabilidade de o réu ter um emprego cincos anos após a
+decisão judicial. Caso o réu não tenha tido um emprego, o encarceramento aumenta
+em 36 p.p. a probabilidade de o réu ter um emprego. Os autores argumentam que o
+efeito positivo para esse segundo grupo se deve a um maior acesso a programas de
+treinamento profissional durante o encarceramento.
+
+## 2. “Parental Incarceration and Children&#39;s Educational Attainment” por Arteaga (2023)
+
+Arteaga (2023) analisa o efeito do encarceramento de um dos pais sobre a
+escolaridade dos filhos do réu ou da ré. Ela observa todos os processos penais
+que levaram a uma condenação na Colômbia entre 2005 e 2016. Dentre todos esses
+processos, ela foca naqueles cujo réu tem, pelo menos, uma criança. Dada a forma
+como a base de dados foi construída, ela estima o efeito do encarceramento de um
+dos pais sobre escolaridade dos filhos em comparação a uma condenação judicial
+que levou a uma pena de multa.
+
+Arteaga (2023) encontra que o encarceramento de um dos pais leva a um aumento de
+0.78 ano de escolaridade para os filhos do réu. Considerando que a média de
+escolaridade dos filhos dos réus não encarcerados é de 7.7 anos, esse efeito
+representa um aumento de quase 10% na escolaridade média das crianças.
+
+## 3. “Misdemeanor Prosecution” por Agan, Doleac e Harvey (2023)
+
+Agan, Doleac e Harvey (2023) estão interessadas na decisão de um promotor
+iniciar ou não um processo penal contra um indivíduo acusado de cometer um crime
+de baixo potencial ofensivo. Elas focam no efeito da decisão de não continuar
+com o processo penal sobre a reincidência criminal do acusado durante os dois
+anos seguintes. Para responder a essa pergunta, elas coletam dados do Condado
+Suffolk em Massachusetts nos EUA entre 2000 e 2020, incluindo a cidade de
+Boston.
+
+Agan, Doleac e Harvey (2023) encontram que não processar o acusado por um crime
+de baixo potencial ofensivo reduz a probabilidade de reincidência criminal nos
+dois anos seguintes. O efeito estimado é um decréscimo de 53 p.p. Elas encontram
+que essa redução é ainda maior para acusados sem um processo penal anterior,
+sugerindo que a criação de um antecedente criminal é um importante mecanismo por
+trás do efeito da decisão do promotor de não continuar com o processo penal.
+
+## 4. “Crime and Mismeasured Punishment: Marginal Treatment Effect with Misclassification”
+
+Possebom (2023) está interessado no efeito de uma punição penal contra acusados
+de cometer um crime de baixo potencial ofensivo. Essa punição penal pode ser uma
+multa ou trabalho comunitário e pode ser imposta via uma condenação judicial ou
+uma transação penal. Ele foca no efeito dessa punição penal sobre a reincidência
+criminal do acusado em até dois anos após a decisão judicial. Para responder a
+essa pergunta, o autor e a ABJ coletaram todos os processos penais do estado de
+São Paulo entre 2010 e 2017.
+
+Possebom (2023) encontra que o efeito de uma punição penal sobre reincidência
+criminal em até dois anos é pequeno e estatisticamente não significante. Em
+outras palavras, não é possível rejeitar a hipótese de que punições penais em
+São Paulo nem aumentam nem diminuem a reincidência criminal futura dos réus
+acusados de crimes de baixo potencial ofensivo.
